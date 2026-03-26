@@ -1,0 +1,63 @@
+═══════════════════════════════════════════════════════════
+  COMO CRIAR URL PÚBLICA SEM SENHA - PASSO A PASSO
+═══════════════════════════════════════════════════════════
+
+⚠️ PROBLEMA: Você estava no diretório errado!
+   Você estava em: C:\WINDOWS\system32
+   Precisa estar em: D:\cobersystem
+
+═══════════════════════════════════════════════════════════
+
+✅ SOLUÇÃO RÁPIDA (3 PASSOS):
+
+PASSO 1: Abra o PowerShell
+   - Pressione Win + X
+   - Escolha "Windows PowerShell"
+
+PASSO 2: Navegue para a pasta do projeto
+   Digite:
+   cd D:\cobersystem
+
+PASSO 3: Execute o comando
+   Digite:
+   cloudflared tunnel --url http://localhost:3000
+
+═══════════════════════════════════════════════════════════
+
+📋 O QUE VAI ACONTECER:
+
+1. O cloudflared vai criar uma URL pública
+2. Você verá algo assim:
+   
+   +--------------------------------------------------------------------------------------------+
+   |  Your quick Tunnel has been created! Visit it at (it may take some time to be reachable): |
+   |  https://abc123-def456.trycloudflare.com                                                   |
+   +--------------------------------------------------------------------------------------------+
+
+3. COPIE A URL (começa com https://)
+4. Esta URL NÃO pede senha!
+
+═══════════════════════════════════════════════════════════
+
+⚠️ SOBRE A URL QUE VOCÊ TEM:
+
+Você tem: https://clever-words-stand.loca.lt
+
+Esta é do LOCALTUNNEL (que pede senha).
+Use o CLOUDFLARED em vez disso (não pede senha)!
+
+═══════════════════════════════════════════════════════════
+
+🚀 COMANDO COMPLETO (Copie e Cole):
+
+cd D:\cobersystem
+cloudflared tunnel --url http://localhost:3000
+
+═══════════════════════════════════════════════════════════
+
+💡 DICA: Ou use o arquivo batch (mais fácil)
+
+Dê duplo clique em:
+   criar-url-publica.bat
+
+═══════════════════════════════════════════════════════════

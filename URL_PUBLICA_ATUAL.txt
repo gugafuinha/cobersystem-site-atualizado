@@ -1,0 +1,37 @@
+═══════════════════════════════════════════════════════════
+  URL PÚBLICA ATUAL DO SITE - COMPARTILHAR COM OPENCLAW
+═══════════════════════════════════════════════════════════
+
+✅ URL PÚBLICA CRIADA (SEM SENHA!):
+
+   https://fighter-forest-grounds-film.trycloudflare.com
+
+═══════════════════════════════════════════════════════════
+
+📋 STATUS:
+
+- ✅ Servidor local rodando: http://localhost:3000
+- ✅ Cloudflared conectado
+- ✅ URL pública ativa
+- ✅ Pronto para compartilhar!
+
+═══════════════════════════════════════════════════════════
+
+⚠️ IMPORTANTE:
+
+- Mantenha os 2 terminais abertos:
+  * Terminal 1: npm run dev (servidor)
+  * Terminal 2: npx cloudflared tunnel (URL pública)
+  
+- Se fechar algum terminal, a URL para de funcionar
+
+═══════════════════════════════════════════════════════════
+
+🔄 SE A URL EXPIRAR:
+
+Execute novamente:
+   npx cloudflared tunnel --url http://localhost:3000
+
+Uma nova URL será gerada.
+
+═══════════════════════════════════════════════════════════

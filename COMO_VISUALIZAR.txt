@@ -1,0 +1,29 @@
+═══════════════════════════════════════════════════════════════
+   COMO VISUALIZAR O SITE DA COBERSYSTEM
+═══════════════════════════════════════════════════════════════
+
+🌐 ACESSO LOCAL:
+   http://localhost:3000
+
+📋 INSTRUÇÕES:
+   1. Abra seu navegador (Chrome, Edge, Firefox)
+   2. Digite na barra de endereço: localhost:3000
+   3. Pressione Enter
+   4. O site vai aparecer!
+
+🔄 SE NÃO ABRIR:
+   - Aguarde alguns segundos (o Next.js está compilando)
+   - Verifique se o servidor está rodando
+   - Tente atualizar a página (F5)
+
+🛑 PARA PARAR O SERVIDOR:
+   - Pressione Ctrl + C no terminal
+   - Ou feche a janela do terminal
+
+📝 COMANDOS ÚTEIS:
+   - Iniciar servidor: npm run dev
+   - Parar servidor: Ctrl + C
+   - Build para produção: npm run build
+
+═══════════════════════════════════════════════════════════════
+

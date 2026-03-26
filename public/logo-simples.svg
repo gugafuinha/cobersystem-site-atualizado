@@ -1,0 +1,30 @@
+<svg width="180" height="180" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fundo preto com bordas arredondadas -->
+  <rect width="180" height="180" fill="#000000" rx="15"/>
+  
+  <!-- Símbolo de cobertura retrátil elegante (versão ícone) -->
+  <g fill="none" stroke="#D4AF37" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(30, 30)">
+    <!-- Estrutura de cobertura elegante -->
+    <path d="M 15 60 L 60 40 L 105 60" stroke-width="4.5"/>
+    <path d="M 105 60 L 60 40 L 15 60" stroke-width="4.5"/>
+    
+    <!-- Lâminas retráteis -->
+    <line x1="25" y1="55" x2="25" y2="75" stroke-width="3.5"/>
+    <line x1="45" y1="50" x2="45" y2="75" stroke-width="3.5"/>
+    <line x1="60" y1="45" x2="60" y2="75" stroke-width="3.5"/>
+    <line x1="75" y1="50" x2="75" y2="75" stroke-width="3.5"/>
+    <line x1="95" y1="55" x2="95" y2="75" stroke-width="3.5"/>
+    
+    <!-- Base -->
+    <line x1="15" y1="75" x2="105" y2="75" stroke-width="4.5"/>
+    
+    <!-- Elemento de tecnologia elegante -->
+    <circle cx="60" cy="30" r="7" fill="#D4AF37" opacity="0.9"/>
+    <circle cx="60" cy="30" r="3.5" fill="#000000"/>
+  </g>
+  
+  <!-- Texto COBERSYSTEM (elegante) -->
+  <text x="90" y="145" font-family="'Arial', sans-serif" font-size="16" font-weight="700" fill="#D4AF37" text-anchor="middle" letter-spacing="2">
+    COBERSYSTEM
+  </text>
+</svg>

@@ -1,0 +1,79 @@
+═══════════════════════════════════════════════════════════
+  COMANDO URGENTE - CORRIGIR DEPLOY VERCEL
+═══════════════════════════════════════════════════════════
+
+❌ PROBLEMA CRÍTICO:
+
+O site em produção está INCOMPLETO:
+https://policarbo-site.vercel.app
+
+- Não tem blog
+- Páginas faltando  
+- Visual diferente
+- Conteúdo incompleto
+
+✅ SITE COMPLETO (USE ESTE COMO BASE):
+
+URL Pública: https://fighter-forest-grounds-film.trycloudflare.com
+
+Este site tem TUDO:
+- Blog completo (/blog)
+- Todas as páginas (Home, Sobre, Produtos, Galeria, Blog, Contato, Localização)
+- 12 páginas de serviços (/servicos/*)
+- 56 imagens em alta resolução
+- SEO completo
+- Design profissional
+- Todas as funcionalidades
+
+🎯 O QUE PRECISO (URGENTE):
+
+1. Analise o problema:
+   - Por que o deploy na Vercel está incompleto?
+   - O que está faltando no código deployado?
+   - Como corrigir?
+
+2. Corrija o deploy:
+   - Garanta que TODAS as páginas sejam deployadas
+   - Garanta que o blog funcione (/blog)
+   - Garanta que todas as imagens apareçam
+   - Garanta que o design esteja correto
+
+3. Verifique:
+   - Todas as rotas funcionam
+   - Blog está acessível
+   - Imagens carregam
+   - SEO está completo
+
+📄 ARQUIVOS DISPONÍVEIS:
+
+- projeto-cobersystem-openclaw.json (JSON completo com todas as URLs)
+- projeto-cobersystem.zip (Código fonte completo - 715 MB)
+- DEPLOY_CORRETO_VERCEL.md (Guia de deploy)
+
+🔍 ANÁLISE NECESSÁRIA:
+
+1. Verificar repositório GitHub conectado na Vercel
+2. Verificar se o código completo está no GitHub
+3. Verificar configuração do build na Vercel
+4. Identificar o que está faltando
+5. Corrigir e fazer deploy correto
+
+✅ RESULTADO ESPERADO:
+
+Após correção, o site deve ter:
+- Home completa
+- Blog funcionando (/blog)
+- Galeria (/galeria) 
+- Todas as páginas de produtos
+- Todas as páginas de serviços (12 páginas)
+- Design profissional
+- Todas as imagens visíveis
+
+⚠️ IMPORTANTE:
+
+- NÃO recrie do zero
+- USE o site completo como base: https://fighter-forest-grounds-film.trycloudflare.com
+- CORRIJA o deploy para que o site completo seja publicado
+- O site atual (policarbo-site.vercel.app) está ERRADO - precisa ser corrigido!
+
+═══════════════════════════════════════════════════════════

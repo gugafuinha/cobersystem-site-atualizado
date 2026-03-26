@@ -1,0 +1,55 @@
+═══════════════════════════════════════════════════════════
+  URL PÚBLICA DO SITE - COMPARTILHAR COM OPENCLAW
+═══════════════════════════════════════════════════════════
+
+✅ URL REAL DO SITE:
+   https://dirty-facts-watch.loca.lt
+
+⚠️ IMPORTANTE SOBRE A SENHA:
+   O localtunnel pode pedir uma senha na primeira vez.
+   Isso é normal! A senha aparece no terminal onde você
+   executou o comando "lt --port 3000".
+
+   Se não viu a senha, execute novamente:
+   lt --port 3000
+   
+   E copie tanto a URL quanto a senha que aparecer.
+
+═══════════════════════════════════════════════════════════
+
+📋 COMO COMPARTILHAR COM OPENCLAW:
+
+1. Acesse: https://dirty-facts-watch.loca.lt
+2. Se pedir senha, veja no terminal onde rodou "lt --port 3000"
+3. Depois de acessar, envie para o OpenClaw:
+
+   "Analise este site: https://dirty-facts-watch.loca.lt
+   
+   É um site Next.js de coberturas em policarbonato retrátil.
+   Por favor, analise:
+   - SEO e otimizações
+   - Performance
+   - UX/UI
+   - Estrutura do código
+   - Sugestões de melhorias"
+
+═══════════════════════════════════════════════════════════
+
+🔄 SE A URL EXPIRAR:
+
+Execute novamente no terminal:
+   lt --port 3000
+
+Uma nova URL será gerada.
+
+═══════════════════════════════════════════════════════════
+
+📄 INFORMAÇÕES DO SITE:
+
+- Framework: Next.js 16 (App Router)
+- Tecnologias: TypeScript, Tailwind CSS, React 19
+- Domínio: coberturapolicarbonato.com.br
+- Foco: Coberturas em policarbonato retrátil
+- Palavras-chave: cobertura retrátil, cobertura abre e fecha
+
+═══════════════════════════════════════════════════════════

@@ -1,0 +1,24 @@
+<svg width="450" height="120" viewBox="0 0 450 120" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fundo preto -->
+  <rect width="450" height="120" fill="#000000"/>
+  
+  <!-- Símbolo minimalista elegante -->
+  <g fill="#D4AF37">
+    <!-- Barra decorativa elegante (maior) -->
+    <rect x="20" y="40" width="70" height="5" rx="2.5" fill="#D4AF37" opacity="0.9"/>
+    <rect x="20" y="50" width="50" height="4" rx="2" fill="#D4AF37" opacity="0.7"/>
+    <rect x="20" y="58" width="30" height="3" rx="1.5" fill="#D4AF37" opacity="0.5"/>
+    <!-- Círculo tech minimalista -->
+    <circle cx="70" cy="45" r="8" fill="none" stroke="#D4AF37" stroke-width="3" opacity="0.8"/>
+  </g>
+  
+  <!-- Texto principal -->
+  <text x="110" y="65" font-family="'Open Sans', 'Arial', sans-serif" font-size="38" font-weight="700" fill="#D4AF37" letter-spacing="5">
+    COBERSYSTEM
+  </text>
+  
+  <!-- Tagline -->
+  <text x="110" y="88" font-family="'Open Sans', 'Arial', sans-serif" font-size="13" fill="#D4AF37" opacity="0.7" letter-spacing="3.5" font-weight="400">
+    SOLUÇÕES EM COBERTURAS
+  </text>
+</svg>

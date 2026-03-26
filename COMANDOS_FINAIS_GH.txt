@@ -1,0 +1,38 @@
+═══════════════════════════════════════════════════════════
+  COMANDOS FINAIS - CRIAR REPOSITÓRIO
+═══════════════════════════════════════════════════════════
+
+✅ GitHub CLI está instalado!
+
+═══════════════════════════════════════════════════════════
+
+📋 EXECUTE ESTES COMANDOS NO POWERSHELL:
+
+1. Atualizar PATH:
+   $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+
+2. Verificar se funciona:
+   gh --version
+
+3. Fazer login (se ainda não fez):
+   gh auth login
+   (Siga as instruções na tela)
+
+4. Criar repositório e fazer push:
+   cd D:\cobersystem
+   gh repo create cobersystem-site --public --source=. --remote=origin --push
+
+═══════════════════════════════════════════════════════════
+
+💡 DICA: Se der erro "gh não reconhecido":
+
+Feche o PowerShell e abra um NOVO PowerShell.
+O PATH será atualizado automaticamente!
+
+═══════════════════════════════════════════════════════════
+
+✅ RESULTADO:
+
+https://github.com/gugafuinha/cobersystem-site
+
+═══════════════════════════════════════════════════════════

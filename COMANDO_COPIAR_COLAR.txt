@@ -1,0 +1,28 @@
+═══════════════════════════════════════════════════════════
+  COMANDO PARA COPIAR E COLAR NO TERMINAL
+═══════════════════════════════════════════════════════════
+
+1. Primeiro, navegue para a pasta:
+   cd D:\cobersystem
+
+2. Depois, execute este comando:
+   cloudflared tunnel --url http://localhost:3000
+
+═══════════════════════════════════════════════════════════
+
+OU COPIE TUDO DE UMA VEZ:
+
+cd D:\cobersystem; cloudflared tunnel --url http://localhost:3000
+
+═══════════════════════════════════════════════════════════
+
+O QUE VAI APARECER:
+
++--------------------------------------------------------------------------------------------+
+|  Your quick Tunnel has been created! Visit it at (it may take some time to be reachable): |
+|  https://abc123-def456.trycloudflare.com                                                   |
++--------------------------------------------------------------------------------------------+
+
+COPIE A URL (começa com https://)
+
+═══════════════════════════════════════════════════════════

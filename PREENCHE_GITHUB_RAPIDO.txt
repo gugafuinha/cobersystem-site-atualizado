@@ -1,0 +1,30 @@
+═══════════════════════════════════════════════════════════
+  COMO PREENCHER O FORMULÁRIO - RÁPIDO
+═══════════════════════════════════════════════════════════
+
+1. NOME DO REPOSITÓRIO:
+   cobersystem-site
+
+2. DESCRIÇÃO (opcional):
+   Site completo Cobersystem - Coberturas em Policarbonato
+
+3. VISIBILIDADE:
+   ✅ Público (recomendado)
+
+4. NÃO MARQUE:
+   ❌ Adicionar README
+   ❌ Adicionar .gitignore  
+   ❌ Adicionar licença
+
+5. CLIQUE EM:
+   "Create repository" (botão verde)
+
+═══════════════════════════════════════════════════════════
+
+DEPOIS DE CRIAR, EXECUTE NO POWERSHELL:
+
+cd D:\cobersystem
+git remote add origin https://github.com/gugafuinha/cobersystem-site.git
+git push -u origin main
+
+═══════════════════════════════════════════════════════════

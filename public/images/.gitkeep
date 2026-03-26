@@ -1,0 +1,20 @@
+# Pasta para imagens do site
+# Coloque aqui todas as fotos e vídeos em alta qualidade
+# 
+# ESTRUTURA RECOMENDADA:
+# /images/
+#   /produtos/
+#     - cobertura-retratil-policarbonato-compacto.jpg
+#     - cobertura-abre-fecha-alexa-sensor-chuva.jpg
+#     - estrutura-aluminio-personalizada.jpg
+#   /projetos/
+#     - projeto-area-gourmet-churrasqueira.jpg
+#     - cobertura-apartamento-varanda.jpg
+#     - pergolado-residencial.jpg
+#   /videos/
+#     - demonstracao-automacao-alexa.mp4
+#     - funcionamento-sensor-chuva.mp4
+#     - instalacao-cobertura-retratil.mp4
+#   /blog/
+#     - (imagens para artigos do blog)
+

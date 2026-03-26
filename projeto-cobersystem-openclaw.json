@@ -1,0 +1,326 @@
+{
+  "projeto": {
+    "nome": "Cobersystem",
+    "versao": "0.1.0",
+    "descricao": "Site institucional de coberturas em policarbonato retrátil com sistema abre e fecha e automação via Alexa",
+    "dominio": "coberturapolicarbonato.com.br",
+    "urlPublica": "https://furthermore-healthy-ceramic-possibilities.trycloudflare.com",
+    "dataCriacao": "2024-11-14",
+    "status": "Em desenvolvimento - Pronto para análise"
+  },
+  "tecnologias": {
+    "framework": "Next.js 16.0.3",
+    "router": "App Router",
+    "linguagem": "TypeScript 5",
+    "ui": "React 19.2.0",
+    "estilizacao": "Tailwind CSS 4",
+    "build": "Turbopack"
+  },
+  "urls": {
+    "site": "https://furthermore-healthy-ceramic-possibilities.trycloudflare.com",
+    "local": "http://localhost:3000",
+    "sitemap": "https://furthermore-healthy-ceramic-possibilities.trycloudflare.com/sitemap.xml",
+    "robots": "https://furthermore-healthy-ceramic-possibilities.trycloudflare.com/robots.txt",
+    "feed": "https://furthermore-healthy-ceramic-possibilities.trycloudflare.com/feed.xml"
+  },
+  "paginas": {
+    "principais": [
+      {
+        "rota": "/",
+        "titulo": "Home",
+        "descricao": "Página inicial com hero section, produtos em destaque e CTAs",
+        "url": "https://furthermore-healthy-ceramic-possibilities.trycloudflare.com/"
+      },
+      {
+        "rota": "/sobre",
+        "titulo": "Sobre",
+        "descricao": "Informações sobre a empresa, missão e valores",
+        "url": "https://furthermore-healthy-ceramic-possibilities.trycloudflare.com/sobre"
+      },
+      {
+        "rota": "/produtos",
+        "titulo": "Produtos",
+        "descricao": "Catálogo de produtos de cobertura",
+        "url": "https://furthermore-healthy-ceramic-possibilities.trycloudflare.com/produtos"
+      },
+      {
+        "rota": "/galeria",
+        "titulo": "Galeria",
+        "descricao": "Fotos de projetos realizados",
+        "url": "https://furthermore-healthy-ceramic-possibilities.trycloudflare.com/galeria"
+      },
+      {
+        "rota": "/blog",
+        "titulo": "Blog",
+        "descricao": "Artigos sobre coberturas e SEO",
+        "url": "https://furthermore-healthy-ceramic-possibilities.trycloudflare.com/blog"
+      },
+      {
+        "rota": "/contato",
+        "titulo": "Contato",
+        "descricao": "Formulário de contato",
+        "url": "https://furthermore-healthy-ceramic-possibilities.trycloudflare.com/contato"
+      },
+      {
+        "rota": "/localizacao",
+        "titulo": "Localização",
+        "descricao": "Mapa e áreas de atendimento",
+        "url": "https://furthermore-healthy-ceramic-possibilities.trycloudflare.com/localizacao"
+      }
+    ],
+    "produtos": [
+      {
+        "categoria": "Cobertura Retrátil",
+        "rota": "/produtos/cobertura-retratil",
+        "url": "https://furthermore-healthy-ceramic-possibilities.trycloudflare.com/produtos/cobertura-retratil"
+      },
+      {
+        "categoria": "Cobertura Fixa",
+        "rota": "/produtos/cobertura-fixa",
+        "url": "https://furthermore-healthy-ceramic-possibilities.trycloudflare.com/produtos/cobertura-fixa"
+      }
+    ],
+    "servicos": [
+      {
+        "rota": "/servicos/cobertura-abre-e-fecha",
+        "titulo": "Cobertura Abre e Fecha"
+      },
+      {
+        "rota": "/servicos/cobertura-retratil-automatizada",
+        "titulo": "Cobertura Retrátil Automatizada"
+      },
+      {
+        "rota": "/servicos/cobertura-fixa-policarbonato-alveolar",
+        "titulo": "Cobertura Fixa Policarbonato Alveolar"
+      },
+      {
+        "rota": "/servicos/cobertura-fixa-policarbonato-compacto",
+        "titulo": "Cobertura Fixa Policarbonato Compacto"
+      },
+      {
+        "rota": "/servicos/cobertura-termoacustica",
+        "titulo": "Cobertura Termoacústica"
+      },
+      {
+        "rota": "/servicos/cobertura-aluminio",
+        "titulo": "Cobertura Alumínio"
+      },
+      {
+        "rota": "/servicos/cobertura-garagem",
+        "titulo": "Cobertura Garagem"
+      },
+      {
+        "rota": "/servicos/cobertura-area-gourmet",
+        "titulo": "Cobertura Área Gourmet"
+      },
+      {
+        "rota": "/servicos/cobertura-piscina",
+        "titulo": "Cobertura Piscina"
+      },
+      {
+        "rota": "/servicos/cobertura-corredor-lateral",
+        "titulo": "Cobertura Corredor Lateral"
+      },
+      {
+        "rota": "/servicos/calhas-rufos-perfil-u",
+        "titulo": "Calhas, Rufos e Perfil U"
+      },
+      {
+        "rota": "/servicos/projetos-personalizados",
+        "titulo": "Projetos Personalizados"
+      }
+    ],
+    "localizacao": [
+      "/localizacao/sao-paulo",
+      "/localizacao/abc",
+      "/localizacao/guarulhos",
+      "/localizacao/campinas",
+      "/localizacao/sorocaba",
+      "/localizacao/zona-norte",
+      "/localizacao/zona-sul",
+      "/localizacao/zona-leste",
+      "/localizacao/zona-oeste",
+      "/localizacao/santo-andre",
+      "/localizacao/sao-bernardo"
+    ]
+  },
+  "imagens": {
+    "pastaBase": "/images",
+    "estrutura": {
+      "projetos": {
+        "caminho": "/images/projetos",
+        "quantidade": 56,
+        "formatos": ["JPG", "jpg", "JPEG"],
+        "exemplos": [
+          "https://furthermore-healthy-ceramic-possibilities.trycloudflare.com/images/projetos/apartamento-pergolado-38.JPG",
+          "https://furthermore-healthy-ceramic-possibilities.trycloudflare.com/images/projetos/area-gourmet-varanda-23.jpg"
+        ],
+        "tamanhos": {
+          "maior": "apartamento-pergolado-38.JPG (4.3MB)",
+          "media": "area-gourmet-churrasqueira-27.JPG (3.5MB)"
+        }
+      },
+      "produtos": {
+        "caminho": "/images/produtos",
+        "descricao": "Fotos de produtos"
+      },
+      "blog": {
+        "caminho": "/images/blog",
+        "descricao": "Imagens de artigos"
+      },
+      "videos": {
+        "caminho": "/images/videos",
+        "quantidade": 20,
+        "formato": "MOV",
+        "exemplos": [
+          "alexa-automacao-10.MOV",
+          "cobertura-abre-fecha-1.MOV",
+          "sensor-chuva-4.MOV"
+        ]
+      }
+    },
+    "otimizacao": {
+      "qualidade": 95,
+      "lazyLoading": true,
+      "priority": "para imagens acima da dobra",
+      "componente": "OptimizedImage",
+      "formato": "WebP automático quando possível"
+    }
+  },
+  "seo": {
+    "palavrasChave": [
+      "cobertura retrátil",
+      "cobertura abre e fecha",
+      "cobertura em policarbonato",
+      "cobertura automática",
+      "sensor de chuva",
+      "automação residencial",
+      "Alexa",
+      "pergolado",
+      "área gourmet",
+      "policarbonato compacto",
+      "policarbonato alveolar"
+    ],
+    "metadata": {
+      "title": "Cobertura em Policarbonato Retrátil | Abre e Fecha com Automação Alexa | Cobersystem",
+      "description": "Cobertura retrátil e abre e fecha em policarbonato com automação via Alexa e sensor de chuva. Controle total do clima com abertura de 0 a 90 graus.",
+      "keywords": "cobertura retrátil, cobertura abre e fecha, cobertura em policarbonato, cobertura automática, sensor de chuva, automação residencial, Alexa, pergolado, área gourmet, policarbonato compacto, policarbonato alveolar"
+    },
+    "openGraph": {
+      "title": "Cobertura em Policarbonato Retrátil | Cobersystem",
+      "description": "Cobertura retrátil em policarbonato com automação via Alexa e sensor de chuva. Controle total do clima com abertura de 0 a 90 graus.",
+      "url": "https://coberturapolicarbonato.com.br",
+      "siteName": "Cobersystem - Cobertura em Policarbonato",
+      "type": "website",
+      "locale": "pt_BR"
+    },
+    "schema": {
+      "organization": true,
+      "localBusiness": true
+    },
+    "sitemap": true,
+    "robots": {
+      "index": true,
+      "follow": true
+    }
+  },
+  "analytics": {
+    "googleAnalytics": true,
+    "googleTagManager": true,
+    "metaPixel": true,
+    "googleAds": true,
+    "scrollTracker": true
+  },
+  "componentes": {
+    "principais": [
+      "Header",
+      "Footer",
+      "OptimizedImage",
+      "CoberturaAnimation",
+      "WhatsAppButton",
+      "SchemaMarkup",
+      "GoogleAnalytics",
+      "GoogleTagManager",
+      "MetaPixel",
+      "GoogleAds",
+      "ScrollTracker"
+    ]
+  },
+  "funcionalidades": {
+    "seo": {
+      "metadata": "Completo em todas as páginas",
+      "sitemap": "Automático",
+      "robots": "Configurado",
+      "openGraph": "Implementado",
+      "schema": "Organization e LocalBusiness"
+    },
+    "performance": {
+      "otimizacaoImagens": "Automática via Next.js",
+      "lazyLoading": "Habilitado",
+      "codeSplitting": "Automático",
+      "turbopack": "Habilitado"
+    },
+    "ux": {
+      "responsivo": true,
+      "mobileFirst": true,
+      "animacoes": "CoberturaAnimation",
+      "whatsapp": "Botão flutuante",
+      "navegacao": "Intuitiva"
+    }
+  },
+  "estruturaArquivos": {
+    "app": {
+      "layout": "app/layout.tsx",
+      "page": "app/page.tsx",
+      "globals": "app/globals.css",
+      "sitemap": "app/sitemap.ts",
+      "robots": "app/robots.ts"
+    },
+    "components": "components/",
+    "public": {
+      "images": "public/images/",
+      "logos": "public/logo*.svg"
+    }
+  },
+  "instrucoesAnalise": {
+    "objetivo": "Análise completa do site para melhorias de SEO, performance, UX/UI e código",
+    "foco": [
+      "SEO e otimizações",
+      "Performance e velocidade",
+      "UX/UI e design",
+      "Estrutura do código",
+      "Otimização de imagens",
+      "Sugestões de melhorias"
+    ],
+    "acesso": {
+      "url": "https://furthermore-healthy-ceramic-possibilities.trycloudflare.com",
+      "imagens": "Acessíveis via /images/[caminho]",
+      "sitemap": "https://furthermore-healthy-ceramic-possibilities.trycloudflare.com/sitemap.xml",
+      "robots": "https://furthermore-healthy-ceramic-possibilities.trycloudflare.com/robots.txt"
+    }
+  },
+  "informacoesAdicionais": {
+    "negocio": {
+      "tipo": "Coberturas em policarbonato retrátil",
+      "diferenciais": [
+        "Automação via Alexa",
+        "Sensor de chuva",
+        "Abertura de 0 a 90 graus",
+        "Estruturas de alumínio personalizadas"
+      ],
+      "areasAtendimento": [
+        "Grande São Paulo",
+        "ABC",
+        "Guarulhos",
+        "Campinas",
+        "Sorocaba"
+      ]
+    },
+    "cores": {
+      "principal": "#D4AF37",
+      "secundaria": "#C9A030",
+      "fundo": "Gradiente gray-900 para black",
+      "texto": "Branco sobre fundos escuros"
+    }
+  }
+}

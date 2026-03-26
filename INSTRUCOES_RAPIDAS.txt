@@ -1,0 +1,45 @@
+═══════════════════════════════════════════════════════════
+  SOLUÇÃO RÁPIDA: HRTT8132.JPG NÃO ABRE
+═══════════════════════════════════════════════════════════
+
+PROBLEMA:
+  O arquivo HRTT8132.JPG não abre e aparece:
+  "Não há suporte para este formato de arquivo."
+
+SOLUÇÃO MAIS RÁPIDA (2 MINUTOS):
+───────────────────────────────────────────────────────────
+
+OPÇÃO 1: USAR SCRIPT AUTOMÁTICO (RECOMENDADO)
+  1. Dê duplo clique em: CONVERTER-IMAGEM.bat
+  2. Digite o caminho: D:\cobersystem\site\HRTT8132.JPG
+  3. Pronto! O arquivo será convertido automaticamente
+
+OPÇÃO 2: CONVERTER ONLINE (SE O SCRIPT NÃO FUNCIONAR)
+  1. Acesse: https://convertio.co/pt/jpg-converter/
+  2. Faça upload do arquivo HRTT8132.JPG
+  3. Baixe o arquivo convertido
+  4. Mova para: D:\cobersystem\public\images\projetos\
+
+OPÇÃO 3: TENTAR ABRIR NO NAVEGADOR
+  1. Abra o Google Chrome
+  2. Arraste o arquivo HRTT8132.JPG para o navegador
+  3. Se abrir, a imagem está OK (problema é no visualizador)
+
+───────────────────────────────────────────────────────────
+
+SE NADA FUNCIONAR:
+  O arquivo pode estar corrompido. Baixe novamente do celular
+  usando CABO USB (não use WhatsApp - comprime e pode corromper).
+
+───────────────────────────────────────────────────────────
+
+LOCAL CORRETO PARA IMAGENS:
+  D:\cobersystem\public\images\projetos\
+
+═══════════════════════════════════════════════════════════
+
+
+
+
+
+

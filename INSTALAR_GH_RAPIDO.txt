@@ -1,0 +1,44 @@
+═══════════════════════════════════════════════════════════
+  INSTALAR GITHUB CLI - RÁPIDO
+═══════════════════════════════════════════════════════════
+
+✅ MÉTODO MAIS FÁCIL:
+
+1. Abra PowerShell como ADMINISTRADOR:
+   - Pressione Win + X
+   - Escolha "Terminal (Admin)" ou "PowerShell (Admin)"
+
+2. Execute este comando:
+   winget install --id GitHub.cli
+
+3. Aguarde a instalação
+
+4. Verifique:
+   gh --version
+
+5. Faça login:
+   gh auth login
+   (Siga as instruções na tela)
+
+═══════════════════════════════════════════════════════════
+
+✅ DEPOIS DE INSTALAR E FAZER LOGIN:
+
+Execute no PowerShell (em D:\cobersystem):
+
+cd D:\cobersystem
+gh repo create cobersystem-site --public --source=. --remote=origin --push
+
+Isso vai criar o repositório e fazer push automaticamente!
+
+═══════════════════════════════════════════════════════════
+
+⚠️ SE WINGET NÃO FUNCIONAR:
+
+Download manual:
+1. Acesse: https://github.com/cli/cli/releases/latest
+2. Baixe: gh_X.X.X_windows_amd64.msi
+3. Execute o instalador
+4. Depois: gh auth login
+
+═══════════════════════════════════════════════════════════

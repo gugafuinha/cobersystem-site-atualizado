@@ -1,0 +1,12 @@
+<!-- Este arquivo será substituído por um ICO real, mas vou criar um SVG como favicon -->
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <rect width="32" height="32" fill="#000000"/>
+  <g fill="none" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round">
+    <path d="M 8 16 L 16 10 L 24 16" />
+    <line x1="10" y1="14" x2="10" y2="20" />
+    <line x1="16" y1="12" x2="16" y2="20" />
+    <line x1="22" y1="14" x2="22" y2="20" />
+    <line x1="8" y1="20" x2="24" y2="20" />
+  </g>
+</svg>
+

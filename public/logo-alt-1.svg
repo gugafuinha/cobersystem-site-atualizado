@@ -1,0 +1,26 @@
+<svg width="260" height="70" viewBox="0 0 260 70" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fundo preto -->
+  <rect width="260" height="70" fill="#000000"/>
+  
+  <!-- Símbolo geométrico moderno - hexágono estilizado -->
+  <g fill="none" stroke="#D4AF37" stroke-width="3" stroke-linecap="round">
+    <!-- Hexágono representando estrutura -->
+    <path d="M 20 35 L 35 20 L 50 20 L 65 35 L 50 50 L 35 50 Z" stroke-width="3.5"/>
+    <!-- Linhas internas (lâminas) -->
+    <line x1="35" y1="25" x2="35" y2="45" stroke-width="2.5"/>
+    <line x1="50" y1="25" x2="50" y2="45" stroke-width="2.5"/>
+    <!-- Elemento de tecnologia -->
+    <circle cx="42.5" cy="35" r="3" fill="#D4AF37" opacity="0.9"/>
+  </g>
+  
+  <!-- Texto moderno -->
+  <text x="80" y="42" font-family="'Montserrat', 'Arial', sans-serif" font-size="28" font-weight="700" fill="#D4AF37" letter-spacing="3.5">
+    COBERSYSTEM
+  </text>
+  
+  <!-- Tagline -->
+  <text x="80" y="58" font-family="'Montserrat', 'Arial', sans-serif" font-size="10" fill="#D4AF37" opacity="0.75" letter-spacing="2.8" font-weight="400">
+    SOLUÇÕES EM COBERTURAS
+  </text>
+</svg>
+

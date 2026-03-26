@@ -1,0 +1,44 @@
+═══════════════════════════════════════════════════════════
+  COMANDOS PARA CRIAR REPOSITÓRIO E FAZER PUSH
+═══════════════════════════════════════════════════════════
+
+✅ STATUS: Git já está configurado e commitado!
+
+═══════════════════════════════════════════════════════════
+
+PASSO 1: Criar Repositório no GitHub
+
+1. Acesse: https://github.com/new
+2. Nome do repositório: cobersystem-site
+3. NÃO marque "Add a README file"
+4. Clique em "Create repository"
+
+═══════════════════════════════════════════════════════════
+
+PASSO 2: Executar Estes Comandos no PowerShell
+
+cd D:\cobersystem
+
+git remote add origin https://github.com/gugafuinha/cobersystem-site.git
+
+git push -u origin main
+
+═══════════════════════════════════════════════════════════
+
+✅ DEPOIS DE FAZER PUSH:
+
+URL do repositório será:
+https://github.com/gugafuinha/cobersystem-site
+
+Compartilhe esta URL com o OpenClaw!
+
+═══════════════════════════════════════════════════════════
+
+⚠️ SE DER ERRO DE AUTENTICAÇÃO:
+
+Você pode precisar:
+- Fazer login no GitHub
+- Ou usar GitHub Desktop
+- Ou criar um Personal Access Token
+
+═══════════════════════════════════════════════════════════

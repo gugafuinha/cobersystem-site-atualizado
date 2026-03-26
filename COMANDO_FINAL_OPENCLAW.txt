@@ -1,0 +1,22 @@
+🎯 COMANDO PARA OPENCLAW - DEPLOY CORRETO NA VERCEL
+
+⚠️ IMPORTANTE: O site atual na Vercel (https://policarbo-site.vercel.app) está INCOMPLETO!
+
+✅ Use APENAS o código do repositório GitHub:
+https://github.com/gugafuinha/cobersystem-site
+
+📋 O QUE FAZER:
+1. Acesse https://github.com/gugafuinha/cobersystem-site
+2. Conecte o repositório na Vercel
+3. Faça deploy do código COMPLETO
+4. NÃO use o site atual da Vercel como base
+
+✅ O repositório contém:
+- Blog completo (6 artigos)
+- 12 páginas de serviços
+- Todas as páginas de produtos
+- 56 imagens em alta resolução
+- Design profissional completo
+- SEO completo
+
+🔗 Repositório: https://github.com/gugafuinha/cobersystem-site

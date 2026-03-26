@@ -1,0 +1,44 @@
+═══════════════════════════════════════════════════════════
+  PRÓXIMO PASSO - LOGIN GITHUB CLI
+═══════════════════════════════════════════════════════════
+
+✅ VOCÊ ESTÁ QUASE LÁ!
+
+═══════════════════════════════════════════════════════════
+
+📋 PRÓXIMO PASSO:
+
+1. Pressione ENTER (Login with a web browser já está selecionado)
+
+2. Você verá algo assim:
+   > First copy your one-time code: XXXX-XXXX
+   > Press Enter to open github.com in your browser...
+
+3. Pressione ENTER novamente
+
+4. O navegador vai abrir automaticamente
+
+5. Cole o código que apareceu no terminal
+
+6. Autorize o acesso
+
+7. Volte ao terminal - vai mostrar "✓ Authentication complete"
+
+═══════════════════════════════════════════════════════════
+
+✅ DEPOIS DE FAZER LOGIN:
+
+Execute:
+
+cd D:\cobersystem
+gh repo create cobersystem-site --public --source=. --remote=origin --push
+
+═══════════════════════════════════════════════════════════
+
+💡 DICA:
+
+- O código de autenticação aparece no terminal
+- Copie e cole no navegador quando abrir
+- É um código temporário (válido por alguns minutos)
+
+═══════════════════════════════════════════════════════════

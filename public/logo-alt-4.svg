@@ -1,0 +1,26 @@
+<svg width="270" height="70" viewBox="0 0 270 70" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fundo preto -->
+  <rect width="270" height="70" fill="#000000"/>
+  
+  <!-- Símbolo abstrato moderno - setas/chevrons representando movimento -->
+  <g fill="#D4AF37" stroke="#D4AF37" stroke-width="2">
+    <!-- Chevrons estilizados -->
+    <path d="M 15 35 L 30 20 L 30 35 L 45 20 L 45 35 L 60 20 L 60 35" 
+          fill="none" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 15 35 L 30 50 L 30 35 L 45 50 L 45 35 L 60 50 L 60 35" 
+          fill="none" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Círculo tech -->
+    <circle cx="50" cy="35" r="5" fill="#D4AF37" opacity="0.9"/>
+  </g>
+  
+  <!-- Texto -->
+  <text x="75" y="42" font-family="'Poppins', 'Arial', sans-serif" font-size="29" font-weight="600" fill="#D4AF37" letter-spacing="3.5">
+    COBERSYSTEM
+  </text>
+  
+  <!-- Tagline -->
+  <text x="75" y="58" font-family="'Poppins', 'Arial', sans-serif" font-size="10" fill="#D4AF37" opacity="0.75" letter-spacing="2.8" font-weight="300">
+    SOLUÇÕES EM COBERTURAS
+  </text>
+</svg>
+

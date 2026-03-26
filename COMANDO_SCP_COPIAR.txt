@@ -1,0 +1,38 @@
+═══════════════════════════════════════════════════════════
+  COMANDO SCP - COPIAR E COLAR NO POWERSHELL
+═══════════════════════════════════════════════════════════
+
+✅ OpenSSH está instalado! Você pode usar o comando diretamente.
+
+═══════════════════════════════════════════════════════════
+
+📋 COMANDO PARA COPIAR E COLAR:
+
+scp D:\cobersystem\projeto-cobersystem.zip root@srv1333138:/root/
+
+═══════════════════════════════════════════════════════════
+
+🚀 COMO EXECUTAR:
+
+1. Abra o PowerShell
+2. Cole o comando acima
+3. Pressione Enter
+4. Digite a senha do servidor quando solicitado
+5. Aguarde a transferência (pode demorar alguns minutos - arquivo de 715 MB)
+
+═══════════════════════════════════════════════════════════
+
+⚠️ IMPORTANTE:
+
+- Você será solicitado a digitar a senha do servidor
+- A senha não aparecerá enquanto você digita (é normal!)
+- Pressione Enter após digitar a senha
+- A transferência pode demorar alguns minutos (arquivo grande)
+
+═══════════════════════════════════════════════════════════
+
+💡 DICA: Se der erro, tente com aspas:
+
+scp "D:\cobersystem\projeto-cobersystem.zip" root@srv1333138:/root/
+
+═══════════════════════════════════════════════════════════

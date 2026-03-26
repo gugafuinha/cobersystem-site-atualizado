@@ -1,0 +1,14 @@
+Serviço,Tipo,URL/Plataforma,Email/Username,Senha,Observações,Status
+GitHub,Repositório,https://github.com,gugafuinha@icloud.com / gugafuinha,*** (gerenciar no navegador),Repositório: cobersystem,Ativo
+Vercel,Hospedagem,https://vercel.com,gugafuinha@icloud.com,*** (criar conta),Deploy automático do GitHub,Pendente
+Domínio,Registro,coberturapolicarbonato.com.br,N/A,*** (verificar onde foi registrado),SSL automático no Vercel,Pendente
+Google Analytics,Analytics,https://analytics.google.com,N/A,*** (criar conta),ID: G-XXXXXXXXXX (substituir),Pendente
+Google Tag Manager,Tag Manager,https://tagmanager.google.com,N/A,*** (criar conta),Container ID: GTM-XXXXXXX (substituir),Pendente
+Google Search Console,SEO,https://search.google.com/search-console,N/A,*** (criar conta),Verificar propriedade: coberturapolicarbonato.com.br,Pendente
+Meta Pixel,Marketing,https://business.facebook.com,N/A,*** (criar conta),Pixel ID: XXXXXXXXXXXXXXX (substituir),Pendente
+Google Ads,Marketing,https://ads.google.com,N/A,*** (criar conta),Conversion ID: AW-XXXXXXXXXX (substituir),Pendente
+Instagram,Redes Sociais,https://www.instagram.com/cobersystem,@cobersystem,*** (gerenciar no app),Link: https://www.instagram.com/cobersystem?igsh=cXlvaHBsdjZoc2d4,Ativo
+YouTube,Redes Sociais,https://www.youtube.com,@cobersystem,*** (criar canal),Link no footer preparado,Pendente
+Email Comercial,Email,vendas@cobersystem.com.br,N/A,*** (configurar),Email oficial da empresa,Ativo
+WhatsApp Business,Comunicação,https://wa.me/5511943615079,(11) 94361-5079,N/A,Número comercial,Ativo
+
