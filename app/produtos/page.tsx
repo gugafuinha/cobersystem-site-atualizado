@@ -126,8 +126,8 @@ export default function Produtos() {
           </Link>
 
           <Link href="/produtos/veneziana-policarbonato" className="group">
-            <div className="overflow-hidden rounded-xl bg-white shadow-lg transition hover:shadow-xl">
-              <div className="relative h-64 w-full min-h-[180px] overflow-hidden bg-gray-100">
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition">
+              <div className="relative h-64 w-full overflow-hidden bg-gray-100">
                 <OptimizedImage
                   src="/images/produtos/veneziana/veneziana.jpg"
                   alt="Veneziana em Policarbonato"
@@ -136,17 +136,11 @@ export default function Produtos() {
                   height={512}
                   className="h-full w-full object-cover object-[50%_58%]"
                 />
-                <div
-                  className="absolute inset-0 bg-black/40"
-                  aria-hidden
-                />
-                <div className="absolute inset-0 z-10 flex items-center justify-center px-4 py-8 text-center">
-                  <h2 className="text-3xl font-bold text-white">
-                    Veneziana em Policarbonato
-                  </h2>
-                </div>
               </div>
               <div className="p-8">
+                <h2 className="mb-4 text-3xl font-bold text-gray-800 transition group-hover:text-blue-600">
+                  Veneziana em Policarbonato
+                </h2>
                 <p className="text-gray-600 mb-4">
                   Fechamento lateral ventilado para galpões, quadras e áreas externas. 
                   Permite ventilação controlada mantendo proteção.
