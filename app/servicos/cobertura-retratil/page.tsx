@@ -4,6 +4,7 @@ import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FAQSchema from '@/components/FAQSchema';
 import SchemaMarkup from '@/components/SchemaMarkup';
+import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 
 export const metadata: Metadata = {
   title: "Cobertura Retrátil | Abre e Fecha com Automação | Cobersystem",
@@ -215,6 +216,8 @@ export default function CoberturaRetratil() {
           </section>
 
           <FAQSchema faqs={faqs} />
+
+          <ServiceVejaTambem current="retratil" />
 
           <section className="bg-[#D4AF37] text-black rounded-lg p-12 text-center mt-12">
             <h2 className="text-4xl font-bold mb-4">

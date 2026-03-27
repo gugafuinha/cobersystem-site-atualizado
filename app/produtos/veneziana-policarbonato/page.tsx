@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import ProductVejaTambem from '@/components/ProductVejaTambem';
 
 export const metadata: Metadata = {
   title: "Veneziana em Policarbonato | Fechamento Lateral Ventilado | Cobersystem",
@@ -376,6 +377,8 @@ export default function VenezianaPolcarbonato() {
             </div>
           </div>
         </section>
+
+        <ProductVejaTambem current="veneziana" />
 
         {/* CTA */}
         <section className="bg-green-600 text-white rounded-lg p-12 text-center">

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import ProductVejaTambem from '@/components/ProductVejaTambem';
 
 export const metadata: Metadata = {
   title: "Cobertura Retrátil em Policarbonato | Abre e Fecha com Automação | Cobersystem",
@@ -117,6 +118,8 @@ export default function CoberturaRetratil() {
             ))}
           </div>
         </section>
+
+        <ProductVejaTambem current="retratil" />
 
         {/* CTA */}
         <section className="bg-blue-600 text-white rounded-lg p-12 text-center">

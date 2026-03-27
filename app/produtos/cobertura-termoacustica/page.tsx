@@ -4,6 +4,7 @@ import path from 'path';
 import { readdir } from 'fs/promises';
 import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import ProductVejaTambem from '@/components/ProductVejaTambem';
 
 export const metadata: Metadata = {
   title: "Cobertura Termoacústica | Cobertura Sanduíche com Isolamento | Cobersystem",
@@ -367,6 +368,8 @@ export default async function CoberturaTermoacustica() {
             </table>
           </div>
         </section>
+
+        <ProductVejaTambem current="termoacustica" />
 
         {/* CTA */}
         <section className="bg-orange-600 text-white rounded-lg p-12 text-center">

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FAQSchema from '@/components/FAQSchema';
 import SchemaMarkup from '@/components/SchemaMarkup';
+import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 
 export const metadata: Metadata = {
   title: "Cobertura Termoacústica | Isolamento Térmico e Acústico | Cobersystem",
@@ -120,6 +121,8 @@ export default function CoberturaTermoacustica() {
           </section>
 
           <FAQSchema faqs={faqs} />
+
+          <ServiceVejaTambem current="termoacustica" />
 
           <section className="bg-[#D4AF37] text-black rounded-lg p-12 text-center mt-12">
             <h2 className="text-4xl font-bold mb-4">Solicite Seu Orçamento</h2>

@@ -4,6 +4,7 @@ import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FAQSchema from '@/components/FAQSchema';
 import SchemaMarkup from '@/components/SchemaMarkup';
+import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 
 export const metadata: Metadata = {
   title: "Cobertura Abre e Fecha Preço | Automatizada com Alexa | Cobersystem",
@@ -331,6 +332,8 @@ export default function CoberturaAbreEFecha() {
 
           {/* FAQ */}
           <FAQSchema faqs={faqs} />
+
+          <ServiceVejaTambem current="abre-e-fecha" />
 
           {/* CTA */}
           <section className="bg-[#D4AF37] text-black rounded-lg p-12 text-center">

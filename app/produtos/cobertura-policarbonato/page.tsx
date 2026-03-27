@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import ProductVejaTambem from '@/components/ProductVejaTambem';
 
 export const metadata: Metadata = {
   title: "Cobertura Fixa em Policarbonato | Cobersystem",
@@ -192,6 +193,8 @@ export default function CoberturaFixa() {
             </div>
           </div>
         </section>
+
+        <ProductVejaTambem current="policarbonato" />
 
         {/* CTA */}
         <section className="bg-blue-600 text-white rounded-lg p-12 text-center">
