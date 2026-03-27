@@ -39,7 +39,7 @@ export default function ArticleSchema({
       name: "Cobersystem",
       logo: {
         "@type": "ImageObject",
-        url: "https://coberturapolicarbonato.com.br/images/logo.png",
+        url: "https://coberturapolicarbonato.com.br/logo-horizontal.svg",
       },
     },
     mainEntityOfPage: {

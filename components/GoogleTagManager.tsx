@@ -2,10 +2,13 @@
 
 import Script from 'next/script';
 
-// Substitua pelo seu Container ID do Google Tag Manager
-const GTM_ID = 'GTM-XXXXXXX'; // Substituir pelo ID real
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
 
 export default function GoogleTagManager() {
+  if (!GTM_ID || GTM_ID.includes('XXXX')) {
+    return null;
+  }
+
   return (
     <>
       <Script
