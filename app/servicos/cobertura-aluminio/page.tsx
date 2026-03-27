@@ -11,6 +11,23 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://coberturapolicarbonato.com.br/servicos/cobertura-aluminio',
   },
+  openGraph: {
+    title: "Cobertura de Alumínio | Estrutura Resistente e Durável | Cobersystem",
+    description: "Cobertura de alumínio com estrutura robusta, acabamento de qualidade e alta durabilidade para áreas residenciais e comerciais.",
+    url: 'https://coberturapolicarbonato.com.br/servicos/cobertura-aluminio',
+    images: [
+      {
+        url: 'https://coberturapolicarbonato.com.br/images/projetos/abre-fecha-alveolar-01.jpg',
+        width: 1200,
+        height: 800,
+        alt: 'Cobertura de Alumínio',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://coberturapolicarbonato.com.br/images/projetos/abre-fecha-alveolar-01.jpg'],
+  },
 };
 
 const productSchema = {

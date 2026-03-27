@@ -4,6 +4,9 @@ export const metadata: Metadata = {
   title: "FAQ - Perguntas Frequentes sobre Cobertura em Policarbonato | Cobersystem",
   description: "Tire todas suas dúvidas sobre cobertura retrátil, cobertura em policarbonato, automação, instalação, preços, manutenção e garantia. Perguntas e respostas completas.",
   keywords: "faq cobertura policarbonato, dúvidas cobertura retrátil, quanto custa cobertura, instalação cobertura, garantia policarbonato, manutenção cobertura, cobertura abre fecha dúvidas",
+  alternates: {
+    canonical: 'https://coberturapolicarbonato.com.br/faq',
+  },
   openGraph: {
     title: "FAQ - Perguntas Frequentes | Cobersystem",
     description: "Tire suas dúvidas sobre cobertura em policarbonato retrátil e fixa",

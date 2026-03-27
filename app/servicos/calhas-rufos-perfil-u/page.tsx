@@ -11,6 +11,23 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://coberturapolicarbonato.com.br/servicos/calhas-rufos-perfil-u',
   },
+  openGraph: {
+    title: "Calhas, Rufos e Perfil U | Acabamento para Coberturas | Cobersystem",
+    description: "Serviço de calhas, rufos e perfil U para acabamento e vedação correta de coberturas em alumínio e policarbonato.",
+    url: 'https://coberturapolicarbonato.com.br/servicos/calhas-rufos-perfil-u',
+    images: [
+      {
+        url: 'https://coberturapolicarbonato.com.br/images/projetos/abre-fecha-alveolar-01.jpg',
+        width: 1200,
+        height: 800,
+        alt: 'Calhas, Rufos e Perfil U',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://coberturapolicarbonato.com.br/images/projetos/abre-fecha-alveolar-01.jpg'],
+  },
 };
 
 const productSchema = {

@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Sobre a Cobersystem | Cobertura Retrátil em Policarbonato",
   description: "Conheça a Cobersystem, especialista em cobertura retrátil e abre e fecha em policarbonato com automação via Alexa e sensor de chuva. Inovação e qualidade em cada projeto.",
   keywords: "sobre cobersystem, empresa cobertura retrátil, cobertura policarbonato, automação residencial",
+  alternates: {
+    canonical: 'https://coberturapolicarbonato.com.br/sobre',
+  },
 };
 
 export default function Sobre() {

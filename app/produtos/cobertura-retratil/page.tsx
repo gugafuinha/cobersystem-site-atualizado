@@ -1,14 +1,31 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import OptimizedImage from '@/components/OptimizedImage';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: "Cobertura Retrátil em Policarbonato | Abre e Fecha com Automação | Cobersystem",
   description: "Cobertura retrátil em policarbonato com sistema abre e fecha. Automação via Alexa e sensor de chuva. Controle total do clima com abertura de 0 a 90 graus. Solicite orçamento!",
   keywords: "cobertura retrátil, cobertura retrátil policarbonato, cobertura abre e fecha, cobertura retrátil área gourmet, cobertura retrátil churrasqueira",
+  alternates: {
+    canonical: 'https://coberturapolicarbonato.com.br/produtos/cobertura-retratil',
+  },
   openGraph: {
     title: "Cobertura Retrátil em Policarbonato | Cobersystem",
     description: "Cobertura retrátil com automação via Alexa e sensor de chuva. Controle total do clima.",
+    url: 'https://coberturapolicarbonato.com.br/produtos/cobertura-retratil',
+    images: [
+      {
+        url: 'https://coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/aluminio/IMG_0305.jpg',
+        width: 1200,
+        height: 900,
+        alt: 'Cobertura Retrátil em Policarbonato',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/aluminio/IMG_0305.jpg'],
   },
 };
 
@@ -42,6 +59,14 @@ export default function CoberturaRetratil() {
   return (
     <main className="min-h-screen py-12">
       <div className="container mx-auto px-4">
+        <Breadcrumbs
+          items={[
+            { label: 'Início', href: '/' },
+            { label: 'Produtos', href: '/produtos' },
+            { label: 'Cobertura Retrátil em Policarbonato', href: '/produtos/cobertura-retratil' },
+          ]}
+        />
+
         {/* Hero */}
         <section className="mb-16 text-center">
           <h1 className="text-5xl font-bold text-gray-800 mb-6">

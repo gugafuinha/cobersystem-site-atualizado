@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import OptimizedImage from '@/components/OptimizedImage';
 import CoberturaAnimation from '@/components/CoberturaAnimation';
 
@@ -7,11 +8,32 @@ export const metadata: Metadata = {
   title: "Cobertura em Policarbonato Retrátil | Abre e Fecha com Automação | Cobersystem",
   description: "Cobertura retrátil em policarbonato com sistema abre e fecha. Automação via Alexa e sensor de chuva. Controle total do clima com abertura de 0 a 90 graus. Estruturas de alumínio personalizadas.",
   keywords: "cobertura retrátil, cobertura abre e fecha, cobertura em policarbonato, cobertura automática, sensor de chuva, automação residencial, Alexa",
+  alternates: {
+    canonical: 'https://coberturapolicarbonato.com.br',
+  },
+};
+
+const homeWebSiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Cobersystem',
+  url: 'https://coberturapolicarbonato.com.br',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: 'https://coberturapolicarbonato.com.br/blog?busca={search_term_string}',
+    'query-input': 'required name=search_term_string',
+  },
 };
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <>
+      <Script
+        id="schema-home-website"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeWebSiteSchema) }}
+      />
+      <main className="min-h-screen">
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white py-20 relative overflow-hidden">
         {/* Animação de cobertura no fundo */}
@@ -275,6 +297,7 @@ export default function Home() {
           </Link>
         </div>
       </section>
-    </main>
+      </main>
+    </>
   );
 }

@@ -12,6 +12,23 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://coberturapolicarbonato.com.br/servicos/cobertura-piscina',
   },
+  openGraph: {
+    title: "Cobertura para Piscina | Retrátil Policarbonato | Cobersystem",
+    description: "Cobertura retrátil para piscina em policarbonato. Proteção contra chuva, folhas e sol. Sistema abre e fecha com automação.",
+    url: 'https://coberturapolicarbonato.com.br/servicos/cobertura-piscina',
+    images: [
+      {
+        url: 'https://coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/aluminio/IMG_6306.jpg',
+        width: 1200,
+        height: 900,
+        alt: 'Cobertura para Piscina Retrátil',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/aluminio/IMG_6306.jpg'],
+  },
 };
 
 const productSchema = {

@@ -11,6 +11,23 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://coberturapolicarbonato.com.br/servicos/cobertura-termoacustica',
   },
+  openGraph: {
+    title: "Cobertura Termoacústica | Isolamento Térmico e Acústico | Cobersystem",
+    description: "Cobertura termoacústica com excelente desempenho térmico e acústico para ambientes residenciais e comerciais.",
+    url: 'https://coberturapolicarbonato.com.br/servicos/cobertura-termoacustica',
+    images: [
+      {
+        url: 'https://coberturapolicarbonato.com.br/images/projetos/fixa-01.jpg',
+        width: 1200,
+        height: 800,
+        alt: 'Cobertura Termoacústica',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://coberturapolicarbonato.com.br/images/projetos/fixa-01.jpg'],
+  },
 };
 
 const productSchema = {

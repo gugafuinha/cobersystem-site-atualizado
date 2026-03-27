@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import blogPosts from '@/content/blog-posts.json';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 type BlogPost = {
   slug: string;
@@ -45,16 +46,16 @@ export async function generateMetadata(
       type: 'article',
       publishedTime: artigo.data,
       authors: ['Cobersystem'],
-      images: [{ url: artigo.imagem, width: 1200, height: 630 }],
+      images: [{ url: `https://coberturapolicarbonato.com.br${artigo.imagem}`, width: 1200, height: 630 }],
     },
     twitter: {
       card: 'summary_large_image',
       title: artigo.titulo,
       description: artigo.descricao,
-      images: [artigo.imagem],
+      images: [`https://coberturapolicarbonato.com.br${artigo.imagem}`],
     },
     alternates: {
-      canonical: `https://cobersystem.com.br/blog/${params.slug}`,
+      canonical: `https://coberturapolicarbonato.com.br/blog/${params.slug}`,
     },
   };
 }
@@ -75,25 +76,25 @@ export default async function BlogPostPage(
     "@type": "BlogPosting",
     "headline": artigo.titulo,
     "description": artigo.descricao,
-    "image": `https://cobersystem.com.br${artigo.imagem}`,
+    "image": `https://coberturapolicarbonato.com.br${artigo.imagem}`,
     "datePublished": artigo.data,
     "dateModified": artigo.data,
     "author": {
       "@type": "Organization",
       "name": "Cobersystem",
-      "url": "https://cobersystem.com.br"
+      "url": "https://coberturapolicarbonato.com.br"
     },
     "publisher": {
       "@type": "Organization",
       "name": "Cobersystem",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://cobersystem.com.br/logo.png"
+        "url": "https://coberturapolicarbonato.com.br/logo.png"
       }
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://cobersystem.com.br/blog/${artigo.slug}`
+      "@id": `https://coberturapolicarbonato.com.br/blog/${artigo.slug}`
     },
     "keywords": artigo.palavrasChave.join(', '),
     "articleSection": artigo.categoria
@@ -143,16 +144,13 @@ export default async function BlogPostPage(
       
       <main className="min-h-screen bg-gray-50 py-12">
         <div className="container mx-auto px-4">
-          {/* Breadcrumbs */}
-          <nav className="mb-8 text-sm">
-            <ol className="flex items-center space-x-2 text-gray-600">
-              <li><Link href="/" className="hover:text-blue-600">Início</Link></li>
-              <li>/</li>
-              <li><Link href="/blog" className="hover:text-blue-600">Blog</Link></li>
-              <li>/</li>
-              <li className="text-gray-900">{artigo.titulo.substring(0, 50)}...</li>
-            </ol>
-          </nav>
+          <Breadcrumbs
+            items={[
+              { label: 'Início', href: '/' },
+              { label: 'Blog', href: '/blog' },
+              { label: artigo.titulo.substring(0, 50), href: `/blog/${artigo.slug}` },
+            ]}
+          />
 
           <article className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8 md:p-12">
             {/* Meta info */}

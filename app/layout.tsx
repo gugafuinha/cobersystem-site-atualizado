@@ -37,6 +37,14 @@ export const metadata: Metadata = {
     siteName: 'Cobersystem - Cobertura em Policarbonato',
     type: "website",
     locale: "pt_BR",
+    images: [
+      {
+        url: 'https://coberturapolicarbonato.com.br/images/blog/cobertura-abre-fecha.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Cobertura em Policarbonato Retrátil - Cobersystem',
+      },
+    ],
   },
   robots: {
     index: true,
@@ -53,6 +61,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: "Cobertura em Policarbonato Retrátil | Cobersystem",
     description: "Cobertura retrátil em policarbonato com automação via Alexa e sensor de chuva.",
+    images: ['https://coberturapolicarbonato.com.br/images/blog/cobertura-abre-fecha.jpg'],
   },
 };
 

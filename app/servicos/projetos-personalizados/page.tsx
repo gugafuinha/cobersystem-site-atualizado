@@ -11,6 +11,23 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://coberturapolicarbonato.com.br/servicos/projetos-personalizados',
   },
+  openGraph: {
+    title: "Projetos Personalizados de Cobertura | Cobersystem",
+    description: "Projetos personalizados de coberturas retráteis e fixas com engenharia sob medida e atendimento técnico especializado.",
+    url: 'https://coberturapolicarbonato.com.br/servicos/projetos-personalizados',
+    images: [
+      {
+        url: 'https://coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg',
+        width: 1200,
+        height: 800,
+        alt: 'Projetos Personalizados de Cobertura',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg'],
+  },
 };
 
 const productSchema = {

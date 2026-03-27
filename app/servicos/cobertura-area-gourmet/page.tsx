@@ -12,6 +12,23 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://coberturapolicarbonato.com.br/servicos/cobertura-area-gourmet',
   },
+  openGraph: {
+    title: "Cobertura para Área Gourmet | Preço e Ideias | Cobersystem",
+    description: "Cobertura retrátil para área gourmet em policarbonato. Ideias, preços e orçamento. Sistema abre e fecha com automação.",
+    url: 'https://coberturapolicarbonato.com.br/servicos/cobertura-area-gourmet',
+    images: [
+      {
+        url: 'https://coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg',
+        width: 1200,
+        height: 800,
+        alt: 'Cobertura para Área Gourmet',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg'],
+  },
 };
 
 const productSchema = {

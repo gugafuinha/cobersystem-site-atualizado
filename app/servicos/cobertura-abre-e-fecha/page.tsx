@@ -16,6 +16,18 @@ export const metadata: Metadata = {
     title: "Cobertura Abre e Fecha | Preço e Automação | Cobersystem",
     description: "Cobertura retrátil que abre e fecha com automação via Alexa. Controle total do clima sem perder ventilação.",
     url: 'https://coberturapolicarbonato.com.br/servicos/cobertura-abre-e-fecha',
+    images: [
+      {
+        url: 'https://coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg',
+        width: 1200,
+        height: 900,
+        alt: 'Cobertura Abre e Fecha Automatizada',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg'],
   },
 };
 

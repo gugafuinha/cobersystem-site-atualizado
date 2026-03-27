@@ -14,6 +14,23 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://coberturapolicarbonato.com.br/servicos/cobertura-retratil',
   },
+  openGraph: {
+    title: "Cobertura Retrátil | Abre e Fecha com Automação | Cobersystem",
+    description: "Cobertura retrátil em policarbonato com sistema abre e fecha. Controle do clima com abertura de 0 a 90 graus e automação opcional.",
+    url: 'https://coberturapolicarbonato.com.br/servicos/cobertura-retratil',
+    images: [
+      {
+        url: 'https://coberturapolicarbonato.com.br/images/blog/cobertura-abre-fecha.jpg',
+        width: 1200,
+        height: 800,
+        alt: 'Cobertura Retrátil',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://coberturapolicarbonato.com.br/images/blog/cobertura-abre-fecha.jpg'],
+  },
 };
 
 const productSchema = {

@@ -5,6 +5,7 @@ import path from 'path';
 import { readdir } from 'fs/promises';
 import OptimizedImage from '@/components/OptimizedImage';
 import ProductSchema from '@/components/ProductSchema';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 const foldersPorSlug: Record<string, { folder: string }> = {
   'fixa-alveolar': { folder: 'alveolar' },
@@ -127,7 +128,7 @@ const produtos: Record<string, {
       'Proteção permanente',
       'Investimento acessível',
     ],
-    imagem: '/images/produtos/cobertura-policarbonato/fixa-alveolar.jpg',
+    imagem: '/images/produtos/cobertura-policarbonato/alveolar/IMG_4432.jpg',
     preco: 'Solicite orçamento personalizado',
   },
 };
@@ -152,9 +153,27 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: `${produto.nome} | Cobersystem`,
     description: produto.descricao,
     keywords: `cobertura fixa, ${produto.nome.toLowerCase()}, policarbonato, cobertura permanente`,
+    alternates: {
+      canonical: `https://coberturapolicarbonato.com.br/produtos/cobertura-policarbonato/${slug}`,
+    },
     openGraph: {
       title: produto.nome,
       description: produto.descricao,
+      url: `https://coberturapolicarbonato.com.br/produtos/cobertura-policarbonato/${slug}`,
+      images: [
+        {
+          url: `https://coberturapolicarbonato.com.br${produto.imagem}`,
+          width: 1200,
+          height: 800,
+          alt: produto.nome,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: produto.nome,
+      description: produto.descricao,
+      images: [`https://coberturapolicarbonato.com.br${produto.imagem}`],
     },
   };
 }
@@ -180,16 +199,14 @@ export default async function ProdutoFixaDetalhe({ params }: { params: Promise<{
       />
       <main className="min-h-screen py-12">
         <div className="container mx-auto px-4 max-w-6xl">
-        {/* Breadcrumb */}
-        <nav className="mb-8 text-sm">
-          <Link href="/" className="text-blue-600 hover:underline">Início</Link>
-          {' / '}
-          <Link href="/produtos" className="text-blue-600 hover:underline">Produtos</Link>
-          {' / '}
-          <Link href="/produtos/cobertura-policarbonato" className="text-blue-600 hover:underline">Cobertura em Policarbonato</Link>
-          {' / '}
-          <span className="text-gray-600">{produto.nome}</span>
-        </nav>
+        <Breadcrumbs
+          items={[
+            { label: 'Início', href: '/' },
+            { label: 'Produtos', href: '/produtos' },
+            { label: 'Cobertura em Policarbonato', href: '/produtos/cobertura-policarbonato' },
+            { label: produto.nome, href: `/produtos/cobertura-policarbonato/${slug}` },
+          ]}
+        />
 
         {/* Hero */}
         <section className="mb-12">

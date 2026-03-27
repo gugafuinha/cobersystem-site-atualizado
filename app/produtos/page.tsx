@@ -1,17 +1,66 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Script from 'next/script';
 import OptimizedImage from '@/components/OptimizedImage';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: "Produtos | Cobertura Retrátil em Policarbonato | Cobersystem",
   description: "Conheça nossos produtos: cobertura retrátil em policarbonato compacto e alveolar, com automação via Alexa e sensor de chuva. Estruturas de alumínio personalizadas.",
   keywords: "cobertura retrátil policarbonato, cobertura abre e fecha, policarbonato compacto, policarbonato alveolar, automação Alexa, sensor chuva",
+  alternates: {
+    canonical: 'https://coberturapolicarbonato.com.br/produtos',
+  },
+};
+
+const produtosItemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Produtos Cobersystem',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Cobertura Retrátil',
+      url: 'https://coberturapolicarbonato.com.br/produtos/cobertura-retratil',
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Cobertura em Policarbonato',
+      url: 'https://coberturapolicarbonato.com.br/produtos/cobertura-policarbonato',
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: 'Cobertura Termoacústica',
+      url: 'https://coberturapolicarbonato.com.br/produtos/cobertura-termoacustica',
+    },
+    {
+      '@type': 'ListItem',
+      position: 4,
+      name: 'Veneziana em Policarbonato',
+      url: 'https://coberturapolicarbonato.com.br/produtos/veneziana-policarbonato',
+    },
+  ],
 };
 
 export default function Produtos() {
   return (
     <main className="min-h-screen py-12">
+      <Script
+        id="schema-produtos-itemlist"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(produtosItemListSchema) }}
+      />
       <div className="container mx-auto px-4">
+        <Breadcrumbs
+          items={[
+            { label: 'Início', href: '/' },
+            { label: 'Produtos', href: '/produtos' },
+          ]}
+        />
+
         {/* Hero */}
         <section className="mb-16 text-center">
           <h1 className="text-5xl font-bold text-gray-800 mb-6">

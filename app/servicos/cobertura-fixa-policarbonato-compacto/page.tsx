@@ -12,6 +12,23 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://coberturapolicarbonato.com.br/servicos/cobertura-fixa-policarbonato-compacto',
   },
+  openGraph: {
+    title: "Cobertura Fixa Policarbonato Compacto | Transparência e Proteção | Cobersystem",
+    description: "Cobertura fixa em policarbonato compacto com alta transparência, resistência e proteção permanente para diferentes ambientes.",
+    url: 'https://coberturapolicarbonato.com.br/servicos/cobertura-fixa-policarbonato-compacto',
+    images: [
+      {
+        url: 'https://coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg',
+        width: 1200,
+        height: 800,
+        alt: 'Cobertura Fixa em Policarbonato Compacto',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg'],
+  },
 };
 
 const productSchema = {

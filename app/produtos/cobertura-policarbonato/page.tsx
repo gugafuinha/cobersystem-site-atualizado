@@ -1,14 +1,31 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import OptimizedImage from '@/components/OptimizedImage';
+import Image from 'next/image';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: "Cobertura Fixa em Policarbonato | Cobersystem",
   description: "Cobertura fixa em policarbonato compacto e alveolar. Proteção permanente com alta qualidade. Ideal para áreas que precisam de cobertura constante.",
   keywords: "cobertura fixa policarbonato, cobertura fixa, policarbonato compacto, policarbonato alveolar, cobertura permanente",
+  alternates: {
+    canonical: 'https://coberturapolicarbonato.com.br/produtos/cobertura-policarbonato',
+  },
   openGraph: {
     title: "Cobertura Fixa em Policarbonato | Cobersystem",
     description: "Cobertura fixa em policarbonato com alta qualidade e durabilidade.",
+    url: 'https://coberturapolicarbonato.com.br/produtos/cobertura-policarbonato',
+    images: [
+      {
+        url: 'https://coberturapolicarbonato.com.br/images/produtos/cobertura-policarbonato/alveolar/IMG_4432.jpg',
+        width: 1200,
+        height: 900,
+        alt: 'Cobertura Fixa em Policarbonato Alveolar',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://coberturapolicarbonato.com.br/images/produtos/cobertura-policarbonato/alveolar/IMG_4432.jpg'],
   },
 };
 
@@ -52,7 +69,7 @@ const produtosFixa = [
       'Área de convivência',
       'Cobertura industrial',
     ],
-    image: '/images/produtos/cobertura-policarbonato/fixa-alveolar.jpg',
+    image: '/images/produtos/cobertura-policarbonato/alveolar/IMG_4432.jpg',
   },
 ];
 
@@ -60,6 +77,14 @@ export default function CoberturaFixa() {
   return (
     <main className="min-h-screen py-12">
       <div className="container mx-auto px-4">
+        <Breadcrumbs
+          items={[
+            { label: 'Início', href: '/' },
+            { label: 'Produtos', href: '/produtos' },
+            { label: 'Cobertura Fixa em Policarbonato', href: '/produtos/cobertura-policarbonato' },
+          ]}
+        />
+
         {/* Hero */}
         <section className="mb-16 text-center">
           <h1 className="text-5xl font-bold text-gray-800 mb-6">
@@ -77,15 +102,16 @@ export default function CoberturaFixa() {
             <article key={produto.id} className="overflow-hidden rounded-lg bg-white shadow-lg">
               <div className="p-8">
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:items-start">
-                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-gray-100">
-                    <OptimizedImage
+                  <div className="relative w-full h-72 overflow-hidden rounded-xl bg-gray-100">
+                    <Image
                       src={produto.image}
                       alt={produto.nome}
-                      title={produto.nome}
-                      width={800}
-                      height={600}
+                      fill
                       priority={index === 0}
-                      className="h-full w-full rounded-xl object-cover"
+                      className="object-cover object-center"
+                      quality={95}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      loading={index === 0 ? 'eager' : 'lazy'}
                     />
                   </div>
                   <div className="flex min-w-0 flex-col gap-5">

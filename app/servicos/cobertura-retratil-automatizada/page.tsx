@@ -12,6 +12,23 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://coberturapolicarbonato.com.br/servicos/cobertura-retratil-automatizada',
   },
+  openGraph: {
+    title: "Cobertura Retrátil Automatizada | Alexa e Sensor de Chuva | Cobersystem",
+    description: "Cobertura retrátil automatizada com Alexa, controle remoto e sensor de chuva para controle completo do ambiente.",
+    url: 'https://coberturapolicarbonato.com.br/servicos/cobertura-retratil-automatizada',
+    images: [
+      {
+        url: 'https://coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg',
+        width: 1200,
+        height: 800,
+        alt: 'Cobertura Retrátil Automatizada',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg'],
+  },
 };
 
 const productSchema = {

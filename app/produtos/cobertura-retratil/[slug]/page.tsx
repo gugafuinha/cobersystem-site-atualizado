@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import OptimizedImage from '@/components/OptimizedImage';
 import ProductSchema from '@/components/ProductSchema';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import path from 'path';
 import { readdir } from 'fs/promises';
 
@@ -316,9 +317,27 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: `${produto.nome} | Cobersystem`,
     description: produto.descricao,
     keywords: `cobertura retrátil, ${produto.nome.toLowerCase()}, policarbonato, automação`,
+    alternates: {
+      canonical: `https://coberturapolicarbonato.com.br/produtos/cobertura-retratil/${slug}`,
+    },
     openGraph: {
       title: produto.nome,
       description: produto.descricao,
+      url: `https://coberturapolicarbonato.com.br/produtos/cobertura-retratil/${slug}`,
+      images: [
+        {
+          url: `https://coberturapolicarbonato.com.br${produto.imagem}`,
+          width: 1200,
+          height: 900,
+          alt: produto.nome,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: produto.nome,
+      description: produto.descricao,
+      images: [`https://coberturapolicarbonato.com.br${produto.imagem}`],
     },
   };
 }
@@ -344,16 +363,14 @@ export default async function ProdutoDetalhe({ params }: { params: Promise<{ slu
       />
       <main className="min-h-screen py-12">
         <div className="container mx-auto px-4 max-w-6xl">
-        {/* Breadcrumb */}
-        <nav className="mb-8 text-sm">
-          <Link href="/" className="text-blue-600 hover:underline">Início</Link>
-          {' / '}
-          <Link href="/produtos" className="text-blue-600 hover:underline">Produtos</Link>
-          {' / '}
-          <Link href="/produtos/cobertura-retratil" className="text-blue-600 hover:underline">Cobertura Retrátil</Link>
-          {' / '}
-          <span className="text-gray-600">{produto.nome}</span>
-        </nav>
+        <Breadcrumbs
+          items={[
+            { label: 'Início', href: '/' },
+            { label: 'Produtos', href: '/produtos' },
+            { label: 'Cobertura Retrátil', href: '/produtos/cobertura-retratil' },
+            { label: produto.nome, href: `/produtos/cobertura-retratil/${slug}` },
+          ]}
+        />
 
         {/* Hero */}
         <section className="mb-12">

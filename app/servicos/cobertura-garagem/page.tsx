@@ -12,6 +12,23 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://coberturapolicarbonato.com.br/servicos/cobertura-garagem',
   },
+  openGraph: {
+    title: "Cobertura para Garagem | Proteção para Veículos | Cobersystem",
+    description: "Cobertura para garagem com proteção contra chuva, sol e intempéries, com estrutura resistente e acabamento profissional.",
+    url: 'https://coberturapolicarbonato.com.br/servicos/cobertura-garagem',
+    images: [
+      {
+        url: 'https://coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg',
+        width: 1200,
+        height: 800,
+        alt: 'Cobertura para Garagem',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg'],
+  },
 };
 
 const productSchema = {

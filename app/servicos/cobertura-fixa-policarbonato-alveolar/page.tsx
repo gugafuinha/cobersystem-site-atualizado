@@ -12,6 +12,23 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://coberturapolicarbonato.com.br/servicos/cobertura-fixa-policarbonato-alveolar',
   },
+  openGraph: {
+    title: "Cobertura Fixa Policarbonato Alveolar | Preço e Isolamento | Cobersystem",
+    description: "Cobertura fixa em policarbonato alveolar com excelente isolamento térmico e acústico. Proteção permanente e conforto.",
+    url: 'https://coberturapolicarbonato.com.br/servicos/cobertura-fixa-policarbonato-alveolar',
+    images: [
+      {
+        url: 'https://coberturapolicarbonato.com.br/images/projetos/fixa-01.jpg',
+        width: 1200,
+        height: 800,
+        alt: 'Cobertura Fixa em Policarbonato Alveolar',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://coberturapolicarbonato.com.br/images/projetos/fixa-01.jpg'],
+  },
 };
 
 const productSchema = {

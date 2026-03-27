@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Script from 'next/script';
 import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
@@ -9,6 +10,23 @@ export const metadata: Metadata = {
   keywords: "serviços cobertura, cobertura retrátil, cobertura fixa, cobertura área gourmet, cobertura piscina, serviços cobersystem",
   alternates: {
     canonical: 'https://coberturapolicarbonato.com.br/servicos',
+  },
+  openGraph: {
+    title: "Nossos Serviços | Coberturas Retráteis e Fixas | Cobersystem",
+    description: "Conheça todos os nossos serviços em coberturas retráteis e fixas para área gourmet, piscina, garagem e muito mais.",
+    url: 'https://coberturapolicarbonato.com.br/servicos',
+    images: [
+      {
+        url: 'https://coberturapolicarbonato.com.br/images/blog/cobertura-abre-fecha.jpg',
+        width: 1200,
+        height: 800,
+        alt: 'Serviços de Coberturas Cobersystem',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://coberturapolicarbonato.com.br/images/blog/cobertura-abre-fecha.jpg'],
   },
 };
 
@@ -87,9 +105,26 @@ const servicos = [
   },
 ];
 
+const servicosItemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Serviços Cobersystem',
+  itemListElement: servicos.map((servico, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: servico.title,
+    url: `https://coberturapolicarbonato.com.br/servicos/${servico.slug}`,
+  })),
+};
+
 export default function ServicosPage() {
   return (
     <main className="min-h-screen bg-gray-50">
+      <Script
+        id="schema-servicos-itemlist"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicosItemListSchema) }}
+      />
       <div className="container mx-auto px-4 py-8">
         <Breadcrumbs items={[
           { label: 'Início', href: '/' },

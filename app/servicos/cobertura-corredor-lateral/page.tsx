@@ -11,6 +11,23 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://coberturapolicarbonato.com.br/servicos/cobertura-corredor-lateral',
   },
+  openGraph: {
+    title: "Cobertura para Corredor Lateral | Proteção e Iluminação | Cobersystem",
+    description: "Cobertura para corredor lateral com proteção contra intempéries, mantendo ventilação e iluminação natural no ambiente.",
+    url: 'https://coberturapolicarbonato.com.br/servicos/cobertura-corredor-lateral',
+    images: [
+      {
+        url: 'https://coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg',
+        width: 1200,
+        height: 800,
+        alt: 'Cobertura para Corredor Lateral',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg'],
+  },
 };
 
 const productSchema = {
