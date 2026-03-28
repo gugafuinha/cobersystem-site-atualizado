@@ -5,16 +5,43 @@ import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ProductVejaTambem from '@/components/ProductVejaTambem';
 import {
-  getCidadePolicarbonato,
-  getSlugsCidadesPolicarbonato,
-} from '@/lib/cobertura-policarbonato-cidades';
+  getCidadeRetratil,
+  getSlugsCidadesRetratil,
+} from '@/lib/cobertura-retratil-cidades';
 import { SAO_PAULO_BAIRROS } from '@/lib/sao-paulo-bairros';
 
 const BASE = 'https://coberturapolicarbonato.com.br';
-const OG_IMAGE = `${BASE}/images/produtos/cobertura-policarbonato/alveolar/IMG_4432.jpg`;
+const OG_IMAGE = `${BASE}/images/produtos/cobertura-retratil/aluminio/IMG_0305.jpg`;
+
+const MODELOS_LINHA = [
+  {
+    slug: 'telhas-aluminio',
+    titulo: 'Telhas em alumínio',
+    texto:
+      'Sistema abre e fecha com telhas em alumínio — detalhes, galeria e especificações.',
+  },
+  {
+    slug: 'telhas-intercaladas',
+    titulo: 'Telhas intercaladas',
+    texto:
+      'Acabamento intercalado com abertura controlada — página completa do modelo.',
+  },
+  {
+    slug: 'policarbonato-alveolar',
+    titulo: 'Policarbonato alveolar',
+    texto:
+      'Retrátil com alveolar para conforto térmico — veja galeria e características.',
+  },
+  {
+    slug: 'policarbonato-compacto',
+    titulo: 'Policarbonato compacto',
+    texto:
+      'Transparência e proteção com abertura graduada — página técnica completa.',
+  },
+] as const;
 
 export async function generateStaticParams() {
-  return getSlugsCidadesPolicarbonato().map((cidade) => ({ cidade }));
+  return getSlugsCidadesRetratil().map((cidade) => ({ cidade }));
 }
 
 export async function generateMetadata({
@@ -23,15 +50,15 @@ export async function generateMetadata({
   params: Promise<{ cidade: string }>;
 }): Promise<Metadata> {
   const { cidade: cidadeParam } = await params;
-  const cidade = getCidadePolicarbonato(cidadeParam);
+  const cidade = getCidadeRetratil(cidadeParam);
 
   if (!cidade) {
     return { title: 'Página não encontrada' };
   }
 
-  const path = `/produtos/cobertura-policarbonato/em/${cidade.slug}`;
+  const path = `/produtos/cobertura-retratil/em/${cidade.slug}`;
   const url = `${BASE}${path}`;
-  const title = `Cobertura em Policarbonato em ${cidade.nome} | Cobersystem`;
+  const title = `Cobertura Retrátil em ${cidade.nome} | Cobersystem`;
 
   return {
     title,
@@ -49,7 +76,7 @@ export async function generateMetadata({
           url: OG_IMAGE,
           width: 1200,
           height: 900,
-          alt: `Cobertura fixa em policarbonato em ${cidade.nome}`,
+          alt: `Cobertura retrátil em ${cidade.nome}`,
         },
       ],
     },
@@ -62,13 +89,13 @@ export async function generateMetadata({
   };
 }
 
-export default async function CoberturaPolicarbonatoEmCidadePage({
+export default async function CoberturaRetratilEmCidadePage({
   params,
 }: {
   params: Promise<{ cidade: string }>;
 }) {
   const { cidade: cidadeParam } = await params;
-  const cidade = getCidadePolicarbonato(cidadeParam);
+  const cidade = getCidadeRetratil(cidadeParam);
 
   if (!cidade) {
     notFound();
@@ -82,12 +109,12 @@ export default async function CoberturaPolicarbonatoEmCidadePage({
             { label: 'Início', href: '/' },
             { label: 'Produtos', href: '/produtos' },
             {
-              label: 'Cobertura Fixa em Policarbonato',
-              href: '/produtos/cobertura-policarbonato',
+              label: 'Cobertura Retrátil em Policarbonato',
+              href: '/produtos/cobertura-retratil',
             },
             {
               label: cidade.nome,
-              href: `/produtos/cobertura-policarbonato/em/${cidade.slug}`,
+              href: `/produtos/cobertura-retratil/em/${cidade.slug}`,
             },
           ]}
         />
@@ -96,9 +123,9 @@ export default async function CoberturaPolicarbonatoEmCidadePage({
           <div className="grid gap-8 md:grid-cols-2 md:items-start">
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-gray-100">
               <OptimizedImage
-                src="/images/produtos/cobertura-policarbonato/alveolar/IMG_4432.jpg"
-                alt={`Cobertura fixa em policarbonato em ${cidade.nome} - Cobersystem`}
-                title={`Cobertura em policarbonato - ${cidade.nome}`}
+                src="/images/produtos/cobertura-retratil/aluminio/IMG_0305.jpg"
+                alt={`Cobertura retrátil em ${cidade.nome} - Cobersystem`}
+                title={`Cobertura retrátil - ${cidade.nome}`}
                 width={1200}
                 height={900}
                 className="h-full w-full object-cover"
@@ -107,7 +134,7 @@ export default async function CoberturaPolicarbonatoEmCidadePage({
             </div>
             <div>
               <h1 className="mb-4 text-4xl font-bold text-gray-800 md:text-5xl">
-                Cobertura em Policarbonato em {cidade.nome}
+                Cobertura Retrátil em {cidade.nome}
               </h1>
               <div className="prose prose-lg max-w-none text-gray-700">
                 {cidade.paragrafos.map((p, i) => (
@@ -132,13 +159,13 @@ export default async function CoberturaPolicarbonatoEmCidadePage({
               Atendimento por bairro
             </h2>
             <p className="mb-4 text-gray-600">
-              Cobertura em policarbonato na capital, por região:
+              Cobertura retrátil na capital, por região:
             </p>
             <ul className="flex flex-wrap justify-center gap-3">
               {SAO_PAULO_BAIRROS.map((b) => (
                 <li key={b.slug}>
                   <Link
-                    href={`/produtos/cobertura-policarbonato/em/sao-paulo/${b.slug}`}
+                    href={`/produtos/cobertura-retratil/em/sao-paulo/${b.slug}`}
                     className="inline-block rounded-lg bg-white px-4 py-2 text-sm font-semibold text-blue-600 shadow-sm ring-1 ring-gray-200 transition hover:bg-blue-50 hover:ring-blue-200"
                   >
                     {b.nome}
@@ -154,52 +181,37 @@ export default async function CoberturaPolicarbonatoEmCidadePage({
             Modelos da linha
           </h2>
           <p className="mb-6 text-lg text-gray-600">
-            Conheça os detalhes técnicos de cada solução e escolha o perfil ideal
-            para o seu projeto em {cidade.nome}.
+            Escolha o tipo de cobertura retrátil ideal para o seu projeto em{' '}
+            {cidade.nome}.
           </p>
-          <div className="grid gap-6 md:grid-cols-2">
-            <Link
-              href="/produtos/cobertura-policarbonato/fixa-compacto"
-              className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition hover:border-blue-200 hover:shadow-md"
-            >
-              <h3 className="mb-2 text-xl font-bold text-gray-800">
-                Policarbonato compacto
-              </h3>
-              <p className="text-gray-600">
-                Transparência e proteção permanente — ver página completa com
-                galeria e especificações.
-              </p>
-              <span className="mt-4 inline-block font-semibold text-blue-600">
-                Ver detalhes →
-              </span>
-            </Link>
-            <Link
-              href="/produtos/cobertura-policarbonato/fixa-alveolar"
-              className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition hover:border-blue-200 hover:shadow-md"
-            >
-              <h3 className="mb-2 text-xl font-bold text-gray-800">
-                Policarbonato alveolar
-              </h3>
-              <p className="text-gray-600">
-                Isolamento térmico e acústico superior — ver página completa com
-                galeria e especificações.
-              </p>
-              <span className="mt-4 inline-block font-semibold text-blue-600">
-                Ver detalhes →
-              </span>
-            </Link>
+          <div className="grid gap-6 sm:grid-cols-2">
+            {MODELOS_LINHA.map((item) => (
+              <Link
+                key={item.slug}
+                href={`/produtos/cobertura-retratil/${item.slug}`}
+                className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition hover:border-blue-200 hover:shadow-md"
+              >
+                <h3 className="mb-2 text-xl font-bold text-gray-800">
+                  {item.titulo}
+                </h3>
+                <p className="text-gray-600">{item.texto}</p>
+                <span className="mt-4 inline-block font-semibold text-blue-600">
+                  Ver detalhes →
+                </span>
+              </Link>
+            ))}
           </div>
         </section>
 
-        <ProductVejaTambem current="policarbonato" />
+        <ProductVejaTambem current="retratil" />
 
-        <section className="bg-blue-600 rounded-lg p-12 text-center text-white">
+        <section className="rounded-lg bg-blue-600 p-12 text-center text-white">
           <h2 className="mb-4 text-3xl font-bold md:text-4xl">
             Orçamento em {cidade.nome}
           </h2>
           <p className="mb-8 text-xl text-blue-100">
-            Entre em contato e solicite um orçamento personalizado para sua
-            cobertura em policarbonato.
+            Entre em contato e solicite um orçamento personalizado para cobertura
+            retrátil abre e fecha.
           </p>
           <Link
             href="/contato"

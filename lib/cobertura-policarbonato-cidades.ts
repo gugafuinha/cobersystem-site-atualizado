@@ -5,7 +5,10 @@
 export type CidadePolicarbonatoSlug =
   | 'sao-paulo'
   | 'sao-bernardo-do-campo'
-  | 'campinas';
+  | 'campinas'
+  | 'santo-andre'
+  | 'sao-caetano-do-sul'
+  | 'osasco';
 
 export interface CidadePolicarbonatoData {
   slug: CidadePolicarbonatoSlug;
@@ -58,6 +61,45 @@ export const CIDADES_COBERTURA_POLICARBONATO: CidadePolicarbonatoData[] = [
       'Cobertura fixa em policarbonato em Campinas: compacto ou alveolar para áreas externas, visita técnica e orçamento. Atendimento na região metropolitana.',
     keywords:
       'cobertura policarbonato Campinas, cobertura fixa policarbonato Campinas, policarbonato alveolar Campinas, policarbonato compacto interior SP',
+  },
+  {
+    slug: 'santo-andre',
+    nome: 'Santo André',
+    paragrafos: [
+      'Em Santo André, imóveis com varandas estreitas e áreas de serviço externas costumam precisar de coberturas leves que não sobrecarreguem a estrutura existente.',
+      'O policarbonato compacto entrega transparência e proteção contínua; o alveolar é indicado quando o objetivo é reduzir calor e ruído em ambientes de convivência.',
+      'A Cobersystem elabora medição e proposta para obras em Santo André e entorno do ABC, respeitando as particularidades de cada fachada ou fundos de terreno.',
+    ],
+    metaDescription:
+      'Cobertura em policarbonato em Santo André: fixa compacto ou alveolar, medição e orçamento no ABC. Proteção permanente para áreas externas.',
+    keywords:
+      'cobertura policarbonato Santo André, cobertura fixa ABC Santo André, policarbonato alveolar Santo André, policarbonato compacto Santo André',
+  },
+  {
+    slug: 'sao-caetano-do-sul',
+    nome: 'São Caetano do Sul',
+    paragrafos: [
+      'São Caetano do Sul concentra edificações com aproveitamento intenso do lote, onde cada metro de área coberta precisa ser bem planejado.',
+      'A linha fixa em policarbonato integra-se a pergolados e estruturas metálicas, oferecendo vedação superior sem abrir mão da entrada de luz natural.',
+      'Realizamos projetos sob medida para residências e estabelecimentos em São Caetano, com foco em durabilidade, proteção UV e acabamento da estrutura em alumínio.',
+    ],
+    metaDescription:
+      'Cobertura fixa em policarbonato em São Caetano do Sul: compacto e alveolar para varandas e áreas externas. Orçamento e projeto sob medida no ABC.',
+    keywords:
+      'cobertura policarbonato São Caetano do Sul, cobertura fixa São Caetano, policarbonato alveolar ABC, policarbonato compacto São Caetano',
+  },
+  {
+    slug: 'osasco',
+    nome: 'Osasco',
+    paragrafos: [
+      'Em Osasco, a proximidade com corredores comerciais e vias movimentadas torna comum a busca por soluções que isolem ruído e reduzam calor em terraços e entradas.',
+      'O policarbonato alveolar se destaca nesses cenários pelo conforto térmico e acústico; o compacto continua sendo a escolha clássica para quem prioriza visibilidade e luminosidade.',
+      'Atendemos orçamentos com visita técnica em Osasco e região, alinhando espessura, cor e fixação às necessidades reais de cada projeto.',
+    ],
+    metaDescription:
+      'Cobertura em policarbonato em Osasco: policarbonato compacto ou alveolar, visita técnica e orçamento. Proteção fixa para residências e comércio.',
+    keywords:
+      'cobertura policarbonato Osasco, cobertura fixa Osasco, policarbonato alveolar Osasco, policarbonato compacto Grande SP',
   },
 ];
 

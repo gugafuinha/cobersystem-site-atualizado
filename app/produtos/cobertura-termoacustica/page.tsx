@@ -5,6 +5,7 @@ import { readdir } from 'fs/promises';
 import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ProductVejaTambem from '@/components/ProductVejaTambem';
+import { CIDADES_COBERTURA_TERMOACUSTICA } from '@/lib/cobertura-termoacustica-cidades';
 
 export const metadata: Metadata = {
   title: "Cobertura Termoacústica | Cobertura Sanduíche com Isolamento | Cobersystem",
@@ -174,6 +175,27 @@ export default async function CoberturaTermoacustica() {
             Sistema de cobertura sanduíche com isolamento térmico e acústico superior. 
             Conforto total para ambientes residenciais, comerciais e industriais.
           </p>
+        </section>
+
+        <section className="mb-16 rounded-lg border border-gray-200 bg-gray-50 p-6 text-center">
+          <h2 className="mb-3 text-xl font-bold text-gray-800 md:text-2xl">
+            Atendimento por região
+          </h2>
+          <p className="mb-4 text-gray-600">
+            Cobertura termoacústica na sua cidade:
+          </p>
+          <ul className="flex flex-wrap justify-center gap-3">
+            {CIDADES_COBERTURA_TERMOACUSTICA.map((c) => (
+              <li key={c.slug}>
+                <Link
+                  href={`/produtos/cobertura-termoacustica/em/${c.slug}`}
+                  className="inline-block rounded-lg bg-white px-4 py-2 text-sm font-semibold text-orange-600 shadow-sm ring-1 ring-gray-200 transition hover:bg-orange-50 hover:ring-orange-200"
+                >
+                  {c.nome}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </section>
 
         {/* O que é */}

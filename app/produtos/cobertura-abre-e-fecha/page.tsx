@@ -3,36 +3,41 @@ import Link from 'next/link';
 import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ProductVejaTambem from '@/components/ProductVejaTambem';
-import { CIDADES_COBERTURA_RETRATIL } from '@/lib/cobertura-retratil-cidades';
+import { CIDADES_COBERTURA_ABRE_E_FECHA } from '@/lib/cobertura-abre-e-fecha-cidades';
+
+const BASE = 'https://coberturapolicarbonato.com.br';
+const OG_IMAGE = `${BASE}/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg`;
 
 export const metadata: Metadata = {
-  title: "Cobertura Retrátil em Policarbonato | Abre e Fecha com Automação | Cobersystem",
-  description: "Cobertura retrátil em policarbonato com sistema abre e fecha. Automação via Alexa e sensor de chuva. Controle total do clima com abertura de 0 a 90 graus. Solicite orçamento!",
-  keywords: "cobertura retrátil, cobertura retrátil policarbonato, cobertura abre e fecha, cobertura retrátil área gourmet, cobertura retrátil churrasqueira",
+  title: 'Cobertura Abre e Fecha | Automação e Policarbonato | Cobersystem',
+  description:
+    'Cobertura abre e fecha com abertura de 0 a 90 graus. Telhas em alumínio, intercaladas ou policarbonato. Automação via Alexa e sensor de chuva. Solicite orçamento.',
+  keywords:
+    'cobertura abre e fecha, cobertura retrátil automatizada, Alexa cobertura, sensor chuva cobertura, policarbonato abre e fecha',
   alternates: {
-    canonical: 'https://coberturapolicarbonato.com.br/produtos/cobertura-retratil',
+    canonical: `${BASE}/produtos/cobertura-abre-e-fecha`,
   },
   openGraph: {
-    title: "Cobertura Retrátil em Policarbonato | Cobersystem",
-    description: "Cobertura retrátil com automação via Alexa e sensor de chuva. Controle total do clima.",
-    url: 'https://coberturapolicarbonato.com.br/produtos/cobertura-retratil',
+    title: 'Cobertura Abre e Fecha | Cobersystem',
+    description:
+      'Sistema abre e fecha com automação opcional. Controle total do clima.',
+    url: `${BASE}/produtos/cobertura-abre-e-fecha`,
     images: [
       {
-        url: 'https://coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/aluminio/IMG_0305.jpg',
+        url: OG_IMAGE,
         width: 1200,
         height: 900,
-        alt: 'Cobertura Retrátil em Policarbonato',
+        alt: 'Cobertura abre e fecha automatizada',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['https://coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/aluminio/IMG_0305.jpg'],
+    images: [OG_IMAGE],
   },
 };
 
-/** Ordem: linha 1 (alumínio, intercaladas), linha 2 (alveolar, compacto) — grelha 2×2 */
-const cardsRetratil = [
+const cardsModelos = [
   {
     slug: 'telhas-aluminio',
     nome: 'Cobertura Abre e Fecha com Telhas em Alumínio',
@@ -57,7 +62,7 @@ const cardsRetratil = [
   },
 ] as const;
 
-export default function CoberturaRetratil() {
+export default function CoberturaAbreEFechaHubPage() {
   return (
     <main className="min-h-screen py-12">
       <div className="container mx-auto px-4">
@@ -65,18 +70,29 @@ export default function CoberturaRetratil() {
           items={[
             { label: 'Início', href: '/' },
             { label: 'Produtos', href: '/produtos' },
-            { label: 'Cobertura Retrátil em Policarbonato', href: '/produtos/cobertura-retratil' },
+            {
+              label: 'Cobertura Abre e Fecha',
+              href: '/produtos/cobertura-abre-e-fecha',
+            },
           ]}
         />
 
-        {/* Hero */}
         <section className="mb-16 text-center">
-          <h1 className="text-5xl font-bold text-gray-800 mb-6">
-            Cobertura Retrátil em Policarbonato
+          <h1 className="mb-6 text-5xl font-bold text-gray-800">
+            Cobertura Abre e Fecha
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Sistema abre e fecha com automação inteligente. Controle total do clima 
-            com abertura de 0 a 90 graus. Sem perder ventilação, com proteção completa.
+          <p className="mx-auto mb-4 max-w-3xl text-xl text-gray-600">
+            Sistema retrátil com abertura de 0 a 90 graus. Controle do clima com
+            ventilação quando aberto e proteção quando fechado. Automação opcional
+            via Alexa, controle remoto ou sensor de chuva.
+          </p>
+          <p className="text-gray-600">
+            <Link
+              href="/servicos/cobertura-abre-e-fecha"
+              className="font-semibold text-blue-600 hover:underline"
+            >
+              Ver página do serviço com FAQ e mais detalhes
+            </Link>
           </p>
         </section>
 
@@ -85,13 +101,13 @@ export default function CoberturaRetratil() {
             Atendimento por região
           </h2>
           <p className="mb-4 text-gray-600">
-            Informações da linha de cobertura retrátil na sua cidade:
+            Cobertura abre e fecha na sua cidade:
           </p>
           <ul className="flex flex-wrap justify-center gap-3">
-            {CIDADES_COBERTURA_RETRATIL.map((c) => (
+            {CIDADES_COBERTURA_ABRE_E_FECHA.map((c) => (
               <li key={c.slug}>
                 <Link
-                  href={`/produtos/cobertura-retratil/em/${c.slug}`}
+                  href={`/produtos/cobertura-abre-e-fecha/em/${c.slug}`}
                   className="inline-block rounded-lg bg-white px-4 py-2 text-sm font-semibold text-blue-600 shadow-sm ring-1 ring-gray-200 transition hover:bg-blue-50 hover:ring-blue-200"
                 >
                   {c.nome}
@@ -101,17 +117,16 @@ export default function CoberturaRetratil() {
           </ul>
         </section>
 
-        {/* Produtos — grelha 2×2 (1 coluna no mobile) */}
         <section className="mb-16">
           <h2 className="mb-8 text-center text-2xl font-bold text-gray-800 md:text-3xl">
-            Escolha o tipo de cobertura retrátil
+            Escolha o modelo
           </h2>
           <div className="mx-auto grid max-w-5xl auto-rows-fr grid-cols-1 gap-6 md:grid-cols-2">
-            {cardsRetratil.map((item, index) => (
+            {cardsModelos.map((item, index) => (
               <Link
                 key={item.slug}
                 href={`/produtos/cobertura-retratil/${item.slug}`}
-                className="group flex h-full min-h-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded-2xl"
+                className="group flex h-full min-h-0 rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
               >
                 <article className="flex h-full min-h-0 w-full flex-col overflow-hidden rounded-2xl bg-white shadow-md ring-1 ring-gray-200/80 transition duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:ring-blue-200/60">
                   <div className="relative h-64 w-full overflow-hidden rounded-t-2xl bg-gray-100">
@@ -143,17 +158,16 @@ export default function CoberturaRetratil() {
 
         <ProductVejaTambem current="retratil" />
 
-        {/* CTA */}
-        <section className="bg-blue-600 text-white rounded-lg p-12 text-center">
-          <h2 className="text-4xl font-bold mb-4">
-            Quer saber mais sobre cobertura retrátil?
+        <section className="rounded-lg bg-blue-600 p-12 text-center text-white">
+          <h2 className="mb-4 text-4xl font-bold">
+            Quer saber mais sobre cobertura abre e fecha?
           </h2>
-          <p className="text-xl mb-8 text-blue-100">
+          <p className="mb-8 text-xl text-blue-100">
             Entre em contato e solicite um orçamento personalizado
           </p>
-          <Link 
-            href="/contato" 
-            className="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 transition shadow-lg"
+          <Link
+            href="/contato"
+            className="inline-block rounded-lg bg-white px-8 py-4 text-lg font-semibold text-blue-600 shadow-lg transition hover:bg-blue-50"
           >
             Solicitar Orçamento
           </Link>
@@ -162,4 +176,3 @@ export default function CoberturaRetratil() {
     </main>
   );
 }
-

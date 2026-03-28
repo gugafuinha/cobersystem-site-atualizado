@@ -1,4 +1,9 @@
 import { MetadataRoute } from 'next';
+import { getSlugsCidadesAbreEFecha } from '@/lib/cobertura-abre-e-fecha-cidades';
+import { getSlugsCidadesPolicarbonato } from '@/lib/cobertura-policarbonato-cidades';
+import { getSlugsCidadesRetratil } from '@/lib/cobertura-retratil-cidades';
+import { getSlugsCidadesTermoacustica } from '@/lib/cobertura-termoacustica-cidades';
+import { getSlugsBairrosSaoPaulo } from '@/lib/sao-paulo-bairros';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://coberturapolicarbonato.com.br';
@@ -14,20 +19,59 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/sobre`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
   ];
 
-  const coberturaPolicarbonatoLocal: MetadataRoute.Sitemap = [
-    'sao-paulo',
-    'sao-bernardo-do-campo',
-    'campinas',
-  ].map((cidade) => ({
-    url: `${baseUrl}/produtos/cobertura-policarbonato/em/${cidade}`,
-    lastModified: now,
-    changeFrequency: 'weekly' as const,
-    priority: 0.9,
-  }));
+  const coberturaPolicarbonatoLocal: MetadataRoute.Sitemap =
+    getSlugsCidadesPolicarbonato().map((cidade) => ({
+      url: `${baseUrl}/produtos/cobertura-policarbonato/em/${cidade}`,
+      lastModified: now,
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    }));
+
+  const coberturaRetratilLocal: MetadataRoute.Sitemap =
+    getSlugsCidadesRetratil().map((cidade) => ({
+      url: `${baseUrl}/produtos/cobertura-retratil/em/${cidade}`,
+      lastModified: now,
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    }));
+
+  const coberturaAbreEFechaLocal: MetadataRoute.Sitemap =
+    getSlugsCidadesAbreEFecha().map((cidade) => ({
+      url: `${baseUrl}/produtos/cobertura-abre-e-fecha/em/${cidade}`,
+      lastModified: now,
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    }));
+
+  const coberturaTermoacusticaLocal: MetadataRoute.Sitemap =
+    getSlugsCidadesTermoacustica().map((cidade) => ({
+      url: `${baseUrl}/produtos/cobertura-termoacustica/em/${cidade}`,
+      lastModified: now,
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    }));
+
+  const spBairrosProdutoPaths = [
+    'cobertura-policarbonato',
+    'cobertura-retratil',
+    'cobertura-abre-e-fecha',
+    'cobertura-termoacustica',
+  ] as const;
+
+  const saoPauloBairrosLocal: MetadataRoute.Sitemap = spBairrosProdutoPaths.flatMap(
+    (produto) =>
+      getSlugsBairrosSaoPaulo().map((bairro) => ({
+        url: `${baseUrl}/produtos/${produto}/em/sao-paulo/${bairro}`,
+        lastModified: now,
+        changeFrequency: 'weekly' as const,
+        priority: 0.85,
+      })),
+  );
 
   const mainProductPages: MetadataRoute.Sitemap = [
     { url: `${baseUrl}/produtos/cobertura-policarbonato`, lastModified: now, changeFrequency: 'weekly', priority: 0.95 },
     { url: `${baseUrl}/produtos/cobertura-retratil`, lastModified: now, changeFrequency: 'weekly', priority: 0.95 },
+    { url: `${baseUrl}/produtos/cobertura-abre-e-fecha`, lastModified: now, changeFrequency: 'weekly', priority: 0.95 },
     { url: `${baseUrl}/produtos/cobertura-termoacustica`, lastModified: now, changeFrequency: 'weekly', priority: 0.9 },
     { url: `${baseUrl}/produtos/veneziana-policarbonato`, lastModified: now, changeFrequency: 'weekly', priority: 0.9 },
   ];
@@ -71,6 +115,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...requiredPages,
     ...mainProductPages,
     ...coberturaPolicarbonatoLocal,
+    ...coberturaRetratilLocal,
+    ...coberturaAbreEFechaLocal,
+    ...coberturaTermoacusticaLocal,
+    ...saoPauloBairrosLocal,
     ...mainServicePages,
     ...blogArticles,
   ];
