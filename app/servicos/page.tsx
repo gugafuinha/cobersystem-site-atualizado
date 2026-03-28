@@ -162,7 +162,7 @@ export default function ServicosPage() {
                 <p className="text-gray-600 mb-4">
                   {servico.description}
                 </p>
-                <span className="text-[#D4AF37] font-semibold group-hover:underline">
+                <span className="text-[#8A6A00] font-semibold group-hover:underline">
                   Ver detalhes →
                 </span>
               </div>

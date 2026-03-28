@@ -9,6 +9,8 @@ export default function Header() {
             <img 
               src="/logo-horizontal.svg" 
               alt="Cobersystem - Soluções em Coberturas" 
+              width={450}
+              height={120}
               className="h-full w-auto object-contain"
               style={{ maxHeight: '56px' }}
             />

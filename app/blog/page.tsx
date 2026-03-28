@@ -125,7 +125,7 @@ export default function Blog() {
                     <p className="text-gray-200 mb-4 line-clamp-2">
                       {artigo.descricao}
                     </p>
-                    <span className="text-[#D4AF37] font-semibold group-hover:underline">
+                    <span className="text-[#8A6A00] font-semibold group-hover:underline">
                       Ler mais →
                     </span>
                   </div>

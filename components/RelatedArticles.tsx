@@ -46,7 +46,7 @@ export default function RelatedArticles({ currentSlug, artigos, maxItems = 3 }: 
               />
             </div>
             <div className="p-4">
-              <span className="text-xs text-[#D4AF37] font-semibold uppercase">
+              <span className="text-xs text-[#8A6A00] font-semibold uppercase">
                 {artigo.categoria}
               </span>
               <h4 className="text-lg font-bold text-gray-900 mt-2 group-hover:text-[#D4AF37] transition">

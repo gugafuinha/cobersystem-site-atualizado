@@ -214,7 +214,7 @@ export default function Home() {
                     Policarbonato Compacto 2mm - Totalmente transparente ou colorido. 
                     Ideal para máxima luminosidade.
                   </p>
-                  <span className="text-[#D4AF37] font-semibold group-hover:underline">
+                  <span className="text-[#8A6A00] font-semibold group-hover:underline">
                     Ver detalhes →
                   </span>
                 </div>
@@ -242,7 +242,7 @@ export default function Home() {
                     Cobertura fixa em policarbonato alveolar ou compacto. 
                     Ideal para garagens, áreas e proteção permanente.
                   </p>
-                  <span className="text-[#D4AF37] font-semibold group-hover:underline">
+                  <span className="text-[#8A6A00] font-semibold group-hover:underline">
                     Ver detalhes →
                   </span>
                 </div>
@@ -270,7 +270,7 @@ export default function Home() {
                     Controle via Alexa, sensor de chuva automático e controle remoto. 
                     Tecnologia de ponta.
                   </p>
-                  <span className="text-[#D4AF37] font-semibold group-hover:underline">
+                  <span className="text-[#8A6A00] font-semibold group-hover:underline">
                     Ver detalhes →
                   </span>
                 </div>

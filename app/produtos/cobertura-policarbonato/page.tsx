@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ProductVejaTambem from '@/components/ProductVejaTambem';
+import { CIDADES_COBERTURA_POLICARBONATO } from '@/lib/cobertura-policarbonato-cidades';
 
 export const metadata: Metadata = {
   title: "Cobertura Fixa em Policarbonato | Cobersystem",
@@ -95,6 +96,28 @@ export default function CoberturaFixa() {
             Proteção permanente com alta qualidade. Cobertura fixa em policarbonato 
             compacto e alveolar para áreas que precisam de proteção constante.
           </p>
+        </section>
+
+        <section className="mb-16 rounded-lg border border-gray-200 bg-gray-50 p-6 text-center">
+          <h2 className="mb-3 text-xl font-bold text-gray-800 md:text-2xl">
+            Atendimento por região
+          </h2>
+          <p className="mb-4 text-gray-600">
+            Páginas com informações da linha de cobertura em policarbonato na sua
+            cidade:
+          </p>
+          <ul className="flex flex-wrap justify-center gap-3">
+            {CIDADES_COBERTURA_POLICARBONATO.map((c) => (
+              <li key={c.slug}>
+                <Link
+                  href={`/produtos/cobertura-policarbonato/em/${c.slug}`}
+                  className="inline-block rounded-lg bg-white px-4 py-2 text-sm font-semibold text-blue-600 shadow-sm ring-1 ring-gray-200 transition hover:bg-blue-50 hover:ring-blue-200"
+                >
+                  {c.nome}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </section>
 
         {/* Produtos */}

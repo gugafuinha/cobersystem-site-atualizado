@@ -42,7 +42,7 @@ export default function Footer() {
             </div>
           </div>
           <div>
-            <h4 className="font-semibold mb-4">Links Rápidos</h4>
+            <h3 className="font-semibold mb-4">Links Rápidos</h3>
             <ul className="space-y-2">
               <li>
                 <Link href="/" className="text-gray-400 hover:text-white transition">
@@ -67,7 +67,7 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h4 className="font-semibold mb-4">Serviços</h4>
+            <h3 className="font-semibold mb-4">Serviços</h3>
             <ul className="space-y-2">
               <li>
                 <Link href="/servicos/cobertura-abre-e-fecha" className="text-gray-400 hover:text-white transition">
@@ -97,7 +97,7 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h4 className="font-semibold mb-4">Contato</h4>
+            <h3 className="font-semibold mb-4">Contato</h3>
             <div className="space-y-3 text-gray-400">
               <p>
                 <strong className="text-white">Endereço:</strong><br />

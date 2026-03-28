@@ -14,6 +14,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/sobre`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
   ];
 
+  const coberturaPolicarbonatoLocal: MetadataRoute.Sitemap = [
+    'sao-paulo',
+    'sao-bernardo-do-campo',
+    'campinas',
+  ].map((cidade) => ({
+    url: `${baseUrl}/produtos/cobertura-policarbonato/em/${cidade}`,
+    lastModified: now,
+    changeFrequency: 'weekly' as const,
+    priority: 0.9,
+  }));
+
   const mainProductPages: MetadataRoute.Sitemap = [
     { url: `${baseUrl}/produtos/cobertura-policarbonato`, lastModified: now, changeFrequency: 'weekly', priority: 0.95 },
     { url: `${baseUrl}/produtos/cobertura-retratil`, lastModified: now, changeFrequency: 'weekly', priority: 0.95 },
@@ -56,6 +67,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
-  return [...requiredPages, ...mainProductPages, ...mainServicePages, ...blogArticles];
+  return [
+    ...requiredPages,
+    ...mainProductPages,
+    ...coberturaPolicarbonatoLocal,
+    ...mainServicePages,
+    ...blogArticles,
+  ];
 }
 
