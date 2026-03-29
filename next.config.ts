@@ -40,6 +40,11 @@ const nextConfig: NextConfig = {
             value: 'origin-when-cross-origin'
           },
           {
+            key: 'Permissions-Policy',
+            value:
+              'camera=(), microphone=(), geolocation=(), payment=(), usb=(), serial=(), bluetooth=(), interest-cohort=()',
+          },
+          {
             key: 'Strict-Transport-Security',
             value: 'max-age=31536000; includeSubDomains'
           },

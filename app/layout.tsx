@@ -5,10 +5,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SchemaMarkup, { organizationSchema, localBusinessSchema } from "@/components/SchemaMarkup";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import GoogleAnalytics from "@/components/GoogleAnalytics";
 import GoogleTagManager from "@/components/GoogleTagManager";
 import MetaPixel from "@/components/MetaPixel";
-import GoogleAds from "@/components/GoogleAds";
 import ScrollTracker from "@/components/ScrollTracker";
 import PerformanceOptimizer from "@/components/PerformanceOptimizer";
 
@@ -75,16 +73,19 @@ export default function RootLayout({
       <head>
         <PerformanceOptimizer />
         <link rel="icon" href="/favicon.ico" />
-        {/* Google Search Console Verification - Substituir pelo código real */}
+        {/*
+          Google Search Console — verificação por meta tag:
+          1. Em https://search.google.com/search-console obtenha o valor do atributo "content"
+             da meta tag que a Google fornece (método "Tag HTML").
+          2. Substitua APENAS o valor entre aspas em content abaixo (não invente códigos).
+          3. Enquanto não configurar, pode remover esta linha meta ou deixar o placeholder
+             (a verificação não ficará ativa até usar o código real).
+        */}
         <meta name="google-site-verification" content="SUBSTITUIR_PELO_CODIGO_DE_VERIFICACAO" />
-        {/* Google Analytics */}
-        <GoogleAnalytics />
         {/* Google Tag Manager */}
         <GoogleTagManager />
         {/* Meta Pixel */}
         <MetaPixel />
-        {/* Google Ads */}
-        <GoogleAds />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

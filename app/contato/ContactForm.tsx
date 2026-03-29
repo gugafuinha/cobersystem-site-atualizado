@@ -12,6 +12,8 @@ export default function ContactForm() {
     telefone: '',
     tipoProjeto: '',
     mensagem: '',
+    /** Honeypot anti-spam: não alterar; deve permanecer vazio */
+    website: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -32,7 +34,14 @@ export default function ContactForm() {
 
       if (response.ok) {
         setSubmitStatus('success');
-        setFormData({ nome: '', email: '', telefone: '', tipoProjeto: '', mensagem: '' });
+        setFormData({
+          nome: '',
+          email: '',
+          telefone: '',
+          tipoProjeto: '',
+          mensagem: '',
+          website: '',
+        });
         
         // Track eventos
         trackFormSubmit();
@@ -73,6 +82,20 @@ export default function ContactForm() {
           </p>
         </div>
       )}
+
+      {/* Campo armadilha para bots: oculto para utilizadores; manter vazio */}
+      <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
+        <label htmlFor="contact-website">Website</label>
+        <input
+          type="text"
+          id="contact-website"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          value={formData.website}
+          onChange={handleChange}
+        />
+      </div>
 
       <div>
         <label htmlFor="nome" className="block text-gray-700 font-semibold mb-2">
