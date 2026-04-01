@@ -8,6 +8,7 @@ import { CIDADES_COBERTURA_POLICARBONATO } from '@/lib/cobertura-policarbonato-c
 import { productSchemas } from '@/lib/schemas/product-schemas';
 import { faqSchemas } from '@/lib/schemas/faq-schemas';
 import { generatePageMetadata } from '@/lib/seo/page-metadata';
+import CoberturaPolicarbonatoExpandedSections from './CoberturaPolicarbonatoExpandedSections';
 
 export const metadata = generatePageMetadata('cobertura-policarbonato');
 
@@ -81,6 +82,8 @@ export default function CoberturaFixa() {
             compacto e alveolar para áreas que precisam de proteção constante.
           </p>
         </section>
+
+        <CoberturaPolicarbonatoExpandedSections />
 
         <section className="mb-16 rounded-lg border border-gray-200 bg-gray-50 p-6 text-center">
           <h2 className="mb-3 text-xl font-bold text-gray-800 md:text-2xl">

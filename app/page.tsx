@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 import OptimizedImage from '@/components/OptimizedImage';
 import CoberturaAnimation from '@/components/CoberturaAnimation';
+import StructuredData from '@/components/seo/StructuredData';
 
 export const metadata: Metadata = {
   title: "Cobertura em Policarbonato Retrátil | Abre e Fecha com Automação | Cobersystem",
@@ -25,9 +26,50 @@ const homeWebSiteSchema = {
   },
 };
 
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Cobersystem - Coberturas em Policarbonato',
+  image: 'https://www.coberturapolicarbonato.com.br/logo-horizontal.svg',
+  '@id': 'https://www.coberturapolicarbonato.com.br',
+  url: 'https://www.coberturapolicarbonato.com.br',
+  telephone: '+5511943615079',
+  email: 'vendas@cobersystem.com.br',
+  priceRange: '$$-$$$',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Rua Frei Diogo das Chagas, 160',
+    addressLocality: 'São Paulo',
+    addressRegion: 'SP',
+    postalCode: '03985-060',
+    addressCountry: 'BR',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: -23.6815,
+    longitude: -46.6963,
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '08:00',
+      closes: '18:00',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: 'Saturday',
+      opens: '08:00',
+      closes: '13:00',
+    },
+  ],
+  sameAs: ['https://www.instagram.com/cobersystem']
+};
+
 export default function Home() {
   return (
     <>
+      <StructuredData data={localBusinessSchema} />
       <Script
         id="schema-home-website"
         type="application/ld+json"

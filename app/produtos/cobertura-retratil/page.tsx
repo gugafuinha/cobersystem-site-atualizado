@@ -8,6 +8,7 @@ import { CIDADES_COBERTURA_RETRATIL } from '@/lib/cobertura-retratil-cidades';
 import { productSchemas } from '@/lib/schemas/product-schemas';
 import { faqSchemas } from '@/lib/schemas/faq-schemas';
 import { generatePageMetadata } from '@/lib/seo/page-metadata';
+import CoberturaRetratilExpandedSections from './CoberturaRetratilExpandedSections';
 
 export const metadata = generatePageMetadata('cobertura-retratil');
 
@@ -63,6 +64,8 @@ export default function CoberturaRetratil() {
             com abertura de 0 a 90 graus. Sem perder ventilação, com proteção completa.
           </p>
         </section>
+
+        <CoberturaRetratilExpandedSections />
 
         <section className="mb-16 rounded-lg border border-gray-200 bg-gray-50 p-6 text-center">
           <h2 className="mb-3 text-xl font-bold text-gray-800 md:text-2xl">

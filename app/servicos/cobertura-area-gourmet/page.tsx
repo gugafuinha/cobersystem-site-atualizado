@@ -9,6 +9,7 @@ import Breadcrumb from '@/components/seo/Breadcrumb';
 import { productSchemas } from '@/lib/schemas/product-schemas';
 import { faqSchemas } from '@/lib/schemas/faq-schemas';
 import { generatePageMetadata } from '@/lib/seo/page-metadata';
+import CoberturaAreaGourmetExpandedSections from './CoberturaAreaGourmetExpandedSections';
 
 export const metadata = generatePageMetadata('cobertura-area-gourmet');
 
@@ -111,6 +112,8 @@ export default function CoberturaAreaGourmet() {
               </div>
             </div>
           </section>
+
+          <CoberturaAreaGourmetExpandedSections />
 
           <section className="mb-12 bg-white rounded-lg p-8 shadow-sm">
             <h2 className="text-3xl font-bold text-gray-800 mb-6">Por que Cobertura Retrátil para Área Gourmet?</h2>
