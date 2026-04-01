@@ -1,4 +1,3 @@
-import type { Metadata } from 'next';
 import Link from 'next/link';
 import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -6,33 +5,11 @@ import FAQSchema from '@/components/FAQSchema';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 import StructuredData from '@/components/seo/StructuredData';
+import Breadcrumb from '@/components/seo/Breadcrumb';
 import { productSchemas } from '@/lib/schemas/product-schemas';
+import { generatePageMetadata } from '@/lib/seo/page-metadata';
 
-export const metadata: Metadata = {
-  title: "Cobertura para Piscina | Retrátil Policarbonato | Cobersystem",
-  description: "Cobertura retrátil para piscina em policarbonato. Proteção contra chuva, folhas e sol. Sistema abre e fecha com automação. Mantém temperatura da água. Preço e orçamento.",
-  keywords: "cobertura para piscina, cobertura piscina policarbonato, cobertura retrátil piscina, cobertura piscina preço, cobertura piscina SP",
-  alternates: {
-    canonical: 'https://coberturapolicarbonato.com.br/servicos/cobertura-piscina',
-  },
-  openGraph: {
-    title: "Cobertura para Piscina | Retrátil Policarbonato | Cobersystem",
-    description: "Cobertura retrátil para piscina em policarbonato. Proteção contra chuva, folhas e sol. Sistema abre e fecha com automação.",
-    url: 'https://coberturapolicarbonato.com.br/servicos/cobertura-piscina',
-    images: [
-      {
-        url: 'https://coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/aluminio/IMG_6306.jpg',
-        width: 1200,
-        height: 900,
-        alt: 'Cobertura para Piscina Retrátil',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    images: ['https://coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/aluminio/IMG_6306.jpg'],
-  },
-};
+export const metadata = generatePageMetadata('cobertura-piscina');
 
 const productSchema = {
   '@context': 'https://schema.org',
@@ -75,6 +52,7 @@ export default function CoberturaPiscina() {
     <>
       <StructuredData data={productSchemas.coberturaPiscina} />
       <SchemaMarkup type="product" data={productSchema} />
+      <Breadcrumb />
       <main className="min-h-screen bg-gray-50">
         <div className="container mx-auto px-4 py-8">
           <Breadcrumbs items={[

@@ -1,38 +1,15 @@
-import type { Metadata } from 'next';
 import Link from 'next/link';
 import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ProductVejaTambem from '@/components/ProductVejaTambem';
 import StructuredData from '@/components/seo/StructuredData';
+import Breadcrumb from '@/components/seo/Breadcrumb';
 import { CIDADES_COBERTURA_RETRATIL } from '@/lib/cobertura-retratil-cidades';
 import { productSchemas } from '@/lib/schemas/product-schemas';
 import { faqSchemas } from '@/lib/schemas/faq-schemas';
+import { generatePageMetadata } from '@/lib/seo/page-metadata';
 
-export const metadata: Metadata = {
-  title: "Cobertura Retrátil em Policarbonato | Abre e Fecha com Automação | Cobersystem",
-  description: "Cobertura retrátil em policarbonato com sistema abre e fecha. Automação via Alexa e sensor de chuva. Controle total do clima com abertura de 0 a 90 graus. Solicite orçamento!",
-  keywords: "cobertura retrátil, cobertura retrátil policarbonato, cobertura abre e fecha, cobertura retrátil área gourmet, cobertura retrátil churrasqueira",
-  alternates: {
-    canonical: 'https://coberturapolicarbonato.com.br/produtos/cobertura-retratil',
-  },
-  openGraph: {
-    title: "Cobertura Retrátil em Policarbonato | Cobersystem",
-    description: "Cobertura retrátil com automação via Alexa e sensor de chuva. Controle total do clima.",
-    url: 'https://coberturapolicarbonato.com.br/produtos/cobertura-retratil',
-    images: [
-      {
-        url: 'https://coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/aluminio/IMG_0305.jpg',
-        width: 1200,
-        height: 900,
-        alt: 'Cobertura Retrátil em Policarbonato',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    images: ['https://coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/aluminio/IMG_0305.jpg'],
-  },
-};
+export const metadata = generatePageMetadata('cobertura-retratil');
 
 /** Ordem: linha 1 (alumínio, intercaladas), linha 2 (alveolar, compacto) — grelha 2×2 */
 const cardsRetratil = [
@@ -65,6 +42,7 @@ export default function CoberturaRetratil() {
     <>
       <StructuredData data={productSchemas.coberturaRetratilGeral} />
       <StructuredData data={faqSchemas.coberturaRetratil} />
+      <Breadcrumb />
     <main className="min-h-screen py-12">
       <div className="container mx-auto px-4">
         <Breadcrumbs

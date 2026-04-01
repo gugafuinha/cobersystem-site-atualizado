@@ -1,38 +1,15 @@
-import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ProductVejaTambem from '@/components/ProductVejaTambem';
 import StructuredData from '@/components/seo/StructuredData';
+import Breadcrumb from '@/components/seo/Breadcrumb';
 import { CIDADES_COBERTURA_POLICARBONATO } from '@/lib/cobertura-policarbonato-cidades';
 import { productSchemas } from '@/lib/schemas/product-schemas';
 import { faqSchemas } from '@/lib/schemas/faq-schemas';
+import { generatePageMetadata } from '@/lib/seo/page-metadata';
 
-export const metadata: Metadata = {
-  title: "Cobertura Fixa em Policarbonato | Cobersystem",
-  description: "Cobertura fixa em policarbonato compacto e alveolar. Proteção permanente com alta qualidade. Ideal para áreas que precisam de cobertura constante.",
-  keywords: "cobertura fixa policarbonato, cobertura fixa, policarbonato compacto, policarbonato alveolar, cobertura permanente",
-  alternates: {
-    canonical: 'https://coberturapolicarbonato.com.br/produtos/cobertura-policarbonato',
-  },
-  openGraph: {
-    title: "Cobertura Fixa em Policarbonato | Cobersystem",
-    description: "Cobertura fixa em policarbonato com alta qualidade e durabilidade.",
-    url: 'https://coberturapolicarbonato.com.br/produtos/cobertura-policarbonato',
-    images: [
-      {
-        url: 'https://coberturapolicarbonato.com.br/images/produtos/cobertura-policarbonato/alveolar/IMG_4432.jpg',
-        width: 1200,
-        height: 900,
-        alt: 'Cobertura Fixa em Policarbonato Alveolar',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    images: ['https://coberturapolicarbonato.com.br/images/produtos/cobertura-policarbonato/alveolar/IMG_4432.jpg'],
-  },
-};
+export const metadata = generatePageMetadata('cobertura-policarbonato');
 
 const produtosFixa = [
   {
@@ -83,6 +60,7 @@ export default function CoberturaFixa() {
     <>
       <StructuredData data={productSchemas.coberturaPolicarbonato} />
       <StructuredData data={faqSchemas.coberturaPolicarbonato} />
+      <Breadcrumb />
     <main className="min-h-screen py-12">
       <div className="container mx-auto px-4">
         <Breadcrumbs

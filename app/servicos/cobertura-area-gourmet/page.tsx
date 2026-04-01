@@ -1,4 +1,3 @@
-import type { Metadata } from 'next';
 import Link from 'next/link';
 import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -6,34 +5,12 @@ import FAQSchema from '@/components/FAQSchema';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 import StructuredData from '@/components/seo/StructuredData';
+import Breadcrumb from '@/components/seo/Breadcrumb';
 import { productSchemas } from '@/lib/schemas/product-schemas';
 import { faqSchemas } from '@/lib/schemas/faq-schemas';
+import { generatePageMetadata } from '@/lib/seo/page-metadata';
 
-export const metadata: Metadata = {
-  title: "Cobertura para Área Gourmet | Preço e Ideias | Cobersystem",
-  description: "Cobertura retrátil para área gourmet em policarbonato. Ideias, preços e orçamento. Sistema abre e fecha com automação. Proteção contra chuva e sol sem perder ventilação.",
-  keywords: "cobertura para área gourmet, cobertura área gourmet preço, cobertura churrasqueira, cobertura retrátil área gourmet, cobertura gourmet SP",
-  alternates: {
-    canonical: 'https://coberturapolicarbonato.com.br/servicos/cobertura-area-gourmet',
-  },
-  openGraph: {
-    title: "Cobertura para Área Gourmet | Preço e Ideias | Cobersystem",
-    description: "Cobertura retrátil para área gourmet em policarbonato. Ideias, preços e orçamento. Sistema abre e fecha com automação.",
-    url: 'https://coberturapolicarbonato.com.br/servicos/cobertura-area-gourmet',
-    images: [
-      {
-        url: 'https://coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg',
-        width: 1200,
-        height: 800,
-        alt: 'Cobertura para Área Gourmet',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    images: ['https://coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg'],
-  },
-};
+export const metadata = generatePageMetadata('cobertura-area-gourmet');
 
 const productSchema = {
   '@context': 'https://schema.org',
@@ -75,6 +52,7 @@ export default function CoberturaAreaGourmet() {
       <StructuredData data={productSchemas.coberturaAreaGourmet} />
       <StructuredData data={faqSchemas.coberturaAreaGourmet} />
       <SchemaMarkup type="product" data={productSchema} />
+      <Breadcrumb />
       <main className="min-h-screen bg-gray-50">
         <div className="container mx-auto px-4 py-8">
           <Breadcrumbs items={[

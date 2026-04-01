@@ -1,4 +1,3 @@
-import type { Metadata } from 'next';
 import Link from 'next/link';
 import path from 'path';
 import { readdir } from 'fs/promises';
@@ -6,34 +5,12 @@ import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ProductVejaTambem from '@/components/ProductVejaTambem';
 import StructuredData from '@/components/seo/StructuredData';
+import Breadcrumb from '@/components/seo/Breadcrumb';
 import { CIDADES_COBERTURA_TERMOACUSTICA } from '@/lib/cobertura-termoacustica-cidades';
 import { productSchemas } from '@/lib/schemas/product-schemas';
+import { generatePageMetadata } from '@/lib/seo/page-metadata';
 
-export const metadata: Metadata = {
-  title: "Cobertura Termoacústica | Cobertura Sanduíche com Isolamento | Cobersystem",
-  description: "Cobertura termoacústica (cobertura sanduíche) com isolamento térmico e acústico superior. Ideal para conforto total em ambientes residenciais e comerciais. Solicite orçamento!",
-  keywords: "cobertura termoacustica, cobertura sanduíche, isolamento térmico cobertura, isolamento acústico cobertura, cobertura com isolamento, cobertura térmica, cobertura para galpão",
-  alternates: {
-    canonical: 'https://coberturapolicarbonato.com.br/produtos/cobertura-termoacustica',
-  },
-  openGraph: {
-    title: "Cobertura Termoacústica (Sanduíche) | Cobersystem",
-    description: "Isolamento térmico e acústico superior para conforto total.",
-    url: 'https://coberturapolicarbonato.com.br/produtos/cobertura-termoacustica',
-    images: [
-      {
-        url: 'https://coberturapolicarbonato.com.br/images/produtos/cobertura-termoacustica/b54559ed-ffaf-43eb-a738-e9d347954f5a.jpg',
-        width: 1200,
-        height: 800,
-        alt: 'Cobertura Termoacústica',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    images: ['https://coberturapolicarbonato.com.br/images/produtos/cobertura-termoacustica/b54559ed-ffaf-43eb-a738-e9d347954f5a.jpg'],
-  },
-};
+export const metadata = generatePageMetadata('cobertura-termoacustica');
 
 const produtosTermoacustica = [
   {
@@ -160,6 +137,7 @@ export default async function CoberturaTermoacustica() {
   return (
     <>
       <StructuredData data={productSchemas.coberturaTermoacustica} />
+      <Breadcrumb />
     <main className="min-h-screen py-12">
       <div className="container mx-auto px-4">
         <Breadcrumbs

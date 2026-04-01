@@ -1,36 +1,13 @@
-import type { Metadata } from 'next';
 import Link from 'next/link';
 import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ProductVejaTambem from '@/components/ProductVejaTambem';
 import StructuredData from '@/components/seo/StructuredData';
+import Breadcrumb from '@/components/seo/Breadcrumb';
 import { productSchemas } from '@/lib/schemas/product-schemas';
+import { generatePageMetadata } from '@/lib/seo/page-metadata';
 
-export const metadata: Metadata = {
-  title: "Veneziana em Policarbonato | Fechamento Lateral Ventilado | Cobersystem",
-  description: "Veneziana em policarbonato para fechamento lateral de galpões, quadras e áreas externas. Ventilação controlada mantendo proteção. Ideal para indústrias e comércio.",
-  keywords: "veneziana policarbonato, fechamento lateral policarbonato, veneziana para galpão, fechamento ventilado, veneziana industrial, fechamento quadra, policarbonato ventilado",
-  alternates: {
-    canonical: 'https://coberturapolicarbonato.com.br/produtos/veneziana-policarbonato',
-  },
-  openGraph: {
-    title: "Veneziana em Policarbonato | Cobersystem",
-    description: "Fechamento lateral ventilado para galpões, quadras e áreas externas.",
-    url: 'https://coberturapolicarbonato.com.br/produtos/veneziana-policarbonato',
-    images: [
-      {
-        url: 'https://coberturapolicarbonato.com.br/images/produtos/veneziana/veneziana.jpg',
-        width: 1200,
-        height: 800,
-        alt: 'Veneziana em Policarbonato',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    images: ['https://coberturapolicarbonato.com.br/images/produtos/veneziana/veneziana.jpg'],
-  },
-};
+export const metadata = generatePageMetadata('veneziana-policarbonato');
 
 const produtosVeneziana = [
   {
@@ -135,6 +112,7 @@ export default function VenezianaPolcarbonato() {
   return (
     <>
       <StructuredData data={productSchemas.venezianaPolicarbonato} />
+      <Breadcrumb />
     <main className="min-h-screen py-12">
       <div className="container mx-auto px-4">
         <Breadcrumbs
