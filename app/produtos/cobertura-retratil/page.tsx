@@ -3,7 +3,9 @@ import Link from 'next/link';
 import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ProductVejaTambem from '@/components/ProductVejaTambem';
+import StructuredData from '@/components/seo/StructuredData';
 import { CIDADES_COBERTURA_RETRATIL } from '@/lib/cobertura-retratil-cidades';
+import { productSchemas } from '@/lib/schemas/product-schemas';
 
 export const metadata: Metadata = {
   title: "Cobertura Retrátil em Policarbonato | Abre e Fecha com Automação | Cobersystem",
@@ -59,6 +61,8 @@ const cardsRetratil = [
 
 export default function CoberturaRetratil() {
   return (
+    <>
+      <StructuredData data={productSchemas.coberturaRetratilGeral} />
     <main className="min-h-screen py-12">
       <div className="container mx-auto px-4">
         <Breadcrumbs
@@ -160,6 +164,7 @@ export default function CoberturaRetratil() {
         </section>
       </div>
     </main>
+    </>
   );
 }
 

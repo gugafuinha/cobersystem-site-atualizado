@@ -3,6 +3,8 @@ import Link from 'next/link';
 import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ProductVejaTambem from '@/components/ProductVejaTambem';
+import StructuredData from '@/components/seo/StructuredData';
+import { productSchemas } from '@/lib/schemas/product-schemas';
 
 export const metadata: Metadata = {
   title: "Veneziana em Policarbonato | Fechamento Lateral Ventilado | Cobersystem",
@@ -131,6 +133,8 @@ const galeriaVeneziana = [
 
 export default function VenezianaPolcarbonato() {
   return (
+    <>
+      <StructuredData data={productSchemas.venezianaPolicarbonato} />
     <main className="min-h-screen py-12">
       <div className="container mx-auto px-4">
         <Breadcrumbs
@@ -397,5 +401,6 @@ export default function VenezianaPolcarbonato() {
         </section>
       </div>
     </main>
+    </>
   );
 }

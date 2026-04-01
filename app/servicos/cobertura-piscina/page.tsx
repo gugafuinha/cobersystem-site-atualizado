@@ -5,6 +5,8 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import FAQSchema from '@/components/FAQSchema';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
+import StructuredData from '@/components/seo/StructuredData';
+import { productSchemas } from '@/lib/schemas/product-schemas';
 
 export const metadata: Metadata = {
   title: "Cobertura para Piscina | Retrátil Policarbonato | Cobersystem",
@@ -71,6 +73,7 @@ const faqs = [
 export default function CoberturaPiscina() {
   return (
     <>
+      <StructuredData data={productSchemas.coberturaPiscina} />
       <SchemaMarkup type="product" data={productSchema} />
       <main className="min-h-screen bg-gray-50">
         <div className="container mx-auto px-4 py-8">

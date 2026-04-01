@@ -3,7 +3,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ProductVejaTambem from '@/components/ProductVejaTambem';
+import StructuredData from '@/components/seo/StructuredData';
 import { CIDADES_COBERTURA_POLICARBONATO } from '@/lib/cobertura-policarbonato-cidades';
+import { productSchemas } from '@/lib/schemas/product-schemas';
 
 export const metadata: Metadata = {
   title: "Cobertura Fixa em Policarbonato | Cobersystem",
@@ -77,6 +79,8 @@ const produtosFixa = [
 
 export default function CoberturaFixa() {
   return (
+    <>
+      <StructuredData data={productSchemas.coberturaPolicarbonato} />
     <main className="min-h-screen py-12">
       <div className="container mx-auto px-4">
         <Breadcrumbs
@@ -236,6 +240,7 @@ export default function CoberturaFixa() {
         </section>
       </div>
     </main>
+    </>
   );
 }
 

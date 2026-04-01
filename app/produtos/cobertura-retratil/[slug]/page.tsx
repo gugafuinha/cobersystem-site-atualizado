@@ -3,7 +3,9 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import OptimizedImage from '@/components/OptimizedImage';
 import ProductSchema from '@/components/ProductSchema';
+import StructuredData from '@/components/seo/StructuredData';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import { productSchemas } from '@/lib/schemas/product-schemas';
 import path from 'path';
 import { readdir } from 'fs/promises';
 
@@ -297,6 +299,18 @@ async function getGalleryImagesForSlug(slug: string, capaSrc: string) {
   }
 }
 
+function getSchemaForSlug(slug: string) {
+  switch (slug) {
+    case 'policarbonato-compacto':
+    case 'policarbonato-compacto-2mm':
+      return productSchemas.coberturaRetratilCompacto;
+    case 'automacao-inteligente':
+      return productSchemas.automacaoInteligente;
+    default:
+      return productSchemas.coberturaRetratilGeral;
+  }
+}
+
 export async function generateStaticParams() {
   return Object.keys(produtos).map((slug) => ({
     slug,
@@ -351,9 +365,11 @@ export default async function ProdutoDetalhe({ params }: { params: Promise<{ slu
   }
 
   const galleryImages = await getGalleryImagesForSlug(slug, produto.imagem);
+  const schema = getSchemaForSlug(slug);
 
   return (
     <>
+      <StructuredData data={schema} />
       <ProductSchema
         name={produto.nome}
         description={produto.descricao}

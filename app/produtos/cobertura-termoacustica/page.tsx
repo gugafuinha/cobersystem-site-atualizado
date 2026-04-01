@@ -5,7 +5,9 @@ import { readdir } from 'fs/promises';
 import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ProductVejaTambem from '@/components/ProductVejaTambem';
+import StructuredData from '@/components/seo/StructuredData';
 import { CIDADES_COBERTURA_TERMOACUSTICA } from '@/lib/cobertura-termoacustica-cidades';
+import { productSchemas } from '@/lib/schemas/product-schemas';
 
 export const metadata: Metadata = {
   title: "Cobertura Termoacústica | Cobertura Sanduíche com Isolamento | Cobersystem",
@@ -156,6 +158,8 @@ export default async function CoberturaTermoacustica() {
   }));
 
   return (
+    <>
+      <StructuredData data={productSchemas.coberturaTermoacustica} />
     <main className="min-h-screen py-12">
       <div className="container mx-auto px-4">
         <Breadcrumbs
@@ -410,5 +414,6 @@ export default async function CoberturaTermoacustica() {
         </section>
       </div>
     </main>
+    </>
   );
 }
