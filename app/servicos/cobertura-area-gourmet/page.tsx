@@ -7,6 +7,7 @@ import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 import StructuredData from '@/components/seo/StructuredData';
 import { productSchemas } from '@/lib/schemas/product-schemas';
+import { faqSchemas } from '@/lib/schemas/faq-schemas';
 
 export const metadata: Metadata = {
   title: "Cobertura para Área Gourmet | Preço e Ideias | Cobersystem",
@@ -72,6 +73,7 @@ export default function CoberturaAreaGourmet() {
   return (
     <>
       <StructuredData data={productSchemas.coberturaAreaGourmet} />
+      <StructuredData data={faqSchemas.coberturaAreaGourmet} />
       <SchemaMarkup type="product" data={productSchema} />
       <main className="min-h-screen bg-gray-50">
         <div className="container mx-auto px-4 py-8">

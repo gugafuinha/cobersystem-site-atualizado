@@ -6,6 +6,7 @@ import ProductVejaTambem from '@/components/ProductVejaTambem';
 import StructuredData from '@/components/seo/StructuredData';
 import { CIDADES_COBERTURA_RETRATIL } from '@/lib/cobertura-retratil-cidades';
 import { productSchemas } from '@/lib/schemas/product-schemas';
+import { faqSchemas } from '@/lib/schemas/faq-schemas';
 
 export const metadata: Metadata = {
   title: "Cobertura Retrátil em Policarbonato | Abre e Fecha com Automação | Cobersystem",
@@ -63,6 +64,7 @@ export default function CoberturaRetratil() {
   return (
     <>
       <StructuredData data={productSchemas.coberturaRetratilGeral} />
+      <StructuredData data={faqSchemas.coberturaRetratil} />
     <main className="min-h-screen py-12">
       <div className="container mx-auto px-4">
         <Breadcrumbs
