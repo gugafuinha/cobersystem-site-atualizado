@@ -67,6 +67,50 @@ export default function Header() {
             </li>
           </ul>
         </div>
+
+        {/* Navegação mobile: mesmos links do desktop (incl. Cases) */}
+        <div className="md:hidden border-t border-gray-100 mt-3 pt-3 -mx-4 px-4 overflow-x-auto">
+          <ul className="flex flex-nowrap gap-4 pb-1 text-sm">
+            <li className="shrink-0">
+              <Link href="/" className="text-gray-700 hover:text-[#D4AF37] transition">
+                Início
+              </Link>
+            </li>
+            <li className="shrink-0">
+              <Link href="/sobre" className="text-gray-700 hover:text-[#D4AF37] transition">
+                Sobre
+              </Link>
+            </li>
+            <li className="shrink-0">
+              <Link href="/produtos" className="text-gray-700 hover:text-[#D4AF37] transition">
+                Produtos
+              </Link>
+            </li>
+            <li className="shrink-0">
+              <Link href="/cases-sucesso" className="text-gray-700 hover:text-[#D4AF37] transition">
+                Cases
+              </Link>
+            </li>
+            <li className="shrink-0">
+              <Link href="/blog" className="text-gray-700 hover:text-[#D4AF37] transition">
+                Blog
+              </Link>
+            </li>
+            <li className="shrink-0">
+              <Link href="/faq" className="text-gray-700 hover:text-[#D4AF37] transition">
+                FAQ
+              </Link>
+            </li>
+            <li className="shrink-0">
+              <Link
+                href="/contato"
+                className="inline-block bg-[#D4AF37] text-black px-3 py-1.5 rounded-lg hover:bg-[#C9A030] transition font-semibold whitespace-nowrap"
+              >
+                Orçamento
+              </Link>
+            </li>
+          </ul>
+        </div>
       </nav>
     </header>
   );
