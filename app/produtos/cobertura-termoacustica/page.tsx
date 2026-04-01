@@ -9,6 +9,7 @@ import Breadcrumb from '@/components/seo/Breadcrumb';
 import { CIDADES_COBERTURA_TERMOACUSTICA } from '@/lib/cobertura-termoacustica-cidades';
 import { productSchemas } from '@/lib/schemas/product-schemas';
 import { generatePageMetadata } from '@/lib/seo/page-metadata';
+import CoberturaTermoacusticaExpandedSections from './CoberturaTermoacusticaExpandedSections';
 
 export const metadata = generatePageMetadata('cobertura-termoacustica');
 
@@ -158,6 +159,8 @@ export default async function CoberturaTermoacustica() {
             Conforto total para ambientes residenciais, comerciais e industriais.
           </p>
         </section>
+
+        <CoberturaTermoacusticaExpandedSections />
 
         <section className="mb-16 rounded-lg border border-gray-200 bg-gray-50 p-6 text-center">
           <h2 className="mb-3 text-xl font-bold text-gray-800 md:text-2xl">

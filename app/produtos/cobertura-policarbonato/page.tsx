@@ -83,30 +83,6 @@ export default function CoberturaFixa() {
           </p>
         </section>
 
-        <CoberturaPolicarbonatoExpandedSections />
-
-        <section className="mb-16 rounded-lg border border-gray-200 bg-gray-50 p-6 text-center">
-          <h2 className="mb-3 text-xl font-bold text-gray-800 md:text-2xl">
-            Atendimento por região
-          </h2>
-          <p className="mb-4 text-gray-600">
-            Páginas com informações da linha de cobertura em policarbonato na sua
-            cidade:
-          </p>
-          <ul className="flex flex-wrap justify-center gap-3">
-            {CIDADES_COBERTURA_POLICARBONATO.map((c) => (
-              <li key={c.slug}>
-                <Link
-                  href={`/produtos/cobertura-policarbonato/em/${c.slug}`}
-                  className="inline-block rounded-lg bg-white px-4 py-2 text-sm font-semibold text-blue-600 shadow-sm ring-1 ring-gray-200 transition hover:bg-blue-50 hover:ring-blue-200"
-                >
-                  {c.nome}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
-
         {/* Produtos */}
         <section className="mb-16 space-y-10 md:space-y-12">
           {produtosFixa.map((produto, index) => (
@@ -172,6 +148,30 @@ export default function CoberturaFixa() {
             </article>
           ))}
         </section>
+
+        <section className="mb-16 rounded-lg border border-gray-200 bg-gray-50 p-6 text-center">
+          <h2 className="mb-3 text-xl font-bold text-gray-800 md:text-2xl">
+            Atendimento por região
+          </h2>
+          <p className="mb-4 text-gray-600">
+            Páginas com informações da linha de cobertura em policarbonato na sua
+            cidade:
+          </p>
+          <ul className="flex flex-wrap justify-center gap-3">
+            {CIDADES_COBERTURA_POLICARBONATO.map((c) => (
+              <li key={c.slug}>
+                <Link
+                  href={`/produtos/cobertura-policarbonato/em/${c.slug}`}
+                  className="inline-block rounded-lg bg-white px-4 py-2 text-sm font-semibold text-blue-600 shadow-sm ring-1 ring-gray-200 transition hover:bg-blue-50 hover:ring-blue-200"
+                >
+                  {c.nome}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <CoberturaPolicarbonatoExpandedSections />
 
         {/* Comparação */}
         <section className="mb-16 bg-gray-50 rounded-lg p-8">

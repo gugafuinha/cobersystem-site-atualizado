@@ -6,6 +6,7 @@ import StructuredData from '@/components/seo/StructuredData';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import { productSchemas } from '@/lib/schemas/product-schemas';
 import { generatePageMetadata } from '@/lib/seo/page-metadata';
+import VenezianaExpandedSections from './VenezianaExpandedSections';
 
 export const metadata = generatePageMetadata('veneziana-policarbonato');
 
@@ -133,6 +134,8 @@ export default function VenezianaPolcarbonato() {
             Ventilação controlada mantendo proteção contra intempéries.
           </p>
         </section>
+
+        <VenezianaExpandedSections />
 
         {/* O que é */}
         <section className="mb-16 bg-gray-50 rounded-lg p-8">

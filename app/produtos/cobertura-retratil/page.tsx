@@ -65,29 +65,6 @@ export default function CoberturaRetratil() {
           </p>
         </section>
 
-        <CoberturaRetratilExpandedSections />
-
-        <section className="mb-16 rounded-lg border border-gray-200 bg-gray-50 p-6 text-center">
-          <h2 className="mb-3 text-xl font-bold text-gray-800 md:text-2xl">
-            Atendimento por região
-          </h2>
-          <p className="mb-4 text-gray-600">
-            Informações da linha de cobertura retrátil na sua cidade:
-          </p>
-          <ul className="flex flex-wrap justify-center gap-3">
-            {CIDADES_COBERTURA_RETRATIL.map((c) => (
-              <li key={c.slug}>
-                <Link
-                  href={`/produtos/cobertura-retratil/em/${c.slug}`}
-                  className="inline-block rounded-lg bg-white px-4 py-2 text-sm font-semibold text-blue-600 shadow-sm ring-1 ring-gray-200 transition hover:bg-blue-50 hover:ring-blue-200"
-                >
-                  {c.nome}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
-
         {/* Produtos — grelha 2×2 (1 coluna no mobile) */}
         <section className="mb-16">
           <h2 className="mb-8 text-center text-2xl font-bold text-gray-800 md:text-3xl">
@@ -127,6 +104,29 @@ export default function CoberturaRetratil() {
             ))}
           </div>
         </section>
+
+        <section className="mb-16 rounded-lg border border-gray-200 bg-gray-50 p-6 text-center">
+          <h2 className="mb-3 text-xl font-bold text-gray-800 md:text-2xl">
+            Atendimento por região
+          </h2>
+          <p className="mb-4 text-gray-600">
+            Informações da linha de cobertura retrátil na sua cidade:
+          </p>
+          <ul className="flex flex-wrap justify-center gap-3">
+            {CIDADES_COBERTURA_RETRATIL.map((c) => (
+              <li key={c.slug}>
+                <Link
+                  href={`/produtos/cobertura-retratil/em/${c.slug}`}
+                  className="inline-block rounded-lg bg-white px-4 py-2 text-sm font-semibold text-blue-600 shadow-sm ring-1 ring-gray-200 transition hover:bg-blue-50 hover:ring-blue-200"
+                >
+                  {c.nome}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <CoberturaRetratilExpandedSections />
 
         <ProductVejaTambem current="retratil" />
 
