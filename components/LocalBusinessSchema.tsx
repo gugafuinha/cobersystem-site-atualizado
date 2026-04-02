@@ -8,7 +8,7 @@ export default function LocalBusinessSchema() {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "Cobersystem - Soluções em Coberturas",
-    "image": "https://www.coberturapolicarbonato.com.br/logo.png",
+    "image": "https://www.coberturapolicarbonato.com.br/logo-horizontal-new.svg",
     "description": "Especialista em cobertura retrátil em policarbonato com automação via Alexa e sensor de chuva. Atendimento em São Paulo, ABC, Guarulhos e região.",
     "@id": "https://www.coberturapolicarbonato.com.br",
     "url": "https://www.coberturapolicarbonato.com.br",

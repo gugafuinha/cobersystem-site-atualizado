@@ -11,7 +11,7 @@
   - Símbolo de cobertura retrátil
   - Texto "COBERSYSTEM"
 
-### 2. **logo-horizontal.svg** (Footer)
+### 2. **logo-horizontal-new.svg** (Footer)
 - **Uso:** Rodapé do site
 - **Tamanho:** 300x80px
 - **Características:**
@@ -55,7 +55,7 @@
 ## 🔄 Onde Está Sendo Usado:
 
 1. **Header** → `logo.svg`
-2. **Footer** → `logo-horizontal.svg`
+2. **Footer** → `logo-horizontal-new.svg`
 3. **Favicon** → `favicon.ico`
 
 ## ✏️ Personalização:

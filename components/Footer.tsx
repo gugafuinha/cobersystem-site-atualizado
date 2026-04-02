@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <img 
-              src="/logo-horizontal.svg" 
+              src="/logo-horizontal-new.svg" 
               alt="Cobersystem - Soluções em Coberturas" 
               className="h-14 mb-4"
               width="450"

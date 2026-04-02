@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="450" height="120" viewBox="0 0 450 120" xmlns="http://www.w3.org/2000/svg">
+  <!-- Simbolo: Casa/Teto minimalista -->
+  <g transform="translate(25, 35)">
+    <!-- Teto (forma de casa estilizada) -->
+    <path d="M 30 0 L 60 20 L 60 50 L 0 50 L 0 20 Z" fill="none" stroke="#2563EB" stroke-width="3" stroke-linejoin="round"/>
+    
+    <!-- Detalhe interno: linha horizontal (cobertura) -->
+    <line x1="8" y1="30" x2="52" y2="30" stroke="#2563EB" stroke-width="2" opacity="0.4"/>
+    
+    <!-- Ponto de destaque (automacao) -->
+    <circle cx="30" cy="30" r="4" fill="#10B981"/>
+  </g>
+  
+  <!-- Texto principal -->
+  <g transform="translate(110, 55)">
+    <text font-family="system-ui, sans-serif" font-size="34" font-weight="600" fill="#0F172A" letter-spacing="3">
+      COBERSYSTEM
+    </text>
+  </g>
+  
+  <!-- Tagline -->
+  <g transform="translate(110, 75)">
+    <text font-family="system-ui, sans-serif" font-size="10" fill="#64748B" letter-spacing="3" font-weight="400">
+      AUTOMACAO E PROTECAO
+    </text>
+  </g>
+</svg>

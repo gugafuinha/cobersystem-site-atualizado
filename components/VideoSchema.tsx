@@ -36,7 +36,7 @@ export default function VideoSchema({
       name: "Cobersystem",
       logo: {
         "@type": "ImageObject",
-        url: "https://www.coberturapolicarbonato.com.br/logo-horizontal.svg",
+        url: "https://www.coberturapolicarbonato.com.br/logo-horizontal-new.svg",
       },
     },
   };

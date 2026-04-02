@@ -17,7 +17,7 @@ export default function PerformanceOptimizer() {
       {/* Preload critical assets */}
       <link
         rel="preload"
-        href="/logo-horizontal.svg"
+        href="/logo-horizontal-new.svg"
         as="image"
         type="image/svg+xml"
       />

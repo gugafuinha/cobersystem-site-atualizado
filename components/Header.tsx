@@ -5,14 +5,13 @@ export default function Header() {
     <header className="bg-white shadow-md sticky top-0 z-50">
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center h-14">
+          <Link href="/" className="flex items-center shrink-0 h-14 sm:h-16 lg:h-20">
             <img 
-              src="/logo-horizontal.svg" 
+              src="/logo-horizontal-new.svg" 
               alt="Cobersystem - Soluções em Coberturas" 
-              width={450}
-              height={120}
-              className="h-full w-auto object-contain"
-              style={{ maxHeight: '56px' }}
+              width={200}
+              height={55}
+              className="h-full w-auto max-w-[min(100%,220px)] sm:max-w-none object-contain"
             />
           </Link>
           <ul className="hidden md:flex space-x-6">

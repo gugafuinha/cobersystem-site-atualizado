@@ -89,7 +89,7 @@ export default async function BlogPostPage(
       "name": "Cobersystem",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://www.coberturapolicarbonato.com.br/logo.png"
+        "url": "https://www.coberturapolicarbonato.com.br/logo-horizontal-new.svg"
       }
     },
     "mainEntityOfPage": {

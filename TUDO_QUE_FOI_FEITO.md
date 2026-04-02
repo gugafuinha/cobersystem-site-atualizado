@@ -29,7 +29,7 @@ Site profissional completo para a Cobersystem com foco máximo em SEO, criado em
 ## 2. 🎨 DESIGN E INTERFACE
 
 ### Visual e Identidade
-- ✅ **Logo dourado** (logo-horizontal.svg) implementado
+- ✅ **Logo dourado** (logo-horizontal-new.svg) implementado
 - ✅ **Cores da marca**: Dourado (#D4AF37) e Preto
 - ✅ **Design moderno e profissional**
 - ✅ **Responsivo** (mobile-first)

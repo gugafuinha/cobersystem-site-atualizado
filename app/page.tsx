@@ -2,8 +2,8 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import OptimizedImage from '@/components/OptimizedImage';
-import CoberturaAnimation from '@/components/CoberturaAnimation';
 import StructuredData from '@/components/seo/StructuredData';
+import VideoHero from '@/components/VideoHero';
 
 export const metadata: Metadata = {
   title: "Cobertura em Policarbonato Retrátil | Abre e Fecha com Automação | Cobersystem",
@@ -30,7 +30,7 @@ const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   name: 'Cobersystem - Coberturas em Policarbonato',
-  image: 'https://www.coberturapolicarbonato.com.br/logo-horizontal.svg',
+  image: 'https://www.coberturapolicarbonato.com.br/logo-horizontal-new.svg',
   '@id': 'https://www.coberturapolicarbonato.com.br',
   url: 'https://www.coberturapolicarbonato.com.br',
   telephone: '+5511943615079',
@@ -76,51 +76,10 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(homeWebSiteSchema) }}
       />
       <main className="min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white py-20 relative overflow-hidden">
-        {/* Animação de cobertura no fundo */}
-        <div className="absolute inset-0 opacity-20">
-          <CoberturaAnimation />
-        </div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div>
-                <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
-                  Cobertura em Policarbonato Retrátil
-                </h1>
-                <p className="text-xl md:text-2xl mb-8 text-gray-200">
-                  Sistema abre e fecha com automação via Alexa e sensor de chuva
-                </p>
-                <p className="text-lg mb-10 text-gray-300">
-                  Controle total do clima com abertura de 0 a 90 graus. Sem perder ventilação, 
-                  com proteção completa contra chuva e sol.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Link 
-                    href="/contato" 
-                    className="bg-[#D4AF37] text-black px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#C9A030] transition shadow-lg text-center"
-                  >
-                    Solicitar Orçamento Grátis
-                  </Link>
-                  <Link 
-                    href="/produtos" 
-                    className="bg-transparent border-2 border-[#D4AF37] text-[#D4AF37] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#D4AF37] hover:text-black transition text-center"
-                  >
-                    Ver Produtos
-                  </Link>
-                </div>
-              </div>
-              <div className="relative">
-                <CoberturaAnimation />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <VideoHero />
 
       {/* Galeria de Imagens */}
-      <section className="py-20 bg-white">
+      <section id="produtos" className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">
             Nossos Projetos

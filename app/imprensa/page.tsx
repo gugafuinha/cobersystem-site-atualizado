@@ -53,7 +53,7 @@ export default function ImprensaPage() {
               Downloads
             </h2>
             <div className="space-y-3">
-              <Link href="/logo-horizontal.svg" download className="block text-[#D4AF37] hover:underline">
+              <Link href="/logo-horizontal-new.svg" download className="block text-[#D4AF37] hover:underline">
                 Logo Horizontal (SVG)
               </Link>
               <Link href="/logo-header.svg" download className="block text-[#D4AF37] hover:underline">

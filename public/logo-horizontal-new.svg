@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="450" height="120" viewBox="0 0 450 120" xmlns="http://www.w3.org/2000/svg">
+  <!-- Simbolo: Teto retratil estilizado -->
+  <g transform="translate(20, 30)">
+    <!-- Estrutura fixa (cinza) -->
+    <rect x="0" y="0" width="60" height="4" rx="2" fill="#64748B"/>
+    <rect x="0" y="56" width="60" height="4" rx="2" fill="#64748B"/>
+    
+    <!-- Cobertura movel (azul - parte de cima) -->
+    <path d="M 5 8 L 55 8 L 50 28 L 10 28 Z" fill="#2563EB" opacity="0.9"/>
+    
+    <!-- Cobertura movel (azul - parte de baixo) -->
+    <path d="M 10 32 L 50 32 L 55 52 L 5 52 Z" fill="#2563EB" opacity="0.6"/>
+    
+    <!-- Linhas de movimento (indicam abertura/fechamento) -->
+    <line x1="62" y1="18" x2="70" y2="18" stroke="#2563EB" stroke-width="2" opacity="0.4"/>
+    <line x1="62" y1="42" x2="70" y2="42" stroke="#2563EB" stroke-width="2" opacity="0.4"/>
+    
+    <!-- Detalhe tech: micro circuito -->
+    <circle cx="30" cy="30" r="3" fill="#10B981" opacity="0.8"/>
+    <line x1="30" y1="27" x2="30" y2="33" stroke="#10B981" stroke-width="1" opacity="0.6"/>
+    <line x1="27" y1="30" x2="33" y2="30" stroke="#10B981" stroke-width="1" opacity="0.6"/>
+  </g>
+  
+  <!-- Texto COBERSYSTEM -->
+  <g transform="translate(105, 55)">
+    <text font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="700" fill="#1E293B" letter-spacing="2">
+      COBERSYSTEM
+    </text>
+  </g>
+  
+  <!-- Tagline -->
+  <g transform="translate(105, 75)">
+    <text font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#64748B" letter-spacing="2.5" font-weight="500">
+      COBERTURAS INTELIGENTES
+    </text>
+  </g>
+  
+  <!-- Linha de separacao sutil -->
+  <line x1="105" y1="62" x2="420" y2="62" stroke="#E2E8F0" stroke-width="1" opacity="0.5"/>
+</svg>

@@ -18,7 +18,7 @@
   - Versão maior e mais detalhada
   - Ideal para apresentações
 
-### 3. **logo-horizontal.svg** (Footer)
+### 3. **logo-horizontal-new.svg** (Footer)
 - **Tamanho:** 500x150px (alta resolução)
 - **Uso:** Rodapé do site
 - **Características:**
@@ -59,7 +59,7 @@
 ## 📐 Uso Recomendado:
 
 - **Site (Header):** logo-header.svg
-- **Site (Footer):** logo-horizontal.svg
+- **Site (Footer):** logo-horizontal-new.svg
 - **Documentos:** logo.svg
 - **Impressão:** logo-print.svg
 - **Favicon:** logo-favicon.svg
