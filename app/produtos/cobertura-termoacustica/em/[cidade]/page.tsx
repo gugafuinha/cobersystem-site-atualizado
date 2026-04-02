@@ -10,7 +10,7 @@ import {
 } from '@/lib/cobertura-termoacustica-cidades';
 import { SAO_PAULO_BAIRROS } from '@/lib/sao-paulo-bairros';
 
-const BASE = 'https://coberturapolicarbonato.com.br';
+const BASE = 'https://www.coberturapolicarbonato.com.br';
 const OG_IMAGE = `${BASE}/images/produtos/cobertura-termoacustica/b54559ed-ffaf-43eb-a738-e9d347954f5a.jpg`;
 
 const MODELOS_LINHA = [

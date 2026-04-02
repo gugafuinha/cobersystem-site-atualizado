@@ -4,6 +4,21 @@ const nextConfig: NextConfig = {
   compress: true,
   poweredByHeader: false,
   reactStrictMode: true,
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [
+          {
+            type: "host",
+            value: "coberturapolicarbonato.com.br",
+          },
+        ],
+        destination: "https://www.coberturapolicarbonato.com.br/:path*",
+        permanent: true,
+      },
+    ];
+  },
   // Otimizações de performance
   experimental: {
     optimizePackageImports: ['@heroicons/react', 'lucide-react'],

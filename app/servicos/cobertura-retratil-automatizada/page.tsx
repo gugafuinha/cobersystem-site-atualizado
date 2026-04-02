@@ -11,15 +11,15 @@ export const metadata: Metadata = {
   description: "Cobertura retrátil automatizada com Alexa e sensor de chuva. Sistema inteligente que abre e fecha automaticamente. Controle total via comando de voz ou remoto. Preço e orçamento.",
   keywords: "cobertura retrátil automatizada, cobertura automática Alexa, sensor de chuva cobertura, cobertura retrátil inteligente, automação residencial cobertura",
   alternates: {
-    canonical: 'https://coberturapolicarbonato.com.br/servicos/cobertura-retratil-automatizada',
+    canonical: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-retratil-automatizada',
   },
   openGraph: {
     title: "Cobertura Retrátil Automatizada | Alexa e Sensor de Chuva | Cobersystem",
     description: "Cobertura retrátil automatizada com Alexa, controle remoto e sensor de chuva para controle completo do ambiente.",
-    url: 'https://coberturapolicarbonato.com.br/servicos/cobertura-retratil-automatizada',
+    url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-retratil-automatizada',
     images: [
       {
-        url: 'https://coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg',
+        url: 'https://www.coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg',
         width: 1200,
         height: 800,
         alt: 'Cobertura Retrátil Automatizada',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['https://coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg'],
+    images: ['https://www.coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg'],
   },
 };
 
@@ -37,13 +37,13 @@ const productSchema = {
   '@type': 'Product',
   name: 'Cobertura Retrátil Automatizada',
   description: 'Cobertura retrátil com automação inteligente via Alexa, controle remoto e sensor de chuva automático.',
-  image: ['https://coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg'],
+  image: ['https://www.coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg'],
   brand: { '@type': 'Brand', name: 'Cobersystem' },
   offers: {
     '@type': 'Offer',
     priceCurrency: 'BRL',
     availability: 'https://schema.org/InStock',
-    url: 'https://coberturapolicarbonato.com.br/servicos/cobertura-retratil-automatizada',
+    url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-retratil-automatizada',
   },
 };
 

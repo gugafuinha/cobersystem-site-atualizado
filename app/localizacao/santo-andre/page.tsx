@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: "Cobertura retrátil e abre e fecha em Santo André. Policarbonato com automação via Alexa. Orçamento grátis.",
   keywords: "cobertura Santo André, cobertura retrátil Santo André, cobertura ABC, cobertura Santo André orçamento",
   alternates: {
-    canonical: 'https://coberturapolicarbonato.com.br/localizacao/santo-andre',
+    canonical: 'https://www.coberturapolicarbonato.com.br/localizacao/santo-andre',
   },
 };
 

@@ -9,15 +9,15 @@ export const metadata: Metadata = {
   description: "Calhas, rufos e perfil U em alumínio para coberturas. Acessórios de alta qualidade. Pintura eletrostática. Preço e orçamento.",
   keywords: "calhas alumínio, rufos cobertura, perfil u cobertura, acessórios cobertura, calhas preço",
   alternates: {
-    canonical: 'https://coberturapolicarbonato.com.br/servicos/calhas-rufos-perfil-u',
+    canonical: 'https://www.coberturapolicarbonato.com.br/servicos/calhas-rufos-perfil-u',
   },
   openGraph: {
     title: "Calhas, Rufos e Perfil U | Acabamento para Coberturas | Cobersystem",
     description: "Serviço de calhas, rufos e perfil U para acabamento e vedação correta de coberturas em alumínio e policarbonato.",
-    url: 'https://coberturapolicarbonato.com.br/servicos/calhas-rufos-perfil-u',
+    url: 'https://www.coberturapolicarbonato.com.br/servicos/calhas-rufos-perfil-u',
     images: [
       {
-        url: 'https://coberturapolicarbonato.com.br/images/projetos/abre-fecha-alveolar-01.jpg',
+        url: 'https://www.coberturapolicarbonato.com.br/images/projetos/abre-fecha-alveolar-01.jpg',
         width: 1200,
         height: 800,
         alt: 'Calhas, Rufos e Perfil U',
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['https://coberturapolicarbonato.com.br/images/projetos/abre-fecha-alveolar-01.jpg'],
+    images: ['https://www.coberturapolicarbonato.com.br/images/projetos/abre-fecha-alveolar-01.jpg'],
   },
 };
 
@@ -35,13 +35,13 @@ const productSchema = {
   '@type': 'Product',
   name: 'Calhas, Rufos e Perfil U',
   description: 'Calhas, rufos e perfil U em alumínio para coberturas, com pintura eletrostática personalizada.',
-  image: ['https://coberturapolicarbonato.com.br/images/projetos/abre-fecha-alveolar-01.jpg'],
+  image: ['https://www.coberturapolicarbonato.com.br/images/projetos/abre-fecha-alveolar-01.jpg'],
   brand: { '@type': 'Brand', name: 'Cobersystem' },
   offers: {
     '@type': 'Offer',
     priceCurrency: 'BRL',
     availability: 'https://schema.org/InStock',
-    url: 'https://coberturapolicarbonato.com.br/servicos/calhas-rufos-perfil-u',
+    url: 'https://www.coberturapolicarbonato.com.br/servicos/calhas-rufos-perfil-u',
   },
 };
 

@@ -127,8 +127,8 @@ export const organizationSchema: OrganizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'Cobersystem – Soluções em Coberturas',
-  url: 'https://coberturapolicarbonato.com.br',
-  logo: 'https://coberturapolicarbonato.com.br/logo-horizontal.svg',
+  url: 'https://www.coberturapolicarbonato.com.br',
+  logo: 'https://www.coberturapolicarbonato.com.br/logo-horizontal.svg',
   description: 'Empresa especializada em coberturas retráteis em policarbonato com automação via Alexa e sensor de chuva. Coberturas que abrem e fecham com controle total do clima.',
   address: {
     '@type': 'PostalAddress',
@@ -155,9 +155,9 @@ export const localBusinessSchema: LocalBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   name: 'Cobersystem – Soluções em Coberturas',
-  image: 'https://coberturapolicarbonato.com.br/logo-horizontal.svg',
-  '@id': 'https://coberturapolicarbonato.com.br',
-  url: 'https://coberturapolicarbonato.com.br',
+  image: 'https://www.coberturapolicarbonato.com.br/logo-horizontal.svg',
+  '@id': 'https://www.coberturapolicarbonato.com.br',
+  url: 'https://www.coberturapolicarbonato.com.br',
   telephone: '+55-11-94361-5079',
   priceRange: '$$',
   address: {

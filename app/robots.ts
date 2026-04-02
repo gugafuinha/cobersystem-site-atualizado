@@ -19,7 +19,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/', '/admin/', '/private/'],
       },
     ],
-    sitemap: 'https://coberturapolicarbonato.com.br/sitemap.xml',
-    host: 'https://coberturapolicarbonato.com.br',
+    sitemap: 'https://www.coberturapolicarbonato.com.br/sitemap.xml',
+    host: 'https://www.coberturapolicarbonato.com.br',
   };
 }

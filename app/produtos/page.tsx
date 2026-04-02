@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: "Conheça nossos produtos: cobertura retrátil em policarbonato compacto e alveolar, com automação via Alexa e sensor de chuva. Estruturas de alumínio personalizadas.",
   keywords: "cobertura retrátil policarbonato, cobertura abre e fecha, policarbonato compacto, policarbonato alveolar, automação Alexa, sensor chuva",
   alternates: {
-    canonical: 'https://coberturapolicarbonato.com.br/produtos',
+    canonical: 'https://www.coberturapolicarbonato.com.br/produtos',
   },
 };
 
@@ -22,25 +22,25 @@ const produtosItemListSchema = {
       '@type': 'ListItem',
       position: 1,
       name: 'Cobertura Retrátil',
-      url: 'https://coberturapolicarbonato.com.br/produtos/cobertura-retratil',
+      url: 'https://www.coberturapolicarbonato.com.br/produtos/cobertura-retratil',
     },
     {
       '@type': 'ListItem',
       position: 2,
       name: 'Cobertura em Policarbonato',
-      url: 'https://coberturapolicarbonato.com.br/produtos/cobertura-policarbonato',
+      url: 'https://www.coberturapolicarbonato.com.br/produtos/cobertura-policarbonato',
     },
     {
       '@type': 'ListItem',
       position: 3,
       name: 'Cobertura Termoacústica',
-      url: 'https://coberturapolicarbonato.com.br/produtos/cobertura-termoacustica',
+      url: 'https://www.coberturapolicarbonato.com.br/produtos/cobertura-termoacustica',
     },
     {
       '@type': 'ListItem',
       position: 4,
       name: 'Veneziana em Policarbonato',
-      url: 'https://coberturapolicarbonato.com.br/produtos/veneziana-policarbonato',
+      url: 'https://www.coberturapolicarbonato.com.br/produtos/veneziana-policarbonato',
     },
   ],
 };

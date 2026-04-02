@@ -11,15 +11,15 @@ export const metadata: Metadata = {
   description: "Cobertura fixa em policarbonato compacto 2mm. Totalmente transparente ou colorido. Máxima luminosidade e proteção visual. Preço por m² e orçamento.",
   keywords: "cobertura fixa policarbonato compacto, policarbonato compacto 2mm, cobertura transparente, cobertura fixa preço, policarbonato compacto SP",
   alternates: {
-    canonical: 'https://coberturapolicarbonato.com.br/servicos/cobertura-fixa-policarbonato-compacto',
+    canonical: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-fixa-policarbonato-compacto',
   },
   openGraph: {
     title: "Cobertura Fixa Policarbonato Compacto | Transparência e Proteção | Cobersystem",
     description: "Cobertura fixa em policarbonato compacto com alta transparência, resistência e proteção permanente para diferentes ambientes.",
-    url: 'https://coberturapolicarbonato.com.br/servicos/cobertura-fixa-policarbonato-compacto',
+    url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-fixa-policarbonato-compacto',
     images: [
       {
-        url: 'https://coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg',
+        url: 'https://www.coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg',
         width: 1200,
         height: 800,
         alt: 'Cobertura Fixa em Policarbonato Compacto',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['https://coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg'],
+    images: ['https://www.coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg'],
   },
 };
 
@@ -37,13 +37,13 @@ const productSchema = {
   '@type': 'Product',
   name: 'Cobertura Fixa Policarbonato Compacto',
   description: 'Cobertura fixa em policarbonato compacto 2mm com transparência total ou cores personalizadas.',
-  image: ['https://coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg'],
+  image: ['https://www.coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg'],
   brand: { '@type': 'Brand', name: 'Cobersystem' },
   offers: {
     '@type': 'Offer',
     priceCurrency: 'BRL',
     availability: 'https://schema.org/InStock',
-    url: 'https://coberturapolicarbonato.com.br/servicos/cobertura-fixa-policarbonato-compacto',
+    url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-fixa-policarbonato-compacto',
   },
 };
 

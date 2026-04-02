@@ -6,7 +6,7 @@ import { getSlugsCidadesTermoacustica } from '@/lib/cobertura-termoacustica-cida
 import { getSlugsBairrosSaoPaulo } from '@/lib/sao-paulo-bairros';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://coberturapolicarbonato.com.br';
+  const baseUrl = 'https://www.coberturapolicarbonato.com.br';
   const now = new Date();
 
   const requiredPages: MetadataRoute.Sitemap = [

@@ -26,20 +26,20 @@ export default function ArticleSchema({
     "@type": "Article",
     headline,
     description,
-    image: image.startsWith('http') ? image : `https://coberturapolicarbonato.com.br${image}`,
+    image: image.startsWith('http') ? image : `https://www.coberturapolicarbonato.com.br${image}`,
     datePublished,
     dateModified: dateModified || datePublished,
     author: {
       "@type": "Person",
       name: author,
-      url: "https://coberturapolicarbonato.com.br/sobre",
+      url: "https://www.coberturapolicarbonato.com.br/sobre",
     },
     publisher: {
       "@type": "Organization",
       name: "Cobersystem",
       logo: {
         "@type": "ImageObject",
-        url: "https://coberturapolicarbonato.com.br/logo-horizontal.svg",
+        url: "https://www.coberturapolicarbonato.com.br/logo-horizontal.svg",
       },
     },
     mainEntityOfPage: {

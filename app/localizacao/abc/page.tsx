@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: "Cobertura retrátil e abre e fecha no ABC Paulista. Atendemos Santo André, São Bernardo do Campo, São Caetano. Orçamento grátis.",
   keywords: "cobertura ABC, cobertura Santo André, cobertura São Bernardo, cobertura São Caetano, cobertura ABC Paulista",
   alternates: {
-    canonical: 'https://coberturapolicarbonato.com.br/localizacao/abc',
+    canonical: 'https://www.coberturapolicarbonato.com.br/localizacao/abc',
   },
 };
 

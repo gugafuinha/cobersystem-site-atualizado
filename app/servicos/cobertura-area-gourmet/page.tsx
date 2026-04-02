@@ -18,13 +18,13 @@ const productSchema = {
   '@type': 'Product',
   name: 'Cobertura para Área Gourmet',
   description: 'Cobertura retrátil em policarbonato para área gourmet com automação via Alexa e sensor de chuva.',
-  image: ['https://coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg'],
+  image: ['https://www.coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg'],
   brand: { '@type': 'Brand', name: 'Cobersystem' },
   offers: {
     '@type': 'Offer',
     priceCurrency: 'BRL',
     availability: 'https://schema.org/InStock',
-    url: 'https://coberturapolicarbonato.com.br/servicos/cobertura-area-gourmet',
+    url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-area-gourmet',
   },
 };
 

@@ -18,7 +18,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
       '@type': 'ListItem',
       position: index + 1,
       name: item.label,
-      item: `https://coberturapolicarbonato.com.br${item.href}`,
+      item: `https://www.coberturapolicarbonato.com.br${item.href}`,
     })),
   };
 

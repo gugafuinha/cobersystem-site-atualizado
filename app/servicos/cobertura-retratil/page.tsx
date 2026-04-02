@@ -13,15 +13,15 @@ export const metadata: Metadata = {
   keywords:
     "cobertura retratil, cobertura abre e fecha, policarbonato, automação cobertura, sensor de chuva, Alexa, cobertura retrátil preço",
   alternates: {
-    canonical: 'https://coberturapolicarbonato.com.br/servicos/cobertura-retratil',
+    canonical: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-retratil',
   },
   openGraph: {
     title: "Cobertura Retrátil | Abre e Fecha com Automação | Cobersystem",
     description: "Cobertura retrátil em policarbonato com sistema abre e fecha. Controle do clima com abertura de 0 a 90 graus e automação opcional.",
-    url: 'https://coberturapolicarbonato.com.br/servicos/cobertura-retratil',
+    url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-retratil',
     images: [
       {
-        url: 'https://coberturapolicarbonato.com.br/images/blog/cobertura-abre-fecha.jpg',
+        url: 'https://www.coberturapolicarbonato.com.br/images/blog/cobertura-abre-fecha.jpg',
         width: 1200,
         height: 800,
         alt: 'Cobertura Retrátil',
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['https://coberturapolicarbonato.com.br/images/blog/cobertura-abre-fecha.jpg'],
+    images: ['https://www.coberturapolicarbonato.com.br/images/blog/cobertura-abre-fecha.jpg'],
   },
 };
 
@@ -41,14 +41,14 @@ const productSchema = {
   description:
     'Cobertura retrátil em policarbonato com sistema abre e fecha e controle do clima com abertura de 0 a 90 graus.',
   image: [
-    'https://coberturapolicarbonato.com.br/images/blog/cobertura-abre-fecha.jpg',
+    'https://www.coberturapolicarbonato.com.br/images/blog/cobertura-abre-fecha.jpg',
   ],
   brand: { '@type': 'Brand', name: 'Cobersystem' },
   offers: {
     '@type': 'Offer',
     priceCurrency: 'BRL',
     availability: 'https://schema.org/InStock',
-    url: 'https://coberturapolicarbonato.com.br/servicos/cobertura-retratil',
+    url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-retratil',
   },
 };
 

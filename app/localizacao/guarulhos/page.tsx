@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: "Cobertura retrátil e abre e fecha em Guarulhos. Policarbonato com automação via Alexa. Orçamento grátis. Atendemos toda Guarulhos.",
   keywords: "cobertura Guarulhos, cobertura retrátil Guarulhos, cobertura policarbonato Guarulhos, cobertura Guarulhos orçamento",
   alternates: {
-    canonical: 'https://coberturapolicarbonato.com.br/localizacao/guarulhos',
+    canonical: 'https://www.coberturapolicarbonato.com.br/localizacao/guarulhos',
   },
 };
 

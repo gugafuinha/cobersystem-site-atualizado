@@ -10,7 +10,7 @@ import {
 } from '@/lib/cobertura-policarbonato-cidades';
 import { SAO_PAULO_BAIRROS } from '@/lib/sao-paulo-bairros';
 
-const BASE = 'https://coberturapolicarbonato.com.br';
+const BASE = 'https://www.coberturapolicarbonato.com.br';
 const OG_IMAGE = `${BASE}/images/produtos/cobertura-policarbonato/alveolar/IMG_4432.jpg`;
 
 export async function generateStaticParams() {

@@ -26,7 +26,7 @@ export default function VideoSchema({
     description,
     thumbnailUrl: thumbnailUrl.startsWith('http') 
       ? thumbnailUrl 
-      : `https://coberturapolicarbonato.com.br${thumbnailUrl}`,
+      : `https://www.coberturapolicarbonato.com.br${thumbnailUrl}`,
     uploadDate,
     duration,
     contentUrl,
@@ -36,7 +36,7 @@ export default function VideoSchema({
       name: "Cobersystem",
       logo: {
         "@type": "ImageObject",
-        url: "https://coberturapolicarbonato.com.br/logo-horizontal.svg",
+        url: "https://www.coberturapolicarbonato.com.br/logo-horizontal.svg",
       },
     },
   };

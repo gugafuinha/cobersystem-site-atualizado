@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: "Veja nossa galeria completa de projetos de cobertura retrátil em policarbonato. Área gourmet, churrasqueira, piscina, varanda e muito mais.",
   keywords: "galeria cobertura retrátil, projetos cobertura policarbonato, fotos cobertura, obras cobersystem",
   alternates: {
-    canonical: 'https://coberturapolicarbonato.com.br/galeria',
+    canonical: 'https://www.coberturapolicarbonato.com.br/galeria',
   },
 };
 

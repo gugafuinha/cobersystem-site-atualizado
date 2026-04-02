@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: "Cobertura retrátil em policarbonato com sistema abre e fecha. Automação via Alexa e sensor de chuva. Controle total do clima com abertura de 0 a 90 graus. Estruturas de alumínio personalizadas.",
   keywords: "cobertura retrátil, cobertura abre e fecha, cobertura em policarbonato, cobertura automática, sensor de chuva, automação residencial, Alexa",
   alternates: {
-    canonical: 'https://coberturapolicarbonato.com.br',
+    canonical: 'https://www.coberturapolicarbonato.com.br',
   },
 };
 
@@ -18,10 +18,10 @@ const homeWebSiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: 'Cobersystem',
-  url: 'https://coberturapolicarbonato.com.br',
+  url: 'https://www.coberturapolicarbonato.com.br',
   potentialAction: {
     '@type': 'SearchAction',
-    target: 'https://coberturapolicarbonato.com.br/blog?busca={search_term_string}',
+    target: 'https://www.coberturapolicarbonato.com.br/blog?busca={search_term_string}',
     'query-input': 'required name=search_term_string',
   },
 };

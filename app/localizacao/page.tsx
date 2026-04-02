@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: "Atendemos toda Grande São Paulo, ABC, Guarulhos, Campinas, Sorocaba e região. Coberturas retráteis em policarbonato com automação. Solicite seu orçamento!",
   keywords: "cobertura São Paulo, cobertura ABC, cobertura Guarulhos, cobertura Campinas, cobertura Sorocaba, onde atendemos",
   alternates: {
-    canonical: 'https://coberturapolicarbonato.com.br/localizacao',
+    canonical: 'https://www.coberturapolicarbonato.com.br/localizacao',
   },
 };
 

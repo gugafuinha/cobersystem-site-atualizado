@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: "Cobertura retrátil e abre e fecha em Sorocaba. Policarbonato com automação via Alexa. Orçamento grátis. Atendemos Sorocaba e região.",
   keywords: "cobertura Sorocaba, cobertura retrátil Sorocaba, cobertura interior SP, cobertura Sorocaba orçamento",
   alternates: {
-    canonical: 'https://coberturapolicarbonato.com.br/localizacao/sorocaba',
+    canonical: 'https://www.coberturapolicarbonato.com.br/localizacao/sorocaba',
   },
 };
 

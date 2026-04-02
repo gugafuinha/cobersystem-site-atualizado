@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: "Cobertura retrátil e abre e fecha na Zona Oeste de São Paulo. Atendemos Pinheiros, Vila Madalena, Butantã, Lapa. Orçamento grátis.",
   keywords: "cobertura zona oeste SP, cobertura Pinheiros, cobertura Vila Madalena, cobertura Butantã, cobertura Lapa",
   alternates: {
-    canonical: 'https://coberturapolicarbonato.com.br/localizacao/zona-oeste',
+    canonical: 'https://www.coberturapolicarbonato.com.br/localizacao/zona-oeste',
   },
 };
 

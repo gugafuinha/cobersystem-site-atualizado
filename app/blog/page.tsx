@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: "Aprenda sobre cobertura retrátil, abre e fecha em policarbonato, automação residencial, dicas de instalação e muito mais. Conteúdo exclusivo da Cobersystem.",
   keywords: "blog cobertura retrátil, dicas cobertura policarbonato, automação residencial, sensor chuva, área gourmet, pergolado",
   alternates: {
-    canonical: 'https://coberturapolicarbonato.com.br/blog',
+    canonical: 'https://www.coberturapolicarbonato.com.br/blog',
   },
 };
 

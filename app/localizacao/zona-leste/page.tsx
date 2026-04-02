@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: "Cobertura retrátil e abre e fecha na Zona Leste de São Paulo. Atendemos Vila Prudente, Mooca, Tatuapé, Penha, Itaquera. Orçamento grátis.",
   keywords: "cobertura zona leste SP, cobertura Vila Prudente, cobertura Mooca, cobertura Tatuapé, cobertura Penha, cobertura Itaquera",
   alternates: {
-    canonical: 'https://coberturapolicarbonato.com.br/localizacao/zona-leste',
+    canonical: 'https://www.coberturapolicarbonato.com.br/localizacao/zona-leste',
   },
 };
 

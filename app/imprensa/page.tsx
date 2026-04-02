@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: "Área de imprensa da Cobersystem. Releases, fotos, logos e informações para veículos de comunicação.",
   keywords: "imprensa cobersystem, mídia cobertura retrátil, releases, comunicação",
   alternates: {
-    canonical: 'https://coberturapolicarbonato.com.br/imprensa',
+    canonical: 'https://www.coberturapolicarbonato.com.br/imprensa',
   },
 };
 

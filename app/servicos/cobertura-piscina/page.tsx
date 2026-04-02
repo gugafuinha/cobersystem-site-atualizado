@@ -17,14 +17,14 @@ const productSchema = {
   name: 'Cobertura para Piscina Retrátil',
   description: 'Cobertura retrátil em policarbonato para piscina com automação e proteção contra chuva e folhas.',
   image: [
-    'https://coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/aluminio/IMG_6306.jpg',
+    'https://www.coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/aluminio/IMG_6306.jpg',
   ],
   brand: { '@type': 'Brand', name: 'Cobersystem' },
   offers: {
     '@type': 'Offer',
     priceCurrency: 'BRL',
     availability: 'https://schema.org/InStock',
-    url: 'https://coberturapolicarbonato.com.br/servicos/cobertura-piscina',
+    url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-piscina',
   },
 };
 

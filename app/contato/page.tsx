@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: "Solicite seu orçamento gratuito para cobertura retrátil em policarbonato. Entre em contato com a Cobersystem e transforme seu espaço externo.",
   keywords: "orçamento cobertura retrátil, contato cobersystem, cobertura policarbonato preço, solicitar orçamento",
   alternates: {
-    canonical: 'https://coberturapolicarbonato.com.br/contato',
+    canonical: 'https://www.coberturapolicarbonato.com.br/contato',
   },
 };
 

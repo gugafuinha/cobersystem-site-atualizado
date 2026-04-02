@@ -8,12 +8,12 @@ export const metadata: Metadata = {
   description: "Cobertura retrátil e abre e fecha em São Paulo. Policarbonato com automação Alexa. Atendemos toda Grande SP. Orçamento grátis. Zona Leste, Sul, Oeste, Norte.",
   keywords: "cobertura retrátil São Paulo, cobertura abre e fecha SP, cobertura policarbonato São Paulo, cobertura SP orçamento, cobertura zona leste, cobertura zona sul SP",
   alternates: {
-    canonical: 'https://coberturapolicarbonato.com.br/localizacao/sao-paulo',
+    canonical: 'https://www.coberturapolicarbonato.com.br/localizacao/sao-paulo',
   },
   openGraph: {
     title: "Cobertura Retrátil São Paulo | Cobersystem",
     description: "Cobertura abre e fecha em São Paulo com automação via Alexa. Atendemos toda Grande SP.",
-    url: 'https://coberturapolicarbonato.com.br/localizacao/sao-paulo',
+    url: 'https://www.coberturapolicarbonato.com.br/localizacao/sao-paulo',
   },
 };
 

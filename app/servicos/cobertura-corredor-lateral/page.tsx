@@ -9,15 +9,15 @@ export const metadata: Metadata = {
   description: "Cobertura para corredor lateral em policarbonato. Proteção para passagem lateral da casa. Fixa ou retrátil. Preço e orçamento.",
   keywords: "cobertura corredor lateral, cobertura lateral casa, cobertura passagem lateral, cobertura corredor preço",
   alternates: {
-    canonical: 'https://coberturapolicarbonato.com.br/servicos/cobertura-corredor-lateral',
+    canonical: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-corredor-lateral',
   },
   openGraph: {
     title: "Cobertura para Corredor Lateral | Proteção e Iluminação | Cobersystem",
     description: "Cobertura para corredor lateral com proteção contra intempéries, mantendo ventilação e iluminação natural no ambiente.",
-    url: 'https://coberturapolicarbonato.com.br/servicos/cobertura-corredor-lateral',
+    url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-corredor-lateral',
     images: [
       {
-        url: 'https://coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg',
+        url: 'https://www.coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg',
         width: 1200,
         height: 800,
         alt: 'Cobertura para Corredor Lateral',
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['https://coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg'],
+    images: ['https://www.coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg'],
   },
 };
 
@@ -35,13 +35,13 @@ const productSchema = {
   '@type': 'Product',
   name: 'Cobertura para Corredor Lateral',
   description: 'Cobertura em policarbonato para corredor lateral, protegendo passagem lateral da casa.',
-  image: ['https://coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg'],
+  image: ['https://www.coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg'],
   brand: { '@type': 'Brand', name: 'Cobersystem' },
   offers: {
     '@type': 'Offer',
     priceCurrency: 'BRL',
     availability: 'https://schema.org/InStock',
-    url: 'https://coberturapolicarbonato.com.br/servicos/cobertura-corredor-lateral',
+    url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-corredor-lateral',
   },
 };
 

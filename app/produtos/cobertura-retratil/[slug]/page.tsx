@@ -332,15 +332,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: produto.descricao,
     keywords: `cobertura retrátil, ${produto.nome.toLowerCase()}, policarbonato, automação`,
     alternates: {
-      canonical: `https://coberturapolicarbonato.com.br/produtos/cobertura-retratil/${slug}`,
+      canonical: `https://www.coberturapolicarbonato.com.br/produtos/cobertura-retratil/${slug}`,
     },
     openGraph: {
       title: produto.nome,
       description: produto.descricao,
-      url: `https://coberturapolicarbonato.com.br/produtos/cobertura-retratil/${slug}`,
+      url: `https://www.coberturapolicarbonato.com.br/produtos/cobertura-retratil/${slug}`,
       images: [
         {
-          url: `https://coberturapolicarbonato.com.br${produto.imagem}`,
+          url: `https://www.coberturapolicarbonato.com.br${produto.imagem}`,
           width: 1200,
           height: 900,
           alt: produto.nome,
@@ -351,7 +351,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       card: 'summary_large_image',
       title: produto.nome,
       description: produto.descricao,
-      images: [`https://coberturapolicarbonato.com.br${produto.imagem}`],
+      images: [`https://www.coberturapolicarbonato.com.br${produto.imagem}`],
     },
   };
 }
@@ -375,7 +375,7 @@ export default async function ProdutoDetalhe({ params }: { params: Promise<{ slu
         description={produto.descricao}
         image={produto.imagem}
         price={produto.preco}
-        url={`https://coberturapolicarbonato.com.br/produtos/cobertura-retratil/${slug}`}
+        url={`https://www.coberturapolicarbonato.com.br/produtos/cobertura-retratil/${slug}`}
       />
       <main className="min-h-screen py-12">
         <div className="container mx-auto px-4 max-w-6xl">

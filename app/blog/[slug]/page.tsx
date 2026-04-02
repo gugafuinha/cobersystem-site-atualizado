@@ -46,16 +46,16 @@ export async function generateMetadata(
       type: 'article',
       publishedTime: artigo.data,
       authors: ['Cobersystem'],
-      images: [{ url: `https://coberturapolicarbonato.com.br${artigo.imagem}`, width: 1200, height: 630 }],
+      images: [{ url: `https://www.coberturapolicarbonato.com.br${artigo.imagem}`, width: 1200, height: 630 }],
     },
     twitter: {
       card: 'summary_large_image',
       title: artigo.titulo,
       description: artigo.descricao,
-      images: [`https://coberturapolicarbonato.com.br${artigo.imagem}`],
+      images: [`https://www.coberturapolicarbonato.com.br${artigo.imagem}`],
     },
     alternates: {
-      canonical: `https://coberturapolicarbonato.com.br/blog/${params.slug}`,
+      canonical: `https://www.coberturapolicarbonato.com.br/blog/${params.slug}`,
     },
   };
 }
@@ -76,25 +76,25 @@ export default async function BlogPostPage(
     "@type": "BlogPosting",
     "headline": artigo.titulo,
     "description": artigo.descricao,
-    "image": `https://coberturapolicarbonato.com.br${artigo.imagem}`,
+    "image": `https://www.coberturapolicarbonato.com.br${artigo.imagem}`,
     "datePublished": artigo.data,
     "dateModified": artigo.data,
     "author": {
       "@type": "Organization",
       "name": "Cobersystem",
-      "url": "https://coberturapolicarbonato.com.br"
+      "url": "https://www.coberturapolicarbonato.com.br"
     },
     "publisher": {
       "@type": "Organization",
       "name": "Cobersystem",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://coberturapolicarbonato.com.br/logo.png"
+        "url": "https://www.coberturapolicarbonato.com.br/logo.png"
       }
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://coberturapolicarbonato.com.br/blog/${artigo.slug}`
+      "@id": `https://www.coberturapolicarbonato.com.br/blog/${artigo.slug}`
     },
     "keywords": artigo.palavrasChave.join(', '),
     "articleSection": artigo.categoria

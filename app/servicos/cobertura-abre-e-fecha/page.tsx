@@ -11,15 +11,15 @@ export const metadata: Metadata = {
   description: "Cobertura abre e fecha em policarbonato com automação via Alexa e sensor de chuva. Preço por m², modelos e orçamento. Sistema retrátil que abre de 0 a 90 graus. Controle total do clima sem perder ventilação.",
   keywords: "cobertura abre e fecha preço, cobertura abre e fecha SP, cobertura retrátil automatizada, cobertura abre e fecha policarbonato, cobertura automática preço, cobertura retrátil policarbonato",
   alternates: {
-    canonical: 'https://coberturapolicarbonato.com.br/servicos/cobertura-abre-e-fecha',
+    canonical: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-abre-e-fecha',
   },
   openGraph: {
     title: "Cobertura Abre e Fecha | Preço e Automação | Cobersystem",
     description: "Cobertura retrátil que abre e fecha com automação via Alexa. Controle total do clima sem perder ventilação.",
-    url: 'https://coberturapolicarbonato.com.br/servicos/cobertura-abre-e-fecha',
+    url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-abre-e-fecha',
     images: [
       {
-        url: 'https://coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg',
+        url: 'https://www.coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg',
         width: 1200,
         height: 900,
         alt: 'Cobertura Abre e Fecha Automatizada',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['https://coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg'],
+    images: ['https://www.coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg'],
   },
 };
 
@@ -38,7 +38,7 @@ const productSchema = {
   name: 'Cobertura Abre e Fecha Automatizada',
   description: 'Cobertura retrátil em policarbonato com sistema abre e fecha automatizado via Alexa e sensor de chuva. Abertura de 0 a 90 graus.',
   image: [
-    'https://coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg',
+    'https://www.coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg',
   ],
   brand: {
     '@type': 'Brand',
@@ -48,7 +48,7 @@ const productSchema = {
     '@type': 'Offer',
     priceCurrency: 'BRL',
     availability: 'https://schema.org/InStock',
-    url: 'https://coberturapolicarbonato.com.br/servicos/cobertura-abre-e-fecha',
+    url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-abre-e-fecha',
   },
 };
 

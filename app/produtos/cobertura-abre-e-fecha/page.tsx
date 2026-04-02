@@ -5,7 +5,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import ProductVejaTambem from '@/components/ProductVejaTambem';
 import { CIDADES_COBERTURA_ABRE_E_FECHA } from '@/lib/cobertura-abre-e-fecha-cidades';
 
-const BASE = 'https://coberturapolicarbonato.com.br';
+const BASE = 'https://www.coberturapolicarbonato.com.br';
 const OG_IMAGE = `${BASE}/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg`;
 
 export const metadata: Metadata = {

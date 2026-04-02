@@ -9,15 +9,15 @@ export const metadata: Metadata = {
   description: "Conheça todos os nossos serviços em coberturas retráteis e fixas. Cobertura abre e fecha, área gourmet, piscina, garagem e muito mais. Solicite seu orçamento!",
   keywords: "serviços cobertura, cobertura retrátil, cobertura fixa, cobertura área gourmet, cobertura piscina, serviços cobersystem",
   alternates: {
-    canonical: 'https://coberturapolicarbonato.com.br/servicos',
+    canonical: 'https://www.coberturapolicarbonato.com.br/servicos',
   },
   openGraph: {
     title: "Nossos Serviços | Coberturas Retráteis e Fixas | Cobersystem",
     description: "Conheça todos os nossos serviços em coberturas retráteis e fixas para área gourmet, piscina, garagem e muito mais.",
-    url: 'https://coberturapolicarbonato.com.br/servicos',
+    url: 'https://www.coberturapolicarbonato.com.br/servicos',
     images: [
       {
-        url: 'https://coberturapolicarbonato.com.br/images/blog/cobertura-abre-fecha.jpg',
+        url: 'https://www.coberturapolicarbonato.com.br/images/blog/cobertura-abre-fecha.jpg',
         width: 1200,
         height: 800,
         alt: 'Serviços de Coberturas Cobersystem',
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['https://coberturapolicarbonato.com.br/images/blog/cobertura-abre-fecha.jpg'],
+    images: ['https://www.coberturapolicarbonato.com.br/images/blog/cobertura-abre-fecha.jpg'],
   },
 };
 
@@ -113,7 +113,7 @@ const servicosItemListSchema = {
     '@type': 'ListItem',
     position: index + 1,
     name: servico.title,
-    url: `https://coberturapolicarbonato.com.br/servicos/${servico.slug}`,
+    url: `https://www.coberturapolicarbonato.com.br/servicos/${servico.slug}`,
   })),
 };
 

@@ -28,7 +28,7 @@ export default function ProductSchema({
     "@type": "Product",
     name,
     description,
-    image: `https://coberturapolicarbonato.com.br${image}`,
+    image: `https://www.coberturapolicarbonato.com.br${image}`,
     brand: {
       "@type": "Brand",
       name: brand,
@@ -45,7 +45,7 @@ export default function ProductSchema({
       seller: {
         "@type": "Organization",
         name: "Cobersystem",
-        url: "https://coberturapolicarbonato.com.br",
+        url: "https://www.coberturapolicarbonato.com.br",
       },
     },
     aggregateRating: {
@@ -58,7 +58,7 @@ export default function ProductSchema({
     manufacturer: {
       "@type": "Organization",
       name: "Cobersystem",
-      url: "https://coberturapolicarbonato.com.br",
+      url: "https://www.coberturapolicarbonato.com.br",
     },
   };
 

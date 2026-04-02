@@ -9,15 +9,15 @@ export const metadata: Metadata = {
   description: "Cobertura em alumínio com telhas e estrutura de alta qualidade. Pintura eletrostática personalizada. Resistente à corrosão. Preço e orçamento.",
   keywords: "cobertura de alumínio, telhas de alumínio, estrutura alumínio cobertura, cobertura alumínio preço, empresa cobertura alumínio",
   alternates: {
-    canonical: 'https://coberturapolicarbonato.com.br/servicos/cobertura-aluminio',
+    canonical: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-aluminio',
   },
   openGraph: {
     title: "Cobertura de Alumínio | Estrutura Resistente e Durável | Cobersystem",
     description: "Cobertura de alumínio com estrutura robusta, acabamento de qualidade e alta durabilidade para áreas residenciais e comerciais.",
-    url: 'https://coberturapolicarbonato.com.br/servicos/cobertura-aluminio',
+    url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-aluminio',
     images: [
       {
-        url: 'https://coberturapolicarbonato.com.br/images/projetos/abre-fecha-alveolar-01.jpg',
+        url: 'https://www.coberturapolicarbonato.com.br/images/projetos/abre-fecha-alveolar-01.jpg',
         width: 1200,
         height: 800,
         alt: 'Cobertura de Alumínio',
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['https://coberturapolicarbonato.com.br/images/projetos/abre-fecha-alveolar-01.jpg'],
+    images: ['https://www.coberturapolicarbonato.com.br/images/projetos/abre-fecha-alveolar-01.jpg'],
   },
 };
 
@@ -35,13 +35,13 @@ const productSchema = {
   '@type': 'Product',
   name: 'Cobertura de Alumínio',
   description: 'Cobertura em alumínio com telhas e estrutura de alta qualidade, pintura eletrostática personalizada.',
-  image: ['https://coberturapolicarbonato.com.br/images/projetos/abre-fecha-alveolar-01.jpg'],
+  image: ['https://www.coberturapolicarbonato.com.br/images/projetos/abre-fecha-alveolar-01.jpg'],
   brand: { '@type': 'Brand', name: 'Cobersystem' },
   offers: {
     '@type': 'Offer',
     priceCurrency: 'BRL',
     availability: 'https://schema.org/InStock',
-    url: 'https://coberturapolicarbonato.com.br/servicos/cobertura-aluminio',
+    url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-aluminio',
   },
 };
 

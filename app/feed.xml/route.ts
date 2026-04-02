@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-const baseUrl = 'https://coberturapolicarbonato.com.br';
+const baseUrl = 'https://www.coberturapolicarbonato.com.br';
 
 const artigos = [
   {

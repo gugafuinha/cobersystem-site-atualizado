@@ -145,15 +145,15 @@ export async function generateMetadata({
     description: produto.descricao,
     keywords: `cobertura termoacústica, cobertura sanduíche, ${produto.nome.toLowerCase()}, isolamento`,
     alternates: {
-      canonical: `https://coberturapolicarbonato.com.br/produtos/cobertura-termoacustica/${slug}`,
+      canonical: `https://www.coberturapolicarbonato.com.br/produtos/cobertura-termoacustica/${slug}`,
     },
     openGraph: {
       title: produto.nome,
       description: produto.descricao,
-      url: `https://coberturapolicarbonato.com.br/produtos/cobertura-termoacustica/${slug}`,
+      url: `https://www.coberturapolicarbonato.com.br/produtos/cobertura-termoacustica/${slug}`,
       images: [
         {
-          url: `https://coberturapolicarbonato.com.br${produto.imagem}`,
+          url: `https://www.coberturapolicarbonato.com.br${produto.imagem}`,
           width: 1200,
           height: 800,
           alt: produto.nome,
@@ -164,7 +164,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title: produto.nome,
       description: produto.descricao,
-      images: [`https://coberturapolicarbonato.com.br${produto.imagem}`],
+      images: [`https://www.coberturapolicarbonato.com.br${produto.imagem}`],
     },
   };
 }
@@ -188,7 +188,7 @@ export default async function ProdutoTermoacusticaDetalhe({
         description={produto.descricao}
         image={produto.imagem}
         price={produto.preco}
-        url={`https://coberturapolicarbonato.com.br/produtos/cobertura-termoacustica/${slug}`}
+        url={`https://www.coberturapolicarbonato.com.br/produtos/cobertura-termoacustica/${slug}`}
       />
       <main className="min-h-screen py-12">
         <div className="container mx-auto max-w-6xl px-4">

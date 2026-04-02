@@ -10,7 +10,7 @@ import {
 } from '@/lib/cobertura-retratil-cidades';
 import { SAO_PAULO_BAIRROS } from '@/lib/sao-paulo-bairros';
 
-const BASE = 'https://coberturapolicarbonato.com.br';
+const BASE = 'https://www.coberturapolicarbonato.com.br';
 const OG_IMAGE = `${BASE}/images/produtos/cobertura-retratil/aluminio/IMG_0305.jpg`;
 
 const MODELOS_LINHA = [

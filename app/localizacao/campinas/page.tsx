@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: "Cobertura retrátil e abre e fecha em Campinas. Policarbonato com automação via Alexa. Orçamento grátis. Atendemos Campinas e região.",
   keywords: "cobertura Campinas, cobertura retrátil Campinas, cobertura interior SP, cobertura Campinas orçamento",
   alternates: {
-    canonical: 'https://coberturapolicarbonato.com.br/localizacao/campinas',
+    canonical: 'https://www.coberturapolicarbonato.com.br/localizacao/campinas',
   },
 };
 

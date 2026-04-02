@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: "Cobertura retrátil e abre e fecha na Zona Sul de São Paulo. Atendemos Moema, Vila Olímpia, Campo Belo, Jabaquara. Orçamento grátis.",
   keywords: "cobertura zona sul SP, cobertura Moema, cobertura Vila Olímpia, cobertura Campo Belo, cobertura Jabaquara, cobertura para piscina Moema",
   alternates: {
-    canonical: 'https://coberturapolicarbonato.com.br/localizacao/zona-sul',
+    canonical: 'https://www.coberturapolicarbonato.com.br/localizacao/zona-sul',
   },
 };
 

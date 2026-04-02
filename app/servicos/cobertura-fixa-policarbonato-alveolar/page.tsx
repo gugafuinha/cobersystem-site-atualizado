@@ -11,15 +11,15 @@ export const metadata: Metadata = {
   description: "Cobertura fixa em policarbonato alveolar. Excelente isolamento térmico e acústico. Proteção permanente. Preço por m² e orçamento. Ideal para áreas que precisam de conforto térmico.",
   keywords: "cobertura fixa policarbonato alveolar, policarbonato alveolar preço, cobertura termoacústica, isolamento térmico cobertura, cobertura fixa SP",
   alternates: {
-    canonical: 'https://coberturapolicarbonato.com.br/servicos/cobertura-fixa-policarbonato-alveolar',
+    canonical: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-fixa-policarbonato-alveolar',
   },
   openGraph: {
     title: "Cobertura Fixa Policarbonato Alveolar | Preço e Isolamento | Cobersystem",
     description: "Cobertura fixa em policarbonato alveolar com excelente isolamento térmico e acústico. Proteção permanente e conforto.",
-    url: 'https://coberturapolicarbonato.com.br/servicos/cobertura-fixa-policarbonato-alveolar',
+    url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-fixa-policarbonato-alveolar',
     images: [
       {
-        url: 'https://coberturapolicarbonato.com.br/images/projetos/fixa-01.jpg',
+        url: 'https://www.coberturapolicarbonato.com.br/images/projetos/fixa-01.jpg',
         width: 1200,
         height: 800,
         alt: 'Cobertura Fixa em Policarbonato Alveolar',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['https://coberturapolicarbonato.com.br/images/projetos/fixa-01.jpg'],
+    images: ['https://www.coberturapolicarbonato.com.br/images/projetos/fixa-01.jpg'],
   },
 };
 
@@ -37,13 +37,13 @@ const productSchema = {
   '@type': 'Product',
   name: 'Cobertura Fixa Policarbonato Alveolar',
   description: 'Cobertura fixa em policarbonato alveolar com excelente isolamento térmico e acústico.',
-  image: ['https://coberturapolicarbonato.com.br/images/projetos/fixa-01.jpg'],
+  image: ['https://www.coberturapolicarbonato.com.br/images/projetos/fixa-01.jpg'],
   brand: { '@type': 'Brand', name: 'Cobersystem' },
   offers: {
     '@type': 'Offer',
     priceCurrency: 'BRL',
     availability: 'https://schema.org/InStock',
-    url: 'https://coberturapolicarbonato.com.br/servicos/cobertura-fixa-policarbonato-alveolar',
+    url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-fixa-policarbonato-alveolar',
   },
 };
 

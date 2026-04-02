@@ -10,15 +10,15 @@ export const metadata: Metadata = {
   description: "Cobertura termoacústica em policarbonato alveolar. Excelente isolamento térmico e acústico. Reduz temperatura e ruído. Preço e orçamento.",
   keywords: "cobertura termoacústica, cobertura isolamento térmico, cobertura isolamento acústico, policarbonato termoacústico, sanduíche TR40",
   alternates: {
-    canonical: 'https://coberturapolicarbonato.com.br/servicos/cobertura-termoacustica',
+    canonical: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-termoacustica',
   },
   openGraph: {
     title: "Cobertura Termoacústica | Isolamento Térmico e Acústico | Cobersystem",
     description: "Cobertura termoacústica com excelente desempenho térmico e acústico para ambientes residenciais e comerciais.",
-    url: 'https://coberturapolicarbonato.com.br/servicos/cobertura-termoacustica',
+    url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-termoacustica',
     images: [
       {
-        url: 'https://coberturapolicarbonato.com.br/images/projetos/fixa-01.jpg',
+        url: 'https://www.coberturapolicarbonato.com.br/images/projetos/fixa-01.jpg',
         width: 1200,
         height: 800,
         alt: 'Cobertura Termoacústica',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['https://coberturapolicarbonato.com.br/images/projetos/fixa-01.jpg'],
+    images: ['https://www.coberturapolicarbonato.com.br/images/projetos/fixa-01.jpg'],
   },
 };
 
@@ -36,13 +36,13 @@ const productSchema = {
   '@type': 'Product',
   name: 'Cobertura Termoacústica',
   description: 'Cobertura termoacústica em policarbonato alveolar com excelente isolamento térmico e acústico.',
-  image: ['https://coberturapolicarbonato.com.br/images/projetos/fixa-01.jpg'],
+  image: ['https://www.coberturapolicarbonato.com.br/images/projetos/fixa-01.jpg'],
   brand: { '@type': 'Brand', name: 'Cobersystem' },
   offers: {
     '@type': 'Offer',
     priceCurrency: 'BRL',
     availability: 'https://schema.org/InStock',
-    url: 'https://coberturapolicarbonato.com.br/servicos/cobertura-termoacustica',
+    url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-termoacustica',
   },
 };
 

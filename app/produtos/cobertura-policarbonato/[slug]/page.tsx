@@ -154,15 +154,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: produto.descricao,
     keywords: `cobertura fixa, ${produto.nome.toLowerCase()}, policarbonato, cobertura permanente`,
     alternates: {
-      canonical: `https://coberturapolicarbonato.com.br/produtos/cobertura-policarbonato/${slug}`,
+      canonical: `https://www.coberturapolicarbonato.com.br/produtos/cobertura-policarbonato/${slug}`,
     },
     openGraph: {
       title: produto.nome,
       description: produto.descricao,
-      url: `https://coberturapolicarbonato.com.br/produtos/cobertura-policarbonato/${slug}`,
+      url: `https://www.coberturapolicarbonato.com.br/produtos/cobertura-policarbonato/${slug}`,
       images: [
         {
-          url: `https://coberturapolicarbonato.com.br${produto.imagem}`,
+          url: `https://www.coberturapolicarbonato.com.br${produto.imagem}`,
           width: 1200,
           height: 800,
           alt: produto.nome,
@@ -173,7 +173,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       card: 'summary_large_image',
       title: produto.nome,
       description: produto.descricao,
-      images: [`https://coberturapolicarbonato.com.br${produto.imagem}`],
+      images: [`https://www.coberturapolicarbonato.com.br${produto.imagem}`],
     },
   };
 }
@@ -195,7 +195,7 @@ export default async function ProdutoFixaDetalhe({ params }: { params: Promise<{
         description={produto.descricao}
         image={produto.imagem}
         price={produto.preco}
-        url={`https://coberturapolicarbonato.com.br/produtos/cobertura-policarbonato/${slug}`}
+        url={`https://www.coberturapolicarbonato.com.br/produtos/cobertura-policarbonato/${slug}`}
       />
       <main className="min-h-screen py-12">
         <div className="container mx-auto px-4 max-w-6xl">

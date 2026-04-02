@@ -8,7 +8,7 @@ import {
 } from '@/lib/sao-paulo-bairros';
 import { getConteudoBairroLinha } from '@/lib/sao-paulo-bairros-conteudo';
 
-const BASE = 'https://coberturapolicarbonato.com.br';
+const BASE = 'https://www.coberturapolicarbonato.com.br';
 const SEGMENT = 'cobertura-abre-e-fecha';
 const OG_IMAGE = `${BASE}/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg`;
 

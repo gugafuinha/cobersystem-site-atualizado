@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: "Cobertura retrátil e abre e fecha em São Bernardo do Campo. Policarbonato com automação via Alexa. Orçamento grátis.",
   keywords: "cobertura São Bernardo, cobertura São Bernardo do Campo, cobertura ABC, cobertura São Bernardo orçamento",
   alternates: {
-    canonical: 'https://coberturapolicarbonato.com.br/localizacao/sao-bernardo',
+    canonical: 'https://www.coberturapolicarbonato.com.br/localizacao/sao-bernardo',
   },
 };
 

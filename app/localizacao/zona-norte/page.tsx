@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: "Cobertura retrátil e abre e fecha na Zona Norte de São Paulo. Atendemos Santana, Tucuruvi, Vila Guilherme. Orçamento grátis.",
   keywords: "cobertura zona norte SP, cobertura Santana, cobertura Tucuruvi, cobertura Vila Guilherme",
   alternates: {
-    canonical: 'https://coberturapolicarbonato.com.br/localizacao/zona-norte',
+    canonical: 'https://www.coberturapolicarbonato.com.br/localizacao/zona-norte',
   },
 };
 

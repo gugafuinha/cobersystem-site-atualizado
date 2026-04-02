@@ -8,7 +8,7 @@ import {
 } from '@/lib/sao-paulo-bairros';
 import { getConteudoBairroLinha } from '@/lib/sao-paulo-bairros-conteudo';
 
-const BASE = 'https://coberturapolicarbonato.com.br';
+const BASE = 'https://www.coberturapolicarbonato.com.br';
 const SEGMENT = 'cobertura-termoacustica';
 const OG_IMAGE = `${BASE}/images/produtos/cobertura-termoacustica/b54559ed-ffaf-43eb-a738-e9d347954f5a.jpg`;
 
