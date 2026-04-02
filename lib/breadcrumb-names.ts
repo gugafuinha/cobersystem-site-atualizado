@@ -22,6 +22,8 @@ export const breadcrumbNames: Record<string, string> = {
   blog: 'Blog',
   sobre: 'Sobre Nós',
   contato: 'Contato',
+  orcamento: 'Orçamento',
   faq: 'Perguntas Frequentes',
+  cases: 'Cases de Sucesso',
   'cases-sucesso': 'Cases de Sucesso',
 };

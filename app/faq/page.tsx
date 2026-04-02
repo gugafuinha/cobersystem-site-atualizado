@@ -1,262 +1,347 @@
-import type { Metadata } from 'next';
+'use client';
 
-export const metadata: Metadata = {
-  title: "FAQ - Perguntas Frequentes sobre Cobertura em Policarbonato | Cobersystem",
-  description: "Tire todas suas dúvidas sobre cobertura retrátil, cobertura em policarbonato, automação, instalação, preços, manutenção e garantia. Perguntas e respostas completas.",
-  keywords: "faq cobertura policarbonato, dúvidas cobertura retrátil, quanto custa cobertura, instalação cobertura, garantia policarbonato, manutenção cobertura, cobertura abre fecha dúvidas",
-  alternates: {
-    canonical: 'https://coberturapolicarbonato.com.br/faq',
+import { useEffect, useMemo, useState } from 'react';
+import Breadcrumb from '@/components/seo/Breadcrumb';
+import StructuredData from '@/components/seo/StructuredData';
+
+const faqs = [
+  {
+    id: 1,
+    categoria: 'Geral',
+    pergunta: 'Quanto tempo demora para receber o orçamento?',
+    resposta:
+      'Nosso prazo de resposta é de até 24 horas úteis. Em casos urgentes, você pode entrar em contato diretamente via WhatsApp (11) 94361-5079 para agilizar o atendimento.',
   },
-  openGraph: {
-    title: "FAQ - Perguntas Frequentes | Cobersystem",
-    description: "Tire suas dúvidas sobre cobertura em policarbonato retrátil e fixa",
+  {
+    id: 2,
+    categoria: 'Geral',
+    pergunta: 'Atendem em quais regiões?',
+    resposta:
+      'Atendemos toda a Grande São Paulo (Capital, Zona Leste, Zona Sul, Zona Norte, Zona Oeste) e região metropolitana (Guarulhos, Osasco, ABC, Barueri, etc.). Para cidades mais distantes, consulte disponibilidade.',
   },
+  {
+    id: 3,
+    categoria: 'Geral',
+    pergunta: 'A visita técnica é cobrada?',
+    resposta:
+      'Não! A visita técnica para medição e elaboração do projeto é 100% gratuita e sem compromisso. Só cobramos após aprovação do orçamento e contratação do serviço.',
+  },
+  {
+    id: 4,
+    categoria: 'Produtos',
+    pergunta: 'Qual a diferença entre cobertura retrátil e fixa?',
+    resposta:
+      'A cobertura fixa é permanente, instalada de forma definitiva. A cobertura retrátil abre e fecha, permitindo controlar quando quer proteção ou céu aberto. A retrátil custa cerca de 60-80% mais que a fixa, mas oferece flexibilidade total.',
+  },
+  {
+    id: 5,
+    categoria: 'Produtos',
+    pergunta: 'Policarbonato alveolar ou compacto: qual escolher?',
+    resposta:
+      'Alveolar (com câmaras de ar) é mais leve, econômico e tem melhor isolamento térmico - ideal para garagens e áreas de serviço. Compacto é 100% transparente tipo vidro, mais resistente a impactos, ideal para piscinas e varandas onde transparência total importa.',
+  },
+  {
+    id: 6,
+    categoria: 'Produtos',
+    pergunta: 'A cobertura bloqueia raios UV?',
+    resposta:
+      'Sim! Nosso policarbonato tem camada de proteção UV que bloqueia 99% dos raios UVA e UVB. Isso protege pessoas, móveis e veículos sem perder a luminosidade natural.',
+  },
+  {
+    id: 7,
+    categoria: 'Produtos',
+    pergunta: 'Cobertura termoacústica realmente reduz o barulho da chuva?',
+    resposta:
+      'Sim! A telha termoacústica sanduíche bloqueia cerca de 95% do ruído da chuva (redução de 25-35 decibéis). Você consegue conversar normalmente mesmo em chuva forte.',
+  },
+  {
+    id: 8,
+    categoria: 'Produtos',
+    pergunta: 'A automação via Alexa funciona mesmo?',
+    resposta:
+      'Funciona perfeitamente! Basta dar comando de voz "Alexa, abrir cobertura" ou "Alexa, fechar cobertura". Também integramos com Google Home e controle via app no smartphone.',
+  },
+  {
+    id: 9,
+    categoria: 'Instalação',
+    pergunta: 'Quanto tempo demora a instalação?',
+    resposta:
+      'Cobertura fixa: 2 a 4 dias. Cobertura retrátil: 3 a 5 dias. Projetos maiores (acima de 50m²) podem levar até 7 dias. Trabalhamos de segunda a sexta, das 8h às 18h, e sábados até 13h.',
+  },
+  {
+    id: 10,
+    categoria: 'Instalação',
+    pergunta: 'Precisa quebrar paredes ou fazer obra?',
+    resposta:
+      'Não! A instalação é clean, sem quebra de paredes. Fazemos apenas furos para fixação da estrutura. No final do dia, limpamos tudo e você pode usar o espaço normalmente.',
+  },
+  {
+    id: 11,
+    categoria: 'Instalação',
+    pergunta: 'Posso usar a área durante a instalação?',
+    resposta:
+      'Depende do tipo de cobertura. Para coberturas fixas pequenas, geralmente sim. Para retráteis ou projetos maiores, recomendamos evitar usar a área por segurança durante os 2-3 primeiros dias.',
+  },
+  {
+    id: 12,
+    categoria: 'Instalação',
+    pergunta: 'Precisa de aprovação do condomínio?',
+    resposta:
+      'Para apartamentos e condomínios, SIM, sempre precisa aprovação prévia. Fornecemos toda documentação necessária (projeto técnico, memorial descritivo) e orientamos no processo sem custo adicional. Aprovação leva em média 15-30 dias.',
+  },
+  {
+    id: 13,
+    categoria: 'Pagamento',
+    pergunta: 'Quais as formas de pagamento?',
+    resposta:
+      'Aceitamos: (1) À vista com desconto de 5-10% via PIX ou boleto, (2) Parcelado: entrada de 30% + saldo em até 6x sem juros no cartão, (3) Parcelado via boleto: entrada 40% + até 4x.',
+  },
+  {
+    id: 14,
+    categoria: 'Pagamento',
+    pergunta: 'Quando devo pagar?',
+    resposta:
+      'Entrada de 30-40% na assinatura do contrato (antes da instalação). Restante parcelado durante e após conclusão da obra. Última parcela só após vistoria final e aprovação do cliente.',
+  },
+  {
+    id: 15,
+    categoria: 'Pagamento',
+    pergunta: 'O orçamento tem validade?',
+    resposta:
+      'Sim, nossos orçamentos têm validade de 30 dias. Após esse prazo, devido à variação de preços de materiais, precisamos revalidar os valores.',
+  },
+  {
+    id: 16,
+    categoria: 'Garantia',
+    pergunta: 'Qual a garantia oferecida?',
+    resposta:
+      'Garantimos 2 anos para estrutura, instalação e materiais (policarbonato, telhas, automação). Isso cobre defeitos de fabricação e instalação. Problemas causados por mau uso ou fenômenos naturais extremos não estão cobertos.',
+  },
+  {
+    id: 17,
+    categoria: 'Garantia',
+    pergunta: 'Qual a vida útil da cobertura?',
+    resposta:
+      'Policarbonato: 15-20 anos. Estrutura de alumínio: 30+ anos. Telha termoacústica: 30-40 anos. Sistema retrátil (motor e mecanismo): 10-15 anos com manutenção adequada.',
+  },
+  {
+    id: 18,
+    categoria: 'Garantia',
+    pergunta: 'Precisa fazer manutenção?',
+    resposta:
+      'Sim, mas é simples: limpeza com água e detergente neutro a cada 3-6 meses, verificação de parafusos anualmente, lubrificação de trilhos (retrátil) semestralmente. Fornecemos manual completo de manutenção.',
+  },
+  {
+    id: 19,
+    categoria: 'Garantia',
+    pergunta: 'E se der problema depois da garantia?',
+    resposta:
+      'Continuamos oferecendo suporte técnico mesmo após os 2 anos de garantia. Cobramos apenas mão de obra e peças de reposição se necessário. Temos peças disponíveis e equipe treinada.',
+  },
+  {
+    id: 20,
+    categoria: 'Garantia',
+    pergunta: 'A cobertura resiste a granizo e vendaval?',
+    resposta:
+      'Sim! Nosso policarbonato resiste a granizo de até 3cm e ventos de até 100 km/h. A estrutura é dimensionada seguindo normas técnicas (NBR) para suportar cargas de vento e chuva da região.',
+  },
+] as const;
+
+const categorias = [
+  'Todas',
+  'Geral',
+  'Produtos',
+  'Instalação',
+  'Pagamento',
+  'Garantia',
+] as const;
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.pergunta,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.resposta,
+    },
+  })),
 };
 
-const faqCategories = [
-  {
-    categoria: "Produtos e Tipos",
-    perguntas: [
-      {
-        pergunta: "Qual a diferença entre cobertura retrátil e cobertura fixa em policarbonato?",
-        resposta: "A cobertura retrátil possui sistema abre e fecha com abertura de 0 a 90 graus, permitindo ventilação controlada. Já a cobertura fixa é permanente, ideal para proteção total. A retrátil é perfeita para áreas gourmet que precisam de ventilação, enquanto a fixa é melhor para garagens e proteção constante."
-      },
-      {
-        pergunta: "O que é policarbonato alveolar e policarbonato compacto?",
-        resposta: "Policarbonato alveolar possui câmaras de ar internas (ocas) que proporcionam isolamento térmico e acústico superior. O policarbonato compacto é maciço, 100% transparente e mais resistente a impactos. O alveolar é ideal para conforto térmico, o compacto para máxima luminosidade."
-      },
-      {
-        pergunta: "O que é cobertura termoacústica (sanduíche)?",
-        resposta: "É uma cobertura com duas chapas metálicas e recheio isolante (EPS, PU ou Lã de Rocha) no meio. Reduz temperatura interna em até 15°C e ruído em até 45 dB. Ideal para galpões industriais, estabelecimentos comerciais e locais que precisam de isolamento térmico e acústico."
-      },
-      {
-        pergunta: "Veneziana em policarbonato é diferente de persiana?",
-        resposta: "Sim! A veneziana em policarbonato é um fechamento lateral fixo com lâminas inclinadas que permitem ventilação natural enquanto protegem contra chuva lateral. É usada em galpões, quadras e áreas externas. Persiana é móvel e vai em janelas."
-      }
-    ]
-  },
-  {
-    categoria: "Automação e Tecnologia",
-    perguntas: [
-      {
-        pergunta: "Como funciona a automação da cobertura retrátil?",
-        resposta: "Oferecemos 3 opções: 1) Controle remoto manual, 2) Sensor de chuva automático (fecha sozinho quando detecta chuva), 3) Integração com Alexa para comando de voz. Você pode combinar as três opções e também controlar pelo app no celular."
-      },
-      {
-        pergunta: "O sensor de chuva é confiável? Quanto tempo demora para fechar?",
-        resposta: "Sim, é altamente confiável! O sensor detecta as primeiras gotas em 3-5 segundos e aciona o fechamento automático. A cobertura fecha completamente em 15-30 segundos dependendo do tamanho. Possui bateria de backup para funcionar mesmo sem energia elétrica."
-      },
-      {
-        pergunta: "Posso integrar com Google Home ou Apple HomeKit?",
-        resposta: "Atualmente oferecemos integração nativa com Alexa (Amazon). Para Google Home e HomeKit é possível através de hubs intermediários como SmartThings ou Home Assistant. Nossa equipe técnica pode auxiliar na configuração."
-      },
-      {
-        pergunta: "A automação funciona durante falta de energia?",
-        resposta: "O sensor de chuva possui bateria interna de backup que dura até 8 horas. O motor pode ser equipado com bateria opcional para funcionamento durante quedas de energia. Também é possível abrir/fechar manualmente em caso de emergência."
-      }
-    ]
-  },
-  {
-    categoria: "Instalação e Obra",
-    perguntas: [
-      {
-        pergunta: "Quanto tempo demora a instalação?",
-        resposta: "Instalação padrão (até 20m²): 1-2 dias. Projetos maiores (20-50m²): 3-5 dias. Inclui: fixação da estrutura, instalação do policarbonato, testes e configuração de automação. Fazemos tudo sem sujeira e com equipe especializada."
-      },
-      {
-        pergunta: "Precisa quebrar ou fazer muita obra?",
-        resposta: "Não! A instalação é limpa e rápida. Fixamos a estrutura de alumínio nas paredes/pilares existentes com buchas químicas de alta resistência. Não precisa quebrar piso, parede ou teto. Apenas furos pequenos para fixação."
-      },
-      {
-        pergunta: "Posso instalar em apartamento?",
-        resposta: "Sim! Instalamos em varandas e coberturas de apartamentos. Verificamos estrutura e cargas com laudo técnico. Muitos condomínios já aprovam por melhorar a estética. Fornecemos toda documentação para apresentar ao síndico."
-      },
-      {
-        pergunta: "Precisa de aprovação da prefeitura ou condomínio?",
-        resposta: "Depende. Casas térreas normalmente não precisam. Apartamentos: verificar regras do condomínio (fornecemos projeto para aprovar). Áreas comerciais grandes podem precisar de ART/RRT. Nossa equipe auxilia com toda documentação necessária."
-      }
-    ]
-  },
-  {
-    categoria: "Preços e Orçamento",
-    perguntas: [
-      {
-        pergunta: "Quanto custa uma cobertura retrátil em policarbonato?",
-        resposta: "Varia conforme tamanho, tipo de policarbonato e automação. Valores médios: Cobertura básica (12m²): R$ 8.000-12.000. Com automação (15m²): R$ 15.000-22.000. Projetos especiais: orçamento personalizado. Fazemos visita técnica gratuita e orçamento detalhado sem compromisso."
-      },
-      {
-        pergunta: "O que está incluso no orçamento?",
-        resposta: "Inclui: estrutura de alumínio completa, policarbonato especificado, perfis e acessórios, mão de obra de instalação, automação (se contratada), testes e garantia. NÃO inclui: eventuais reforços estruturais necessários, pintura, acabamentos extras."
-      },
-      {
-        pergunta: "Tem desconto para pagamento à vista?",
-        resposta: "Sim! Oferecemos até 10% de desconto para pagamento à vista. Também parcelamos em até 12x no cartão de crédito ou financiamos em até 48x via bancos parceiros (consulte condições). Aceitamos PIX, transferência, cartão e cheque."
-      },
-      {
-        pergunta: "O que encarece mais o projeto?",
-        resposta: "Principais fatores: 1) Tamanho/área (quanto maior, maior o custo), 2) Tipo de policarbonato (compacto é 30-40% mais caro que alveolar), 3) Automação completa (Alexa + sensor), 4) Estrutura reforçada para vãos grandes, 5) Cores/acabamentos especiais."
-      }
-    ]
-  },
-  {
-    categoria: "Manutenção e Durabilidade",
-    perguntas: [
-      {
-        pergunta: "Quanto tempo dura uma cobertura de policarbonato?",
-        resposta: "Com manutenção adequada: 15-25 anos. O policarbonato com proteção UV mantém transparência por 10+ anos. A estrutura de alumínio é praticamente eterna (não enferruja). Motor da automação: 8-12 anos. Oferecemos planos de manutenção preventiva."
-      },
-      {
-        pergunta: "O policarbonato amarela com o tempo?",
-        resposta: "Policarbonato DE QUALIDADE com proteção UV dos dois lados NÃO amarela. O nosso possui camada anti-UV que garante transparência por 10+ anos. Evite policarbonatos baratos sem proteção UV que amarelarão em 2-3 anos. Fornecemos certificado de garantia contra amarelamento."
-      },
-      {
-        pergunta: "Que tipo de manutenção precisa fazer?",
-        resposta: "Limpeza: água + sabão neutro a cada 6 meses. Lubrificação: trilhos e motor anualmente. Verificação: parafusos e vedações a cada 12 meses. Oferecemos pacotes de manutenção preventiva com visitas programadas. Manutenção é simples e rápida."
-      },
-      {
-        pergunta: "E se quebrar uma chapa de policarbonato? É caro trocar?",
-        resposta: "Policarbonato é 200x mais resistente que vidro, dificilmente quebra. Se ocorrer dano (queda de galho, granizo extremo), a troca é simples. Custo: R$ 300-800 dependendo do tamanho da chapa. Nossa garantia cobre defeitos de fabricação por 5 anos."
-      }
-    ]
-  },
-  {
-    categoria: "Garantias e Segurança",
-    perguntas: [
-      {
-        pergunta: "Qual a garantia da cobertura?",
-        resposta: "5 anos de garantia total contra defeitos de fabricação e instalação. Inclui: estrutura de alumínio, policarbonato (contra amarelamento e quebra por defeito), automação, e mão de obra. Garantia estendida de até 10 anos disponível."
-      },
-      {
-        pergunta: "A cobertura aguenta chuva forte e vento?",
-        resposta: "Sim! Projetamos para suportar ventos de até 120 km/h e chuvas torrenciais. Testamos todas as instalações. O policarbonato é flexível e absorve impactos. A estrutura de alumínio é super resistente. Garantimos segurança total em condições climáticas extremas."
-      },
-      {
-        pergunta: "É seguro para crianças e pets?",
-        resposta: "Totalmente seguro! Não tem vidro (que pode quebrar e cortar). Motor possui sensores de obstáculo que param ao detectar resistência. Botões podem ter trava para crianças. Estrutura não tem pontas ou arestas cortantes. Certificado de segurança incluso."
-      },
-      {
-        pergunta: "O que acontece se esquecer a cobertura aberta e vier chuva?",
-        resposta: "Com sensor de chuva automático: fecha sozinho nos primeiros pingos! Sem sensor: você pode fechar pelo celular de qualquer lugar (se tiver automação via app). Caso esqueça aberta, a água escorre normalmente - não acumula. Sem riscos de alagamento."
-      }
-    ]
-  },
-  {
-    categoria: "Comparações",
-    perguntas: [
-      {
-        pergunta: "Cobertura de policarbonato ou vidro? Qual é melhor?",
-        resposta: "Policarbonato é MUITO superior: 200x mais resistente, 60% mais leve, filtra 99% dos raios UV, não quebra, não amarela (com qualidade), mais barato e mais fácil de instalar. Vidro só vence em resistência a riscos superficiais. Para coberturas, policarbonato é a escolha profissional."
-      },
-      {
-        pergunta: "Policarbonato ou toldo? O que vale mais a pena?",
-        resposta: "Toldo: mais barato inicialmente, mas rasgam com vento, mofam, precisam troca a cada 2-3 anos. Policarbonato: investimento maior, dura 15+ anos, não rasga, não mofa, não desbota, mantém valor. No longo prazo, policarbonato sai mais barato e valoriza o imóvel."
-      },
-      {
-        pergunta: "Pergolado de madeira ou cobertura retrátil? Qual escolher?",
-        resposta: "Pergolado: estética rústica, requer manutenção constante (verniz, cupim), não protege de chuva, estrutura pesada. Cobertura retrátil: protege de chuva, ventila quando quiser, sem manutenção da madeira, mais leve, moderna. Se quer estética de madeira + função, oferecemos estrutura tipo pergolado com cobertura retrátil."
-      }
-    ]
-  }
-];
+export default function FAQPage() {
+  const [busca, setBusca] = useState('');
+  const [categoriaFiltro, setCategoriaFiltro] =
+    useState<(typeof categorias)[number]>('Todas');
+  const [aberto, setAberto] = useState<number | null>(null);
 
-export default function FAQ() {
+  const faqsFiltrados = useMemo(() => {
+    const q = busca.trim().toLowerCase();
+    return faqs.filter((faq) => {
+      const matchBusca =
+        !q ||
+        faq.pergunta.toLowerCase().includes(q) ||
+        faq.resposta.toLowerCase().includes(q);
+      const matchCategoria =
+        categoriaFiltro === 'Todas' || faq.categoria === categoriaFiltro;
+      return matchBusca && matchCategoria;
+    });
+  }, [busca, categoriaFiltro]);
+
+  useEffect(() => {
+    if (aberto !== null && !faqsFiltrados.some((f) => f.id === aberto)) {
+      setAberto(null);
+    }
+  }, [faqsFiltrados, aberto]);
+
   return (
-    <main className="min-h-screen py-12 bg-gray-50">
-      <div className="container mx-auto px-4 max-w-5xl">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold text-gray-800 mb-4">
-            Perguntas Frequentes (FAQ)
-          </h1>
-          <p className="text-xl text-gray-600">
-            Tire todas suas dúvidas sobre cobertura em policarbonato, instalação, preços e manutenção
-          </p>
-        </div>
+    <>
+      <StructuredData data={faqSchema} />
+      <Breadcrumb />
 
-        {/* CTA rápido */}
-        <div className="bg-blue-600 text-white p-6 rounded-lg mb-12 text-center">
-          <p className="text-lg mb-4">
-            <strong>Não encontrou sua dúvida?</strong> Fale com nossos especialistas!
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="https://wa.me/5511943615079?text=Olá!%20Tenho%20dúvidas%20sobre%20cobertura%20em%20policarbonato"
-              className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              💬 WhatsApp: (11) 94361-5079
-            </a>
-            <a 
-              href="/contato"
-              className="bg-[#D4AF37] text-black px-6 py-3 rounded-lg font-semibold hover:bg-[#C9A030] transition"
-            >
-              📧 Solicitar Orçamento Grátis
-            </a>
+      <main className="min-h-screen bg-gray-50">
+        <section className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-16">
+          <div className="max-w-4xl mx-auto px-4 text-center">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              Perguntas Frequentes
+            </h1>
+            <p className="text-xl md:text-2xl text-blue-100">
+              Tire todas as suas dúvidas sobre coberturas em policarbonato
+            </p>
           </div>
-        </div>
+        </section>
 
-        {/* FAQ por categoria */}
-        {faqCategories.map((cat, catIndex) => (
-          <div key={catIndex} className="mb-12">
-            <h2 className="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-[#D4AF37] pl-4">
-              {cat.categoria}
-            </h2>
-            <div className="space-y-4">
-              {cat.perguntas.map((faq, faqIndex) => (
-                <details 
-                  key={faqIndex}
-                  className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition cursor-pointer"
+        <section className="max-w-4xl mx-auto px-4 py-8">
+          <div className="bg-white rounded-lg shadow-lg p-6">
+            <div className="mb-6">
+              <label htmlFor="busca" className="block text-sm font-semibold mb-2">
+                Buscar pergunta
+              </label>
+              <input
+                type="search"
+                id="busca"
+                value={busca}
+                onChange={(e) => setBusca(e.target.value)}
+                placeholder="Digite sua dúvida..."
+                autoComplete="off"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              />
+            </div>
+
+            <div
+              className="flex flex-wrap gap-2"
+              role="group"
+              aria-label="Filtrar por categoria"
+            >
+              {categorias.map((cat) => (
+                <button
+                  key={cat}
+                  type="button"
+                  onClick={() => setCategoriaFiltro(cat)}
+                  aria-pressed={categoriaFiltro === cat}
+                  className={`px-4 py-2 rounded-full font-medium transition-colors ${
+                    categoriaFiltro === cat
+                      ? 'bg-blue-600 text-white'
+                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  }`}
                 >
-                  <summary className="font-semibold text-lg text-gray-800 cursor-pointer flex items-start">
-                    <span className="text-[#D4AF37] mr-3 text-2xl">❓</span>
-                    <span className="flex-1">{faq.pergunta}</span>
-                    <span className="text-gray-400 ml-2">▼</span>
-                  </summary>
-                  <div className="mt-4 pl-11 text-gray-700 leading-relaxed">
-                    {faq.resposta}
-                  </div>
-                </details>
+                  {cat}
+                </button>
               ))}
             </div>
+
+            <div className="mt-4 text-sm text-gray-600" aria-live="polite">
+              {faqsFiltrados.length}{' '}
+              {faqsFiltrados.length === 1
+                ? 'pergunta encontrada'
+                : 'perguntas encontradas'}
+            </div>
           </div>
-        ))}
+        </section>
 
-        {/* CTA final */}
-        <div className="bg-gradient-to-r from-gray-800 to-black text-white p-8 rounded-lg text-center mt-16">
-          <h3 className="text-3xl font-bold mb-4">Pronto para transformar seu espaço?</h3>
-          <p className="text-lg mb-6">
-            Faça um orçamento gratuito e sem compromisso com nossos especialistas
-          </p>
-          <a 
-            href="/contato"
-            className="inline-block bg-[#D4AF37] text-black px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#C9A030] transition"
-          >
-            Solicitar Orçamento Agora →
-          </a>
-        </div>
+        <section className="max-w-4xl mx-auto px-4 pb-16">
+          <div className="space-y-4">
+            {faqsFiltrados.map((faq) => {
+              const expandido = aberto === faq.id;
+              const panelId = `faq-panel-${faq.id}`;
+              const triggerId = `faq-trigger-${faq.id}`;
+              return (
+                <div
+                  key={faq.id}
+                  className="bg-white rounded-lg shadow border border-gray-100 overflow-hidden"
+                >
+                  <h2 className="text-base font-semibold m-0">
+                    <button
+                      type="button"
+                      id={triggerId}
+                      aria-expanded={expandido}
+                      aria-controls={panelId}
+                      onClick={() => setAberto(expandido ? null : faq.id)}
+                      className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors gap-4"
+                    >
+                      <span className="min-w-0">
+                        <span className="text-xs text-blue-600 font-semibold block mb-1">
+                          {faq.categoria}
+                        </span>
+                        <span className="font-semibold text-gray-900 block">
+                          {faq.pergunta}
+                        </span>
+                      </span>
+                      <span
+                        className={`shrink-0 transition-transform text-gray-500 ${
+                          expandido ? 'rotate-180' : ''
+                        }`}
+                        aria-hidden
+                      >
+                        ▼
+                      </span>
+                    </button>
+                  </h2>
 
-        {/* Schema.org FAQ markup para SEO */}
-        <script 
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "FAQPage",
-              "mainEntity": faqCategories.flatMap(cat => 
-                cat.perguntas.map(faq => ({
-                  "@type": "Question",
-                  "name": faq.pergunta,
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": faq.resposta
-                  }
-                }))
-              )
-            })
-          }}
-        />
-      </div>
-    </main>
+                  <div
+                    id={panelId}
+                    role="region"
+                    aria-labelledby={triggerId}
+                    hidden={!expandido}
+                    className={expandido ? 'px-6 pb-4 text-gray-700 border-t pt-4' : ''}
+                  >
+                    {expandido ? faq.resposta : null}
+                  </div>
+                </div>
+              );
+            })}
+
+            {faqsFiltrados.length === 0 && (
+              <div className="text-center py-12 text-gray-500">
+                <div className="text-4xl mb-4" aria-hidden>
+                  🔍
+                </div>
+                <div className="text-lg font-semibold mb-2">
+                  Nenhuma pergunta encontrada
+                </div>
+                <p>Tente buscar com outras palavras ou limpe os filtros.</p>
+              </div>
+            )}
+          </div>
+        </section>
+
+        <section className="bg-blue-600 text-white py-16">
+          <div className="max-w-4xl mx-auto text-center px-4">
+            <h2 className="text-3xl font-bold mb-4">Não Encontrou Sua Dúvida?</h2>
+            <p className="text-xl mb-8 text-blue-100">
+              Fale diretamente com nosso time via WhatsApp!
+            </p>
+            <a
+              href="https://wa.me/5511943615079?text=Olá!%20Tenho%20uma%20dúvida%20sobre%20coberturas"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors"
+            >
+              💬 Falar no WhatsApp
+            </a>
+          </div>
+        </section>
+      </main>
+    </>
   );
 }
