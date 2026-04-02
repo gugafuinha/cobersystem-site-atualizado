@@ -60,8 +60,23 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/cases" className="text-gray-400 hover:text-white transition">
+                  Cases
+                </Link>
+              </li>
+              <li>
                 <Link href="/blog" className="text-gray-400 hover:text-white transition">
                   Blog
+                </Link>
+              </li>
+              <li>
+                <Link href="/faq" className="text-gray-400 hover:text-white transition">
+                  FAQ
+                </Link>
+              </li>
+              <li>
+                <Link href="/orcamento" className="text-gray-400 hover:text-white transition">
+                  Orçamento
                 </Link>
               </li>
             </ul>
