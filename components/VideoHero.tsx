@@ -73,7 +73,7 @@ export default function VideoHero() {
               </a>
 
               <a
-                href="#produtos"
+                href="/produtos"
                 className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white font-semibold px-8 py-4 rounded-lg text-lg transition-all border-2 border-white/30"
               >
                 Ver Produtos
