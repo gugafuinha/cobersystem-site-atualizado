@@ -1,49 +1,48 @@
 import type { Metadata } from 'next';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import StructuredData from '@/components/seo/StructuredData';
-import CoberturaRetratilServicoExpandedSections from './CoberturaRetratilServicoExpandedSections';
+import CoberturaPolicarbonatoServicoExpandedSections from './CoberturaPolicarbonatoServicoExpandedSections';
 
 export const metadata: Metadata = {
-  title: 'Serviço de Instalação de Cobertura Retrátil | Projeto Completo | SP',
+  title: 'Serviço de Instalação de Cobertura em Policarbonato | Projeto Completo | SP',
   description:
-    'Serviço completo de instalação de cobertura retrátil automática. Projeto personalizado, instalação profissional, garantia 2 anos. Atendemos toda Grande SP.',
+    'Serviço completo de instalação de cobertura fixa em policarbonato. Projeto personalizado, instalação profissional, garantia 2 anos. Atendemos toda Grande SP.',
   keywords: [
-    'cobertura retratil',
-    'instalação cobertura',
+    'cobertura policarbonato',
+    'instalação cobertura fixa',
     'projeto cobertura',
-    'cobertura automatica',
-    'instalação cobertura retratil',
-    'projeto cobertura automatica',
-    'serviço cobertura',
+    'telhado policarbonato',
+    'instalação cobertura policarbonato',
+    'projeto cobertura fixa',
     'montagem cobertura',
   ],
   openGraph: {
-    title: 'Instalação de Cobertura Retrátil | Cobersystem SP',
-    description: 'Projeto + instalação + automação. Serviço completo com garantia.',
-    url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-retratil',
+    title: 'Instalação de Cobertura em Policarbonato | Cobersystem SP',
+    description: 'Projeto + instalação + materiais premium. Serviço completo com garantia.',
+    url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-policarbonato',
     siteName: 'Cobersystem',
     locale: 'pt_BR',
     type: 'website',
     images: [
       {
-        url: 'https://www.coberturapolicarbonato.com.br/images/blog/cobertura-abre-fecha.jpg',
+        url: 'https://www.coberturapolicarbonato.com.br/images/projetos/fixa-01.jpg',
         width: 1200,
         height: 800,
-        alt: 'Instalação de cobertura retrátil Cobersystem',
+        alt: 'Instalação de cobertura fixa em policarbonato Cobersystem',
       },
     ],
   },
   alternates: {
     canonical:
-      'https://www.coberturapolicarbonato.com.br/servicos/cobertura-retratil',
+      'https://www.coberturapolicarbonato.com.br/servicos/cobertura-policarbonato',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Instalação de Cobertura Retrátil | Cobersystem SP',
+    title: 'Instalação de Cobertura em Policarbonato | Cobersystem SP',
     description:
-      'Projeto + instalação + automação. Serviço completo com garantia.',
+      'Projeto + instalação + materiais premium. Serviço completo com garantia.',
     images: [
-      'https://www.coberturapolicarbonato.com.br/images/blog/cobertura-abre-fecha.jpg',
+      'https://www.coberturapolicarbonato.com.br/images/projetos/fixa-01.jpg',
     ],
   },
 };
@@ -51,9 +50,9 @@ export const metadata: Metadata = {
 const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
-  name: 'Instalação de Cobertura Retrátil Automática',
-  serviceType: 'Instalação e automação de coberturas retráteis',
-  url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-retratil',
+  name: 'Instalação de Cobertura em Policarbonato',
+  serviceType: 'Instalação de coberturas fixas em policarbonato',
+  url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-policarbonato',
   provider: {
     '@type': 'LocalBusiness',
     name: 'Cobersystem',
@@ -74,13 +73,13 @@ const serviceSchema = {
   },
   offers: {
     '@type': 'Offer',
-    priceRange: 'R$ 800 - R$ 1.500 por m²',
+    priceRange: 'R$ 450 - R$ 900 por m²',
     availability: 'https://schema.org/InStock',
-    url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-retratil',
+    url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-policarbonato',
   },
 };
 
-export default function CoberturaRetratilServicoPage() {
+export default function CoberturaPolicarbonatoServicoPage() {
   return (
     <>
       <StructuredData data={serviceSchema} />
@@ -90,14 +89,14 @@ export default function CoberturaRetratilServicoPage() {
         <section className="relative bg-gradient-to-br from-blue-600 to-blue-800 text-white py-20">
           <div className="max-w-7xl mx-auto px-4">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Instalação de Cobertura Retrátil Automática
+              Instalação de Cobertura em Policarbonato
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-blue-100">
-              Projeto completo + instalação profissional + automação via Alexa
+              Projeto completo + instalação profissional + garantia 2 anos
             </p>
             <div className="grid md:grid-cols-4 gap-6">
               <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
-                <div className="text-3xl font-bold">48-72h</div>
+                <div className="text-3xl font-bold">2-4 dias</div>
                 <div className="text-sm text-blue-200">Prazo instalação</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
@@ -105,8 +104,8 @@ export default function CoberturaRetratilServicoPage() {
                 <div className="text-sm text-blue-200">Garantia total</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
-                <div className="text-3xl font-bold">Alexa</div>
-                <div className="text-sm text-blue-200">Automação inclusa</div>
+                <div className="text-3xl font-bold">99% UV</div>
+                <div className="text-sm text-blue-200">Proteção solar</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
                 <div className="text-3xl font-bold">Grande SP</div>
@@ -116,7 +115,7 @@ export default function CoberturaRetratilServicoPage() {
           </div>
         </section>
 
-        <CoberturaRetratilServicoExpandedSections />
+        <CoberturaPolicarbonatoServicoExpandedSections />
 
         <section className="bg-blue-600 text-white py-16">
           <div className="max-w-4xl mx-auto text-center px-4">
@@ -127,7 +126,7 @@ export default function CoberturaRetratilServicoPage() {
               Visita técnica grátis + projeto em até 48h
             </p>
             <a
-              href="https://wa.me/5511943615079?text=Olá!%20Quero%20um%20projeto%20de%20cobertura%20retrátil"
+              href="https://wa.me/5511943615079?text=Olá!%20Quero%20um%20projeto%20de%20cobertura%20em%20policarbonato"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors"

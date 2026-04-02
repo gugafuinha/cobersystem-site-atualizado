@@ -8,6 +8,7 @@ import StructuredData from '@/components/seo/StructuredData';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import { productSchemas } from '@/lib/schemas/product-schemas';
 import { generatePageMetadata } from '@/lib/seo/page-metadata';
+import CoberturaPiscinaExpandedSections from './CoberturaPiscinaExpandedSections';
 
 export const metadata = generatePageMetadata('cobertura-piscina');
 
@@ -110,6 +111,8 @@ export default function CoberturaPiscina() {
               </div>
             </div>
           </section>
+
+          <CoberturaPiscinaExpandedSections />
 
           <section className="mb-12 bg-white rounded-lg p-8 shadow-sm">
             <h2 className="text-3xl font-bold text-gray-800 mb-6">Por que Cobertura Retrátil para Piscina?</h2>
