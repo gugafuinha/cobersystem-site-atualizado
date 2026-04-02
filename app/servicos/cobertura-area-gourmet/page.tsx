@@ -67,8 +67,8 @@ export default function CoberturaAreaGourmet() {
               <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl bg-gray-100">
                 <OptimizedImage
                   src="/images/blog/churrasqueira.jpg"
-                  alt="Área gourmet apartamento cobertura"
-                  title="Área gourmet apartamento cobertura"
+                  alt="Cobertura área gourmet com churrasqueira e policarbonato retrátil instalado"
+                  title="Cobertura para área gourmet — Cobersystem"
                   width={1200}
                   height={900}
                   priority

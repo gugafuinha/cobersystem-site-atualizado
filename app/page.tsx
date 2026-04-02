@@ -129,7 +129,7 @@ export default function Home() {
             <div className="relative h-64 rounded-lg overflow-hidden group">
               <OptimizedImage
                 src="/images/blog/cobertura-abre-fecha.jpg"
-                alt="Cobertura Retrátil em Área Gourmet e Varanda"
+                alt="Cobertura retrátil em policarbonato instalada em área gourmet residencial"
                 width={1200}
                 height={800}
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
@@ -144,7 +144,7 @@ export default function Home() {
             <div className="relative h-64 rounded-lg overflow-hidden group">
               <OptimizedImage
                 src="/images/projetos/abre-fecha-alveolar-01.jpg"
-                alt="Cobertura Retrátil em Alumínio"
+                alt="Cobertura retrátil em alumínio com policarbonato alveolar em residência"
                 width={1200}
                 height={800}
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
@@ -159,7 +159,7 @@ export default function Home() {
             <div className="relative h-64 rounded-lg overflow-hidden group">
               <OptimizedImage
                 src="/images/blog/cobertura-abre-fecha.jpg"
-                alt="Cobertura Retrátil que Abre e Fecha em Apartamento"
+                alt="Cobertura retrátil em varanda de apartamento com proteção solar"
                 width={1200}
                 height={800}
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
@@ -174,7 +174,7 @@ export default function Home() {
             <div className="relative h-64 rounded-lg overflow-hidden group">
               <OptimizedImage
                 src="/images/projetos/abre-fecha-alveolar-02.jpg"
-                alt="Estrutura em Alumínio para Projeto Personalizado"
+                alt="Estrutura em alumínio para cobertura retrátil em projeto personalizado"
                 width={1200}
                 height={800}
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
@@ -240,7 +240,7 @@ export default function Home() {
                 <div className="relative h-48">
                   <OptimizedImage
                     src="/images/produtos/cobertura-retratil/compacto/IMG_8096.jpg"
-                    alt="Cobertura Retrátil em Policarbonato Compacto 2mm - Transparente e Colorido para Máxima Luminosidade"
+                    alt="Cobertura retrátil em policarbonato compacto cristal com alta luminosidade"
                     title="Cobertura Retrátil Policarbonato Compacto 2mm - Cobersystem"
                     width={1200}
                     height={800}
@@ -268,7 +268,7 @@ export default function Home() {
                 <div className="relative h-48">
                   <OptimizedImage
                     src="/images/projetos/fixa-01.jpg"
-                    alt="Cobertura em Policarbonato Fixa - Alveolar e Compacto para Garagens e Áreas"
+                    alt="Cobertura fixa em policarbonato alveolar para garagem e áreas externas"
                     title="Cobertura Policarbonato Fixa - Alta Resistência - Cobersystem"
                     width={1200}
                     height={800}
@@ -296,7 +296,7 @@ export default function Home() {
                 <div className="relative h-48">
                   <OptimizedImage
                     src="/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg"
-                    alt="Automação Inteligente para Cobertura Retrátil - Controle via Alexa, Sensor de Chuva Automático e Controle Remoto"
+                    alt="Cobertura automática retrátil com Alexa e sensor de chuva integrado"
                     title="Automação Inteligente Cobertura Retrátil - Alexa e Sensor de Chuva - Cobersystem"
                     width={1200}
                     height={800}

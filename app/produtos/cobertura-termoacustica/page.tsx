@@ -17,6 +17,7 @@ const produtosTermoacustica = [
   {
     id: 'sanduiche-eps',
     nome: 'Cobertura Termoacústica com EPS (Isopor)',
+    alt: 'Cobertura termoacústica sanduíche EPS instalada em residência ou galpão',
     descricao: 'Sistema sanduíche com núcleo de EPS (isopor de alta densidade). Excelente custo-benefício com ótimo isolamento térmico e acústico.',
     caracteristicas: [
       'Núcleo em EPS (Poliestireno Expandido) de alta densidade',
@@ -37,6 +38,7 @@ const produtosTermoacustica = [
   {
     id: 'sanduiche-pu',
     nome: 'Cobertura Termoacústica com PU (Poliuretano)',
+    alt: 'Cobertura termoacústica sanduíche PU com isolamento térmico superior em edificação',
     descricao: 'Sistema sanduíche premium com núcleo de Poliuretano. Máxima eficiência em isolamento térmico e acústico.',
     caracteristicas: [
       'Núcleo em PU (Poliuretano) - maior eficiência',
@@ -57,6 +59,7 @@ const produtosTermoacustica = [
   {
     id: 'sanduiche-la-rocha',
     nome: 'Cobertura Termoacústica com Lã de Rocha',
+    alt: 'Cobertura termoacústica com lã de rocha para isolamento acústico em indústria',
     descricao: 'Sistema sanduíche com núcleo de Lã de Rocha. Máxima proteção acústica e térmica com propriedades anti-chama.',
     caracteristicas: [
       'Núcleo em Lã de Rocha - material incombustível',
@@ -170,7 +173,7 @@ export default async function CoberturaTermoacustica() {
                     {produto.image ? (
                       <OptimizedImage
                         src={produto.image}
-                        alt={produto.nome}
+                        alt={produto.alt}
                         title={produto.nome}
                         width={800}
                         height={600}
@@ -309,9 +312,16 @@ export default async function CoberturaTermoacustica() {
               Galeria de Projetos
             </h2>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-              {galleryUrls.map((src) => {
+              {galleryUrls.map((src, galleryIndex) => {
                 const filename = src.split('/').pop() || 'imagem';
-                const alt = `Cobertura termoacústica - ${filename}`;
+                const shortName = filename
+                  .replace(/\.[^.]+$/i, '')
+                  .replace(/[-_]/g, ' ')
+                  .slice(0, 40);
+                const alt =
+                  shortName.length > 3 && !/^[a-f0-9-]{8,}$/i.test(shortName)
+                    ? `Cobertura termoacústica sanduíche em projeto — ${shortName}`
+                    : `Cobertura termoacústica instalada em telhado — detalhe ${galleryIndex + 1}`;
 
                 return (
                   <div

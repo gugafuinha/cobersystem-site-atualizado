@@ -33,6 +33,7 @@ const produtosFixa = [
     ],
     image:
       '/images/produtos/cobertura-policarbonato/compacto/IMG_2017.jpg',
+    alt: 'Cobertura fixa em policarbonato compacto cristal para garagem ou entrada',
   },
   {
     id: 'fixa-alveolar',
@@ -53,6 +54,7 @@ const produtosFixa = [
       'Cobertura industrial',
     ],
     image: '/images/produtos/cobertura-policarbonato/alveolar/IMG_4432.jpg',
+    alt: 'Cobertura policarbonato alveolar instalada em área externa com telhado',
   },
 ];
 
@@ -92,7 +94,7 @@ export default function CoberturaFixa() {
                   <div className="relative w-full h-72 overflow-hidden rounded-xl bg-gray-100">
                     <Image
                       src={produto.image}
-                      alt={produto.nome}
+                      alt={produto.alt}
                       fill
                       priority={index === 0}
                       className="object-cover object-center"

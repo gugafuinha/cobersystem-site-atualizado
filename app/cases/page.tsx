@@ -285,7 +285,7 @@ export default async function CasesPage({ searchParams }: PageProps) {
                   <div className="h-48 relative overflow-hidden bg-gray-100 border-b border-gray-100">
                     <Image
                       src={case_.imagem}
-                      alt={case_.titulo}
+                      alt={`Instalação de ${case_.tipo.toLowerCase()} em ${case_.local}`}
                       fill
                       className="object-cover"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

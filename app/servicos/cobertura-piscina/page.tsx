@@ -67,7 +67,7 @@ export default function CoberturaPiscina() {
               <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl bg-gray-100">
                 <OptimizedImage
                   src="/images/produtos/cobertura-retratil/aluminio/IMG_6306.jpg"
-                  alt="Cobertura retrátil para piscina em policarbonato - Cobersystem"
+                  alt="Cobertura piscina retrátil em policarbonato com proteção UV e sombra"
                   title="Cobertura para Piscina"
                   width={1200}
                   height={900}

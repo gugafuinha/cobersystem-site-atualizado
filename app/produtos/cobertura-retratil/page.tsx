@@ -18,23 +18,27 @@ const cardsRetratil = [
     slug: 'telhas-aluminio',
     nome: 'Cobertura Abre e Fecha com Telhas em Alumínio',
     image: '/images/produtos/cobertura-retratil/aluminio/IMG_0305.jpg',
+    alt: 'Cobertura retrátil com telhas de alumínio em área externa residencial',
   },
   {
     slug: 'telhas-intercaladas',
     nome: 'Cobertura Abre e Fecha com Telhas Intercaladas',
     image:
       '/images/produtos/cobertura-retratil/intercalada/3c2fdde7-3430-4fed-900a-d69838b09493.jpg',
+    alt: 'Cobertura retrátil com telhas intercaladas e fechamento sobre área gourmet',
   },
   {
     slug: 'policarbonato-alveolar',
     nome: 'Cobertura Abre e Fecha com Policarbonato Alveolar',
     image:
       '/images/produtos/cobertura-retratil/alveolar/038c4743-0f19-4063-b8f6-57dc5802ffac.jpg',
+    alt: 'Cobertura retrátil em policarbonato alveolar com boa iluminação natural',
   },
   {
     slug: 'policarbonato-compacto',
     nome: 'Cobertura Abre e Fecha com Policarbonato Compacto',
     image: '/images/produtos/cobertura-retratil/compacto/capa.jpg',
+    alt: 'Cobertura retrátil em policarbonato compacto cristal tipo vitrine',
   },
 ] as const;
 
@@ -81,7 +85,7 @@ export default function CoberturaRetratil() {
                   <div className="relative h-64 w-full overflow-hidden rounded-t-2xl bg-gray-100">
                     <OptimizedImage
                       src={item.image}
-                      alt={item.nome}
+                      alt={item.alt}
                       title={item.nome}
                       width={800}
                       height={512}
