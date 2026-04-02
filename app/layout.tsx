@@ -23,6 +23,37 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+/**
+ * ════════════════════════════════════════════════════════════════════════
+ * 🏢 COBERSYSTEM - Soluções em Coberturas de Policarbonato
+ * ════════════════════════════════════════════════════════════════════════
+ *
+ * Copyright © 2024-2026 Cobersystem. Todos os direitos reservados.
+ *
+ * ⚖️  AVISO LEGAL:
+ * Este código-fonte é propriedade EXCLUSIVA da Cobersystem.
+ *
+ * É PROIBIDO:
+ * ❌ Copiar ou reproduzir este código
+ * ❌ Modificar ou criar obras derivadas
+ * ❌ Distribuir ou sublicenciar
+ * ❌ Usar para fins comerciais sem autorização
+ *
+ * VIOLAÇÕES estão sujeitas a ações legais conforme:
+ * • Lei de Direitos Autorais (Lei 9.610/98)
+ * • Código Civil Brasileiro (Arts. 186, 187 e 927)
+ * • Lei de Propriedade Industrial (Lei 9.279/96)
+ *
+ * 💼 Para licenciamento, parcerias ou uso autorizado:
+ * 📧 Email: contato@coberturapolicarbonato.com.br
+ * 📱 WhatsApp: (11) 94361-5079
+ * 🌐 Website: https://www.coberturapolicarbonato.com.br
+ *
+ * 🚀 Desenvolvido com Next.js 15, React 19 e TypeScript
+ * 🎯 Otimizado para SEO, Performance e Conversão
+ * ════════════════════════════════════════════════════════════════════════
+ */
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.coberturapolicarbonato.com.br'),
   title: "Cobertura em Policarbonato Retrátil | Abre e Fecha com Automação Alexa | Cobersystem",
