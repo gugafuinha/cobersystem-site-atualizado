@@ -160,75 +160,6 @@ export default async function CoberturaTermoacustica() {
           </p>
         </section>
 
-        <CoberturaTermoacusticaExpandedSections />
-
-        <section className="mb-16 rounded-lg border border-gray-200 bg-gray-50 p-6 text-center">
-          <h2 className="mb-3 text-xl font-bold text-gray-800 md:text-2xl">
-            Atendimento por região
-          </h2>
-          <p className="mb-4 text-gray-600">
-            Cobertura termoacústica na sua cidade:
-          </p>
-          <ul className="flex flex-wrap justify-center gap-3">
-            {CIDADES_COBERTURA_TERMOACUSTICA.map((c) => (
-              <li key={c.slug}>
-                <Link
-                  href={`/produtos/cobertura-termoacustica/em/${c.slug}`}
-                  className="inline-block rounded-lg bg-white px-4 py-2 text-sm font-semibold text-orange-600 shadow-sm ring-1 ring-gray-200 transition hover:bg-orange-50 hover:ring-orange-200"
-                >
-                  {c.nome}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        {/* O que é */}
-        <section className="mb-16 bg-gray-50 rounded-lg p-8">
-          <h2 className="text-3xl font-bold text-gray-800 mb-6">
-            O que é Cobertura Termoacústica?
-          </h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div>
-              <p className="text-gray-700 mb-4">
-                A cobertura termoacústica, também conhecida como <strong>cobertura sanduíche</strong>, 
-                é um sistema construtivo composto por três camadas: duas chapas metálicas externas 
-                (alumínio ou aço) e um núcleo isolante (EPS, PU ou Lã de Rocha).
-              </p>
-              <p className="text-gray-700 mb-4">
-                Essa estrutura proporciona <strong>isolamento térmico e acústico</strong> excepcional, 
-                mantendo ambientes mais frescos no verão, mais quentes no inverno, e reduzindo 
-                drasticamente ruídos externos.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-800">Principais Vantagens:</h3>
-              <ul className="space-y-2">
-                <li className="flex items-start">
-                  <span className="text-orange-600 mr-2">✓</span>
-                  <span className="text-gray-700"><strong>Conforto térmico:</strong> Até 15°C de diferença</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-orange-600 mr-2">✓</span>
-                  <span className="text-gray-700"><strong>Isolamento acústico:</strong> Redução de até 45 dB</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-orange-600 mr-2">✓</span>
-                  <span className="text-gray-700"><strong>Economia de energia:</strong> Reduz uso de ar-condicionado</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-orange-600 mr-2">✓</span>
-                  <span className="text-gray-700"><strong>Durabilidade:</strong> Longa vida útil</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-orange-600 mr-2">✓</span>
-                  <span className="text-gray-700"><strong>Instalação rápida:</strong> Sistema modular</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
         {/* Produtos */}
         <section className="mb-16 space-y-10 md:space-y-12">
           {blocos.map((produto, index) => (
@@ -301,6 +232,75 @@ export default async function CoberturaTermoacustica() {
               </div>
             </article>
           ))}
+        </section>
+
+        <section className="mb-16 rounded-lg border border-gray-200 bg-gray-50 p-6 text-center">
+          <h2 className="mb-3 text-xl font-bold text-gray-800 md:text-2xl">
+            Atendimento por região
+          </h2>
+          <p className="mb-4 text-gray-600">
+            Cobertura termoacústica na sua cidade:
+          </p>
+          <ul className="flex flex-wrap justify-center gap-3">
+            {CIDADES_COBERTURA_TERMOACUSTICA.map((c) => (
+              <li key={c.slug}>
+                <Link
+                  href={`/produtos/cobertura-termoacustica/em/${c.slug}`}
+                  className="inline-block rounded-lg bg-white px-4 py-2 text-sm font-semibold text-orange-600 shadow-sm ring-1 ring-gray-200 transition hover:bg-orange-50 hover:ring-orange-200"
+                >
+                  {c.nome}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <CoberturaTermoacusticaExpandedSections />
+
+        {/* O que é */}
+        <section className="mb-16 bg-gray-50 rounded-lg p-8">
+          <h2 className="text-3xl font-bold text-gray-800 mb-6">
+            O que é Cobertura Termoacústica?
+          </h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              <p className="text-gray-700 mb-4">
+                A cobertura termoacústica, também conhecida como <strong>cobertura sanduíche</strong>, 
+                é um sistema construtivo composto por três camadas: duas chapas metálicas externas 
+                (alumínio ou aço) e um núcleo isolante (EPS, PU ou Lã de Rocha).
+              </p>
+              <p className="text-gray-700 mb-4">
+                Essa estrutura proporciona <strong>isolamento térmico e acústico</strong> excepcional, 
+                mantendo ambientes mais frescos no verão, mais quentes no inverno, e reduzindo 
+                drasticamente ruídos externos.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold mb-4 text-gray-800">Principais Vantagens:</h3>
+              <ul className="space-y-2">
+                <li className="flex items-start">
+                  <span className="text-orange-600 mr-2">✓</span>
+                  <span className="text-gray-700"><strong>Conforto térmico:</strong> Até 15°C de diferença</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-orange-600 mr-2">✓</span>
+                  <span className="text-gray-700"><strong>Isolamento acústico:</strong> Redução de até 45 dB</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-orange-600 mr-2">✓</span>
+                  <span className="text-gray-700"><strong>Economia de energia:</strong> Reduz uso de ar-condicionado</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-orange-600 mr-2">✓</span>
+                  <span className="text-gray-700"><strong>Durabilidade:</strong> Longa vida útil</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-orange-600 mr-2">✓</span>
+                  <span className="text-gray-700"><strong>Instalação rápida:</strong> Sistema modular</span>
+                </li>
+              </ul>
+            </div>
+          </div>
         </section>
 
         {galleryUrls.length > 0 && (

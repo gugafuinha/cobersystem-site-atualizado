@@ -135,54 +135,6 @@ export default function VenezianaPolcarbonato() {
           </p>
         </section>
 
-        <VenezianaExpandedSections />
-
-        {/* O que é */}
-        <section className="mb-16 bg-gray-50 rounded-lg p-8">
-          <h2 className="text-3xl font-bold text-gray-800 mb-6">
-            O que é Veneziana em Policarbonato?
-          </h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div>
-              <p className="text-gray-700 mb-4">
-                A <strong>veneziana em policarbonato</strong> é um sistema de fechamento lateral 
-                composto por lâminas horizontais que permitem <strong>ventilação natural controlada</strong> 
-                enquanto protegem o ambiente de chuva, vento e insolação direta.
-              </p>
-              <p className="text-gray-700 mb-4">
-                É amplamente utilizada para <strong>fechamento de galpões industriais, quadras poliesportivas, 
-                áreas de lazer</strong> e qualquer ambiente que necessite ventilação constante 
-                sem comprometer a proteção.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-800">Principais Vantagens:</h3>
-              <ul className="space-y-2">
-                <li className="flex items-start">
-                  <span className="text-green-600 mr-2">✓</span>
-                  <span className="text-gray-700"><strong>Ventilação natural:</strong> Circulação de ar constante</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-600 mr-2">✓</span>
-                  <span className="text-gray-700"><strong>Proteção contra chuva:</strong> Lâminas inclinadas</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-600 mr-2">✓</span>
-                  <span className="text-gray-700"><strong>Entrada de luz:</strong> Iluminação natural</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-600 mr-2">✓</span>
-                  <span className="text-gray-700"><strong>Durabilidade:</strong> Policarbonato não oxida</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-600 mr-2">✓</span>
-                  <span className="text-gray-700"><strong>Baixa manutenção:</strong> Fácil limpeza</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
         {/* Produtos */}
         <section className="mb-16 space-y-10 md:space-y-12">
           {produtosVeneziana.map((produto, index) => (
@@ -244,6 +196,54 @@ export default function VenezianaPolcarbonato() {
               </div>
             </article>
           ))}
+        </section>
+
+        <VenezianaExpandedSections />
+
+        {/* O que é */}
+        <section className="mb-16 bg-gray-50 rounded-lg p-8">
+          <h2 className="text-3xl font-bold text-gray-800 mb-6">
+            O que é Veneziana em Policarbonato?
+          </h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              <p className="text-gray-700 mb-4">
+                A <strong>veneziana em policarbonato</strong> é um sistema de fechamento lateral 
+                composto por lâminas horizontais que permitem <strong>ventilação natural controlada</strong> 
+                enquanto protegem o ambiente de chuva, vento e insolação direta.
+              </p>
+              <p className="text-gray-700 mb-4">
+                É amplamente utilizada para <strong>fechamento de galpões industriais, quadras poliesportivas, 
+                áreas de lazer</strong> e qualquer ambiente que necessite ventilação constante 
+                sem comprometer a proteção.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold mb-4 text-gray-800">Principais Vantagens:</h3>
+              <ul className="space-y-2">
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-2">✓</span>
+                  <span className="text-gray-700"><strong>Ventilação natural:</strong> Circulação de ar constante</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-2">✓</span>
+                  <span className="text-gray-700"><strong>Proteção contra chuva:</strong> Lâminas inclinadas</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-2">✓</span>
+                  <span className="text-gray-700"><strong>Entrada de luz:</strong> Iluminação natural</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-2">✓</span>
+                  <span className="text-gray-700"><strong>Durabilidade:</strong> Policarbonato não oxida</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-2">✓</span>
+                  <span className="text-gray-700"><strong>Baixa manutenção:</strong> Fácil limpeza</span>
+                </li>
+              </ul>
+            </div>
+          </div>
         </section>
 
         <section
