@@ -2,7 +2,7 @@
 
 export default function VideoHero() {
   return (
-    <section className="relative h-[600px] md:h-[700px] overflow-hidden bg-gray-900">
+    <section className="relative min-h-[700px] md:h-[700px] overflow-hidden bg-gray-900">
       {/* Vídeo de fundo */}
       <div className="absolute inset-0 w-full h-full">
         {/* YouTube Embed otimizado */}
@@ -19,7 +19,7 @@ export default function VideoHero() {
       </div>
 
       {/* Conteúdo sobreposto */}
-      <div className="relative z-10 h-full flex items-center">
+      <div className="relative z-10 h-full flex items-center pb-8 md:pb-0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="max-w-3xl">
             {/* Badge */}
@@ -59,7 +59,7 @@ export default function VideoHero() {
             </div>
 
             {/* CTAs */}
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col sm:flex-row gap-4">
               <a
                 href="https://wa.me/5511943615079?text=Olá!%20Vi%20o%20vídeo%20e%20quero%20um%20orçamento"
                 target="_blank"
