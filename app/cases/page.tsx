@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 
@@ -56,7 +57,7 @@ const cases: CaseItem[] = [
     resultado: 'Uso 12 meses/ano, valorização de 18% no imóvel (avaliação)',
     investimento: 'R$ 24.000',
     prazo: '3 dias',
-    imagem: '/images/cases/zona-sul-retratil.jpg',
+    imagem: '/images/produtos/cobertura-retratil/compacto/IMG_8096.jpg',
     ano: 2024,
   },
   {
@@ -70,7 +71,7 @@ const cases: CaseItem[] = [
     resultado: 'Redução de 12°C na temperatura, economia com ventilação',
     investimento: 'R$ 32.000',
     prazo: '4 dias',
-    imagem: '/images/cases/zona-leste-termoacustica.jpg',
+    imagem: '/images/produtos/cobertura-termoacustica/b54559ed-ffaf-43eb-a738-e9d347954f5a.jpg',
     ano: 2024,
   },
   {
@@ -84,7 +85,7 @@ const cases: CaseItem[] = [
     resultado: 'Aprovado em 20 dias, família usa diariamente',
     investimento: 'R$ 28.500',
     prazo: '3 dias',
-    imagem: '/images/cases/zona-norte-retratil.jpg',
+    imagem: '/images/produtos/cobertura-retratil/aluminio/IMG_0305.jpg',
     ano: 2024,
   },
   {
@@ -98,7 +99,7 @@ const cases: CaseItem[] = [
     resultado: 'Carros protegidos, economia 100% luz artificial durante o dia',
     investimento: 'R$ 15.000',
     prazo: '2 dias',
-    imagem: '/images/cases/garagem-pinheiros.jpg',
+    imagem: '/images/produtos/cobertura-policarbonato/alveolar/IMG_4432.jpg',
     ano: 2023,
   },
   {
@@ -112,7 +113,7 @@ const cases: CaseItem[] = [
     resultado: 'Uso 12 meses/ano, economia 40% com aquecimento',
     investimento: 'R$ 48.000',
     prazo: '5 dias',
-    imagem: '/images/cases/piscina-alphaville.jpg',
+    imagem: '/images/produtos/cobertura-retratil/aluminio/IMG_6306.jpg',
     ano: 2023,
   },
   {
@@ -126,7 +127,7 @@ const cases: CaseItem[] = [
     resultado: 'Temperatura reduzida 10°C, produtividade aumentou 18%',
     investimento: 'R$ 42.000',
     prazo: '6 dias',
-    imagem: '/images/cases/galpao-guarulhos.jpg',
+    imagem: '/images/produtos/veneziana/veneziana.jpg',
     ano: 2024,
   },
 ];
@@ -281,13 +282,16 @@ export default async function CasesPage({ searchParams }: PageProps) {
                   key={case_.id}
                   className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
                 >
-                  <div className="h-48 bg-gradient-to-br from-slate-100 to-slate-200 flex flex-col items-center justify-center px-4 text-center border-b border-gray-100">
-                    {/* Placeholder até imagens em /public/images/cases */}
-                    <span className="text-xs font-semibold uppercase tracking-wide text-blue-600 mb-1">
+                  <div className="h-48 relative overflow-hidden bg-gray-100 border-b border-gray-100">
+                    <Image
+                      src={case_.imagem}
+                      alt={case_.titulo}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                    <span className="absolute top-2 left-2 rounded bg-white/90 px-2 py-0.5 text-xs font-semibold text-blue-700 shadow-sm">
                       {case_.ano}
-                    </span>
-                    <span className="text-gray-600 text-sm leading-snug">
-                      Foto do projeto — {case_.local}
                     </span>
                   </div>
 
