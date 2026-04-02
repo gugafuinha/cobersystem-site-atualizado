@@ -12,6 +12,7 @@ export default function VideoHero() {
           title="Cobertura Retrátil Cobersystem"
           allow="autoplay; encrypted-media"
           frameBorder={0}
+          loading="lazy"
         />
 
         {/* Overlay escuro para legibilidade */}
