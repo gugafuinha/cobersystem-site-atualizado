@@ -102,7 +102,7 @@ export default function Home() {
             </div>
             <div className="relative h-64 rounded-lg overflow-hidden group">
               <OptimizedImage
-                src="/images/projetos/abre-fecha-alveolar-01.jpg"
+                src="/images/produtos/cobertura-retratil/intercalada/IMG_4733.jpg"
                 alt="Cobertura retrátil em alumínio com policarbonato alveolar em residência"
                 width={1200}
                 height={800}
@@ -132,7 +132,7 @@ export default function Home() {
             </div>
             <div className="relative h-64 rounded-lg overflow-hidden group">
               <OptimizedImage
-                src="/images/projetos/abre-fecha-alveolar-02.jpg"
+                src="/images/produtos/cobertura-retratil/aluminio/capa.jpg"
                 alt="Estrutura em alumínio para cobertura retrátil em projeto personalizado"
                 width={1200}
                 height={800}
