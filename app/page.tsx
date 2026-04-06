@@ -117,8 +117,9 @@ export default function Home() {
             </div>
             <div className="relative h-64 rounded-lg overflow-hidden group">
               <OptimizedImage
-                src="/images/blog/cobertura-abre-fecha.jpg"
-                alt="Cobertura retrátil em varanda de apartamento com proteção solar"
+                src="/images/produtos/cobertura-policarbonato/fixa-alveolar/IMG_5837.jpg"
+                alt="Cobertura para Piscinas"
+                title="Cobertura para Piscinas"
                 width={1200}
                 height={800}
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
@@ -126,7 +127,7 @@ export default function Home() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition">
                 <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <p className="font-semibold">Abre e Fecha - Apartamento</p>
+                  <p className="font-semibold">Cobertura para Piscinas</p>
                 </div>
               </div>
             </div>
