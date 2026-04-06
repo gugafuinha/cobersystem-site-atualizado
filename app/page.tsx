@@ -117,7 +117,7 @@ export default function Home() {
             </div>
             <div className="relative h-64 rounded-lg overflow-hidden group">
               <OptimizedImage
-                src="/images/produtos/cobertura-policarbonato/fixa-alveolar/IMG_5837.jpg"
+                src="/images/produtos/cobertura-policarbonato/alveolar/IMG_5837.jpg"
                 alt="Cobertura para Piscinas"
                 title="Cobertura para Piscinas"
                 width={1200}
