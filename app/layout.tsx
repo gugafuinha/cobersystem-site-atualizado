@@ -12,6 +12,8 @@ import {
 import MetaPixel from "@/components/MetaPixel";
 import ScrollTracker from "@/components/ScrollTracker";
 import PerformanceOptimizer from "@/components/PerformanceOptimizer";
+import { Analytics } from "@vercel/analytics/react";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -123,6 +125,8 @@ export default function RootLayout({
         {children}
         <Footer />
         <WhatsAppButton />
+        <GoogleAnalytics />
+        <Analytics />
       </body>
     </html>
   );
