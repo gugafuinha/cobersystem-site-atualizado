@@ -1,7 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { trackFormSubmit } from '@/components/GoogleAnalytics';
-import { trackMetaLead } from '@/components/MetaPixel';
-import { trackGoogleAdsConversion } from '@/components/GoogleAds';
 
 const MAX_BODY_CHARS = 32_000;
 const MAX_FIELD_LEN = 2000;
@@ -136,9 +133,9 @@ export async function POST(request: NextRequest) {
   try {
     // Aqui você pode integrar com: SendGrid, Resend, Nodemailer, etc.
 
-    trackFormSubmit();
-    trackMetaLead();
-    trackGoogleAdsConversion('form_submit', 0);
+    // trackFormSubmit();
+    // trackMetaLead();
+    // trackGoogleAdsConversion('form_submit', 0);
 
     return NextResponse.json(
       {
