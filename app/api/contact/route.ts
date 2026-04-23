@@ -1,4 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const MAX_BODY_CHARS = 32_000;
 const MAX_FIELD_LEN = 2000;
@@ -130,12 +133,28 @@ export async function POST(request: NextRequest) {
     }
   }
 
-  try {
-    // Aqui você pode integrar com: SendGrid, Resend, Nodemailer, etc.
+  const tipoProjetoTrim = tipoProjeto.trim();
+  const nomeTrim = nome.trim();
+  const emailTrim = email.trim();
+  const telefoneTrim = telefone.trim();
+  const mensagemStr =
+    typeof mensagem === 'string' && mensagem.length > 0 ? mensagem : undefined;
 
-    // trackFormSubmit();
-    // trackMetaLead();
-    // trackGoogleAdsConversion('form_submit', 0);
+  try {
+    // Enviar email via Resend
+    await resend.emails.send({
+      from: 'Cobersystem <onboarding@resend.dev>',
+      to: ['gugafuinha@icloud.com'],
+      subject: `Novo Orçamento - ${tipoProjetoTrim}`,
+      html: `
+            <h2>Novo pedido de orçamento</h2>
+            <p><strong>Nome:</strong> ${nomeTrim}</p>
+            <p><strong>Email:</strong> ${emailTrim}</p>
+            <p><strong>Telefone:</strong> ${telefoneTrim}</p>
+            <p><strong>Tipo de Projeto:</strong> ${tipoProjetoTrim}</p>
+            ${mensagemStr ? `<p><strong>Mensagem:</strong> ${mensagemStr}</p>` : ''}
+        `,
+    });
 
     return NextResponse.json(
       {
