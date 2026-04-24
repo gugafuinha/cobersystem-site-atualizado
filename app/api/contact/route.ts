@@ -144,7 +144,7 @@ export async function POST(request: NextRequest) {
     // Enviar email via Resend
     await resend.emails.send({
       from: 'Cobersystem <onboarding@resend.dev>',
-      to: ['gugafuinha@icloud.com'],
+      to: ['contato@cobersystem.com.br'],
       subject: `Novo Orçamento - ${tipoProjetoTrim}`,
       html: `
             <h2>Novo pedido de orçamento</h2>
