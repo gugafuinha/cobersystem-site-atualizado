@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import imageCompression from 'browser-image-compression';
@@ -456,7 +456,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
                   />
                   <p className="text-xs text-gray-700 break-all">{photo.originalName}</p>
                   <p className="text-xs text-gray-600">
-                    {formatBytes(photo.originalSize)} -> {formatBytes(photo.compressedSize)}
+                    {formatBytes(photo.originalSize)} → {formatBytes(photo.compressedSize)}
                   </p>
                   <button
                     type="button"
