@@ -1,18 +1,21 @@
-'use client';
+﻿'use client';
 
 import { useState } from 'react';
 import { trackFormSubmit, trackCTAClick } from '@/components/GoogleAnalytics';
 import { trackMetaLead } from '@/components/MetaPixel';
 import { trackGoogleAdsConversion } from '@/components/GoogleAds';
 
-export default function ContactForm() {
+type ContactFormProps = {
+  onSuccess?: () => void;
+};
+
+export default function ContactForm({ onSuccess }: ContactFormProps) {
   const [formData, setFormData] = useState({
     nome: '',
     email: '',
     telefone: '',
     tipoProjeto: '',
     mensagem: '',
-    /** Honeypot anti-spam: não alterar; deve permanecer vazio */
     website: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -42,16 +45,16 @@ export default function ContactForm() {
           mensagem: '',
           website: '',
         });
-        
-        // Track eventos
+
         trackFormSubmit();
         trackMetaLead();
         trackGoogleAdsConversion('form_submit', 0);
+        onSuccess?.();
       } else {
         setSubmitStatus('error');
       }
     } catch (error) {
-      console.error('Erro ao enviar formulário:', error);
+      console.error('Erro ao enviar formulario:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -67,14 +70,6 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      {submitStatus === 'success' && (
-        <div className="bg-green-50 border-l-4 border-green-500 p-4 rounded">
-          <p className="text-green-700 font-semibold">
-            ✓ Orçamento enviado com sucesso! Entraremos em contato em breve.
-          </p>
-        </div>
-      )}
-      
       {submitStatus === 'error' && (
         <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded">
           <p className="text-red-700 font-semibold">
@@ -83,7 +78,6 @@ export default function ContactForm() {
         </div>
       )}
 
-      {/* Campo armadilha para bots: oculto para utilizadores; manter vazio */}
       <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
         <label htmlFor="contact-website">Website</label>
         <input
@@ -98,9 +92,7 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="nome" className="block text-gray-700 font-semibold mb-2">
-          Nome Completo *
-        </label>
+        <label htmlFor="nome" className="block text-gray-700 font-semibold mb-2">Nome Completo *</label>
         <input
           type="text"
           id="nome"
@@ -112,11 +104,9 @@ export default function ContactForm() {
           placeholder="Seu nome completo"
         />
       </div>
-      
+
       <div>
-        <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">
-          E-mail *
-        </label>
+        <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">E-mail *</label>
         <input
           type="email"
           id="email"
@@ -128,11 +118,9 @@ export default function ContactForm() {
           placeholder="seu@email.com"
         />
       </div>
-      
+
       <div>
-        <label htmlFor="telefone" className="block text-gray-700 font-semibold mb-2">
-          Telefone/WhatsApp *
-        </label>
+        <label htmlFor="telefone" className="block text-gray-700 font-semibold mb-2">Telefone/WhatsApp *</label>
         <input
           type="tel"
           id="telefone"
@@ -144,11 +132,9 @@ export default function ContactForm() {
           placeholder="(11) 99999-9999"
         />
       </div>
-      
+
       <div>
-        <label htmlFor="tipo-projeto" className="block text-gray-700 font-semibold mb-2">
-          Tipo de Projeto *
-        </label>
+        <label htmlFor="tipo-projeto" className="block text-gray-700 font-semibold mb-2">Tipo de Projeto *</label>
         <select
           id="tipo-projeto"
           name="tipoProjeto"
@@ -158,20 +144,18 @@ export default function ContactForm() {
           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent"
         >
           <option value="">Selecione...</option>
-          <option value="churrasqueira">Área de Churrasqueira</option>
+          <option value="churrasqueira">Area de Churrasqueira</option>
           <option value="varanda">Varanda de Apartamento</option>
           <option value="pergolado">Pergolado Residencial</option>
-          <option value="area-gourmet">Área Gourmet</option>
+          <option value="area-gourmet">Area Gourmet</option>
           <option value="piscina">Cobertura para Piscina</option>
           <option value="garagem">Cobertura para Garagem</option>
           <option value="outro">Outro</option>
         </select>
       </div>
-      
+
       <div>
-        <label htmlFor="mensagem" className="block text-gray-700 font-semibold mb-2">
-          Mensagem
-        </label>
+        <label htmlFor="mensagem" className="block text-gray-700 font-semibold mb-2">Mensagem</label>
         <textarea
           id="mensagem"
           name="mensagem"
@@ -182,14 +166,10 @@ export default function ContactForm() {
           placeholder="Conte-nos mais sobre seu projeto..."
         ></textarea>
       </div>
-      
+
       <div>
-        <label htmlFor="fotos" className="block text-gray-700 font-semibold mb-2">
-          Fotos do Local (opcional)
-        </label>
-        <p className="text-sm text-gray-600 mb-3">
-          📸 Se tiver fotos do local, isso nos ajuda a fazer um orçamento prévio mais preciso!
-        </p>
+        <label htmlFor="fotos" className="block text-gray-700 font-semibold mb-2">Fotos do Local (opcional)</label>
+        <p className="text-sm text-gray-600 mb-3">Se tiver fotos do local, isso nos ajuda a fazer um orcamento previo mais preciso.</p>
         <input
           type="file"
           id="fotos"
@@ -198,20 +178,17 @@ export default function ContactForm() {
           accept="image/*"
           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-[#D4AF37] file:text-black hover:file:bg-[#C9A030] file:cursor-pointer"
         />
-        <p className="text-xs text-gray-500 mt-2">
-          Você pode enviar várias fotos. Formatos aceitos: JPG, PNG, HEIC
-        </p>
+        <p className="text-xs text-gray-500 mt-2">Voce pode enviar varias fotos. Formatos aceitos: JPG, PNG, HEIC</p>
       </div>
-      
+
       <button
         type="submit"
         disabled={isSubmitting}
-        onClick={() => trackCTAClick('Formulário de Contato')}
+        onClick={() => trackCTAClick('Formulario de Contato')}
         className="w-full bg-[#D4AF37] text-black px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#C9A030] transition shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        {isSubmitting ? 'Enviando...' : 'Enviar Solicitação'}
+        {isSubmitting ? 'Enviando...' : 'Enviar Solicitacao'}
       </button>
     </form>
   );
 }
-
