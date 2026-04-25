@@ -143,7 +143,7 @@ export async function POST(request: NextRequest) {
   try {
     // Enviar email via Resend
     await resend.emails.send({
-      from: 'Cobersystem <onboarding@resend.dev>',
+      from: 'Cobersystem <contato@cobersystem.com.br>',
       to: ['contato@cobersystem.com.br'],
       subject: `Novo Orçamento - ${tipoProjetoTrim}`,
       html: `
