@@ -58,3 +58,7 @@ export const trackScroll90 = () => {
   trackEvent('scroll', 'Engagement', 'Scroll 90%');
 };
 
+export const trackPhoneClick = () => {
+  trackEvent('phone_click', 'engagement', 'Footer - Telefone');
+};
+

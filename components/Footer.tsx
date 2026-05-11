@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link';
+import { trackWhatsAppClick, trackPhoneClick } from '@/components/GoogleAnalytics';
 
 export default function Footer() {
   return (
@@ -127,8 +130,24 @@ export default function Footer() {
                 </a>
               </p>
               <p>
+                <strong className="text-white">Telefone:</strong><br />
+                <a
+                  href="tel:+5511943615079"
+                  onClick={() => trackPhoneClick()}
+                  className="hover:text-[#D4AF37] transition"
+                >
+                  (11) 94361-5079
+                </a>
+              </p>
+              <p>
                 <strong className="text-white">WhatsApp:</strong><br />
-                <a href="https://wa.me/5511943615079" target="_blank" rel="noopener noreferrer" className="hover:text-[#D4AF37] transition">
+                <a
+                  href="https://wa.me/5511943615079"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackWhatsAppClick()}
+                  className="hover:text-[#D4AF37] transition"
+                >
                   (11) 94361-5079
                 </a>
               </p>
