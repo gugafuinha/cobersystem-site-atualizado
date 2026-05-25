@@ -276,7 +276,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
 
         trackFormSubmit();
         trackMetaLead();
-        trackGoogleAdsConversion('form_submit', 0);
+        trackGoogleAdsConversion('lGDsCLD1opAYEM2d24Mp', 0);
         onSuccess?.();
       } else {
         setSubmitStatus('error');

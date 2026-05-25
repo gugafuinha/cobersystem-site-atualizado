@@ -3,7 +3,7 @@
 import Script from 'next/script';
 
 // Substitua pelo seu Conversion ID do Google Ads
-const GOOGLE_ADS_ID = 'AW-XXXXXXXXXX'; // Substituir pelo ID real
+const GOOGLE_ADS_ID = 'AW-11013639885';
 
 export default function GoogleAds() {
   return (
