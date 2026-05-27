@@ -167,6 +167,20 @@ Distribuir PageRank interno para as páginas de serviço mais comerciais, melhor
 
 ---
 
+## 2026-05-27 — P3.6: Botão "Orçamento" do menu redirecionado para /orcamento
+
+### Arquivo editado
+- `components/Header.tsx`:
+  - Desktop (linha 94): `href="/contato"` → `href="/orcamento"`
+  - Mobile (linha 140): `href="/contato"` → `href="/orcamento"`
+
+### Impacto
+- Todo clique no botão "Orçamento" do menu agora aciona a página com tracking completo (Google Ads + GA4 + Meta Pixel)
+- Após envio do formulário, usuário é redirecionado para `/obrigado` (URL de conversão limpa)
+- Sem mudança visual — apenas o destino foi corrigido
+
+---
+
 ## 2026-05-27 — P2.7: URL direta do GBP nos schemas LocalBusiness e Organization
 
 ### Arquivos editados
