@@ -191,7 +191,7 @@ export default async function BlogPostPage(
               <div className="grid grid-cols-2 gap-4 mb-8">
                 <figure className="text-center">
                   <img
-                    src="/images/blog/cobertura-policarbonato-guia.jpg"
+                    src="/images/blog/cobertura-policarbonato-guia.png"
                     alt="Cobertura de policarbonato aberta"
                     className="w-full h-64 object-cover rounded-lg"
                   />
@@ -199,7 +199,7 @@ export default async function BlogPostPage(
                 </figure>
                 <figure className="text-center">
                   <img
-                    src="/images/blog/cobertura-policarbonato-retratil.jpg"
+                    src="/images/blog/cobertura-policarbonato-retratil.png"
                     alt="Cobertura de policarbonato fechada"
                     className="w-full h-64 object-cover rounded-lg"
                   />
