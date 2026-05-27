@@ -107,3 +107,23 @@ GBP configurado como SAB (Service Area Business) com endereço oculto. O site ex
 
 ### Resultado
 NAP do site alinhado com GBP SAB. Footer agora reforça cobertura geográfica em vez de expor endereço privado.
+
+---
+
+## 2026-05-27 — P2.1: Substituição de img nativo por Image do Next.js no blog
+
+### Arquivos editados
+
+**`app/blog/[slug]/page.tsx`:**
+- Adicionado `import Image from 'next/image'`
+- Hero do post: `<img loading="lazy">` → `<Image fill priority sizes="(max-width: 768px) 100vw, 896px">` — melhora LCP
+- Grid de imagens (post policarbonato): 2× `<img>` → `<Image fill>` dentro de container `relative h-64`
+
+**`app/blog/page.tsx`:**
+- Adicionado `import Image from 'next/image'`
+- Cards da listagem: CSS `style.backgroundImage` removido → `<Image fill loading="lazy" sizes="...">` posicionado absolutamente dentro do `<article>`
+
+### Ganhos esperados
+- AVIF/WebP automático em todas as imagens do blog (40-70% de redução de peso)
+- Eliminação de CLS nas imagens sem dimensões declaradas
+- LCP do post melhorado com `priority` no hero

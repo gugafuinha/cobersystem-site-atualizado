@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: "Blog | Cobertura Retrátil em Policarbonato | Dicas e Informações",
@@ -120,14 +121,16 @@ export default function Blog() {
                 href={`/blog/${artigo.slug}`}
                 className="group"
               >
-                <article 
-                  className="relative rounded-lg overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 h-80"
-                  style={{
-                    backgroundImage: `url(${artigo.imagem})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                  }}
-                >
+                <article className="relative rounded-lg overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 h-80">
+                  {/* Imagem de fundo via Next.js Image (AVIF/WebP automático) */}
+                  <Image
+                    src={artigo.imagem}
+                    alt={artigo.titulo}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    loading="lazy"
+                  />
                   {/* Overlay escuro com transparência */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30 group-hover:from-black/95 group-hover:via-black/70 transition-all duration-300"></div>
                   

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import blogPosts from '@/content/blog-posts.json';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -227,30 +228,40 @@ export default async function BlogPostPage(
 
             {/* Imagem destacada */}
             <div className="relative h-96 mb-8 rounded-lg overflow-hidden">
-              <img
+              <Image
                 src={artigo.imagem}
                 alt={artigo.titulo}
-                className="w-full h-full object-cover"
-                loading="lazy"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 896px"
+                priority
               />
             </div>
 
             {artigo.slug === 'cobertura-de-policarbonato-precos-tipos-guia' && (
               <div className="grid grid-cols-2 gap-4 mb-8">
                 <figure className="text-center">
-                  <img
-                    src="/images/blog/cobertura-policarbonato-guia.png"
-                    alt="Cobertura de policarbonato aberta"
-                    className="w-full h-64 object-cover rounded-lg"
-                  />
+                  <div className="relative h-64 rounded-lg overflow-hidden">
+                    <Image
+                      src="/images/blog/cobertura-policarbonato-guia.png"
+                      alt="Cobertura de policarbonato aberta"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 448px"
+                    />
+                  </div>
                   <figcaption className="text-sm text-gray-500 mt-2 italic">Cobertura Aberta</figcaption>
                 </figure>
                 <figure className="text-center">
-                  <img
-                    src="/images/blog/cobertura-policarbonato-retratil.png"
-                    alt="Cobertura de policarbonato fechada"
-                    className="w-full h-64 object-cover rounded-lg"
-                  />
+                  <div className="relative h-64 rounded-lg overflow-hidden">
+                    <Image
+                      src="/images/blog/cobertura-policarbonato-retratil.png"
+                      alt="Cobertura de policarbonato fechada"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 448px"
+                    />
+                  </div>
                   <figcaption className="text-sm text-gray-500 mt-2 italic">Cobertura Fechada</figcaption>
                 </figure>
               </div>
