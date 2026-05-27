@@ -52,3 +52,18 @@ Item 1.2 — Tracking de conversão no formulário `/orcamento` + criação da p
 ### Motivação
 O formulário de orçamento abria WhatsApp sem disparar nenhum evento de tracking.
 Google Ads, GA e Meta Pixel não registravam a conversão, impedindo otimização de campanhas.
+
+---
+
+## 2026-05-27 — Prioridade 1.3: WhatsApp Contextual por Rota
+
+### Arquivos editados
+- `components/WhatsAppButton.tsx` — mensagem do botão flutuante agora é dinâmica por rota:
+  - Usa `usePathname()` do Next.js para detectar a rota atual
+  - Tabela `ROUTE_MESSAGES` com 30 rotas mapeadas (serviços, produtos, blog, localização, conversão)
+  - Função `getWhatsAppMessage()` com fallback para mensagem padrão
+  - Cobertura: todos os 14 serviços, 5 produtos, 6 posts de blog, localização, /orcamento, /contato, /obrigado, /faq
+
+### Motivação
+Mensagem genérica em todas as páginas reduzia taxa de engajamento no WhatsApp.
+Usuário que lia sobre piscina chegava com mensagem de "cobertura genérica" — contexto perdido para o vendedor.
