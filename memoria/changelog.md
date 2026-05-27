@@ -127,3 +127,18 @@ NAP do site alinhado com GBP SAB. Footer agora reforça cobertura geográfica em
 - AVIF/WebP automático em todas as imagens do blog (40-70% de redução de peso)
 - Eliminação de CLS nas imagens sem dimensões declaradas
 - LCP do post melhorado com `priority` no hero
+
+---
+
+## 2026-05-27 — Risco SEO: Remoção de AggregateRating e Reviews fictícios
+
+### Contexto
+GMB real tem 18 avaliações com nota 3.5. O componente `LocalBusinessSchema.tsx` continha dados fictícios incompatíveis com a realidade (`ratingValue: 4.9`, `reviewCount: 127`, 2 reviews com "Cliente Verificado"). Dados falsos em structured data são violação das diretrizes do Google e podem gerar Manual Action.
+
+### Arquivo editado
+- `components/LocalBusinessSchema.tsx` — removidos completamente os campos `aggregateRating` e `review` do schema `LocalBusiness`
+
+### Decisão estratégica
+- P2.6 (AggregateRating nas páginas de serviço) **pausado** até o GMB atingir ≥ 4.0 estrelas
+- Quando atingir 4.0+, implementar com dados reais do GBP
+- Meta: ~8–10 novas avaliações 5 estrelas para sair de 3.5 → 4.0 (base de 18 reviews)

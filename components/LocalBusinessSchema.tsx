@@ -115,41 +115,6 @@ export default function LocalBusinessSchema() {
         "description": "Controle via Alexa, sensor de chuva automático e controle remoto",
         "category": "Automação"
       }
-    ],
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "127",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
-    "review": [
-      {
-        "@type": "Review",
-        "author": {
-          "@type": "Person",
-          "name": "Cliente Verificado"
-        },
-        "datePublished": "2024-10-15",
-        "reviewBody": "Excelente trabalho! A cobertura retrátil transformou nossa área gourmet. O sensor de chuva funciona perfeitamente e a instalação foi rápida.",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5"
-        }
-      },
-      {
-        "@type": "Review",
-        "author": {
-          "@type": "Person",
-          "name": "Cliente Verificado"
-        },
-        "datePublished": "2024-09-20",
-        "reviewBody": "Muito satisfeito com o resultado. Equipe profissional, prazo cumprido e produto de alta qualidade. Recomendo!",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5"
-        }
-      }
     ]
   };
 
