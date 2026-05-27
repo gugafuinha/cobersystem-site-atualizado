@@ -26,6 +26,37 @@ export default function Header() {
               </Link>
             </li>
             <li className="relative group">
+              <Link href="/servicos" className="text-gray-700 hover:text-[#D4AF37] transition">
+                Serviços
+              </Link>
+              <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <Link href="/servicos/cobertura-retratil" className="block px-4 py-3 text-gray-700 hover:bg-[#D4AF37]/10 hover:text-[#D4AF37]">
+                  Cobertura Retrátil
+                </Link>
+                <Link href="/servicos/cobertura-abre-e-fecha" className="block px-4 py-3 text-gray-700 hover:bg-[#D4AF37]/10 hover:text-[#D4AF37]">
+                  Cobertura Abre e Fecha
+                </Link>
+                <Link href="/servicos/cobertura-piscina" className="block px-4 py-3 text-gray-700 hover:bg-[#D4AF37]/10 hover:text-[#D4AF37]">
+                  Cobertura para Piscina
+                </Link>
+                <Link href="/servicos/cobertura-area-gourmet" className="block px-4 py-3 text-gray-700 hover:bg-[#D4AF37]/10 hover:text-[#D4AF37]">
+                  Área Gourmet
+                </Link>
+                <Link href="/servicos/cobertura-garagem" className="block px-4 py-3 text-gray-700 hover:bg-[#D4AF37]/10 hover:text-[#D4AF37]">
+                  Cobertura Garagem
+                </Link>
+                <Link href="/servicos/cobertura-policarbonato" className="block px-4 py-3 text-gray-700 hover:bg-[#D4AF37]/10 hover:text-[#D4AF37]">
+                  Cobertura Policarbonato
+                </Link>
+                <Link href="/servicos/cobertura-termoacustica" className="block px-4 py-3 text-gray-700 hover:bg-[#D4AF37]/10 hover:text-[#D4AF37]">
+                  Cobertura Termoacústica
+                </Link>
+                <Link href="/servicos/cobertura-aluminio" className="block px-4 py-3 text-gray-700 hover:bg-[#D4AF37]/10 hover:text-[#D4AF37]">
+                  Cobertura Alumínio
+                </Link>
+              </div>
+            </li>
+            <li className="relative group">
               <Link href="/produtos" className="text-gray-700 hover:text-[#D4AF37] transition">
                 Produtos
               </Link>
@@ -78,6 +109,11 @@ export default function Header() {
             <li className="shrink-0">
               <Link href="/sobre" className="text-gray-700 hover:text-[#D4AF37] transition">
                 Sobre
+              </Link>
+            </li>
+            <li className="shrink-0">
+              <Link href="/servicos" className="text-gray-700 hover:text-[#D4AF37] transition">
+                Serviços
               </Link>
             </li>
             <li className="shrink-0">
