@@ -1,32 +1,40 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Orçamento Grátis | Cobertura em Policarbonato | Cobersystem SP',
+  title: 'Orçamento Grátis de Cobertura Retrátil em SP | Cobersystem',
   description:
-    'Solicite seu orçamento grátis de cobertura retrátil ou fixa. Resposta em 24h, projeto incluído, sem compromisso. Atendemos toda Grande São Paulo.',
-  keywords: [
-    'orçamento cobertura',
-    'orçamento grátis',
-    'solicitar orçamento',
-    'cobertura são paulo',
-  ],
-  openGraph: {
-    title: 'Orçamento Grátis | Cobersystem',
-    description: 'Resposta em 24h • Projeto incluído • Sem compromisso',
-    url: 'https://www.coberturapolicarbonato.com.br/orcamento',
-    siteName: 'Cobersystem',
-    locale: 'pt_BR',
-    type: 'website',
-  },
+    'Solicite orçamento gratuito para cobertura retrátil, cobertura abre e fecha ou cobertura em policarbonato. Atendemos toda Grande São Paulo. Resposta em até 24h.',
+  keywords:
+    'orçamento cobertura retrátil, orçamento cobertura policarbonato, orçamento cobertura abre e fecha, cobertura sp preço, cobersystem orçamento',
   alternates: {
     canonical: 'https://www.coberturapolicarbonato.com.br/orcamento',
   },
+  openGraph: {
+    title: 'Orçamento Grátis de Cobertura Retrátil | Cobersystem',
+    description:
+      'Solicite orçamento gratuito para cobertura retrátil em policarbonato. Atendemos toda Grande São Paulo. Resposta em até 24h.',
+    url: 'https://www.coberturapolicarbonato.com.br/orcamento',
+    type: 'website',
+    siteName: 'Cobersystem - Cobertura em Policarbonato',
+    locale: 'pt_BR',
+    images: [
+      {
+        url: 'https://www.coberturapolicarbonato.com.br/images/blog/cobertura-abre-fecha.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Orçamento Cobertura Retrátil - Cobersystem',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Orçamento Grátis de Cobertura Retrátil | Cobersystem',
+    description:
+      'Solicite orçamento gratuito para cobertura retrátil em policarbonato. Atendemos toda Grande São Paulo.',
+    images: ['https://www.coberturapolicarbonato.com.br/images/blog/cobertura-abre-fecha.jpg'],
+  },
 };
 
-export default function OrcamentoLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return children;
+export default function OrcamentoLayout({ children }: { children: React.ReactNode }) {
+  return <>{children}</>;
 }

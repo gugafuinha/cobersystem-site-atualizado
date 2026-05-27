@@ -17,7 +17,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/faq`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/contato`, lastModified: now, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${baseUrl}/sobre`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${baseUrl}/orcamento`, lastModified: now, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${baseUrl}/cases-sucesso`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${baseUrl}/galeria`, lastModified: now, changeFrequency: 'monthly', priority: 0.75 },
   ];
+
+  const localizacaoPages: MetadataRoute.Sitemap = [
+    'sao-paulo',
+    'zona-leste',
+    'zona-sul',
+    'zona-norte',
+    'zona-oeste',
+    'guarulhos',
+    'campinas',
+    'santo-andre',
+    'sao-bernardo',
+    'sorocaba',
+    'abc',
+  ].map((slug) => ({
+    url: `${baseUrl}/localizacao/${slug}`,
+    lastModified: now,
+    changeFrequency: 'weekly' as const,
+    priority: slug === 'sao-paulo' ? 0.85 : 0.8,
+  }));
 
   const coberturaPolicarbonatoLocal: MetadataRoute.Sitemap =
     getSlugsCidadesPolicarbonato().map((cidade) => ({
@@ -115,6 +137,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     ...requiredPages,
+    ...localizacaoPages,
     ...mainProductPages,
     ...coberturaPolicarbonatoLocal,
     ...coberturaRetratilLocal,
