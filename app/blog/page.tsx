@@ -72,6 +72,16 @@ const artigos = [
     palavrasChave: ['pergolado', 'cobertura retrátil', 'comparação'],
     imagem: '/images/blog/pergolado-vs-cobertura.jpg',
   },
+  {
+    id: 7,
+    slug: 'cobertura-de-policarbonato-precos-tipos-guia',
+    titulo: 'Cobertura de Policarbonato: Preços 2026, Tipos e Qual Escolher [Guia Completo]',
+    descricao: 'Descubra quanto custa cobertura de policarbonato em 2026. Comparamos retrátil vs fixa, preços por m², vantagens e onde usar. Orçamento grátis em SP.',
+    data: '2026-05-27',
+    categoria: 'Guia Completo',
+    palavrasChave: ['cobertura de policarbonato', 'cobertura policarbonato retrátil', 'cobertura policarbonato preço'],
+    imagem: '/images/blog/cobertura-abre-fecha.jpg',
+  },
 ];
 
 export default function Blog() {

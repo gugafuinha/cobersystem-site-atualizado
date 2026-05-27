@@ -104,6 +104,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'cobertura-retratil-churrasqueira',
     'automacao-alexa-sensor-chuva',
     'pergolado-vs-cobertura-retratil',
+    'cobertura-de-policarbonato-precos-tipos-guia',
   ].map((slug) => ({
     url: `${baseUrl}/blog/${slug}`,
     lastModified: now,
