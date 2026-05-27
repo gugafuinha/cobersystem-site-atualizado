@@ -199,7 +199,7 @@ export default async function BlogPostPage(
                 </figure>
                 <figure className="text-center">
                   <img
-                    src="/images/blog/cobertura-policarbonato-retrátil.jpg"
+                    src="/images/blog/cobertura-policarbonato-retratil.jpg"
                     alt="Cobertura de policarbonato fechada"
                     className="w-full h-64 object-cover rounded-lg"
                   />
