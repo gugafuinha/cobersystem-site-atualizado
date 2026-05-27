@@ -93,6 +93,16 @@ const artigos = [
     palavrasChave: ['cobertura para piscina', 'cobertura piscina retrátil', 'cobertura piscina preço'],
     imagem: '/images/blog/cobertura-piscina-retratil.jpg',
   },
+  {
+    id: 9,
+    slug: 'cobertura-area-gourmet-tipos-precos-guia',
+    titulo: 'Cobertura para Área Gourmet: Tipos, Preços e Como Escolher [2026]',
+    descricao: 'Guia completo sobre cobertura para área gourmet em 2026. Compare retrátil, fixa e policarbonato, veja tabela de preços por m² e saiba qual é a melhor opção para seu espaço.',
+    data: '2026-05-27',
+    categoria: 'Guia Completo',
+    palavrasChave: ['cobertura para área gourmet', 'cobertura área gourmet preço', 'cobertura área gourmet retrátil'],
+    imagem: '/images/blog/cobertura-area-gourmet.jpg',
+  },
 ];
 
 export default function Blog() {

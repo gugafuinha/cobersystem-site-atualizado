@@ -167,6 +167,25 @@ Distribuir PageRank interno para as páginas de serviço mais comerciais, melhor
 
 ---
 
+## 2026-05-27 — P2.2: Novo post — Cobertura para Área Gourmet
+
+### Arquivos editados
+- `content/blog-posts.json`: novo entry `cobertura-area-gourmet-tipos-precos-guia`
+  - 12 seções + FAQ (rich snippet) + conclusão
+  - Palavras-chave: cobertura para área gourmet, preço, retrátil, policarbonato, varanda gourmet
+- `app/blog/page.tsx`: novo item `id: 9` no array `artigos`
+- `app/blog/[slug]/page.tsx`:
+  - `POST_INTERNAL_LINKS`: 3 links internos (área gourmet, retrátil, abre e fecha)
+  - `POST_WHATSAPP_MESSAGE`: mensagem contextual para o novo post
+
+### Estrutura do post
+12 seções cobrindo: benefícios, tipos (retrátil, fixa, vidro, pergolado), tabela de preços 2026, comparativo retrátil vs fixa, integração com decoração, ventilação, manutenção e FAQ.
+
+### CTA intermediário
+Inserido automaticamente após a 3ª seção (herda lógica do P3.1 já implementado).
+
+---
+
 ## 2026-05-27 — P3.6b: Dica de fotos via WhatsApp no formulário /orcamento
 
 ### Arquivo editado

@@ -67,6 +67,11 @@ const POST_INTERNAL_LINKS: Record<string, Array<{ label: string; href: string }>
     { label: 'Cobertura Retrátil Automatizada — Sensor de Chuva', href: '/servicos/cobertura-retratil-automatizada' },
     { label: 'Cobertura Retrátil', href: '/servicos/cobertura-retratil' },
   ],
+  'cobertura-area-gourmet-tipos-precos-guia': [
+    { label: 'Cobertura Retrátil para Área Gourmet — Ver serviço', href: '/servicos/cobertura-area-gourmet' },
+    { label: 'Cobertura Retrátil com Sensor de Chuva', href: '/servicos/cobertura-retratil' },
+    { label: 'Cobertura Abre e Fecha — Como funciona', href: '/servicos/cobertura-abre-e-fecha' },
+  ],
 };
 
 const POST_WHATSAPP_MESSAGE: Record<string, string> = {
@@ -78,6 +83,7 @@ const POST_WHATSAPP_MESSAGE: Record<string, string> = {
   'pergolado-vs-cobertura-retratil':           'Olá! Li o artigo comparando pergolado x cobertura e quero um orçamento.',
   'cobertura-de-policarbonato-precos-tipos-guia': 'Olá! Li o artigo sobre cobertura de policarbonato e quero um orçamento.',
   'cobertura-para-piscina-tipos-precos-guia':  'Olá! Li o artigo sobre cobertura para piscina e quero um orçamento.',
+  'cobertura-area-gourmet-tipos-precos-guia':  'Olá! Li o artigo sobre cobertura para área gourmet e quero um orçamento.',
 };
 
 export async function generateMetadata(
