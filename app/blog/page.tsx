@@ -102,7 +102,9 @@ export default function Blog() {
         {/* Artigos */}
         <section className="mb-16">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {artigos.map((artigo) => (
+            {artigos
+              .sort((a, b) => new Date(b.data).getTime() - new Date(a.data).getTime())
+              .map((artigo) => (
               <Link 
                 key={artigo.id}
                 href={`/blog/${artigo.slug}`}
