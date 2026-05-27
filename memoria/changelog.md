@@ -164,3 +164,21 @@ GMB real tem 18 avaliações com nota 3.5. O componente `LocalBusinessSchema.tsx
 
 ### Objetivo
 Distribuir PageRank interno para as páginas de serviço mais comerciais, melhorando ranking das páginas de conversão.
+
+---
+
+## 2026-05-27 — P3.1: CTA intermediário nos posts longos
+
+### Arquivo editado
+- `app/blog/[slug]/page.tsx` — adicionados:
+  1. `import { Fragment } from 'react'`
+  2. `POST_WHATSAPP_MESSAGE` — mapa de mensagens WhatsApp contextuais por slug (8 posts)
+  3. CTA intermediário renderizado após a 3ª seção (`idx === 2`) em todos os posts
+     - Fundo gradiente escuro (`from-gray-800 to-gray-900`)
+     - Botão dourado → `/orcamento`
+     - Botão verde → WhatsApp com mensagem contextual pré-preenchida por post
+     - Texto: "Quer saber o preço para o seu projeto? Resposta em até 24h."
+
+### Cobertura
+- Todos os 8 posts têm ≥ 8 seções — CTA aparece em todos após a 3ª seção
+- Mensagem WhatsApp específica por post (mesmo padrão do WhatsAppButton.tsx)
