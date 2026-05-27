@@ -50,6 +50,7 @@ interface LocalBusinessSchema {
     name: string;
   }[];
   hasMap?: string;
+  sameAs?: string[];
 }
 
 interface ProductSchema {
@@ -139,6 +140,7 @@ export const organizationSchema: OrganizationSchema = {
   sameAs: [
     'https://www.instagram.com/cobersystem',
     'https://www.youtube.com/@cobersystem',
+    'https://share.google/Mqi0TYJoGCN7QGDo6',
   ],
 };
 
@@ -184,6 +186,11 @@ export const localBusinessSchema: LocalBusinessSchema = {
     { '@type': 'City', name: 'Diadema' },
     { '@type': 'City', name: 'Taboão da Serra' },
   ],
-  hasMap: 'https://www.google.com/maps/search/cobersystem+sao+paulo',
+  hasMap: 'https://share.google/Mqi0TYJoGCN7QGDo6',
+  sameAs: [
+    'https://www.instagram.com/cobersystem',
+    'https://www.youtube.com/@cobersystem',
+    'https://share.google/Mqi0TYJoGCN7QGDo6',
+  ],
 };
 

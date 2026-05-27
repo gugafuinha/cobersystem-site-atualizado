@@ -167,6 +167,25 @@ Distribuir PageRank interno para as páginas de serviço mais comerciais, melhor
 
 ---
 
+## 2026-05-27 — P2.7: URL direta do GBP nos schemas LocalBusiness e Organization
+
+### Arquivos editados
+- `components/SchemaMarkup.tsx`:
+  - `organizationSchema.sameAs` — adicionado `https://share.google/Mqi0TYJoGCN7QGDo6`
+  - `localBusinessSchema.hasMap` — substituído link de busca genérica pela URL direta do GBP
+  - `localBusinessSchema.sameAs` — adicionado campo com 3 URLs (Instagram, YouTube, GBP)
+  - Interface `LocalBusinessSchema` — adicionado campo opcional `sameAs?: string[]`
+- `components/LocalBusinessSchema.tsx`:
+  - `sameAs` — adicionado `https://share.google/Mqi0TYJoGCN7QGDo6`
+  - `hasMap` — adicionado com URL direta do GBP
+
+### Impacto esperado
+- Google confirma que o site e o GBP são a mesma entidade (Knowledge Graph)
+- Melhora no sinal de autoridade local para Map Pack
+- Elimina ambiguidade da busca genérica anterior (`/search/cobersystem+sao+paulo`)
+
+---
+
 ## 2026-05-27 — P3.1: CTA intermediário nos posts longos
 
 ### Arquivo editado

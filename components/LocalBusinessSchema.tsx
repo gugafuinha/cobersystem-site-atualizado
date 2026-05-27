@@ -94,8 +94,10 @@ export default function LocalBusinessSchema() {
     ],
     "sameAs": [
       "https://www.instagram.com/cobersystem",
-      "https://www.youtube.com/@cobersystem"
+      "https://www.youtube.com/@cobersystem",
+      "https://share.google/Mqi0TYJoGCN7QGDo6"
     ],
+    "hasMap": "https://share.google/Mqi0TYJoGCN7QGDo6",
     "offers": [
       {
         "@type": "Offer",
