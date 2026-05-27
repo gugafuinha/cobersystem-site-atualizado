@@ -67,3 +67,21 @@ Google Ads, GA e Meta Pixel não registravam a conversão, impedindo otimizaçã
 ### Motivação
 Mensagem genérica em todas as páginas reduzia taxa de engajamento no WhatsApp.
 Usuário que lia sobre piscina chegava com mensagem de "cobertura genérica" — contexto perdido para o vendedor.
+
+---
+
+## 2026-05-27 — Prioridade 1.4: FAQ Schema nos Posts de Blog
+
+### Arquivos editados
+- `app/blog/[slug]/page.tsx` — adicionadas 3 peças:
+  1. Função `parseFaqSection()` — extrai pares pergunta/resposta do conteúdo textual dos posts (formato `**Pergunta?**\nResposta`)
+  2. Lógica de detecção da seção FAQ por título (`frequente` ou `pergunta`)
+  3. Injeção do schema `FAQPage` como `<script type="application/ld+json">` no JSX
+
+### Cobertura
+- 7 posts com FAQ detectados automaticamente
+- 42 perguntas extraídas e convertidas em schema
+- Qualquer post futuro com seção "Perguntas Frequentes" ganha o schema automaticamente
+
+### Motivação
+Posts de blog não geravam rich snippets de FAQ no Google, perdendo visibilidade e CTR nos resultados de busca.

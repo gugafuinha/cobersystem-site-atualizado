@@ -100,6 +100,48 @@ export default async function BlogPostPage(
     "articleSection": artigo.categoria
   };
 
+  // Extrai pares pergunta/resposta de uma seção FAQ.
+  // O conteúdo do JSON usa \n literal (barra + n), igual ao renderConteudo existente.
+  function parseFaqSection(content: string): Array<{ question: string; answer: string }> {
+    return content
+      .split('\\n\\n')
+      .map((block) => {
+        const lines = block.split('\\n');
+        const match = lines[0].match(/^\*\*(.+?)\*\*$/);
+        if (match && lines.length > 1) {
+          return {
+            question: match[1].trim(),
+            answer: lines
+              .slice(1)
+              .join(' ')
+              .replace(/\*\*(.*?)\*\*/g, '$1')
+              .trim(),
+          };
+        }
+        return null;
+      })
+      .filter((item): item is { question: string; answer: string } => item !== null);
+  }
+
+  const faqSection = artigo.conteudo.secoes.find(
+    (s) =>
+      s.titulo.toLowerCase().includes('frequente') ||
+      s.titulo.toLowerCase().includes('pergunta'),
+  );
+  const faqItems = faqSection ? parseFaqSection(faqSection.conteudo) : [];
+  const faqSchema =
+    faqItems.length > 0
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: faqItems.map(({ question, answer }) => ({
+            '@type': 'Question',
+            name: question,
+            acceptedAnswer: { '@type': 'Answer', text: answer },
+          })),
+        }
+      : null;
+
   // Função para renderizar conteúdo com formatação
   const renderConteudo = (texto: string) => {
     return texto.split('\\n\\n').map((paragrafo, idx) => {
@@ -141,6 +183,12 @@ export default async function BlogPostPage(
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
       
       <main className="min-h-screen bg-gray-50 py-12">
         <div className="container mx-auto px-4">
