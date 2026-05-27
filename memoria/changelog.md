@@ -167,6 +167,19 @@ Distribuir PageRank interno para as páginas de serviço mais comerciais, melhor
 
 ---
 
+## 2026-05-27 — P3.6b: Dica de fotos via WhatsApp no formulário /orcamento
+
+### Arquivo editado
+- `app/orcamento/page.tsx`: adicionado parágrafo abaixo do botão de envio:
+  - "Tem fotos do espaço? Envie pelo WhatsApp após o contato — é mais rápido e prático."
+
+### Impacto
+- Usuário não abandona o formulário por falta de upload
+- Fluxo principal de conversão (com tracking) permanece intacto
+- Zero fricção adicionada ao formulário
+
+---
+
 ## 2026-05-27 — P3.6: Botão "Orçamento" do menu redirecionado para /orcamento
 
 ### Arquivo editado

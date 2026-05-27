@@ -430,6 +430,10 @@ ${formData.mensagem.trim() || '(sem mensagem adicional)'}
               </button>
 
               <p className="text-sm text-gray-500 text-center">
+                Tem fotos do espaço? Envie pelo WhatsApp após o contato — é mais rápido e prático.
+              </p>
+
+              <p className="text-sm text-gray-500 text-center">
                 Ao enviar, você será redirecionado para o WhatsApp com sua mensagem pronta.
                 Nosso time responderá em até 24 horas úteis.
               </p>
