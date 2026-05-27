@@ -9,10 +9,8 @@ interface OrganizationSchema {
   description: string;
   address: {
     '@type': string;
-    streetAddress: string;
     addressLocality: string;
     addressRegion: string;
-    postalCode: string;
     addressCountry: string;
   };
   contactPoint: {
@@ -37,10 +35,8 @@ interface LocalBusinessSchema {
   priceRange: string;
   address: {
     '@type': string;
-    streetAddress: string;
     addressLocality: string;
     addressRegion: string;
-    postalCode: string;
     addressCountry: string;
   };
   openingHoursSpecification: {
@@ -128,10 +124,8 @@ export const organizationSchema: OrganizationSchema = {
   description: 'Empresa especializada em coberturas retráteis em policarbonato com automação via Alexa e sensor de chuva. Coberturas que abrem e fecham com controle total do clima.',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'São Paulo',
     addressLocality: 'São Paulo',
     addressRegion: 'SP',
-    postalCode: '01000-000',
     addressCountry: 'BR',
   },
   contactPoint: {
@@ -144,6 +138,7 @@ export const organizationSchema: OrganizationSchema = {
   },
   sameAs: [
     'https://www.instagram.com/cobersystem',
+    'https://www.youtube.com/@cobersystem',
   ],
 };
 
@@ -158,10 +153,8 @@ export const localBusinessSchema: LocalBusinessSchema = {
   priceRange: '$$',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'São Paulo',
     addressLocality: 'São Paulo',
     addressRegion: 'SP',
-    postalCode: '01000-000',
     addressCountry: 'BR',
   },
   openingHoursSpecification: [
@@ -185,6 +178,11 @@ export const localBusinessSchema: LocalBusinessSchema = {
     { '@type': 'City', name: 'São Bernardo do Campo' },
     { '@type': 'City', name: 'Campinas' },
     { '@type': 'City', name: 'Sorocaba' },
+    { '@type': 'City', name: 'Osasco' },
+    { '@type': 'City', name: 'Barueri' },
+    { '@type': 'City', name: 'São Caetano do Sul' },
+    { '@type': 'City', name: 'Diadema' },
+    { '@type': 'City', name: 'Taboão da Serra' },
   ],
   hasMap: 'https://www.google.com/maps/search/cobersystem+sao+paulo',
 };

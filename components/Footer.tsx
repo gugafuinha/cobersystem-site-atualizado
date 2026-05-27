@@ -118,10 +118,10 @@ export default function Footer() {
             <h3 className="font-semibold mb-4">Contato</h3>
             <div className="space-y-3 text-gray-400">
               <p>
-                <strong className="text-white">Endereço:</strong><br />
-                Rua Frei Diogo das Chagas, 160<br />
-                Jardim Angela - Zona Leste<br />
-                CEP: 03985-060 - São Paulo/SP
+                <strong className="text-white">Área de Atendimento:</strong><br />
+                São Paulo — todas as zonas<br />
+                Grande SP: Guarulhos, ABC, Osasco<br />
+                Campinas, Sorocaba e região
               </p>
               <p>
                 <strong className="text-white">E-mail:</strong><br />

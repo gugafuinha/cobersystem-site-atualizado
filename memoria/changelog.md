@@ -85,3 +85,25 @@ Usuário que lia sobre piscina chegava com mensagem de "cobertura genérica" —
 
 ### Motivação
 Posts de blog não geravam rich snippets de FAQ no Google, perdendo visibilidade e CTR nos resultados de busca.
+
+---
+
+## 2026-05-27 — SAB: Remoção de Endereço Físico (alinhamento GBP)
+
+### Contexto
+GBP configurado como SAB (Service Area Business) com endereço oculto. O site exibia o endereço físico visualmente e nos schemas — inconsistência com o GBP e risco de sinalização negativa.
+
+### Arquivos editados
+- `components/Footer.tsx` — substituído bloco "Endereço" por "Área de Atendimento: São Paulo (todas as zonas), Grande SP: Guarulhos, ABC, Osasco, Campinas, Sorocaba e região"
+- `components/SchemaMarkup.tsx`:
+  - Removidos `streetAddress` e `postalCode` das interfaces TypeScript e dos objetos `organizationSchema` e `localBusinessSchema`
+  - `areaServed` expandido de 6 para 11 cidades
+  - `sameAs` do Organization atualizado com YouTube
+- `app/servicos/cobertura-retratil/page.tsx` — removidos `streetAddress` e `postalCode` do service schema
+- `app/servicos/cobertura-policarbonato/page.tsx` — idem
+
+### Não alterado
+- `components/LocalBusinessSchema.tsx` — já estava correto (cidade-level apenas)
+
+### Resultado
+NAP do site alinhado com GBP SAB. Footer agora reforça cobertura geográfica em vez de expor endereço privado.

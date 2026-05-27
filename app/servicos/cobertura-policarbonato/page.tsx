@@ -60,10 +60,8 @@ const serviceSchema = {
     url: 'https://www.coberturapolicarbonato.com.br',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Rua Frei Diogo das Chagas, 160',
       addressLocality: 'São Paulo',
       addressRegion: 'SP',
-      postalCode: '03985-060',
       addressCountry: 'BR',
     },
   },
