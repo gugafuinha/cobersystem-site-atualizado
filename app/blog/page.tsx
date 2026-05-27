@@ -82,6 +82,16 @@ const artigos = [
     palavrasChave: ['cobertura de policarbonato', 'cobertura policarbonato retrátil', 'cobertura policarbonato preço'],
     imagem: '/images/blog/cobertura-policarbonato-guia.png',
   },
+  {
+    id: 8,
+    slug: 'cobertura-para-piscina-tipos-precos-guia',
+    titulo: 'Cobertura para Piscina: Tipos, Preços e Qual a Melhor Opção [2026]',
+    descricao: 'Guia completo sobre cobertura para piscina em 2026. Compare tipos (retrátil, fixa, policarbonato), preços por m², vantagens e como escolher a ideal para sua casa.',
+    data: '2026-05-27',
+    categoria: 'Guia Completo',
+    palavrasChave: ['cobertura para piscina', 'cobertura piscina retrátil', 'cobertura piscina preço'],
+    imagem: '/images/blog/cobertura-piscina-retratil.jpg',
+  },
 ];
 
 export default function Blog() {

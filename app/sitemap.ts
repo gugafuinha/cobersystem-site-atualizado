@@ -105,6 +105,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'automacao-alexa-sensor-chuva',
     'pergolado-vs-cobertura-retratil',
     'cobertura-de-policarbonato-precos-tipos-guia',
+    'cobertura-para-piscina-tipos-precos-guia',
   ].map((slug) => ({
     url: `${baseUrl}/blog/${slug}`,
     lastModified: now,
