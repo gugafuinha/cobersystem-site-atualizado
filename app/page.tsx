@@ -2,7 +2,6 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import OptimizedImage from '@/components/OptimizedImage';
-import StructuredData from '@/components/seo/StructuredData';
 import VideoHero from '@/components/VideoHero';
 
 export const metadata: Metadata = {
@@ -26,50 +25,9 @@ const homeWebSiteSchema = {
   },
 };
 
-const localBusinessSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  name: 'Cobersystem - Coberturas em Policarbonato',
-  image: 'https://www.coberturapolicarbonato.com.br/logo-horizontal-new.svg',
-  '@id': 'https://www.coberturapolicarbonato.com.br',
-  url: 'https://www.coberturapolicarbonato.com.br',
-  telephone: '+5511943615079',
-  email: 'vendas@cobersystem.com.br',
-  priceRange: '$$-$$$',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'Rua Frei Diogo das Chagas, 160',
-    addressLocality: 'São Paulo',
-    addressRegion: 'SP',
-    postalCode: '03985-060',
-    addressCountry: 'BR',
-  },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: -23.6815,
-    longitude: -46.6963,
-  },
-  openingHoursSpecification: [
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '08:00',
-      closes: '18:00',
-    },
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: 'Saturday',
-      opens: '08:00',
-      closes: '13:00',
-    },
-  ],
-  sameAs: ['https://www.instagram.com/cobersystem']
-};
-
 export default function Home() {
   return (
     <>
-      <StructuredData data={localBusinessSchema} />
       <Script
         id="schema-home-website"
         type="application/ld+json"
@@ -277,6 +235,63 @@ export default function Home() {
                   </span>
                 </div>
               </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Serviços Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-4">Nossos Serviços</h2>
+          <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+            Soluções completas em coberturas para todos os ambientes externos
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <Link href="/servicos/cobertura-retratil" className="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg hover:bg-[#D4AF37]/10 transition-all group">
+              <div className="text-4xl mb-3">🏠</div>
+              <h3 className="font-semibold text-gray-800 group-hover:text-[#D4AF37]">Cobertura Retrátil</h3>
+              <p className="text-sm text-gray-500 mt-1">Automação Alexa</p>
+            </Link>
+            <Link href="/servicos/cobertura-abre-e-fecha" className="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg hover:bg-[#D4AF37]/10 transition-all group">
+              <div className="text-4xl mb-3">↕️</div>
+              <h3 className="font-semibold text-gray-800 group-hover:text-[#D4AF37]">Abre e Fecha</h3>
+              <p className="text-sm text-gray-500 mt-1">Sensor de chuva</p>
+            </Link>
+            <Link href="/servicos/cobertura-piscina" className="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg hover:bg-[#D4AF37]/10 transition-all group">
+              <div className="text-4xl mb-3">🏊</div>
+              <h3 className="font-semibold text-gray-800 group-hover:text-[#D4AF37]">Cobertura Piscina</h3>
+              <p className="text-sm text-gray-500 mt-1">Proteção UV 99%</p>
+            </Link>
+            <Link href="/servicos/cobertura-area-gourmet" className="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg hover:bg-[#D4AF37]/10 transition-all group">
+              <div className="text-4xl mb-3">🍖</div>
+              <h3 className="font-semibold text-gray-800 group-hover:text-[#D4AF37]">Área Gourmet</h3>
+              <p className="text-sm text-gray-500 mt-1">Churrasqueira</p>
+            </Link>
+            <Link href="/servicos/cobertura-garagem" className="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg hover:bg-[#D4AF37]/10 transition-all group">
+              <div className="text-4xl mb-3">🚗</div>
+              <h3 className="font-semibold text-gray-800 group-hover:text-[#D4AF37]">Cobertura Garagem</h3>
+              <p className="text-sm text-gray-500 mt-1">Proteção veículos</p>
+            </Link>
+            <Link href="/servicos/cobertura-policarbonato" className="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg hover:bg-[#D4AF37]/10 transition-all group">
+              <div className="text-4xl mb-3">✨</div>
+              <h3 className="font-semibold text-gray-800 group-hover:text-[#D4AF37]">Policarbonato</h3>
+              <p className="text-sm text-gray-500 mt-1">Cobertura fixa</p>
+            </Link>
+            <Link href="/servicos/cobertura-termoacustica" className="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg hover:bg-[#D4AF37]/10 transition-all group">
+              <div className="text-4xl mb-3">🔇</div>
+              <h3 className="font-semibold text-gray-800 group-hover:text-[#D4AF37]">Termoacústica</h3>
+              <p className="text-sm text-gray-500 mt-1">Isolamento térmico</p>
+            </Link>
+            <Link href="/servicos/cobertura-aluminio" className="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg hover:bg-[#D4AF37]/10 transition-all group">
+              <div className="text-4xl mb-3">⚙️</div>
+              <h3 className="font-semibold text-gray-800 group-hover:text-[#D4AF37]">Cobertura Alumínio</h3>
+              <p className="text-sm text-gray-500 mt-1">Estrutura premium</p>
+            </Link>
+          </div>
+          <div className="text-center mt-10">
+            <Link href="/servicos" className="inline-block bg-[#D4AF37] text-black px-8 py-3 rounded-lg font-semibold hover:bg-[#C9A030] transition">
+              Ver Todos os Serviços
             </Link>
           </div>
         </div>
