@@ -1,7 +1,11 @@
 'use client';
 
 import { useState, type FormEvent } from 'react';
+import { useRouter } from 'next/navigation';
 import Breadcrumb from '@/components/seo/Breadcrumb';
+import { trackGoogleAdsConversion } from '@/components/GoogleAds';
+import { trackFormSubmit } from '@/components/GoogleAnalytics';
+import { trackMetaLead } from '@/components/MetaPixel';
 
 const WHATSAPP_NUMBER = '5511943615079';
 
@@ -58,6 +62,7 @@ function validate(form: typeof initialForm): FormErrors {
 }
 
 export default function OrcamentoPage() {
+  const router = useRouter();
   const [formData, setFormData] = useState(initialForm);
   const [errors, setErrors] = useState<FormErrors>({});
   const [touched, setTouched] = useState<Partial<Record<keyof typeof initialForm, boolean>>>(
@@ -113,7 +118,14 @@ ${formData.mensagem.trim() || '(sem mensagem adicional)'}
     const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensagem)}`;
     window.open(whatsappLink, '_blank', 'noopener,noreferrer');
 
-    window.setTimeout(() => setEnviando(false), 400);
+    trackGoogleAdsConversion('lGDsCLD1opAYEM2d24Mp', 0);
+    trackFormSubmit();
+    trackMetaLead();
+
+    window.setTimeout(() => {
+      setEnviando(false);
+      router.push('/obrigado');
+    }, 400);
   };
 
   const fieldClass = (field: keyof typeof initialForm) =>
