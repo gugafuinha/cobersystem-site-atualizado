@@ -43,11 +43,6 @@ interface LocalBusinessSchema {
     postalCode: string;
     addressCountry: string;
   };
-  geo: {
-    '@type': string;
-    latitude: string;
-    longitude: string;
-  };
   openingHoursSpecification: {
     '@type': string;
     dayOfWeek: string[];
@@ -58,6 +53,7 @@ interface LocalBusinessSchema {
     '@type': string;
     name: string;
   }[];
+  hasMap?: string;
 }
 
 interface ProductSchema {
@@ -135,7 +131,7 @@ export const organizationSchema: OrganizationSchema = {
     streetAddress: 'São Paulo',
     addressLocality: 'São Paulo',
     addressRegion: 'SP',
-    postalCode: '00000-000',
+    postalCode: '01000-000',
     addressCountry: 'BR',
   },
   contactPoint: {
@@ -165,13 +161,8 @@ export const localBusinessSchema: LocalBusinessSchema = {
     streetAddress: 'São Paulo',
     addressLocality: 'São Paulo',
     addressRegion: 'SP',
-    postalCode: '00000-000',
+    postalCode: '01000-000',
     addressCountry: 'BR',
-  },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: '-23.5505',
-    longitude: '-46.6333',
   },
   openingHoursSpecification: [
     {
@@ -195,5 +186,6 @@ export const localBusinessSchema: LocalBusinessSchema = {
     { '@type': 'City', name: 'Campinas' },
     { '@type': 'City', name: 'Sorocaba' },
   ],
+  hasMap: 'https://www.google.com/maps/search/cobersystem+sao+paulo',
 };
 

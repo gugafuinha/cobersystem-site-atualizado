@@ -79,10 +79,58 @@ const serviceSchema = {
   },
 };
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Quanto custa uma cobertura em policarbonato?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'O valor de uma cobertura em policarbonato varia entre R$ 450 e R$ 900 por m², dependendo do tipo de chapa (alveolar ou compacto) e tamanho do projeto. Solicite um orçamento gratuito pelo WhatsApp.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Qual a diferença entre policarbonato alveolar e compacto?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'O policarbonato alveolar é mais leve e possui melhor isolamento térmico, ideal para grandes áreas. O compacto é mais resistente a impactos e transparente, indicado para coberturas onde a claridade é importante.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Qual o prazo de instalação de cobertura em policarbonato?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'O prazo de instalação é de 2 a 4 dias úteis após aprovação do projeto, dependendo do tamanho da área. Realizamos visita técnica gratuita e entregamos o projeto em até 48h.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'O policarbonato protege contra raios UV?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sim! Nossas chapas de policarbonato possuem proteção UV de 99%, bloqueando os raios ultravioleta prejudiciais e mantendo o ambiente fresco e protegido.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Qual a garantia da cobertura em policarbonato?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Oferecemos 2 anos de garantia total na estrutura e nos materiais. Atendemos toda a Grande São Paulo com instalação profissional.',
+      },
+    },
+  ],
+};
+
 export default function CoberturaPolicarbonatoServicoPage() {
   return (
     <>
       <StructuredData data={serviceSchema} />
+      <StructuredData data={faqSchema} />
       <Breadcrumb />
 
       <main className="min-h-screen bg-gray-50">

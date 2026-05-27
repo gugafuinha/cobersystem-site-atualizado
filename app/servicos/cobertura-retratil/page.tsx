@@ -80,10 +80,58 @@ const serviceSchema = {
   },
 };
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Quanto custa uma cobertura retrátil?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'O valor de uma cobertura retrátil varia entre R$ 800 e R$ 1.500 por m², dependendo do tamanho, tipo de policarbonato e automação. Solicite um orçamento gratuito pelo WhatsApp.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'A cobertura retrátil funciona com chuva forte?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sim! Nossa cobertura possui sensor de chuva automático que fecha a cobertura assim que detecta precipitação, protegendo seu espaço automaticamente.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Qual o prazo de instalação de uma cobertura retrátil?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'O prazo de instalação é de 48 a 72 horas após a aprovação do projeto. Realizamos visita técnica gratuita e entregamos o projeto em até 48h.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'A cobertura retrátil pode ser controlada pelo celular?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sim! Nossa cobertura é compatível com Alexa e pode ser controlada por voz ou pelo celular. Também possui controle remoto e sensor de chuva automático.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Qual a garantia da cobertura retrátil?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Oferecemos 2 anos de garantia total, cobrindo estrutura, mecanismo de abertura, automação e policarbonato. Atendemos toda a Grande São Paulo.',
+      },
+    },
+  ],
+};
+
 export default function CoberturaRetratilServicoPage() {
   return (
     <>
       <StructuredData data={serviceSchema} />
+      <StructuredData data={faqSchema} />
       <Breadcrumb />
 
       <main className="min-h-screen bg-gray-50">
