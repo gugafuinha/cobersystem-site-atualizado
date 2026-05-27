@@ -187,6 +187,27 @@ export default async function BlogPostPage(
               />
             </div>
 
+            {artigo.slug === 'cobertura-de-policarbonato-precos-tipos-guia' && (
+              <div className="grid grid-cols-2 gap-4 mb-8">
+                <figure className="text-center">
+                  <img
+                    src="/images/blog/cobertura-policarbonato-guia.jpg"
+                    alt="Cobertura de policarbonato aberta"
+                    className="w-full h-64 object-cover rounded-lg"
+                  />
+                  <figcaption className="text-sm text-gray-500 mt-2 italic">Cobertura Aberta</figcaption>
+                </figure>
+                <figure className="text-center">
+                  <img
+                    src="/images/blog/cobertura-policarbonato-retrátil.jpg"
+                    alt="Cobertura de policarbonato fechada"
+                    className="w-full h-64 object-cover rounded-lg"
+                  />
+                  <figcaption className="text-sm text-gray-500 mt-2 italic">Cobertura Fechada</figcaption>
+                </figure>
+              </div>
+            )}
+
             {/* Conteúdo */}
             <div className="prose prose-lg max-w-none">
               {/* Introdução */}

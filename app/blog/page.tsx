@@ -80,7 +80,7 @@ const artigos = [
     data: '2026-05-27',
     categoria: 'Guia Completo',
     palavrasChave: ['cobertura de policarbonato', 'cobertura policarbonato retrátil', 'cobertura policarbonato preço'],
-    imagem: '/images/blog/cobertura-abre-fecha.jpg',
+    imagem: '/images/blog/cobertura-policarbonato-guia.jpg',
   },
 ];
 
