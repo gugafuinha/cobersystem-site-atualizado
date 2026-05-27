@@ -25,6 +25,49 @@ type BlogPost = {
 
 const artigos: Record<string, BlogPost> = blogPosts as any;
 
+const POST_INTERNAL_LINKS: Record<string, Array<{ label: string; href: string }>> = {
+  'cobertura-retratil-guia-completo': [
+    { label: 'Cobertura Retrátil — Ver serviço completo', href: '/servicos/cobertura-retratil' },
+    { label: 'Automação com Alexa e Sensor de Chuva', href: '/servicos/cobertura-retratil-automatizada' },
+    { label: 'Cobertura para Área Gourmet', href: '/servicos/cobertura-area-gourmet' },
+  ],
+  'cobertura-abre-fecha-vantagens': [
+    { label: 'Cobertura Abre e Fecha — Ver serviço', href: '/servicos/cobertura-abre-e-fecha' },
+    { label: 'Cobertura para Piscina', href: '/servicos/cobertura-piscina' },
+    { label: 'Cobertura Retrátil', href: '/servicos/cobertura-retratil' },
+  ],
+  'cobertura-policarbonato-preco-tipos': [
+    { label: 'Cobertura Fixa — Policarbonato Alveolar', href: '/servicos/cobertura-fixa-policarbonato-alveolar' },
+    { label: 'Cobertura Fixa — Policarbonato Compacto', href: '/servicos/cobertura-fixa-policarbonato-compacto' },
+    { label: 'Cobertura para Garagem', href: '/servicos/cobertura-garagem' },
+  ],
+  'cobertura-retratil-churrasqueira': [
+    { label: 'Cobertura para Área Gourmet', href: '/servicos/cobertura-area-gourmet' },
+    { label: 'Cobertura Retrátil', href: '/servicos/cobertura-retratil' },
+    { label: 'Cobertura Abre e Fecha', href: '/servicos/cobertura-abre-e-fecha' },
+  ],
+  'automacao-alexa-sensor-chuva': [
+    { label: 'Cobertura Retrátil Automatizada — Alexa e Sensor', href: '/servicos/cobertura-retratil-automatizada' },
+    { label: 'Cobertura Retrátil', href: '/servicos/cobertura-retratil' },
+    { label: 'Cobertura Abre e Fecha', href: '/servicos/cobertura-abre-e-fecha' },
+  ],
+  'pergolado-vs-cobertura-retratil': [
+    { label: 'Cobertura Retrátil — Ver serviço completo', href: '/servicos/cobertura-retratil' },
+    { label: 'Projetos Personalizados', href: '/servicos/projetos-personalizados' },
+    { label: 'Cobertura para Área Gourmet', href: '/servicos/cobertura-area-gourmet' },
+  ],
+  'cobertura-de-policarbonato-precos-tipos-guia': [
+    { label: 'Cobertura Fixa — Policarbonato Alveolar', href: '/servicos/cobertura-fixa-policarbonato-alveolar' },
+    { label: 'Cobertura Fixa — Policarbonato Compacto', href: '/servicos/cobertura-fixa-policarbonato-compacto' },
+    { label: 'Cobertura Retrátil', href: '/servicos/cobertura-retratil' },
+  ],
+  'cobertura-para-piscina-tipos-precos-guia': [
+    { label: 'Cobertura para Piscina — Ver serviço completo', href: '/servicos/cobertura-piscina' },
+    { label: 'Cobertura Retrátil Automatizada — Sensor de Chuva', href: '/servicos/cobertura-retratil-automatizada' },
+    { label: 'Cobertura Retrátil', href: '/servicos/cobertura-retratil' },
+  ],
+};
+
 export async function generateMetadata(
   props: { params: Promise<{ slug: string }> }
 ): Promise<Metadata> {
@@ -292,6 +335,27 @@ export default async function BlogPostPage(
                 {renderConteudo(artigo.conteudo.conclusao)}
               </div>
             </div>
+
+            {/* Links internos — serviços relacionados */}
+            {POST_INTERNAL_LINKS[artigo.slug] && (
+              <div className="mt-10 p-6 bg-gray-50 border-l-4 border-[#D4AF37] rounded-lg">
+                <h3 className="font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                  <span className="text-[#D4AF37]">→</span> Serviços relacionados
+                </h3>
+                <ul className="space-y-2">
+                  {POST_INTERNAL_LINKS[artigo.slug].map(({ label, href }) => (
+                    <li key={href}>
+                      <Link
+                        href={href}
+                        className="text-blue-600 hover:text-blue-800 hover:underline underline-offset-2 text-sm font-medium flex items-center gap-2 transition"
+                      >
+                        <span className="text-[#D4AF37]">›</span> {label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
             {/* Tags */}
             <div className="mt-8 pt-6 border-t border-gray-200">

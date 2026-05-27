@@ -142,3 +142,25 @@ GMB real tem 18 avaliações com nota 3.5. O componente `LocalBusinessSchema.tsx
 - P2.6 (AggregateRating nas páginas de serviço) **pausado** até o GMB atingir ≥ 4.0 estrelas
 - Quando atingir 4.0+, implementar com dados reais do GBP
 - Meta: ~8–10 novas avaliações 5 estrelas para sair de 3.5 → 4.0 (base de 18 reviews)
+
+---
+
+## 2026-05-27 — P2.5: Links internos nos posts de blog
+
+### Arquivo editado
+- `app/blog/[slug]/page.tsx` — adicionados:
+  1. Constante `POST_INTERNAL_LINKS` — mapa de 8 slugs × 3 links cada (24 links internos totais)
+  2. Bloco JSX "Serviços relacionados" — inserido entre Conclusão e Tags, com borda dourada `#D4AF37`
+
+### Cobertura de links por post
+- `cobertura-retratil-guia-completo` → retratil, automatizada, area-gourmet
+- `cobertura-abre-fecha-vantagens` → abre-e-fecha, piscina, retratil
+- `cobertura-policarbonato-preco-tipos` → alveolar, compacto, garagem
+- `cobertura-retratil-churrasqueira` → area-gourmet, retratil, abre-e-fecha
+- `automacao-alexa-sensor-chuva` → automatizada, retratil, abre-e-fecha
+- `pergolado-vs-cobertura-retratil` → retratil, projetos-personalizados, area-gourmet
+- `cobertura-de-policarbonato-precos-tipos-guia` → alveolar, compacto, retratil
+- `cobertura-para-piscina-tipos-precos-guia` → piscina, automatizada, retratil
+
+### Objetivo
+Distribuir PageRank interno para as páginas de serviço mais comerciais, melhorando ranking das páginas de conversão.
