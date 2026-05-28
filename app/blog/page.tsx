@@ -101,7 +101,7 @@ const artigos = [
     data: '2026-05-27',
     categoria: 'Guia Completo',
     palavrasChave: ['cobertura para área gourmet', 'cobertura área gourmet preço', 'cobertura área gourmet retrátil'],
-    imagem: '/images/blog/cobertura-retratil-area-gourmet.jpg',
+    imagem: '/images/produtos/cobertura-retratil/intercalada/IMG_8455.jpg',
   },
 ];
 
