@@ -63,7 +63,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/cases" className="text-gray-400 hover:text-white transition">
+                <Link href="/cases-sucesso" className="text-gray-400 hover:text-white transition">
                   Cases
                 </Link>
               </li>
@@ -159,7 +159,7 @@ export default function Footer() {
               </p>
             </div>
             <Link 
-              href="/contato" 
+              href="/orcamento" 
               className="inline-block bg-[#D4AF37] text-black px-6 py-2 rounded-lg hover:bg-[#C9A030] transition font-semibold mt-4"
             >
               Solicitar Orçamento
@@ -181,7 +181,7 @@ export default function Footer() {
           </div>
           
           <div className="text-center text-gray-400">
-            <p>&copy; 2024 Cobersystem – Soluções em Coberturas. Todos os direitos reservados.</p>
+            <p>&copy; 2024–2026 Cobersystem – Soluções em Coberturas. Todos os direitos reservados.</p>
             <p className="mt-2 text-sm">CNPJ: 61.813.532/0001-32</p>
           </div>
         </div>

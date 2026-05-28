@@ -167,6 +167,26 @@ Distribuir PageRank interno para as páginas de serviço mais comerciais, melhor
 
 ---
 
+## 2026-05-27 — BUGFIX: 3 bugs + 2 inconsistências corrigidos (auditoria pós-deploy)
+
+### Arquivos editados
+- `app/blog/[slug]/page.tsx`:
+  - **Bug 1**: CTA final do blog `href="/contato"` → `href="/orcamento"` (tracking recuperado)
+  - **Inconsistência 1**: WhatsApp no CTA final agora usa `POST_WHATSAPP_MESSAGE[artigo.slug]` contextual em vez de URL genérica
+- `components/Footer.tsx`:
+  - **Bug 2**: Link "Cases" `href="/cases"` → `href="/cases-sucesso"` (404 eliminado)
+  - **Bug 3**: Botão "Solicitar Orçamento" `href="/contato"` → `href="/orcamento"` (funil corrigido)
+  - **Bônus**: Copyright `© 2024` → `© 2024–2026`
+- `components/WhatsAppButton.tsx`:
+  - **Inconsistência 2**: Adicionada rota `/servicos/cobertura-varanda-apartamento` com mensagem contextual
+
+### Impacto
+- Funil de conversão completo: menu → /orcamento → tracking → /obrigado agora é consistente em todas as entradas (menu, footer, CTA blog)
+- Zero 404s no footer
+- WhatsApp contextual em todos os 9 posts do blog e na nova página de varanda
+
+---
+
 ## 2026-05-27 — P3.2: Nova página /servicos/cobertura-varanda-apartamento
 
 ### Arquivos criados/editados

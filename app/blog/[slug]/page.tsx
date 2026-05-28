@@ -436,13 +436,13 @@ export default async function BlogPostPage(
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
-                  href="/contato"
+                  href="/orcamento"
                   className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition shadow-lg"
                 >
                   Solicitar Orçamento Grátis
                 </Link>
                 <a
-                  href="https://wa.me/5511943615079"
+                  href={`https://wa.me/5511943615079?text=${encodeURIComponent(POST_WHATSAPP_MESSAGE[artigo.slug] ?? 'Olá! Li um artigo no blog e gostaria de um orçamento.')}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-green-700 transition shadow-lg flex items-center justify-center gap-2"

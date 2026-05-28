@@ -20,6 +20,7 @@ const ROUTE_MESSAGES: Array<{ match: (path: string) => boolean; message: string 
   { match: (p) => p.startsWith('/servicos/cobertura-fixa-policarbonato-compacto'),  message: 'Olá! Quero um orçamento de cobertura fixa em policarbonato compacto.' },
   { match: (p) => p.startsWith('/servicos/cobertura-termoacustica'),         message: 'Olá! Quero um orçamento de cobertura termoacústica.' },
   { match: (p) => p.startsWith('/servicos/cobertura-aluminio'),              message: 'Olá! Quero um orçamento de cobertura em alumínio.' },
+  { match: (p) => p.startsWith('/servicos/cobertura-varanda-apartamento'),   message: 'Olá! Tenho uma varanda de apartamento e quero um orçamento de cobertura.' },
   { match: (p) => p.startsWith('/servicos/cobertura-corredor-lateral'),      message: 'Olá! Quero um orçamento de cobertura para corredor lateral.' },
   { match: (p) => p.startsWith('/servicos/cobertura-policarbonato'),         message: 'Olá! Quero um orçamento de cobertura em policarbonato.' },
   { match: (p) => p.startsWith('/servicos/calhas-rufos-perfil-u'),           message: 'Olá! Quero um orçamento de calhas, rufos e perfil U.' },
