@@ -141,7 +141,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'pergolado-vs-cobertura-retratil':            `${baseUrl}/images/blog/pergolado-vs-cobertura.jpg`,
     'cobertura-de-policarbonato-precos-tipos-guia': `${baseUrl}/images/blog/cobertura-policarbonato-guia.png`,
     'cobertura-para-piscina-tipos-precos-guia':   `${baseUrl}/images/blog/cobertura-piscina-retratil.jpg`,
-    'cobertura-area-gourmet-tipos-precos-guia':   `${baseUrl}/images/blog/cobertura-area-gourmet.jpg`,
+    'cobertura-area-gourmet-tipos-precos-guia':   `${baseUrl}/images/blog/cobertura-retratil-area-gourmet.jpg`,
   };
 
   const blogArticles = Object.entries(blogImageMap).map(([slug, img]) => ({
