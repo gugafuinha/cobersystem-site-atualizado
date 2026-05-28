@@ -167,6 +167,28 @@ Distribuir PageRank interno para as páginas de serviço mais comerciais, melhor
 
 ---
 
+## 2026-05-28 — P3.3b: Landing page /lp/area-gourmet para Google Ads
+
+### Arquivos criados
+- `app/lp/area-gourmet/layout.tsx` — metadata + `robots: noindex`
+- `app/lp/area-gourmet/page.tsx` — LP completa (client component, force-static)
+  - LP Header: logo + telefone clicável, sem navegação
+  - Hero: "Chove Lá Fora, Festa Aqui Dentro" + 2 CTAs above the fold
+  - Trust bar: 500+ projetos / 10+ anos / Grande SP
+  - Problema vs Solução (churrasqueira, calor, fumaça, móveis)
+  - 3 diferenciais: visita 48h / projeto 3D / 2 anos garantia
+  - Como funciona: 3 passos
+  - FAQ: 3 perguntas específicas (preço, churrasqueira, prazo)
+  - CTA final: WhatsApp + /orcamento
+  - LP Footer minimal
+  - Service Schema + FAQPage Schema
+  - Tracking: `trackGoogleAdsConversion` em todos os CTAs, `trackCTAClick` por botão
+
+### URL para Google Ads
+https://www.coberturapolicarbonato.com.br/lp/area-gourmet
+
+---
+
 ## 2026-05-28 — HOTFIX: schema LocalBusiness unificado + trackPhoneClick como conversão Google Ads
 
 ### Arquivos alterados
