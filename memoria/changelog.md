@@ -167,6 +167,32 @@ Distribuir PageRank interno para as páginas de serviço mais comerciais, melhor
 
 ---
 
+## 2026-05-27 — P3.3: Landing page /lp/cobertura-retratil para Google Ads
+
+### Arquivos criados/editados
+- `app/lp/cobertura-retratil/page.tsx` — **criado** (client component)
+  - LP Header: logo + telefone clicável, sem navegação
+  - Hero: H1 forte + subheadline + 2 CTAs above the fold (WhatsApp + telefone)
+  - Trust bar: 500+ projetos / 10+ anos / Grande SP
+  - Problema vs Solução: dois cards contrastando sem x com cobertura
+  - 3 diferenciais: visita técnica 48h / projeto 3D incluso / 2 anos garantia
+  - Como funciona: 3 passos numerados
+  - FAQ visual + FAQPage schema (3 perguntas)
+  - CTA final: WhatsApp + link /orcamento
+  - LP Footer minimal: logo + telefone + Google Maps + copyright
+  - Service Schema + FAQPage Schema (JSON-LD)
+  - Tracking: `trackGoogleAdsConversion` em todos os CTAs, `trackCTAClick` por botão
+- `app/lp/cobertura-retratil/layout.tsx` — **criado** para metadata (robots: noindex)
+- `components/Header.tsx` — adicionado `'use client'` + `usePathname`, retorna null em /lp/*
+- `components/Footer.tsx` — adicionado `usePathname`, retorna null em /lp/*
+
+### Decisões técnicas
+- robots: noindex (LP de Ads não compete com /servicos/cobertura-retratil no SEO)
+- Prova social: apenas dados reais (500+ projetos, 10+ anos) — sem notas ou depoimentos falsos
+- WhatsApp flutuante global permanece ativo na LP (é conversão, não distração)
+
+---
+
 ## 2026-05-27 — BUGFIX: 3 bugs + 2 inconsistências corrigidos (auditoria pós-deploy)
 
 ### Arquivos editados

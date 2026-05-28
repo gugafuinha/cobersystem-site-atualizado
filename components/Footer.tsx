@@ -1,9 +1,13 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { trackWhatsAppClick, trackPhoneClick } from '@/components/GoogleAnalytics';
 
 export default function Footer() {
+  const pathname = usePathname();
+  if (pathname.startsWith('/lp/')) return null;
+
   return (
     <footer className="bg-gray-900 text-white mt-20">
       <div className="container mx-auto px-4 py-12">
