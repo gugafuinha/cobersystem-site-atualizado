@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import SchemaMarkup, { organizationSchema, localBusinessSchema } from "@/components/SchemaMarkup";
+import SchemaMarkup, { organizationSchema, localBusinessSchema, websiteSchema } from "@/components/SchemaMarkup";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import {
   GoogleTagManagerNoScript,
@@ -120,6 +120,7 @@ export default function RootLayout({
         <GoogleTagManagerNoScript />
         <SchemaMarkup type="organization" data={organizationSchema} />
         <SchemaMarkup type="localBusiness" data={localBusinessSchema} />
+        <SchemaMarkup type="website" data={websiteSchema} />
         <ScrollTracker />
         <Header />
         {children}

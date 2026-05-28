@@ -3,6 +3,7 @@ import Script from 'next/script';
 interface OrganizationSchema {
   '@context': string;
   '@type': string;
+  '@id': string;
   name: string;
   url: string;
   logo: string;
@@ -100,9 +101,21 @@ interface BreadcrumbSchema {
   }[];
 }
 
+interface WebSiteSchema {
+  '@context': string;
+  '@type': string;
+  '@id': string;
+  name: string;
+  alternateName?: string;
+  url: string;
+  description?: string;
+  inLanguage: string;
+  publisher: { '@id': string };
+}
+
 interface SchemaMarkupProps {
-  type: 'organization' | 'localBusiness' | 'product' | 'faq' | 'breadcrumb';
-  data: OrganizationSchema | LocalBusinessSchema | ProductSchema | FAQSchema | BreadcrumbSchema | any;
+  type: 'organization' | 'localBusiness' | 'product' | 'faq' | 'breadcrumb' | 'website';
+  data: OrganizationSchema | LocalBusinessSchema | ProductSchema | FAQSchema | BreadcrumbSchema | WebSiteSchema | any;
 }
 
 export default function SchemaMarkup({ type, data }: SchemaMarkupProps) {
@@ -119,6 +132,7 @@ export default function SchemaMarkup({ type, data }: SchemaMarkupProps) {
 export const organizationSchema: OrganizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
+  '@id': 'https://www.coberturapolicarbonato.com.br/#organization',
   name: 'Cobersystem – Soluções em Coberturas',
   url: 'https://www.coberturapolicarbonato.com.br',
   logo: 'https://www.coberturapolicarbonato.com.br/logo-horizontal-new.svg',
@@ -192,5 +206,18 @@ export const localBusinessSchema: LocalBusinessSchema = {
     'https://www.youtube.com/@cobersystem',
     'https://share.google/Mqi0TYJoGCN7QGDo6',
   ],
+};
+
+export const websiteSchema: WebSiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': 'https://www.coberturapolicarbonato.com.br/#website',
+  name: 'Cobersystem — Soluções em Coberturas',
+  alternateName: 'Cobersystem Coberturas',
+  url: 'https://www.coberturapolicarbonato.com.br',
+  description:
+    'Site oficial da Cobersystem — especialista em coberturas retráteis em policarbonato com automação via Alexa e sensor de chuva. Atendemos toda a Grande São Paulo.',
+  inLanguage: 'pt-BR',
+  publisher: { '@id': 'https://www.coberturapolicarbonato.com.br/#organization' },
 };
 

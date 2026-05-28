@@ -167,6 +167,29 @@ Distribuir PageRank interno para as páginas de serviço mais comerciais, melhor
 
 ---
 
+## 2026-05-28 — SEO: WebSite schema com publisher referenciando Organization
+
+### Arquivos editados
+- `components/SchemaMarkup.tsx`:
+  - Adicionada interface `WebSiteSchema`
+  - Adicionado tipo `'website'` no union de `SchemaMarkupProps`
+  - Adicionado `@id` em `organizationSchema` (`...#organization`) para servir de referência ao publisher
+  - Exportado `websiteSchema` com `name`, `alternateName`, `url`, `description`, `inLanguage: pt-BR`, e `publisher: { @id }` apontando para a Organization
+- `app/layout.tsx`:
+  - Importado `websiteSchema`
+  - Injetado terceiro `<SchemaMarkup type="website" data={websiteSchema} />` no body
+
+### Decisão técnica
+- **Sem `SearchAction`**: o site não tem rota de busca interna funcional, e o Google depreciou o Sitelinks Search Box em out/2024. Declarar capacidade inexistente seria contraproducente.
+- **Com referência cruzada via `@id`**: estabelece grafo de entidades (Organization ← publisher ← WebSite) reconhecido por Knowledge Graph e LLMs.
+
+### Impacto
+- Reforço da entidade "site" no Knowledge Graph
+- Melhor entendimento semântico para LLMs (ChatGPT, Perplexity, Gemini)
+- Base para futuras extensões de schema (BreadcrumbList global, Article references)
+
+---
+
 ## 2026-05-28 — P3.3b: Landing page /lp/area-gourmet para Google Ads
 
 ### Arquivos criados
