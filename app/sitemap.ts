@@ -112,6 +112,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'cobertura-corredor-lateral',
     'calhas-rufos-perfil-u',
     'projetos-personalizados',
+    'cobertura-varanda-apartamento',
   ].map((slug) => ({
     url: `${baseUrl}/servicos/${slug}`,
     lastModified: now,
@@ -128,6 +129,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'pergolado-vs-cobertura-retratil',
     'cobertura-de-policarbonato-precos-tipos-guia',
     'cobertura-para-piscina-tipos-precos-guia',
+    'cobertura-area-gourmet-tipos-precos-guia',
   ].map((slug) => ({
     url: `${baseUrl}/blog/${slug}`,
     lastModified: now,

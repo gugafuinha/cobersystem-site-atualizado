@@ -167,6 +167,29 @@ Distribuir PageRank interno para as páginas de serviço mais comerciais, melhor
 
 ---
 
+## 2026-05-27 — P3.2: Nova página /servicos/cobertura-varanda-apartamento
+
+### Arquivos criados/editados
+- `app/servicos/cobertura-varanda-apartamento/page.tsx` — **criado**
+  - Metadata completa (título, descrição, canonical, Open Graph, Twitter Card)
+  - Service Schema (JSON-LD)
+  - FAQPage Schema com 5 perguntas (rich snippet)
+  - Hero com 4 stats
+  - Seção de benefícios (6 cards)
+  - Comparativo retrátil vs fixa com preços
+  - Seção "Aprovação no Condomínio" (diferencial exclusivo, 4 passos)
+  - Tabela de preços 2026 (4 modelos × 3 tamanhos)
+  - FAQ visual (reaproveitando dados do schema)
+  - Seção "Veja também" com 3 links internos
+  - CTA final com WhatsApp + link /orcamento
+- `app/sitemap.ts` — adicionado `cobertura-varanda-apartamento` em `mainServicePages` e `cobertura-area-gourmet-tipos-precos-guia` em `blogArticles`
+- `components/Header.tsx` — adicionado "Varanda de Apartamento" no dropdown Serviços
+
+### Palavras-chave alvo
+cobertura para varanda de apartamento, cobertura varanda apartamento SP/preço/retrátil, fechamento varanda policarbonato, cobertura varanda condomínio
+
+---
+
 ## 2026-05-27 — P2.2: Novo post — Cobertura para Área Gourmet
 
 ### Arquivos editados

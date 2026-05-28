@@ -54,6 +54,9 @@ export default function Header() {
                 <Link href="/servicos/cobertura-aluminio" className="block px-4 py-3 text-gray-700 hover:bg-[#D4AF37]/10 hover:text-[#D4AF37]">
                   Cobertura Alumínio
                 </Link>
+                <Link href="/servicos/cobertura-varanda-apartamento" className="block px-4 py-3 text-gray-700 hover:bg-[#D4AF37]/10 hover:text-[#D4AF37]">
+                  Varanda de Apartamento
+                </Link>
               </div>
             </li>
             <li className="relative group">
