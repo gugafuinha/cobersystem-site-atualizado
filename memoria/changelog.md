@@ -167,6 +167,23 @@ Distribuir PageRank interno para as páginas de serviço mais comerciais, melhor
 
 ---
 
+## 2026-05-28 — HOTFIX: schema LocalBusiness unificado + trackPhoneClick como conversão Google Ads
+
+### Arquivos alterados
+- `components/LocalBusinessSchema.tsx` — **deletado** (dead code, nunca importado em nenhuma página; eliminado risco de duplicação futura e inconsistência de dados)
+- `components/SchemaMarkup.tsx` — horário de sábado corrigido de `08:00–12:00` para `08:00–17:00` (horário real confirmado)
+- `components/GoogleAnalytics.tsx`:
+  - Import de `trackGoogleAdsConversion` adicionado
+  - `trackPhoneClick` agora dispara `trackGoogleAdsConversion('lGDsCLD1opAYEM2d24Mp', 0)` além do evento GA4
+  - Cobertura automática: Footer + LP cobertura retrátil (3 pontos) + qualquer uso futuro
+
+### Impacto
+- Zero duplicação de LocalBusiness no Knowledge Graph
+- Horário de sábado correto e consistente em todos os schemas
+- Cliques em telefone agora contam como conversão no Google Ads (sem alterar chamadores individuais)
+
+---
+
 ## 2026-05-27 — P3.3: Landing page /lp/cobertura-retratil para Google Ads
 
 ### Arquivos criados/editados

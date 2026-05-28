@@ -1,6 +1,7 @@
 'use client';
 
 import Script from 'next/script';
+import { trackGoogleAdsConversion } from './GoogleAds';
 
 // ID via .env.local → NEXT_PUBLIC_GA_ID (ver .env.example)
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-XXXXXXXXXX';
@@ -59,6 +60,7 @@ export const trackScroll90 = () => {
 };
 
 export const trackPhoneClick = () => {
-  trackEvent('phone_click', 'engagement', 'Footer - Telefone');
+  trackEvent('phone_click', 'engagement', 'Telefone');
+  trackGoogleAdsConversion('lGDsCLD1opAYEM2d24Mp', 0);
 };
 
