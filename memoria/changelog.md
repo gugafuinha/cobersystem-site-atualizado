@@ -167,6 +167,35 @@ Distribuir PageRank interno para as páginas de serviço mais comerciais, melhor
 
 ---
 
+## 2026-05-28 — P4.4: Sitemap enriquecido com imagens (217 imagens indexadas)
+
+### Arquivos criados/editados
+- `lib/seo/image-sitemap.ts` — **criado**: helper `getImageUrls(relDir)` que varre recursivamente `/public/{relDir}` e retorna array de URLs absolutas
+- `app/sitemap.ts` — **editado**:
+  - Import de `getImageUrls`
+  - `IMG` object pré-carrega 7 pastas de imagens em build time
+  - `requiredPages`: home com 15 imagens de destaque, blog com 9, cases-sucesso com 40, galeria com 13 projetos + 20 retrátil
+  - `mainProductPages`: cada produto com seu banco completo de imagens (retratil: 105, policarbonato: 34, termoacustica: 11, veneziana: 5)
+  - `blogArticles`: cada post com sua imagem de capa individual via `blogImageMap`
+
+### Mapeamento pasta → URL
+| Pasta | URL | Imagens |
+|---|---|---|
+| produtos/cobertura-retratil | /produtos/cobertura-retratil | 105 |
+| produtos/cobertura-policarbonato | /produtos/cobertura-policarbonato | 34 |
+| produtos/cobertura-termoacustica | /produtos/cobertura-termoacustica | 11 |
+| produtos/veneziana | /produtos/veneziana-policarbonato | 5 |
+| cases-antes-depois | /cases-sucesso | 40 |
+| projetos | /galeria | 13 |
+| blog | /blog + posts individuais | 9 |
+
+### Impacto esperado
+- Google Image Search indexará imagens de produto (alta conversão visual)
+- Posts de blog com imagem de capa no Image Search
+- ~217 imagens declaradas no sitemap.xml
+
+---
+
 ## 2026-05-28 — SEO: WebSite schema com publisher referenciando Organization
 
 ### Arquivos editados
