@@ -59,6 +59,14 @@ const faqs = [
     question: 'A cobertura termoacústica reduz ruído?',
     answer: 'Sim! O policarbonato alveolar com câmaras de ar internas cria uma barreira eficiente contra ruídos externos, reduzindo significativamente o barulho de trânsito, vizinhos e outras fontes sonoras.',
   },
+  {
+    question: 'Quanto custa uma cobertura termoacústica?',
+    answer: 'O preço de uma cobertura termoacústica varia de R$ 280 a R$ 480 por m², dependendo da espessura do policarbonato (6mm ou 10mm), tamanho da área e complexidade da instalação. Inclui estrutura de alumínio, policarbonato termoacústico e instalação completa. Solicite um orçamento personalizado para seu projeto.',
+  },
+  {
+    question: 'Onde a cobertura termoacústica é mais indicada?',
+    answer: 'A cobertura termoacústica é ideal para: residências próximas a avenidas movimentadas ou aeroportos (reduz ruído), áreas gourmet e varandas que precisam de conforto térmico, escritórios e ambientes comerciais que exigem silêncio, e qualquer local onde isolamento térmico e acústico sejam prioridades.',
+  },
 ];
 
 export default function CoberturaTermoacustica() {

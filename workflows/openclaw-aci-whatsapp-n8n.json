@@ -1,0 +1,319 @@
+{
+  "name": "OpenClaw ACI → WhatsApp (Evolution)",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "a1b2c3d4-0001-4000-8000-000000000001",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "openclaw-aci",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "a1b2c3d4-0002-4000-8000-000000000002",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 500],
+      "webhookId": "openclaw-aci-cobersystem"
+    },
+    {
+      "parameters": {
+        "mode": "manual",
+        "duplicateItem": false,
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f1",
+              "name": "mensagem",
+              "value": "={{ $json.body?.mensagem ?? $json.body?.message ?? $json.mensagem ?? 'Resumo rápido: status do site coberturapolicarbonato.com.br e uma ação prioritária para hoje.' }}",
+              "type": "string"
+            },
+            {
+              "id": "f2",
+              "name": "telefone",
+              "value": "={{ ($json.body?.telefone ?? $json.body?.phone ?? $json.telefone ?? '5511982295079').toString().replace(/\\D/g, '') }}",
+              "type": "string"
+            },
+            {
+              "id": "f3",
+              "name": "openclawBaseUrl",
+              "value": "http://openclaw_openclaw-gateway:18789",
+              "type": "string"
+            },
+            {
+              "id": "f4",
+              "name": "evolutionBaseUrl",
+              "value": "https://automacao-evolution-api.fmjbtn.easypanel.host",
+              "type": "string"
+            },
+            {
+              "id": "f5",
+              "name": "evolutionInstance",
+              "value": "cobersystem ",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a1b2c3d4-0003-4000-8000-000000000003",
+      "name": "Preparar Entrada",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [520, 400]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $json.openclawBaseUrl }}/v1/chat/completions",
+        "authentication": "none",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer ca7858a0c719a6b7b86f44e49b98c85db9dda06d51eb5aee"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"openclaw\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"Você é o Agente Central de Inteligência (ACI) da Cobersystem. Responda em português, de forma objetiva, para envio via WhatsApp (máx. ~1500 caracteres).\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": {{ JSON.stringify($json.mensagem) }}\n    }\n  ]\n}",
+        "options": {
+          "timeout": 300000
+        }
+      },
+      "id": "a1b2c3d4-0004-4000-8000-000000000004",
+      "name": "OpenClaw ACI (HTTP)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [800, 400]
+    },
+    {
+      "parameters": {
+        "mode": "manual",
+        "duplicateItem": false,
+        "assignments": {
+          "assignments": [
+            {
+              "id": "r1",
+              "name": "resposta",
+              "value": "={{ $json.choices?.[0]?.message?.content ?? $json.error?.message ?? 'Sem resposta do OpenClaw.' }}",
+              "type": "string"
+            },
+            {
+              "id": "r2",
+              "name": "telefone",
+              "value": "={{ $('Preparar Entrada').item.json.telefone }}",
+              "type": "string"
+            },
+            {
+              "id": "r3",
+              "name": "evolutionBaseUrl",
+              "value": "={{ $('Preparar Entrada').item.json.evolutionBaseUrl }}",
+              "type": "string"
+            },
+            {
+              "id": "r4",
+              "name": "evolutionInstance",
+              "value": "={{ $('Preparar Entrada').item.json.evolutionInstance }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a1b2c3d4-0005-4000-8000-000000000005",
+      "name": "Extrair Resposta",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [1080, 400]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $json.evolutionBaseUrl }}/message/sendText/{{ encodeURIComponent($json.evolutionInstance) }}",
+        "authentication": "none",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "3C5F8308906D-44BF-9338-9721BC3CC120"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"number\": {{ JSON.stringify($json.telefone) }},\n  \"text\": {{ JSON.stringify($json.resposta) }}\n}",
+        "options": {
+          "timeout": 60000
+        }
+      },
+      "id": "a1b2c3d4-0006-4000-8000-000000000006",
+      "name": "WhatsApp Evolution (HTTP)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1360, 400]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "c1",
+              "leftValue": "={{ $trigger.name }}",
+              "rightValue": "Webhook",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "a1b2c3d4-0007-4000-8000-000000000007",
+      "name": "É Webhook?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [1640, 400]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"ok\": true,\n  \"telefone\": {{ JSON.stringify($('Extrair Resposta').item.json.telefone) }},\n  \"resposta_preview\": {{ JSON.stringify(($('Extrair Resposta').item.json.resposta || '').slice(0, 500)) }},\n  \"evolution\": {{ JSON.stringify($json) }}\n}",
+        "options": {}
+      },
+      "id": "a1b2c3d4-0008-4000-8000-000000000008",
+      "name": "Responder Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1920, 320]
+    },
+    {
+      "parameters": {
+        "content": "## Pré-requisitos OpenClaw\n\n1. `gateway.http.endpoints.chatCompletions.enabled: true` em openclaw.json\n2. n8n na mesma rede Docker (`openclaw_openclaw-gateway:18789`)\n\nURL pública `https://openclaw.cobersystem.com.br` hoje serve a UI; use rede interna ou exponha `/v1/chat/completions` no proxy.\n\n**Webhook POST:** `mensagem`, `telefone` (opcional)\n\n**Instância Evolution:** `cobersystem ` (com espaço no final)",
+        "height": 280,
+        "width": 420
+      },
+      "id": "a1b2c3d4-0009-4000-8000-000000000009",
+      "name": "Notas",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [200, 80]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Preparar Entrada",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Preparar Entrada",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Preparar Entrada": {
+      "main": [
+        [
+          {
+            "node": "OpenClaw ACI (HTTP)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenClaw ACI (HTTP)": {
+      "main": [
+        [
+          {
+            "node": "Extrair Resposta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extrair Resposta": {
+      "main": [
+        [
+          {
+            "node": "WhatsApp Evolution (HTTP)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WhatsApp Evolution (HTTP)": {
+      "main": [
+        [
+          {
+            "node": "É Webhook?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "É Webhook?": {
+      "main": [
+        [
+          {
+            "node": "Responder Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "versionId": "openclaw-aci-whatsapp-v1"
+}

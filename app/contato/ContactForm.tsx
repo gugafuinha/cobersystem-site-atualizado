@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import imageCompression from 'browser-image-compression';
 import { trackFormSubmit, trackCTAClick } from '@/components/GoogleAnalytics';
 import { trackMetaLead } from '@/components/MetaPixel';
-import { trackGoogleAdsConversion } from '@/components/GoogleAds';
+import { trackGoogleAdsConversion, CONVERSION_LABELS } from '@/components/GoogleAds';
 
 type ContactFormProps = {
   onSuccess?: () => void;
@@ -276,7 +276,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
 
         trackFormSubmit();
         trackMetaLead();
-        trackGoogleAdsConversion('lGDsCLD1opAYEM2d24Mp', 0);
+        trackGoogleAdsConversion(CONVERSION_LABELS.FORM_SUBMIT);
         onSuccess?.();
       } else {
         setSubmitStatus('error');

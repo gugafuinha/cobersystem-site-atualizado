@@ -4,19 +4,22 @@ import StructuredData from '@/components/seo/StructuredData';
 import CoberturaRetratilServicoExpandedSections from './CoberturaRetratilServicoExpandedSections';
 
 export const metadata: Metadata = {
-  title: 'Serviço de Instalação de Cobertura Retrátil | Projeto Completo | SP',
+  title: 'Cobertura Retrátil | Telhado Abre e Fecha | Automação Alexa | Cobersystem',
   description:
-    'Serviço completo de instalação de cobertura retrátil automática. Projeto personalizado, instalação profissional, garantia 2 anos. Atendemos toda Grande SP.',
+    'Cobertura retrátil e telhado abre e fecha em policarbonato com automação via Alexa e sensor de chuva. Controle 0 a 90° sem perder ventilação. Orçamento gratuito em SP.',
   keywords: [
     'cobertura retratil',
-    'instalação cobertura',
-    'projeto cobertura',
-    'cobertura automatica',
-    'instalação cobertura retratil',
-    'projeto cobertura automatica',
-    'serviço cobertura',
-    'montagem cobertura',
+    'telhado retratil',
+    'cobertura abre e fecha',
+    'telhado abre e fecha',
+    'policarbonato',
+    'automacao Alexa',
+    'sensor chuva',
+    'cobertura retratil preco SP',
   ],
+  alternates: {
+    canonical: 'https://coberturapolicarbonato.com.br/servicos/cobertura-retratil',
+  },
   openGraph: {
     title: 'Instalação de Cobertura Retrátil | Cobersystem SP',
     description: 'Projeto + instalação + automação. Serviço completo com garantia.',

@@ -1,73 +1,19 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { trackWhatsAppClick } from './GoogleAnalytics';
 import { trackMetaEvent } from './MetaPixel';
-import { trackGoogleAdsConversion } from './GoogleAds';
-
-const PHONE_NUMBER = '5511943615079';
-
-const ROUTE_MESSAGES: Array<{ match: (path: string) => boolean; message: string }> = [
-  // Serviços
-  { match: (p) => p.startsWith('/servicos/cobertura-retratil-automatizada'), message: 'Olá! Quero um orçamento de cobertura retrátil com automação Alexa.' },
-  { match: (p) => p.startsWith('/servicos/cobertura-retratil'),              message: 'Olá! Quero um orçamento de cobertura retrátil.' },
-  { match: (p) => p.startsWith('/servicos/cobertura-piscina'),               message: 'Olá! Quero um orçamento de cobertura para piscina.' },
-  { match: (p) => p.startsWith('/servicos/cobertura-abre-e-fecha'),          message: 'Olá! Quero um orçamento de cobertura abre e fecha.' },
-  { match: (p) => p.startsWith('/servicos/cobertura-area-gourmet'),          message: 'Olá! Quero um orçamento de cobertura para área gourmet.' },
-  { match: (p) => p.startsWith('/servicos/cobertura-garagem'),               message: 'Olá! Quero um orçamento de cobertura para garagem.' },
-  { match: (p) => p.startsWith('/servicos/cobertura-fixa-policarbonato-alveolar'), message: 'Olá! Quero um orçamento de cobertura fixa em policarbonato alveolar.' },
-  { match: (p) => p.startsWith('/servicos/cobertura-fixa-policarbonato-compacto'),  message: 'Olá! Quero um orçamento de cobertura fixa em policarbonato compacto.' },
-  { match: (p) => p.startsWith('/servicos/cobertura-termoacustica'),         message: 'Olá! Quero um orçamento de cobertura termoacústica.' },
-  { match: (p) => p.startsWith('/servicos/cobertura-aluminio'),              message: 'Olá! Quero um orçamento de cobertura em alumínio.' },
-  { match: (p) => p.startsWith('/servicos/cobertura-varanda-apartamento'),   message: 'Olá! Tenho uma varanda de apartamento e quero um orçamento de cobertura.' },
-  { match: (p) => p.startsWith('/servicos/cobertura-corredor-lateral'),      message: 'Olá! Quero um orçamento de cobertura para corredor lateral.' },
-  { match: (p) => p.startsWith('/servicos/cobertura-policarbonato'),         message: 'Olá! Quero um orçamento de cobertura em policarbonato.' },
-  { match: (p) => p.startsWith('/servicos/calhas-rufos-perfil-u'),           message: 'Olá! Quero um orçamento de calhas, rufos e perfil U.' },
-  { match: (p) => p.startsWith('/servicos/projetos-personalizados'),         message: 'Olá! Quero um orçamento para um projeto personalizado de cobertura.' },
-
-  // Produtos
-  { match: (p) => p.startsWith('/produtos/cobertura-retratil'),    message: 'Olá! Quero um orçamento de cobertura retrátil.' },
-  { match: (p) => p.startsWith('/produtos/cobertura-policarbonato'), message: 'Olá! Quero um orçamento de cobertura em policarbonato.' },
-  { match: (p) => p.startsWith('/produtos/cobertura-abre-e-fecha'), message: 'Olá! Quero um orçamento de cobertura abre e fecha.' },
-  { match: (p) => p.startsWith('/produtos/cobertura-termoacustica'), message: 'Olá! Quero um orçamento de cobertura termoacústica.' },
-  { match: (p) => p.startsWith('/produtos/veneziana-policarbonato'), message: 'Olá! Quero um orçamento de veneziana em policarbonato.' },
-
-  // Blog — posts específicos primeiro, depois genérico
-  { match: (p) => p.startsWith('/blog/cobertura-para-piscina'),           message: 'Olá! Li o artigo sobre cobertura para piscina e quero um orçamento.' },
-  { match: (p) => p.startsWith('/blog/cobertura-de-policarbonato'),        message: 'Olá! Li o artigo sobre cobertura de policarbonato e quero um orçamento.' },
-  { match: (p) => p.startsWith('/blog/cobertura-retratil'),                message: 'Olá! Li o artigo sobre cobertura retrátil e quero um orçamento.' },
-  { match: (p) => p.startsWith('/blog/cobertura-abre-fecha'),              message: 'Olá! Li o artigo sobre cobertura abre e fecha e quero um orçamento.' },
-  { match: (p) => p.startsWith('/blog/automacao-alexa'),                   message: 'Olá! Li o artigo sobre automação com Alexa e quero um orçamento.' },
-  { match: (p) => p.startsWith('/blog/pergolado-vs-cobertura'),            message: 'Olá! Li o artigo comparando pergolado x cobertura e quero um orçamento.' },
-  { match: (p) => p.startsWith('/blog/'),                                  message: 'Olá! Li um artigo no blog e gostaria de um orçamento.' },
-
-  // Localização
-  { match: (p) => p.startsWith('/localizacao/'), message: 'Olá! Encontrei a Cobersystem pela minha região e gostaria de um orçamento.' },
-
-  // Páginas de conversão
-  { match: (p) => p === '/orcamento',  message: 'Olá! Acabei de preencher o formulário de orçamento e gostaria de mais informações.' },
-  { match: (p) => p === '/contato',    message: 'Olá! Entrei em contato pelo site e gostaria de falar com um especialista.' },
-  { match: (p) => p === '/obrigado',   message: 'Olá! Acabei de enviar um orçamento pelo site e gostaria de confirmar o recebimento.' },
-  { match: (p) => p === '/faq',        message: 'Olá! Estava lendo o FAQ e gostaria de tirar uma dúvida sobre coberturas.' },
-];
-
-const DEFAULT_MESSAGE = 'Olá! Gostaria de solicitar um orçamento para cobertura em policarbonato.';
-
-function getWhatsAppMessage(pathname: string): string {
-  const entry = ROUTE_MESSAGES.find(({ match }) => match(pathname));
-  return entry ? entry.message : DEFAULT_MESSAGE;
-}
+import { trackGoogleAdsConversion, CONVERSION_LABELS } from './GoogleAds';
 
 export default function WhatsAppButton() {
-  const pathname = usePathname();
-  const message = getWhatsAppMessage(pathname);
-  const whatsappUrl = `https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(message)}`;
+  const phoneNumber = '5511943615079'; // (11) 94361-5079
+  const message = encodeURIComponent('Olá! Gostaria de solicitar um orçamento para cobertura em policarbonato.');
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 
   const handleClick = () => {
     trackWhatsAppClick();
     trackMetaEvent('Contact', { method: 'WhatsApp' });
-    trackGoogleAdsConversion('whatsapp_click');
+    trackGoogleAdsConversion(CONVERSION_LABELS.WHATSAPP_CLICK);
   };
 
   return (
@@ -93,3 +39,4 @@ export default function WhatsAppButton() {
     </Link>
   );
 }
+

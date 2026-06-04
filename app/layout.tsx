@@ -13,7 +13,6 @@ import MetaPixel from "@/components/MetaPixel";
 import ScrollTracker from "@/components/ScrollTracker";
 import PerformanceOptimizer from "@/components/PerformanceOptimizer";
 import { Analytics } from "@vercel/analytics/react";
-import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -109,7 +108,7 @@ export default function RootLayout({
       <head>
         <PerformanceOptimizer />
         <link rel="icon" href="/favicon.ico" />
-        {/* Verificação Google Search Console: público/google0849715c67f719f2.html */}
+        {/* Verificação Google Search Console */}
         <GoogleTagManagerScript />
         {/* Meta Pixel */}
         <MetaPixel />
@@ -126,7 +125,6 @@ export default function RootLayout({
         {children}
         <Footer />
         <WhatsAppButton />
-        <GoogleAnalytics />
         <Analytics />
       </body>
     </html>

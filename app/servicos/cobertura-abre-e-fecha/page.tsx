@@ -7,9 +7,9 @@ import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 
 export const metadata: Metadata = {
-  title: "Cobertura Abre e Fecha Preço | Automatizada com Alexa | Cobersystem",
-  description: "Cobertura abre e fecha em policarbonato com automação via Alexa e sensor de chuva. Preço por m², modelos e orçamento. Sistema retrátil que abre de 0 a 90 graus. Controle total do clima sem perder ventilação.",
-  keywords: "cobertura abre e fecha preço, cobertura abre e fecha SP, cobertura retrátil automatizada, cobertura abre e fecha policarbonato, cobertura automática preço, cobertura retrátil policarbonato",
+  title: "Cobertura Abre e Fecha | Automação Alexa + Sensor Chuva | Cobersystem SP",
+  description: "Cobertura abre e fecha em policarbonato que fecha sozinha na chuva e abre pelo celular ou Alexa. Abertura 0 a 90°, estrutura alumínio, orçamento gratuito. Referência em SP.",
+  keywords: "cobertura abre e fecha, cobertura abre e fecha policarbonato, cobertura abre e fecha SP, cobertura abre e fecha preço, cobertura retrátil automatizada, cobertura automática Alexa, sensor chuva cobertura",
   alternates: {
     canonical: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-abre-e-fecha',
   },

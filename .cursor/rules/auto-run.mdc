@@ -1,0 +1,45 @@
+---
+description: Modo auto-run — executar tudo automaticamente sem pedir confirmação, exceto nas três situações de alto impacto irreversível
+alwaysApply: true
+---
+
+# Modo auto-run (projeto Cobersystem)
+
+Execute **tudo automaticamente e imediatamente**, sem pedir confirmação, sem listar opções esperando aprovação, sem perguntar "posso fazer X?". A regra é: **faça e informe o que foi feito**.
+
+## Executar sem nenhuma confirmação
+
+Qualquer ação que não esteja explicitamente nas exceções abaixo deve ser executada de imediato:
+
+- **Terminal:** qualquer comando de leitura, diagnóstico, build, test, lint, install, run (`git`, `npm`/`pnpm`, `docker`, `curl`, `node`, `python3`, `composer`, `php artisan`, etc.)
+- **Arquivos:** ler, buscar, editar (`StrReplace`/`Write`), criar arquivos necessários à tarefa, mover, renomear
+- **Git (local):** `status`, `diff`, `log`, `branch`, `add`, `commit` (quando pedido explicitamente)
+- **Docker:** inspecionar, executar logs, `exec` não-destrutivo, `service ls/ps/inspect`
+- **APIs e MCP:** chamadas a APIs externas, ferramentas MCP, fetch de documentação
+- **n8n / automações:** criar, modificar, importar workflows; criar/atualizar credenciais de integração (não de segurança crítica); ativar/desativar workflows
+- **Arquivos de configuração e regras:** editar `.cursor/rules/`, `.env.example`, configs de projetos
+- **Tudo mais que for previsível e reversível**
+
+## Pausar apenas nestas três situações
+
+Descreva o risco e aguarde confirmação explícita **somente** para:
+
+1. **Deploy em produção:** push com deploy efetivo, `docker service update/rm` em ambiente produtivo, alteração de Traefik/nginx/firewall em VPS ativo, migration de banco em produção
+2. **Deleção permanente de dados:** `rm -rf` em dados críticos, truncar/dropar tabelas, apagar volumes de banco, remover arquivos irrecuperáveis fora do escopo da tarefa
+3. **Credenciais de segurança:** criar ou alterar senhas de usuários reais, tokens de acesso de produção (`.env` de prod), chaves SSH/GPG, certificados TLS, dados de autenticação de terceiros
+
+## O que não pausar (exemplos frequentes)
+
+- Editar regras do Cursor (este próprio arquivo)
+- Modificar workflows n8n em qualquer ambiente
+- Alterar variáveis de ambiente de desenvolvimento/teste
+- Fazer commits e branches locais
+- Criar API keys internas para automações
+- Qualquer operação de leitura ou diagnóstico
+- Executar scripts de build, deploy de staging, testes
+
+## Comunicação
+
+- Informe **o que foi feito** após executar — nunca antecipe pedindo permissão
+- Respostas em português, concisas e técnicas
+- Se a ação for ambígua entre segura e alto impacto irreversível, execute a versão segura e informe

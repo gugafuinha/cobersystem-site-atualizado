@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "permissions": {
+    "allow": [
+      "Shell(git:*)",
+      "Shell(npm:*)",
+      "Shell(yarn:*)",
+      "Shell(pnpm:*)",
+      "Shell(npx:*)",
+      "Shell(node:*)",
+      "Shell(python3:*)",
+      "Shell(docker:*)",
+      "Shell(docker-compose:*)",
+      "Shell(curl:*)",
+      "Shell(wget:*)",
+      "Shell(cat:*)",
+      "Shell(ls:*)",
+      "Shell(grep:*)",
+      "Shell(rg:*)",
+      "Shell(head:*)",
+      "Shell(tail:*)",
+      "Shell(find:*)",
+      "Shell(composer:*)",
+      "Shell(php:*)",
+      "Shell(gh:*)",
+      "Read(**)",
+      "Write(**)",
+      "Grep(**)",
+      "Glob(**)",
+      "SemanticSearch(**)",
+      "StrReplace(**)",
+      "EditNotebook(**)",
+      "WebFetch(**)",
+      "Mcp(*:*)"
+    ],
+    "deny": [
+      "Shell(rm:*)",
+      "Shell(git push --force:*)",
+      "Shell(git reset --hard:*)",
+      "Shell(docker service rm:*)",
+      "Shell(docker volume rm:*)",
+      "Shell(chattr:*)",
+      "Write(.env*)",
+      "Write(**/.env*)"
+    ]
+  }
+}

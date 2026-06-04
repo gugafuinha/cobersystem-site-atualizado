@@ -1,0 +1,267 @@
+[{
+  "id": "B29BC2BkRPG8988G",
+  "name": "Relatório Semanal - GSC + GA4 + Ads",
+  "active": true,
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [{"field": "weeks", "triggerAtDay": [1], "triggerAtHour": 8}]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [-432, 112],
+      "id": "8bf0557c-d807-4f2c-9876-c4465644bb02",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://searchconsole.googleapis.com/webmasters/v3/sites/https%3A%2F%2Fwww.coberturapolicarbonato.com.br%2F/searchAnalytics/query",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleOAuth2Api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"startDate\": \"{{ $now.minus(7, 'days').toFormat('yyyy-MM-dd') }}\",\n  \"endDate\": \"{{ $now.minus(1, 'days').toFormat('yyyy-MM-dd') }}\",\n  \"dimensions\": [\"query\", \"page\"],\n  \"rowLimit\": 25,\n  \"orderBy\": [{\"fieldName\": \"clicks\", \"sortOrder\": \"DESCENDING\"}]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [-240, -64],
+      "id": "9d6c494f-f5fc-43d0-ac43-91ca9d8d9748",
+      "name": "GSC - Buscar Dados",
+      "credentials": {
+        "googleOAuth2Api": {"id": "FpcXxMa4amcdVlLJ", "name": "Google account 2"}
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Formata os dados do GSC para o relatório\nconst items = $input.all();\nconst rows = items[0].json.rows || [];\n\n// Agrega totais\nlet totalClicks = 0;\nlet totalImpressions = 0;\n\nrows.forEach(r => {\n  totalClicks += r.clicks;\n  totalImpressions += r.impressions;\n});\n\nconst ctr = totalImpressions > 0 \n  ? ((totalClicks / totalImpressions) * 100).toFixed(2) \n  : 0;\n\nconst avgPosition = rows.length > 0\n  ? (rows.reduce((sum, r) => sum + r.position, 0) / rows.length).toFixed(1)\n  : 0;\n\n// Top 5 queries por cliques\nconst top5 = rows\n  .sort((a, b) => b.clicks - a.clicks)\n  .slice(0, 5)\n  .map((r, i) => `${i+1}. \"${r.keys[0]}\" — ${r.clicks} cliques, pos. ${r.position.toFixed(1)}`);\n\nreturn [{\n  json: {\n    gsc_totalClicks: totalClicks,\n    gsc_totalImpressions: totalImpressions,\n    gsc_ctr: ctr + '%',\n    gsc_avgPosition: avgPosition,\n    gsc_top5Queries: top5.join('\\n'),\n    gsc_periodo: `${$now.minus(7, 'days').toFormat('dd/MM')} a ${$now.minus(1, 'days').toFormat('dd/MM/yyyy')}`\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-48, -64],
+      "id": "d1de3a77-bbba-46df-bfb8-76b928ac33e3",
+      "name": "Formatar GSC"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://analyticsdata.googleapis.com/v1beta/properties/531715968:runReport",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleOAuth2Api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({\n  \"dateRanges\": [{\"startDate\": $now.minus(7, 'days').toFormat('yyyy-MM-dd'), \"endDate\": $now.minus(1, 'days').toFormat('yyyy-MM-dd')}],\n  \"metrics\": [{\"name\": \"sessions\"},{\"name\": \"totalUsers\"},{\"name\": \"bounceRate\"},{\"name\": \"averageSessionDuration\"}],\n  \"dimensions\": [{\"name\": \"sessionDefaultChannelGroup\"}]\n}) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [-240, 112],
+      "id": "1a62b043-d709-49c2-ac89-2acb9df01386",
+      "name": "GA4 - Buscar Dados",
+      "credentials": {
+        "googleOAuth2Api": {"id": "GBfh8imn2dBiRnSw", "name": "Google account"}
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Formata os dados do GA4 para o relatório\nconst items = $input.all();\nconst rows = items[0].json.rows || [];\n\nlet totalSessions = 0;\nlet totalUsers = 0;\nlet bounceRateSum = 0;\nlet durationSum = 0;\n\nconst channelMap = {};\n\nrows.forEach(r => {\n  const channel = r.dimensionValues[0].value;\n  const sessions = parseInt(r.metricValues[0].value);\n  const users = parseInt(r.metricValues[1].value);\n  const bounce = parseFloat(r.metricValues[2].value);\n  const duration = parseFloat(r.metricValues[3].value);\n\n  totalSessions += sessions;\n  totalUsers += users;\n  bounceRateSum += bounce;\n  durationSum += duration;\n\n  channelMap[channel] = `${sessions} sessões`;\n});\n\nconst avgBounce = rows.length > 0 \n  ? (bounceRateSum / rows.length * 100).toFixed(1) + '%'\n  : '0%';\n\nconst avgDuration = rows.length > 0\n  ? Math.round(durationSum / rows.length)\n  : 0;\n\nconst durationFormatted = `${Math.floor(avgDuration/60)}m ${avgDuration%60}s`;\n\nconst channelLines = Object.entries(channelMap)\n  .map(([k, v]) => `• ${k}: ${v}`)\n  .join('\\n');\n\nreturn [{\n  json: {\n    ga4_totalSessions: totalSessions,\n    ga4_totalUsers: totalUsers,\n    ga4_bounceRate: avgBounce,\n    ga4_avgDuration: durationFormatted,\n    ga4_porCanal: channelLines\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-48, 112],
+      "id": "bfe164ef-f290-4759-bb34-01fd52e240cd",
+      "name": "Formatar GA4"
+    },
+    {
+      "parameters": {
+        "documentId": {"__rl": true, "mode": "id", "value": "1hS72XUkP40RF7O9Y6JOIGUlfZSf5WAHR5Fo400QqAyU"},
+        "sheetName": {"__rl": true, "value": "175385394", "mode": "id"},
+        "options": {
+          "dataLocationOnSheet": {
+            "values": {"rangeDefinition": "specifyRangeA1", "range": "A1:B2"}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [-240, 288],
+      "id": "acf92406-ca0b-48a8-b51a-9c7b7fe01035",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {"id": "ZDoJPXIvzobuWfTb", "name": "Google Sheets account 2"}
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const input = $input.first().json;\nconst raw = input['json_data'] || Object.values(input)[1] || '';\nlet ads = {};\ntry {\n  ads = JSON.parse(raw);\n} catch(e) {\n  ads = {};\n}\nconst camp = ads.campaign || {};\nreturn [{\n  json: {\n    ads_impressions: camp.impressions || 0,\n    ads_clicks:      camp.clicks || 0,\n    ads_ctr:         camp.ctr || '0.00',\n    ads_custo:       camp.costBRL || '0.00',\n    ads_cpc:         camp.avgCPC || '0.00',\n    ads_conversoes:  camp.conversions || '0.0',\n    ads_periodo:     (ads.period?.start || '') + ' a ' + (ads.period?.end || ''),\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-48, 288],
+      "id": "d70d54b0-38f6-4131-b9f8-e36da2f6fad9",
+      "name": "Formatar Ads"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "numberInputs": 3,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [224, 112],
+      "id": "7522f136-7e35-422d-b5ed-5d86c7509e77",
+      "name": "Combinar Dados"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8dd405d4-7f7b-4d7e-bd51-8de8f0947961",
+              "name": "=dados_brutos",
+              "value": "=*Relatório Semanal Cobersystem* {{ $json.gsc_periodo }}\n\n*Google Search Console*\nCliques: {{ $json.gsc_totalClicks }}\nImpressões: {{ $json.gsc_totalImpressions }}\nCTR: {{ $json.gsc_ctr }}\nPosição média: {{ $json.gsc_avgPosition }}\n\nTop queries:\n{{ $json.gsc_top5Queries }}\n\n*Google Analytics GA4*\nSessões: {{ $json.ga4_totalSessions }}\nUsuários: {{ $json.ga4_totalUsers }}\nTaxa de rejeição: {{ $json.ga4_bounceRate }}\nDuração média: {{ $json.ga4_avgDuration }}\n\nPor canal:\n{{ $json.ga4_porCanal }}\n\n*Google Ads — {{ $json.ads_periodo }}*\nImpressões: {{ $json.ads_impressions }}\nCliques: {{ $json.ads_clicks }}\nCTR: {{ $json.ads_ctr }}%\nCusto: R$ {{ $json.ads_custo }}\nCPC Médio: R$ {{ $json.ads_cpc }}\nConversões: {{ $json.ads_conversoes }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [400, 112],
+      "id": "649aee14-4202-4198-9095-f2c222735ac0",
+      "name": "Formatar Dados"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://openclaw_openclaw-gateway:18789/v1/chat/completions",
+        "authentication": "none",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer ca7858a0c719a6b7b86f44e49b98c85db9dda06d51eb5aee"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"openclaw\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"Você é o Agente Central de Inteligência (ACI) da Cobersystem, empresa especializada em coberturas retráteis em policarbonato (São Paulo). Analise os dados de marketing digital da semana e gere um relatório com: (1) resumo executivo dos números, (2) pontos de atenção ou quedas relevantes, (3) 3 recomendações práticas e priorizadas para melhorar SEO/site e (4) 2 ações concretas para otimizar campanhas Google Ads. Responda em português, formato WhatsApp (use *negrito*, emojis moderados, máx. 2000 caracteres). Seja direto e acionável.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": {{ JSON.stringify($json.dados_brutos) }}\n    }\n  ],\n  \"temperature\": 0.4,\n  \"max_tokens\": 800\n}",
+        "options": {
+          "timeout": 120000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [600, 112],
+      "id": "e1f2a3b4-5c6d-7e8f-9a0b-1c2d3e4f5a6b",
+      "name": "Análise OpenClaw ACI"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "r1",
+              "name": "analise",
+              "value": "={{ $json.choices?.[0]?.message?.content ?? '⚠️ OpenClaw indisponível.\\n\\n' + $('Formatar Dados').item.json.dados_brutos }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [800, 112],
+      "id": "f2a3b4c5-6d7e-8f9a-0b1c-2d3e4f5a6b7c",
+      "name": "Extrair Análise"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://automacao-evolution-api.fmjbtn.easypanel.host/message/sendText/cobersystem%20",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "3C5F8308906D-44BF-9338-9721BC3CC120"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"number\": \"5511982295079\",\n  \"text\": {{ JSON.stringify($json.analise) }}\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [1000, 112],
+      "id": "c7d8e494-8128-4d5e-a6da-225b8f548c39",
+      "name": "Enviar WhatsApp"
+    }
+  ],
+  "connections": {
+    "Schedule Trigger": {
+      "main": [[
+        {"node": "Get row(s) in sheet", "type": "main", "index": 0},
+        {"node": "GA4 - Buscar Dados", "type": "main", "index": 0},
+        {"node": "GSC - Buscar Dados", "type": "main", "index": 0}
+      ]]
+    },
+    "GSC - Buscar Dados": {
+      "main": [[{"node": "Formatar GSC", "type": "main", "index": 0}]]
+    },
+    "Formatar GSC": {
+      "main": [[{"node": "Combinar Dados", "type": "main", "index": 0}]]
+    },
+    "GA4 - Buscar Dados": {
+      "main": [[{"node": "Formatar GA4", "type": "main", "index": 0}]]
+    },
+    "Formatar GA4": {
+      "main": [[{"node": "Combinar Dados", "type": "main", "index": 1}]]
+    },
+    "Get row(s) in sheet": {
+      "main": [[{"node": "Formatar Ads", "type": "main", "index": 0}]]
+    },
+    "Formatar Ads": {
+      "main": [[{"node": "Combinar Dados", "type": "main", "index": 2}]]
+    },
+    "Combinar Dados": {
+      "main": [[{"node": "Formatar Dados", "type": "main", "index": 0}]]
+    },
+    "Formatar Dados": {
+      "main": [[{"node": "Análise OpenClaw ACI", "type": "main", "index": 0}]]
+    },
+    "Análise OpenClaw ACI": {
+      "main": [[{"node": "Extrair Análise", "type": "main", "index": 0}]]
+    },
+    "Extrair Análise": {
+      "main": [[{"node": "Enviar WhatsApp", "type": "main", "index": 0}]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {"recurrenceRules": []}
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "pinData": {},
+  "tags": []
+}]

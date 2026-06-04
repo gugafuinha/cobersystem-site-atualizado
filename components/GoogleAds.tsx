@@ -2,27 +2,48 @@
 
 import Script from 'next/script';
 
-// Substitua pelo seu Conversion ID do Google Ads
-const GOOGLE_ADS_ID = 'AW-11013639885';
+const GOOGLE_ADS_ID = 'AW-1095370047';
+const GA4_MEASUREMENT_ID = 'G-EL6RVFYFSJ';
+
+// Labels de conversão gerados pelo Google Ads para cada ação
+export const CONVERSION_LABELS = {
+  WHATSAPP_CLICK: 'AW-1095370047/6476649806',
+  FORM_SUBMIT: 'AW-1095370047/6476575408',
+};
 
 export default function GoogleAds() {
   return (
-    <Script
-      id="google-ads"
-      strategy="afterInteractive"
-      src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
-    />
+    <>
+      {/* Script unificado — carrega GA4 e Ads com uma única tag */}
+      <Script
+        id="gtag-loader"
+        strategy="afterInteractive"
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}`}
+      />
+      <Script
+        id="gtag-init"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA4_MEASUREMENT_ID}', { page_path: window.location.pathname });
+            gtag('config', '${GOOGLE_ADS_ID}');
+          `,
+        }}
+      />
+    </>
   );
 }
 
-// Função para eventos de conversão
-export const trackGoogleAdsConversion = (conversionLabel: string, value?: number, currency = 'BRL') => {
+// Dispara conversão para o Google Ads
+// Usar CONVERSION_LABELS.WHATSAPP_CLICK ou CONVERSION_LABELS.FORM_SUBMIT
+export const trackGoogleAdsConversion = (sendTo: string, value?: number, currency = 'BRL') => {
   if (typeof window !== 'undefined' && (window as any).gtag) {
     (window as any).gtag('event', 'conversion', {
-      send_to: `${GOOGLE_ADS_ID}/${conversionLabel}`,
-      value: value,
-      currency: currency,
+      send_to: sendTo,
+      ...(value !== undefined && { value, currency }),
     });
   }
 };
-

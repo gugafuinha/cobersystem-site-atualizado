@@ -1,37 +1,11 @@
 'use client';
 
-import Script from 'next/script';
-import { trackGoogleAdsConversion } from './GoogleAds';
+import { trackGoogleAdsConversion, CONVERSION_LABELS } from './GoogleAds';
 
-// ID via .env.local → NEXT_PUBLIC_GA_ID (ver .env.example)
-const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-XXXXXXXXXX';
+// GoogleAnalytics.tsx — somente exporta funções de tracking.
+// A inicialização do gtag (GA4 + Google Ads) está centralizada em GoogleAds.tsx.
+// IDs ativos: GA4 = G-EL6RVFYFSJ | Google Ads = AW-1095370047
 
-export default function GoogleAnalytics() {
-  return (
-    <>
-      <Script
-        strategy="afterInteractive"
-        src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-      />
-      <Script
-        id="google-analytics"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${GA_MEASUREMENT_ID}', {
-              page_path: window.location.pathname,
-            });
-          `,
-        }}
-      />
-    </>
-  );
-}
-
-// Funções para eventos
 export const trackEvent = (action: string, category: string, label?: string, value?: number) => {
   if (typeof window !== 'undefined' && (window as any).gtag) {
     (window as any).gtag('event', action, {
@@ -42,7 +16,6 @@ export const trackEvent = (action: string, category: string, label?: string, val
   }
 };
 
-// Eventos específicos
 export const trackWhatsAppClick = () => {
   trackEvent('click', 'WhatsApp', 'Botão WhatsApp Fixo');
 };
@@ -61,6 +34,5 @@ export const trackScroll90 = () => {
 
 export const trackPhoneClick = () => {
   trackEvent('phone_click', 'engagement', 'Telefone');
-  trackGoogleAdsConversion('lGDsCLD1opAYEM2d24Mp', 0);
+  trackGoogleAdsConversion(CONVERSION_LABELS.WHATSAPP_CLICK);
 };
-
