@@ -17,9 +17,6 @@ export const metadata: Metadata = {
     'sensor chuva',
     'cobertura retratil preco SP',
   ],
-  alternates: {
-    canonical: 'https://coberturapolicarbonato.com.br/servicos/cobertura-retratil',
-  },
   openGraph: {
     title: 'Instalação de Cobertura Retrátil | Cobersystem SP',
     description: 'Projeto + instalação + automação. Serviço completo com garantia.',

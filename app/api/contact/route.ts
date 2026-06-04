@@ -1,7 +1,13 @@
 ﻿import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+let _resend: Resend | null = null;
+function getResend(): Resend {
+  if (!_resend) {
+    _resend = new Resend(process.env.RESEND_API_KEY ?? '');
+  }
+  return _resend;
+}
 
 const RATE_WINDOW_MS = 10 * 60 * 1000;
 const RATE_MAX = 20;
@@ -264,7 +270,7 @@ export async function POST(request: NextRequest) {
   const mensagemStr = typeof mensagem === 'string' && mensagem.trim() ? mensagem.trim() : '';
 
   try {
-    await resend.emails.send({
+    await getResend().emails.send({
       from: 'Cobersystem <contato@cobersystem.com.br>',
       to: ['contato@cobersystem.com.br'],
       subject: `Novo Orcamento - ${tipoProjetoTrim}`,
