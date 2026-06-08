@@ -109,6 +109,12 @@ export const productSchemas = {
     "@context": "https://schema.org/",
     "@type": "Product",
     "name": "Cobertura Termoacústica",
+    "image": [
+      "https://www.coberturapolicarbonato.com.br/images/produtos/cobertura-termoacustica/capa.jpg",
+      "https://www.coberturapolicarbonato.com.br/images/projetos/termoacustica-01.jpg",
+      "https://www.coberturapolicarbonato.com.br/images/projetos/termoacustica-02.jpg",
+      "https://www.coberturapolicarbonato.com.br/images/produtos/cobertura-termoacustica/IMG_8881.jpg"
+    ],
     "description": "Telha sanduíche termoacústica. Reduz até 95% do ruído da chuva e mantém temperatura até 10°C mais baixa. Ideal para áreas gourmet.",
     "sku": "COB-TERMO",
     "brand": {
@@ -135,6 +141,12 @@ export const productSchemas = {
     "@context": "https://schema.org/",
     "@type": "Product",
     "name": "Veneziana em Policarbonato",
+    "image": [
+      "https://www.coberturapolicarbonato.com.br/images/produtos/veneziana/veneziana.jpg",
+      "https://www.coberturapolicarbonato.com.br/images/projetos/veneziana-01.jpg",
+      "https://www.coberturapolicarbonato.com.br/images/produtos/veneziana/img_4740.jpg",
+      "https://www.coberturapolicarbonato.com.br/images/produtos/veneziana/img_4742.jpg"
+    ],
     "description": "Sistema de veneziana em policarbonato para controle de luminosidade e ventilação. Lâminas móveis.",
     "sku": "VEN-POLI",
     "brand": {
@@ -162,6 +174,11 @@ export const productSchemas = {
     "@type": "Service",
     "serviceType": "Instalação de Cobertura para Área Gourmet",
     "name": "Cobertura para Área Gourmet",
+    "image": [
+      "https://www.coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg",
+      "https://www.coberturapolicarbonato.com.br/images/projetos/abre-fecha-alveolar-01.jpg",
+      "https://www.coberturapolicarbonato.com.br/images/blog/churrasqueira.jpg"
+    ],
     "description": "Instalação de cobertura em policarbonato para área gourmet. Proteção completa contra chuva e sol. Projeto personalizado com automação opcional.",
     "provider": {
       "@type": "LocalBusiness",
@@ -185,6 +202,11 @@ export const productSchemas = {
     "@type": "Service",
     "serviceType": "Instalação de Cobertura para Piscina",
     "name": "Cobertura para Piscina",
+    "image": [
+      "https://www.coberturapolicarbonato.com.br/images/blog/cobertura-piscina-retratil.jpg",
+      "https://www.coberturapolicarbonato.com.br/images/projetos/abre-fecha-alveolar-02.jpg",
+      "https://www.coberturapolicarbonato.com.br/images/blog/cobertura-abre-fecha.jpg"
+    ],
     "description": "Cobertura retrátil ou fixa para piscina em policarbonato. Proteção UV 99%, mantém água limpa. Sistema de abertura automatizado opcional.",
     "provider": {
       "@type": "LocalBusiness",
@@ -208,6 +230,11 @@ export const productSchemas = {
     "@type": "Service",
     "serviceType": "Instalação de Cobertura para Pergolado",
     "name": "Cobertura para Pergolado",
+    "image": [
+      "https://www.coberturapolicarbonato.com.br/images/blog/pergolado-vs-cobertura.jpg",
+      "https://www.coberturapolicarbonato.com.br/images/projetos/abre-fecha-alveolar-03.jpg",
+      "https://www.coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg"
+    ],
     "description": "Cobertura em policarbonato para pergolado. Sistema retrátil opcional com automação via Alexa. Proteção contra chuva sem perder luminosidade.",
     "provider": {
       "@type": "LocalBusiness",
@@ -230,6 +257,11 @@ export const productSchemas = {
     "@context": "https://schema.org/",
     "@type": "Product",
     "name": "Automação Inteligente para Cobertura",
+    "image": [
+      "https://www.coberturapolicarbonato.com.br/images/blog/automacao-alexa.jpg",
+      "https://www.coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg",
+      "https://www.coberturapolicarbonato.com.br/images/blog/cobertura-abre-fecha.jpg"
+    ],
     "description": "Sistema de automação para cobertura retrátil. Controle via Alexa, Google Home, controle remoto e sensor de chuva automático.",
     "sku": "AUTO-INT",
     "brand": {

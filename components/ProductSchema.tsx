@@ -23,12 +23,16 @@ export default function ProductSchema({
   availability = "https://schema.org/InStock",
   url,
 }: ProductSchemaProps) {
+  const absoluteImage = image.startsWith('http')
+    ? image
+    : `https://www.coberturapolicarbonato.com.br${image}`;
+
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
     name,
     description,
-    image: `https://www.coberturapolicarbonato.com.br${image}`,
+    image: [absoluteImage],
     brand: {
       "@type": "Brand",
       name: brand,
