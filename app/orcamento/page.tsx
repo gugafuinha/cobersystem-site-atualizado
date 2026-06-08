@@ -3,7 +3,7 @@
 import { useState, type FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import Breadcrumb from '@/components/seo/Breadcrumb';
-import { trackGoogleAdsConversion } from '@/components/GoogleAds';
+import { trackGoogleAdsConversion, CONVERSION_LABELS } from '@/components/GoogleAds';
 import { trackFormSubmit } from '@/components/GoogleAnalytics';
 import { trackMetaLead } from '@/components/MetaPixel';
 
@@ -118,7 +118,7 @@ ${formData.mensagem.trim() || '(sem mensagem adicional)'}
     const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensagem)}`;
     window.open(whatsappLink, '_blank', 'noopener,noreferrer');
 
-    trackGoogleAdsConversion('lGDsCLD1opAYEM2d24Mp', 0);
+    trackGoogleAdsConversion(CONVERSION_LABELS.FORM_SUBMIT);
     trackFormSubmit();
     trackMetaLead();
 
@@ -139,44 +139,33 @@ ${formData.mensagem.trim() || '(sem mensagem adicional)'}
     <>
       <Breadcrumb />
 
-      <main className="min-h-screen bg-gray-50">
-        <section className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-16">
+      {/* Sticky CTA — visível apenas no mobile */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-green-600 border-t border-green-700 shadow-lg">
+        <a
+          href="https://wa.me/5511943615079?text=Olá! Quero solicitar um orçamento."
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center gap-2 py-4 text-white font-bold text-base"
+        >
+          💬 Falar direto no WhatsApp
+        </a>
+      </div>
+
+      <main className="min-h-screen bg-gray-50 pb-16 md:pb-0">
+        {/* Hero compacto — menor no mobile para mostrar o form above the fold */}
+        <section className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-8 md:py-16">
           <div className="max-w-4xl mx-auto px-4 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            <h1 className="text-3xl md:text-5xl font-bold mb-3 md:mb-6">
               Solicite Seu Orçamento Grátis
             </h1>
-            <p className="text-xl md:text-2xl text-blue-100">
+            <p className="text-base md:text-2xl text-blue-100">
               Resposta em até 24 horas • Projeto personalizado • Sem compromisso
             </p>
           </div>
         </section>
 
-        <section className="max-w-7xl mx-auto px-4 py-12">
-          <div className="grid md:grid-cols-4 gap-6 mb-12">
-            <div className="bg-white p-6 rounded-lg shadow text-center">
-              <div className="text-4xl mb-3">⚡</div>
-              <div className="font-bold mb-2">Resposta Rápida</div>
-              <div className="text-sm text-gray-600">Orçamento em até 24h</div>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow text-center">
-              <div className="text-4xl mb-3">📐</div>
-              <div className="font-bold mb-2">Projeto Grátis</div>
-              <div className="text-sm text-gray-600">Visita técnica incluída</div>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow text-center">
-              <div className="text-4xl mb-3">✅</div>
-              <div className="font-bold mb-2">Sem Compromisso</div>
-              <div className="text-sm text-gray-600">Orçamento sem obrigação</div>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow text-center">
-              <div className="text-4xl mb-3">🎯</div>
-              <div className="font-bold mb-2">Transparência</div>
-              <div className="text-sm text-gray-600">Tudo discriminado</div>
-            </div>
-          </div>
-        </section>
-
-        <section className="max-w-3xl mx-auto px-4 pb-16">
+        {/* Formulário primeiro no mobile — cards de benefícios ficam abaixo */}
+        <section className="max-w-3xl mx-auto px-4 pt-8 pb-6">
           <div className="bg-white rounded-lg shadow-lg p-8">
             <h2 className="text-2xl font-bold mb-6 text-center">Preencha os Dados</h2>
 
@@ -417,6 +406,7 @@ ${formData.mensagem.trim() || '(sem mensagem adicional)'}
               <button
                 type="submit"
                 disabled={enviando}
+                aria-label="Enviar orçamento via WhatsApp"
                 className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-6 rounded-lg text-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 {enviando ? (
@@ -438,6 +428,32 @@ ${formData.mensagem.trim() || '(sem mensagem adicional)'}
                 Nosso time responderá em até 24 horas úteis.
               </p>
             </form>
+          </div>
+        </section>
+
+        {/* Cards de benefícios — abaixo do form no mobile */}
+        <section className="max-w-7xl mx-auto px-4 py-8 md:py-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            <div className="bg-white p-4 md:p-6 rounded-lg shadow text-center">
+              <div className="text-3xl md:text-4xl mb-2 md:mb-3">⚡</div>
+              <div className="font-bold mb-1 md:mb-2 text-sm md:text-base">Resposta Rápida</div>
+              <div className="text-xs md:text-sm text-gray-600">Orçamento em até 24h</div>
+            </div>
+            <div className="bg-white p-4 md:p-6 rounded-lg shadow text-center">
+              <div className="text-3xl md:text-4xl mb-2 md:mb-3">📐</div>
+              <div className="font-bold mb-1 md:mb-2 text-sm md:text-base">Projeto Grátis</div>
+              <div className="text-xs md:text-sm text-gray-600">Visita técnica incluída</div>
+            </div>
+            <div className="bg-white p-4 md:p-6 rounded-lg shadow text-center">
+              <div className="text-3xl md:text-4xl mb-2 md:mb-3">✅</div>
+              <div className="font-bold mb-1 md:mb-2 text-sm md:text-base">Sem Compromisso</div>
+              <div className="text-xs md:text-sm text-gray-600">Orçamento sem obrigação</div>
+            </div>
+            <div className="bg-white p-4 md:p-6 rounded-lg shadow text-center">
+              <div className="text-3xl md:text-4xl mb-2 md:mb-3">🎯</div>
+              <div className="font-bold mb-1 md:mb-2 text-sm md:text-base">Transparência</div>
+              <div className="text-xs md:text-sm text-gray-600">Tudo discriminado</div>
+            </div>
           </div>
         </section>
 

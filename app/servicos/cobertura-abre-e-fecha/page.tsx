@@ -7,15 +7,15 @@ import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 
 export const metadata: Metadata = {
-  title: "Cobertura Abre e Fecha | Automação Alexa + Sensor Chuva | Cobersystem SP",
-  description: "Cobertura abre e fecha em policarbonato que fecha sozinha na chuva e abre pelo celular ou Alexa. Abertura 0 a 90°, estrutura alumínio, orçamento gratuito. Referência em SP.",
+  title: "Cobertura Abre e Fecha Policarbonato | Preço m² + Automação Alexa | Cobersystem SP",
+  description: "Cobertura abre e fecha policarbonato a partir de R$ 800/m². Fecha sozinha na chuva (sensor automático) e abre pelo celular ou Alexa. Estrutura alumínio, instalação SP. Orçamento grátis.",
   keywords: "cobertura abre e fecha, cobertura abre e fecha policarbonato, cobertura abre e fecha SP, cobertura abre e fecha preço, cobertura retrátil automatizada, cobertura automática Alexa, sensor chuva cobertura",
   alternates: {
     canonical: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-abre-e-fecha',
   },
   openGraph: {
-    title: "Cobertura Abre e Fecha | Preço e Automação | Cobersystem",
-    description: "Cobertura retrátil que abre e fecha com automação via Alexa. Controle total do clima sem perder ventilação.",
+    title: "Cobertura Abre e Fecha Policarbonato | Preço e Automação | Cobersystem SP",
+    description: "Cobertura abre e fecha policarbonato a partir de R$ 800/m². Sensor de chuva + automação Alexa. Orçamento grátis em SP.",
     url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-abre-e-fecha',
     images: [
       {
