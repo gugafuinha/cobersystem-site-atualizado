@@ -36,13 +36,35 @@ const productSchema = {
   '@type': 'Product',
   name: 'Cobertura Termoacústica',
   description: 'Cobertura termoacústica em policarbonato alveolar com excelente isolamento térmico e acústico.',
-  image: ['https://www.coberturapolicarbonato.com.br/images/projetos/fixa-01.jpg'],
+  image: [
+    'https://www.coberturapolicarbonato.com.br/images/produtos/cobertura-termoacustica/capa.jpg',
+    'https://www.coberturapolicarbonato.com.br/images/projetos/termoacustica-01.jpg',
+    'https://www.coberturapolicarbonato.com.br/images/projetos/termoacustica-02.jpg',
+  ],
   brand: { '@type': 'Brand', name: 'Cobersystem' },
   offers: {
     '@type': 'Offer',
     priceCurrency: 'BRL',
+    price: '650',
+    priceValidUntil: '2026-12-31',
     availability: 'https://schema.org/InStock',
     url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-termoacustica',
+    hasMerchantReturnPolicy: {
+      '@type': 'MerchantReturnPolicy',
+      applicableCountry: 'BR',
+      returnPolicyCategory: 'https://schema.org/MerchantReturnNotPermitted',
+      merchantReturnDays: 0,
+    },
+    shippingDetails: {
+      '@type': 'OfferShippingDetails',
+      shippingRate: { '@type': 'MonetaryAmount', value: '0', currency: 'BRL' },
+      shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'BR', addressRegion: 'SP' },
+      deliveryTime: {
+        '@type': 'ShippingDeliveryTime',
+        handlingTime: { '@type': 'QuantitativeValue', minValue: 7, maxValue: 30, unitCode: 'DAY' },
+        transitTime: { '@type': 'QuantitativeValue', minValue: 0, maxValue: 0, unitCode: 'DAY' },
+      },
+    },
   },
 };
 

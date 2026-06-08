@@ -54,6 +54,24 @@ interface LocalBusinessSchema {
   sameAs?: string[];
 }
 
+interface MerchantReturnPolicy {
+  '@type': 'MerchantReturnPolicy';
+  applicableCountry: string;
+  returnPolicyCategory: string;
+  merchantReturnDays: number;
+}
+
+interface OfferShippingDetails {
+  '@type': 'OfferShippingDetails';
+  shippingRate: { '@type': 'MonetaryAmount'; value: string; currency: string };
+  shippingDestination: { '@type': 'DefinedRegion'; addressCountry: string; addressRegion?: string };
+  deliveryTime: {
+    '@type': 'ShippingDeliveryTime';
+    handlingTime: { '@type': 'QuantitativeValue'; minValue: number; maxValue: number; unitCode: string };
+    transitTime: { '@type': 'QuantitativeValue'; minValue: number; maxValue: number; unitCode: string };
+  };
+}
+
 interface ProductSchema {
   '@context': string;
   '@type': string;
@@ -67,8 +85,13 @@ interface ProductSchema {
   offers: {
     '@type': string;
     priceCurrency: string;
+    /** Valor numérico obrigatório pelo Google Merchant Listings */
+    price: string;
+    priceValidUntil?: string;
     availability: string;
     url: string;
+    hasMerchantReturnPolicy?: MerchantReturnPolicy;
+    shippingDetails?: OfferShippingDetails;
   };
   aggregateRating?: {
     '@type': string;

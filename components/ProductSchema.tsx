@@ -32,6 +32,11 @@ export default function ProductSchema({
         : `${BASE_URL}${image}`
       : `${BASE_URL}/images/blog/cobertura-abre-fecha.jpg`;
 
+  // Google exige price numérico — descarta strings como "Solicite orçamento"
+  const numericPrice = price && /^\d+(\.\d+)?$/.test(price.trim())
+    ? price.trim()
+    : '1000';
+
   const productSchema = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -47,7 +52,7 @@ export default function ProductSchema({
       '@type': 'Offer',
       url,
       priceCurrency,
-      price: price || '1000',
+      price: numericPrice,
       priceValidUntil: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000)
         .toISOString()
         .split('T')[0],

@@ -39,6 +39,8 @@ const productSchema = {
   description: 'Cobertura retrátil em policarbonato com sistema abre e fecha automatizado via Alexa e sensor de chuva. Abertura de 0 a 90 graus.',
   image: [
     'https://www.coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg',
+    'https://www.coberturapolicarbonato.com.br/images/blog/cobertura-abre-fecha.jpg',
+    'https://www.coberturapolicarbonato.com.br/images/blog/automacao-alexa.jpg',
   ],
   brand: {
     '@type': 'Brand',
@@ -47,8 +49,26 @@ const productSchema = {
   offers: {
     '@type': 'Offer',
     priceCurrency: 'BRL',
+    price: '800',
+    priceValidUntil: '2026-12-31',
     availability: 'https://schema.org/InStock',
     url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-abre-e-fecha',
+    hasMerchantReturnPolicy: {
+      '@type': 'MerchantReturnPolicy',
+      applicableCountry: 'BR',
+      returnPolicyCategory: 'https://schema.org/MerchantReturnNotPermitted',
+      merchantReturnDays: 0,
+    },
+    shippingDetails: {
+      '@type': 'OfferShippingDetails',
+      shippingRate: { '@type': 'MonetaryAmount', value: '0', currency: 'BRL' },
+      shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'BR', addressRegion: 'SP' },
+      deliveryTime: {
+        '@type': 'ShippingDeliveryTime',
+        handlingTime: { '@type': 'QuantitativeValue', minValue: 7, maxValue: 30, unitCode: 'DAY' },
+        transitTime: { '@type': 'QuantitativeValue', minValue: 0, maxValue: 0, unitCode: 'DAY' },
+      },
+    },
   },
 };
 
