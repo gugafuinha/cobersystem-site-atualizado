@@ -10,10 +10,21 @@ export default function WhatsAppButton() {
   const message = encodeURIComponent('Olá! Gostaria de solicitar um orçamento para cobertura em policarbonato.');
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 
-  const handleClick = () => {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    // Disparar todos os eventos de tracking antes de navegar
     trackWhatsAppClick();
     trackMetaEvent('Contact', { method: 'WhatsApp' });
     trackGoogleAdsConversion(CONVERSION_LABELS.WHATSAPP_CLICK);
+
+    // Delay de 300ms para garantir que os hits (especialmente o beacon do Ads)
+    // sejam enviados antes de abrir a nova aba. Sem isso, links target="_blank"
+    // podem abortar o hit se o browser priorizar a nova navegação.
+    if (!navigator.sendBeacon) {
+      e.preventDefault();
+      setTimeout(() => {
+        window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+      }, 300);
+    }
   };
 
   return (

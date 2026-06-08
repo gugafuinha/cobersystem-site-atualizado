@@ -8,7 +8,9 @@ export type CidadePolicarbonatoSlug =
   | 'campinas'
   | 'santo-andre'
   | 'sao-caetano-do-sul'
-  | 'osasco';
+  | 'osasco'
+  | 'guarulhos'
+  | 'barueri';
 
 export interface CidadePolicarbonatoData {
   slug: CidadePolicarbonatoSlug;
@@ -100,6 +102,32 @@ export const CIDADES_COBERTURA_POLICARBONATO: CidadePolicarbonatoData[] = [
       'Cobertura em policarbonato em Osasco: policarbonato compacto ou alveolar, visita técnica e orçamento. Proteção fixa para residências e comércio.',
     keywords:
       'cobertura policarbonato Osasco, cobertura fixa Osasco, policarbonato alveolar Osasco, policarbonato compacto Grande SP',
+  },
+  {
+    slug: 'guarulhos',
+    nome: 'Guarulhos',
+    paragrafos: [
+      'Guarulhos concentra uma grande diversidade de construções — de residências unifamiliares a condomínios —, todas com demanda por coberturas de policarbonato duráveis e com custo-benefício atrativo.',
+      'O policarbonato alveolar de 6mm é o mais escolhido em Guarulhos para coberturas fixas de varandas e áreas de serviço, pela combinação de leveza, translucidez e bom isolamento térmico.',
+      'Realizamos orçamento com visita técnica em Guarulhos, incluindo dimensionamento estrutural, escolha do perfil de alumínio e definição do tipo de policarbonato mais adequado.',
+    ],
+    metaDescription:
+      'Cobertura em policarbonato em Guarulhos: compacto ou alveolar, fixo ou retrátil, estrutura alumínio. Visita técnica e orçamento grátis em Guarulhos SP.',
+    keywords:
+      'cobertura policarbonato Guarulhos, cobertura em policarbonato Guarulhos, cobertura fixa Guarulhos, policarbonato alveolar Guarulhos SP',
+  },
+  {
+    slug: 'barueri',
+    nome: 'Barueri',
+    paragrafos: [
+      'Em Barueri e Alphaville, a cobertura em policarbonato é muito procurada para proyetos de alto padrão que exigem transparência, leveza e acabamento premium.',
+      'O policarbonato compacto cristal de 6mm é o preferido da região por preservar a estética contemporânea das construções, permitindo entrada de luz natural sem esquentar o ambiente.',
+      'A Cobersystem atende Barueri e Alphaville com projeto arquitetonicamente integrado, perfis de alumínio anodizado em diferentes cores e instalação supervisionada.',
+    ],
+    metaDescription:
+      'Cobertura em policarbonato em Barueri e Alphaville: compacto cristal, projetos premium, estrutura alumínio. Orçamento grátis.',
+    keywords:
+      'cobertura policarbonato Barueri, cobertura policarbonato Alphaville, cobertura em policarbonato Barueri, policarbonato compacto Alphaville SP',
   },
 ];
 

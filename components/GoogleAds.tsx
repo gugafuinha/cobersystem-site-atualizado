@@ -37,12 +37,14 @@ export default function GoogleAds() {
   );
 }
 
-// Dispara conversão para o Google Ads
+// Dispara conversão para o Google Ads com beacon transport para garantir envio
+// mesmo quando o usuário navega para fora antes do hit ser processado.
 // Usar CONVERSION_LABELS.WHATSAPP_CLICK ou CONVERSION_LABELS.FORM_SUBMIT
 export const trackGoogleAdsConversion = (sendTo: string, value?: number, currency = 'BRL') => {
   if (typeof window !== 'undefined' && (window as any).gtag) {
     (window as any).gtag('event', 'conversion', {
       send_to: sendTo,
+      transport_type: 'beacon',
       ...(value !== undefined && { value, currency }),
     });
   }

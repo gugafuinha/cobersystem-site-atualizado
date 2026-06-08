@@ -8,7 +8,9 @@ export type CidadeTermoacusticaSlug =
   | 'campinas'
   | 'santo-andre'
   | 'sao-caetano-do-sul'
-  | 'osasco';
+  | 'osasco'
+  | 'guarulhos'
+  | 'barueri';
 
 export interface CidadeTermoacusticaData {
   slug: CidadeTermoacusticaSlug;
@@ -96,6 +98,32 @@ export const CIDADES_COBERTURA_TERMOACUSTICA: CidadeTermoacusticaData[] = [
       'Cobertura termoacústica em Osasco: sanduíche para galpões e edificações comerciais. Isolamento térmico e acústico. Orçamento na Grande São Paulo.',
     keywords:
       'cobertura termoacústica Osasco, painel sanduíche Osasco, galpão isolado Grande SP, cobertura acústica Osasco',
+  },
+  {
+    slug: 'guarulhos',
+    nome: 'Guarulhos',
+    paragrafos: [
+      'Em Guarulhos, o crescimento do parque industrial e comercial aumenta a demanda por coberturas termoacústicas que garantam conforto térmico e redução de ruído externo.',
+      'O policarbonato alveolar com câmaras múltiplas e a chapa termoacústica sanduíche são as opções mais indicadas para galpões, fábricas e estabelecimentos comerciais em Guarulhos.',
+      'Realizamos visita técnica gratuita em Guarulhos para dimensionamento e escolha do sistema termoacústico mais eficiente para cada aplicação.',
+    ],
+    metaDescription:
+      'Cobertura termoacústica em Guarulhos: isolamento térmico e acústico para galpões, comércio e residências. Orçamento grátis em Guarulhos SP.',
+    keywords:
+      'cobertura termoacústica Guarulhos, cobertura acústica Guarulhos, isolamento térmico Guarulhos, painel sanduíche Guarulhos SP',
+  },
+  {
+    slug: 'barueri',
+    nome: 'Barueri',
+    paragrafos: [
+      'Barueri, especialmente em seu parque empresarial e polo comercial, é uma das regiões da Grande SP com maior demanda por coberturas termoacústicas de alto desempenho.',
+      'A cobertura termoacústica reduz significativamente o calor transmitido pelo telhado e atenua ruídos externos, criando ambientes mais produtivos em escritórios, galpões e espaços de lazer.',
+      'A Cobersystem atende Barueri e Alphaville com sistemas termoacústicos customizados, incluindo calhas integradas, rufos de acabamento e garantia extendida.',
+    ],
+    metaDescription:
+      'Cobertura termoacústica em Barueri e Alphaville: isolamento acústico e térmico premium para empresas e residências. Orçamento grátis.',
+    keywords:
+      'cobertura termoacústica Barueri, cobertura acústica Alphaville, isolamento térmico Barueri, painel sanduíche Barueri SP',
   },
 ];
 

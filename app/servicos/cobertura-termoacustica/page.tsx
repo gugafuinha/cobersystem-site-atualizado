@@ -6,15 +6,15 @@ import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 
 export const metadata: Metadata = {
-  title: "Cobertura Termoacústica | Isolamento Térmico e Acústico | Cobersystem",
-  description: "Cobertura termoacústica em policarbonato alveolar. Excelente isolamento térmico e acústico. Reduz temperatura e ruído. Preço e orçamento.",
-  keywords: "cobertura termoacústica, cobertura isolamento térmico, cobertura isolamento acústico, policarbonato termoacústico, sanduíche TR40",
+  title: "Cobertura Acústica Termoacústica | Redução de Ruído 30dB | Cobersystem SP",
+  description: "Cobertura acústica termoacústica em policarbonato alveolar. Reduz até 30dB de ruído e controla temperatura. Ideal para área gourmet, varanda e piscina. Orçamento grátis em SP.",
+  keywords: "cobertura acústica, cobertura termoacústica, cobertura isolamento acústico, cobertura isolamento térmico, policarbonato termoacústico, redução ruído cobertura, sanduíche TR40",
   alternates: {
     canonical: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-termoacustica',
   },
   openGraph: {
-    title: "Cobertura Termoacústica | Isolamento Térmico e Acústico | Cobersystem",
-    description: "Cobertura termoacústica com excelente desempenho térmico e acústico para ambientes residenciais e comerciais.",
+    title: "Cobertura Acústica Termoacústica | Redução de Ruído 30dB | Cobersystem SP",
+  description: "Cobertura acústica termoacústica que reduz até 30dB de ruído. Excelente desempenho térmico e acústico para área gourmet, varanda e piscina.",
     url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-termoacustica',
     images: [
       {

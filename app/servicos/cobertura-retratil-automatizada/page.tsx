@@ -7,15 +7,15 @@ import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 
 export const metadata: Metadata = {
-  title: "Cobertura Retrátil Automatizada | Alexa e Sensor de Chuva | Cobersystem",
-  description: "Cobertura retrátil automatizada com Alexa e sensor de chuva. Sistema inteligente que abre e fecha automaticamente. Controle total via comando de voz ou remoto. Preço e orçamento.",
-  keywords: "cobertura retrátil automatizada, cobertura automática Alexa, sensor de chuva cobertura, cobertura retrátil inteligente, automação residencial cobertura",
+  title: "Cobertura Automática Retrátil | Alexa, Sensor de Chuva e App | Cobersystem SP",
+  description: "Cobertura automática que fecha sozinha na chuva e abre por voz (Alexa) ou celular. Cobertura retrátil automatizada com sensor inteligente. Tabela de preços 2026 e orçamento grátis em SP.",
+  keywords: "cobertura automática, cobertura automatizada, cobertura retrátil automatizada, cobertura automática Alexa, sensor de chuva cobertura, cobertura retrátil inteligente, automação residencial cobertura",
   alternates: {
     canonical: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-retratil-automatizada',
   },
   openGraph: {
-    title: "Cobertura Retrátil Automatizada | Alexa e Sensor de Chuva | Cobersystem",
-    description: "Cobertura retrátil automatizada com Alexa, controle remoto e sensor de chuva para controle completo do ambiente.",
+    title: "Cobertura Automática Retrátil | Alexa, Sensor de Chuva e App | Cobersystem SP",
+  description: "Cobertura automática que fecha sozinha na chuva e abre por voz (Alexa) ou celular. Preços 2026 e orçamento grátis.",
     url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-retratil-automatizada',
     images: [
       {

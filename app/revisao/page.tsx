@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 
 const VPS_IP = '72.60.136.68';
-const PORT = '3001';
+const PORT = '3002';
 const BASE = `http://${VPS_IP}:${PORT}`;
 
 type Status = 'pendente' | 'aprovado' | 'reprovado';
@@ -65,6 +65,90 @@ const ITENS: Item[] = [
       'Title novo: "Cobertura Abre e Fecha Policarbonato | Preço m² + Automação Alexa | Cobersystem SP"',
       'Description anterior: 160 chars sem menção de preço',
       'Description nova: inclui "a partir de R$ 800/m²", sensor de chuva, Alexa e CTA claro',
+    ],
+  },
+  // ── ETAPA 2 — Itens desta sessão ───────────────────────────────────────
+  {
+    id: 'tracking-beacon',
+    etapa: 'ETAPA 2 — Item 1A',
+    titulo: 'Fix: beacon transport + delay navegação WhatsApp',
+    descricao:
+      'R$ 335 investidos em Ads com 0 conversões rastreadas. Causa: evento gtag era abortado antes de chegar ao servidor quando usuário clicava no WhatsApp (target="_blank"). Corrigido com transport_type: "beacon" e delay de 300ms.',
+    arquivo: 'components/WhatsAppButton.tsx + components/GoogleAds.tsx',
+    previewPath: '/',
+    mudancas: [
+      'GoogleAds.tsx: adicionado transport_type: "beacon" no trackGoogleAdsConversion',
+      'WhatsAppButton.tsx: handleClick agora usa e.preventDefault() + setTimeout(300ms) quando sendBeacon não está disponível',
+      'Garantia de envio do hit antes da navegação para nova aba',
+    ],
+  },
+  {
+    id: 'titulos-seo',
+    etapa: 'ETAPA 2 — Item 2',
+    titulo: 'Correção de 6 títulos/descriptions (CTR baixo no GSC)',
+    descricao:
+      '"cobersystem" pos.2 com CTR 0%, "cobertura automática" pos.11 com CTR 0%, "cobertura acústica" pos.40 com CTR 0%. Títulos atualizados para incluir keywords diretas e CTAs.',
+    arquivo: 'app/page.tsx + 4 páginas de serviço',
+    previewPath: '/servicos/cobertura-retratil-automatizada',
+    mudancas: [
+      'Homepage: "Cobersystem | Coberturas Retráteis em Policarbonato SP | Orçamento Grátis"',
+      '/cobertura-retratil-automatizada: "Cobertura Automática Retrátil | Alexa, Sensor de Chuva e App | Cobersystem SP"',
+      '/cobertura-abre-e-fecha: "Cobertura Abre e Fecha | Acessos, Corredores e Varandas | Cobersystem SP"',
+      '/cobertura-termoacustica: "Cobertura Acústica Termoacústica | Redução de Ruído 30dB | Cobersystem SP"',
+      '/cobertura-retratil: keywords "cobertura de policarbonato retrátil" adicionadas',
+    ],
+  },
+  {
+    id: 'jardim-de-inverno',
+    etapa: 'ETAPA 2 — Item 3a',
+    titulo: 'Nova página: /servicos/cobertura-jardim-de-inverno',
+    descricao:
+      '"cobertura jardim de inverno" tem ~1.000–3.000 buscas/mês em SP sem concorrência interna. Página com tabela comparativa policarbonato vs vidro, tipos (4mm/6mm/alveolar), FAQ e CTAs.',
+    arquivo: 'app/servicos/cobertura-jardim-de-inverno/page.tsx',
+    previewPath: '/servicos/cobertura-jardim-de-inverno',
+    mudancas: [
+      'Criação de nova página dedicada',
+      'Tabela comparativa: Policarbonato vs Vidro (7 características)',
+      'Seção de tipos: Compacto 4mm, Compacto 6mm, Alveolar 6mm com preços',
+      'FAQ: 5 perguntas frequentes sobre jardim de inverno',
+      'IMAGENS: 2 placeholders marcados com TODO para inserção manual',
+      'Schema JSON-LD Product com preço, returnPolicy e shippingDetails',
+    ],
+  },
+  {
+    id: 'pergolado',
+    etapa: 'ETAPA 2 — Item 3b',
+    titulo: 'Nova página: /servicos/cobertura-pergolado',
+    descricao:
+      '"cobertura para pergolado" apareceu como keyword de Ads com 5 cliques e R$ 9,92 de custo real — intenção confirmada. Página com sistemas fixo e retrátil, processo de instalação e galeria.',
+    arquivo: 'app/servicos/cobertura-pergolado/page.tsx',
+    previewPath: '/servicos/cobertura-pergolado',
+    mudancas: [
+      'Criação de nova página dedicada',
+      'Dois sistemas: Retrátil (R$ 1.200/m²) e Fixo (R$ 800/m²)',
+      'Timeline de instalação em 4 etapas',
+      'FAQ: 5 perguntas frequentes sobre pergolado',
+      'IMAGENS: 4 placeholders marcados com TODO para inserção manual',
+      'Schema JSON-LD Product',
+    ],
+  },
+  {
+    id: 'cidades-guarulhos-barueri',
+    etapa: 'ETAPA 2 — Item 4',
+    titulo: 'Novas páginas de cidade: Guarulhos e Barueri/Alphaville',
+    descricao:
+      'Guarulhos (1,4M hab.) e Barueri/Alphaville (alto padrão) adicionados nos 4 produtos: cobertura retrátil, abre e fecha, policarbonato e termoacústica. Total: 8 novas páginas geradas automaticamente.',
+    arquivo: '4 arquivos lib/*-cidades.ts',
+    previewPath: '/produtos/cobertura-retratil/em/guarulhos',
+    mudancas: [
+      '/produtos/cobertura-retratil/em/guarulhos',
+      '/produtos/cobertura-retratil/em/barueri',
+      '/produtos/cobertura-abre-e-fecha/em/guarulhos',
+      '/produtos/cobertura-abre-e-fecha/em/barueri',
+      '/produtos/cobertura-policarbonato/em/guarulhos',
+      '/produtos/cobertura-policarbonato/em/barueri',
+      '/produtos/cobertura-termoacustica/em/guarulhos',
+      '/produtos/cobertura-termoacustica/em/barueri',
     ],
   },
 ];

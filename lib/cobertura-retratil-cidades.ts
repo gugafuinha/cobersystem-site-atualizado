@@ -8,7 +8,9 @@ export type CidadeRetratilSlug =
   | 'campinas'
   | 'santo-andre'
   | 'sao-caetano-do-sul'
-  | 'osasco';
+  | 'osasco'
+  | 'guarulhos'
+  | 'barueri';
 
 export interface CidadeRetratilData {
   slug: CidadeRetratilSlug;
@@ -96,6 +98,32 @@ export const CIDADES_COBERTURA_RETRATIL: CidadeRetratilData[] = [
       'Cobertura retrátil em Osasco: sistema retrátil policarbonato ou alumínio, proteção e ventilação. Visita técnica e orçamento na Grande SP.',
     keywords:
       'cobertura retrátil Osasco, cobertura abre e fecha Osasco, cobertura retrátil Grande SP, sensor chuva cobertura Osasco',
+  },
+  {
+    slug: 'guarulhos',
+    nome: 'Guarulhos',
+    paragrafos: [
+      'Em Guarulhos, segunda maior cidade do estado de São Paulo, o crescimento de condomínios horizontais e residências com espaço gourmet aumentou significativamente a procura por coberturas retráteis de qualidade.',
+      'O sistema abre e fecha em policarbonato compacto ou alveolar permite aproveitar a área externa nos dias ensolarados e proteger o espaço quando as chuvas características da região chegam.',
+      'A Cobersystem atende Guarulhos e toda a região Norte da Grande SP com visita técnica gratuita, projeto sob medida e instalação especializada.',
+    ],
+    metaDescription:
+      'Cobertura retrátil em Guarulhos: sistema abre e fecha, policarbonato ou alumínio, automação opcional. Visita técnica e orçamento gratuitos.',
+    keywords:
+      'cobertura retrátil Guarulhos, cobertura abre e fecha Guarulhos, cobertura policarbonato Guarulhos, telhado retrátil Guarulhos SP',
+  },
+  {
+    slug: 'barueri',
+    nome: 'Barueri',
+    paragrafos: [
+      'Em Barueri e Alphaville, onde condomínios de alto padrão e residências sofisticadas são a regra, a cobertura retrátil eleva ainda mais o nível dos espaços de lazer e áreas gourmet.',
+      'O sistema em policarbonato compacto preserva a luminosidade característica dos projetos modernos de Alphaville, enquanto a automação via Alexa e sensor de chuva adiciona conforto e praticidade ao dia a dia.',
+      'Atendemos Barueri, Alphaville e toda a região Oeste da Grande SP com projeto arquitetônico integrado, escolha de acabamentos premium e instalação supervisionada por engenheiros.',
+    ],
+    metaDescription:
+      'Cobertura retrátil em Barueri e Alphaville: policarbonato premium, automação Alexa e sensor de chuva. Projetos de alto padrão. Orçamento grátis.',
+    keywords:
+      'cobertura retrátil Barueri, cobertura retrátil Alphaville, cobertura abre e fecha Barueri, cobertura policarbonato Alphaville, telhado retrátil Barueri SP',
   },
 ];
 

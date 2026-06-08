@@ -5,9 +5,9 @@ import OptimizedImage from '@/components/OptimizedImage';
 import VideoHero from '@/components/VideoHero';
 
 export const metadata: Metadata = {
-  title: "Cobertura em Policarbonato Abre e Fecha | Automação Alexa | Cobersystem SP",
-  description: "Cobertura retrátil em policarbonato que abre e fecha automaticamente via Alexa e sensor de chuva. Abertura 0 a 90°, estrutura alumínio, área gourmet e varanda. Orçamento grátis em SP.",
-  keywords: "cobertura em policarbonato, cobertura policarbonato, cobertura retrátil, cobertura abre e fecha, telhado retrátil, cobertura automática Alexa, sensor de chuva, área gourmet SP",
+  title: "Cobersystem | Coberturas Retráteis em Policarbonato SP | Orçamento Grátis",
+  description: "A Cobersystem é especialista em coberturas retráteis que abrem e fecham automaticamente. Policarbonato, alumínio, automação Alexa e sensor de chuva. +500 projetos em SP. Orçamento grátis.",
+  keywords: "cobersystem, cobertura retrátil, cobertura em policarbonato, cobertura abre e fecha, telhado retrátil, cobertura automática Alexa, sensor de chuva, área gourmet SP",
   alternates: {
     canonical: 'https://www.coberturapolicarbonato.com.br',
   },

@@ -8,7 +8,9 @@ export type CidadeAbreEFechaSlug =
   | 'campinas'
   | 'santo-andre'
   | 'sao-caetano-do-sul'
-  | 'osasco';
+  | 'osasco'
+  | 'guarulhos'
+  | 'barueri';
 
 export interface CidadeAbreEFechaData {
   slug: CidadeAbreEFechaSlug;
@@ -96,6 +98,32 @@ export const CIDADES_COBERTURA_ABRE_E_FECHA: CidadeAbreEFechaData[] = [
       'Cobertura abre e fecha em Osasco: sistema retrátil com policarbonato ou telhas, automação e sensor de chuva. Visita técnica na Grande SP.',
     keywords:
       'cobertura abre e fecha Osasco, cobertura retrátil Osasco, automação cobertura Grande SP, sensor chuva Osasco',
+  },
+  {
+    slug: 'guarulhos',
+    nome: 'Guarulhos',
+    paragrafos: [
+      'Guarulhos, com sua ampla base de residências e condomínios horizontais, é uma das cidades da Grande SP onde mais cresce a demanda por coberturas que abrem e fecham.',
+      'O sistema permite que moradores aproveitem espaços externos com total conforto — sol aberto quando desejado, proteção imediata contra chuvas típicas da região.',
+      'A Cobersystem realiza visita técnica gratuita em Guarulhos para dimensionamento do sistema abre e fecha, com opções de policarbonato compacto ou alveolar e automação via Alexa.',
+    ],
+    metaDescription:
+      'Cobertura abre e fecha em Guarulhos: sistema retrátil, policarbonato ou alumínio, automação Alexa e sensor de chuva. Orçamento grátis em Guarulhos SP.',
+    keywords:
+      'cobertura abre e fecha Guarulhos, cobertura retrátil Guarulhos, telhado abre e fecha Guarulhos, cobertura policarbonato Guarulhos SP',
+  },
+  {
+    slug: 'barueri',
+    nome: 'Barueri',
+    paragrafos: [
+      'Barueri e Alphaville concentram projetos residenciais de alto padrão onde a cobertura abre e fecha é um requisito de arquitetura e não apenas funcional.',
+      'A linha com policarbonato compacto transparente é a mais procurada na região, por harmonizar com projetos contemporâneos e permitir a entrada de luz natural nas áreas de lazer e gourmet.',
+      'Atendemos Barueri, Alphaville e adjacências com projeto personalizado, automação premium e instalação por equipe especializada — sem comprometer o acabamento do imóvel.',
+    ],
+    metaDescription:
+      'Cobertura abre e fecha em Barueri e Alphaville: policarbonato premium, automação Alexa, sensor de chuva. Alto padrão. Orçamento grátis.',
+    keywords:
+      'cobertura abre e fecha Barueri, cobertura retrátil Alphaville, telhado abre e fecha Barueri, cobertura policarbonato Alphaville, cobertura abre e fecha Barueri SP',
   },
 ];
 
