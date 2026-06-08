@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FAQSchema from '@/components/FAQSchema';
 import SchemaMarkup from '@/components/SchemaMarkup';
@@ -103,14 +104,47 @@ export default function CoberturaTermoacustica() {
             { label: 'Cobertura Termoacústica', href: '/servicos/cobertura-termoacustica' },
           ]} />
 
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Cobertura Termoacústica
-          </h1>
-          <p className="text-xl text-gray-700 mb-8 leading-relaxed">
-            Cobertura termoacústica em policarbonato alveolar com excelente isolamento térmico e acústico. 
-            Reduz temperatura interna em até 40% e bloqueia ruídos externos. Máximo conforto e tranquilidade. 
-            Ideal para áreas que precisam de isolamento superior.
-          </p>
+          {/* Hero — foto esquerda, texto direita */}
+          <section className="mb-12">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:items-start">
+              <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl bg-gray-100">
+                <OptimizedImage
+                  src="/images/projetos/termoacustica-01.jpg"
+                  alt="Cobertura termoacústica em policarbonato alveolar instalada — projeto Cobersystem SP"
+                  title="Cobertura Acústica Termoacústica — Cobersystem SP"
+                  width={1200}
+                  height={900}
+                  priority
+                  className="w-full h-full object-cover"
+                  style={{ objectPosition: '50% 40%' }}
+                />
+              </div>
+              <div>
+                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                  Cobertura Acústica Termoacústica
+                </h1>
+                <p className="text-xl text-gray-700 mb-6 leading-relaxed">
+                  Cobertura em policarbonato alveolar que reduz até 30dB de ruído e controla a temperatura
+                  interna. Ideal para varanda, área gourmet e piscina próximos a vias movimentadas.
+                  Isolamento térmico e acústico em um único sistema.
+                </p>
+                <ul className="space-y-2 text-gray-700">
+                  {[
+                    'Reduz até 30dB de ruído externo (trânsito, vizinhos)',
+                    'Temperatura interna até 40% menor que áreas abertas',
+                    'Policarbonato alveolar 6mm ou 10mm com câmaras de ar',
+                    'Sem condensação — câmaras isolam do calor e do frio',
+                    'Estrutura alumínio anodizado — sem manutenção',
+                  ].map((item) => (
+                    <li key={item} className="flex gap-2">
+                      <span className="text-blue-600 mt-0.5">✓</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </section>
 
           <section className="mb-12 bg-white rounded-lg p-8 shadow-sm">
             <h2 className="text-3xl font-bold text-gray-800 mb-6">O que é Cobertura Termoacústica?</h2>

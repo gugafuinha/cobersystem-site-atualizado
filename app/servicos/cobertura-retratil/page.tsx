@@ -1,4 +1,7 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
+import OptimizedImage from '@/components/OptimizedImage';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import StructuredData from '@/components/seo/StructuredData';
 import CoberturaRetratilServicoExpandedSections from './CoberturaRetratilServicoExpandedSections';
@@ -135,55 +138,107 @@ export default function CoberturaRetratilServicoPage() {
       <Breadcrumb />
 
       <main className="min-h-screen bg-gray-50">
-        <section className="relative bg-gradient-to-br from-blue-600 to-blue-800 text-white py-20">
-          <div className="max-w-7xl mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Instalação de Cobertura Retrátil Automática
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 text-blue-100">
-              Projeto completo + instalação profissional + automação via Alexa
-            </p>
-            <div className="grid md:grid-cols-4 gap-6">
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
-                <div className="text-3xl font-bold">48-72h</div>
-                <div className="text-sm text-blue-200">Prazo instalação</div>
+        <div className="container mx-auto px-4 py-8">
+          <Breadcrumbs items={[
+            { label: 'Início', href: '/' },
+            { label: 'Serviços', href: '/servicos' },
+            { label: 'Cobertura Retrátil', href: '/servicos/cobertura-retratil' },
+          ]} />
+
+          {/* Hero — foto esquerda, texto direita */}
+          <section className="mb-12">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:items-start">
+              <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl bg-gray-100">
+                <OptimizedImage
+                  src="/images/projetos/abre-fecha-alveolar-01.jpg"
+                  alt="Cobertura retrátil instalada em área gourmet — projeto Cobersystem SP"
+                  title="Cobertura Retrátil Policarbonato — Cobersystem SP"
+                  width={1200}
+                  height={900}
+                  priority
+                  className="w-full h-full object-cover"
+                  style={{ objectPosition: '50% 40%' }}
+                />
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
-                <div className="text-3xl font-bold">2 anos</div>
-                <div className="text-sm text-blue-200">Garantia total</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
-                <div className="text-3xl font-bold">Alexa</div>
-                <div className="text-sm text-blue-200">Automação inclusa</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
-                <div className="text-3xl font-bold">Grande SP</div>
-                <div className="text-sm text-blue-200">Área atendida</div>
+              <div>
+                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                  Cobertura Retrátil em Policarbonato
+                </h1>
+                <p className="text-xl text-gray-700 mb-6 leading-relaxed">
+                  Sistema retrátil que abre e fecha de 0 a 90° com automação via Alexa e sensor de chuva.
+                  Policarbonato compacto, alveolar ou telhas de alumínio intercaladas. Projeto, engenharia
+                  e instalação completos em SP. Garantia de 2 anos.
+                </p>
+                <div className="grid grid-cols-2 gap-3 mb-6">
+                  {[
+                    { v: '48–72h', l: 'Prazo instalação' },
+                    { v: '2 anos', l: 'Garantia total' },
+                    { v: 'Alexa', l: 'Automação via voz' },
+                    { v: 'Grande SP', l: 'Área atendida' },
+                  ].map(({ v, l }) => (
+                    <div key={l} className="bg-blue-50 border border-blue-100 rounded-lg p-3 text-center">
+                      <div className="text-2xl font-bold text-blue-700">{v}</div>
+                      <div className="text-xs text-gray-500 mt-1">{l}</div>
+                    </div>
+                  ))}
+                </div>
+                <ul className="space-y-2 text-gray-700 mb-6">
+                  {[
+                    'Abertura de 0 a 90° sem perder ventilação',
+                    'Fecha sozinha com sensor de chuva automático',
+                    'Controle por Alexa, remoto ou aplicativo',
+                    'Estrutura em alumínio anodizado sem manutenção',
+                    'Policarbonato compacto, alveolar ou telhas intercaladas',
+                  ].map((item) => (
+                    <li key={item} className="flex gap-2">
+                      <span className="text-blue-600 mt-0.5">✓</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="flex gap-3">
+                  <Link
+                    href="/contato"
+                    className="inline-block bg-[#D4AF37] text-black px-6 py-3 rounded-lg font-semibold hover:bg-[#C9A030] transition"
+                  >
+                    Solicitar Orçamento
+                  </Link>
+                  <a
+                    href="https://wa.me/5511943615079?text=Ol%C3%A1%21+Gostaria+de+or%C3%A7amento+para+cobertura+retr%C3%A1til."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition"
+                  >
+                    WhatsApp
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <CoberturaRetratilServicoExpandedSections />
+          <CoberturaRetratilServicoExpandedSections />
 
-        <section className="bg-blue-600 text-white py-16">
-          <div className="max-w-4xl mx-auto text-center px-4">
-            <h2 className="text-3xl font-bold mb-4">
-              Solicite Seu Projeto Personalizado
-            </h2>
-            <p className="text-xl mb-8 text-blue-100">
-              Visita técnica grátis + projeto em até 48h
-            </p>
-            <a
-              href="https://wa.me/5511943615079?text=Olá!%20Quero%20um%20projeto%20de%20cobertura%20retrátil"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors"
-            >
-              💬 Solicitar Projeto Grátis
-            </a>
-          </div>
-        </section>
+          <section className="bg-[#D4AF37] text-black rounded-lg p-12 text-center mt-12">
+            <h2 className="text-4xl font-bold mb-4">Solicite Seu Projeto Personalizado</h2>
+            <p className="text-xl mb-8 text-gray-900">Visita técnica grátis + projeto em até 48h</p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/contato"
+                className="inline-block bg-black text-[#D4AF37] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-900 transition"
+              >
+                Solicitar Orçamento
+              </Link>
+              <a
+                href="https://wa.me/5511943615079?text=Ol%C3%A1%21+Quero+um+projeto+de+cobertura+retr%C3%A1til"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-green-700 transition"
+              >
+                WhatsApp Agora
+              </a>
+            </div>
+          </section>
+        </div>
       </main>
     </>
   );

@@ -78,14 +78,47 @@ export default function CoberturaRetratilAutomatizada() {
             { label: 'Cobertura Retrátil Automatizada', href: '/servicos/cobertura-retratil-automatizada' },
           ]} />
 
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Cobertura Retrátil Automatizada com Alexa e Sensor de Chuva
-          </h1>
-          <p className="text-xl text-gray-700 mb-8 leading-relaxed">
-            Sistema inteligente de cobertura retrátil que abre e fecha automaticamente. Controle via Alexa, 
-            controle remoto ou sensor de chuva. Tecnologia de ponta para máxima comodidade e proteção. 
-            Ideal para quem busca automação residencial de alta qualidade.
-          </p>
+          {/* Hero — foto esquerda, texto direita */}
+          <section className="mb-12">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:items-start">
+              <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl bg-gray-100">
+                <OptimizedImage
+                  src="/images/blog/cobertura-retratil-area-gourmet.jpg"
+                  alt="Cobertura retrátil automatizada com Alexa e sensor de chuva — projeto Cobersystem SP"
+                  title="Cobertura Automática Retrátil com Alexa — Cobersystem SP"
+                  width={1200}
+                  height={900}
+                  priority
+                  className="w-full h-full object-cover"
+                  style={{ objectPosition: '50% 35%' }}
+                />
+              </div>
+              <div>
+                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                  Cobertura Automática Retrátil com Alexa e Sensor de Chuva
+                </h1>
+                <p className="text-xl text-gray-700 mb-6 leading-relaxed">
+                  Sistema inteligente que fecha sozinho quando chove e abre por voz (Alexa) ou celular.
+                  Cobertura retrátil automatizada com sensor de chuva, controle remoto e integração
+                  com app. Conforto total sem precisar sair da cadeira.
+                </p>
+                <ul className="space-y-2 text-gray-700">
+                  {[
+                    'Fecha automaticamente ao detectar chuva — sem acionar nada',
+                    '"Alexa, feche a cobertura" — controle total por voz',
+                    'Controle remoto incluso em todos os projetos',
+                    'Abertura de 0 a 90° para ventilação graduada',
+                    'Motor silencioso com garantia de 2 anos',
+                  ].map((item) => (
+                    <li key={item} className="flex gap-2">
+                      <span className="text-blue-600 mt-0.5">✓</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </section>
 
           <section className="mb-12 bg-white rounded-lg p-8 shadow-sm">
             <h2 className="text-3xl font-bold text-gray-800 mb-6">O que é Cobertura Retrátil Automatizada?</h2>

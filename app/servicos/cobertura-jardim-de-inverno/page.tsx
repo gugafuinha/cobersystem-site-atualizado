@@ -27,7 +27,7 @@ const productSchema = {
   '@context': 'https://schema.org',
   '@type': 'Product',
   name: 'Cobertura para Jardim de Inverno',
-  image: ['https://www.coberturapolicarbonato.com.br/images/projetos/jardim-de-inverno-01.png'],
+  image: ['https://www.coberturapolicarbonato.com.br/images/projetos/jardim-de-inverno-02.png'],
   description:
     'Cobertura em policarbonato compacto transparente para jardim de inverno. Preserva luz natural para plantas, com proteção contra chuva, vento e variações de temperatura.',
   brand: { '@type': 'Brand', name: 'Cobersystem' },
@@ -105,15 +105,16 @@ export default function CoberturaJardimDeInverno() {
           {/* Hero */}
           <section className="mb-12">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:items-start">
-              <figure className="relative w-full aspect-[4/3] overflow-hidden rounded-xl bg-gray-100">
+              <figure className="relative w-full overflow-hidden rounded-xl bg-gray-900" style={{ aspectRatio: '3/4' }}>
                 <OptimizedImage
-                  src="/images/projetos/jardim-de-inverno-01.png"
-                  alt="Jardim de inverno com cobertura em policarbonato compacto transparente e parede verde — projeto Cobersystem SP"
+                  src="/images/projetos/jardim-de-inverno-02.png"
+                  alt="Jardim de inverno integrado à cozinha com cobertura em policarbonato compacto retrátil — projeto Cobersystem SP"
                   title="Cobertura para Jardim de Inverno com Policarbonato Compacto — Cobersystem"
-                  width={1200}
-                  height={900}
+                  width={900}
+                  height={1200}
                   priority
                   className="h-full w-full object-cover"
+                  style={{ objectPosition: '50% 50%' }}
                 />
                 <figcaption className="absolute bottom-0 left-0 right-0 bg-black/50 text-white text-xs text-center py-2 px-3">
                   Cobertura para Jardim de Inverno com Policarbonato Compacto
