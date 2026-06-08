@@ -127,6 +127,7 @@ export default async function AbreEFechaSaoPauloBairroPage({
       imageSrc="/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg"
       imageWidth={1200}
       imageHeight={900}
+      imageObjectPosition="50% 30%"
       modelosHeading="Modelos da linha"
       modelosIntro={`Conheça as variantes de cobertura abre e fecha para o seu projeto no ${bairro.nome}.`}
       modelosSection={modelosSection}

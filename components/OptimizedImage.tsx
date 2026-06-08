@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import React from 'react';
 
 interface OptimizedImageProps {
   src: string;
@@ -6,6 +7,7 @@ interface OptimizedImageProps {
   width?: number;
   height?: number;
   className?: string;
+  style?: React.CSSProperties;
   priority?: boolean;
   title?: string;
 }
@@ -16,6 +18,7 @@ export default function OptimizedImage({
   width = 800,
   height = 600,
   className = '',
+  style,
   priority = false,
   title,
 }: OptimizedImageProps) {
@@ -27,6 +30,7 @@ export default function OptimizedImage({
       width={width}
       height={height}
       className={className}
+      style={style}
       priority={priority}
       loading={priority ? 'eager' : 'lazy'}
       quality={95}

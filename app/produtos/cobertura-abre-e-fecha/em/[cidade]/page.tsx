@@ -129,6 +129,7 @@ export default async function CoberturaAbreEFechaEmCidadePage({
                 width={1200}
                 height={900}
                 className="h-full w-full object-cover"
+                style={{ objectPosition: '50% 30%' }}
                 priority
               />
             </div>

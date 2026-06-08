@@ -18,6 +18,7 @@ export interface SaoPauloBairroProdutoLayoutProps {
   imageSrc: string;
   imageWidth: number;
   imageHeight: number;
+  imageObjectPosition?: string;
   modelosHeading: string;
   modelosIntro: string;
   modelosSection: ReactNode;
@@ -53,6 +54,7 @@ export default function SaoPauloBairroProdutoLayout({
   imageSrc,
   imageWidth,
   imageHeight,
+  imageObjectPosition,
   modelosHeading,
   modelosIntro,
   modelosSection,
@@ -91,6 +93,7 @@ export default function SaoPauloBairroProdutoLayout({
                 width={imageWidth}
                 height={imageHeight}
                 className="h-full w-full object-cover"
+                style={imageObjectPosition ? { objectPosition: imageObjectPosition } : undefined}
                 priority
               />
             </div>

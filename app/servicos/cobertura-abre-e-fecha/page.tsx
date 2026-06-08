@@ -121,6 +121,7 @@ export default function CoberturaAbreEFecha() {
                   height={900}
                   priority
                   className="w-full h-full object-cover"
+                  style={{ objectPosition: '50% 30%' }}
                 />
               </div>
               <div>

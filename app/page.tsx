@@ -214,6 +214,7 @@ export default function Home() {
                 <div className="relative h-48">
                   <OptimizedImage
                     src="/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg"
+                    style={{ objectPosition: '50% 30%' }}
                     alt="Cobertura automática retrátil com Alexa e sensor de chuva integrado"
                     title="Automação Inteligente Cobertura Retrátil - Alexa e Sensor de Chuva - Cobersystem"
                     width={1200}
