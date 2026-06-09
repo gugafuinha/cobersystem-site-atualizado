@@ -2,6 +2,15 @@
 
 ---
 
+## 2026-06-09 — Cards /servicos + fotos retrátil e piscina
+
+### Deploy (commit `fc46683`)
+- 3 cards adicionados em `/servicos`: varanda, retrátil, policarbonato
+- Hero e card retrátil → `Cobertura Retratil melhorada.png`
+- Card piscina → `IMG_6306.jpg` (igual ao hero interno)
+
+---
+
 ## 2026-06-09 — Preços oficiais centralizados em lib/pricing.ts
 
 ### Arquivos criados

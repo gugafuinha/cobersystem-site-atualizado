@@ -9,19 +9,25 @@ import { buildServiceOffer } from '@/lib/schemas/product-schemas';
 import { getFaqPriceAnswer, getServiceSchemaMinPrice } from '@/lib/pricing';
 import PriceEstimateNote from '@/components/servicos/PriceEstimateNote';
 import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
+import CoberturaTermoacusticaExpandedSections from './CoberturaTermoacusticaExpandedSections';
 
 const HERO_IMAGE = '/images/projetos/Cobertura Termoacustica.png';
+const WHATSAPP_URL =
+  'https://wa.me/5511943615079?text=Ol%C3%A1!%20Preciso%20de%20or%C3%A7amento%20para%20cobertura%20termoac%C3%BAstica.';
 
 export const metadata: Metadata = {
-  title: "Cobertura Acústica Termoacústica | Redução de Ruído 30dB | Cobersystem SP",
-  description: "Cobertura acústica termoacústica em policarbonato alveolar. Reduz até 30dB de ruído e controla temperatura. Ideal para área gourmet, varanda e piscina. Orçamento grátis em SP.",
-  keywords: "cobertura acústica, cobertura termoacústica, cobertura isolamento acústico, cobertura isolamento térmico, policarbonato termoacústico, redução ruído cobertura, sanduíche TR40",
+  title: 'Cobertura Acústica Termoacústica | Redução 30dB e -10°C | Cobersystem SP',
+  description:
+    'Cobertura termoacústica que reduz até 30dB de ruído e até 10°C de temperatura. Policarbonato alveolar e painéis sanduíche. Área gourmet, varanda e comercial. Orçamento grátis em SP.',
+  keywords:
+    'cobertura acústica, cobertura termoacústica, cobertura isolamento acústico, redução ruído cobertura, policarbonato termoacústico, sanduíche TR40, cobertura termoacústica preço SP',
   alternates: {
     canonical: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-termoacustica',
   },
   openGraph: {
-    title: "Cobertura Acústica Termoacústica | Redução de Ruído 30dB | Cobersystem SP",
-  description: "Cobertura acústica termoacústica que reduz até 30dB de ruído. Excelente desempenho térmico e acústico para área gourmet, varanda e piscina.",
+    title: 'Cobertura Acústica Termoacústica | Redução 30dB | Cobersystem SP',
+    description:
+      'Cobertura termoacústica com redução de até 30dB e 10°C. Ideal para área gourmet, varanda e ambientes comerciais.',
     url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-termoacustica',
     images: [
       {
@@ -42,7 +48,8 @@ const productSchema = {
   '@context': 'https://schema.org',
   '@type': 'Product',
   name: 'Cobertura Termoacústica',
-  description: 'Cobertura termoacústica em policarbonato alveolar com excelente isolamento térmico e acústico.',
+  description:
+    'Cobertura termoacústica em policarbonato alveolar e painéis sanduíche. Redução de até 30dB de ruído e até 10°C de temperatura.',
   image: [
     'https://www.coberturapolicarbonato.com.br/images/projetos/Cobertura%20Termoacustica.png',
     'https://www.coberturapolicarbonato.com.br/images/projetos/termoacustica-01.jpg',
@@ -58,15 +65,18 @@ const productSchema = {
 const faqs = [
   {
     question: 'O que é cobertura termoacústica?',
-    answer: 'A cobertura termoacústica é uma cobertura que oferece isolamento térmico (reduz temperatura) e acústico (reduz ruído). É feita com policarbonato alveolar de alta espessura (6mm ou 10mm) que cria uma barreira eficiente contra calor e som.',
+    answer:
+      'É um sistema de cobertura projetado para reduzir simultaneamente calor e ruído externo. Utiliza policarbonato alveolar de alta espessura (6mm ou 10mm) ou painéis sanduíche com núcleo isolante, criando barreira térmica e acústica eficiente.',
   },
   {
-    question: 'Quanto a cobertura termoacústica reduz a temperatura?',
-    answer: 'A cobertura termoacústica pode reduzir a temperatura interna em até 40% comparado a áreas sem cobertura. Isso oferece muito mais conforto, especialmente em dias quentes de verão.',
+    question: 'Quanto a cobertura termoacústica reduz ruído e temperatura?',
+    answer:
+      'Em projetos com painéis sanduíche termoacústicos, a redução de ruído pode chegar a até 30 dB. O isolamento térmico pode diminuir a sensação de calor em até 10 °C no ambiente coberto, comparado à área sem proteção.',
   },
   {
-    question: 'A cobertura termoacústica reduz ruído?',
-    answer: 'Sim! O policarbonato alveolar com câmaras de ar internas cria uma barreira eficiente contra ruídos externos, reduzindo significativamente o barulho de trânsito, vizinhos e outras fontes sonoras.',
+    question: 'Qual a diferença entre sanduíche e policarbonato alveolar?',
+    answer:
+      'O sanduíche oferece máximo isolamento acústico (até ~30 dB) e bloqueio térmico superior, porém sem luz natural. O alveolar 10mm equilibra custo, translucidez e bom isolamento — ideal quando se quer luz filtrada com conforto.',
   },
   {
     question: 'Quanto custa uma cobertura termoacústica?',
@@ -74,7 +84,13 @@ const faqs = [
   },
   {
     question: 'Onde a cobertura termoacústica é mais indicada?',
-    answer: 'A cobertura termoacústica é ideal para: residências próximas a avenidas movimentadas ou aeroportos (reduz ruído), áreas gourmet e varandas que precisam de conforto térmico, escritórios e ambientes comerciais que exigem silêncio, e qualquer local onde isolamento térmico e acústico sejam prioridades.',
+    answer:
+      'Residências próximas a avenidas, áreas gourmet com churrasqueira, varandas de apartamento, escritórios, clínicas e coberturas de piscina em regiões quentes ou ruidosas. Também atendemos condomínios e comércios.',
+  },
+  {
+    question: 'Qual a garantia da cobertura termoacústica?',
+    answer:
+      'Oferecemos 2 anos de garantia total na estrutura, painéis e instalação executada pela Cobersystem, conforme condições contratuais. Atendemos toda a Grande São Paulo.',
   },
 ];
 
@@ -84,24 +100,25 @@ export default function CoberturaTermoacustica() {
       <SchemaMarkup type="product" data={productSchema} />
       <main className="min-h-screen bg-gray-50">
         <div className="container mx-auto px-4 py-8">
-          <Breadcrumbs items={[
-            { label: 'Início', href: '/' },
-            { label: 'Serviços', href: '/servicos' },
-            { label: 'Cobertura Termoacústica', href: '/servicos/cobertura-termoacustica' },
-          ]} />
+          <Breadcrumbs
+            items={[
+              { label: 'Início', href: '/' },
+              { label: 'Serviços', href: '/servicos' },
+              { label: 'Cobertura Termoacústica', href: '/servicos/cobertura-termoacustica' },
+            ]}
+          />
 
-          {/* Hero — foto esquerda, texto direita */}
           <section className="mb-12">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:items-start">
               <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl bg-gray-100">
                 <OptimizedImage
                   src={HERO_IMAGE}
-                  alt="Cobertura termoacústica em policarbonato alveolar instalada — projeto Cobersystem SP"
+                  alt="Cobertura termoacústica em policarbonato — projeto Cobersystem SP"
                   title="Cobertura Acústica Termoacústica — Cobersystem SP"
                   width={1200}
                   height={900}
                   priority
-                  className="w-full h-full object-cover"
+                  className="h-full w-full object-cover"
                 />
               </div>
               <div>
@@ -109,17 +126,33 @@ export default function CoberturaTermoacustica() {
                   Cobertura Acústica Termoacústica
                 </h1>
                 <p className="text-xl text-gray-700 mb-6 leading-relaxed">
-                  Cobertura em policarbonato alveolar que reduz até 30dB de ruído e controla a temperatura
-                  interna. Ideal para varanda, área gourmet e piscina próximos a vias movimentadas.
-                  Isolamento térmico e acústico em um único sistema.
+                  Sistema que reduz até <strong>30 dB de ruído</strong> e até{' '}
+                  <strong>10 °C de temperatura</strong> no ambiente coberto. Policarbonato alveolar
+                  6mm/10mm ou painéis sanduíche. Projeto, instalação e garantia de 2 anos em SP.
                 </p>
-                <ul className="space-y-2 text-gray-700">
+                <div className="grid grid-cols-2 gap-3 mb-6">
                   {[
-                    'Reduz até 30dB de ruído externo (trânsito, vizinhos)',
-                    'Temperatura interna até 40% menor que áreas abertas',
-                    'Policarbonato alveolar 6mm ou 10mm com câmaras de ar',
-                    'Sem condensação — câmaras isolam do calor e do frio',
-                    'Estrutura alumínio anodizado — sem manutenção',
+                    { v: '30 dB', l: 'Redução de ruído' },
+                    { v: '10 °C', l: 'Menos calor' },
+                    { v: '2 anos', l: 'Garantia total' },
+                    { v: 'Grande SP', l: 'Área atendida' },
+                  ].map(({ v, l }) => (
+                    <div
+                      key={l}
+                      className="bg-blue-50 border border-blue-100 rounded-lg p-3 text-center"
+                    >
+                      <div className="text-2xl font-bold text-blue-700">{v}</div>
+                      <div className="text-xs text-gray-500 mt-1">{l}</div>
+                    </div>
+                  ))}
+                </div>
+                <ul className="space-y-2 text-gray-700 mb-6">
+                  {[
+                    'Bloqueia ruído de trânsito, chuva e vizinhos',
+                    'Conforto térmico em área gourmet e varanda',
+                    'Policarbonato alveolar ou painel sanduíche',
+                    'Estrutura em alumínio — sem ferrugem',
+                    'Visita técnica gratuita e projeto em 48h',
                   ].map((item) => (
                     <li key={item} className="flex gap-2">
                       <span className="text-blue-600 mt-0.5">✓</span>
@@ -127,65 +160,58 @@ export default function CoberturaTermoacustica() {
                     </li>
                   ))}
                 </ul>
+                <div className="flex gap-3">
+                  <Link
+                    href="/contato"
+                    className="inline-block bg-[#D4AF37] text-black px-6 py-3 rounded-lg font-semibold hover:bg-[#C9A030] transition"
+                  >
+                    Solicitar Orçamento
+                  </Link>
+                  <a
+                    href={WHATSAPP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition"
+                  >
+                    WhatsApp
+                  </a>
+                </div>
               </div>
             </div>
           </section>
 
-          <section className="mb-12 bg-white rounded-lg p-8 shadow-sm">
-            <h2 className="text-3xl font-bold text-gray-800 mb-6">O que é Cobertura Termoacústica?</h2>
-            <div className="prose max-w-none text-gray-700 leading-relaxed">
-              <p className="mb-4">
-                A cobertura termoacústica combina isolamento térmico (reduz calor) e acústico (reduz ruído) 
-                em um único sistema. É feita com policarbonato alveolar de alta espessura (6mm ou 10mm) que 
-                cria uma barreira eficiente contra calor e som.
-              </p>
-              <p className="mb-4">
-                As câmaras de ar internas do policarbonato alveolar funcionam como isolante, reduzindo 
-                significativamente a transferência de calor e bloqueando ruídos externos. Isso oferece 
-                máximo conforto térmico e acústico, especialmente em áreas urbanas com muito ruído e calor.
-              </p>
-            </div>
-          </section>
+          <CoberturaTermoacusticaExpandedSections />
 
-          <section className="mb-12 bg-white rounded-lg p-8 shadow-sm">
-            <h2 className="text-3xl font-bold text-gray-800 mb-6">Vantagens</h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">🌡️ Isolamento Térmico Superior</h3>
-                <p className="text-gray-600">Reduz temperatura interna em até 40%, oferecendo muito mais conforto.</p>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">🔇 Isolamento Acústico</h3>
-                <p className="text-gray-600">Bloqueia ruídos externos, criando ambiente mais silencioso e tranquilo.</p>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">💰 Economia de Energia</h3>
-                <p className="text-gray-600">Reduz necessidade de ar condicionado e ventiladores, economizando energia.</p>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">🏠 Conforto Total</h3>
-                <p className="text-gray-600">Ambiente mais fresco no verão e mais quente no inverno, com menos ruído.</p>
-              </div>
-            </div>
-          </section>
-
-          <PriceEstimateNote className="mb-8" />
-          <ServiceAutomationSection />
+          <div className="max-w-7xl mx-auto px-4">
+            <PriceEstimateNote className="mb-8" />
+            <ServiceAutomationSection />
+          </div>
 
           <FAQSchema faqs={faqs} />
-
           <ServiceVejaTambem current="termoacustica" />
 
-          <section className="bg-[#D4AF37] text-black rounded-lg p-12 text-center mt-12">
-            <h2 className="text-4xl font-bold mb-4">Solicite Seu Orçamento</h2>
-            <p className="text-xl mb-8 text-gray-900">Cobertura com isolamento térmico e acústico superior</p>
-            <Link href="/contato" className="inline-block bg-black text-[#D4AF37] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-900 transition">
-              Solicitar Orçamento
-            </Link>
+          <section className="bg-[#D4AF37] text-black rounded-lg p-12 text-center mt-12 mx-4">
+            <h2 className="text-4xl font-bold mb-4">Solicite Seu Projeto Termoacústico</h2>
+            <p className="text-xl mb-8 text-gray-900">Visita técnica grátis + projeto em até 48h</p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/contato"
+                className="inline-block bg-black text-[#D4AF37] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-900 transition"
+              >
+                Solicitar Orçamento
+              </Link>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-green-700 transition"
+              >
+                WhatsApp Agora
+              </a>
+            </div>
           </section>
         </div>
       </main>
     </>
   );
 }
-
