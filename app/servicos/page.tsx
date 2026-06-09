@@ -45,16 +45,35 @@ const servicos = [
     imageObjectPosition: '50% 30%',
   },
   {
+    slug: 'cobertura-retratil',
+    title: 'Cobertura Retrátil',
+    description: 'Instalação completa com automação Alexa, sensor de chuva e abertura 0 a 90°.',
+    image: '/images/projetos/Cobertura Retratil melhorada.png',
+  },
+  {
+    slug: 'cobertura-policarbonato',
+    title: 'Cobertura em Policarbonato',
+    description: 'Projeto e instalação de cobertura fixa em policarbonato alveolar ou compacto.',
+    image: '/images/projetos/Cobertura em Policarbonato.png',
+  },
+  {
     slug: 'cobertura-area-gourmet',
     title: 'Cobertura para Área Gourmet',
     description: 'Ideal para áreas gourmet e churrasqueiras com controle total do clima.',
     image: '/images/blog/churrasqueira.jpg',
   },
   {
+    slug: 'cobertura-varanda-apartamento',
+    title: 'Cobertura para Varanda de Apartamento',
+    description: 'Cobertura retrátil ou fixa para varandas, com suporte na aprovação do condomínio.',
+    image: '/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg',
+    imageObjectPosition: '50% 30%',
+  },
+  {
     slug: 'cobertura-piscina',
     title: 'Cobertura para Piscina',
     description: 'Proteção para piscina com isolamento térmico e redução de manutenção.',
-    image: '/images/projetos/Cobertura em Policarbonato.png',
+    image: '/images/produtos/cobertura-retratil/aluminio/IMG_6306.jpg',
   },
   {
     slug: 'cobertura-garagem',

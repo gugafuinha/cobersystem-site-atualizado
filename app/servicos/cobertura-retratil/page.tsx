@@ -10,6 +10,8 @@ import { getRetratilFaqPriceAnswer, getServiceSchemaMinPrice } from '@/lib/prici
 import PriceEstimateNote from '@/components/servicos/PriceEstimateNote';
 import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
 
+const HERO_IMAGE = '/images/projetos/Cobertura Retratil melhorada.png';
+
 export const metadata: Metadata = {
   title: 'Cobertura Retrátil Policarbonato | Telhado Abre e Fecha | Alexa | Cobersystem SP',
   description:
@@ -152,14 +154,13 @@ export default function CoberturaRetratilServicoPage() {
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:items-start">
               <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl bg-gray-100">
                 <OptimizedImage
-                  src="/images/projetos/abre-fecha-alveolar-01.jpg"
+                  src={HERO_IMAGE}
                   alt="Cobertura retrátil instalada em área gourmet — projeto Cobersystem SP"
                   title="Cobertura Retrátil Policarbonato — Cobersystem SP"
                   width={1200}
                   height={900}
                   priority
                   className="w-full h-full object-cover"
-                  style={{ objectPosition: '50% 40%' }}
                 />
               </div>
               <div>
