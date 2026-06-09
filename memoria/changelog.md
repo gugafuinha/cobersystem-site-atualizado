@@ -4,7 +4,7 @@
 
 ## 2026-06-09 — Correções pós-auditoria SEO (8 itens)
 
-### Deploy (commit pendente)
+### Deploy (commit `14f5480`)
 - `ServiceVejaTambem` — entrada jardim-de-inverno + `current` corrigido
 - `cobertura-abre-e-fecha` — FAQ preço via `formatPricePerM2`, keywords sem overlap retrátil
 - `cobertura-retratil-automatizada` — meta description dinâmica, títulos de aplicação com ênfase em automação
