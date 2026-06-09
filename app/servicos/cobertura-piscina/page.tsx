@@ -2,11 +2,10 @@ import Link from 'next/link';
 import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FAQSchema from '@/components/FAQSchema';
-import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 import StructuredData from '@/components/seo/StructuredData';
 import Breadcrumb from '@/components/seo/Breadcrumb';
-import { buildServiceOffer, productSchemas } from '@/lib/schemas/product-schemas';
+import { buildServiceOffer } from '@/lib/schemas/product-schemas';
 import { getFaqPriceAnswer, getServiceSchemaMinPrice } from '@/lib/pricing';
 import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
 import { generatePageMetadata } from '@/lib/seo/page-metadata';
@@ -51,8 +50,7 @@ const faqs = [
 export default function CoberturaPiscina() {
   return (
     <>
-      <StructuredData data={productSchemas.coberturaPiscina} />
-      <SchemaMarkup type="product" data={productSchema} />
+      <StructuredData data={productSchema} />
       <Breadcrumb />
       <main className="min-h-screen bg-gray-50">
         <div className="container mx-auto px-4 py-8">

@@ -2,6 +2,16 @@
 
 ---
 
+## 2026-06-09 — Fix schema JSON-LD: StructuredData nas 4 páginas GSC
+
+### Deploy (commit pendente)
+- `/servicos/cobertura-fixa-policarbonato-alveolar`, `/cobertura-aluminio`, `/cobertura-piscina`, `/cobertura-area-gourmet`
+- Trocado `SchemaMarkup` (next/script) por `StructuredData` (`<script type="application/ld+json">`)
+- Removidos schemas legados `productSchemas.coberturaPiscina` (25000) e `coberturaAreaGourmet` (16000)
+- Product único com `buildServiceOffer()` + `getServiceSchemaMinPrice()`
+
+---
+
 ## 2026-06-09 — Correções pós-auditoria SEO (8 itens)
 
 ### Deploy (commit `14f5480`)

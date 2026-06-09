@@ -2,11 +2,10 @@ import Link from 'next/link';
 import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FAQSchema from '@/components/FAQSchema';
-import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 import StructuredData from '@/components/seo/StructuredData';
 import Breadcrumb from '@/components/seo/Breadcrumb';
-import { buildServiceOffer, productSchemas } from '@/lib/schemas/product-schemas';
+import { buildServiceOffer } from '@/lib/schemas/product-schemas';
 import { getFaqPriceAnswer, getServiceSchemaMinPrice } from '@/lib/pricing';
 import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
 import { faqSchemas } from '@/lib/schemas/faq-schemas';
@@ -50,9 +49,8 @@ const faqs = [
 export default function CoberturaAreaGourmet() {
   return (
     <>
-      <StructuredData data={productSchemas.coberturaAreaGourmet} />
+      <StructuredData data={productSchema} />
       <StructuredData data={faqSchemas.coberturaAreaGourmet} />
-      <SchemaMarkup type="product" data={productSchema} />
       <Breadcrumb />
       <main className="min-h-screen bg-gray-50">
         <div className="container mx-auto px-4 py-8">
