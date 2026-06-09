@@ -6,6 +6,7 @@ import FAQSchema from '@/components/FAQSchema';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 import { buildServiceOffer } from '@/lib/schemas/product-schemas';
+import { getFaqPriceAnswer, getServiceSchemaMinPrice } from '@/lib/pricing';
 import PriceEstimateNote from '@/components/servicos/PriceEstimateNote';
 import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
 
@@ -48,7 +49,7 @@ const productSchema = {
   brand: { '@type': 'Brand', name: 'Cobersystem' },
   offers: buildServiceOffer(
     'https://www.coberturapolicarbonato.com.br/servicos/projetos-personalizados',
-    '800',
+    getServiceSchemaMinPrice('projetos-personalizados'),
   ),
 };
 

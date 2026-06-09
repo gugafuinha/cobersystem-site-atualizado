@@ -4,8 +4,15 @@ import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import StructuredData from '@/components/seo/StructuredData';
 import { buildServiceOffer } from '@/lib/schemas/product-schemas';
-import PriceEstimateNote from '@/components/servicos/PriceEstimateNote';
 import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
+import ServicePriceTable, { buildPriceRowsFromKeys } from '@/components/servicos/ServicePriceTable';
+import {
+  COBERSYSTEM_PRICING,
+  formatPricePerM2,
+  formatPriceRange,
+  getFaqPriceAnswer,
+  getServiceSchemaMinPrice,
+} from '@/lib/pricing';
 
 const HERO_IMAGE = '/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg';
 
@@ -79,7 +86,7 @@ const serviceSchema = {
   },
   offers: buildServiceOffer(
     'https://www.coberturapolicarbonato.com.br/servicos/cobertura-varanda-apartamento',
-    '800',
+    getServiceSchemaMinPrice('cobertura-varanda-apartamento'),
   ),
 };
 
@@ -100,7 +107,7 @@ const faqSchema = {
       name: 'Quanto custa cobrir a varanda de um apartamento?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'O preço varia conforme o tamanho da varanda e o tipo de cobertura. Cobertura fixa em policarbonato: R$ 350 a R$ 600 por m². Cobertura retrátil motorizada: R$ 1.500 a R$ 3.000 por m². Para uma varanda de 10m², o investimento médio é R$ 5.000 a R$ 20.000.',
+        text: `O preço varia conforme o tamanho da varanda e o tipo de cobertura. Cobertura fixa em policarbonato alveolar: ${formatPriceRange(COBERSYSTEM_PRICING.fixaAlveolar)} por m². Cobertura retrátil automatizada: ${formatPriceRange(COBERSYSTEM_PRICING.retratilAutomatizada)} por m². Solicite visita técnica gratuita para orçamento personalizado.`,
       },
     },
     {
@@ -270,7 +277,7 @@ export default function CoberturaVarandaApartamentoPage() {
                   ))}
                 </ul>
                 <p className="text-sm font-semibold text-blue-700">
-                  R$ 1.500 – R$ 3.000 por m²
+                  {formatPricePerM2(COBERSYSTEM_PRICING.retratilAutomatizada)}
                 </p>
               </div>
 
@@ -295,7 +302,8 @@ export default function CoberturaVarandaApartamentoPage() {
                   ))}
                 </ul>
                 <p className="text-sm font-semibold text-gray-700">
-                  R$ 350 – R$ 600 por m²
+                  {formatPricePerM2(COBERSYSTEM_PRICING.fixaAlveolar)} a{' '}
+                  {formatPricePerM2(COBERSYSTEM_PRICING.fixaCompacto)}
                 </p>
               </div>
             </div>
@@ -357,65 +365,19 @@ export default function CoberturaVarandaApartamentoPage() {
           </div>
         </section>
 
-        {/* Preços */}
-        <section className="bg-white py-16">
-          <div className="max-w-4xl mx-auto px-4">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">
-              Tabela de Preços — Cobertura para Varanda 2026
-            </h2>
-            <p className="text-gray-600 text-center mb-10">
-              Valores médios para varanda de apartamento em São Paulo. Inclui material, estrutura e instalação.
-            </p>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="bg-gray-800 text-white">
-                    <th className="text-left px-4 py-3 rounded-tl-lg">Tipo de Cobertura</th>
-                    <th className="text-center px-4 py-3">Preço por m²</th>
-                    <th className="text-center px-4 py-3">Varanda 8m²</th>
-                    <th className="text-center px-4 py-3 rounded-tr-lg">Varanda 15m²</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-100">
-                  {[
-                    {
-                      tipo: 'Policarbonato alveolar fixo',
-                      m2: 'R$ 350 – R$ 600',
-                      v8: 'R$ 2.800 – R$ 4.800',
-                      v15: 'R$ 5.250 – R$ 9.000',
-                    },
-                    {
-                      tipo: 'Policarbonato termoacústico fixo',
-                      m2: 'R$ 500 – R$ 800',
-                      v8: 'R$ 4.000 – R$ 6.400',
-                      v15: 'R$ 7.500 – R$ 12.000',
-                    },
-                    {
-                      tipo: 'Cobertura retrátil manual',
-                      m2: 'R$ 800 – R$ 1.400',
-                      v8: 'R$ 6.400 – R$ 11.200',
-                      v15: 'R$ 12.000 – R$ 21.000',
-                    },
-                    {
-                      tipo: 'Cobertura retrátil motorizada',
-                      m2: 'R$ 1.500 – R$ 3.000',
-                      v8: 'R$ 12.000 – R$ 24.000',
-                      v15: 'R$ 22.500 – R$ 45.000',
-                    },
-                  ].map(({ tipo, m2, v8, v15 }, i) => (
-                    <tr key={tipo} className={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                      <td className="px-4 py-3 font-medium text-gray-900">{tipo}</td>
-                      <td className="px-4 py-3 text-center text-gray-700">{m2}</td>
-                      <td className="px-4 py-3 text-center text-gray-700">{v8}</td>
-                      <td className="px-4 py-3 text-center text-gray-700">{v15}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <PriceEstimateNote className="text-center" />
-          </div>
-        </section>
+        <div className="max-w-4xl mx-auto px-4 py-16">
+          <ServicePriceTable
+            title="Tabela de Preços — Cobertura para Varanda 2026"
+            description="Valores médios para varanda de apartamento em São Paulo. Inclui material, estrutura e instalação."
+            rows={buildPriceRowsFromKeys([
+              { tipo: 'Policarbonato alveolar fixo', key: 'fixaAlveolar' },
+              { tipo: 'Policarbonato compacto fixo', key: 'fixaCompacto' },
+              { tipo: 'Cobertura abre e fecha', key: 'abreEFecha' },
+              { tipo: 'Cobertura retrátil automatizada', key: 'retratilAutomatizada' },
+            ])}
+            noteClassName="text-center"
+          />
+        </div>
 
         <div className="max-w-7xl mx-auto px-4">
           <ServiceAutomationSection />

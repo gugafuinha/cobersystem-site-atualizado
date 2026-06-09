@@ -7,6 +7,7 @@ import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 import CoberturaPlaygroundExpandedSections from './CoberturaPlaygroundExpandedSections';
 import { buildServiceOffer } from '@/lib/schemas/product-schemas';
+import { getPlaygroundFaqPriceAnswer, getServiceSchemaMinPrice } from '@/lib/pricing';
 import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
 
 const HERO_IMAGE = '/images/projetos/Cobertura Playground.png';
@@ -52,15 +53,14 @@ const productSchema = {
   brand: { '@type': 'Brand', name: 'Cobersystem' },
   offers: buildServiceOffer(
     'https://www.coberturapolicarbonato.com.br/servicos/cobertura-playground',
-    '350',
+    getServiceSchemaMinPrice('cobertura-playground'),
   ),
 };
 
 const faqs = [
   {
     question: 'Quanto custa uma cobertura para playground?',
-    answer:
-      'O preço varia conforme tamanho e tipo: fixa R$ 350–600/m²; abre e fecha R$ 800–1.400/m²; retrátil automatizada R$ 1.200–1.800/m². Solicite orçamento com visita técnica gratuita.',
+    answer: getPlaygroundFaqPriceAnswer(),
   },
   {
     question: 'Qual cobertura é melhor para playground de escola?',

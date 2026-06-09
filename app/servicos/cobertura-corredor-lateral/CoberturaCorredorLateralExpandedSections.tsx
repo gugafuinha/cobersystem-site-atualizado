@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import OptimizedImage from '@/components/OptimizedImage';
-import PriceEstimateNote from '@/components/servicos/PriceEstimateNote';
+import ServicePriceTable from '@/components/servicos/ServicePriceTable';
+import { COBERSYSTEM_PRICING, formatPricePerM2 } from '@/lib/pricing';
 
 export default function CoberturaCorredorLateralExpandedSections() {
   return (
@@ -57,7 +58,10 @@ export default function CoberturaCorredorLateralExpandedSections() {
               <li>• Policarbonato compacto — mais luz natural</li>
               <li>• Estrutura alumínio anodizado</li>
             </ul>
-            <p className="text-sm font-semibold text-[#D4AF37] mt-4">R$ 150 – R$ 280/m²</p>
+            <p className="text-sm font-semibold text-[#D4AF37] mt-4">
+              {formatPricePerM2(COBERSYSTEM_PRICING.fixaAlveolar)} a{' '}
+              {formatPricePerM2(COBERSYSTEM_PRICING.fixaCompacto)}
+            </p>
           </div>
           <div className="border-2 border-blue-600 rounded-lg p-6 relative">
             <span className="absolute -top-3 left-6 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">
@@ -78,48 +82,18 @@ export default function CoberturaCorredorLateralExpandedSections() {
               <li>• Sensor de chuva opcional</li>
               <li>• Abertura graduada para ventilação</li>
             </ul>
-            <p className="text-sm font-semibold text-blue-700 mt-4">R$ 280 – R$ 450/m²</p>
+            <p className="text-sm font-semibold text-blue-700 mt-4">
+              {formatPricePerM2(COBERSYSTEM_PRICING.abreEFecha)} a{' '}
+              {formatPricePerM2(COBERSYSTEM_PRICING.retratilAutomatizada)}
+            </p>
           </div>
         </div>
       </section>
 
-      <section className="mb-12 bg-white rounded-lg p-8 shadow-sm">
-        <h2 className="text-3xl font-bold text-gray-800 mb-6">
-          Tabela de Preços — Cobertura Corredor Lateral 2026
-        </h2>
-        <p className="text-gray-600 mb-6">
-          Valores médios em São Paulo, incluindo material, estrutura e instalação. Corredores
-          estreitos (0,8–1,2 m) costumam ter preço por m² ligeiramente superior devido à complexidade.
-        </p>
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm text-left">
-            <thead>
-              <tr className="bg-gray-800 text-white">
-                <th className="px-4 py-3">Tipo</th>
-                <th className="px-4 py-3 text-center">Preço/m²</th>
-                <th className="px-4 py-3 text-center">Corredor 6 m</th>
-                <th className="px-4 py-3 text-center">Corredor 12 m</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-100">
-              {[
-                { tipo: 'Fixa alveolar', m2: 'R$ 150 – R$ 220', c6: 'R$ 1.800 – R$ 2.640', c12: 'R$ 3.600 – R$ 5.280' },
-                { tipo: 'Fixa compacto', m2: 'R$ 180 – R$ 280', c6: 'R$ 2.160 – R$ 3.360', c12: 'R$ 4.320 – R$ 6.720' },
-                { tipo: 'Abre e fecha manual', m2: 'R$ 280 – R$ 380', c6: 'R$ 3.360 – R$ 4.560', c12: 'R$ 6.720 – R$ 9.120' },
-                { tipo: 'Retrátil automatizada', m2: 'R$ 380 – R$ 450', c6: 'R$ 4.560 – R$ 5.400', c12: 'R$ 9.120 – R$ 10.800' },
-              ].map((row, i) => (
-                <tr key={row.tipo} className={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                  <td className="px-4 py-3 font-medium">{row.tipo}</td>
-                  <td className="px-4 py-3 text-center">{row.m2}</td>
-                  <td className="px-4 py-3 text-center">{row.c6}</td>
-                  <td className="px-4 py-3 text-center">{row.c12}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <PriceEstimateNote />
-      </section>
+      <ServicePriceTable
+        title="Tabela de Preços — Cobertura Corredor Lateral 2026"
+        description="Valores médios em São Paulo, incluindo material, estrutura e instalação. Corredores estreitos (0,8–1,2 m) costumam ter preço por m² ligeiramente superior devido à complexidade."
+      />
 
       <section className="mb-12 bg-white rounded-lg p-8 shadow-sm">
         <h2 className="text-3xl font-bold text-gray-800 mb-6">Galeria de Projetos</h2>

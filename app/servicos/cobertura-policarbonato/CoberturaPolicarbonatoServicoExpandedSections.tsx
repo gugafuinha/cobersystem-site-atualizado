@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { COBERSYSTEM_PRICING, formatPricePerM2 } from '@/lib/pricing';
 
 export default function CoberturaPolicarbonatoServicoExpandedSections() {
   return (
@@ -239,7 +240,8 @@ export default function CoberturaPolicarbonatoServicoExpandedSections() {
             de ar). Indicado para garagem, lavanderia e áreas de serviço. Espessuras comuns:{' '}
             <strong>6mm</strong> (custo-benefício) ou <strong>10mm</strong> (melhor desempenho
             térmico/acústico). Vantagens: leveza, boa relação custo-benefício e redução de calor
-            incidente. Faixa indicativa instalada: <strong>R$ 450–700/m²</strong>. Transparência
+            incidente. Faixa indicativa instalada:{' '}
+            <strong>{formatPricePerM2(COBERSYSTEM_PRICING.fixaAlveolar)}</strong>. Transparência
             típica: 75–80%.
           </p>
 
@@ -248,7 +250,7 @@ export default function CoberturaPolicarbonatoServicoExpandedSections() {
             Prioridade em <strong>transparência</strong> e <strong>resistência</strong> com
             aparência de vidro. Indicado para piscina, varanda e entradas nobres. Espessuras típicas:
             3mm (básica) a 4–6mm (ideal). Faixa indicativa instalada:{' '}
-            <strong>R$ 700–900/m²</strong>. Transparência típica: 90–92%.
+            <strong>{formatPricePerM2(COBERSYSTEM_PRICING.fixaCompacto)}</strong>. Transparência típica: 90–92%.
           </p>
 
           <h3 className="text-xl font-semibold text-gray-900 mt-4 mb-2">Cores e aplicações</h3>

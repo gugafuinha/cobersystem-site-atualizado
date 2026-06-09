@@ -6,6 +6,14 @@ import FAQSchema from '@/components/FAQSchema';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 import { buildServiceOffer } from '@/lib/schemas/product-schemas';
+import {
+  COBERSYSTEM_PRICING,
+  formatBRL,
+  getFaqPriceAnswer,
+  getServiceSchemaMinPrice,
+} from '@/lib/pricing';
+
+const ABRE_E_FECHA_PRICE_FROM = `A partir de ${formatBRL(COBERSYSTEM_PRICING.abreEFecha.min)}/m²`;
 import PriceEstimateNote from '@/components/servicos/PriceEstimateNote';
 import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
 
@@ -15,14 +23,14 @@ const HERO_IMAGE_OG =
 
 export const metadata: Metadata = {
   title: "Cobertura Abre e Fecha | Acessos, Corredores e Varandas | Policarbonato Cobersystem SP",
-  description: "Cobertura abre e fecha para acessos, corredores, varandas e área gourmet. Policarbonato a partir de R$ 800/m². Fecha sozinha na chuva. Automação Alexa. Orçamento grátis em SP.",
+  description: `Cobertura abre e fecha para acessos, corredores, varandas e área gourmet. Policarbonato ${ABRE_E_FECHA_PRICE_FROM}. Fecha sozinha na chuva. Automação Alexa. Orçamento grátis em SP.`,
   keywords: "cobertura abre e fecha, cobertura abre e fecha policarbonato, cobertura abre e fecha SP, cobertura abre e fecha preço, cobertura retrátil automatizada, cobertura automática Alexa, sensor chuva cobertura",
   alternates: {
     canonical: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-abre-e-fecha',
   },
   openGraph: {
     title: "Cobertura Abre e Fecha | Acessos, Corredores e Varandas | Cobersystem SP",
-    description: "Cobertura abre e fecha policarbonato para acessos e corredores, a partir de R$ 800/m². Sensor de chuva + automação Alexa. Orçamento grátis.",
+    description: `Cobertura abre e fecha policarbonato para acessos e corredores, ${ABRE_E_FECHA_PRICE_FROM}. Sensor de chuva + automação Alexa. Orçamento grátis.`,
     url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-abre-e-fecha',
     images: [
       {
@@ -55,14 +63,14 @@ const productSchema = {
   },
   offers: buildServiceOffer(
     'https://www.coberturapolicarbonato.com.br/servicos/cobertura-abre-e-fecha',
-    '800',
+    getServiceSchemaMinPrice('cobertura-abre-e-fecha'),
   ),
 };
 
 const faqs = [
   {
     question: 'Quanto custa uma cobertura abre e fecha?',
-    answer: 'O preço de uma cobertura abre e fecha varia conforme o tamanho, material escolhido (policarbonato compacto ou alveolar) e sistema de automação. Em média, o investimento fica entre R$ 200 e R$ 400 por m², incluindo estrutura de alumínio, telhas e automação. Solicite um orçamento personalizado para seu projeto.',
+    answer: getFaqPriceAnswer('abreEFecha'),
   },
   {
     question: 'Como funciona a automação da cobertura abre e fecha?',

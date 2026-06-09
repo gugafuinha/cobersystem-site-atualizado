@@ -7,6 +7,7 @@ import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 import StructuredData from '@/components/seo/StructuredData';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import { buildServiceOffer, productSchemas } from '@/lib/schemas/product-schemas';
+import { getFaqPriceAnswer, getServiceSchemaMinPrice } from '@/lib/pricing';
 import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
 import { generatePageMetadata } from '@/lib/seo/page-metadata';
 import CoberturaPiscinaExpandedSections from './CoberturaPiscinaExpandedSections';
@@ -24,14 +25,14 @@ const productSchema = {
   brand: { '@type': 'Brand', name: 'Cobersystem' },
   offers: buildServiceOffer(
     'https://www.coberturapolicarbonato.com.br/servicos/cobertura-piscina',
-    '800',
+    getServiceSchemaMinPrice('cobertura-piscina'),
   ),
 };
 
 const faqs = [
   {
     question: 'Quanto custa uma cobertura para piscina?',
-    answer: 'O preço de uma cobertura para piscina varia conforme o tamanho da piscina, material escolhido e sistema de automação. Em média, o investimento fica entre R$ 300 e R$ 500 por m². Para piscinas maiores, o valor por m² tende a diminuir. Solicite um orçamento personalizado.',
+    answer: getFaqPriceAnswer('fixaCompacto'),
   },
   {
     question: 'A cobertura para piscina mantém a água aquecida?',

@@ -6,6 +6,7 @@ import FAQSchema from '@/components/FAQSchema';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 import { buildServiceOffer } from '@/lib/schemas/product-schemas';
+import { getFaqPriceAnswer, getServiceSchemaMinPrice } from '@/lib/pricing';
 import PriceEstimateNote from '@/components/servicos/PriceEstimateNote';
 import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
 
@@ -46,14 +47,14 @@ const productSchema = {
   brand: { '@type': 'Brand', name: 'Cobersystem' },
   offers: buildServiceOffer(
     'https://www.coberturapolicarbonato.com.br/servicos/cobertura-fixa-policarbonato-alveolar',
-    '800',
+    getServiceSchemaMinPrice('cobertura-fixa-policarbonato-alveolar'),
   ),
 };
 
 const faqs = [
   {
     question: 'Quanto custa cobertura fixa em policarbonato alveolar?',
-    answer: 'O preço de uma cobertura fixa em policarbonato alveolar varia conforme o tamanho e espessura escolhida (4mm, 6mm ou 10mm). Em média, o investimento fica entre R$ 180 e R$ 350 por m², incluindo estrutura de alumínio e instalação.',
+    answer: getFaqPriceAnswer('fixaAlveolar'),
   },
   {
     question: 'Qual a diferença entre policarbonato alveolar e compacto?',

@@ -1,24 +1,26 @@
+import { AUTOMATION_PRICING, formatBRL } from '@/lib/pricing';
+
 const AUTOMATION_ITEMS = [
   {
     icon: '🎛️',
-    title: 'Controle Remoto',
+    title: AUTOMATION_PRICING.controleRemoto.label,
     description:
       'Abra e feche a cobertura com um controle na palma da mão. Simples, rápido e sem precisar de smartphone.',
-    price: 'R$ 2.500,00',
+    price: formatBRL(AUTOMATION_PRICING.controleRemoto.price),
   },
   {
     icon: '🗣️',
-    title: 'Comando por Alexa',
+    title: AUTOMATION_PRICING.alexa.label,
     description:
       'Integração com Amazon Alexa. Basta falar "Alexa, fechar cobertura" — compatível com Echo e smartphones.',
-    price: 'R$ 3.000,00',
+    price: formatBRL(AUTOMATION_PRICING.alexa.price),
   },
   {
     icon: '🌧️',
-    title: 'Sensor de Chuva',
+    title: AUTOMATION_PRICING.sensorChuva.label,
     description:
       'A cobertura detecta a chuva e fecha automaticamente, sem você precisar fazer nada. Ideal para quem viaja ou esquece.',
-    price: 'R$ 4.000,00',
+    price: formatBRL(AUTOMATION_PRICING.sensorChuva.price),
   },
 ];
 

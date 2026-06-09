@@ -1,6 +1,7 @@
 import type React from 'react';
 
 import PriceEstimateNote from '@/components/servicos/PriceEstimateNote';
+import { COBERSYSTEM_PRICING, formatPricePerM2 } from '@/lib/pricing';
 
 export default function CoberturaPiscinaExpandedSections() {
   return (
@@ -57,7 +58,7 @@ export default function CoberturaPiscinaExpandedSections() {
                 Proteção, aquecimento
               </td>
               <td className="py-4 px-4 border-b border-gray-100">
-                R$ 400-700/m²
+                {formatPricePerM2(COBERSYSTEM_PRICING.fixaAlveolar)}
               </td>
               <td className="py-4 px-4 border-b border-gray-100">
                 Segurança crianças, economia
@@ -74,7 +75,7 @@ export default function CoberturaPiscinaExpandedSections() {
                 Permite nadar dentro
               </td>
               <td className="py-4 px-4 border-b border-gray-100">
-                R$ 600-900/m²
+                {formatPricePerM2(COBERSYSTEM_PRICING.fixaAlveolar)}
               </td>
               <td className="py-4 px-4 border-b border-gray-100">
                 Uso em qualquer clima
@@ -91,7 +92,7 @@ export default function CoberturaPiscinaExpandedSections() {
                 Espaço livre total
               </td>
               <td className="py-4 px-4 border-b border-gray-100">
-                R$ 800-1.200/m²
+                {formatPricePerM2(COBERSYSTEM_PRICING.fixaCompacto)}
               </td>
               <td className="py-4 px-4 border-b border-gray-100">
                 Conforto máximo, spa
@@ -108,7 +109,7 @@ export default function CoberturaPiscinaExpandedSections() {
                 Flexibilidade total
               </td>
               <td className="py-4 px-4 border-b border-gray-100">
-                R$ 1.200-1.800/m²
+                {formatPricePerM2(COBERSYSTEM_PRICING.retratilAutomatizada)}
               </td>
               <td className="py-4 px-4 border-b border-gray-100">
                 Luxo, praticidade

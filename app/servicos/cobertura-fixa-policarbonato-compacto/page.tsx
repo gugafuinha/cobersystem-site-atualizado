@@ -6,6 +6,7 @@ import FAQSchema from '@/components/FAQSchema';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 import { buildServiceOffer } from '@/lib/schemas/product-schemas';
+import { getFaqPriceAnswer, getServiceSchemaMinPrice } from '@/lib/pricing';
 import PriceEstimateNote from '@/components/servicos/PriceEstimateNote';
 import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
 
@@ -48,14 +49,14 @@ const productSchema = {
   brand: { '@type': 'Brand', name: 'Cobersystem' },
   offers: buildServiceOffer(
     'https://www.coberturapolicarbonato.com.br/servicos/cobertura-fixa-policarbonato-compacto',
-    '1200',
+    getServiceSchemaMinPrice('cobertura-fixa-policarbonato-compacto'),
   ),
 };
 
 const faqs = [
   {
     question: 'Quanto custa cobertura fixa em policarbonato compacto?',
-    answer: 'O preço de uma cobertura fixa em policarbonato compacto 2mm varia conforme o tamanho e cor escolhida. Em média, o investimento fica entre R$ 150 e R$ 300 por m², incluindo estrutura de alumínio e instalação. Cores personalizadas podem ter custo adicional.',
+    answer: getFaqPriceAnswer('fixaCompacto'),
   },
   {
     question: 'O policarbonato compacto é totalmente transparente?',

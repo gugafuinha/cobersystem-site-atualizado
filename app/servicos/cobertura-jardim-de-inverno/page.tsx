@@ -4,6 +4,13 @@ import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FAQSchema from '@/components/FAQSchema';
 import { buildServiceOffer } from '@/lib/schemas/product-schemas';
+import {
+  COBERSYSTEM_PRICING,
+  formatPriceFrom,
+  formatPriceRange,
+  getJardimInvernoFaqPriceAnswer,
+  getServiceSchemaMinPrice,
+} from '@/lib/pricing';
 import PriceEstimateNote from '@/components/servicos/PriceEstimateNote';
 import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
 import SchemaMarkup from '@/components/SchemaMarkup';
@@ -36,7 +43,7 @@ const productSchema = {
   brand: { '@type': 'Brand', name: 'Cobersystem' },
   offers: buildServiceOffer(
     'https://www.coberturapolicarbonato.com.br/servicos/cobertura-jardim-de-inverno',
-    '900',
+    getServiceSchemaMinPrice('cobertura-jardim-de-inverno'),
   ),
 };
 
@@ -53,8 +60,7 @@ const faqs = [
   },
   {
     question: 'Quanto custa uma cobertura para jardim de inverno?',
-    answer:
-      'O preço de cobertura para jardim de inverno em policarbonato varia conforme área, tipo de policarbonato (compacto ou alveolar) e estrutura. Em média, o investimento fica entre R$ 900 e R$ 1.500/m², incluindo estrutura em alumínio e instalação. Solicite orçamento para medição e proposta sem compromisso.',
+    answer: getJardimInvernoFaqPriceAnswer(),
   },
   {
     question: 'Posso fechar o jardim de inverno completamente?',
@@ -155,7 +161,9 @@ export default function CoberturaJardimDeInverno() {
                   Alta transparência (88% de transmissão de luz). Indicado para jardins com plantas que
                   precisam de muita luminosidade.
                 </p>
-                <p className="text-sm font-semibold text-[#D4AF37]">A partir de R$ 900/m²</p>
+                <p className="text-sm font-semibold text-[#D4AF37]">
+                  {formatPriceFrom('fixaCompacto')}
+                </p>
               </div>
               <div className="border border-gray-200 rounded-lg p-6">
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">Compacto 6mm</h3>
@@ -163,7 +171,9 @@ export default function CoberturaJardimDeInverno() {
                   Maior resistência estrutural e melhor isolamento térmico. Ideal para vãos maiores e regiões
                   com variações climáticas intensas.
                 </p>
-                <p className="text-sm font-semibold text-[#D4AF37]">A partir de R$ 1.100/m²</p>
+                <p className="text-sm font-semibold text-[#D4AF37]">
+                  {formatPriceFrom('fixaCompacto')}
+                </p>
               </div>
               <div className="border border-gray-200 rounded-lg p-6">
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">Alveolar 6mm</h3>
@@ -171,7 +181,9 @@ export default function CoberturaJardimDeInverno() {
                   Menor transparência (60–75% de luz), porém excelente isolamento térmico. Indicado para
                   jardins que precisam de mais conforto térmico.
                 </p>
-                <p className="text-sm font-semibold text-[#D4AF37]">A partir de R$ 800/m²</p>
+                <p className="text-sm font-semibold text-[#D4AF37]">
+                  {formatPriceFrom('fixaAlveolar')}
+                </p>
               </div>
             </div>
           </section>
@@ -238,7 +250,11 @@ export default function CoberturaJardimDeInverno() {
                     ['Peso (kg/m²)', '4–6 kg', '25–30 kg'],
                     ['Isolamento térmico', 'Bom', 'Fraco'],
                     ['Filtro UV integrado', 'Sim', 'Não padrão'],
-                    ['Custo por m²', 'R$ 800–1.500', 'R$ 1.500–3.000'],
+                    [
+                      'Custo por m²',
+                      `${formatPriceRange(COBERSYSTEM_PRICING.fixaAlveolar)} a ${formatPriceRange(COBERSYSTEM_PRICING.fixaCompacto)}`,
+                      'R$ 1.500–3.000',
+                    ],
                     ['Risco de quebra', 'Mínimo', 'Alto'],
                   ].map(([feat, poly, glass]) => (
                     <tr key={feat} className="border-b">

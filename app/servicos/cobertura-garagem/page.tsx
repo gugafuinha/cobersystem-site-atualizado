@@ -7,6 +7,7 @@ import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 import CoberturaGaragemExpandedSections from './CoberturaGaragemExpandedSections';
 import { buildServiceOffer } from '@/lib/schemas/product-schemas';
+import { getFaqPriceAnswer, getServiceSchemaMinPrice } from '@/lib/pricing';
 import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
 
 const HERO_IMAGE = '/images/projetos/Cobertura Garagem.png';
@@ -50,14 +51,14 @@ const productSchema = {
   brand: { '@type': 'Brand', name: 'Cobersystem' },
   offers: buildServiceOffer(
     'https://www.coberturapolicarbonato.com.br/servicos/cobertura-garagem',
-    '800',
+    getServiceSchemaMinPrice('cobertura-garagem'),
   ),
 };
 
 const faqs = [
   {
     question: 'Quanto custa uma cobertura para garagem?',
-    answer: 'O preço de uma cobertura para garagem varia conforme o tamanho, material e tipo (fixa ou retrátil). Em média, o investimento fica entre R$ 150 e R$ 420 por m². Para 1 carro (~18 m²), o valor fica entre R$ 2.700 e R$ 7.560.',
+    answer: getFaqPriceAnswer('fixaAlveolar'),
   },
   {
     question: 'Qual o melhor tipo de cobertura para garagem?',

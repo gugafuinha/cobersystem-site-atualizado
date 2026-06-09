@@ -7,6 +7,7 @@ import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 import CoberturaCorredorLateralExpandedSections from './CoberturaCorredorLateralExpandedSections';
 import { buildServiceOffer } from '@/lib/schemas/product-schemas';
+import { getFaqPriceAnswer, getServiceSchemaMinPrice } from '@/lib/pricing';
 import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
 
 const HERO_IMAGE = '/images/blog/cobertura-abre-fecha.jpg';
@@ -48,14 +49,14 @@ const productSchema = {
   brand: { '@type': 'Brand', name: 'Cobersystem' },
   offers: buildServiceOffer(
     'https://www.coberturapolicarbonato.com.br/servicos/cobertura-corredor-lateral',
-    '800',
+    getServiceSchemaMinPrice('cobertura-corredor-lateral'),
   ),
 };
 
 const faqs = [
   {
     question: 'Quanto custa uma cobertura para corredor lateral?',
-    answer: 'O preço varia conforme o comprimento e largura do corredor, material escolhido e tipo (fixa ou retrátil). Em média, o investimento fica entre R$ 150 e R$ 450 por m². Corredores de 6 m costumam ficar entre R$ 1.800 e R$ 5.400.',
+    answer: getFaqPriceAnswer('fixaAlveolar'),
   },
   {
     question: 'Qual o melhor tipo de cobertura para corredor lateral?',

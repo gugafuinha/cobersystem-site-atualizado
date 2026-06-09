@@ -6,6 +6,7 @@ import FAQSchema from '@/components/FAQSchema';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 import { buildServiceOffer } from '@/lib/schemas/product-schemas';
+import { getFaqPriceAnswer, getServiceSchemaMinPrice } from '@/lib/pricing';
 import PriceEstimateNote from '@/components/servicos/PriceEstimateNote';
 import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
 
@@ -50,7 +51,7 @@ const productSchema = {
   brand: { '@type': 'Brand', name: 'Cobersystem' },
   offers: buildServiceOffer(
     'https://www.coberturapolicarbonato.com.br/servicos/cobertura-termoacustica',
-    '650',
+    getServiceSchemaMinPrice('cobertura-termoacustica'),
   ),
 };
 
@@ -69,7 +70,7 @@ const faqs = [
   },
   {
     question: 'Quanto custa uma cobertura termoacústica?',
-    answer: 'O preço de uma cobertura termoacústica varia de R$ 280 a R$ 480 por m², dependendo da espessura do policarbonato (6mm ou 10mm), tamanho da área e complexidade da instalação. Inclui estrutura de alumínio, policarbonato termoacústico e instalação completa. Solicite um orçamento personalizado para seu projeto.',
+    answer: getFaqPriceAnswer('fixaAlveolar'),
   },
   {
     question: 'Onde a cobertura termoacústica é mais indicada?',

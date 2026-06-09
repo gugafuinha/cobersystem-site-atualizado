@@ -4,6 +4,11 @@ import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FAQSchema from '@/components/FAQSchema';
 import { buildServiceOffer } from '@/lib/schemas/product-schemas';
+import {
+  formatPriceFrom,
+  getPergoladoFaqPriceAnswer,
+  getServiceSchemaMinPrice,
+} from '@/lib/pricing';
 import PriceEstimateNote from '@/components/servicos/PriceEstimateNote';
 import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
 import SchemaMarkup from '@/components/SchemaMarkup';
@@ -36,7 +41,7 @@ const productSchema = {
   brand: { '@type': 'Brand', name: 'Cobersystem' },
   offers: buildServiceOffer(
     'https://www.coberturapolicarbonato.com.br/servicos/cobertura-pergolado',
-    '800',
+    getServiceSchemaMinPrice('cobertura-pergolado'),
   ),
 };
 
@@ -53,8 +58,7 @@ const faqs = [
   },
   {
     question: 'Quanto custa cobertura para pergolado?',
-    answer:
-      'O preço de cobertura para pergolado varia conforme o sistema (fixo ou retrátil), o material (policarbonato ou alumínio) e a área. A cobertura fixa começa a partir de R$ 800/m², e a retrátil a partir de R$ 1.200/m², incluindo estrutura e instalação. Solicite orçamento para medição gratuita.',
+    answer: getPergoladoFaqPriceAnswer(),
   },
   {
     question: 'A cobertura retrátil funciona em pergolado?',
@@ -159,7 +163,9 @@ export default function CoberturaPergolado() {
                   <li>• Motorização opcional com Alexa</li>
                   <li>• Sensor de chuva automático</li>
                 </ul>
-                <p className="text-sm font-semibold text-[#D4AF37] mt-4">A partir de R$ 1.200/m²</p>
+                <p className="text-sm font-semibold text-[#D4AF37] mt-4">
+                  {formatPriceFrom('retratilAutomatizada')}
+                </p>
               </div>
 
               <div className="border border-gray-200 rounded-lg p-6">
@@ -174,7 +180,9 @@ export default function CoberturaPergolado() {
                   <li>• Perfis de alumínio estruturais</li>
                   <li>• Calhas e rufos inclusos</li>
                 </ul>
-                <p className="text-sm font-semibold text-[#D4AF37] mt-4">A partir de R$ 800/m²</p>
+                <p className="text-sm font-semibold text-[#D4AF37] mt-4">
+                  {formatPriceFrom('fixaAlveolar')}
+                </p>
               </div>
             </div>
           </section>

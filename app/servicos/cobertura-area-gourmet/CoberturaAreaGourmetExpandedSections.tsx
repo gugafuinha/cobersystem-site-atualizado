@@ -1,4 +1,5 @@
 import PriceEstimateNote from '@/components/servicos/PriceEstimateNote';
+import { COBERSYSTEM_PRICING, formatPriceRange } from '@/lib/pricing';
 
 /**
  * Conteúdo SEO expandido — após o hero, antes das demais seções da página.
@@ -85,28 +86,28 @@ export default function CoberturaAreaGourmetExpandedSections() {
                 <td className="px-4 py-3 font-medium">Policarbonato alveolar</td>
                 <td className="px-4 py-3">Econômico, luz natural</td>
                 <td className="px-4 py-3">Ruído médio de chuva</td>
-                <td className="px-4 py-3">R$&nbsp;600–900</td>
+                <td className="px-4 py-3">{formatPriceRange(COBERSYSTEM_PRICING.fixaAlveolar)}</td>
                 <td className="px-4 py-3">Orçamento limitado</td>
               </tr>
               <tr className="bg-gray-50/80">
                 <td className="px-4 py-3 font-medium">Policarbonato compacto</td>
                 <td className="px-4 py-3">Visual elegante, transparente</td>
                 <td className="px-4 py-3">Transmite mais calor</td>
-                <td className="px-4 py-3">R$&nbsp;900–1.200</td>
+                <td className="px-4 py-3">{formatPriceRange(COBERSYSTEM_PRICING.fixaCompacto)}</td>
                 <td className="px-4 py-3">Áreas com pouca insolação</td>
               </tr>
               <tr>
                 <td className="px-4 py-3 font-medium">Termoacústica</td>
                 <td className="px-4 py-3">Bloqueia ~95% ruído, reduz ~10&nbsp;°C</td>
                 <td className="px-4 py-3">Sem luz natural</td>
-                <td className="px-4 py-3">R$&nbsp;1.000–1.400</td>
+                <td className="px-4 py-3">{formatPriceRange(COBERSYSTEM_PRICING.fixaAlveolar)}</td>
                 <td className="px-4 py-3">Máximo conforto</td>
               </tr>
               <tr className="bg-gray-50/80">
                 <td className="px-4 py-3 font-medium">Retrátil policarbonato</td>
                 <td className="px-4 py-3">Flexibilidade total</td>
                 <td className="px-4 py-3">Investimento maior</td>
-                <td className="px-4 py-3">R$&nbsp;1.200–1.800</td>
+                <td className="px-4 py-3">{formatPriceRange(COBERSYSTEM_PRICING.retratilAutomatizada)}</td>
                 <td className="px-4 py-3">Quem quer abrir/fechar</td>
               </tr>
             </tbody>

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import PriceEstimateNote from '@/components/servicos/PriceEstimateNote';
+import { COBERSYSTEM_PRICING, formatPricePerM2 } from '@/lib/pricing';
 
 export default function CoberturaPlaygroundExpandedSections() {
   return (
@@ -33,28 +34,28 @@ export default function CoberturaPlaygroundExpandedSections() {
               <td className="py-4 px-4 border-b border-gray-100 font-medium">Fixa em policarbonato</td>
               <td className="py-4 px-4 border-b border-gray-100">Permanente</td>
               <td className="py-4 px-4 border-b border-gray-100">Proteção contínua</td>
-              <td className="py-4 px-4 border-b border-gray-100">R$ 350–600/m²</td>
+              <td className="py-4 px-4 border-b border-gray-100">{formatPricePerM2(COBERSYSTEM_PRICING.fixaAlveolar)}</td>
               <td className="py-4 px-4 border-b border-gray-100">Orçamento acessível, baixa manutenção</td>
             </tr>
             <tr className="align-top">
               <td className="py-4 px-4 border-b border-gray-100 font-medium">Abre e fecha manual</td>
               <td className="py-4 px-4 border-b border-gray-100">0 a 90°</td>
               <td className="py-4 px-4 border-b border-gray-100">Controle de sol e vento</td>
-              <td className="py-4 px-4 border-b border-gray-100">R$ 800–1.400/m²</td>
+              <td className="py-4 px-4 border-b border-gray-100">{formatPricePerM2(COBERSYSTEM_PRICING.abreEFecha)}</td>
               <td className="py-4 px-4 border-b border-gray-100">Escolas e condomínios médios</td>
             </tr>
             <tr className="align-top">
               <td className="py-4 px-4 border-b border-gray-100 font-medium">Retrátil automatizada</td>
               <td className="py-4 px-4 border-b border-gray-100">Motor + sensor chuva</td>
               <td className="py-4 px-4 border-b border-gray-100">Flexibilidade total</td>
-              <td className="py-4 px-4 border-b border-gray-100">R$ 1.200–1.800/m²</td>
+              <td className="py-4 px-4 border-b border-gray-100">{formatPricePerM2(COBERSYSTEM_PRICING.retratilAutomatizada)}</td>
               <td className="py-4 px-4 border-b border-gray-100">Condomínios premium, escolas particulares</td>
             </tr>
             <tr className="align-top">
               <td className="py-4 px-4 border-b border-gray-100 font-medium">Termoacústica</td>
               <td className="py-4 px-4 border-b border-gray-100">Fixa ou retrátil</td>
               <td className="py-4 px-4 border-b border-gray-100">Conforto térmico e acústico</td>
-              <td className="py-4 px-4 border-b border-gray-100">R$ 500–900/m²</td>
+              <td className="py-4 px-4 border-b border-gray-100">{formatPricePerM2(COBERSYSTEM_PRICING.fixaAlveolar)}</td>
               <td className="py-4 px-4 border-b border-gray-100">Playgrounds próximos a vias movimentadas</td>
             </tr>
           </tbody>

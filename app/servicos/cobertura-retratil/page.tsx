@@ -6,6 +6,7 @@ import Breadcrumb from '@/components/seo/Breadcrumb';
 import StructuredData from '@/components/seo/StructuredData';
 import CoberturaRetratilServicoExpandedSections from './CoberturaRetratilServicoExpandedSections';
 import { buildServiceOffer } from '@/lib/schemas/product-schemas';
+import { getRetratilFaqPriceAnswer, getServiceSchemaMinPrice } from '@/lib/pricing';
 import PriceEstimateNote from '@/components/servicos/PriceEstimateNote';
 import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
 
@@ -80,7 +81,7 @@ const serviceSchema = {
   },
   offers: buildServiceOffer(
     'https://www.coberturapolicarbonato.com.br/servicos/cobertura-retratil',
-    '800',
+    getServiceSchemaMinPrice('cobertura-retratil'),
   ),
 };
 
@@ -93,7 +94,7 @@ const faqSchema = {
       name: 'Quanto custa uma cobertura retrátil?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'O valor de uma cobertura retrátil varia entre R$ 800 e R$ 1.500 por m², dependendo do tamanho, tipo de policarbonato e automação. Solicite um orçamento gratuito pelo WhatsApp.',
+        text: getRetratilFaqPriceAnswer(),
       },
     },
     {

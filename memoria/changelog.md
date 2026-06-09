@@ -2,6 +2,31 @@
 
 ---
 
+## 2026-06-09 — Preços oficiais centralizados em lib/pricing.ts
+
+### Arquivos criados
+- `lib/pricing.ts` — tabela oficial Cobersystem (R$/m²): Abre e Fecha R$ 800–1.200, Fixa Alveolar R$ 600–900, Fixa Compacto R$ 800–1.200, Retrátil Automatizada R$ 1.200–1.600; helpers `formatPricePerM2`, `getServiceSchemaMinPrice`, `getFaqPriceAnswer`, etc.
+- `components/servicos/ServicePriceTable.tsx` — tabela padrão com colunas **Tipo** e **Preço/m²** apenas
+
+### Arquivos editados (17 páginas de serviço)
+- Schema JSON-LD (`buildServiceOffer`) usa `getServiceSchemaMinPrice(slug)` com preço mínimo oficial por tipo
+- FAQs e textos inline corrigidos para faixas oficiais
+- Tabelas simplificadas: removidas colunas extras (Corredor 6m/12m, Varanda 8m²/15m², 1 carro/2 carros)
+- `PriceEstimateNote` e `ServiceAutomationSection` importam de `lib/pricing.ts`
+
+### Tabela oficial aplicada
+| Tipo | Faixa R$/m² |
+|------|-------------|
+| Cobertura Abre e Fecha | 800 – 1.200 |
+| Cobertura Fixa Alveolar | 600 – 900 |
+| Cobertura Fixa Compacto | 800 – 1.200 |
+| Cobertura Retrátil Automatizada | 1.200 – 1.600 |
+
+### Deploy
+- Push para `origin/main` (Vercel)
+
+---
+
 ## 2026-05-27 — Prioridade 1.1: SEO Técnico Crítico
 
 ### Arquivos criados

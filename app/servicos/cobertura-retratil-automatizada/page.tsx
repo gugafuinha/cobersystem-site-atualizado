@@ -5,6 +5,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import FAQSchema from '@/components/FAQSchema';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { buildServiceOffer } from '@/lib/schemas/product-schemas';
+import { getFaqPriceAnswer, getServiceSchemaMinPrice } from '@/lib/pricing';
 import PriceEstimateNote from '@/components/servicos/PriceEstimateNote';
 import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
@@ -46,11 +47,15 @@ const productSchema = {
   brand: { '@type': 'Brand', name: 'Cobersystem' },
   offers: buildServiceOffer(
     'https://www.coberturapolicarbonato.com.br/servicos/cobertura-retratil-automatizada',
-    '800',
+    getServiceSchemaMinPrice('cobertura-retratil-automatizada'),
   ),
 };
 
 const faqs = [
+  {
+    question: 'Quanto custa uma cobertura retrátil automatizada?',
+    answer: getFaqPriceAnswer('retratilAutomatizada'),
+  },
   {
     question: 'Como funciona a automação da cobertura retrátil?',
     answer: 'A cobertura retrátil automatizada pode ser controlada de três formas: via Alexa (comando de voz como "Alexa, abra a cobertura"), controle remoto ou sensor de chuva automático. O sensor detecta chuva e fecha a cobertura automaticamente, sem necessidade de intervenção manual.',

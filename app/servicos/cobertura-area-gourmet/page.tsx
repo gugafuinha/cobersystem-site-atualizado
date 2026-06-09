@@ -7,6 +7,7 @@ import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 import StructuredData from '@/components/seo/StructuredData';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import { buildServiceOffer, productSchemas } from '@/lib/schemas/product-schemas';
+import { getFaqPriceAnswer, getServiceSchemaMinPrice } from '@/lib/pricing';
 import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
 import { faqSchemas } from '@/lib/schemas/faq-schemas';
 import { generatePageMetadata } from '@/lib/seo/page-metadata';
@@ -23,14 +24,14 @@ const productSchema = {
   brand: { '@type': 'Brand', name: 'Cobersystem' },
   offers: buildServiceOffer(
     'https://www.coberturapolicarbonato.com.br/servicos/cobertura-area-gourmet',
-    '800',
+    getServiceSchemaMinPrice('cobertura-area-gourmet'),
   ),
 };
 
 const faqs = [
   {
     question: 'Quanto custa uma cobertura para área gourmet?',
-    answer: 'O preço de uma cobertura para área gourmet varia conforme o tamanho, material e sistema de automação. Em média, o investimento fica entre R$ 250 e R$ 450 por m², incluindo estrutura de alumínio, telhas de policarbonato e automação. Para áreas gourmet maiores, o valor por m² tende a diminuir.',
+    answer: getFaqPriceAnswer('abreEFecha'),
   },
   {
     question: 'Qual o melhor tipo de cobertura para área gourmet?',

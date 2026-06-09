@@ -4,6 +4,7 @@ import Breadcrumb from '@/components/seo/Breadcrumb';
 import StructuredData from '@/components/seo/StructuredData';
 import CoberturaPolicarbonatoServicoExpandedSections from './CoberturaPolicarbonatoServicoExpandedSections';
 import { buildServiceOffer } from '@/lib/schemas/product-schemas';
+import { getPolicarbonatoFaqPriceAnswer, getServiceSchemaMinPrice } from '@/lib/pricing';
 import PriceEstimateNote from '@/components/servicos/PriceEstimateNote';
 import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
 
@@ -77,7 +78,7 @@ const serviceSchema = {
   },
   offers: buildServiceOffer(
     'https://www.coberturapolicarbonato.com.br/servicos/cobertura-policarbonato',
-    '450',
+    getServiceSchemaMinPrice('cobertura-policarbonato'),
   ),
 };
 
@@ -90,7 +91,7 @@ const faqSchema = {
       name: 'Quanto custa uma cobertura em policarbonato?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'O valor de uma cobertura em policarbonato varia entre R$ 450 e R$ 900 por m², dependendo do tipo de chapa (alveolar ou compacto) e tamanho do projeto. Solicite um orçamento gratuito pelo WhatsApp.',
+        text: getPolicarbonatoFaqPriceAnswer(),
       },
     },
     {

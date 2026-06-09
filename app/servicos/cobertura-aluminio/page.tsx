@@ -6,6 +6,7 @@ import FAQSchema from '@/components/FAQSchema';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 import { buildServiceOffer } from '@/lib/schemas/product-schemas';
+import { getFaqPriceAnswer, getServiceSchemaMinPrice } from '@/lib/pricing';
 import PriceEstimateNote from '@/components/servicos/PriceEstimateNote';
 import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
 
@@ -48,14 +49,14 @@ const productSchema = {
   brand: { '@type': 'Brand', name: 'Cobersystem' },
   offers: buildServiceOffer(
     'https://www.coberturapolicarbonato.com.br/servicos/cobertura-aluminio',
-    '800',
+    getServiceSchemaMinPrice('cobertura-aluminio'),
   ),
 };
 
 const faqs = [
   {
     question: 'Quanto custa uma cobertura de alumínio?',
-    answer: 'O preço de uma cobertura de alumínio varia conforme o tamanho, tipo de telha e estrutura. Em média, o investimento fica entre R$ 200 e R$ 400 por m², incluindo estrutura, telhas e instalação.',
+    answer: getFaqPriceAnswer('fixaCompacto'),
   },
   {
     question: 'A cobertura de alumínio enferruja?',
