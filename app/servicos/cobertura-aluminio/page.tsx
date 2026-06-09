@@ -4,8 +4,11 @@ import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FAQSchema from '@/components/FAQSchema';
 import SchemaMarkup from '@/components/SchemaMarkup';
+import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 
 const HERO_IMAGE = '/images/produtos/cobertura-retratil/aluminio/IMG_6324.jpg';
+const WHATSAPP_URL =
+  'https://wa.me/5511943615079?text=Ol%C3%A1!%20Preciso%20de%20or%C3%A7amento%20para%20cobertura%20de%20alum%C3%ADnio.';
 
 export const metadata: Metadata = {
   title: "Cobertura de Alumínio | Telhas e Estrutura | Cobersystem",
@@ -60,6 +63,14 @@ const faqs = [
   {
     question: 'Posso escolher a cor da cobertura de alumínio?',
     answer: 'Sim! Oferecemos pintura eletrostática em diversas cores. Você pode escolher a cor que melhor combina com seu projeto, personalizando completamente a aparência da cobertura.',
+  },
+  {
+    question: 'Cobertura de alumínio ou policarbonato: qual escolher?',
+    answer: 'O alumínio oferece opacidade total e acabamento metálico elegante, ideal para quem não quer transparência. O policarbonato deixa passar luz natural. Para áreas gourmet integradas à casa, muitos clientes preferem alumínio pela estética.',
+  },
+  {
+    question: 'Cobertura de alumínio precisa de manutenção?',
+    answer: 'A manutenção é mínima: limpeza com água e sabão neutro a cada 6 meses. A pintura eletrostática não descasca com o tempo e o alumínio não requer pintura periódica como estruturas de ferro.',
   },
 ];
 
@@ -165,12 +176,27 @@ export default function CoberturaAluminio() {
 
           <FAQSchema faqs={faqs} />
 
+          <ServiceVejaTambem current="aluminio" />
+
           <section className="bg-[#D4AF37] text-black rounded-lg p-12 text-center mt-12">
             <h2 className="text-4xl font-bold mb-4">Solicite Seu Orçamento</h2>
             <p className="text-xl mb-8 text-gray-900">Cobertura de alumínio personalizada</p>
-            <Link href="/contato" className="inline-block bg-black text-[#D4AF37] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-900 transition">
-              Solicitar Orçamento
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/contato"
+                className="inline-block bg-black text-[#D4AF37] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-900 transition"
+              >
+                Solicitar Orçamento
+              </Link>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-green-700 transition"
+              >
+                WhatsApp Agora
+              </a>
+            </div>
           </section>
         </div>
       </main>

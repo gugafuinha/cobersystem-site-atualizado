@@ -122,7 +122,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'cobertura-area-gourmet',
     'cobertura-piscina',
     'cobertura-corredor-lateral',
-    'calhas-rufos-perfil-u',
+    'cobertura-playground',
     'projetos-personalizados',
     'cobertura-varanda-apartamento',
   ].map((slug) => ({

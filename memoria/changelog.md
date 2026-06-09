@@ -423,6 +423,29 @@ Inserido automaticamente após a 3ª seção (herda lógica do P3.1 já implemen
 
 ---
 
+## 2026-06-09 — Migração Playground + expansão páginas fracas
+
+### URGENTE — URL Playground
+- Nova página `/servicos/cobertura-playground` (canonical, metadata, 5 FAQs, CTA WhatsApp, ServiceVejaTambem)
+- Redirect 301 em `next.config.ts` e `permanentRedirect` em `/servicos/calhas-rufos-perfil-u`
+- Card em `/servicos` atualizado para slug `cobertura-playground`
+- `sitemap.ts` e `breadcrumb-names.ts` atualizados
+- Removido `calhas-rufos-perfil-u/CoberturaPlaygroundExpandedSections.tsx` (duplicata)
+
+### Expansão de conteúdo
+- `/servicos/cobertura-corredor-lateral` — ~1.200 palavras: aplicações, comparativo fixa/retrátil, tabela preços, galeria, 5 FAQs, WhatsApp, ServiceVejaTambem
+- `/servicos/cobertura-garagem` — ~1.400 palavras: comparativo, tabela 1/2 carros, granizo, galeria, 5 FAQs, WhatsApp, ServiceVejaTambem
+
+### Padrões transversais
+- CTA WhatsApp + 5 FAQs em: fixa compacto, alumínio, projetos personalizados
+- ServiceVejaTambem adicionado em: garagem, corredor-lateral, alumínio, projetos-personalizados, playground
+- `ServiceVejaTambem.tsx` — novas entradas para os slugs acima
+
+### Deploy
+- Build validado; push para `origin/main` (Vercel)
+
+---
+
 ### Arquivo editado
 - `app/blog/[slug]/page.tsx` — adicionados:
   1. `import { Fragment } from 'react'`

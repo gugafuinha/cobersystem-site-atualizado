@@ -7,6 +7,11 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: '/servicos/calhas-rufos-perfil-u',
+        destination: '/servicos/cobertura-playground',
+        permanent: true,
+      },
+      {
         source: "/:path*",
         has: [
           {

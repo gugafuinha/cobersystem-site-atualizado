@@ -41,6 +41,31 @@ const LINKS = [
     href: '/servicos/cobertura-piscina',
     label: 'Cobertura Piscina',
   },
+  {
+    id: 'playground' as const,
+    href: '/servicos/cobertura-playground',
+    label: 'Cobertura para Playground',
+  },
+  {
+    id: 'garagem' as const,
+    href: '/servicos/cobertura-garagem',
+    label: 'Cobertura para Garagem',
+  },
+  {
+    id: 'corredor-lateral' as const,
+    href: '/servicos/cobertura-corredor-lateral',
+    label: 'Cobertura Corredor Lateral',
+  },
+  {
+    id: 'aluminio' as const,
+    href: '/servicos/cobertura-aluminio',
+    label: 'Cobertura de Alumínio',
+  },
+  {
+    id: 'projetos-personalizados' as const,
+    href: '/servicos/projetos-personalizados',
+    label: 'Projetos Personalizados',
+  },
 ];
 
 export type ServiceVejaTambemCurrent = (typeof LINKS)[number]['id'];

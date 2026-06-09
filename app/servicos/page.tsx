@@ -104,7 +104,7 @@ const servicos = [
     image: '/images/projetos/pergolado-01.png',
   },
   {
-    slug: 'calhas-rufos-perfil-u',
+    slug: 'cobertura-playground',
     title: 'Cobertura para Playground',
     description: 'Cobertura abre e fecha e retrátil para escolas, condomínios e áreas de lazer.',
     image: '/images/projetos/Cobertura Playground.png',

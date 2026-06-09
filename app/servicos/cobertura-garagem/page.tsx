@@ -4,8 +4,12 @@ import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FAQSchema from '@/components/FAQSchema';
 import SchemaMarkup from '@/components/SchemaMarkup';
+import ServiceVejaTambem from '@/components/ServiceVejaTambem';
+import CoberturaGaragemExpandedSections from './CoberturaGaragemExpandedSections';
 
 const HERO_IMAGE = '/images/produtos/cobertura-retratil/aluminio/IMG_3609.jpg';
+const WHATSAPP_URL =
+  'https://wa.me/5511943615079?text=Ol%C3%A1!%20Preciso%20de%20or%C3%A7amento%20para%20cobertura%20de%20garagem.';
 
 export const metadata: Metadata = {
   title: "Cobertura para Garagem | Policarbonato | Cobersystem",
@@ -51,7 +55,7 @@ const productSchema = {
 const faqs = [
   {
     question: 'Quanto custa uma cobertura para garagem?',
-    answer: 'O preço de uma cobertura para garagem varia conforme o tamanho, material e tipo (fixa ou retrátil). Em média, o investimento fica entre R$ 150 e R$ 350 por m². Coberturas fixas são mais econômicas, enquanto retráteis oferecem mais flexibilidade.',
+    answer: 'O preço de uma cobertura para garagem varia conforme o tamanho, material e tipo (fixa ou retrátil). Em média, o investimento fica entre R$ 150 e R$ 420 por m². Para 1 carro (~18 m²), o valor fica entre R$ 2.700 e R$ 7.560.',
   },
   {
     question: 'Qual o melhor tipo de cobertura para garagem?',
@@ -59,7 +63,15 @@ const faqs = [
   },
   {
     question: 'A cobertura protege contra granizo?',
-    answer: 'Sim! O policarbonato é altamente resistente a impactos, incluindo granizo. Oferece proteção superior aos veículos contra granizo, chuva e sol.',
+    answer: 'Sim! O policarbonato é altamente resistente a impactos, incluindo granizo de até 3 cm. Oferece proteção superior aos veículos contra granizo, chuva e sol — até 250 vezes mais resistente que vidro.',
+  },
+  {
+    question: 'Qual o tamanho ideal para cobertura de 1 ou 2 carros?',
+    answer: 'Para 1 carro, recomendamos área de 18–22 m² (3,5 x 5,5 m). Para 2 carros lado a lado, 36–40 m² (7 x 5,5 m). Medimos no local para ajustar conforme o veículo e espaço disponível.',
+  },
+  {
+    question: 'Cobertura retrátil vale a pena para garagem?',
+    answer: 'Sim, quando a garagem é integrada à área gourmet ou precisa de ventilação nos dias quentes. A retrátil automatizada fecha sozinha na chuva via sensor, protegendo o veículo sem intervenção manual.',
   },
 ];
 
@@ -125,38 +137,25 @@ export default function CoberturaGaragem() {
             </div>
           </section>
 
-          <section className="mb-12 bg-white rounded-lg p-8 shadow-sm">
-            <h2 className="text-3xl font-bold text-gray-800 mb-6">Por que Cobertura para Garagem?</h2>
-            <div className="prose max-w-none text-gray-700 leading-relaxed">
-              <p className="mb-4">
-                Uma cobertura para garagem oferece proteção essencial para seus veículos contra chuva, sol, 
-                granizo e outras intempéries. O policarbonato é ideal porque é altamente resistente a impactos, 
-                oferece proteção UV e permite entrada de luz natural, mantendo a garagem iluminada.
-              </p>
-              <p className="mb-4">
-                Você pode escolher entre cobertura fixa (proteção permanente) ou retrátil (flexibilidade para 
-                abrir quando quiser ventilação). Ambas oferecem excelente proteção e durabilidade.
-              </p>
-            </div>
-          </section>
+          <CoberturaGaragemExpandedSections />
 
           <section className="mb-12 bg-white rounded-lg p-8 shadow-sm">
             <h2 className="text-3xl font-bold text-gray-800 mb-6">Vantagens</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">🚗 Proteção Total</h3>
+                <h3 className="text-xl font-semibold text-gray-800 mb-3">Proteção Total</h3>
                 <p className="text-gray-600">Protege veículos contra chuva, sol, granizo e outras intempéries.</p>
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">💪 Resistência</h3>
+                <h3 className="text-xl font-semibold text-gray-800 mb-3">Resistência</h3>
                 <p className="text-gray-600">Policarbonato altamente resistente a impactos, incluindo granizo.</p>
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">☀️ Iluminação Natural</h3>
+                <h3 className="text-xl font-semibold text-gray-800 mb-3">Iluminação Natural</h3>
                 <p className="text-gray-600">Permite entrada de luz natural, mantendo a garagem iluminada.</p>
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">🔧 Fácil Manutenção</h3>
+                <h3 className="text-xl font-semibold text-gray-800 mb-3">Fácil Manutenção</h3>
                 <p className="text-gray-600">Material de fácil limpeza e manutenção, com longa durabilidade.</p>
               </div>
             </div>
@@ -164,16 +163,30 @@ export default function CoberturaGaragem() {
 
           <FAQSchema faqs={faqs} />
 
+          <ServiceVejaTambem current="garagem" />
+
           <section className="bg-[#D4AF37] text-black rounded-lg p-12 text-center mt-12">
             <h2 className="text-4xl font-bold mb-4">Solicite Seu Orçamento</h2>
             <p className="text-xl mb-8 text-gray-900">Proteção completa para sua garagem</p>
-            <Link href="/contato" className="inline-block bg-black text-[#D4AF37] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-900 transition">
-              Solicitar Orçamento
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/contato"
+                className="inline-block bg-black text-[#D4AF37] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-900 transition"
+              >
+                Solicitar Orçamento
+              </Link>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-green-700 transition"
+              >
+                WhatsApp Agora
+              </a>
+            </div>
           </section>
         </div>
       </main>
     </>
   );
 }
-

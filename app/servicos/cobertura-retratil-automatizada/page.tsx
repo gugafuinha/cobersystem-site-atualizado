@@ -6,6 +6,8 @@ import FAQSchema from '@/components/FAQSchema';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 
+const HERO_IMAGE = '/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg';
+
 export const metadata: Metadata = {
   title: "Cobertura Automática Retrátil | Alexa, Sensor de Chuva e App | Cobersystem SP",
   description: "Cobertura automática que fecha sozinha na chuva e abre por voz (Alexa) ou celular. Cobertura retrátil automatizada com sensor inteligente. Tabela de preços 2026 e orçamento grátis em SP.",
@@ -19,16 +21,16 @@ export const metadata: Metadata = {
     url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-retratil-automatizada',
     images: [
       {
-        url: 'https://www.coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg',
+        url: 'https://www.coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg',
         width: 1200,
-        height: 800,
+        height: 900,
         alt: 'Cobertura Retrátil Automatizada',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['https://www.coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg'],
+    images: ['https://www.coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg'],
   },
 };
 
@@ -37,7 +39,7 @@ const productSchema = {
   '@type': 'Product',
   name: 'Cobertura Retrátil Automatizada',
   description: 'Cobertura retrátil com automação inteligente via Alexa, controle remoto e sensor de chuva automático.',
-  image: ['https://www.coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg'],
+  image: ['https://www.coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg'],
   brand: { '@type': 'Brand', name: 'Cobersystem' },
   offers: {
     '@type': 'Offer',
@@ -83,14 +85,14 @@ export default function CoberturaRetratilAutomatizada() {
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:items-start">
               <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl bg-gray-100">
                 <OptimizedImage
-                  src="/images/blog/cobertura-retratil-area-gourmet.jpg"
+                  src={HERO_IMAGE}
                   alt="Cobertura retrátil automatizada com Alexa e sensor de chuva — projeto Cobersystem SP"
                   title="Cobertura Automática Retrátil com Alexa — Cobersystem SP"
                   width={1200}
                   height={900}
                   priority
                   className="w-full h-full object-cover"
-                  style={{ objectPosition: '50% 35%' }}
+                  style={{ objectPosition: '50% 30%' }}
                 />
               </div>
               <div>
