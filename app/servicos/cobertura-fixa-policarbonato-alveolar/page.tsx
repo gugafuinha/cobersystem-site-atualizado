@@ -6,6 +6,8 @@ import FAQSchema from '@/components/FAQSchema';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 
+const HERO_IMAGE = '/images/projetos/Cobertura Fixa Policarbonato Alveolar.png';
+
 export const metadata: Metadata = {
   title: "Cobertura Fixa Policarbonato Alveolar | Preço e Isolamento | Cobersystem",
   description: "Cobertura fixa em policarbonato alveolar. Excelente isolamento térmico e acústico. Proteção permanente. Preço por m² e orçamento. Ideal para áreas que precisam de conforto térmico.",
@@ -19,16 +21,16 @@ export const metadata: Metadata = {
     url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-fixa-policarbonato-alveolar',
     images: [
       {
-        url: 'https://www.coberturapolicarbonato.com.br/images/projetos/fixa-01.jpg',
+        url: 'https://www.coberturapolicarbonato.com.br/images/projetos/Cobertura%20Fixa%20Policarbonato%20Alveolar.png',
         width: 1200,
-        height: 800,
+        height: 900,
         alt: 'Cobertura Fixa em Policarbonato Alveolar',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['https://www.coberturapolicarbonato.com.br/images/projetos/fixa-01.jpg'],
+    images: ['https://www.coberturapolicarbonato.com.br/images/projetos/Cobertura%20Fixa%20Policarbonato%20Alveolar.png'],
   },
 };
 
@@ -37,7 +39,7 @@ const productSchema = {
   '@type': 'Product',
   name: 'Cobertura Fixa Policarbonato Alveolar',
   description: 'Cobertura fixa em policarbonato alveolar com excelente isolamento térmico e acústico.',
-  image: ['https://www.coberturapolicarbonato.com.br/images/projetos/fixa-01.jpg'],
+  image: ['https://www.coberturapolicarbonato.com.br/images/projetos/Cobertura%20Fixa%20Policarbonato%20Alveolar.png'],
   brand: { '@type': 'Brand', name: 'Cobersystem' },
   offers: {
     '@type': 'Offer',
@@ -78,9 +80,9 @@ export default function CoberturaFixaAlveolar() {
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:items-start">
               <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl bg-gray-100">
                 <OptimizedImage
-                  src="/images/produtos/cobertura-policarbonato/alveolar/IMG_4432.jpg"
-                  alt="Cobertura fixa em policarbonato alveolar - Cobersystem"
-                  title="Cobertura fixa em policarbonato alveolar"
+                  src={HERO_IMAGE}
+                  alt="Cobertura fixa em policarbonato alveolar — projeto Cobersystem SP"
+                  title="Cobertura Fixa em Policarbonato Alveolar"
                   width={1200}
                   height={900}
                   priority

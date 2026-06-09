@@ -6,6 +6,10 @@ import FAQSchema from '@/components/FAQSchema';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 
+const HERO_IMAGE = '/images/projetos/Cobertura Abre e Fecha.png';
+const HERO_IMAGE_OG =
+  'https://www.coberturapolicarbonato.com.br/images/projetos/Cobertura%20Abre%20e%20Fecha.png';
+
 export const metadata: Metadata = {
   title: "Cobertura Abre e Fecha | Acessos, Corredores e Varandas | Policarbonato Cobersystem SP",
   description: "Cobertura abre e fecha para acessos, corredores, varandas e área gourmet. Policarbonato a partir de R$ 800/m². Fecha sozinha na chuva. Automação Alexa. Orçamento grátis em SP.",
@@ -19,7 +23,7 @@ export const metadata: Metadata = {
     url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-abre-e-fecha',
     images: [
       {
-        url: 'https://www.coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg',
+        url: HERO_IMAGE_OG,
         width: 1200,
         height: 900,
         alt: 'Cobertura Abre e Fecha Automatizada',
@@ -28,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['https://www.coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg'],
+    images: [HERO_IMAGE_OG],
   },
 };
 
@@ -38,7 +42,7 @@ const productSchema = {
   name: 'Cobertura Abre e Fecha Automatizada',
   description: 'Cobertura retrátil em policarbonato com sistema abre e fecha automatizado via Alexa e sensor de chuva. Abertura de 0 a 90 graus.',
   image: [
-    'https://www.coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg',
+    HERO_IMAGE_OG,
     'https://www.coberturapolicarbonato.com.br/images/blog/cobertura-abre-fecha.jpg',
     'https://www.coberturapolicarbonato.com.br/images/blog/automacao-alexa.jpg',
   ],
@@ -114,14 +118,13 @@ export default function CoberturaAbreEFecha() {
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:items-start">
               <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl bg-gray-100">
                 <OptimizedImage
-                  src="/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg"
-                  alt="Cobertura abre e fecha automatizada em policarbonato - Cobersystem"
+                  src={HERO_IMAGE}
+                  alt="Cobertura abre e fecha automatizada em policarbonato — Cobersystem SP"
                   title="Cobertura Abre e Fecha Automatizada"
                   width={1200}
                   height={900}
                   priority
-                  className="w-full h-full object-cover"
-                  style={{ objectPosition: '50% 30%' }}
+                  className="h-full w-full object-cover"
                 />
               </div>
               <div>

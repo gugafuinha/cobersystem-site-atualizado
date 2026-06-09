@@ -35,13 +35,14 @@ const servicos = [
     slug: 'cobertura-abre-e-fecha',
     title: 'Cobertura Abre e Fecha',
     description: 'Sistema retrátil automatizado com Alexa e sensor de chuva.',
-    image: '/images/blog/cobertura-retratil-area-gourmet.jpg',
+    image: '/images/projetos/Cobertura Abre e Fecha.png',
   },
   {
     slug: 'cobertura-retratil-automatizada',
     title: 'Cobertura Retrátil Automatizada',
     description: 'Automação inteligente via Alexa, controle remoto e sensor de chuva.',
-    image: '/images/blog/cobertura-abre-fecha.jpg',
+    image: '/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg',
+    imageObjectPosition: '50% 30%',
   },
   {
     slug: 'cobertura-area-gourmet',
@@ -65,7 +66,7 @@ const servicos = [
     slug: 'cobertura-fixa-policarbonato-alveolar',
     title: 'Cobertura Fixa Policarbonato Alveolar',
     description: 'Isolamento térmico e acústico superior com policarbonato alveolar.',
-    image: '/images/projetos/fixa-01.jpg',
+    image: '/images/projetos/Cobertura Fixa Policarbonato Alveolar.png',
   },
   {
     slug: 'cobertura-fixa-policarbonato-compacto',
@@ -165,6 +166,11 @@ export default function ServicosPage() {
                   width={400}
                   height={300}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  style={
+                    'imageObjectPosition' in servico && servico.imageObjectPosition
+                      ? { objectPosition: servico.imageObjectPosition }
+                      : undefined
+                  }
                 />
               </div>
               <div className="p-6">

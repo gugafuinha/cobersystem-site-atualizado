@@ -446,6 +446,27 @@ Inserido automaticamente após a 3ª seção (herda lógica do P3.1 já implemen
 
 ---
 
+## 2026-06-09 — Fotos cards e heroes: abre-e-fecha, alveolar, retrátil automatizada
+
+### Imagens adicionadas (`public/images/projetos/`)
+- `Cobertura Abre e Fecha.png`
+- `Cobertura Fixa Policarbonato Alveolar.png`
+
+### `/servicos/cobertura-abre-e-fecha`
+- Hero e card na listagem → `Cobertura Abre e Fecha.png`
+- Metadata OG/Twitter/schema atualizados
+
+### `/servicos/cobertura-fixa-policarbonato-alveolar`
+- Hero e card na listagem → `Cobertura Fixa Policarbonato Alveolar.png`
+
+### Listagem `/servicos`
+- Card Cobertura Retrátil Automatizada → `IMG_4754.jpg` com `object-position: 50% 30%`
+
+### Deploy
+- Push para `origin/main` (Vercel)
+
+---
+
 ### Arquivo editado
 - `app/blog/[slug]/page.tsx` — adicionados:
   1. `import { Fragment } from 'react'`
