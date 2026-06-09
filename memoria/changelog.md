@@ -2,6 +2,13 @@
 
 ---
 
+## 2026-06-09 — ETAPA 4: conteúdo rico abre e fecha
+
+### Deploy (commit `7e639d0`)
+- `/servicos/cobertura-abre-e-fecha` — expanded long-form, comparativo vs retrátil/automatizada, 6 etapas, aplicações com metragem, ServicePriceTable, FAQ 6, CTA WhatsApp no hero
+
+---
+
 ## 2026-06-09 — ETAPA 3: conteúdo rico retrátil automatizada
 
 ### Deploy (commit `2c33c47`)
