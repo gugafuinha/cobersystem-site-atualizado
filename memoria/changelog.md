@@ -2,6 +2,14 @@
 
 ---
 
+## 2026-06-09 — ETAPA 2: conteúdo rico termoacústica e alumínio
+
+### Deploy (commit `0ed1f84`)
+- `/servicos/cobertura-termoacustica` — expanded long-form, comparativo sanduíche vs alveolar, galeria, FAQ 6, preços oficiais
+- `/servicos/cobertura-aluminio` — tipos de telha, cores RAL, pintura eletrostática, comparativo vs policarbonato, galeria, FAQ 6
+
+---
+
 ## 2026-06-09 — Cards /servicos + fotos retrátil e piscina
 
 ### Deploy (commit `fc46683`)
