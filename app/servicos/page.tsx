@@ -34,7 +34,7 @@ const servicos = [
   {
     slug: 'cobertura-abre-e-fecha',
     title: 'Cobertura Abre e Fecha',
-    description: 'Sistema retrátil automatizado com Alexa e sensor de chuva.',
+    description: 'Sistema retrátil manual ou com automação opcional.',
     image: '/images/projetos/Cobertura Abre e Fecha.png',
   },
   {
@@ -47,7 +47,7 @@ const servicos = [
   {
     slug: 'cobertura-retratil',
     title: 'Cobertura Retrátil',
-    description: 'Instalação completa com automação Alexa, sensor de chuva e abertura 0 a 90°.',
+    description: 'Instalação completa de cobertura retrátil SP.',
     image: '/images/projetos/Cobertura Retratil melhorada.png',
   },
   {

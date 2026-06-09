@@ -6,7 +6,13 @@ import FAQSchema from '@/components/FAQSchema';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 import { buildServiceOffer } from '@/lib/schemas/product-schemas';
-import { COBERSYSTEM_PRICING, formatBRL, getFaqPriceAnswer, getServiceSchemaMinPrice } from '@/lib/pricing';
+import {
+  COBERSYSTEM_PRICING,
+  formatBRL,
+  formatPricePerM2,
+  getFaqPriceAnswer,
+  getServiceSchemaMinPrice,
+} from '@/lib/pricing';
 import PriceEstimateNote from '@/components/servicos/PriceEstimateNote';
 import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
 import CoberturaAbreEFechaExpandedSections from './CoberturaAbreEFechaExpandedSections';
@@ -23,7 +29,7 @@ export const metadata: Metadata = {
   title: 'Cobertura Abre e Fecha | Acessos, Corredores e Varandas | Policarbonato Cobersystem SP',
   description: `Cobertura abre e fecha para acessos, corredores, varandas e área gourmet. Policarbonato ${ABRE_E_FECHA_PRICE_FROM}. Abertura 0 a 90°. Automação opcional. Orçamento grátis em SP.`,
   keywords:
-    'cobertura abre e fecha, cobertura abre e fecha policarbonato, cobertura abre e fecha SP, cobertura abre e fecha preço, cobertura retrátil, sensor chuva cobertura, cobertura varanda',
+    'cobertura abre e fecha, cobertura abre e fecha policarbonato, cobertura abre e fecha SP, cobertura abre e fecha preço, acessos corredores cobertura, sensor chuva cobertura, cobertura varanda',
   alternates: {
     canonical: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-abre-e-fecha',
   },
@@ -85,8 +91,7 @@ const faqs = [
   },
   {
     question: 'Qual a diferença entre abre e fecha e cobertura retrátil automatizada?',
-    answer:
-      'O abre e fecha tem faixa de preço menor (R$ 800–1.200/m²) e pode ser manual. A retrátil automatizada (R$ 1.200–1.600/m²) inclui motor e sensores no pacote premium, fechando sozinha na chuva.',
+    answer: `O abre e fecha tem faixa de preço menor (${formatPricePerM2(COBERSYSTEM_PRICING.abreEFecha)}) e pode ser manual. A retrátil automatizada (${formatPricePerM2(COBERSYSTEM_PRICING.retratilAutomatizada)}) inclui motor e sensores no pacote premium, fechando sozinha na chuva.`,
   },
   {
     question: 'Qual a garantia da cobertura abre e fecha?',

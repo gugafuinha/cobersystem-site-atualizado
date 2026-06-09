@@ -172,21 +172,21 @@ export default function CoberturaRetratilAutomatizadaExpandedSections() {
         <div className="space-y-8 text-gray-700 leading-relaxed">
           {[
             {
-              titulo: 'Área gourmet com churrasqueira (15–25 m²)',
+              titulo: 'Gourmet com fechamento automático na chuva (15–25 m²)',
               texto:
                 'Sensor de chuva fecha antes da garoa molhar mesa e churrasqueira. Alexa abre para ventilar após o churrasco. O pacote automatizado é o mais pedido neste cenário.',
               prazo: '3 dias',
               investimento: 'R$ 20–35 mil',
             },
             {
-              titulo: 'Varanda de apartamento (8–15 m²)',
+              titulo: 'Varanda com controle por voz (8–15 m²)',
               texto:
                 'Fechamento automático na chuva sem precisar estar em casa. Controle remoto para idosos e integração com rotinas de casa inteligente.',
               prazo: '2–3 dias',
               investimento: 'R$ 12–22 mil',
             },
             {
-              titulo: 'Piscina e lazer (25–45 m²)',
+              titulo: 'Piscina com sensor de chuva (25–45 m²)',
               texto:
                 'Proteção programável: abre para sol, fecha para chuva ou vento forte (sensor opcional). Maior vão exige motor de maior torque.',
               prazo: '4–5 dias',

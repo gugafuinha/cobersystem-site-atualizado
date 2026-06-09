@@ -197,7 +197,7 @@ export default function CoberturaJardimDeInverno() {
           </div>
 
           <FAQSchema faqs={faqs} />
-          <ServiceVejaTambem current="area-gourmet" />
+          <ServiceVejaTambem current="jardim-de-inverno" />
 
           <section className="bg-[#D4AF37] text-black rounded-lg p-12 text-center mt-12 mx-4">
             <h2 className="text-4xl font-bold mb-4">Orçamento para Jardim de Inverno</h2>

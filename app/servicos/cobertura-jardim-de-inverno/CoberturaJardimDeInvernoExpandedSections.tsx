@@ -37,7 +37,18 @@ export default function CoberturaJardimDeInvernoExpandedSections() {
             <Link href="/servicos/cobertura-abre-e-fecha" className="text-blue-600 font-semibold hover:underline">
               cobertura abre e fecha
             </Link>
-            .
+            . Jardins sobre{' '}
+            <Link href="/servicos/cobertura-pergolado" className="text-blue-600 font-semibold hover:underline">
+              pergolado
+            </Link>{' '}
+            ou em{' '}
+            <Link
+              href="/servicos/cobertura-varanda-apartamento"
+              className="text-blue-600 font-semibold hover:underline"
+            >
+              varanda de apartamento
+            </Link>{' '}
+            também podem ser atendidos com projeto sob medida.
           </p>
         </div>
       </section>

@@ -37,6 +37,11 @@ const LINKS = [
     label: 'Área Gourmet',
   },
   {
+    id: 'jardim-de-inverno' as const,
+    href: '/servicos/cobertura-jardim-de-inverno',
+    label: 'Cobertura Jardim de Inverno',
+  },
+  {
     id: 'piscina' as const,
     href: '/servicos/cobertura-piscina',
     label: 'Cobertura Piscina',

@@ -2,6 +2,25 @@
 
 ---
 
+## 2026-06-09 — Correções pós-auditoria SEO (8 itens)
+
+### Deploy (commit pendente)
+- `ServiceVejaTambem` — entrada jardim-de-inverno + `current` corrigido
+- `cobertura-abre-e-fecha` — FAQ preço via `formatPricePerM2`, keywords sem overlap retrátil
+- `cobertura-retratil-automatizada` — meta description dinâmica, títulos de aplicação com ênfase em automação
+- `/servicos` — cards Abre e Fecha e Retrátil com descrições diferenciadas
+- `cobertura-termoacustica` — links para fixa alveolar e área gourmet
+- `cobertura-jardim-de-inverno` — links para pergolado e varanda apartamento
+
+---
+
+## 2026-06-09 — ETAPA 5: conteúdo rico jardim de inverno
+
+### Deploy (commit `b7ba5e4`)
+- `/servicos/cobertura-jardim-de-inverno` — expanded long-form, cenários botânicos únicos, galeria real, ServicePriceTable, FAQ 6, CTA WhatsApp
+
+---
+
 ## 2026-06-09 — ETAPA 4: conteúdo rico abre e fecha
 
 ### Deploy (commit `7e639d0`)

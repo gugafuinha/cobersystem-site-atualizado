@@ -30,6 +30,17 @@ export default function CoberturaTermoacusticaExpandedSections() {
             <Link href="/produtos/cobertura-termoacustica" className="text-blue-600 font-semibold hover:underline">
               Cobertura Termoacústica (produto)
             </Link>
+            . Para cobertura fixa em alveolar, veja{' '}
+            <Link
+              href="/servicos/cobertura-fixa-policarbonato-alveolar"
+              className="text-blue-600 font-semibold hover:underline"
+            >
+              cobertura fixa policarbonato alveolar
+            </Link>
+            . Para projetos em área gourmet, consulte{' '}
+            <Link href="/servicos/cobertura-area-gourmet" className="text-blue-600 font-semibold hover:underline">
+              cobertura para área gourmet
+            </Link>
             . Aqui o foco é o serviço: aplicação, etapas, comparativo de materiais e pós-venda.
           </p>
         </div>

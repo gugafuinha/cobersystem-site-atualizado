@@ -5,20 +5,20 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import FAQSchema from '@/components/FAQSchema';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { buildServiceOffer } from '@/lib/schemas/product-schemas';
-import { getFaqPriceAnswer, getServiceSchemaMinPrice } from '@/lib/pricing';
+import { formatPriceFrom, getFaqPriceAnswer, getServiceSchemaMinPrice } from '@/lib/pricing';
 import PriceEstimateNote from '@/components/servicos/PriceEstimateNote';
 import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 import CoberturaRetratilAutomatizadaExpandedSections from './CoberturaRetratilAutomatizadaExpandedSections';
 
+const RETRATIL_AUTO_PRICE_FROM = formatPriceFrom('retratilAutomatizada');
 const HERO_IMAGE = '/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg';
 const WHATSAPP_URL =
   'https://wa.me/5511943615079?text=Ol%C3%A1!%20Preciso%20de%20or%C3%A7amento%20para%20cobertura%20retr%C3%A1til%20automatizada.';
 
 export const metadata: Metadata = {
   title: 'Cobertura Automática Retrátil | Alexa, Sensor de Chuva e App | Cobersystem SP',
-  description:
-    'Cobertura retrátil automatizada que fecha sozinha na chuva. Motor, Alexa, controle remoto e app. A partir de R$ 1.200/m². Projeto e instalação em SP. Orçamento grátis.',
+  description: `Cobertura retrátil automatizada que fecha sozinha na chuva. Motor, Alexa, controle remoto e app. ${RETRATIL_AUTO_PRICE_FROM}. Projeto e instalação em SP. Orçamento grátis.`,
   keywords:
     'cobertura automática, cobertura automatizada, cobertura retrátil automatizada, cobertura automática Alexa, sensor de chuva cobertura, cobertura retrátil inteligente, automação residencial cobertura',
   alternates: {
