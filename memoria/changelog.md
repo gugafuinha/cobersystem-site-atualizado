@@ -467,6 +467,20 @@ Inserido automaticamente após a 3ª seção (herda lógica do P3.1 já implemen
 
 ---
 
+## 2026-06-09 — Foto hero e card: cobertura garagem
+
+### Imagem adicionada (`public/images/projetos/`)
+- `Cobertura Garagem.png`
+
+### `/servicos/cobertura-garagem`
+- Hero e card na listagem → `Cobertura Garagem.png`
+- Metadata OG/Twitter/schema atualizados
+
+### Deploy
+- Push para `origin/main` (Vercel)
+
+---
+
 ### Arquivo editado
 - `app/blog/[slug]/page.tsx` — adicionados:
   1. `import { Fragment } from 'react'`

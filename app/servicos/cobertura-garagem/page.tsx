@@ -7,7 +7,9 @@ import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 import CoberturaGaragemExpandedSections from './CoberturaGaragemExpandedSections';
 
-const HERO_IMAGE = '/images/produtos/cobertura-retratil/aluminio/IMG_3609.jpg';
+const HERO_IMAGE = '/images/projetos/Cobertura Garagem.png';
+const HERO_IMAGE_OG =
+  'https://www.coberturapolicarbonato.com.br/images/projetos/Cobertura%20Garagem.png';
 const WHATSAPP_URL =
   'https://wa.me/5511943615079?text=Ol%C3%A1!%20Preciso%20de%20or%C3%A7amento%20para%20cobertura%20de%20garagem.';
 
@@ -24,7 +26,7 @@ export const metadata: Metadata = {
     url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-garagem',
     images: [
       {
-        url: 'https://www.coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/aluminio/IMG_3609.jpg',
+        url: HERO_IMAGE_OG,
         width: 1200,
         height: 900,
         alt: 'Cobertura para Garagem',
@@ -33,7 +35,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['https://www.coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/aluminio/IMG_3609.jpg'],
+    images: [HERO_IMAGE_OG],
   },
 };
 
@@ -42,7 +44,7 @@ const productSchema = {
   '@type': 'Product',
   name: 'Cobertura para Garagem',
   description: 'Cobertura em policarbonato para garagem, protegendo veículos contra chuva, sol e granizo.',
-  image: ['https://www.coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/aluminio/IMG_3609.jpg'],
+  image: [HERO_IMAGE_OG],
   brand: { '@type': 'Brand', name: 'Cobersystem' },
   offers: {
     '@type': 'Offer',

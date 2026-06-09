@@ -60,7 +60,7 @@ const servicos = [
     slug: 'cobertura-garagem',
     title: 'Cobertura para Garagem',
     description: 'Proteção completa para veículos contra chuva, sol e granizo.',
-    image: '/images/projetos/abre-fecha-alveolar-01.jpg',
+    image: '/images/projetos/Cobertura Garagem.png',
   },
   {
     slug: 'cobertura-fixa-policarbonato-alveolar',
