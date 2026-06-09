@@ -2,6 +2,13 @@
 
 ---
 
+## 2026-06-09 — ETAPA 3: conteúdo rico retrátil automatizada
+
+### Deploy (commit `2c33c47`)
+- `/servicos/cobertura-retratil-automatizada` — expanded long-form, comparativo vs retrátil/abre-e-fecha, 6 etapas, ServicePriceTable, FAQ 6, CTA WhatsApp
+
+---
+
 ## 2026-06-09 — ETAPA 2: conteúdo rico termoacústica e alumínio
 
 ### Deploy (commit `0ed1f84`)

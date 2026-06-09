@@ -6,38 +6,37 @@ import FAQSchema from '@/components/FAQSchema';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 import { buildServiceOffer } from '@/lib/schemas/product-schemas';
-import {
-  COBERSYSTEM_PRICING,
-  formatBRL,
-  getFaqPriceAnswer,
-  getServiceSchemaMinPrice,
-} from '@/lib/pricing';
-
-const ABRE_E_FECHA_PRICE_FROM = `A partir de ${formatBRL(COBERSYSTEM_PRICING.abreEFecha.min)}/m²`;
+import { COBERSYSTEM_PRICING, formatBRL, getFaqPriceAnswer, getServiceSchemaMinPrice } from '@/lib/pricing';
 import PriceEstimateNote from '@/components/servicos/PriceEstimateNote';
 import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
+import CoberturaAbreEFechaExpandedSections from './CoberturaAbreEFechaExpandedSections';
 
 const HERO_IMAGE = '/images/projetos/Cobertura Abre e Fecha.png';
 const HERO_IMAGE_OG =
   'https://www.coberturapolicarbonato.com.br/images/projetos/Cobertura%20Abre%20e%20Fecha.png';
+const WHATSAPP_URL =
+  'https://wa.me/5511943615079?text=Ol%C3%A1!%20Preciso%20de%20or%C3%A7amento%20para%20cobertura%20abre%20e%20fecha.';
+
+const ABRE_E_FECHA_PRICE_FROM = `A partir de ${formatBRL(COBERSYSTEM_PRICING.abreEFecha.min)}/m²`;
 
 export const metadata: Metadata = {
-  title: "Cobertura Abre e Fecha | Acessos, Corredores e Varandas | Policarbonato Cobersystem SP",
-  description: `Cobertura abre e fecha para acessos, corredores, varandas e área gourmet. Policarbonato ${ABRE_E_FECHA_PRICE_FROM}. Fecha sozinha na chuva. Automação Alexa. Orçamento grátis em SP.`,
-  keywords: "cobertura abre e fecha, cobertura abre e fecha policarbonato, cobertura abre e fecha SP, cobertura abre e fecha preço, cobertura retrátil automatizada, cobertura automática Alexa, sensor chuva cobertura",
+  title: 'Cobertura Abre e Fecha | Acessos, Corredores e Varandas | Policarbonato Cobersystem SP',
+  description: `Cobertura abre e fecha para acessos, corredores, varandas e área gourmet. Policarbonato ${ABRE_E_FECHA_PRICE_FROM}. Abertura 0 a 90°. Automação opcional. Orçamento grátis em SP.`,
+  keywords:
+    'cobertura abre e fecha, cobertura abre e fecha policarbonato, cobertura abre e fecha SP, cobertura abre e fecha preço, cobertura retrátil, sensor chuva cobertura, cobertura varanda',
   alternates: {
     canonical: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-abre-e-fecha',
   },
   openGraph: {
-    title: "Cobertura Abre e Fecha | Acessos, Corredores e Varandas | Cobersystem SP",
-    description: `Cobertura abre e fecha policarbonato para acessos e corredores, ${ABRE_E_FECHA_PRICE_FROM}. Sensor de chuva + automação Alexa. Orçamento grátis.`,
+    title: 'Cobertura Abre e Fecha | Acessos, Corredores e Varandas | Cobersystem SP',
+    description: `Cobertura abre e fecha policarbonato para acessos e corredores, ${ABRE_E_FECHA_PRICE_FROM}. Abertura 0 a 90°. Orçamento grátis.`,
     url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-abre-e-fecha',
     images: [
       {
         url: HERO_IMAGE_OG,
         width: 1200,
         height: 900,
-        alt: 'Cobertura Abre e Fecha Automatizada',
+        alt: 'Cobertura Abre e Fecha',
       },
     ],
   },
@@ -50,17 +49,14 @@ export const metadata: Metadata = {
 const productSchema = {
   '@context': 'https://schema.org',
   '@type': 'Product',
-  name: 'Cobertura Abre e Fecha Automatizada',
-  description: 'Cobertura retrátil em policarbonato com sistema abre e fecha automatizado via Alexa e sensor de chuva. Abertura de 0 a 90 graus.',
+  name: 'Cobertura Abre e Fecha',
+  description:
+    'Cobertura retrátil em policarbonato com sistema abre e fecha. Abertura de 0 a 90 graus. Automação opcional via Alexa e sensor de chuva.',
   image: [
     HERO_IMAGE_OG,
     'https://www.coberturapolicarbonato.com.br/images/blog/cobertura-abre-fecha.jpg',
-    'https://www.coberturapolicarbonato.com.br/images/blog/automacao-alexa.jpg',
   ],
-  brand: {
-    '@type': 'Brand',
-    name: 'Cobersystem',
-  },
+  brand: { '@type': 'Brand', name: 'Cobersystem' },
   offers: buildServiceOffer(
     'https://www.coberturapolicarbonato.com.br/servicos/cobertura-abre-e-fecha',
     getServiceSchemaMinPrice('cobertura-abre-e-fecha'),
@@ -73,20 +69,29 @@ const faqs = [
     answer: getFaqPriceAnswer('abreEFecha'),
   },
   {
-    question: 'Como funciona a automação da cobertura abre e fecha?',
-    answer: 'A cobertura abre e fecha pode ser controlada de três formas: via Alexa (comando de voz), controle remoto ou sensor de chuva automático. O sensor detecta chuva e fecha a cobertura automaticamente, protegendo o ambiente. A abertura varia de 0 a 90 graus, permitindo controle total da ventilação.',
+    question: 'Qual a diferença entre cobertura abre e fecha e cobertura fixa?',
+    answer:
+      'A cobertura fixa é permanente e não se move. O abre e fecha permite abrir de 0 a 90° para ventilação ou fechar para proteção total. É ideal para quem quer flexibilidade em varandas, corredores e áreas gourmet.',
   },
   {
     question: 'A cobertura abre e fecha perde ventilação?',
-    answer: 'Não! Essa é a principal vantagem da cobertura abre e fecha. Quando aberta, permite ventilação total. Quando fechada, protege contra chuva e sol. Funciona como uma persiana horizontal, dando controle total sobre o clima do ambiente.',
+    answer:
+      'Não. Quando aberta, permite ventilação total como uma persiana horizontal. Quando fechada, protege contra chuva e sol. Você controla o grau de abertura conforme o clima.',
   },
   {
-    question: 'Qual a diferença entre cobertura abre e fecha e cobertura fixa?',
-    answer: 'A cobertura fixa é permanente e não se move. A cobertura abre e fecha permite abrir totalmente para ventilação ou fechar para proteção. É ideal para quem quer flexibilidade e controle do ambiente, especialmente em áreas gourmet, varandas e churrasqueiras.',
+    question: 'Posso automatizar a cobertura abre e fecha?',
+    answer:
+      'Sim. Motor, sensor de chuva, controle remoto e Alexa são opcionais e discriminados no orçamento. Se quiser automação inclusa no pacote, veja a página de cobertura retrátil automatizada.',
   },
   {
-    question: 'A cobertura abre e fecha funciona com chuva?',
-    answer: 'Sim! A cobertura abre e fecha possui sensor de chuva que fecha automaticamente quando detecta precipitação. Você também pode fechar manualmente via Alexa ou controle remoto. Quando fechada, oferece proteção total contra chuva.',
+    question: 'Qual a diferença entre abre e fecha e cobertura retrátil automatizada?',
+    answer:
+      'O abre e fecha tem faixa de preço menor (R$ 800–1.200/m²) e pode ser manual. A retrátil automatizada (R$ 1.200–1.600/m²) inclui motor e sensores no pacote premium, fechando sozinha na chuva.',
+  },
+  {
+    question: 'Qual a garantia da cobertura abre e fecha?',
+    answer:
+      'Garantia de 2 anos em estrutura, policarbonato e instalação executada pela Cobersystem. Atendemos São Paulo e Grande SP com suporte pós-venda.',
   },
 ];
 
@@ -104,14 +109,13 @@ export default function CoberturaAbreEFecha() {
             ]}
           />
 
-          {/* Hero Section */}
           <section className="mb-12">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:items-start">
               <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl bg-gray-100">
                 <OptimizedImage
                   src={HERO_IMAGE}
-                  alt="Cobertura abre e fecha automatizada em policarbonato — Cobersystem SP"
-                  title="Cobertura Abre e Fecha Automatizada"
+                  alt="Cobertura abre e fecha em policarbonato — acessos, corredores e varandas — Cobersystem SP"
+                  title="Cobertura Abre e Fecha — Cobersystem SP"
                   width={1200}
                   height={900}
                   priority
@@ -120,262 +124,91 @@ export default function CoberturaAbreEFecha() {
               </div>
               <div>
                 <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                  Cobertura Abre e Fecha Automatizada
+                  Cobertura Abre e Fecha em Policarbonato
                 </h1>
-                <p className="text-xl text-gray-700 mb-8 leading-relaxed">
-                  Sistema retrátil inteligente que abre e fecha com automação via Alexa e sensor de chuva.
-                  Controle total do clima com abertura de 0 a 90 graus. Sem perder ventilação, com proteção
-                  completa contra chuva e sol. Ideal para áreas gourmet, varandas, churrasqueiras e piscinas.
+                <p className="text-xl text-gray-700 mb-6 leading-relaxed">
+                  Sistema retrátil que abre de 0 a 90° para ventilar e fecha para proteger da chuva.
+                  Ideal para acessos, corredores, varandas e área gourmet — manual ou com automação
+                  opcional. Projeto completo com garantia de 2 anos em SP.
                 </p>
-              </div>
-            </div>
-          </section>
-
-          {/* O que é */}
-          <section className="mb-12 bg-white rounded-lg p-8 shadow-sm">
-            <h2 className="text-3xl font-bold text-gray-800 mb-6">
-              O que é uma Cobertura Abre e Fecha?
-            </h2>
-            <div className="prose max-w-none text-gray-700 leading-relaxed">
-              <p className="mb-4">
-                A cobertura abre e fecha é um sistema retrátil em policarbonato que funciona como uma 
-                persiana horizontal. As lâminas podem ser abertas de 0 a 90 graus, permitindo controle 
-                total sobre a ventilação e iluminação do ambiente.
-              </p>
-              <p className="mb-4">
-                Diferente das coberturas fixas tradicionais, a cobertura abre e fecha oferece flexibilidade 
-                total: nos dias quentes, você abre para máxima ventilação; nos dias frios ou chuvosos, 
-                fecha para proteção completa.
-              </p>
-              <p>
-                O sistema é automatizado e pode ser controlado via Alexa (comando de voz), controle remoto 
-                ou sensor de chuva automático. Quando o sensor detecta chuva, a cobertura fecha sozinha, 
-                protegendo automaticamente o ambiente.
-              </p>
-            </div>
-          </section>
-
-          {/* Vantagens */}
-          <section className="mb-12 bg-white rounded-lg p-8 shadow-sm">
-            <h2 className="text-3xl font-bold text-gray-800 mb-6">
-              Vantagens da Cobertura Abre e Fecha
-            </h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">✓ Controle Total do Clima</h3>
-                <p className="text-gray-600">
-                  Abra nos dias quentes para ventilação máxima ou feche quando chover ou esfriar. 
-                  Você decide o clima ideal para cada momento.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">✓ Automação Inteligente</h3>
-                <p className="text-gray-600">
-                  Controle via Alexa, controle remoto ou sensor de chuva automático. 
-                  Sua cobertura fecha sozinha quando detecta chuva!
-                </p>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">✓ Sem Perder Ventilação</h3>
-                <p className="text-gray-600">
-                  Única cobertura que permite cobrir sem perder a ventilação natural. 
-                  Funciona como uma persiana horizontal.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">✓ Proteção UV</h3>
-                <p className="text-gray-600">
-                  Policarbonato com proteção UV, bloqueando até 99% dos raios solares nocivos, 
-                  protegendo móveis e pessoas.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">✓ Resistência e Durabilidade</h3>
-                <p className="text-gray-600">
-                  Estrutura em alumínio com pintura eletrostática e telhas de policarbonato 
-                  de alta qualidade. Durabilidade superior a 15 anos.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">✓ Valorização do Imóvel</h3>
-                <p className="text-gray-600">
-                  Uma cobertura abre e fecha valoriza significativamente seu imóvel, 
-                  criando um espaço versátil e moderno.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          {/* Aplicações */}
-          <section className="mb-12 bg-white rounded-lg p-8 shadow-sm">
-            <h2 className="text-3xl font-bold text-gray-800 mb-6">
-              Aplicações Práticas
-            </h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              <div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">Área Gourmet</h3>
-                <p className="text-gray-600">
-                  Crie um ambiente perfeito para receber amigos e família, com controle total 
-                  do clima e proteção contra chuva.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">Churrasqueira</h3>
-                <p className="text-gray-600">
-                  Proteja sua churrasqueira da chuva sem perder a ventilação necessária 
-                  para o churrasco perfeito.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">Varanda</h3>
-                <p className="text-gray-600">
-                  Transforme sua varanda em um espaço versátil, protegido quando necessário 
-                  e aberto para aproveitar o sol.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">Piscina</h3>
-                <p className="text-gray-600">
-                  Cobertura retrátil para piscina permite usar o espaço mesmo em dias chuvosos, 
-                  com ventilação quando necessário.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">Apartamento</h3>
-                <p className="text-gray-600">
-                  Ideal para áreas de lazer em apartamentos, criando um espaço externo 
-                  protegido e versátil.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">Garagem</h3>
-                <p className="text-gray-600">
-                  Cobertura abre e fecha para garagem oferece proteção para veículos 
-                  com ventilação quando necessário.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          {/* Modelos e Materiais */}
-          <section className="mb-12 bg-white rounded-lg p-8 shadow-sm">
-            <h2 className="text-3xl font-bold text-gray-800 mb-6">
-              Modelos e Materiais
-            </h2>
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">
-                  Policarbonato Compacto 2mm
-                </h3>
-                <p className="text-gray-600 mb-2">
-                  Totalmente transparente ou colorido. Ideal para máxima luminosidade e proteção visual. 
-                  Transparência de até 90%, permitindo entrada de luz natural.
-                </p>
-                <ul className="list-disc list-inside text-gray-600 space-y-1">
-                  <li>Transparência total ou cores personalizadas</li>
-                  <li>Resistente a impactos</li>
-                  <li>Proteção UV 99%</li>
-                  <li>Espessura: 2mm</li>
+                <div className="grid grid-cols-2 gap-3 mb-6">
+                  {[
+                    { v: '0–90°', l: 'Abertura lâminas' },
+                    { v: '2 anos', l: 'Garantia total' },
+                    { v: ABRE_E_FECHA_PRICE_FROM.replace('A partir de ', ''), l: 'Investimento' },
+                    { v: 'Grande SP', l: 'Área de atuação' },
+                  ].map(({ v, l }) => (
+                    <div
+                      key={l}
+                      className="bg-blue-50 border border-blue-100 rounded-lg p-3 text-center"
+                    >
+                      <div className="text-2xl font-bold text-blue-700">{v}</div>
+                      <div className="text-xs text-gray-500 mt-1">{l}</div>
+                    </div>
+                  ))}
+                </div>
+                <ul className="space-y-2 text-gray-700 mb-6">
+                  {[
+                    'Ventilação total quando aberta — sem perder o ar livre',
+                    'Fecha para proteção contra chuva e sol',
+                    'Manual ou com motor e sensor de chuva (opcional)',
+                    'Policarbonato compacto ou alveolar sob medida',
+                    'Menor investimento que retrátil automatizada premium',
+                  ].map((item) => (
+                    <li key={item} className="flex gap-2">
+                      <span className="text-blue-600 mt-0.5">✓</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
                 </ul>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">
-                  Policarbonato Alveolar
-                </h3>
-                <p className="text-gray-600 mb-2">
-                  Excelente isolamento térmico e acústico. Perfeito para áreas que precisam 
-                  de maior conforto térmico.
-                </p>
-                <ul className="list-disc list-inside text-gray-600 space-y-1">
-                  <li>Isolamento térmico superior</li>
-                  <li>Redução de ruído</li>
-                  <li>Alta resistência</li>
-                  <li>Espessuras: 4mm, 6mm, 10mm</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">
-                  Estrutura de Alumínio
-                </h3>
-                <p className="text-gray-600 mb-2">
-                  Estrutura em alumínio com pintura eletrostática na cor de sua escolha. 
-                  Resistente à corrosão e intempéries.
-                </p>
-                <ul className="list-disc list-inside text-gray-600 space-y-1">
-                  <li>Alumínio de alta qualidade</li>
-                  <li>Pintura eletrostática personalizada</li>
-                  <li>Resistente à corrosão</li>
-                  <li>Durabilidade superior a 20 anos</li>
-                </ul>
+                <div className="flex gap-3">
+                  <Link
+                    href="/contato"
+                    className="inline-block bg-[#D4AF37] text-black px-6 py-3 rounded-lg font-semibold hover:bg-[#C9A030] transition"
+                  >
+                    Solicitar Orçamento
+                  </Link>
+                  <a
+                    href={WHATSAPP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition"
+                  >
+                    WhatsApp
+                  </a>
+                </div>
               </div>
             </div>
           </section>
 
-          {/* Por que Cobersystem */}
-          <section className="mb-12 bg-gradient-to-br from-gray-900 to-black text-white rounded-lg p-8 shadow-sm">
-            <h2 className="text-3xl font-bold mb-6">
-              Por que escolher a Cobersystem
-            </h2>
-            <div className="space-y-4 text-gray-200">
-              <p className="text-gray-300">
-                Em relação a outras opções do mercado e soluções tradicionais, a Cobersystem prioriza
-                qualidade, automação e atendimento próximo ao cliente.
-              </p>
-              <p>
-                <strong className="text-[#D4AF37]">Tecnologia de Ponta:</strong> Utilizamos os melhores 
-                sistemas de automação do mercado, com integração Alexa e sensores de chuva de última geração.
-              </p>
-              <p>
-                <strong className="text-[#D4AF37]">Materiais Premium:</strong> Trabalhamos apenas com 
-                policarbonato de alta qualidade e estruturas de alumínio certificadas, garantindo durabilidade 
-                superior.
-              </p>
-              <p>
-                <strong className="text-[#D4AF37]">Atendimento Personalizado:</strong> Cada projeto é 
-                único. Nossa equipe de engenheiros desenvolve soluções personalizadas para suas necessidades.
-              </p>
-              <p>
-                <strong className="text-[#D4AF37]">Preço Justo:</strong> Oferecemos o melhor custo-benefício 
-                do mercado, sem comprometer a qualidade. Orçamento transparente e sem surpresas.
-              </p>
-              <p>
-                <strong className="text-[#D4AF37]">Garantia Completa:</strong> Oferecemos garantia estendida 
-                em todos os nossos produtos e serviços, com suporte técnico especializado.
-              </p>
-            </div>
-          </section>
+          <CoberturaAbreEFechaExpandedSections />
 
-          <PriceEstimateNote className="mb-8" />
-          <ServiceAutomationSection />
+          <div className="max-w-7xl mx-auto px-4">
+            <PriceEstimateNote className="mb-8" />
+            <ServiceAutomationSection />
+          </div>
 
-          {/* FAQ */}
           <FAQSchema faqs={faqs} />
-
           <ServiceVejaTambem current="abre-e-fecha" />
 
-          {/* CTA */}
-          <section className="bg-[#D4AF37] text-black rounded-lg p-12 text-center">
-            <h2 className="text-4xl font-bold mb-4">
-              Solicite Seu Orçamento Grátis
-            </h2>
-            <p className="text-xl mb-8 text-gray-900">
-              Entre em contato e descubra o preço da sua cobertura abre e fecha personalizada
-            </p>
+          <section className="bg-[#D4AF37] text-black rounded-lg p-12 text-center mt-12 mx-4">
+            <h2 className="text-4xl font-bold mb-4">Solicite Sua Cobertura Abre e Fecha</h2>
+            <p className="text-xl mb-8 text-gray-900">Visita técnica grátis + projeto em até 48h</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/contato"
-                className="bg-black text-[#D4AF37] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-900 transition"
+                className="inline-block bg-black text-[#D4AF37] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-900 transition"
               >
                 Solicitar Orçamento
               </Link>
-              <Link
-                href="https://wa.me/5511943615079"
+              <a
+                href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-green-700 transition"
+                className="inline-block bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-green-700 transition"
               >
-                WhatsApp
-              </Link>
+                WhatsApp Agora
+              </a>
             </div>
           </section>
         </div>
@@ -383,4 +216,3 @@ export default function CoberturaAbreEFecha() {
     </>
   );
 }
-
