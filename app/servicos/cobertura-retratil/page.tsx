@@ -6,6 +6,8 @@ import Breadcrumb from '@/components/seo/Breadcrumb';
 import StructuredData from '@/components/seo/StructuredData';
 import CoberturaRetratilServicoExpandedSections from './CoberturaRetratilServicoExpandedSections';
 import { buildServiceOffer } from '@/lib/schemas/product-schemas';
+import PriceEstimateNote from '@/components/servicos/PriceEstimateNote';
+import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
 
 export const metadata: Metadata = {
   title: 'Cobertura Retrátil Policarbonato | Telhado Abre e Fecha | Alexa | Cobersystem SP',
@@ -216,6 +218,9 @@ export default function CoberturaRetratilServicoPage() {
           </section>
 
           <CoberturaRetratilServicoExpandedSections />
+
+          <PriceEstimateNote className="mb-8" />
+          <ServiceAutomationSection />
 
           <section className="bg-[#D4AF37] text-black rounded-lg p-12 text-center mt-12">
             <h2 className="text-4xl font-bold mb-4">Solicite Seu Projeto Personalizado</h2>

@@ -6,6 +6,8 @@ import FAQSchema from '@/components/FAQSchema';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 import { buildServiceOffer } from '@/lib/schemas/product-schemas';
+import PriceEstimateNote from '@/components/servicos/PriceEstimateNote';
+import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
 
 const HERO_IMAGE = '/images/projetos/Cobertura Termoacustica.png';
 
@@ -165,6 +167,9 @@ export default function CoberturaTermoacustica() {
               </div>
             </div>
           </section>
+
+          <PriceEstimateNote className="mb-8" />
+          <ServiceAutomationSection />
 
           <FAQSchema faqs={faqs} />
 

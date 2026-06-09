@@ -7,6 +7,7 @@ import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 import CoberturaPlaygroundExpandedSections from './CoberturaPlaygroundExpandedSections';
 import { buildServiceOffer } from '@/lib/schemas/product-schemas';
+import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
 
 const HERO_IMAGE = '/images/projetos/Cobertura Playground.png';
 const WHATSAPP_URL =
@@ -151,6 +152,8 @@ export default function CoberturaPlayground() {
               </p>
             </div>
           </section>
+
+          <ServiceAutomationSection />
 
           <FAQSchema faqs={faqs} />
 

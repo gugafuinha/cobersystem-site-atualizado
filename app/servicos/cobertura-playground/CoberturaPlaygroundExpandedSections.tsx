@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import PriceEstimateNote from '@/components/servicos/PriceEstimateNote';
 
 export default function CoberturaPlaygroundExpandedSections() {
   return (
@@ -59,6 +60,7 @@ export default function CoberturaPlaygroundExpandedSections() {
           </tbody>
         </table>
       </div>
+      <PriceEstimateNote className="mb-6" />
 
       <p className="text-gray-700 leading-relaxed mb-6">
         A escolha depende do perfil de uso: em <strong>cobertura para escolas</strong>, priorizamos

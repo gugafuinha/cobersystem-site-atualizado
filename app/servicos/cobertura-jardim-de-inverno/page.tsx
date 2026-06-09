@@ -4,6 +4,8 @@ import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FAQSchema from '@/components/FAQSchema';
 import { buildServiceOffer } from '@/lib/schemas/product-schemas';
+import PriceEstimateNote from '@/components/servicos/PriceEstimateNote';
+import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 
@@ -248,7 +250,10 @@ export default function CoberturaJardimDeInverno() {
                 </tbody>
               </table>
             </div>
+            <PriceEstimateNote />
           </section>
+
+          <ServiceAutomationSection />
 
           <FAQSchema faqs={faqs} />
 

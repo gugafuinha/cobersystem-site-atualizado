@@ -1,3 +1,5 @@
+import PriceEstimateNote from '@/components/servicos/PriceEstimateNote';
+
 /**
  * Conteúdo SEO expandido — após o hero, antes das demais seções da página.
  */
@@ -110,7 +112,8 @@ export default function CoberturaAreaGourmetExpandedSections() {
             </tbody>
           </table>
         </div>
-        <div className="space-y-4 text-base leading-relaxed md:text-lg">
+        <PriceEstimateNote />
+        <div className="space-y-4 text-base leading-relaxed md:text-lg mt-6">
           <h3 className="text-xl font-semibold text-gray-900">Fatores decisivos</h3>
           <p>
             Avalie se o sol bate <strong>direto o dia todo</strong> sobre a <strong>área

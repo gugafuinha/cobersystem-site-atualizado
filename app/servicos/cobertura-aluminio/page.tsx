@@ -6,6 +6,8 @@ import FAQSchema from '@/components/FAQSchema';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 import { buildServiceOffer } from '@/lib/schemas/product-schemas';
+import PriceEstimateNote from '@/components/servicos/PriceEstimateNote';
+import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
 
 const HERO_IMAGE = '/images/produtos/cobertura-retratil/aluminio/IMG_6324.jpg';
 const WHATSAPP_URL =
@@ -46,7 +48,7 @@ const productSchema = {
   brand: { '@type': 'Brand', name: 'Cobersystem' },
   offers: buildServiceOffer(
     'https://www.coberturapolicarbonato.com.br/servicos/cobertura-aluminio',
-    '200',
+    '800',
   ),
 };
 
@@ -172,6 +174,9 @@ export default function CoberturaAluminio() {
               </div>
             </div>
           </section>
+
+          <PriceEstimateNote className="mb-8" />
+          <ServiceAutomationSection />
 
           <FAQSchema faqs={faqs} />
 

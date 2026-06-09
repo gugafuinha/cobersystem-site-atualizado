@@ -5,6 +5,8 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import FAQSchema from '@/components/FAQSchema';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { buildServiceOffer } from '@/lib/schemas/product-schemas';
+import PriceEstimateNote from '@/components/servicos/PriceEstimateNote';
+import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 
 const HERO_IMAGE = '/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg';
@@ -185,6 +187,9 @@ export default function CoberturaRetratilAutomatizada() {
               <OptimizedImage src="/images/blog/churrasqueira.jpg" alt="Cobertura automatizada churrasqueira" width={400} height={300} className="rounded-lg" />
             </div>
           </section>
+
+          <PriceEstimateNote className="mb-8" />
+          <ServiceAutomationSection />
 
           <FAQSchema faqs={faqs} />
 

@@ -4,6 +4,8 @@ import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import StructuredData from '@/components/seo/StructuredData';
 import { buildServiceOffer } from '@/lib/schemas/product-schemas';
+import PriceEstimateNote from '@/components/servicos/PriceEstimateNote';
+import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
 
 const HERO_IMAGE = '/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg';
 
@@ -411,11 +413,13 @@ export default function CoberturaVarandaApartamentoPage() {
                 </tbody>
               </table>
             </div>
-            <p className="text-xs text-gray-500 mt-4 text-center">
-              ⚠️ Valores estimados. O preço final depende das características específicas da varanda e do condomínio. Solicite uma visita técnica gratuita.
-            </p>
+            <PriceEstimateNote className="text-center" />
           </div>
         </section>
+
+        <div className="max-w-7xl mx-auto px-4">
+          <ServiceAutomationSection />
+        </div>
 
         {/* FAQ */}
         <section className="max-w-4xl mx-auto px-4 py-16">

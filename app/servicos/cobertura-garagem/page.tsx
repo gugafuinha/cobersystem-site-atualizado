@@ -7,6 +7,7 @@ import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 import CoberturaGaragemExpandedSections from './CoberturaGaragemExpandedSections';
 import { buildServiceOffer } from '@/lib/schemas/product-schemas';
+import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
 
 const HERO_IMAGE = '/images/projetos/Cobertura Garagem.png';
 const HERO_IMAGE_OG =
@@ -49,7 +50,7 @@ const productSchema = {
   brand: { '@type': 'Brand', name: 'Cobersystem' },
   offers: buildServiceOffer(
     'https://www.coberturapolicarbonato.com.br/servicos/cobertura-garagem',
-    '150',
+    '800',
   ),
 };
 
@@ -161,6 +162,8 @@ export default function CoberturaGaragem() {
               </div>
             </div>
           </section>
+
+          <ServiceAutomationSection />
 
           <FAQSchema faqs={faqs} />
 

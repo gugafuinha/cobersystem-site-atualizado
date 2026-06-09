@@ -6,6 +6,8 @@ import FAQSchema from '@/components/FAQSchema';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 import { buildServiceOffer } from '@/lib/schemas/product-schemas';
+import PriceEstimateNote from '@/components/servicos/PriceEstimateNote';
+import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
 
 const HERO_IMAGE = '/images/produtos/cobertura-policarbonato/compacto/IMG_1762.jpg';
 const WHATSAPP_URL =
@@ -181,6 +183,9 @@ export default function CoberturaFixaCompacto() {
               <OptimizedImage src="/images/projetos/abre-fecha-alveolar-01.jpg" alt="Estrutura alumínio policarbonato compacto" width={400} height={300} className="rounded-lg" />
             </div>
           </section>
+
+          <PriceEstimateNote className="mb-8" />
+          <ServiceAutomationSection />
 
           <FAQSchema faqs={faqs} />
 

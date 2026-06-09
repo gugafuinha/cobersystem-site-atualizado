@@ -495,6 +495,27 @@ Google Search Console reportava ausência de `price`, `shippingDetails` e `hasMe
 
 ---
 
+## 2026-06-09 — Preços schema R$ 800 + nota estimada + automação em 17 serviços
+
+### Schema JSON-LD — preço mínimo corrigido para R$ 800
+- `/servicos/cobertura-garagem` (era R$ 150)
+- `/servicos/cobertura-aluminio` (era R$ 200)
+- `/servicos/cobertura-area-gourmet` (era R$ 250)
+- `/servicos/cobertura-piscina` (era R$ 300)
+
+### Componentes reutilizáveis
+- `components/servicos/PriceEstimateNote.tsx` — nota de valores estimados
+- `components/servicos/ServiceAutomationSection.tsx` — Controle Remoto R$ 2.500 / Alexa R$ 3.000 / Sensor R$ 4.000
+
+### Aplicado nas 17 páginas de serviço
+- Nota abaixo de tabelas de preço (ou seção equivalente)
+- Seção Mecanismos de Automação com "Valor por comando" em vermelho
+
+### Deploy
+- Push para `origin/main` (Vercel)
+
+---
+
 ### Arquivo editado
 - `app/blog/[slug]/page.tsx` — adicionados:
   1. `import { Fragment } from 'react'`

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import OptimizedImage from '@/components/OptimizedImage';
+import PriceEstimateNote from '@/components/servicos/PriceEstimateNote';
 
 export default function CoberturaCorredorLateralExpandedSections() {
   return (
@@ -117,9 +118,7 @@ export default function CoberturaCorredorLateralExpandedSections() {
             </tbody>
           </table>
         </div>
-        <p className="text-xs text-gray-500 mt-4">
-          Valores estimados para corredor com 1 m de largura. Solicite visita técnica gratuita para orçamento fechado.
-        </p>
+        <PriceEstimateNote />
       </section>
 
       <section className="mb-12 bg-white rounded-lg p-8 shadow-sm">

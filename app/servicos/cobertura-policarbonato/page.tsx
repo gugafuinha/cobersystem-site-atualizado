@@ -4,6 +4,8 @@ import Breadcrumb from '@/components/seo/Breadcrumb';
 import StructuredData from '@/components/seo/StructuredData';
 import CoberturaPolicarbonatoServicoExpandedSections from './CoberturaPolicarbonatoServicoExpandedSections';
 import { buildServiceOffer } from '@/lib/schemas/product-schemas';
+import PriceEstimateNote from '@/components/servicos/PriceEstimateNote';
+import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
 
 const HERO_IMAGE = '/images/projetos/Cobertura em Policarbonato.png';
 
@@ -177,6 +179,11 @@ export default function CoberturaPolicarbonatoServicoPage() {
         </section>
 
         <CoberturaPolicarbonatoServicoExpandedSections />
+
+        <div className="container mx-auto px-4">
+          <PriceEstimateNote className="mb-8" />
+          <ServiceAutomationSection />
+        </div>
 
         <section className="bg-blue-600 text-white py-16">
           <div className="max-w-4xl mx-auto text-center px-4">

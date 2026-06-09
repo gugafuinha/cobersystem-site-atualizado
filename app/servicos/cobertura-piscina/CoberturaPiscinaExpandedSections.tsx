@@ -1,5 +1,7 @@
 import type React from 'react';
 
+import PriceEstimateNote from '@/components/servicos/PriceEstimateNote';
+
 export default function CoberturaPiscinaExpandedSections() {
   return (
     <section className="mb-12 bg-white rounded-lg p-8 shadow-sm">
@@ -115,6 +117,7 @@ export default function CoberturaPiscinaExpandedSections() {
           </tbody>
         </table>
       </div>
+      <PriceEstimateNote className="mb-6" />
 
       <p className="text-gray-700 leading-relaxed mb-6">
         A escolha do tipo de cobertura depende de três pontos simples: (1) como

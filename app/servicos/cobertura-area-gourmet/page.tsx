@@ -7,6 +7,7 @@ import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 import StructuredData from '@/components/seo/StructuredData';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import { buildServiceOffer, productSchemas } from '@/lib/schemas/product-schemas';
+import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
 import { faqSchemas } from '@/lib/schemas/faq-schemas';
 import { generatePageMetadata } from '@/lib/seo/page-metadata';
 import CoberturaAreaGourmetExpandedSections from './CoberturaAreaGourmetExpandedSections';
@@ -22,7 +23,7 @@ const productSchema = {
   brand: { '@type': 'Brand', name: 'Cobersystem' },
   offers: buildServiceOffer(
     'https://www.coberturapolicarbonato.com.br/servicos/cobertura-area-gourmet',
-    '250',
+    '800',
   ),
 };
 
@@ -168,6 +169,8 @@ export default function CoberturaAreaGourmet() {
               </div>
             </div>
           </section>
+
+          <ServiceAutomationSection />
 
           <FAQSchema faqs={faqs} />
 

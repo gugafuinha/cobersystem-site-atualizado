@@ -7,6 +7,7 @@ import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 import CoberturaCorredorLateralExpandedSections from './CoberturaCorredorLateralExpandedSections';
 import { buildServiceOffer } from '@/lib/schemas/product-schemas';
+import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
 
 const HERO_IMAGE = '/images/blog/cobertura-abre-fecha.jpg';
 const WHATSAPP_URL =
@@ -137,6 +138,8 @@ export default function CoberturaCorredorLateral() {
           </section>
 
           <CoberturaCorredorLateralExpandedSections />
+
+          <ServiceAutomationSection />
 
           <FAQSchema faqs={faqs} />
 
