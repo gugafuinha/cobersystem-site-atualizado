@@ -6,7 +6,7 @@ import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 import StructuredData from '@/components/seo/StructuredData';
 import Breadcrumb from '@/components/seo/Breadcrumb';
-import { productSchemas } from '@/lib/schemas/product-schemas';
+import { buildServiceOffer, productSchemas } from '@/lib/schemas/product-schemas';
 import { generatePageMetadata } from '@/lib/seo/page-metadata';
 import CoberturaPiscinaExpandedSections from './CoberturaPiscinaExpandedSections';
 
@@ -21,12 +21,10 @@ const productSchema = {
     'https://www.coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/aluminio/IMG_6306.jpg',
   ],
   brand: { '@type': 'Brand', name: 'Cobersystem' },
-  offers: {
-    '@type': 'Offer',
-    priceCurrency: 'BRL',
-    availability: 'https://schema.org/InStock',
-    url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-piscina',
-  },
+  offers: buildServiceOffer(
+    'https://www.coberturapolicarbonato.com.br/servicos/cobertura-piscina',
+    '300',
+  ),
 };
 
 const faqs = [

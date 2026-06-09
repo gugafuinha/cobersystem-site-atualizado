@@ -3,6 +3,7 @@ import Link from 'next/link';
 import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FAQSchema from '@/components/FAQSchema';
+import { buildServiceOffer } from '@/lib/schemas/product-schemas';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 
@@ -31,33 +32,10 @@ const productSchema = {
   description:
     'Cobertura em policarbonato compacto transparente para jardim de inverno. Preserva luz natural para plantas, com proteção contra chuva, vento e variações de temperatura.',
   brand: { '@type': 'Brand', name: 'Cobersystem' },
-  offers: {
-    '@type': 'Offer',
-    priceCurrency: 'BRL',
-    price: '900',
-    availability: 'https://schema.org/InStock',
-    url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-jardim-de-inverno',
-    seller: { '@type': 'Organization', name: 'Cobersystem' },
-    hasMerchantReturnPolicy: {
-      '@type': 'MerchantReturnPolicy',
-      applicableCountry: 'BR',
-      returnPolicyCategory: 'https://schema.org/MerchantReturnNotPermitted',
-    },
-    shippingDetails: {
-      '@type': 'OfferShippingDetails',
-      shippingRate: { '@type': 'MonetaryAmount', value: '0', currency: 'BRL' },
-      shippingDestination: {
-        '@type': 'DefinedRegion',
-        addressCountry: 'BR',
-        addressRegion: 'SP',
-      },
-      deliveryTime: {
-        '@type': 'ShippingDeliveryTime',
-        handlingTime: { '@type': 'QuantitativeValue', minValue: 7, maxValue: 21, unitCode: 'DAY' },
-        transitTime: { '@type': 'QuantitativeValue', minValue: 0, maxValue: 0, unitCode: 'DAY' },
-      },
-    },
-  },
+  offers: buildServiceOffer(
+    'https://www.coberturapolicarbonato.com.br/servicos/cobertura-jardim-de-inverno',
+    '900',
+  ),
 };
 
 const faqs = [

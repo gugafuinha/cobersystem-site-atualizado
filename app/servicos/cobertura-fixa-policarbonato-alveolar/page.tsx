@@ -5,6 +5,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import FAQSchema from '@/components/FAQSchema';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
+import { buildServiceOffer } from '@/lib/schemas/product-schemas';
 
 const HERO_IMAGE = '/images/projetos/Cobertura Fixa Policarbonato Alveolar.png';
 
@@ -41,12 +42,10 @@ const productSchema = {
   description: 'Cobertura fixa em policarbonato alveolar com excelente isolamento térmico e acústico.',
   image: ['https://www.coberturapolicarbonato.com.br/images/projetos/Cobertura%20Fixa%20Policarbonato%20Alveolar.png'],
   brand: { '@type': 'Brand', name: 'Cobersystem' },
-  offers: {
-    '@type': 'Offer',
-    priceCurrency: 'BRL',
-    availability: 'https://schema.org/InStock',
-    url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-fixa-policarbonato-alveolar',
-  },
+  offers: buildServiceOffer(
+    'https://www.coberturapolicarbonato.com.br/servicos/cobertura-fixa-policarbonato-alveolar',
+    '800',
+  ),
 };
 
 const faqs = [

@@ -1,14 +1,14 @@
 const BASE_URL = 'https://www.coberturapolicarbonato.com.br';
 
 // Blocos reutilizáveis exigidos pelo Google Merchant Listings
-const merchantReturnPolicy = {
+export const merchantReturnPolicy = {
   '@type': 'MerchantReturnPolicy',
   applicableCountry: 'BR',
   returnPolicyCategory: 'https://schema.org/MerchantReturnNotPermitted',
   merchantReturnDays: 0,
 };
 
-const shippingDetails = {
+export const shippingDetails = {
   '@type': 'OfferShippingDetails',
   shippingRate: {
     '@type': 'MonetaryAmount',
@@ -36,6 +36,20 @@ const shippingDetails = {
     },
   },
 };
+
+/** Offer padrão para páginas de serviço — price, shippingDetails e hasMerchantReturnPolicy */
+export function buildServiceOffer(url: string, price: string) {
+  return {
+    '@type': 'Offer',
+    priceCurrency: 'BRL',
+    price,
+    priceValidUntil: '2026-12-31',
+    availability: 'https://schema.org/InStock',
+    url,
+    hasMerchantReturnPolicy: merchantReturnPolicy,
+    shippingDetails,
+  };
+}
 
 export const productSchemas = {
   coberturaRetratilCompacto: {

@@ -5,6 +5,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import FAQSchema from '@/components/FAQSchema';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
+import { buildServiceOffer } from '@/lib/schemas/product-schemas';
 
 const HERO_IMAGE = '/images/blog/cobertura-retratil-area-gourmet.jpg';
 const WHATSAPP_URL =
@@ -43,12 +44,10 @@ const productSchema = {
   description: 'Projetos personalizados de cobertura com consultoria de engenharia e soluções sob medida.',
   image: ['https://www.coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg'],
   brand: { '@type': 'Brand', name: 'Cobersystem' },
-  offers: {
-    '@type': 'Offer',
-    priceCurrency: 'BRL',
-    availability: 'https://schema.org/InStock',
-    url: 'https://www.coberturapolicarbonato.com.br/servicos/projetos-personalizados',
-  },
+  offers: buildServiceOffer(
+    'https://www.coberturapolicarbonato.com.br/servicos/projetos-personalizados',
+    '800',
+  ),
 };
 
 const faqs = [

@@ -6,6 +6,7 @@ import FAQSchema from '@/components/FAQSchema';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 import CoberturaCorredorLateralExpandedSections from './CoberturaCorredorLateralExpandedSections';
+import { buildServiceOffer } from '@/lib/schemas/product-schemas';
 
 const HERO_IMAGE = '/images/blog/cobertura-abre-fecha.jpg';
 const WHATSAPP_URL =
@@ -44,12 +45,10 @@ const productSchema = {
   description: 'Cobertura em policarbonato para corredor lateral, protegendo passagem lateral da casa.',
   image: ['https://www.coberturapolicarbonato.com.br/images/blog/cobertura-abre-fecha.jpg'],
   brand: { '@type': 'Brand', name: 'Cobersystem' },
-  offers: {
-    '@type': 'Offer',
-    priceCurrency: 'BRL',
-    availability: 'https://schema.org/InStock',
-    url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-corredor-lateral',
-  },
+  offers: buildServiceOffer(
+    'https://www.coberturapolicarbonato.com.br/servicos/cobertura-corredor-lateral',
+    '800',
+  ),
 };
 
 const faqs = [

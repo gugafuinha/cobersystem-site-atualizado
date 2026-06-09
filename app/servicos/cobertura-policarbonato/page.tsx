@@ -3,6 +3,7 @@ import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import StructuredData from '@/components/seo/StructuredData';
 import CoberturaPolicarbonatoServicoExpandedSections from './CoberturaPolicarbonatoServicoExpandedSections';
+import { buildServiceOffer } from '@/lib/schemas/product-schemas';
 
 const HERO_IMAGE = '/images/projetos/Cobertura em Policarbonato.png';
 
@@ -72,12 +73,10 @@ const serviceSchema = {
     '@type': 'City',
     name: 'São Paulo',
   },
-  offers: {
-    '@type': 'Offer',
-    priceRange: 'R$ 450 - R$ 900 por m²',
-    availability: 'https://schema.org/InStock',
-    url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-policarbonato',
-  },
+  offers: buildServiceOffer(
+    'https://www.coberturapolicarbonato.com.br/servicos/cobertura-policarbonato',
+    '450',
+  ),
 };
 
 const faqSchema = {

@@ -6,6 +6,7 @@ import FAQSchema from '@/components/FAQSchema';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 import CoberturaPlaygroundExpandedSections from './CoberturaPlaygroundExpandedSections';
+import { buildServiceOffer } from '@/lib/schemas/product-schemas';
 
 const HERO_IMAGE = '/images/projetos/Cobertura Playground.png';
 const WHATSAPP_URL =
@@ -48,12 +49,10 @@ const productSchema = {
     'Cobertura para playground em policarbonato com sistema abre e fecha ou retrátil automatizada. Proteção UV, sensor de chuva. Ideal para escolas e condomínios.',
   image: ['https://www.coberturapolicarbonato.com.br/images/projetos/Cobertura%20Playground.png'],
   brand: { '@type': 'Brand', name: 'Cobersystem' },
-  offers: {
-    '@type': 'Offer',
-    priceCurrency: 'BRL',
-    availability: 'https://schema.org/InStock',
-    url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-playground',
-  },
+  offers: buildServiceOffer(
+    'https://www.coberturapolicarbonato.com.br/servicos/cobertura-playground',
+    '350',
+  ),
 };
 
 const faqs = [

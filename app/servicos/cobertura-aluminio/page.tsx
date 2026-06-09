@@ -5,6 +5,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import FAQSchema from '@/components/FAQSchema';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
+import { buildServiceOffer } from '@/lib/schemas/product-schemas';
 
 const HERO_IMAGE = '/images/produtos/cobertura-retratil/aluminio/IMG_6324.jpg';
 const WHATSAPP_URL =
@@ -43,12 +44,10 @@ const productSchema = {
   description: 'Cobertura em alumínio com telhas e estrutura de alta qualidade, pintura eletrostática personalizada.',
   image: ['https://www.coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/aluminio/IMG_6324.jpg'],
   brand: { '@type': 'Brand', name: 'Cobersystem' },
-  offers: {
-    '@type': 'Offer',
-    priceCurrency: 'BRL',
-    availability: 'https://schema.org/InStock',
-    url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-aluminio',
-  },
+  offers: buildServiceOffer(
+    'https://www.coberturapolicarbonato.com.br/servicos/cobertura-aluminio',
+    '200',
+  ),
 };
 
 const faqs = [

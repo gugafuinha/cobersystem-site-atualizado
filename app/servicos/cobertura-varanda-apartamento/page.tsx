@@ -3,6 +3,7 @@ import Link from 'next/link';
 import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import StructuredData from '@/components/seo/StructuredData';
+import { buildServiceOffer } from '@/lib/schemas/product-schemas';
 
 const HERO_IMAGE = '/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg';
 
@@ -74,12 +75,10 @@ const serviceSchema = {
     '@type': 'City',
     name: 'São Paulo',
   },
-  offers: {
-    '@type': 'Offer',
-    priceRange: 'R$ 800 - R$ 3.000 por m²',
-    availability: 'https://schema.org/InStock',
-    url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-varanda-apartamento',
-  },
+  offers: buildServiceOffer(
+    'https://www.coberturapolicarbonato.com.br/servicos/cobertura-varanda-apartamento',
+    '800',
+  ),
 };
 
 const faqSchema = {

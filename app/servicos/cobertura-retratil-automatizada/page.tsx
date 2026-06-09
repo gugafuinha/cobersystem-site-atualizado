@@ -4,6 +4,7 @@ import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FAQSchema from '@/components/FAQSchema';
 import SchemaMarkup from '@/components/SchemaMarkup';
+import { buildServiceOffer } from '@/lib/schemas/product-schemas';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 
 const HERO_IMAGE = '/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg';
@@ -41,12 +42,10 @@ const productSchema = {
   description: 'Cobertura retrátil com automação inteligente via Alexa, controle remoto e sensor de chuva automático.',
   image: ['https://www.coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg'],
   brand: { '@type': 'Brand', name: 'Cobersystem' },
-  offers: {
-    '@type': 'Offer',
-    priceCurrency: 'BRL',
-    availability: 'https://schema.org/InStock',
-    url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-retratil-automatizada',
-  },
+  offers: buildServiceOffer(
+    'https://www.coberturapolicarbonato.com.br/servicos/cobertura-retratil-automatizada',
+    '800',
+  ),
 };
 
 const faqs = [

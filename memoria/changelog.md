@@ -481,6 +481,20 @@ Inserido automaticamente após a 3ª seção (herda lógica do P3.1 já implemen
 
 ---
 
+## 2026-06-09 — Correção schema Product/Offer em páginas de serviço (GSC)
+
+### Problema
+Google Search Console reportava ausência de `price`, `shippingDetails` e `hasMerchantReturnPolicy` nos schemas de produto das páginas de serviço.
+
+### Solução
+- `lib/schemas/product-schemas.ts` — exportados `merchantReturnPolicy`, `shippingDetails` e helper `buildServiceOffer(url, price)`
+- 17 páginas de serviço atualizadas com `price`, `priceValidUntil`, `hasMerchantReturnPolicy` e `shippingDetails` padronizados
+
+### Deploy
+- Push para `origin/main` (Vercel)
+
+---
+
 ### Arquivo editado
 - `app/blog/[slug]/page.tsx` — adicionados:
   1. `import { Fragment } from 'react'`

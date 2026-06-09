@@ -6,7 +6,7 @@ import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 import StructuredData from '@/components/seo/StructuredData';
 import Breadcrumb from '@/components/seo/Breadcrumb';
-import { productSchemas } from '@/lib/schemas/product-schemas';
+import { buildServiceOffer, productSchemas } from '@/lib/schemas/product-schemas';
 import { faqSchemas } from '@/lib/schemas/faq-schemas';
 import { generatePageMetadata } from '@/lib/seo/page-metadata';
 import CoberturaAreaGourmetExpandedSections from './CoberturaAreaGourmetExpandedSections';
@@ -20,12 +20,10 @@ const productSchema = {
   description: 'Cobertura retrátil em policarbonato para área gourmet com automação via Alexa e sensor de chuva.',
   image: ['https://www.coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg'],
   brand: { '@type': 'Brand', name: 'Cobersystem' },
-  offers: {
-    '@type': 'Offer',
-    priceCurrency: 'BRL',
-    availability: 'https://schema.org/InStock',
-    url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-area-gourmet',
-  },
+  offers: buildServiceOffer(
+    'https://www.coberturapolicarbonato.com.br/servicos/cobertura-area-gourmet',
+    '250',
+  ),
 };
 
 const faqs = [

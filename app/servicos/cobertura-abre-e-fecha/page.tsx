@@ -5,6 +5,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import FAQSchema from '@/components/FAQSchema';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
+import { buildServiceOffer } from '@/lib/schemas/product-schemas';
 
 const HERO_IMAGE = '/images/projetos/Cobertura Abre e Fecha.png';
 const HERO_IMAGE_OG =
@@ -50,30 +51,10 @@ const productSchema = {
     '@type': 'Brand',
     name: 'Cobersystem',
   },
-  offers: {
-    '@type': 'Offer',
-    priceCurrency: 'BRL',
-    price: '800',
-    priceValidUntil: '2026-12-31',
-    availability: 'https://schema.org/InStock',
-    url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-abre-e-fecha',
-    hasMerchantReturnPolicy: {
-      '@type': 'MerchantReturnPolicy',
-      applicableCountry: 'BR',
-      returnPolicyCategory: 'https://schema.org/MerchantReturnNotPermitted',
-      merchantReturnDays: 0,
-    },
-    shippingDetails: {
-      '@type': 'OfferShippingDetails',
-      shippingRate: { '@type': 'MonetaryAmount', value: '0', currency: 'BRL' },
-      shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'BR', addressRegion: 'SP' },
-      deliveryTime: {
-        '@type': 'ShippingDeliveryTime',
-        handlingTime: { '@type': 'QuantitativeValue', minValue: 7, maxValue: 30, unitCode: 'DAY' },
-        transitTime: { '@type': 'QuantitativeValue', minValue: 0, maxValue: 0, unitCode: 'DAY' },
-      },
-    },
-  },
+  offers: buildServiceOffer(
+    'https://www.coberturapolicarbonato.com.br/servicos/cobertura-abre-e-fecha',
+    '800',
+  ),
 };
 
 const faqs = [

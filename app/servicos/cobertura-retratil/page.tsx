@@ -5,6 +5,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import StructuredData from '@/components/seo/StructuredData';
 import CoberturaRetratilServicoExpandedSections from './CoberturaRetratilServicoExpandedSections';
+import { buildServiceOffer } from '@/lib/schemas/product-schemas';
 
 export const metadata: Metadata = {
   title: 'Cobertura Retrátil Policarbonato | Telhado Abre e Fecha | Alexa | Cobersystem SP',
@@ -75,12 +76,10 @@ const serviceSchema = {
     '@type': 'City',
     name: 'São Paulo',
   },
-  offers: {
-    '@type': 'Offer',
-    priceRange: 'R$ 800 - R$ 1.500 por m²',
-    availability: 'https://schema.org/InStock',
-    url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-retratil',
-  },
+  offers: buildServiceOffer(
+    'https://www.coberturapolicarbonato.com.br/servicos/cobertura-retratil',
+    '800',
+  ),
 };
 
 const faqSchema = {

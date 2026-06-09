@@ -5,6 +5,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import FAQSchema from '@/components/FAQSchema';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
+import { buildServiceOffer } from '@/lib/schemas/product-schemas';
 
 const HERO_IMAGE = '/images/produtos/cobertura-policarbonato/compacto/IMG_1762.jpg';
 const WHATSAPP_URL =
@@ -43,12 +44,10 @@ const productSchema = {
   description: 'Cobertura fixa em policarbonato compacto 2mm com transparência total ou cores personalizadas.',
   image: ['https://www.coberturapolicarbonato.com.br/images/produtos/cobertura-policarbonato/compacto/IMG_1762.jpg'],
   brand: { '@type': 'Brand', name: 'Cobersystem' },
-  offers: {
-    '@type': 'Offer',
-    priceCurrency: 'BRL',
-    availability: 'https://schema.org/InStock',
-    url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-fixa-policarbonato-compacto',
-  },
+  offers: buildServiceOffer(
+    'https://www.coberturapolicarbonato.com.br/servicos/cobertura-fixa-policarbonato-compacto',
+    '1200',
+  ),
 };
 
 const faqs = [
