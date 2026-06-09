@@ -5,6 +5,8 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import FAQSchema from '@/components/FAQSchema';
 import SchemaMarkup from '@/components/SchemaMarkup';
 
+const HERO_IMAGE = '/images/produtos/cobertura-retratil/aluminio/IMG_3609.jpg';
+
 export const metadata: Metadata = {
   title: "Cobertura para Garagem | Policarbonato | Cobersystem",
   description: "Cobertura para garagem em policarbonato. Proteção para veículos contra chuva, sol e granizo. Cobertura fixa ou retrátil. Preço e orçamento.",
@@ -18,16 +20,16 @@ export const metadata: Metadata = {
     url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-garagem',
     images: [
       {
-        url: 'https://www.coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg',
+        url: 'https://www.coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/aluminio/IMG_3609.jpg',
         width: 1200,
-        height: 800,
+        height: 900,
         alt: 'Cobertura para Garagem',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['https://www.coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg'],
+    images: ['https://www.coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/aluminio/IMG_3609.jpg'],
   },
 };
 
@@ -36,7 +38,7 @@ const productSchema = {
   '@type': 'Product',
   name: 'Cobertura para Garagem',
   description: 'Cobertura em policarbonato para garagem, protegendo veículos contra chuva, sol e granizo.',
-  image: ['https://www.coberturapolicarbonato.com.br/images/blog/cobertura-retratil-area-gourmet.jpg'],
+  image: ['https://www.coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/aluminio/IMG_3609.jpg'],
   brand: { '@type': 'Brand', name: 'Cobersystem' },
   offers: {
     '@type': 'Offer',
@@ -73,14 +75,55 @@ export default function CoberturaGaragem() {
             { label: 'Cobertura para Garagem', href: '/servicos/cobertura-garagem' },
           ]} />
 
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Cobertura para Garagem em Policarbonato
-          </h1>
-          <p className="text-xl text-gray-700 mb-8 leading-relaxed">
-            Proteção completa para sua garagem e veículos. Cobertura em policarbonato fixa ou retrátil. 
-            Protege contra chuva, sol, granizo e intempéries. Estrutura de alumínio resistente. 
-            Ideal para quem quer proteger seus veículos sem perder espaço.
-          </p>
+          <section className="mb-12">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:items-start">
+              <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl bg-gray-100">
+                <OptimizedImage
+                  src={HERO_IMAGE}
+                  alt="Cobertura para garagem em policarbonato com proteção contra chuva e sol — Cobersystem SP"
+                  title="Cobertura para Garagem"
+                  width={1200}
+                  height={900}
+                  priority
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div>
+                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                  Cobertura para Garagem em Policarbonato
+                </h1>
+                <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                  Proteção completa para sua garagem e veículos. Cobertura em policarbonato fixa ou retrátil.
+                  Protege contra chuva, sol, granizo e intempéries.
+                </p>
+                <h2 className="text-sm font-semibold uppercase tracking-wide text-gray-500 mb-3">
+                  Especificações e benefícios
+                </h2>
+                <ul className="space-y-2 text-gray-700">
+                  <li className="flex gap-2">
+                    <span className="text-blue-600">✓</span>
+                    <span>Proteção total contra chuva, sol e granizo</span>
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-blue-600">✓</span>
+                    <span>Policarbonato resistente a impactos</span>
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-blue-600">✓</span>
+                    <span>Opções fixa ou retrátil conforme necessidade</span>
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-blue-600">✓</span>
+                    <span>Estrutura de alumínio resistente e durável</span>
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-blue-600">✓</span>
+                    <span>Iluminação natural mantendo garagem clara</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
 
           <section className="mb-12 bg-white rounded-lg p-8 shadow-sm">
             <h2 className="text-3xl font-bold text-gray-800 mb-6">Por que Cobertura para Garagem?</h2>

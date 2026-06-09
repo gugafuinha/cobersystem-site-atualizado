@@ -53,7 +53,7 @@ const servicos = [
     slug: 'cobertura-piscina',
     title: 'Cobertura para Piscina',
     description: 'Proteção para piscina com isolamento térmico e redução de manutenção.',
-    image: '/images/blog/cobertura-retratil-area-gourmet.jpg',
+    image: '/images/projetos/Cobertura em Policarbonato.png',
   },
   {
     slug: 'cobertura-garagem',
@@ -71,19 +71,19 @@ const servicos = [
     slug: 'cobertura-fixa-policarbonato-compacto',
     title: 'Cobertura Fixa Policarbonato Compacto',
     description: 'Transparência total com policarbonato compacto 2mm.',
-    image: '/images/blog/cobertura-retratil-area-gourmet.jpg',
+    image: '/images/produtos/cobertura-policarbonato/compacto/IMG_1762.jpg',
   },
   {
     slug: 'cobertura-termoacustica',
     title: 'Cobertura Termoacústica',
     description: 'Isolamento térmico e acústico para máximo conforto.',
-    image: '/images/projetos/fixa-02.jpg',
+    image: '/images/projetos/Cobertura Termoacustica.png',
   },
   {
     slug: 'cobertura-aluminio',
     title: 'Cobertura de Alumínio',
     description: 'Estrutura e telhas em alumínio com pintura eletrostática personalizada.',
-    image: '/images/projetos/abre-fecha-alveolar-01.jpg',
+    image: '/images/projetos/Cobertura Alumínio Espaço Kids.png',
   },
   {
     slug: 'cobertura-corredor-lateral',
@@ -92,10 +92,22 @@ const servicos = [
     image: '/images/blog/cobertura-abre-fecha.jpg',
   },
   {
+    slug: 'cobertura-jardim-de-inverno',
+    title: 'Cobertura para Jardim de Inverno',
+    description: 'Policarbonato transparente que preserva luz natural para plantas e protege contra chuva.',
+    image: '/images/projetos/jardim-de-inverno-02.png',
+  },
+  {
+    slug: 'cobertura-pergolado',
+    title: 'Cobertura para Pergolado',
+    description: 'Policarbonato ou alumínio, retrátil ou fixo, com automação opcional.',
+    image: '/images/projetos/pergolado-01.png',
+  },
+  {
     slug: 'calhas-rufos-perfil-u',
-    title: 'Calhas, Rufos e Perfil U',
-    description: 'Acessórios essenciais para coberturas em alumínio.',
-    image: '/images/projetos/abre-fecha-alveolar-01.jpg',
+    title: 'Cobertura para Playground',
+    description: 'Cobertura abre e fecha e retrátil para escolas, condomínios e áreas de lazer.',
+    image: '/images/projetos/Cobertura Playground.png',
   },
   {
     slug: 'projetos-personalizados',

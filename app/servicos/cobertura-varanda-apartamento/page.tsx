@@ -1,7 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import StructuredData from '@/components/seo/StructuredData';
+
+const HERO_IMAGE = '/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg';
 
 export const metadata: Metadata = {
   title: 'Cobertura para Varanda de Apartamento em SP | Cobersystem',
@@ -25,9 +28,9 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://www.coberturapolicarbonato.com.br/images/blog/cobertura-abre-fecha.jpg',
+        url: 'https://www.coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg',
         width: 1200,
-        height: 800,
+        height: 900,
         alt: 'Cobertura retrátil para varanda de apartamento Cobersystem',
       },
     ],
@@ -42,7 +45,7 @@ export const metadata: Metadata = {
     description:
       'Cobertura retrátil ou policarbonato para varanda de apartamento. Projeto personalizado e suporte na aprovação do condomínio.',
     images: [
-      'https://www.coberturapolicarbonato.com.br/images/blog/cobertura-abre-fecha.jpg',
+      'https://www.coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg',
     ],
   },
 };
@@ -138,34 +141,45 @@ export default function CoberturaVarandaApartamentoPage() {
 
       <main className="min-h-screen bg-gray-50">
         {/* Hero */}
-        <section className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-20">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="mb-4">
-              <span className="inline-block bg-white/20 text-white text-sm font-medium px-3 py-1 rounded-full">
+        <section className="max-w-7xl mx-auto px-4 pt-8 pb-4">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:items-start">
+            <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl bg-gray-100">
+              <OptimizedImage
+                src={HERO_IMAGE}
+                alt="Cobertura abre e fecha para varanda de apartamento em policarbonato — Cobersystem SP"
+                title="Cobertura para Varanda de Apartamento"
+                width={1200}
+                height={900}
+                priority
+                className="h-full w-full object-cover"
+              />
+            </div>
+            <div>
+              <span className="inline-block bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full mb-4">
                 Serviço especializado em apartamentos
               </span>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 max-w-3xl">
-              Cobertura para Varanda de Apartamento
-            </h1>
-            <p className="text-xl md:text-2xl mb-10 text-blue-100 max-w-2xl">
-              Projeto personalizado + suporte completo na aprovação do condomínio
-            </p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {[
-                { valor: '48–72h', label: 'Prazo instalação' },
-                { valor: '2 anos', label: 'Garantia total' },
-                { valor: 'Grande SP', label: 'Área atendida' },
-                { valor: 'Condomínio OK', label: 'Suporte completo' },
-              ].map(({ valor, label }) => (
-                <div
-                  key={label}
-                  className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center"
-                >
-                  <div className="text-2xl md:text-3xl font-bold">{valor}</div>
-                  <div className="text-sm text-blue-200 mt-1">{label}</div>
-                </div>
-              ))}
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                Cobertura para Varanda de Apartamento
+              </h1>
+              <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                Projeto personalizado + suporte completo na aprovação do condomínio
+              </p>
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { valor: '48–72h', label: 'Prazo instalação' },
+                  { valor: '2 anos', label: 'Garantia total' },
+                  { valor: 'Grande SP', label: 'Área atendida' },
+                  { valor: 'Condomínio OK', label: 'Suporte completo' },
+                ].map(({ valor, label }) => (
+                  <div
+                    key={label}
+                    className="bg-white rounded-lg p-4 text-center shadow-sm border border-gray-100"
+                  >
+                    <div className="text-2xl font-bold text-gray-900">{valor}</div>
+                    <div className="text-sm text-gray-600 mt-1">{label}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>

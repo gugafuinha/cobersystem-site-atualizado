@@ -1,7 +1,10 @@
 import type { Metadata } from 'next';
+import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import StructuredData from '@/components/seo/StructuredData';
 import CoberturaPolicarbonatoServicoExpandedSections from './CoberturaPolicarbonatoServicoExpandedSections';
+
+const HERO_IMAGE = '/images/projetos/Cobertura em Policarbonato.png';
 
 export const metadata: Metadata = {
   title: 'Serviço de Instalação de Cobertura em Policarbonato | Projeto Completo | SP',
@@ -25,9 +28,9 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://www.coberturapolicarbonato.com.br/images/projetos/fixa-01.jpg',
+        url: 'https://www.coberturapolicarbonato.com.br/images/projetos/Cobertura%20em%20Policarbonato.png',
         width: 1200,
-        height: 800,
+        height: 900,
         alt: 'Instalação de cobertura fixa em policarbonato Cobersystem',
       },
     ],
@@ -42,7 +45,7 @@ export const metadata: Metadata = {
     description:
       'Projeto + instalação + materiais premium. Serviço completo com garantia.',
     images: [
-      'https://www.coberturapolicarbonato.com.br/images/projetos/fixa-01.jpg',
+      'https://www.coberturapolicarbonato.com.br/images/projetos/Cobertura%20em%20Policarbonato.png',
     ],
   },
 };
@@ -132,30 +135,43 @@ export default function CoberturaPolicarbonatoServicoPage() {
       <Breadcrumb />
 
       <main className="min-h-screen bg-gray-50">
-        <section className="relative bg-gradient-to-br from-blue-600 to-blue-800 text-white py-20">
-          <div className="max-w-7xl mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Instalação de Cobertura em Policarbonato
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 text-blue-100">
-              Projeto completo + instalação profissional + garantia 2 anos
-            </p>
-            <div className="grid md:grid-cols-4 gap-6">
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
-                <div className="text-3xl font-bold">2-4 dias</div>
-                <div className="text-sm text-blue-200">Prazo instalação</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
-                <div className="text-3xl font-bold">2 anos</div>
-                <div className="text-sm text-blue-200">Garantia total</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
-                <div className="text-3xl font-bold">99% UV</div>
-                <div className="text-sm text-blue-200">Proteção solar</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
-                <div className="text-3xl font-bold">Grande SP</div>
-                <div className="text-sm text-blue-200">Área atendida</div>
+        <section className="max-w-7xl mx-auto px-4 pt-8 pb-4">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:items-start">
+            <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl bg-gray-100">
+              <OptimizedImage
+                src={HERO_IMAGE}
+                alt="Instalação de cobertura fixa em policarbonato — projeto Cobersystem SP"
+                title="Instalação de Cobertura em Policarbonato"
+                width={1200}
+                height={900}
+                priority
+                className="h-full w-full object-cover"
+              />
+            </div>
+            <div>
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                Instalação de Cobertura em Policarbonato
+              </h1>
+              <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                Projeto completo + instalação profissional + garantia 2 anos
+              </p>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-white rounded-lg p-4 text-center shadow-sm border border-gray-100">
+                  <div className="text-2xl font-bold text-gray-900">2-4 dias</div>
+                  <div className="text-sm text-gray-600">Prazo instalação</div>
+                </div>
+                <div className="bg-white rounded-lg p-4 text-center shadow-sm border border-gray-100">
+                  <div className="text-2xl font-bold text-gray-900">2 anos</div>
+                  <div className="text-sm text-gray-600">Garantia total</div>
+                </div>
+                <div className="bg-white rounded-lg p-4 text-center shadow-sm border border-gray-100">
+                  <div className="text-2xl font-bold text-gray-900">99% UV</div>
+                  <div className="text-sm text-gray-600">Proteção solar</div>
+                </div>
+                <div className="bg-white rounded-lg p-4 text-center shadow-sm border border-gray-100">
+                  <div className="text-2xl font-bold text-gray-900">Grande SP</div>
+                  <div className="text-sm text-gray-600">Área atendida</div>
+                </div>
               </div>
             </div>
           </div>

@@ -6,6 +6,8 @@ import FAQSchema from '@/components/FAQSchema';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 
+const HERO_IMAGE = '/images/projetos/Cobertura Termoacustica.png';
+
 export const metadata: Metadata = {
   title: "Cobertura Acústica Termoacústica | Redução de Ruído 30dB | Cobersystem SP",
   description: "Cobertura acústica termoacústica em policarbonato alveolar. Reduz até 30dB de ruído e controla temperatura. Ideal para área gourmet, varanda e piscina. Orçamento grátis em SP.",
@@ -19,16 +21,16 @@ export const metadata: Metadata = {
     url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-termoacustica',
     images: [
       {
-        url: 'https://www.coberturapolicarbonato.com.br/images/projetos/fixa-01.jpg',
+        url: 'https://www.coberturapolicarbonato.com.br/images/projetos/Cobertura%20Termoacustica.png',
         width: 1200,
-        height: 800,
+        height: 900,
         alt: 'Cobertura Termoacústica',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['https://www.coberturapolicarbonato.com.br/images/projetos/fixa-01.jpg'],
+    images: ['https://www.coberturapolicarbonato.com.br/images/projetos/Cobertura%20Termoacustica.png'],
   },
 };
 
@@ -38,7 +40,7 @@ const productSchema = {
   name: 'Cobertura Termoacústica',
   description: 'Cobertura termoacústica em policarbonato alveolar com excelente isolamento térmico e acústico.',
   image: [
-    'https://www.coberturapolicarbonato.com.br/images/produtos/cobertura-termoacustica/capa.jpg',
+    'https://www.coberturapolicarbonato.com.br/images/projetos/Cobertura%20Termoacustica.png',
     'https://www.coberturapolicarbonato.com.br/images/projetos/termoacustica-01.jpg',
     'https://www.coberturapolicarbonato.com.br/images/projetos/termoacustica-02.jpg',
   ],
@@ -109,14 +111,13 @@ export default function CoberturaTermoacustica() {
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:items-start">
               <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl bg-gray-100">
                 <OptimizedImage
-                  src="/images/projetos/termoacustica-01.jpg"
+                  src={HERO_IMAGE}
                   alt="Cobertura termoacústica em policarbonato alveolar instalada — projeto Cobersystem SP"
                   title="Cobertura Acústica Termoacústica — Cobersystem SP"
                   width={1200}
                   height={900}
                   priority
                   className="w-full h-full object-cover"
-                  style={{ objectPosition: '50% 40%' }}
                 />
               </div>
               <div>

@@ -1,8 +1,11 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FAQSchema from '@/components/FAQSchema';
 import SchemaMarkup from '@/components/SchemaMarkup';
+
+const HERO_IMAGE = '/images/produtos/cobertura-retratil/aluminio/IMG_6324.jpg';
 
 export const metadata: Metadata = {
   title: "Cobertura de Alumínio | Telhas e Estrutura | Cobersystem",
@@ -17,16 +20,16 @@ export const metadata: Metadata = {
     url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-aluminio',
     images: [
       {
-        url: 'https://www.coberturapolicarbonato.com.br/images/projetos/abre-fecha-alveolar-01.jpg',
+        url: 'https://www.coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/aluminio/IMG_6324.jpg',
         width: 1200,
-        height: 800,
+        height: 900,
         alt: 'Cobertura de Alumínio',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['https://www.coberturapolicarbonato.com.br/images/projetos/abre-fecha-alveolar-01.jpg'],
+    images: ['https://www.coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/aluminio/IMG_6324.jpg'],
   },
 };
 
@@ -35,7 +38,7 @@ const productSchema = {
   '@type': 'Product',
   name: 'Cobertura de Alumínio',
   description: 'Cobertura em alumínio com telhas e estrutura de alta qualidade, pintura eletrostática personalizada.',
-  image: ['https://www.coberturapolicarbonato.com.br/images/projetos/abre-fecha-alveolar-01.jpg'],
+  image: ['https://www.coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/aluminio/IMG_6324.jpg'],
   brand: { '@type': 'Brand', name: 'Cobersystem' },
   offers: {
     '@type': 'Offer',
@@ -72,14 +75,55 @@ export default function CoberturaAluminio() {
             { label: 'Cobertura de Alumínio', href: '/servicos/cobertura-aluminio' },
           ]} />
 
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Cobertura de Alumínio
-          </h1>
-          <p className="text-xl text-gray-700 mb-8 leading-relaxed">
-            Cobertura em alumínio com telhas e estrutura de alta qualidade. Pintura eletrostática personalizada 
-            na cor de sua escolha. Resistente à corrosão e intempéries. Durabilidade superior a 20 anos. 
-            Ideal para quem busca qualidade e personalização.
-          </p>
+          <section className="mb-12">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:items-start">
+              <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl bg-gray-100">
+                <OptimizedImage
+                  src={HERO_IMAGE}
+                  alt="Cobertura de alumínio com telhas e estrutura personalizada — Cobersystem SP"
+                  title="Cobertura de Alumínio"
+                  width={1200}
+                  height={900}
+                  priority
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div>
+                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                  Cobertura de Alumínio
+                </h1>
+                <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                  Cobertura em alumínio com telhas e estrutura de alta qualidade. Pintura eletrostática
+                  personalizada na cor de sua escolha. Resistente à corrosão e intempéries.
+                </p>
+                <h2 className="text-sm font-semibold uppercase tracking-wide text-gray-500 mb-3">
+                  Especificações e benefícios
+                </h2>
+                <ul className="space-y-2 text-gray-700">
+                  <li className="flex gap-2">
+                    <span className="text-blue-600">✓</span>
+                    <span>Alumínio naturalmente resistente à corrosão</span>
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-blue-600">✓</span>
+                    <span>Pintura eletrostática em diversas cores</span>
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-blue-600">✓</span>
+                    <span>Estrutura leve e de alta resistência</span>
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-blue-600">✓</span>
+                    <span>Durabilidade superior a 20 anos</span>
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-blue-600">✓</span>
+                    <span>Ideal para áreas gourmet, varandas e garagens</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
 
           <section className="mb-12 bg-white rounded-lg p-8 shadow-sm">
             <h2 className="text-3xl font-bold text-gray-800 mb-6">Por que Cobertura de Alumínio?</h2>

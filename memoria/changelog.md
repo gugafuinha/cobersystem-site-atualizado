@@ -392,7 +392,36 @@ Inserido automaticamente após a 3ª seção (herda lógica do P3.1 já implemen
 
 ---
 
-## 2026-05-27 — P3.1: CTA intermediário nos posts longos
+## 2026-06-09 — Fotos, heroes e cards de serviços + Playground
+
+### Imagens adicionadas (`public/images/projetos/`)
+- `Cobertura Alumínio Espaço Kids.png`
+- `Cobertura em Policarbonato.png`
+- `Cobertura Termoacustica.png`
+- `Cobertura Playground.png`
+
+### Páginas de serviço — heroes atualizados (layout padrão piscina)
+- `/servicos/cobertura-varanda-apartamento` — hero `IMG_4754.jpg`
+- `/servicos/cobertura-garagem` — hero `IMG_3609.jpg`
+- `/servicos/cobertura-aluminio` — hero `IMG_6324.jpg`
+- `/servicos/cobertura-policarbonato` — hero `Cobertura em Policarbonato.png`
+- `/servicos/cobertura-termoacustica` — hero `Cobertura Termoacustica.png`
+
+### `/servicos/calhas-rufos-perfil-u` — conteúdo reescrito
+- Card e página convertidos para **Cobertura para Playground**
+- Novo componente `CoberturaPlaygroundExpandedSections.tsx`
+- Foco SEO: cobertura para playground, abre e fecha, retrátil, escolas, condomínios
+
+### Listagem `/servicos` — cards atualizados
+- Piscina → `Cobertura em Policarbonato.png` (página interna intacta)
+- Fixa compacto → `IMG_1762.jpg`
+- Termoacústica, Alumínio, Playground — novas fotos
+- **Novos cards:** Jardim de Inverno (`jardim-de-inverno-02.png`) e Pergolado (`pergolado-01.png`)
+
+### Deploy
+- Build validado localmente; push para `origin/main` (Vercel)
+
+---
 
 ### Arquivo editado
 - `app/blog/[slug]/page.tsx` — adicionados:
