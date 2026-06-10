@@ -4,8 +4,9 @@
 export const SAO_PAULO_BAIRROS = [
   { slug: 'brooklin', nome: 'Brooklin' },
   { slug: 'mooca', nome: 'Mooca' },
-  { slug: 'santana', nome: 'Santana' },
-  { slug: 'tucuruvi', nome: 'Tucuruvi' },
+  { slug: 'morumbi', nome: 'Morumbi' },
+  { slug: 'pinheiros', nome: 'Pinheiros' },
+  { slug: 'moema', nome: 'Moema' },
   { slug: 'tatuape', nome: 'Tatuapé' },
   { slug: 'vila-mariana', nome: 'Vila Mariana' },
 ] as const;

@@ -740,3 +740,42 @@ Google Search Console reportava ausência de `price`, `shippingDetails` e `hasMe
 ### Cobertura
 - Todos os 8 posts têm ≥ 8 seções — CTA aparece em todos após a 3ª seção
 - Mensagem WhatsApp específica por post (mesmo padrão do WhatsAppButton.tsx)
+
+---
+
+## 2026-06-10 — Semana 1: Expansão Geolocal (Interlinking + Bairros Premium SP)
+
+### Objetivo
+Melhorar transferência de autoridade entre páginas hub `/localizacao/` e páginas transacionais `/produtos/em/[cidade]`, e substituir bairros de baixo fit por bairros premium no segmento de alto padrão.
+
+### Arquivos alterados
+
+#### `lib/sao-paulo-bairros.ts`
+- Removidos: `santana`, `tucuruvi` (baixo fit com ICP alto padrão/área externa)
+- Adicionados: `morumbi`, `pinheiros`, `moema` (casas, piscinas, condomínios premium)
+- Total de bairros: mantido em 7 (era 6, passa a 7 — net +1 bairro = +4 páginas por produto = +16 páginas no sitemap)
+
+#### `lib/sao-paulo-bairros-conteudo.ts`
+- Removidos blocos de conteúdo SEO: `santana`, `tucuruvi`
+- Adicionados blocos completos (4 linhas de produto × 3 parágrafos cada) para: `morumbi`, `pinheiros`, `moema`
+
+#### `app/localizacao/*/page.tsx` — 11 arquivos
+Adicionada seção "Produtos em [cidade]" com 4 cards linkando para `/produtos/[produto]/em/[cidade]`:
+- `sao-paulo` → `/em/sao-paulo`
+- `zona-leste`, `zona-sul`, `zona-norte`, `zona-oeste` → `/em/sao-paulo` (zonas são sub-regiões da capital)
+- `guarulhos` → `/em/guarulhos`
+- `campinas` → `/em/campinas`
+- `santo-andre` → `/em/santo-andre`
+- `sao-bernardo` → `/em/sao-bernardo-do-campo`
+- `sorocaba` → `/produtos/[produto]` (sem página de cidade específica ainda)
+- `abc` → combinação santo-andre + sao-bernardo-do-campo
+
+### Impacto esperado
+- 11 páginas hub agora passam link juice para 32 páginas transacionais (cobertura × cidade)
+- Substituição de bairros: gera +12 páginas novas no sitemap automaticamente (3 bairros × 4 produtos)
+  - Novas URLs: `/produtos/{4 produtos}/em/sao-paulo/{morumbi,pinheiros,moema}`
+  - Removidas: `/produtos/{4 produtos}/em/sao-paulo/{santana,tucuruvi}` (8 páginas descontinuadas)
+  - Net: +4 páginas no sitemap com melhor fit de ICP
+
+### Próxima ação planejada (Semana 2)
+Após confirmar indexação: expandir `/produtos/cobertura-piscina/em/[cidade]` com foco em Barueri/Alphaville, Morumbi, Moema, Campinas.

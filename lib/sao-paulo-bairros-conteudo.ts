@@ -120,103 +120,153 @@ export const CONTEUDO_SP_BAIRROS: MapaConteudo = {
       ],
     },
   },
-  santana: {
+  morumbi: {
     policarbonato: {
-      metaTitle: 'Cobertura em Policarbonato Santana, SP | Cobersystem',
+      metaTitle: 'Cobertura em Policarbonato Morumbi, SP | Cobersystem',
       metaDescription:
-        'Policarbonato fixo em Santana, Zona Norte de SP: compacto e alveolar para residências e comércio. Orçamento e instalação.',
+        'Cobertura fixa em policarbonato no Morumbi: residências de alto padrão, mansões e condomínios fechados. Visita técnica e orçamento.',
       keywords:
-        'cobertura policarbonato Santana, policarbonato Zona Norte SP, cobertura fixa Santana, cobertura comércio Santana',
+        'cobertura policarbonato Morumbi, policarbonato Morumbi SP, cobertura fixa Morumbi, cobertura condomínio Morumbi',
       paragrafos: [
-        'Santana concentra comércio intenso e residências em ruas movimentadas, onde coberturas em policarbonato protegem calçadas e acessos sem fechar o ambiente.',
-        'O perfil alveolar é frequente quando se busca amortecer calor; o compacto privilegia transparência e visão limpa da fachada.',
-        'Atendemos Santana e entorno com projeto sob medida e fixação compatível com beirais e pilares existentes.',
+        'No Morumbi, casas com grandes áreas externas e condomínios fechados de alto padrão demandam coberturas que respeitem a estética do projeto arquitetônico original.',
+        'O policarbonato compacto UV garante claridade e proteção sem comprometer a leveza visual de terraços, piscinas e corredores de lazer.',
+        'A Cobersystem realiza visita técnica e projeto sob medida no Morumbi, com especificação de perfis e acabamentos integrados ao paisagismo.',
       ],
     },
     retratil: {
-      metaTitle: 'Cobertura Retrátil Santana, São Paulo | Cobersystem',
+      metaTitle: 'Cobertura Retrátil Morumbi, São Paulo | Cobersystem',
       metaDescription:
-        'Cobertura retrátil em Santana, SP: abertura graduada para terraços e áreas comerciais. Telhas ou policarbonato. Orçamento Zona Norte.',
+        'Cobertura retrátil no Morumbi: sistema abre e fecha para áreas gourmet e piscinas em casas e condomínios de alto padrão. Orçamento SP.',
       keywords:
-        'cobertura retrátil Santana, cobertura Santana SP, telha retrátil Zona Norte, policarbonato retrátil Santana',
+        'cobertura retrátil Morumbi, cobertura abre fecha Morumbi, cobertura área gourmet Morumbi, telhado retrátil Morumbi SP',
       paragrafos: [
-        'Em Santana, lojas com área externa e apartamentos com terraço usam cobertura retrátil para flexibilizar o uso ao longo do dia.',
-        'A combinação de materiais — alumínio ou policarbonato — responde a normas de condomínio e às preferências estéticas de cada cliente.',
-        'Nossa equipe avalia vento predominante e sombreamento local antes de fixar o sistema, garantindo operação segura na Zona Norte.',
+        'Residências de alto padrão no Morumbi utilizam cobertura retrátil para transformar áreas externas em ambientes versáteis ao longo do dia.',
+        'O sistema em telha intercalada ou policarbonato combina com projetos que exigem acabamento premium e integração com automação residencial avançada.',
+        'Oferecemos motorização silenciosa, sensor de chuva e integração com Alexa para proporcionar conforto e praticidade compatíveis com o padrão do bairro.',
       ],
     },
     abreEFecha: {
-      metaTitle: 'Cobertura Abre e Fecha Santana, SP | Cobersystem',
+      metaTitle: 'Cobertura Abre e Fecha Morumbi, SP | Cobersystem',
       metaDescription:
-        'Cobertura abre e fecha em Santana: controle do clima com automação. Alexa, sensor de chuva e motor silencioso. Visita na Zona Norte.',
+        'Cobertura abre e fecha no Morumbi: automação Alexa, sensor de chuva e motor silencioso para casas de alto padrão. Visita técnica grátis.',
       keywords:
-        'cobertura abre e fecha Santana, automação cobertura Zona Norte, sensor chuva Santana SP, cobertura motorizada Santana',
+        'cobertura abre e fecha Morumbi, automação cobertura Morumbi, Alexa cobertura Morumbi SP, sensor chuva Morumbi',
       paragrafos: [
-        'Moradores e comerciantes em Santana adotam o sistema abre e fecha para ganhar conforto em varandas estreitas ou amplas, com fechamento rápido na garoa.',
-        'Integração com sensor de chuva evita surpresas em dias de pancadas rápidas, comuns na capital.',
-        'Dimensionamos o conjunto motor + trilhos para cada vão, respeitando recuos e alturas de peitoril típicos da região.',
+        'No Morumbi, a cobertura abre e fecha é a escolha de quem busca máximo conforto em áreas gourmet e piscinas com controle total pelo smartphone ou Alexa.',
+        'A abertura graduada permite regular sombreamento, ventilação e proteção de forma independente em cada seção do espaço coberto.',
+        'Instalamos com rigor de acabamento e testes completos de automação antes da entrega, garantindo operação silenciosa e confiável.',
       ],
     },
     termoacustica: {
-      metaTitle: 'Cobertura Termoacústica Santana, SP | Cobersystem',
+      metaTitle: 'Cobertura Termoacústica Morumbi, SP | Cobersystem',
       metaDescription:
-        'Painel sanduíche termoacústico em Santana: telhados e ampliações com isolamento. EPS, PU ou lã de rocha. Orçamento na Zona Norte.',
+        'Painel sanduíche termoacústico no Morumbi: conforto térmico e acústico para ampliações em residências de alto padrão. Orçamento SP.',
       keywords:
-        'cobertura termoacústica Santana, sanduíche Santana SP, isolamento térmico Zona Norte, cobertura industrial Santana',
+        'cobertura termoacústica Morumbi, painel sanduíche Morumbi SP, isolamento telhado Morumbi, cobertura alto padrão Morumbi',
       paragrafos: [
-        'Reformas de telhado e novos pavimentos em Santana podem incorporar cobertura sanduíche para melhorar acústica em quartos próximos à rua.',
-        'O desempenho térmico alivia o uso de climatização em dias muito quentes ou frios na Zona Norte.',
-        'Especificamos espessura e tipo de núcleo conforme uso: residencial, comercial leve ou áreas que exigem lã de rocha por segurança.',
+        'Ampliações e coberturas novas no Morumbi podem usar painel sanduíche para garantir conforto térmico no verão e acústico em relação ao ruído externo.',
+        'O núcleo em poliuretano oferece o melhor desempenho por espessura, adequado a projetos premium com restrição de altura disponível.',
+        'Realizamos montagem limpa e alinhada ao projeto do arquiteto, com calhas e arremates em alumínio que mantêm o padrão estético do imóvel.',
       ],
     },
   },
-  tucuruvi: {
+  pinheiros: {
     policarbonato: {
-      metaTitle: 'Cobertura em Policarbonato Tucuruvi, SP | Cobersystem',
+      metaTitle: 'Cobertura em Policarbonato Pinheiros, SP | Cobersystem',
       metaDescription:
-        'Cobertura fixa em policarbonato no Tucuruvi, Zona Norte: garagens, corredores e quintais. Compacto e alveolar. Orçamento local.',
+        'Cobertura fixa em policarbonato em Pinheiros: residências, estabelecimentos e fachadas criativas. Compacto e alveolar. Orçamento SP.',
       keywords:
-        'cobertura policarbonato Tucuruvi, policarbonato Zona Norte SP, cobertura fixa Tucuruvi, cobertura garagem Tucuruvi',
+        'cobertura policarbonato Pinheiros, policarbonato Pinheiros SP, cobertura fixa Pinheiros, cobertura comercial Pinheiros',
       paragrafos: [
-        'No Tucuruvi, casas com garagem descoberta e corredores laterais ganham proteção permanente com policarbonato leve e resistente.',
-        'A solução evita infiltrações em portas e janelas adjacentes, com escoamento planejado nas calhas.',
-        'Atendemos o bairro com visitas para medir vãos irregulares e propor o perfil de chapa mais adequado.',
+        'Pinheiros reúne residências de alto padrão, bares, restaurantes e ateliês onde a cobertura em policarbonato resolve entradas, terraços e pátios com leveza e design.',
+        'O compacto UV protege de sol e chuva mantendo visibilidade e luminosidade; o alveolar é ideal onde o isolamento térmico pesa mais.',
+        'A Cobersystem atende Pinheiros com projeto personalizado e execução rápida, alinhada ao ritmo intenso do bairro.',
       ],
     },
     retratil: {
-      metaTitle: 'Cobertura Retrátil Tucuruvi, São Paulo | Cobersystem',
+      metaTitle: 'Cobertura Retrátil Pinheiros, São Paulo | Cobersystem',
       metaDescription:
-        'Cobertura retrátil no Tucuruvi, SP: quintais e áreas de serviço com abertura total ou parcial. Orçamento na Zona Norte.',
+        'Cobertura retrátil em Pinheiros, SP: para residências e estabelecimentos que precisam de flexibilidade climática. Projeto sob medida.',
       keywords:
-        'cobertura retrátil Tucuruvi, cobertura Tucuruvi SP, telha retrátil Zona Norte, quintal coberto Tucuruvi',
+        'cobertura retrátil Pinheiros, cobertura abre fecha Pinheiros, telha retrátil Pinheiros SP, área gourmet Pinheiros',
       paragrafos: [
-        'Famílias no Tucuruvi utilizam cobertura retrátil para cobrir lavanderias externas, oficinas e espaços de lazer sem perder ventilação quando aberta.',
-        'O sistema desliza com baixo esforço quando motorizado, ideal para idosos ou uso diário frequente.',
-        'Indicamos acabamentos que combinam com fachadas residenciais típicas da região norte da capital.',
+        'Em Pinheiros, residências com quintais e estabelecimentos gastronômicos usam cobertura retrátil para adaptar o espaço entre uso interno e externo conforme clima e movimento.',
+        'A linha com telhas de alumínio ou policarbonato entrega acabamento contemporâneo que dialoga com o perfil arquitetônico eclético do bairro.',
+        'Realizamos orçamento detalhado para Pinheiros com especificação de motor, guias e revestimento alinhados ao projeto de cada cliente.',
       ],
     },
     abreEFecha: {
-      metaTitle: 'Cobertura Abre e Fecha Tucuruvi, SP | Cobersystem',
+      metaTitle: 'Cobertura Abre e Fecha Pinheiros, SP | Cobersystem',
       metaDescription:
-        'Cobertura abre e fecha no Tucuruvi: proteção e ventilação com automação. Projetos para varanda e área gourmet na Zona Norte.',
+        'Cobertura abre e fecha em Pinheiros: controle climático com automação Alexa e sensor de chuva. Visita técnica gratuita na Zona Oeste.',
       keywords:
-        'cobertura abre e fecha Tucuruvi, cobertura motorizada Tucuruvi, automação Zona Norte SP, sensor chuva Tucuruvi',
+        'cobertura abre e fecha Pinheiros, automação cobertura Pinheiros, sensor chuva Pinheiros SP, cobertura retrátil Zona Oeste',
       paragrafos: [
-        'No Tucuruvi, a cobertura abre e fecha atende quem deseja aproveitar quintais amplos com controle fino de sol e chuva.',
-        'A programação com sensor meteorológico é útil em dias de pancadas intercaladas com sol forte.',
-        'Instalamos com atenção à estrutura de apoio e drenagem, evitando poças próximas à casa.',
+        'O perfil de alto uso de áreas externas em Pinheiros — desde happy hours a jantares — faz da cobertura abre e fecha a solução mais versátil para bares e casas da região.',
+        'A automação via Alexa e sensor de chuva elimina a preocupação de fechar manualmente quando há risco de precipitação.',
+        'Atendemos Pinheiros e Alto de Pinheiros com instalação cuidadosa em imóveis que frequentemente têm tombamento ou restrições de fachada.',
       ],
     },
     termoacustica: {
-      metaTitle: 'Cobertura Termoacústica Tucuruvi, SP | Cobersystem',
+      metaTitle: 'Cobertura Termoacústica Pinheiros, SP | Cobersystem',
       metaDescription:
-        'Cobertura sanduíche termoacústica no Tucuruvi: conforto térmico e acústico em ampliações. EPS, PU ou lã de rocha. Orçamento SP.',
+        'Painel sanduíche termoacústico em Pinheiros: conforto em reformas e coberturas novas para residências e comércio. EPS, PU ou lã de rocha.',
       keywords:
-        'cobertura termoacústica Tucuruvi, painel sanduíche Zona Norte, isolamento telhado Tucuruvi, cobertura sanduíche SP',
+        'cobertura termoacústica Pinheiros, painel sanduíche Pinheiros SP, isolamento acústico Zona Oeste, telhado sanduíche Pinheiros',
       paragrafos: [
-        'Sobrados e comércios no Tucuruvi que ampliam o pavimento superior podem usar painel sanduíche para novo telhado com menos ruído de impacto da chuva.',
-        'O isolamento térmico ajuda ambientes no último pavimento que sofrem mais com o sol direto.',
-        'Oferecemos cálculo de cargas e sugestão de fixação junto ao engenheiro responsável pela obra.',
+        'Reformas em sobrados e comércios em Pinheiros se beneficiam do painel sanduíche para reduzir calor no último pavimento e barulho de chuva intensa.',
+        'O perfil EPS reduz custo; o PU entrega mais isolamento por centímetro, útil em reformas com pouco pé-direito disponível.',
+        'Entregamos projeto executivo com calhas, fixações e emendas detalhadas para aprovação do arquiteto ou responsável técnico da obra.',
+      ],
+    },
+  },
+  moema: {
+    policarbonato: {
+      metaTitle: 'Cobertura em Policarbonato Moema, SP | Cobersystem',
+      metaDescription:
+        'Cobertura fixa em policarbonato em Moema: casas e condomínios de alto padrão próximos ao Ibirapuera. Compacto e alveolar. Orçamento SP.',
+      keywords:
+        'cobertura policarbonato Moema, policarbonato Moema SP, cobertura fixa Moema, cobertura condomínio Moema',
+      paragrafos: [
+        'Moema concentra casas com amplos jardins e condomínios de alto padrão próximos ao Parque Ibirapuera, onde a cobertura fixa em policarbonato valoriza pátios e circulações externas.',
+        'A translucidez do policarbonato compacto mantém a conexão visual com a arborização do entorno, preservando o caráter residencial nobre do bairro.',
+        'Atendemos Moema com levantamento técnico, especificação de perfis e execução alinhada às normas de condomínio e ao projeto paisagístico.',
+      ],
+    },
+    retratil: {
+      metaTitle: 'Cobertura Retrátil Moema, São Paulo | Cobersystem',
+      metaDescription:
+        'Cobertura retrátil em Moema: sistema abre e fecha para áreas gourmet e piscinas em casas de alto padrão. Automação e projeto sob medida.',
+      keywords:
+        'cobertura retrátil Moema, cobertura abre fecha Moema, cobertura piscina Moema SP, telha retrátil Zona Sul',
+      paragrafos: [
+        'Em Moema, casas com piscina e área gourmet adotam cobertura retrátil para usufruir do espaço externo nos dias ensolarados e fechar com agilidade na chuva.',
+        'O sistema em policarbonato compacto preserva a luminosidade das áreas de lazer enquanto oferece proteção total quando necessário.',
+        'Projetamos e instalamos em Moema com atenção ao índice de vegetação do bairro, mantendo o caráter arborizado mesmo após a cobertura instalada.',
+      ],
+    },
+    abreEFecha: {
+      metaTitle: 'Cobertura Abre e Fecha Moema, SP | Cobersystem',
+      metaDescription:
+        'Cobertura abre e fecha em Moema: automação Alexa e sensor de chuva para casas de alto padrão na Zona Sul. Orçamento e visita técnica grátis.',
+      keywords:
+        'cobertura abre e fecha Moema, automação cobertura Moema, sensor chuva Moema SP, cobertura motorizada Zona Sul',
+      paragrafos: [
+        'A cobertura abre e fecha em Moema atende residências onde o conforto e a automação são prioridades, com integração a ecossistemas Alexa e Google Home.',
+        'A programação com sensor de chuva fecha automaticamente a cobertura quando detecta precipitação, ideal para quem viaja frequentemente ou usa o espaço à noite.',
+        'Oferecemos visita técnica gratuita em Moema com apresentação de amostras de materiais e simulação de fechamento para validação do projeto.',
+      ],
+    },
+    termoacustica: {
+      metaTitle: 'Cobertura Termoacústica Moema, SP | Cobersystem',
+      metaDescription:
+        'Painel sanduíche termoacústico em Moema: conforto térmico e acústico para residências de alto padrão. EPS, PU ou lã de rocha. Orçamento SP.',
+      keywords:
+        'cobertura termoacústica Moema, painel sanduíche Moema SP, isolamento telhado Zona Sul, cobertura alto padrão Moema',
+      paragrafos: [
+        'Reformas em coberturas de casas em Moema podem incluir painel sanduíche para estabilizar temperatura no último andar e reduzir o barulho de chuvas pesadas.',
+        'O núcleo em poliuretano entrega desempenho de isolamento superior em menor espessura, adequado a ampliações com altura disponível limitada.',
+        'Realizamos montagem técnica em Moema com calhas e arremates em alumínio, preservando o padrão de acabamento das residências de alto padrão.',
       ],
     },
   },
