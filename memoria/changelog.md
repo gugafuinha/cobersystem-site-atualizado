@@ -2,6 +2,13 @@
 
 ---
 
+## 2026-06-10 — Semana 2: /produtos/cobertura-piscina/em/[cidade]
+
+**Criados:** lib/cobertura-piscina-cidades.ts, app/produtos/cobertura-piscina/em/[cidade]/page.tsx, app/produtos/cobertura-piscina/em/sao-paulo/[bairro]/page.tsx
+**Modificado:** app/sitemap.ts — 7 novas URLs (4 cidades + 3 bairros SP)
+
+---
+
 ## 2026-06-10 — Blog: duplicatas resolvidas + 4 posts novos + links /produtos/ + redirect 301
 
 ### Deploy (commit `89fdff1`)

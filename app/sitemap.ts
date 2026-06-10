@@ -3,6 +3,10 @@ import { getSlugsCidadesAbreEFecha } from '@/lib/cobertura-abre-e-fecha-cidades'
 import { getSlugsCidadesPolicarbonato } from '@/lib/cobertura-policarbonato-cidades';
 import { getSlugsCidadesRetratil } from '@/lib/cobertura-retratil-cidades';
 import { getSlugsCidadesTermoacustica } from '@/lib/cobertura-termoacustica-cidades';
+import {
+  getSlugsCidadesPiscina,
+  getSlugsBairrosPiscina,
+} from '@/lib/cobertura-piscina-cidades';
 import { getSlugsBairrosSaoPaulo } from '@/lib/sao-paulo-bairros';
 import { getImageUrls } from '@/lib/seo/image-sitemap';
 
@@ -83,6 +87,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: 'weekly' as const,
       priority: 0.9,
+    }));
+
+  const coberturaPiscinaLocal: MetadataRoute.Sitemap =
+    getSlugsCidadesPiscina().map((cidade) => ({
+      url: `${baseUrl}/produtos/cobertura-piscina/em/${cidade}`,
+      lastModified: now,
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    }));
+
+  const coberturaPiscinaSpBairros: MetadataRoute.Sitemap =
+    getSlugsBairrosPiscina().map((bairro) => ({
+      url: `${baseUrl}/produtos/cobertura-piscina/em/sao-paulo/${bairro}`,
+      lastModified: now,
+      changeFrequency: 'weekly' as const,
+      priority: 0.85,
     }));
 
   const spBairrosProdutoPaths = [
@@ -166,6 +186,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...coberturaRetratilLocal,
     ...coberturaAbreEFechaLocal,
     ...coberturaTermoacusticaLocal,
+    ...coberturaPiscinaLocal,
+    ...coberturaPiscinaSpBairros,
     ...saoPauloBairrosLocal,
     ...mainServicePages,
     ...blogArticles,
