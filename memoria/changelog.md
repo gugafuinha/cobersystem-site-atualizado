@@ -2,6 +2,47 @@
 
 ---
 
+## 2026-06-10 — SEO: resolver canibalização /servicos vs /produtos + links cruzados hierárquicos
+
+### Deploy (commit `acb187c`)
+
+#### (a) `/servicos/cobertura-retratil` — reposicionado para intenção de serviço
+- `title`: "Instalação de Cobertura Retrátil em São Paulo | Projeto e Garantia | Cobersystem"
+- `H1`: "Instalação de Cobertura Retrátil em São Paulo"
+- `keywords`: trocados head terms de produto por termos de serviço/instalação
+- Callout (eixo vertical) → `/produtos/cobertura-retratil` ("Ver catálogo de modelos")
+
+#### (b) `/servicos/cobertura-termoacustica` — reposicionado para aplicação/ambiente
+- `title`: "Cobertura Termoacústica para Área Gourmet e Galpão em SP | Cobersystem"
+- `H1`: "Cobertura Termoacústica: Proteção Térmica e Acústica para o Seu Espaço"
+- `keywords`: aplicação + instalação (removidos head terms de produto)
+- **Schema corrigido**: `@type: Product` → `@type: Service` (tipo correto para página de serviço)
+- Callout (eixo vertical) → `/produtos/cobertura-termoacustica`
+
+#### (c) `/produtos/cobertura-abre-e-fecha`
+- `keywords`: removido "cobertura retrátil automatizada" (dono legítimo: `/servicos/cobertura-retratil-automatizada`)
+- Substituído por "cobertura que abre e fecha, cobertura abre e fecha SP"
+
+#### (d) Novos componentes
+- `components/produto/ProdutoInstalacaoLink.tsx` — callout dourado em /produtos/[tipo] → /servicos/[tipo] (eixo vertical)
+- `components/produto/ProdutoAplicacoes.tsx` — grade de links em /produtos/[tipo] → /servicos/[ambiente] (eixo horizontal)
+
+#### (e) Links cruzados nas 4 páginas /produtos/
+| Produto | Eixo vertical | Eixo horizontal (ambientes) |
+|---|---|---|
+| `cobertura-retratil` | → /servicos/cobertura-retratil | piscina, gourmet, varanda, garagem |
+| `cobertura-termoacustica` | → /servicos/cobertura-termoacustica | gourmet, garagem, varanda, corredor |
+| `cobertura-policarbonato` | → /servicos/cobertura-policarbonato | garagem, corredor, playground, jardim |
+| `cobertura-abre-e-fecha` | → /servicos/cobertura-abre-e-fecha | piscina, gourmet, playground, pergolado |
+
+### Resultado estrutural
+- `/produtos/[tipo]` — dono dos head terms ("cobertura retrátil", "cobertura termoacústica")
+- `/servicos/[tipo]` — dono dos termos de serviço/instalação SP
+- `/servicos/[ambiente]` — dono dos termos de ambiente ("cobertura para piscina SP")
+- PageRank flui tipo → serviço e tipo → ambientes; sem sinal dividido
+
+---
+
 ## 2026-06-09 — Fix schema JSON-LD em lote: 8 páginas de serviço
 
 ### Deploy (commit `7f8c115`)
