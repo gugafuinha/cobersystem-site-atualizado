@@ -136,15 +136,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   const blogImageMap: Record<string, string> = {
-    'cobertura-retratil-guia-completo':           `${baseUrl}/images/blog/cobertura-retratil-area-gourmet.jpg`,
-    'cobertura-abre-fecha-vantagens':             `${baseUrl}/images/blog/cobertura-abre-fecha.jpg`,
-    'cobertura-policarbonato-preco-tipos':        `${baseUrl}/images/blog/cobertura-policarbonato-tipos.jpg`,
-    'cobertura-retratil-churrasqueira':           `${baseUrl}/images/blog/churrasqueira.jpg`,
-    'automacao-alexa-sensor-chuva':               `${baseUrl}/images/blog/automacao-alexa.jpg`,
-    'pergolado-vs-cobertura-retratil':            `${baseUrl}/images/blog/pergolado-vs-cobertura.jpg`,
-    'cobertura-de-policarbonato-precos-tipos-guia': `${baseUrl}/images/blog/cobertura-policarbonato-guia.png`,
-    'cobertura-para-piscina-tipos-precos-guia':   `${baseUrl}/images/blog/cobertura-piscina-retratil.jpg`,
-    'cobertura-area-gourmet-tipos-precos-guia':   `${baseUrl}/images/produtos/cobertura-retratil/intercalada/IMG_8455.jpg`,
+    'cobertura-retratil-guia-completo':                       `${baseUrl}/images/blog/cobertura-retratil-area-gourmet.jpg`,
+    'cobertura-abre-fecha-vantagens':                         `${baseUrl}/images/blog/cobertura-abre-fecha.jpg`,
+    'cobertura-policarbonato-preco-tipos':                    `${baseUrl}/images/blog/cobertura-policarbonato-tipos.jpg`,
+    'cobertura-retratil-churrasqueira':                       `${baseUrl}/images/blog/churrasqueira.jpg`,
+    'automacao-alexa-sensor-chuva':                           `${baseUrl}/images/blog/automacao-alexa.jpg`,
+    'pergolado-vs-cobertura-retratil':                        `${baseUrl}/images/blog/pergolado-vs-cobertura.jpg`,
+    'cobertura-para-piscina-tipos-precos-guia':               `${baseUrl}/images/blog/cobertura-piscina-retratil.jpg`,
+    'cobertura-area-gourmet-tipos-precos-guia':               `${baseUrl}/images/produtos/cobertura-retratil/intercalada/IMG_8455.jpg`,
+    'teto-retratil-automatico-como-funciona-precos':          `${baseUrl}/images/blog/cobertura-retratil-area-gourmet.jpg`,
+    'fechamento-de-varanda-tipos-precos':                     `${baseUrl}/images/blog/cobertura-abre-fecha.jpg`,
+    'pergolado-bioclimatico-o-que-e-vale-a-pena-precos':      `${baseUrl}/images/blog/pergolado-vs-cobertura.jpg`,
+    'toldo-retratil-vs-cobertura-retratil-qual-escolher':     `${baseUrl}/images/blog/cobertura-retratil-area-gourmet.jpg`,
   };
 
   const blogArticles = Object.entries(blogImageMap).map(([slug, img]) => ({

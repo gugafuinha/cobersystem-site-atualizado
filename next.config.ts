@@ -12,6 +12,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/blog/cobertura-de-policarbonato-precos-tipos-guia',
+        destination: '/blog/cobertura-policarbonato-preco-tipos',
+        permanent: true,
+      },
+      {
         source: "/:path*",
         has: [
           {
