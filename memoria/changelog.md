@@ -4,7 +4,7 @@
 
 ## 2026-06-09 — ETAPA 6+7: conteúdo rico fixa alveolar + projetos personalizados
 
-### Deploy
+### Deploy (commit `3930754`)
 - `/servicos/cobertura-fixa-policarbonato-alveolar` — `CoberturaFixaAlveolarExpandedSections`: hero completo, 6 etapas, comparativo alveolar/compacto/abre-e-fecha, ServicePriceTable, aplicações com metragem, FAQ 6, CTA WhatsApp hero+footer
 - `/servicos/projetos-personalizados` — `ProjetosPersonalizadosExpandedSections`: hero completo, etapas de engenharia, casos de uso, tabela referência, FAQ 6 com `getFaqPriceAnswer`, CTA WhatsApp hero+footer
 
