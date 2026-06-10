@@ -2,9 +2,17 @@
 
 ---
 
-## 2026-06-09 — WhatsApp GA4/Ads + sitemap + fix GSC gourmet/piscina/projetos
+## 2026-06-09 — ETAPA 6+7: conteúdo rico fixa alveolar + projetos personalizados
 
 ### Deploy
+- `/servicos/cobertura-fixa-policarbonato-alveolar` — `CoberturaFixaAlveolarExpandedSections`: hero completo, 6 etapas, comparativo alveolar/compacto/abre-e-fecha, ServicePriceTable, aplicações com metragem, FAQ 6, CTA WhatsApp hero+footer
+- `/servicos/projetos-personalizados` — `ProjetosPersonalizadosExpandedSections`: hero completo, etapas de engenharia, casos de uso, tabela referência, FAQ 6 com `getFaqPriceAnswer`, CTA WhatsApp hero+footer
+
+---
+
+## 2026-06-09 — WhatsApp GA4/Ads + sitemap + fix GSC gourmet/piscina/projetos
+
+### Deploy (commit `117ddba`)
 - **WhatsApp tracking unificado:** `WhatsAppLink.tsx` + `trackWhatsAppLead()` dispara GA4 `whatsapp_click`, Google Ads `WHATSAPP_CLICK` e Meta Contact em todas as páginas `/servicos/*`
 - **FAQSchema:** trocado `next/script` por `<script>` nativo (FAQ visível no HTML SSR — corrige gourmet e piscina)
 - **GSC gourmet:** removido `faqSchemas.coberturaAreaGourmet` legado (preços R$ 12k–35k conflitantes com Product)
