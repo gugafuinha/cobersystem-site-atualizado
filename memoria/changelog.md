@@ -2,6 +2,21 @@
 
 ---
 
+## 2026-06-09 — Fix schema JSON-LD em lote: 8 páginas de serviço
+
+### Deploy
+- Migradas de `SchemaMarkup` (next/script) para `StructuredData` (script ld+json nativo SSR):
+  - `/servicos/cobertura-abre-e-fecha`
+  - `/servicos/cobertura-jardim-de-inverno`
+  - `/servicos/cobertura-termoacustica`
+  - `/servicos/cobertura-playground`
+  - `/servicos/cobertura-garagem`
+  - `/servicos/cobertura-corredor-lateral`
+  - `/servicos/cobertura-fixa-policarbonato-compacto`
+  - `/servicos/cobertura-pergolado`
+
+---
+
 ## 2026-06-09 — Fix schema JSON-LD retrátil automatizada (GSC)
 
 ### Deploy (commit `3bd21c2`)

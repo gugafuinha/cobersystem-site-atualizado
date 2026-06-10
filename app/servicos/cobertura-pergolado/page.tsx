@@ -12,7 +12,7 @@ import {
 } from '@/lib/pricing';
 import PriceEstimateNote from '@/components/servicos/PriceEstimateNote';
 import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
-import SchemaMarkup from '@/components/SchemaMarkup';
+import StructuredData from '@/components/seo/StructuredData';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 
 export const metadata: Metadata = {
@@ -76,7 +76,7 @@ const faqs = [
 export default function CoberturaPergolado() {
   return (
     <>
-      <SchemaMarkup type="product" data={productSchema} />
+      <StructuredData data={productSchema} />
       <main className="min-h-screen bg-gray-50">
         <div className="container mx-auto px-4 py-8">
           <Breadcrumbs

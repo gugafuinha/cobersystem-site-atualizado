@@ -4,7 +4,7 @@ import WhatsAppLink from '@/components/WhatsAppLink';
 import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FAQSchema from '@/components/FAQSchema';
-import SchemaMarkup from '@/components/SchemaMarkup';
+import StructuredData from '@/components/seo/StructuredData';
 import ServiceVejaTambem from '@/components/ServiceVejaTambem';
 import { buildServiceOffer } from '@/lib/schemas/product-schemas';
 import {
@@ -104,7 +104,7 @@ const faqs = [
 export default function CoberturaAbreEFecha() {
   return (
     <>
-      <SchemaMarkup type="product" data={productSchema} />
+      <StructuredData data={productSchema} />
       <main className="min-h-screen bg-gray-50">
         <div className="container mx-auto px-4 py-8">
           <Breadcrumbs
