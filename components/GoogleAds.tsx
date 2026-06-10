@@ -26,7 +26,7 @@ export default function GoogleAds() {
         dangerouslySetInnerHTML={{
           __html: `
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
+            window.gtag = function gtag(){window.dataLayer.push(arguments);};
             gtag('js', new Date());
             gtag('config', '${GA4_MEASUREMENT_ID}', { page_path: window.location.pathname });
             gtag('config', '${GOOGLE_ADS_ID}');

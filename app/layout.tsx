@@ -10,6 +10,7 @@ import {
   GoogleTagManagerScript,
 } from "@/components/GoogleTagManager";
 import MetaPixel from "@/components/MetaPixel";
+import GoogleAds from "@/components/GoogleAds";
 import ScrollTracker from "@/components/ScrollTracker";
 import PerformanceOptimizer from "@/components/PerformanceOptimizer";
 import { Analytics } from "@vercel/analytics/react";
@@ -110,6 +111,8 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
         {/* Verificação Google Search Console */}
         <GoogleTagManagerScript />
+        {/* GA4 + Google Ads (gtag) — necessário para trackWhatsAppLead e conversões */}
+        <GoogleAds />
         {/* Meta Pixel */}
         <MetaPixel />
       </head>

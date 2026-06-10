@@ -2,6 +2,15 @@
 
 ---
 
+## 2026-06-09 — Fix: GoogleAds no layout (window.gtag)
+
+### Deploy
+- `app/layout.tsx`: remontado `<GoogleAds />` para inicializar `window.gtag` (GA4 G-EL6RVFYFSJ + Ads AW-1095370047)
+- `GoogleAds.tsx`: `window.gtag` atribuído explicitamente no script de init
+- **Duplicidade GTM:** em produção o GTM não renderiza (env ausente/placeholder) — sem risco imediato; se ativar GTM com mesmas IDs GA4/Ads no container, revisar para evitar pageviews duplicados
+
+---
+
 ## 2026-06-09 — ETAPA 6+7: conteúdo rico fixa alveolar + projetos personalizados
 
 ### Deploy (commit `3930754`)
