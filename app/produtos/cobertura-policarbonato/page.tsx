@@ -2,6 +2,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ProductVejaTambem from '@/components/ProductVejaTambem';
+import ProdutoInstalacaoLink from '@/components/produto/ProdutoInstalacaoLink';
+import ProdutoAplicacoes, { AplicacaoItem } from '@/components/produto/ProdutoAplicacoes';
 import StructuredData from '@/components/seo/StructuredData';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import { CIDADES_COBERTURA_POLICARBONATO } from '@/lib/cobertura-policarbonato-cidades';
@@ -11,6 +13,13 @@ import { generatePageMetadata } from '@/lib/seo/page-metadata';
 import CoberturaPolicarbonatoExpandedSections from './CoberturaPolicarbonatoExpandedSections';
 
 export const metadata = generatePageMetadata('cobertura-policarbonato');
+
+const aplicacoesPolicarbonato: AplicacaoItem[] = [
+  { href: '/servicos/cobertura-garagem',          label: 'Cobertura de Policarbonato para Garagem',         descricao: 'Proteção permanente de veículos com transparência e resistência a granizo.' },
+  { href: '/servicos/cobertura-corredor-lateral', label: 'Cobertura de Policarbonato para Corredor',        descricao: 'Iluminação natural e proteção em passagens laterais e corredores.' },
+  { href: '/servicos/cobertura-playground',       label: 'Cobertura de Policarbonato para Playground',     descricao: 'Segurança e proteção solar para playgrounds em condomínios e escolas.' },
+  { href: '/servicos/cobertura-jardim-de-inverno',label: 'Cobertura de Policarbonato para Jardim de Inverno', descricao: 'Policarbonato translúcido que mantém luminosidade e protege plantas.' },
+];
 
 const produtosFixa = [
   {
@@ -205,6 +214,14 @@ export default function CoberturaFixa() {
             </div>
           </div>
         </section>
+
+        <ProdutoInstalacaoLink
+          servicoSlug="cobertura-policarbonato"
+          servicoLabel="cobertura de policarbonato"
+          descricao="Veja como funciona o serviço de instalação de cobertura de policarbonato em SP: visita técnica gratuita, projeto sob medida e garantia de 2 anos."
+        />
+
+        <ProdutoAplicacoes aplicacoes={aplicacoesPolicarbonato} />
 
         <ProductVejaTambem current="policarbonato" />
 

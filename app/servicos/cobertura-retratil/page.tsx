@@ -14,24 +14,23 @@ import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSec
 const HERO_IMAGE = '/images/projetos/Cobertura Retratil melhorada.png';
 
 export const metadata: Metadata = {
-  title: 'Cobertura Retrátil Policarbonato | Telhado Abre e Fecha | Alexa | Cobersystem SP',
+  title: 'Instalação de Cobertura Retrátil em São Paulo | Projeto e Garantia | Cobersystem',
   description:
-    'Cobertura retrátil em policarbonato que abre e fecha automaticamente. Automação Alexa, sensor de chuva e controle 0 a 90°. Cobertura de policarbonato retrátil para varanda, área gourmet e acesso. Orçamento grátis em SP.',
+    'Empresa especializada em instalação de cobertura retrátil em SP. Visita técnica gratuita, projeto em 48h, garantia de 2 anos. Policarbonato, alumínio ou telhas intercaladas. Grande São Paulo.',
   keywords: [
-    'cobertura retratil',
-    'cobertura de policarbonato retratil',
-    'cobertura retratil policarbonato',
-    'telhado retratil',
-    'cobertura abre e fecha',
-    'telhado abre e fecha',
-    'policarbonato',
-    'automacao Alexa',
-    'sensor chuva',
-    'cobertura retratil preco SP',
+    'instalação de cobertura retrátil SP',
+    'empresa de cobertura retrátil SP',
+    'instalação telhado retrátil são paulo',
+    'empresa cobertura policarbonato SP',
+    'serviço instalação cobertura retrátil',
+    'projeto cobertura retrátil SP',
+    'automação cobertura retrátil Alexa',
+    'sensor chuva cobertura SP',
+    'visita técnica cobertura retrátil SP',
   ],
   openGraph: {
-    title: 'Instalação de Cobertura Retrátil | Cobersystem SP',
-    description: 'Projeto + instalação + automação. Serviço completo com garantia.',
+    title: 'Instalação de Cobertura Retrátil em SP | Cobersystem',
+    description: 'Visita técnica grátis, projeto em 48h, garantia de 2 anos. Serviço completo em SP.',
     url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-retratil',
     siteName: 'Cobersystem',
     locale: 'pt_BR',
@@ -166,12 +165,12 @@ export default function CoberturaRetratilServicoPage() {
               </div>
               <div>
                 <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                  Cobertura Retrátil em Policarbonato
+                  Instalação de Cobertura Retrátil em São Paulo
                 </h1>
                 <p className="text-xl text-gray-700 mb-6 leading-relaxed">
-                  Sistema retrátil que abre e fecha de 0 a 90° com automação via Alexa e sensor de chuva.
-                  Policarbonato compacto, alveolar ou telhas de alumínio intercaladas. Projeto, engenharia
-                  e instalação completos em SP. Garantia de 2 anos.
+                  Da visita técnica ao projeto 3D e à instalação finalizada: serviço completo em SP com
+                  garantia de 2 anos. Trabalhamos com policarbonato compacto, alveolar e telhas de
+                  alumínio intercaladas, com automação via Alexa e sensor de chuva opcional.
                 </p>
                 <div className="grid grid-cols-2 gap-3 mb-6">
                   {[
@@ -218,6 +217,23 @@ export default function CoberturaRetratilServicoPage() {
                 </div>
               </div>
             </div>
+          </section>
+
+          {/* Eixo vertical: link para catálogo de modelos em /produtos */}
+          <section className="mb-8 rounded-lg border border-blue-100 bg-blue-50 p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            <div className="flex-1">
+              <p className="font-semibold text-gray-800 mb-1">Conheça os modelos disponíveis</p>
+              <p className="text-sm text-gray-600">
+                Telhas em alumínio, intercaladas, policarbonato compacto e alveolar — compare
+                especificações e preços no catálogo completo da linha retrátil.
+              </p>
+            </div>
+            <Link
+              href="/produtos/cobertura-retratil"
+              className="shrink-0 inline-block rounded-lg bg-blue-600 text-white px-5 py-2.5 text-sm font-semibold hover:bg-blue-700 transition"
+            >
+              Ver catálogo de modelos →
+            </Link>
           </section>
 
           <CoberturaRetratilServicoExpandedSections />

@@ -17,18 +17,18 @@ const WHATSAPP_URL =
   'https://wa.me/5511943615079?text=Ol%C3%A1!%20Preciso%20de%20or%C3%A7amento%20para%20cobertura%20termoac%C3%BAstica.';
 
 export const metadata: Metadata = {
-  title: 'Cobertura Acústica Termoacústica | Redução 30dB e -10°C | Cobersystem SP',
+  title: 'Cobertura Termoacústica para Área Gourmet e Galpão em SP | Cobersystem',
   description:
-    'Cobertura termoacústica que reduz até 30dB de ruído e até 10°C de temperatura. Policarbonato alveolar e painéis sanduíche. Área gourmet, varanda e comercial. Orçamento grátis em SP.',
+    'Instalação de cobertura termoacústica em SP para área gourmet, varanda, galpão e comércios. Policarbonato alveolar e painéis sanduíche. Redução de até 30dB e 10°C. Visita técnica grátis.',
   keywords:
-    'cobertura acústica, cobertura termoacústica, cobertura isolamento acústico, redução ruído cobertura, policarbonato termoacústico, sanduíche TR40, cobertura termoacústica preço SP',
+    'cobertura termoacústica área gourmet SP, cobertura termoacústica galpão industrial SP, cobertura para varanda termoacústica, instalação cobertura termoacústica são paulo, isolamento térmico cobertura SP, cobertura para comércio SP',
   alternates: {
     canonical: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-termoacustica',
   },
   openGraph: {
-    title: 'Cobertura Acústica Termoacústica | Redução 30dB | Cobersystem SP',
+    title: 'Cobertura Termoacústica em SP | Área Gourmet e Galpão | Cobersystem',
     description:
-      'Cobertura termoacústica com redução de até 30dB e 10°C. Ideal para área gourmet, varanda e ambientes comerciais.',
+      'Instalação de cobertura termoacústica em SP. Área gourmet, varanda, galpão e comércios. Redução de até 30dB e 10°C.',
     url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-termoacustica',
     images: [
       {
@@ -47,16 +47,27 @@ export const metadata: Metadata = {
 
 const productSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Product',
-  name: 'Cobertura Termoacústica',
+  '@type': 'Service',
+  name: 'Instalação de Cobertura Termoacústica em SP',
   description:
-    'Cobertura termoacústica em policarbonato alveolar e painéis sanduíche. Redução de até 30dB de ruído e até 10°C de temperatura.',
+    'Serviço de instalação de cobertura termoacústica em policarbonato alveolar e painéis sanduíche. Área gourmet, varanda, galpão e comércios. Redução de até 30dB e 10°C. São Paulo e Grande SP.',
+  serviceType: 'Instalação de cobertura termoacústica',
   image: [
     'https://www.coberturapolicarbonato.com.br/images/projetos/Cobertura%20Termoacustica.png',
-    'https://www.coberturapolicarbonato.com.br/images/projetos/termoacustica-01.jpg',
-    'https://www.coberturapolicarbonato.com.br/images/projetos/termoacustica-02.jpg',
   ],
-  brand: { '@type': 'Brand', name: 'Cobersystem' },
+  provider: {
+    '@type': 'LocalBusiness',
+    name: 'Cobersystem',
+    telephone: '+5511943615079',
+    url: 'https://www.coberturapolicarbonato.com.br',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'São Paulo',
+      addressRegion: 'SP',
+      addressCountry: 'BR',
+    },
+  },
+  areaServed: { '@type': 'City', name: 'São Paulo' },
   offers: buildServiceOffer(
     'https://www.coberturapolicarbonato.com.br/servicos/cobertura-termoacustica',
     getServiceSchemaMinPrice('cobertura-termoacustica'),
@@ -124,12 +135,13 @@ export default function CoberturaTermoacustica() {
               </div>
               <div>
                 <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                  Cobertura Acústica Termoacústica
+                  Cobertura Termoacústica: Proteção Térmica e Acústica para o Seu Espaço
                 </h1>
                 <p className="text-xl text-gray-700 mb-6 leading-relaxed">
-                  Sistema que reduz até <strong>30 dB de ruído</strong> e até{' '}
-                  <strong>10 °C de temperatura</strong> no ambiente coberto. Policarbonato alveolar
-                  6mm/10mm ou painéis sanduíche. Projeto, instalação e garantia de 2 anos em SP.
+                  Instalamos coberturas termoacústicas em área gourmet, varandas, galpões e comércios
+                  em SP. Redução de até <strong>30 dB de ruído</strong> e até{' '}
+                  <strong>10 °C de temperatura</strong>. Policarbonato alveolar ou painéis sanduíche
+                  com garantia de 2 anos.
                 </p>
                 <div className="grid grid-cols-2 gap-3 mb-6">
                   {[
@@ -172,6 +184,23 @@ export default function CoberturaTermoacustica() {
                 </div>
               </div>
             </div>
+          </section>
+
+          {/* Eixo vertical: link para catálogo de modelos em /produtos */}
+          <section className="mb-8 rounded-lg border border-blue-100 bg-blue-50 p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            <div className="flex-1">
+              <p className="font-semibold text-gray-800 mb-1">Conheça os modelos disponíveis</p>
+              <p className="text-sm text-gray-600">
+                Compare painéis sanduíche EPS, PU e policarbonato alveolar — especificações,
+                espessuras e aplicações no catálogo completo da linha termoacústica.
+              </p>
+            </div>
+            <Link
+              href="/produtos/cobertura-termoacustica"
+              className="shrink-0 inline-block rounded-lg bg-blue-600 text-white px-5 py-2.5 text-sm font-semibold hover:bg-blue-700 transition"
+            >
+              Ver catálogo de modelos →
+            </Link>
           </section>
 
           <CoberturaTermoacusticaExpandedSections />

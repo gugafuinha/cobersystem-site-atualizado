@@ -4,12 +4,21 @@ import { readdir } from 'fs/promises';
 import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ProductVejaTambem from '@/components/ProductVejaTambem';
+import ProdutoInstalacaoLink from '@/components/produto/ProdutoInstalacaoLink';
+import ProdutoAplicacoes, { AplicacaoItem } from '@/components/produto/ProdutoAplicacoes';
 import StructuredData from '@/components/seo/StructuredData';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import { CIDADES_COBERTURA_TERMOACUSTICA } from '@/lib/cobertura-termoacustica-cidades';
 import { productSchemas } from '@/lib/schemas/product-schemas';
 import { generatePageMetadata } from '@/lib/seo/page-metadata';
 import CoberturaTermoacusticaExpandedSections from './CoberturaTermoacusticaExpandedSections';
+
+const aplicacoesTermoacustica: AplicacaoItem[] = [
+  { href: '/servicos/cobertura-area-gourmet', label: 'Cobertura Termoacústica para Área Gourmet', descricao: 'Conforto térmico e acústico para quem usa o espaço ao longo do dia com churrasqueira.' },
+  { href: '/servicos/cobertura-garagem',      label: 'Cobertura Termoacústica para Garagem',      descricao: 'Proteção contra granizo, calor e ruído de trânsito em garagens e estacionamentos.' },
+  { href: '/servicos/cobertura-varanda-apartamento', label: 'Cobertura Termoacústica para Varanda', descricao: 'Redução de ruído externo e temperatura em varandas de apartamento e coberturas.' },
+  { href: '/servicos/cobertura-corredor-lateral', label: 'Cobertura Termoacústica para Corredor', descricao: 'Acústica e conforto em passagens laterais, corredores de acesso e áreas de serviço.' },
+];
 
 export const metadata = generatePageMetadata('cobertura-termoacustica');
 
@@ -385,6 +394,14 @@ export default async function CoberturaTermoacustica() {
             </table>
           </div>
         </section>
+
+        <ProdutoInstalacaoLink
+          servicoSlug="cobertura-termoacustica"
+          servicoLabel="cobertura termoacústica"
+          descricao="Veja como funciona o serviço de instalação para área gourmet, varanda, galpão e comércios em SP: visita técnica gratuita, projeto e garantia de 2 anos."
+        />
+
+        <ProdutoAplicacoes aplicacoes={aplicacoesTermoacustica} />
 
         <ProductVejaTambem current="termoacustica" />
 

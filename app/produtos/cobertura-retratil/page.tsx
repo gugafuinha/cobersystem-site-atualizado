@@ -2,6 +2,8 @@ import Link from 'next/link';
 import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ProductVejaTambem from '@/components/ProductVejaTambem';
+import ProdutoInstalacaoLink from '@/components/produto/ProdutoInstalacaoLink';
+import ProdutoAplicacoes, { AplicacaoItem } from '@/components/produto/ProdutoAplicacoes';
 import StructuredData from '@/components/seo/StructuredData';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import { CIDADES_COBERTURA_RETRATIL } from '@/lib/cobertura-retratil-cidades';
@@ -9,6 +11,13 @@ import { productSchemas } from '@/lib/schemas/product-schemas';
 import { faqSchemas } from '@/lib/schemas/faq-schemas';
 import { generatePageMetadata } from '@/lib/seo/page-metadata';
 import CoberturaRetratilExpandedSections from './CoberturaRetratilExpandedSections';
+
+const aplicacoesRetratil: AplicacaoItem[] = [
+  { href: '/servicos/cobertura-piscina',          label: 'Cobertura Retrátil para Piscina',          descricao: 'Dimensionamento, sistemas de fechamento e proteção térmica para piscinas.' },
+  { href: '/servicos/cobertura-area-gourmet',     label: 'Cobertura Retrátil para Área Gourmet',     descricao: 'Integração com churrasqueira, ventilação e conforto em área de lazer.' },
+  { href: '/servicos/cobertura-varanda-apartamento', label: 'Cobertura Retrátil para Varanda',       descricao: 'Aprovação em condomínio, modelos slim e fechamento discreto para apartamentos.' },
+  { href: '/servicos/cobertura-garagem',          label: 'Cobertura Retrátil para Garagem',          descricao: 'Proteção de veículos com abertura total quando necessário.' },
+];
 
 export const metadata = generatePageMetadata('cobertura-retratil');
 
@@ -131,6 +140,14 @@ export default function CoberturaRetratil() {
         </section>
 
         <CoberturaRetratilExpandedSections />
+
+        <ProdutoInstalacaoLink
+          servicoSlug="cobertura-retratil"
+          servicoLabel="cobertura retrátil"
+          descricao="Da visita técnica ao projeto 3D: veja como funciona o serviço completo de instalação de cobertura retrátil em SP, prazos, garantia e área atendida."
+        />
+
+        <ProdutoAplicacoes aplicacoes={aplicacoesRetratil} />
 
         <ProductVejaTambem current="retratil" />
 

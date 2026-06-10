@@ -3,7 +3,16 @@ import Link from 'next/link';
 import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ProductVejaTambem from '@/components/ProductVejaTambem';
+import ProdutoInstalacaoLink from '@/components/produto/ProdutoInstalacaoLink';
+import ProdutoAplicacoes, { AplicacaoItem } from '@/components/produto/ProdutoAplicacoes';
 import { CIDADES_COBERTURA_ABRE_E_FECHA } from '@/lib/cobertura-abre-e-fecha-cidades';
+
+const aplicacoesAbreEFecha: AplicacaoItem[] = [
+  { href: '/servicos/cobertura-piscina',      label: 'Cobertura Abre e Fecha para Piscina',      descricao: 'Abertura total nos dias de sol, fechamento rápido antes de chuva.' },
+  { href: '/servicos/cobertura-area-gourmet', label: 'Cobertura Abre e Fecha para Área Gourmet', descricao: 'Controle de ventilação e proteção para churrasqueiras e áreas de lazer.' },
+  { href: '/servicos/cobertura-playground',   label: 'Cobertura Abre e Fecha para Playground',   descricao: 'Proteção solar e chuva com abertura para ventilação em condomínios.' },
+  { href: '/servicos/cobertura-pergolado',    label: 'Cobertura Abre e Fecha para Pergolado',    descricao: 'Sistema retrátil integrado a pergolados de alumínio ou madeira.' },
+];
 
 const BASE = 'https://www.coberturapolicarbonato.com.br';
 const OG_IMAGE = `${BASE}/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg`;
@@ -13,7 +22,7 @@ export const metadata: Metadata = {
   description:
     'Cobertura abre e fecha com abertura de 0 a 90 graus. Telhas em alumínio, intercaladas ou policarbonato. Automação via Alexa e sensor de chuva. Solicite orçamento.',
   keywords:
-    'cobertura abre e fecha, cobertura retrátil automatizada, Alexa cobertura, sensor chuva cobertura, policarbonato abre e fecha',
+    'cobertura abre e fecha, cobertura que abre e fecha, Alexa cobertura, sensor chuva cobertura, policarbonato abre e fecha, cobertura abre e fecha SP',
   alternates: {
     canonical: `${BASE}/produtos/cobertura-abre-e-fecha`,
   },
@@ -155,6 +164,14 @@ export default function CoberturaAbreEFechaHubPage() {
             ))}
           </div>
         </section>
+
+        <ProdutoInstalacaoLink
+          servicoSlug="cobertura-abre-e-fecha"
+          servicoLabel="cobertura abre e fecha"
+          descricao="Veja como funciona o serviço completo de instalação: visita técnica gratuita, configuração de automação Alexa/sensor e garantia de 2 anos em SP."
+        />
+
+        <ProdutoAplicacoes aplicacoes={aplicacoesAbreEFecha} />
 
         <ProductVejaTambem current="retratil" />
 
