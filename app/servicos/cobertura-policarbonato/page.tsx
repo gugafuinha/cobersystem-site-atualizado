@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import WhatsAppLink from '@/components/WhatsAppLink';
 import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import StructuredData from '@/components/seo/StructuredData';
@@ -194,14 +195,14 @@ export default function CoberturaPolicarbonatoServicoPage() {
             <p className="text-xl mb-8 text-blue-100">
               Visita técnica grátis + projeto em até 48h
             </p>
-            <a
+            <WhatsAppLink
               href="https://wa.me/5511943615079?text=Olá!%20Quero%20um%20projeto%20de%20cobertura%20em%20policarbonato"
-              target="_blank"
-              rel="noopener noreferrer"
+              location="footer-cta"
+              serviceSlug="cobertura-policarbonato"
               className="inline-block bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors"
             >
               💬 Solicitar Projeto Grátis
-            </a>
+            </WhatsAppLink>
           </div>
         </section>
       </main>

@@ -1,5 +1,6 @@
 'use client';
 
+import { trackMetaEvent } from './MetaPixel';
 import { trackGoogleAdsConversion, CONVERSION_LABELS } from './GoogleAds';
 
 // GoogleAnalytics.tsx — somente exporta funções de tracking.
@@ -16,8 +17,27 @@ export const trackEvent = (action: string, category: string, label?: string, val
   }
 };
 
+export type WhatsAppLeadParams = {
+  location: string;
+  serviceSlug?: string;
+};
+
+/** Evento unificado para GA4 (marcar como conversão no painel) + Google Ads + Meta */
+export const trackWhatsAppLead = ({ location, serviceSlug }: WhatsAppLeadParams) => {
+  if (typeof window !== 'undefined' && (window as any).gtag) {
+    (window as any).gtag('event', 'whatsapp_click', {
+      event_category: 'conversion',
+      click_location: location,
+      service_slug: serviceSlug ?? window.location.pathname,
+      page_path: window.location.pathname,
+    });
+  }
+  trackGoogleAdsConversion(CONVERSION_LABELS.WHATSAPP_CLICK);
+  trackMetaEvent('Contact', { method: 'WhatsApp', location });
+};
+
 export const trackWhatsAppClick = () => {
-  trackEvent('click', 'WhatsApp', 'Botão WhatsApp Fixo');
+  trackWhatsAppLead({ location: 'floating-button' });
 };
 
 export const trackCTAClick = (ctaName: string) => {
@@ -34,5 +54,4 @@ export const trackScroll90 = () => {
 
 export const trackPhoneClick = () => {
   trackEvent('phone_click', 'engagement', 'Telefone');
-  trackGoogleAdsConversion(CONVERSION_LABELS.WHATSAPP_CLICK);
 };

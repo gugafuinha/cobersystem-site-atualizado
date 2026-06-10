@@ -114,6 +114,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'cobertura-abre-e-fecha',
     'cobertura-retratil',
     'cobertura-retratil-automatizada',
+    'cobertura-policarbonato',
     'cobertura-fixa-policarbonato-alveolar',
     'cobertura-fixa-policarbonato-compacto',
     'cobertura-termoacustica',
@@ -123,6 +124,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'cobertura-piscina',
     'cobertura-corredor-lateral',
     'cobertura-playground',
+    'cobertura-jardim-de-inverno',
+    'cobertura-pergolado',
     'projetos-personalizados',
     'cobertura-varanda-apartamento',
   ].map((slug) => ({

@@ -14,7 +14,17 @@ export default function CoberturaTermoacusticaExpandedSections() {
           <p>
             A <strong>cobertura termoacústica</strong> como serviço vai além de instalar chapas: é
             dimensionar isolamento real contra calor e ruído para que sua{' '}
-            <strong>área gourmet</strong>, varanda ou ambiente comercial seja utilizável o ano todo.
+            <Link href="/servicos/cobertura-area-gourmet" className="text-blue-600 font-semibold hover:underline">
+              área gourmet
+            </Link>
+            ,{' '}
+            <Link
+              href="/servicos/cobertura-varanda-apartamento"
+              className="text-blue-600 font-semibold hover:underline"
+            >
+              varanda de apartamento
+            </Link>{' '}
+            ou ambiente comercial seja utilizável o ano todo.
             Na Cobersystem, o processo inclui visita técnica, projeto com memorial descritivo,
             fornecimento de materiais certificados, instalação por equipe própria e garantia de 2 anos.
           </p>

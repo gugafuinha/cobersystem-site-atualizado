@@ -35,7 +35,18 @@ export default function CoberturaRetratilServicoExpandedSections() {
             críticas: a montagem e o acabamento são feitos por profissionais treinados no próprio
             padrão Cobersystem, o que reduz retrabalho, ruído de comunicação e surpresas de última
             hora. Isso é especialmente importante em <strong>projeto cobertura</strong> com
-            geometria desafiadora, integração com área gourmet, varandas de apartamento ou
+            geometria desafiadora, integração com{' '}
+            <Link href="/servicos/cobertura-area-gourmet" className="text-blue-600 font-semibold hover:underline">
+              área gourmet
+            </Link>
+            ,{' '}
+            <Link
+              href="/servicos/cobertura-varanda-apartamento"
+              className="text-blue-600 font-semibold hover:underline"
+            >
+              varandas de apartamento
+            </Link>{' '}
+            ou
             vãos maiores — onde pequenos erros de medida viram grande problema.
           </p>
           <p>

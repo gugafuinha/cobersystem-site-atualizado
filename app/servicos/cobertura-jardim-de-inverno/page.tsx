@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import WhatsAppLink from '@/components/WhatsAppLink';
 import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FAQSchema from '@/components/FAQSchema';
@@ -176,14 +177,7 @@ export default function CoberturaJardimDeInverno() {
                   >
                     Solicitar Orçamento
                   </Link>
-                  <a
-                    href={WHATSAPP_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition"
-                  >
-                    WhatsApp
-                  </a>
+                  <WhatsAppLink href={WHATSAPP_URL} location="hero" serviceSlug="cobertura-jardim-de-inverno" className="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition">WhatsApp</WhatsAppLink>
                 </div>
               </div>
             </div>
@@ -209,14 +203,7 @@ export default function CoberturaJardimDeInverno() {
               >
                 Solicitar Orçamento
               </Link>
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-green-700 transition"
-              >
-                WhatsApp Agora
-              </a>
+              <WhatsAppLink href={WHATSAPP_URL} location="footer-cta" serviceSlug="cobertura-jardim-de-inverno" className="inline-block bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-green-700 transition">WhatsApp Agora</WhatsAppLink>
             </div>
           </section>
         </div>

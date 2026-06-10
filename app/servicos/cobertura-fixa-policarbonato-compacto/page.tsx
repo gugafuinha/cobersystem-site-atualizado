@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import WhatsAppLink from '@/components/WhatsAppLink';
 import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FAQSchema from '@/components/FAQSchema';
@@ -202,14 +203,7 @@ export default function CoberturaFixaCompacto() {
               >
                 Solicitar Orçamento
               </Link>
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-green-700 transition"
-              >
-                WhatsApp Agora
-              </a>
+              <WhatsAppLink href={WHATSAPP_URL} location="footer-cta" serviceSlug="cobertura-fixa-policarbonato-compacto" className="inline-block bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-green-700 transition">WhatsApp Agora</WhatsAppLink>
             </div>
           </section>
         </div>

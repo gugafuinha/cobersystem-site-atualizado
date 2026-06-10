@@ -2,6 +2,18 @@
 
 ---
 
+## 2026-06-09 — WhatsApp GA4/Ads + sitemap + fix GSC gourmet/piscina/projetos
+
+### Deploy
+- **WhatsApp tracking unificado:** `WhatsAppLink.tsx` + `trackWhatsAppLead()` dispara GA4 `whatsapp_click`, Google Ads `WHATSAPP_CLICK` e Meta Contact em todas as páginas `/servicos/*`
+- **FAQSchema:** trocado `next/script` por `<script>` nativo (FAQ visível no HTML SSR — corrige gourmet e piscina)
+- **GSC gourmet:** removido `faqSchemas.coberturaAreaGourmet` legado (preços R$ 12k–35k conflitantes com Product)
+- **GSC projetos:** `SchemaMarkup` → `StructuredData`
+- **Sitemap:** adicionadas `cobertura-policarbonato`, `cobertura-jardim-de-inverno`, `cobertura-pergolado`
+- **Links internos varanda:** `ServiceVejaTambem` + links em abre-e-fecha, retrátil, termoacústica expanded
+
+---
+
 ## 2026-06-09 — Fix schema JSON-LD: StructuredData nas 4 páginas GSC
 
 ### Deploy (commit `5c716fd`)

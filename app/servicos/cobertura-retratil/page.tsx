@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import WhatsAppLink from '@/components/WhatsAppLink';
 import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Breadcrumb from '@/components/seo/Breadcrumb';
@@ -206,14 +207,14 @@ export default function CoberturaRetratilServicoPage() {
                   >
                     Solicitar Orçamento
                   </Link>
-                  <a
+                  <WhatsAppLink
                     href="https://wa.me/5511943615079?text=Ol%C3%A1%21+Gostaria+de+or%C3%A7amento+para+cobertura+retr%C3%A1til."
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    location="hero"
+                    serviceSlug="cobertura-retratil"
                     className="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition"
                   >
                     WhatsApp
-                  </a>
+                  </WhatsAppLink>
                 </div>
               </div>
             </div>
@@ -234,14 +235,14 @@ export default function CoberturaRetratilServicoPage() {
               >
                 Solicitar Orçamento
               </Link>
-              <a
+              <WhatsAppLink
                 href="https://wa.me/5511943615079?text=Ol%C3%A1%21+Quero+um+projeto+de+cobertura+retr%C3%A1til"
-                target="_blank"
-                rel="noopener noreferrer"
+                location="footer-cta"
+                serviceSlug="cobertura-retratil"
                 className="inline-block bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-green-700 transition"
               >
                 WhatsApp Agora
-              </a>
+              </WhatsAppLink>
             </div>
           </section>
         </div>

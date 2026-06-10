@@ -27,8 +27,20 @@ export default function CoberturaAbreEFechaExpandedSections() {
               retrátil automatizada premium
             </Link>{' '}
             ({formatPricePerM2(COBERSYSTEM_PRICING.retratilAutomatizada)}), mas com a mesma lógica de
-            abrir para o sol e fechar na chuva. Ideal para <strong>acessos, corredores, varandas, área
-            gourmet e churrasqueiras</strong> em São Paulo e Grande SP.
+            abrir para o sol e fechar na chuva.             Ideal para <strong>acessos, corredores, </strong>
+            <Link
+              href="/servicos/cobertura-varanda-apartamento"
+              className="text-blue-600 font-semibold hover:underline"
+            >
+              varandas de apartamento
+            </Link>
+            , <Link
+              href="/servicos/cobertura-area-gourmet"
+              className="text-blue-600 font-semibold hover:underline"
+            >
+              área gourmet
+            </Link>{' '}
+            e churrasqueiras em São Paulo e Grande SP.
           </p>
           <p>
             Para instalação retrátil em geral (várias configurações), veja também{' '}

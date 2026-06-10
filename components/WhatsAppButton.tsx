@@ -2,8 +2,6 @@
 
 import Link from 'next/link';
 import { trackWhatsAppClick } from './GoogleAnalytics';
-import { trackMetaEvent } from './MetaPixel';
-import { trackGoogleAdsConversion, CONVERSION_LABELS } from './GoogleAds';
 
 export default function WhatsAppButton() {
   const phoneNumber = '5511943615079'; // (11) 94361-5079
@@ -13,8 +11,6 @@ export default function WhatsAppButton() {
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     // Disparar todos os eventos de tracking antes de navegar
     trackWhatsAppClick();
-    trackMetaEvent('Contact', { method: 'WhatsApp' });
-    trackGoogleAdsConversion(CONVERSION_LABELS.WHATSAPP_CLICK);
 
     // Delay de 300ms para garantir que os hits (especialmente o beacon do Ads)
     // sejam enviados antes de abrir a nova aba. Sem isso, links target="_blank"

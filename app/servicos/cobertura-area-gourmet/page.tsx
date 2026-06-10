@@ -8,7 +8,6 @@ import Breadcrumb from '@/components/seo/Breadcrumb';
 import { buildServiceOffer } from '@/lib/schemas/product-schemas';
 import { getFaqPriceAnswer, getServiceSchemaMinPrice } from '@/lib/pricing';
 import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
-import { faqSchemas } from '@/lib/schemas/faq-schemas';
 import { generatePageMetadata } from '@/lib/seo/page-metadata';
 import CoberturaAreaGourmetExpandedSections from './CoberturaAreaGourmetExpandedSections';
 
@@ -50,7 +49,6 @@ export default function CoberturaAreaGourmet() {
   return (
     <>
       <StructuredData data={productSchema} />
-      <StructuredData data={faqSchemas.coberturaAreaGourmet} />
       <Breadcrumb />
       <main className="min-h-screen bg-gray-50">
         <div className="container mx-auto px-4 py-8">

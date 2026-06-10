@@ -37,6 +37,16 @@ const LINKS = [
     label: 'Área Gourmet',
   },
   {
+    id: 'varanda-apartamento' as const,
+    href: '/servicos/cobertura-varanda-apartamento',
+    label: 'Cobertura Varanda Apartamento',
+  },
+  {
+    id: 'cobertura-policarbonato' as const,
+    href: '/servicos/cobertura-policarbonato',
+    label: 'Cobertura em Policarbonato',
+  },
+  {
     id: 'jardim-de-inverno' as const,
     href: '/servicos/cobertura-jardim-de-inverno',
     label: 'Cobertura Jardim de Inverno',
