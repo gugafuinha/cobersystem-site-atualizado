@@ -2,6 +2,13 @@
 
 ---
 
+## 2026-06-09 — Fix schema JSON-LD retrátil automatizada (GSC)
+
+### Deploy
+- `/servicos/cobertura-retratil-automatizada`: `SchemaMarkup` → `StructuredData` (Product/Merchant visível no HTML SSR)
+
+---
+
 ## 2026-06-09 — Fix: GoogleAds no layout (window.gtag)
 
 ### Deploy (commit `94e533e`)
