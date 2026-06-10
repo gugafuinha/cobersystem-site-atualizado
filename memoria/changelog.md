@@ -4,8 +4,7 @@
 
 ## 2026-06-09 — Fix schema JSON-LD retrátil automatizada (GSC)
 
-### Deploy
-- `/servicos/cobertura-retratil-automatizada`: `SchemaMarkup` → `StructuredData` (Product/Merchant visível no HTML SSR)
+### Deploy (commit `3bd21c2`)
 
 ---
 
