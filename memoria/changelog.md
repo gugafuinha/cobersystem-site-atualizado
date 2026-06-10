@@ -4,7 +4,7 @@
 
 ## 2026-06-09 — Fix schema JSON-LD em lote: 8 páginas de serviço
 
-### Deploy
+### Deploy (commit `7f8c115`)
 - Migradas de `SchemaMarkup` (next/script) para `StructuredData` (script ld+json nativo SSR):
   - `/servicos/cobertura-abre-e-fecha`
   - `/servicos/cobertura-jardim-de-inverno`
@@ -132,7 +132,7 @@
 | Cobertura Fixa Compacto | 800 – 1.200 |
 | Cobertura Retrátil Automatizada | 1.200 – 1.600 |
 
-### Deploy
+### Deploy (commit `7f8c115`)
 - Push para `origin/main` (Vercel)
 
 ---
@@ -553,7 +553,7 @@ Inserido automaticamente após a 3ª seção (herda lógica do P3.1 já implemen
 - Termoacústica, Alumínio, Playground — novas fotos
 - **Novos cards:** Jardim de Inverno (`jardim-de-inverno-02.png`) e Pergolado (`pergolado-01.png`)
 
-### Deploy
+### Deploy (commit `7f8c115`)
 - Build validado localmente; push para `origin/main` (Vercel)
 
 ---
@@ -576,7 +576,7 @@ Inserido automaticamente após a 3ª seção (herda lógica do P3.1 já implemen
 - ServiceVejaTambem adicionado em: garagem, corredor-lateral, alumínio, projetos-personalizados, playground
 - `ServiceVejaTambem.tsx` — novas entradas para os slugs acima
 
-### Deploy
+### Deploy (commit `7f8c115`)
 - Build validado; push para `origin/main` (Vercel)
 
 ---
@@ -597,7 +597,7 @@ Inserido automaticamente após a 3ª seção (herda lógica do P3.1 já implemen
 ### Listagem `/servicos`
 - Card Cobertura Retrátil Automatizada → `IMG_4754.jpg` com `object-position: 50% 30%`
 
-### Deploy
+### Deploy (commit `7f8c115`)
 - Push para `origin/main` (Vercel)
 
 ---
@@ -611,7 +611,7 @@ Inserido automaticamente após a 3ª seção (herda lógica do P3.1 já implemen
 - Hero e card na listagem → `Cobertura Garagem.png`
 - Metadata OG/Twitter/schema atualizados
 
-### Deploy
+### Deploy (commit `7f8c115`)
 - Push para `origin/main` (Vercel)
 
 ---
@@ -625,7 +625,7 @@ Google Search Console reportava ausência de `price`, `shippingDetails` e `hasMe
 - `lib/schemas/product-schemas.ts` — exportados `merchantReturnPolicy`, `shippingDetails` e helper `buildServiceOffer(url, price)`
 - 17 páginas de serviço atualizadas com `price`, `priceValidUntil`, `hasMerchantReturnPolicy` e `shippingDetails` padronizados
 
-### Deploy
+### Deploy (commit `7f8c115`)
 - Push para `origin/main` (Vercel)
 
 ---
@@ -646,7 +646,7 @@ Google Search Console reportava ausência de `price`, `shippingDetails` e `hasMe
 - Nota abaixo de tabelas de preço (ou seção equivalente)
 - Seção Mecanismos de Automação com "Valor por comando" em vermelho
 
-### Deploy
+### Deploy (commit `7f8c115`)
 - Push para `origin/main` (Vercel)
 
 ---
