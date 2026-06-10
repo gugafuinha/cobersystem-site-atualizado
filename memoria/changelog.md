@@ -2,6 +2,41 @@
 
 ---
 
+## 2026-06-10 — Blog: duplicatas resolvidas + 4 posts novos + links /produtos/ + redirect 301
+
+### Deploy (commit `89fdff1`)
+
+#### D1 — Redirect 301 + remoção da duplicata de policarbonato
+- `next.config.ts`: redirect permanente `/blog/cobertura-de-policarbonato-precos-tipos-guia` → `/blog/cobertura-policarbonato-preco-tipos`
+- `content/blog-posts.json`: entrada duplicata removida
+- `app/blog/page.tsx`: card id:7 removido
+- `app/sitemap.ts`: URL removida
+- `app/blog/[slug]/page.tsx`: POST_INTERNAL_LINKS e POST_WHATSAPP_MESSAGE da duplicata removidos
+
+#### D2/D3 — Arquivos órfãos deletados
+- `content/blog-posts-parte2.json` (21.8KB, 2 slugs duplicados, nunca importado)
+- `content/blog-posts.json.backup` (70.2KB, versão antiga)
+
+#### Links /produtos/ adicionados nos 4 posts product-intent (POST_INTERNAL_LINKS)
+| Post | Link /produtos/ adicionado |
+|---|---|
+| cobertura-retratil-guia-completo | `/produtos/cobertura-retratil` |
+| cobertura-abre-fecha-vantagens | `/produtos/cobertura-abre-e-fecha` |
+| cobertura-policarbonato-preco-tipos | `/produtos/cobertura-policarbonato` |
+| automacao-alexa-sensor-chuva | `/produtos/cobertura-retratil` |
+
+#### 4 posts novos em blog-posts.json (12 posts total)
+| Slug | Keyword primária | Vol. est. | Funil | CTA → |
+|---|---|---|---|---|
+| `teto-retratil-automatico-como-funciona-precos` | teto retrátil automático / telhado retrátil | 300–700 + 2–4k | meio→fundo | /servicos/cobertura-retratil-automatizada |
+| `fechamento-de-varanda-tipos-precos` | fechamento de varanda | 3–6k | fundo | /servicos/cobertura-varanda-apartamento |
+| `pergolado-bioclimatico-o-que-e-vale-a-pena-precos` | pergolado bioclimático | 2–5k | meio→fundo | /servicos/cobertura-pergolado |
+| `toldo-retratil-vs-cobertura-retratil-qual-escolher` | toldo retrátil | 8–15k | topo→meio | /servicos/cobertura-retratil |
+
+Cada post tem: 8–10 seções + FAQ + POST_INTERNAL_LINKS + POST_WHATSAPP_MESSAGE + card em /blog + sitemap
+
+---
+
 ## 2026-06-10 — SEO: resolver canibalização /servicos vs /produtos + links cruzados hierárquicos
 
 ### Deploy (commit `acb187c`)
