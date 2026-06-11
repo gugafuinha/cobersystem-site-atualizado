@@ -2,6 +2,23 @@
 
 ---
 
+## 2026-06-11 — Correções críticas de segurança e SEO (4 alertas)
+
+**Criado:**
+- `app/revisao/layout.tsx` — `robots: { index: false, follow: false }` para bloquear indexação da página interna
+
+**Modificado:**
+- `app/robots.ts` — `/revisao/` adicionado ao `disallow` para todos os user-agents (*, Googlebot, Bingbot)
+
+**Deletado:**
+- `public/robots.txt` — conflitava com `app/robots.ts`; arquivo estático sobrescrevia as regras corretas
+- `app/servicos/calhas-rufos-perfil-u/page.tsx` — dívida técnica; redirect 301 já existe no `next.config.ts`
+
+**Schema:**
+- `app/telhado-retratil-policarbonato-preco/page.tsx` — removido `aggregateRating` falso (4.8/127 reviews sem evidência real = risco de penalidade manual Google)
+
+---
+
 ## 2026-06-10 — Infraestrutura SSG: cobertura-pergolado + cobertura-garagem
 
 **Criados:**
