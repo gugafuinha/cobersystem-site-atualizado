@@ -241,6 +241,22 @@ export default function CoberturaRetratilServicoPage() {
           <PriceEstimateNote className="mb-8" />
           <ServiceAutomationSection />
 
+          <section className="max-w-4xl mx-auto py-16">
+            <h2 className="text-3xl font-bold text-gray-900 mb-10 text-center">
+              Perguntas Frequentes
+            </h2>
+            <div className="space-y-5">
+              {faqSchema.mainEntity.map((item) => (
+                <div key={item.name} className="bg-white rounded-xl border border-gray-200 p-6">
+                  <h3 className="font-bold text-gray-900 mb-2">{item.name}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    {item.acceptedAnswer.text}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+
           <section className="bg-[#D4AF37] text-black rounded-lg p-12 text-center mt-12">
             <h2 className="text-4xl font-bold mb-4">Solicite Seu Projeto Personalizado</h2>
             <p className="text-xl mb-8 text-gray-900">Visita técnica grátis + projeto em até 48h</p>

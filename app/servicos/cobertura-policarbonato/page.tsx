@@ -187,6 +187,22 @@ export default function CoberturaPolicarbonatoServicoPage() {
           <ServiceAutomationSection />
         </div>
 
+        <section className="max-w-4xl mx-auto px-4 py-16">
+          <h2 className="text-3xl font-bold text-gray-900 mb-10 text-center">
+            Perguntas Frequentes
+          </h2>
+          <div className="space-y-5">
+            {faqSchema.mainEntity.map((item) => (
+              <div key={item.name} className="bg-white rounded-xl border border-gray-200 p-6">
+                <h3 className="font-bold text-gray-900 mb-2">{item.name}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  {item.acceptedAnswer.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
         <section className="bg-blue-600 text-white py-16">
           <div className="max-w-4xl mx-auto text-center px-4">
             <h2 className="text-3xl font-bold mb-4">

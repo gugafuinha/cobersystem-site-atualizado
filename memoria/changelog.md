@@ -2,6 +2,21 @@
 
 ---
 
+## 2026-06-11 — Correções de risco de penalidade manual Google (P0)
+
+**`lib/schemas/product-schemas.ts`** — removido `aggregateRating` falso de todas as 9 constantes:
+`coberturaRetratilCompacto` (4.9/47), `coberturaRetratilGeral` (4.9/87), `coberturaPolicarbonato` (4.8/124),
+`coberturaTermoacustica` (4.9/63), `venezianaPolicarbonato` (4.7/28), `coberturaAreaGourmet` (4.9/156),
+`coberturaPiscina` (4.8/93), `coberturaPergolado` (4.9/78), `automacaoInteligente` (5.0/142).
+Arquivo reescrito integralmente. Mantidos: offers, brand, image, description, sku, additionalProperty.
+
+**FAQ-fantasma resolvido (FAQPage no schema sem conteúdo visível):**
+- `app/servicos/cobertura-retratil/page.tsx` — adicionada seção visual "Perguntas Frequentes" antes do CTA final, mapeando `faqSchema.mainEntity` (5 perguntas)
+- `app/servicos/cobertura-policarbonato/page.tsx` — idem (5 perguntas)
+- `app/servicos/cobertura-varanda-apartamento/page.tsx` — já renderizava FAQ visualmente (linhas 387–402); sem alteração necessária
+
+---
+
 ## 2026-06-11 — Correções críticas de segurança e SEO (4 alertas)
 
 **Criado:**

@@ -65,12 +65,6 @@ export const productSchemas = {
       'Cobertura retrátil em policarbonato compacto cristal 2mm, totalmente transparente. Sistema de abertura e fechamento com automação via Alexa e sensor de chuva. Ideal para máxima luminosidade sem perder proteção.',
     sku: 'COB-RET-COMP-2MM',
     brand: { '@type': 'Brand', name: 'Cobersystem' },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '47',
-      bestRating: '5',
-    },
     offers: {
       '@type': 'Offer',
       url: `${BASE_URL}/produtos/cobertura-retratil/policarbonato-compacto-2mm`,
@@ -102,11 +96,6 @@ export const productSchemas = {
       'Sistema de cobertura retrátil que abre e fecha com automação inteligente. Controle via Alexa, Google Home ou controle remoto. Sensor de chuva fecha automaticamente.',
     sku: 'COB-RET-GERAL',
     brand: { '@type': 'Brand', name: 'Cobersystem' },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '87',
-    },
     offers: {
       '@type': 'Offer',
       url: `${BASE_URL}/produtos/cobertura-retratil`,
@@ -133,11 +122,6 @@ export const productSchemas = {
       'Cobertura fixa em policarbonato alveolar ou compacto. Proteção permanente para garagens, áreas de serviço, varandas. Estrutura em alumínio com garantia de 10 anos.',
     sku: 'COB-FIXA-POLI',
     brand: { '@type': 'Brand', name: 'Cobersystem' },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.8',
-      reviewCount: '124',
-    },
     offers: {
       '@type': 'Offer',
       url: `${BASE_URL}/produtos/cobertura-policarbonato`,
@@ -164,11 +148,6 @@ export const productSchemas = {
       'Telha sanduíche termoacústica. Reduz até 95% do ruído da chuva e mantém temperatura até 10°C mais baixa. Ideal para áreas gourmet.',
     sku: 'COB-TERMO',
     brand: { '@type': 'Brand', name: 'Cobersystem' },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '63',
-    },
     offers: {
       '@type': 'Offer',
       url: `${BASE_URL}/produtos/cobertura-termoacustica`,
@@ -195,11 +174,6 @@ export const productSchemas = {
       'Sistema de veneziana em policarbonato para controle de luminosidade e ventilação. Lâminas móveis.',
     sku: 'VEN-POLI',
     brand: { '@type': 'Brand', name: 'Cobersystem' },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.7',
-      reviewCount: '28',
-    },
     offers: {
       '@type': 'Offer',
       url: `${BASE_URL}/produtos/veneziana-policarbonato`,
@@ -234,11 +208,6 @@ export const productSchemas = {
       hasMerchantReturnPolicy: merchantReturnPolicy,
       shippingDetails,
     },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '156',
-    },
   },
 
   coberturaPiscina: {
@@ -262,11 +231,6 @@ export const productSchemas = {
       availability: 'https://schema.org/InStock',
       hasMerchantReturnPolicy: merchantReturnPolicy,
       shippingDetails,
-    },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.8',
-      reviewCount: '93',
     },
   },
 
@@ -292,11 +256,6 @@ export const productSchemas = {
       hasMerchantReturnPolicy: merchantReturnPolicy,
       shippingDetails,
     },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '78',
-    },
   },
 
   automacaoInteligente: {
@@ -312,11 +271,6 @@ export const productSchemas = {
       'Sistema de automação para cobertura retrátil. Controle via Alexa, Google Home, controle remoto e sensor de chuva automático.',
     sku: 'AUTO-INT',
     brand: { '@type': 'Brand', name: 'Cobersystem' },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '5.0',
-      reviewCount: '142',
-    },
     offers: {
       '@type': 'Offer',
       url: `${BASE_URL}/produtos/cobertura-retratil/automacao-inteligente`,
