@@ -1,5 +1,14 @@
 import Link from 'next/link';
 
+const ATENDEMOS_LINKS = [
+  { href: '/localizacao/sao-paulo', label: 'São Paulo' },
+  { href: '/localizacao/zona-sul', label: 'Zona Sul' },
+  { href: '/localizacao/zona-oeste', label: 'Zona Oeste' },
+  { href: '/localizacao/guarulhos', label: 'Guarulhos' },
+  { href: '/localizacao/campinas', label: 'Campinas' },
+  { href: '/localizacao/abc', label: 'ABC Paulista' },
+];
+
 const LINKS = [
   {
     id: 'abre-e-fecha' as const,
@@ -93,22 +102,47 @@ export default function ServiceVejaTambem({
   const items = LINKS.filter((item) => item.id !== current);
 
   return (
-    <section className="mb-16 rounded-lg border border-gray-200 bg-gray-50 p-8">
-      <h2 className="mb-6 text-center text-2xl font-bold text-gray-800 md:text-3xl">
-        Veja também
-      </h2>
-      <ul className="mx-auto grid max-w-5xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {items.map((item) => (
-          <li key={item.href}>
+    <>
+      {/* Atendemos em */}
+      <section className="mb-8 rounded-lg border border-blue-100 bg-blue-50 px-8 py-6">
+        <h2 className="mb-4 text-lg font-bold text-gray-800">Atendemos em</h2>
+        <div className="flex flex-wrap gap-3">
+          {ATENDEMOS_LINKS.map(({ href, label }) => (
             <Link
-              href={item.href}
-              className="block rounded-lg bg-white p-4 text-center text-base font-semibold text-gray-800 shadow-sm ring-1 ring-gray-200 transition hover:bg-blue-50 hover:text-blue-600 hover:ring-blue-200"
+              key={href}
+              href={href}
+              className="rounded-full border border-blue-200 bg-white px-4 py-2 text-sm font-semibold text-blue-700 shadow-sm transition hover:bg-blue-600 hover:text-white hover:border-blue-600"
             >
-              {item.label}
+              {label}
             </Link>
-          </li>
-        ))}
-      </ul>
-    </section>
+          ))}
+          <Link
+            href="/localizacao"
+            className="rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-600 shadow-sm transition hover:bg-gray-100"
+          >
+            Ver todas as regiões →
+          </Link>
+        </div>
+      </section>
+
+      {/* Veja também */}
+      <section className="mb-16 rounded-lg border border-gray-200 bg-gray-50 p-8">
+        <h2 className="mb-6 text-center text-2xl font-bold text-gray-800 md:text-3xl">
+          Veja também
+        </h2>
+        <ul className="mx-auto grid max-w-5xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {items.map((item) => (
+            <li key={item.href}>
+              <Link
+                href={item.href}
+                className="block rounded-lg bg-white p-4 text-center text-base font-semibold text-gray-800 shadow-sm ring-1 ring-gray-200 transition hover:bg-blue-50 hover:text-blue-600 hover:ring-blue-200"
+              >
+                {item.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </>
   );
 }

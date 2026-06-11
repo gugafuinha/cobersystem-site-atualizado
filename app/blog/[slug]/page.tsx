@@ -31,16 +31,19 @@ const POST_INTERNAL_LINKS: Record<string, Array<{ label: string; href: string }>
     { label: 'Catálogo de Modelos — Cobertura Retrátil', href: '/produtos/cobertura-retratil' },
     { label: 'Instalação de Cobertura Retrátil em SP', href: '/servicos/cobertura-retratil' },
     { label: 'Automação com Alexa e Sensor de Chuva', href: '/servicos/cobertura-retratil-automatizada' },
+    { label: 'Cobertura Retrátil em São Paulo — preços e modelos', href: '/produtos/cobertura-retratil/em/sao-paulo' },
   ],
   'cobertura-abre-fecha-vantagens': [
     { label: 'Catálogo de Modelos — Cobertura Abre e Fecha', href: '/produtos/cobertura-abre-e-fecha' },
     { label: 'Instalação de Cobertura Abre e Fecha', href: '/servicos/cobertura-abre-e-fecha' },
     { label: 'Cobertura para Piscina', href: '/servicos/cobertura-piscina' },
+    { label: 'Cobertura Abre e Fecha em São Paulo — modelos e preços', href: '/produtos/cobertura-abre-e-fecha/em/sao-paulo' },
   ],
   'cobertura-policarbonato-preco-tipos': [
     { label: 'Catálogo de Modelos — Cobertura de Policarbonato', href: '/produtos/cobertura-policarbonato' },
     { label: 'Cobertura Fixa — Policarbonato Alveolar', href: '/servicos/cobertura-fixa-policarbonato-alveolar' },
     { label: 'Cobertura Fixa — Policarbonato Compacto', href: '/servicos/cobertura-fixa-policarbonato-compacto' },
+    { label: 'Cobertura de Policarbonato em São Paulo — preços e modelos', href: '/produtos/cobertura-policarbonato/em/sao-paulo' },
   ],
   'cobertura-retratil-churrasqueira': [
     { label: 'Cobertura para Área Gourmet', href: '/servicos/cobertura-area-gourmet' },
@@ -51,11 +54,13 @@ const POST_INTERNAL_LINKS: Record<string, Array<{ label: string; href: string }>
     { label: 'Cobertura Retrátil Automatizada — Alexa e Sensor', href: '/servicos/cobertura-retratil-automatizada' },
     { label: 'Catálogo de Modelos — Cobertura Retrátil', href: '/produtos/cobertura-retratil' },
     { label: 'Cobertura Abre e Fecha', href: '/servicos/cobertura-abre-e-fecha' },
+    { label: 'Cobertura Retrátil no Morumbi — automatizada com Alexa', href: '/produtos/cobertura-retratil/em/sao-paulo/morumbi' },
   ],
   'pergolado-vs-cobertura-retratil': [
     { label: 'Cobertura Retrátil — Ver serviço completo', href: '/servicos/cobertura-retratil' },
     { label: 'Projetos Personalizados', href: '/servicos/projetos-personalizados' },
     { label: 'Cobertura para Área Gourmet', href: '/servicos/cobertura-area-gourmet' },
+    { label: 'Cobertura para Pergolado nos Jardins — SP', href: '/produtos/cobertura-pergolado/em/sao-paulo/jardins' },
   ],
   'teto-retratil-automatico-como-funciona-precos': [
     { label: 'Cobertura Retrátil Automatizada — Alexa e Sensor', href: '/servicos/cobertura-retratil-automatizada' },
@@ -66,21 +71,25 @@ const POST_INTERNAL_LINKS: Record<string, Array<{ label: string; href: string }>
     { label: 'Cobertura para Varanda de Apartamento', href: '/servicos/cobertura-varanda-apartamento' },
     { label: 'Catálogo de Modelos — Cobertura de Policarbonato', href: '/produtos/cobertura-policarbonato' },
     { label: 'Cobertura para Jardim de Inverno', href: '/servicos/cobertura-jardim-de-inverno' },
+    { label: 'Cobertura Retrátil na Vila Mariana — SP', href: '/produtos/cobertura-retratil/em/sao-paulo/vila-mariana' },
   ],
   'pergolado-bioclimatico-o-que-e-vale-a-pena-precos': [
     { label: 'Cobertura para Pergolado — Ver serviço', href: '/servicos/cobertura-pergolado' },
     { label: 'Projetos Personalizados de Cobertura', href: '/servicos/projetos-personalizados' },
     { label: 'Catálogo de Modelos — Cobertura Retrátil', href: '/produtos/cobertura-retratil' },
+    { label: 'Cobertura para Pergolado em Barueri', href: '/produtos/cobertura-pergolado/em/barueri' },
   ],
   'toldo-retratil-vs-cobertura-retratil-qual-escolher': [
     { label: 'Instalação de Cobertura Retrátil em SP', href: '/servicos/cobertura-retratil' },
     { label: 'Catálogo de Modelos — Cobertura Abre e Fecha', href: '/produtos/cobertura-abre-e-fecha' },
     { label: 'Cobertura para Área Gourmet', href: '/servicos/cobertura-area-gourmet' },
+    { label: 'Cobertura Retrátil em São Paulo — ver modelos e preços', href: '/produtos/cobertura-retratil/em/sao-paulo' },
   ],
   'cobertura-para-piscina-tipos-precos-guia': [
     { label: 'Cobertura para Piscina — Ver serviço completo', href: '/servicos/cobertura-piscina' },
     { label: 'Cobertura Retrátil Automatizada — Sensor de Chuva', href: '/servicos/cobertura-retratil-automatizada' },
     { label: 'Cobertura Retrátil', href: '/servicos/cobertura-retratil' },
+    { label: 'Cobertura para Piscina no Morumbi — SP', href: '/produtos/cobertura-piscina/em/sao-paulo/morumbi' },
   ],
   'cobertura-area-gourmet-tipos-precos-guia': [
     { label: 'Cobertura Retrátil para Área Gourmet — Ver serviço', href: '/servicos/cobertura-area-gourmet' },
