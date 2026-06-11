@@ -6,11 +6,18 @@ import ProdutoInstalacaoLink from '@/components/produto/ProdutoInstalacaoLink';
 import ProdutoAplicacoes, { AplicacaoItem } from '@/components/produto/ProdutoAplicacoes';
 import StructuredData from '@/components/seo/StructuredData';
 import Breadcrumb from '@/components/seo/Breadcrumb';
+import FAQSchema from '@/components/FAQSchema';
 import { CIDADES_COBERTURA_POLICARBONATO } from '@/lib/cobertura-policarbonato-cidades';
 import { productSchemas } from '@/lib/schemas/product-schemas';
 import { faqSchemas } from '@/lib/schemas/faq-schemas';
 import { generatePageMetadata } from '@/lib/seo/page-metadata';
 import CoberturaPolicarbonatoExpandedSections from './CoberturaPolicarbonatoExpandedSections';
+import {
+  COBERSYSTEM_PRICING,
+  formatPricePerM2,
+  getPolicarbonatoFaqPriceAnswer,
+  PRICE_ESTIMATE_NOTE,
+} from '@/lib/pricing';
 
 export const metadata = generatePageMetadata('cobertura-policarbonato');
 
@@ -215,6 +222,114 @@ export default function CoberturaFixa() {
           </div>
         </section>
 
+        {/* Tabela de Preços por Tipo e Espessura */}
+        <section className="mb-16 bg-white rounded-lg shadow-sm p-8">
+          <h2 className="text-3xl font-bold text-gray-800 mb-2 text-center">
+            Preço de Cobertura em Policarbonato por m²
+          </h2>
+          <p className="text-gray-600 text-center mb-8">
+            Valores para São Paulo e Grande SP — visita técnica e orçamento gratuitos
+          </p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse min-w-[600px]">
+              <thead>
+                <tr className="bg-blue-600 text-white text-sm">
+                  <th className="py-3 px-4 font-semibold rounded-tl-lg">Tipo / Espessura</th>
+                  <th className="py-3 px-4 font-semibold">Preço por m²</th>
+                  <th className="py-3 px-4 font-semibold">Melhor Para</th>
+                  <th className="py-3 px-4 font-semibold rounded-tr-lg">Durabilidade</th>
+                </tr>
+              </thead>
+              <tbody className="text-gray-700">
+                <tr className="border-b border-gray-100 hover:bg-blue-50 transition">
+                  <td className="py-4 px-4 font-medium">Alveolar 6mm</td>
+                  <td className="py-4 px-4 text-blue-700 font-semibold">{formatPricePerM2(COBERSYSTEM_PRICING.fixaAlveolar)}</td>
+                  <td className="py-4 px-4">Garagem, varanda, área gourmet</td>
+                  <td className="py-4 px-4">15–20 anos</td>
+                </tr>
+                <tr className="border-b border-gray-100 hover:bg-blue-50 transition">
+                  <td className="py-4 px-4 font-medium">Alveolar 10mm</td>
+                  <td className="py-4 px-4 text-blue-700 font-semibold">{formatPricePerM2({ min: COBERSYSTEM_PRICING.fixaAlveolar.min + 100, max: COBERSYSTEM_PRICING.fixaAlveolar.max + 100 })}</td>
+                  <td className="py-4 px-4">Jardim de inverno, regiões quentes</td>
+                  <td className="py-4 px-4">20–25 anos</td>
+                </tr>
+                <tr className="border-b border-gray-100 hover:bg-blue-50 transition">
+                  <td className="py-4 px-4 font-medium">Compacto 2mm</td>
+                  <td className="py-4 px-4 text-blue-700 font-semibold">{formatPricePerM2(COBERSYSTEM_PRICING.fixaCompacto)}</td>
+                  <td className="py-4 px-4">Entrada, corredor, máxima transparência</td>
+                  <td className="py-4 px-4">15–20 anos</td>
+                </tr>
+                <tr className="hover:bg-blue-50 transition">
+                  <td className="py-4 px-4 font-medium">Compacto 4mm</td>
+                  <td className="py-4 px-4 text-blue-700 font-semibold">{formatPricePerM2({ min: COBERSYSTEM_PRICING.fixaCompacto.min + 100, max: COBERSYSTEM_PRICING.fixaCompacto.max + 100 })}</td>
+                  <td className="py-4 px-4">Uso intenso, garagem coberta, industria</td>
+                  <td className="py-4 px-4">20–25 anos</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-xs text-gray-500 mt-3 text-center">{PRICE_ESTIMATE_NOTE}</p>
+        </section>
+
+        {/* Comparativo Alveolar × Compacto */}
+        <section className="mb-16 bg-gray-50 rounded-lg p-8">
+          <h2 className="text-3xl font-bold text-gray-800 mb-2 text-center">
+            Alveolar ou Compacto? Qual escolher?
+          </h2>
+          <p className="text-gray-600 text-center mb-8">
+            Entenda as diferenças entre os dois tipos de policarbonato para fazer a escolha certa
+          </p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse min-w-[540px]">
+              <thead>
+                <tr className="text-sm text-gray-600 border-b-2 border-gray-300">
+                  <th className="py-3 px-4 font-semibold">Característica</th>
+                  <th className="py-3 px-4 font-semibold text-blue-700">Alveolar</th>
+                  <th className="py-3 px-4 font-semibold text-amber-700">Compacto</th>
+                </tr>
+              </thead>
+              <tbody className="text-gray-700 text-sm">
+                {[
+                  ['Transparência', 'Translúcido (difusa)', 'Até 90% (cristal)'],
+                  ['Isolamento térmico', 'Excelente (câmaras de ar)', 'Regular'],
+                  ['Isolamento acústico', 'Bom (reduz ruído de chuva)', 'Menor'],
+                  ['Resistência a impacto', 'Alta', 'Muito alta'],
+                  ['Preço por m²', formatPricePerM2(COBERSYSTEM_PRICING.fixaAlveolar), formatPricePerM2(COBERSYSTEM_PRICING.fixaCompacto)],
+                  ['Espessuras disponíveis', '4mm, 6mm, 8mm, 10mm', '2mm, 3mm, 4mm'],
+                  ['Melhor para', 'Área gourmet, jardim inverno, piscina', 'Entrada, corredor, garagem'],
+                  ['Peso (kg/m²)', '~1,0–1,3 kg', '~2,4–4,8 kg'],
+                ].map(([car, alv, comp]) => (
+                  <tr key={car} className="border-b border-gray-100 hover:bg-white transition">
+                    <td className="py-3 px-4 font-medium text-gray-800">{car}</td>
+                    <td className="py-3 px-4">{alv}</td>
+                    <td className="py-3 px-4">{comp}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="mt-6 grid md:grid-cols-2 gap-6">
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-5">
+              <h3 className="font-bold text-blue-800 mb-2">✅ Escolha o Alveolar se:</h3>
+              <ul className="text-sm text-blue-900 space-y-1">
+                <li>• Quer conforto térmico e menos calor no verão</li>
+                <li>• Precisa reduzir o ruído de chuva</li>
+                <li>• O ambiente é área gourmet, piscina ou jardim de inverno</li>
+                <li>• Quer o melhor custo-benefício para coberturas amplas</li>
+              </ul>
+            </div>
+            <div className="bg-amber-50 border border-amber-200 rounded-lg p-5">
+              <h3 className="font-bold text-amber-800 mb-2">✅ Escolha o Compacto se:</h3>
+              <ul className="text-sm text-amber-900 space-y-1">
+                <li>• Quer máxima transparência e claridade</li>
+                <li>• O ambiente é entrada, corredor ou garagem</li>
+                <li>• Precisa de alta resistência a impactos e granizo</li>
+                <li>• Quer resultado visual mais próximo ao vidro</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
         <ProdutoInstalacaoLink
           servicoSlug="cobertura-policarbonato"
           servicoLabel="cobertura de policarbonato"
@@ -222,6 +337,44 @@ export default function CoberturaFixa() {
         />
 
         <ProdutoAplicacoes aplicacoes={aplicacoesPolicarbonato} />
+
+        {/* FAQ visível — 8 perguntas */}
+        <FAQSchema
+          faqs={[
+            {
+              question: 'Quanto custa cobertura em policarbonato fixa por m²?',
+              answer: getPolicarbonatoFaqPriceAnswer(),
+            },
+            {
+              question: 'Qual a diferença de preço entre policarbonato alveolar e compacto?',
+              answer: getPolicarbonatoFaqPriceAnswer(),
+            },
+            {
+              question: 'Policarbonato 6mm ou 10mm: qual escolher?',
+              answer: 'O policarbonato alveolar 6mm é o mais utilizado para residências: boa relação entre isolamento térmico, leveza e custo. O 10mm oferece isolamento superior e é indicado para regiões com calor intenso ou muito barulho externo (chuva, trânsito). Para coberturas de garagem e área gourmet, o 6mm atende a maioria dos casos. Para jardim de inverno ou ambiente que precisa de maior conforto climático, o 10mm vale o investimento.',
+            },
+            {
+              question: 'Cobertura de policarbonato esquenta muito?',
+              answer: 'Depende do tipo. Policarbonato alveolar reduz até 40% do calor graças às câmaras de ar internas. Policarbonato compacto cristal transmite mais calor, mas oferecemos versões com tratamento térmico que bloqueiam até 60% do calor. Para áreas muito expostas ao sol, recomendamos o alveolar bronze ou fumê (reduz até 70% do calor).',
+            },
+            {
+              question: 'Qual a vida útil de cobertura de policarbonato?',
+              answer: 'Policarbonato de qualidade com proteção UV dura 15 a 25 anos sem amarelar ou perder transparência. A garantia da Cobersystem é de 2 anos contra defeitos de fabricação e instalação. Estrutura de alumínio dura mais de 30 anos.',
+            },
+            {
+              question: 'Policarbonato protege contra raios UV?',
+              answer: 'Sim! Todo policarbonato que fornecemos tem proteção UV 99%, bloqueando raios UVA e UVB. Isso protege pessoas, móveis, estofados e a pintura de veículos. A camada UV é aplicada durante a fabricação e não sai com o tempo.',
+            },
+            {
+              question: 'Quanto tempo leva a instalação de cobertura fixa em policarbonato?',
+              answer: 'A instalação leva de 1 a 3 dias úteis para áreas de até 40 m², sem obras ou quebra de paredes. A estrutura de alumínio é fixada diretamente na alvenaria. Nossa equipe deixa o espaço limpo ao término. Garantia de 2 anos para estrutura e materiais.',
+            },
+            {
+              question: 'Pode instalar cobertura de policarbonato em qualquer lugar?',
+              answer: 'Sim, o policarbonato é extremamente versátil! Instalamos em garagens, áreas gourmet, piscinas, varandas, jardins de inverno, corredores, entradas de prédios e coberturas industriais — em residências e comércios. A estrutura se adapta a alvenaria, madeira e estrutura metálica. Projeto personalizado com garantia de 2 anos.',
+            },
+          ]}
+        />
 
         <ProductVejaTambem current="policarbonato" />
 

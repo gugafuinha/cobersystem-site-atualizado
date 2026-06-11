@@ -1,3 +1,5 @@
+import { COBERSYSTEM_PRICING } from '@/lib/pricing';
+
 const BASE_URL = 'https://www.coberturapolicarbonato.com.br';
 
 // Blocos reutilizáveis exigidos pelo Google Merchant Listings
@@ -122,16 +124,30 @@ export const productSchemas = {
       'Cobertura fixa em policarbonato alveolar ou compacto. Proteção permanente para garagens, áreas de serviço, varandas. Estrutura em alumínio com garantia de 10 anos.',
     sku: 'COB-FIXA-POLI',
     brand: { '@type': 'Brand', name: 'Cobersystem' },
-    offers: {
-      '@type': 'Offer',
-      url: `${BASE_URL}/produtos/cobertura-policarbonato`,
-      priceCurrency: 'BRL',
-      price: '450',
-      priceValidUntil: '2026-12-31',
-      availability: 'https://schema.org/InStock',
-      hasMerchantReturnPolicy: merchantReturnPolicy,
-      shippingDetails,
-    },
+    offers: [
+      {
+        '@type': 'Offer',
+        name: 'Cobertura Fixa Policarbonato Alveolar',
+        url: `${BASE_URL}/servicos/cobertura-fixa-policarbonato-alveolar`,
+        priceCurrency: 'BRL',
+        price: String(COBERSYSTEM_PRICING.fixaAlveolar.min),
+        priceValidUntil: '2027-12-31',
+        availability: 'https://schema.org/InStock',
+        hasMerchantReturnPolicy: merchantReturnPolicy,
+        shippingDetails,
+      },
+      {
+        '@type': 'Offer',
+        name: 'Cobertura Fixa Policarbonato Compacto',
+        url: `${BASE_URL}/servicos/cobertura-fixa-policarbonato-compacto`,
+        priceCurrency: 'BRL',
+        price: String(COBERSYSTEM_PRICING.fixaCompacto.min),
+        priceValidUntil: '2027-12-31',
+        availability: 'https://schema.org/InStock',
+        hasMerchantReturnPolicy: merchantReturnPolicy,
+        shippingDetails,
+      },
+    ],
   },
 
   coberturaTermoacustica: {

@@ -43,20 +43,24 @@ const serviceSchema = {
 
 const faqs = [
   {
-    question: 'Quanto custa uma cobertura para piscina?',
+    question: 'Quanto custa uma cobertura para piscina em SP?',
     answer: getFaqPriceAnswer('fixaCompacto'),
   },
   {
     question: 'A cobertura para piscina mantém a água aquecida?',
-    answer: 'Sim! A cobertura retrátil para piscina ajuda a manter a temperatura da água, especialmente quando fechada. O policarbonato cria um efeito estufa, aquecendo a água naturalmente. Isso reduz o consumo de energia do aquecedor.',
+    answer: 'Sim. A cobertura retrátil para piscina ajuda a manter a temperatura da água, especialmente quando fechada. O policarbonato cria um efeito estufa que aquece a água naturalmente e reduz a perda de calor noturna — diminuindo o consumo do aquecedor em até 30%.',
   },
   {
     question: 'A cobertura protege contra folhas e sujeira?',
-    answer: 'Sim! Quando fechada, a cobertura protege completamente a piscina contra folhas, galhos, insetos e outras sujeiras. Isso reduz significativamente a necessidade de limpeza e manutenção da piscina.',
+    answer: 'Sim. Quando fechada, a cobertura protege completamente a piscina contra folhas, galhos, insetos e poeira. Isso reduz a frequência de limpeza pesada e mantém a química da água mais estável, com menos adição de cloro.',
   },
   {
     question: 'Posso usar a piscina com a cobertura fechada?',
-    answer: 'A cobertura retrátil permite abrir totalmente quando você quiser usar a piscina, e fechar quando não estiver em uso. Isso oferece proteção quando necessário e acesso total quando quiser nadar.',
+    answer: 'A cobertura retrátil permite abrir totalmente quando você quer nadar e fechar quando não está em uso. Dependendo da altura do sistema (semi-alta ou walk-in), é possível até nadar com ela parcialmente aberta para ventilação.',
+  },
+  {
+    question: 'Qual o prazo de instalação de cobertura para piscina?',
+    answer: 'Para piscinas de até 40 m², a instalação leva de 2 a 4 dias úteis após a aprovação do projeto. A estrutura de alumínio não exige obras nem quebra de pisos. O processo inclui: visita técnica gratuita, projeto, fabricação e instalação com equipe especializada. Garantia de 2 anos.',
   },
 ];
 
@@ -139,6 +143,51 @@ export default function CoberturaPiscina() {
                 feche para proteger e aquecer a água. Com automação, você pode controlar tudo via Alexa ou sensor 
                 de chuva automático.
               </p>
+            </div>
+          </section>
+
+          {/* Prova Social + Cases */}
+          <section className="mb-12 bg-blue-600 text-white rounded-lg p-8">
+            <h2 className="text-2xl font-bold text-center mb-8">
+              Coberturas para Piscina executadas em SP pela Cobersystem
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center mb-8">
+              {[
+                { n: '+500', l: 'projetos concluídos em SP' },
+                { n: '2 anos', l: 'de garantia na instalação' },
+                { n: '1–4 dias', l: 'prazo de instalação' },
+                { n: '100%', l: 'projetos sob medida' },
+              ].map(({ n, l }) => (
+                <div key={l}>
+                  <p className="text-3xl font-bold text-[#D4AF37]">{n}</p>
+                  <p className="text-sm text-blue-100 mt-1">{l}</p>
+                </div>
+              ))}
+            </div>
+            <div className="grid md:grid-cols-3 gap-4">
+              {[
+                {
+                  loc: 'Morumbi — SP',
+                  desc: 'Cobertura retrátil alta (walk-in) em policarbonato alveolar sobre piscina de 48 m². Sistema automatizado com sensor de chuva.',
+                  tipo: 'Retrátil automática',
+                },
+                {
+                  loc: 'Alphaville — Barueri',
+                  desc: 'Cobertura telescópica em policarbonato compacto cristal para piscina de 35 m². Instalação sem obra, 3 dias de execução.',
+                  tipo: 'Fixa telescópica',
+                },
+                {
+                  loc: 'Jardins — SP',
+                  desc: 'Cobertura semi-alta em alveolar bronze sobre piscina de 22 m². Estrutura integrada ao paisagismo do jardim.',
+                  tipo: 'Fixa semi-alta',
+                },
+              ].map(({ loc, desc, tipo }) => (
+                <div key={loc} className="bg-blue-700 rounded-lg p-4">
+                  <p className="text-xs font-semibold text-[#D4AF37] mb-1">{tipo}</p>
+                  <p className="font-bold text-white mb-2">📍 {loc}</p>
+                  <p className="text-blue-100 text-sm leading-relaxed">{desc}</p>
+                </div>
+              ))}
             </div>
           </section>
 

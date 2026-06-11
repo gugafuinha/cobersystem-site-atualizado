@@ -152,18 +152,39 @@ export default function CoberturaFixaCompacto() {
             </div>
           </section>
 
+          {/* Prova Social */}
+          <section className="mb-12 bg-blue-600 text-white rounded-lg p-8">
+            <h2 className="text-2xl font-bold mb-6 text-center">
+              Cobersystem em números
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+              {[
+                { n: '+500', l: 'projetos concluídos em SP' },
+                { n: '2 anos', l: 'de garantia em todos os projetos' },
+                { n: '+10 anos', l: 'de experiência no mercado' },
+                { n: '100%', l: 'projetos sob medida' },
+              ].map(({ n, l }) => (
+                <div key={l}>
+                  <p className="text-3xl font-bold text-[#D4AF37]">{n}</p>
+                  <p className="text-sm text-blue-100 mt-1">{l}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
           <section className="mb-12 bg-white rounded-lg p-8 shadow-sm">
             <h2 className="text-3xl font-bold text-gray-800 mb-6">O que é Policarbonato Compacto?</h2>
             <div className="prose max-w-none text-gray-700 leading-relaxed">
               <p className="mb-4">
-                O policarbonato compacto é um material totalmente sólido, sem câmaras de ar internas. 
+                O <strong>policarbonato compacto</strong> é um material totalmente sólido, sem câmaras de ar internas. 
                 Oferece transparência de até 90%, permitindo máxima entrada de luz natural, similar ao vidro, 
-                mas com muito mais resistência a impactos.
+                mas com muito mais resistência a impactos e sem o risco de quebra.
               </p>
               <p className="mb-4">
-                Diferente do policarbonato alveolar (que tem isolamento térmico), o compacto oferece máxima 
-                transparência e luminosidade. É ideal para áreas que precisam de muita luz natural, como 
-                varandas, áreas gourmet e garagens.
+                Diferente do policarbonato alveolar (que tem câmaras de ar para isolamento térmico), o compacto entrega 
+                <strong> máxima transparência e luminosidade</strong>. É ideal para áreas que precisam de muita luz natural: 
+                varandas, áreas gourmet, garagens, entradas de residência e corredores. 
+                Disponível em espessuras de 2mm e 4mm, com cores: cristal, bronze, azul, verde e fumê.
               </p>
             </div>
           </section>
@@ -187,6 +208,74 @@ export default function CoberturaFixaCompacto() {
                 <h3 className="text-xl font-semibold text-gray-800 mb-3">☀️ Proteção UV</h3>
                 <p className="text-gray-600">Bloqueia até 99% dos raios UV, protegendo pessoas e móveis.</p>
               </div>
+            </div>
+          </section>
+
+          {/* Onde usar */}
+          <section className="mb-12 bg-gray-50 rounded-lg p-8">
+            <h2 className="text-3xl font-bold text-gray-800 mb-6">
+              Onde Usar Cobertura Fixa em Policarbonato Compacto
+            </h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              {[
+                {
+                  icon: '🚗',
+                  title: 'Garagem e Estacionamento',
+                  desc: 'Proteção total para veículos com transparência que permite visualização natural. A chapa compacta 2mm resiste a granizo sem quebrar.',
+                },
+                {
+                  icon: '🏠',
+                  title: 'Entrada e Varanda',
+                  desc: 'Cria um visual de vidro sem o peso e o custo do vidro. Ideal para varandas de apartamentos e entradas de residências.',
+                },
+                {
+                  icon: '🌿',
+                  title: 'Corredor Lateral',
+                  desc: 'Protege o corredor da chuva sem escurecer o ambiente. Com luz natural plena, mantém o conforto mesmo nos dias cinzas.',
+                },
+                {
+                  icon: '🍖',
+                  title: 'Área Gourmet',
+                  desc: 'O compacto bronze ou azul filtra o sol e cria um clima mais agradável para churrasqueiras e áreas de lazer.',
+                },
+                {
+                  icon: '🏊',
+                  title: 'Piscina Descoberta',
+                  desc: 'Cobertura fixa compacta sobre deck de piscina protege dos raios UV sem comprometer a luminosidade da área.',
+                },
+                {
+                  icon: '🏢',
+                  title: 'Uso Comercial e Industrial',
+                  desc: 'Alta resistência a impactos e intempéries para coberturas de fachadas, vagas de funcionários e áreas de carga.',
+                },
+              ].map(({ icon, title, desc }) => (
+                <div key={title} className="bg-white rounded-lg p-5 shadow-sm border border-gray-100">
+                  <div className="text-3xl mb-3">{icon}</div>
+                  <h3 className="font-bold text-gray-800 mb-2">{title}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{desc}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Processo de Instalação */}
+          <section className="mb-12 bg-white rounded-lg p-8 shadow-sm">
+            <h2 className="text-3xl font-bold text-gray-800 mb-6">Como Funciona a Instalação</h2>
+            <div className="grid md:grid-cols-4 gap-6">
+              {[
+                { n: '01', t: 'Visita Técnica Gratuita', d: 'Avaliamos o local, medimos a área e identificamos o melhor tipo de fixação — sem custo e sem compromisso.' },
+                { n: '02', t: 'Projeto Sob Medida', d: 'Elaboramos o projeto com o tipo de policarbonato compacto, cor, espessura e sistema de calhas mais adequado para seu espaço.' },
+                { n: '03', t: 'Fabricação em SP', d: 'A estrutura de alumínio é fabricada no nosso ateliê e o policarbonato é cortado nas medidas exatas do seu projeto.' },
+                { n: '04', t: 'Instalação Limpa', d: 'Instalamos em 1–2 dias sem obras, sem entulho. Ao término, conferimos vedação, fixação e entregamos com garantia de 2 anos.' },
+              ].map(({ n, t, d }) => (
+                <div key={n} className="text-center">
+                  <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg mx-auto mb-3">
+                    {n}
+                  </div>
+                  <h3 className="font-semibold text-gray-800 mb-2 text-sm">{t}</h3>
+                  <p className="text-gray-500 text-xs leading-relaxed">{d}</p>
+                </div>
+              ))}
             </div>
           </section>
 

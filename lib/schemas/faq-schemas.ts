@@ -103,6 +103,30 @@ export const faqSchemas = {
           "@type": "Answer",
           "text": "Sim, o policarbonato é extremamente versátil! Instalamos em: garagens, áreas gourmet, piscinas, varandas, quintais, jardins de inverno, corredores laterais, entradas de prédios, coberturas industriais. Funciona tanto em residências quanto em comércios. A estrutura se adapta a diferentes tipos de fixação: alvenaria, madeira, estrutura metálica existente. Fazemos projeto personalizado para cada espaço com garantia de 2 anos."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "Qual a diferença de preço entre policarbonato alveolar e compacto?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": getPolicarbonatoFaqPriceAnswer(),
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Policarbonato 6mm ou 10mm: qual escolher?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "O policarbonato alveolar 6mm é o mais utilizado para residências: boa relação entre isolamento térmico, leveza e custo. O 10mm oferece isolamento superior e é indicado para regiões com calor intenso ou muito barulho externo (chuva, trânsito). Para coberturas de garagem e área gourmet, o 6mm atende a maioria dos casos. Para jardim de inverno, estúdio ou ambiente que precisa de maior conforto climático, o 10mm vale o investimento."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quanto tempo leva a instalação de cobertura fixa em policarbonato?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A instalação de cobertura fixa em policarbonato leva de 1 a 3 dias úteis para áreas de até 40 m², sem necessidade de obras ou quebra de paredes. A estrutura de alumínio é fixada diretamente na alvenaria ou em perfis existentes. Nossa equipe deixa o espaço limpo e sem entulho ao término da instalação. Garantia de 2 anos para estrutura e materiais."
+        }
       }
     ]
   },

@@ -9,6 +9,7 @@ import {
   formatPriceFrom,
   getPergoladoFaqPriceAnswer,
   getServiceSchemaMinPrice,
+  PRICE_ESTIMATE_NOTE,
 } from '@/lib/pricing';
 import PriceEstimateNote from '@/components/servicos/PriceEstimateNote';
 import ServiceAutomationSection from '@/components/servicos/ServiceAutomationSection';
@@ -29,6 +30,18 @@ export const metadata: Metadata = {
     description:
       'Cobertura retrátil ou fixa para pergolado em policarbonato e alumínio. Projetos sob medida em SP.',
     url: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-pergolado',
+    images: [
+      {
+        url: 'https://www.coberturapolicarbonato.com.br/images/projetos/pergolado-01.png',
+        width: 1200,
+        height: 900,
+        alt: 'Cobertura para Pergolado em Policarbonato — Cobersystem SP',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://www.coberturapolicarbonato.com.br/images/projetos/pergolado-01.png'],
   },
 };
 
@@ -61,28 +74,28 @@ const serviceSchema = {
 
 const faqs = [
   {
-    question: 'Qual a melhor cobertura para pergolado?',
+    question: 'O que é pergolado bioclimático e vale a pena instalar em SP?',
     answer:
-      'A melhor cobertura para pergolado depende do uso. Para ambientes que precisam de luz natural, o policarbonato compacto ou alveolar é ideal. Para quem prefere proteção total do sol, as telhas de alumínio ou termoacústicas são melhores. A opção retrátil (abre e fecha) é a mais versátil: combina proteção total quando fechada com aproveitamento do sol e ventilação quando aberta.',
+      'Pergolado bioclimático é um sistema de cobertura com lâminas orientáveis ou painéis retráteis que se adaptam às condições climáticas — abrindo para ventilação no calor e fechando para proteção na chuva. Em São Paulo, onde o clima varia muito ao longo do dia, vale muito a pena: você usa a área em qualquer estação sem precisar reformar. A Cobersystem instala coberturas retráteis que funcionam como pergolado bioclimático: policarbonato que abre e fecha manualmente ou com automação Alexa e sensor de chuva.',
+  },
+  {
+    question: 'Qual a melhor cobertura para pergolado bioclimático?',
+    answer:
+      'O sistema retrátil (abre e fecha) em policarbonato compacto ou alveolar é o mais indicado para simular o efeito bioclimático. Quando aberto, permite ventilação total e luz natural. Quando fechado, protege da chuva e reduz o calor. Com automação via Alexa ou sensor de chuva, o sistema responde ao clima de forma automática — exatamente como um pergolado bioclimático premium.',
   },
   {
     question: 'Posso colocar cobertura em pergolado existente?',
     answer:
-      'Sim, na maioria dos casos é possível adaptar uma cobertura ao pergolado existente sem demolir a estrutura. A Cobersystem realiza visita técnica para avaliar a estrutura do pergolado e dimensionar a cobertura mais adequada, seja fixa ou retrátil.',
+      'Sim, na maioria dos casos é possível adaptar uma cobertura ao pergolado existente sem demolir a estrutura. A Cobersystem realiza visita técnica para avaliar o pergolado e dimensionar a cobertura mais adequada — fixa ou retrátil — com fixação direta nas vigas existentes.',
   },
   {
     question: 'Quanto custa cobertura para pergolado?',
     answer: getPergoladoFaqPriceAnswer(),
   },
   {
-    question: 'A cobertura retrátil funciona em pergolado?',
+    question: 'Qual a diferença entre cobertura para pergolado fixa, retrátil e bioclimática?',
     answer:
-      'Sim. A cobertura retrátil é uma das mais indicadas para pergolado justamente por transformar a estrutura aberta em um ambiente protegido quando necessário. O sistema desliza sobre trilhos fixados na estrutura do pergolado e pode ser acionado manualmente, por controle remoto ou via Alexa.',
-  },
-  {
-    question: 'Qual a diferença entre cobertura e pergolado?',
-    answer:
-      'O pergolado é uma estrutura decorativa aberta (vigas e colunas), sem proteção contra chuva. A cobertura é o elemento instalado sobre o pergolado para criar proteção: pode ser em policarbonato (transparente), telhas de alumínio ou sistema retrátil abre e fecha. A Cobersystem instala coberturas sobre pergolados novos ou existentes.',
+      'Cobertura fixa: permanente, mais barata, sem ventilação. Ideal para quem quer proteção total sem custo elevado. Cobertura retrátil: desliza sobre trilhos e pode ser aberta ou fechada. É a versão residencial do pergolado bioclimático. Bioclimático premium: lâminas giratórias com motor independente para cada ângulo — mais caro e mais tecnológico. A Cobersystem trabalha com o sistema retrátil, que oferece 90% das vantagens do bioclimático a um custo acessível para projetos residenciais em SP.',
   },
 ];
 
@@ -250,6 +263,63 @@ export default function CoberturaPergolado() {
                   </div>
                   <h3 className="font-semibold text-gray-800 mb-2">{t}</h3>
                   <p className="text-gray-600 text-sm">{d}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Pergolado Bioclimático × Retrátil × Fixo — Comparativo */}
+          <section className="mb-12 bg-gray-50 rounded-lg p-8">
+            <h2 className="text-3xl font-bold text-gray-800 mb-2 text-center">
+              Pergolado Bioclimático, Retrátil e Fixo: qual é o certo para você?
+            </h2>
+            <p className="text-gray-600 text-center mb-8">
+              Compare os sistemas disponíveis e entenda as diferenças para seu projeto em SP
+            </p>
+            <div className="overflow-x-auto">
+              <table className="w-full text-left border-collapse min-w-[560px]">
+                <thead>
+                  <tr className="text-sm text-white">
+                    <th className="py-3 px-4 font-semibold bg-gray-700 rounded-tl-lg">Característica</th>
+                    <th className="py-3 px-4 font-semibold bg-blue-600">Retrátil (Abre/Fecha)</th>
+                    <th className="py-3 px-4 font-semibold bg-[#D4AF37] text-black">Bioclimático (lâminas)</th>
+                    <th className="py-3 px-4 font-semibold bg-gray-500 rounded-tr-lg">Fixo em Policarbonato</th>
+                  </tr>
+                </thead>
+                <tbody className="text-gray-700 text-sm">
+                  {[
+                    ['Controle de ventilação', '✅ Total (abre/fecha)', '✅ Total (ângulo ajustável)', '❌ Sem ventilação'],
+                    ['Proteção contra chuva', '✅ Total quando fechado', '✅ Total quando fechado', '✅ Permanente'],
+                    ['Automação', '✅ Alexa, sensor chuva', '✅ Motor por lâmina', '❌ Não se aplica'],
+                    ['Preço por m²', formatPriceFrom('abreEFecha'), 'R$ 2.500–4.000/m²', formatPriceFrom('fixaAlveolar')],
+                    ['Instalação sobre pergolado', '✅ Sim, sem demolição', '✅ Sim', '✅ Sim'],
+                    ['Melhor para', 'Residências em SP', 'Projetos premium', 'Proteção permanente'],
+                  ].map(([car, ret, bio, fix]) => (
+                    <tr key={car} className="border-b border-gray-100 hover:bg-white transition">
+                      <td className="py-3 px-4 font-medium text-gray-800">{car}</td>
+                      <td className="py-3 px-4">{ret}</td>
+                      <td className="py-3 px-4">{bio}</td>
+                      <td className="py-3 px-4">{fix}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="text-sm text-gray-500 mt-3 text-center">{formatPriceFrom('abreEFecha')} para sistema retrátil. Orçamento personalizado gratuito.</p>
+          </section>
+
+          {/* Prova Social */}
+          <section className="mb-12 bg-[#D4AF37] text-black rounded-lg p-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+              {[
+                { n: '+500', l: 'projetos executados em SP' },
+                { n: '2 anos', l: 'de garantia na instalação' },
+                { n: '1–2 dias', l: 'para instalação completa' },
+                { n: 'Gratuita', l: 'visita técnica e orçamento' },
+              ].map(({ n, l }) => (
+                <div key={l}>
+                  <p className="text-3xl font-bold">{n}</p>
+                  <p className="text-sm mt-1">{l}</p>
                 </div>
               ))}
             </div>

@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 import OptimizedImage from '@/components/OptimizedImage';
 import VideoHero from '@/components/VideoHero';
+import { getRetratilFaqPriceAnswer, getPolicarbonatoFaqPriceAnswer, COBERSYSTEM_PRICING, formatPricePerM2 } from '@/lib/pricing';
 
 export const metadata: Metadata = {
   title: "Cobersystem | Coberturas Retráteis em Policarbonato SP | Orçamento Grátis",
@@ -25,6 +26,73 @@ const homeWebSiteSchema = {
   },
 };
 
+const homeLocalBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Cobersystem — Coberturas Retráteis SP',
+  url: 'https://www.coberturapolicarbonato.com.br',
+  telephone: '+5511943615079',
+  image: 'https://www.coberturapolicarbonato.com.br/images/blog/cobertura-abre-fecha.jpg',
+  description: 'Especialistas em coberturas retráteis em policarbonato para São Paulo e Grande SP. Mais de 500 projetos executados. Visita técnica e orçamento gratuitos.',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'São Paulo',
+    addressRegion: 'SP',
+    addressCountry: 'BR',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: -23.5505,
+    longitude: -46.6333,
+  },
+  areaServed: [
+    { '@type': 'City', name: 'São Paulo' },
+    { '@type': 'City', name: 'Guarulhos' },
+    { '@type': 'City', name: 'Campinas' },
+    { '@type': 'City', name: 'Santo André' },
+    { '@type': 'City', name: 'São Bernardo do Campo' },
+    { '@type': 'City', name: 'Osasco' },
+    { '@type': 'City', name: 'Barueri' },
+  ],
+  openingHoursSpecification: [
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '08:00', closes: '18:00' },
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Saturday', opens: '08:00', closes: '13:00' },
+  ],
+  priceRange: '$$',
+};
+
+const homeFaqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Quanto custa uma cobertura retrátil em São Paulo?',
+      acceptedAnswer: { '@type': 'Answer', text: getRetratilFaqPriceAnswer() },
+    },
+    {
+      '@type': 'Question',
+      name: 'A Cobersystem faz visita técnica gratuita em SP?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Sim! A visita técnica é gratuita e sem compromisso para toda São Paulo e Grande SP. Nossa equipe vai até o seu endereço, mede a área, avalia a estrutura e apresenta o projeto com orçamento detalhado no mesmo dia.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Qual o prazo de instalação de cobertura retrátil em SP?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Para áreas de até 30 m², a instalação leva de 1 a 2 dias úteis. Áreas maiores ou projetos com automação (Alexa, sensor de chuva) levam de 2 a 4 dias. Não há necessidade de obras, quebra de paredes ou entulho.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'A cobertura retrátil funciona com automação Alexa e sensor de chuva?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Sim. A Cobersystem instala coberturas retráteis com automação completa: controle por voz (Alexa), aplicativo no celular, controle remoto e sensor de chuva automático. O sensor fecha a cobertura sozinho ao detectar chuva, sem você precisar fazer nada.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Quanto custa cobertura fixa em policarbonato em SP?',
+      acceptedAnswer: { '@type': 'Answer', text: getPolicarbonatoFaqPriceAnswer() },
+    },
+  ],
+};
+
 export default function Home() {
   return (
     <>
@@ -32,6 +100,16 @@ export default function Home() {
         id="schema-home-website"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(homeWebSiteSchema) }}
+      />
+      <Script
+        id="schema-home-localbusiness"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeLocalBusinessSchema) }}
+      />
+      <Script
+        id="schema-home-faq"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeFaqSchema) }}
       />
       <main className="min-h-screen">
       <VideoHero />
@@ -143,14 +221,33 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Prova Social Numérica */}
+      <section className="py-12 bg-gray-900 text-white">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            {[
+              { n: '+500', l: 'Projetos executados em SP' },
+              { n: '2 anos', l: 'de garantia em todos os projetos' },
+              { n: '+10 anos', l: 'de experiência no mercado' },
+              { n: '0€', l: 'visita técnica e orçamento' },
+            ].map(({ n, l }) => (
+              <div key={l}>
+                <p className="text-4xl font-bold text-[#D4AF37]">{n}</p>
+                <p className="text-gray-300 text-sm mt-1">{l}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Products Section com Imagens */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-4 text-gray-800">
-            Nossos Produtos
+            Nossos Produtos em São Paulo
           </h2>
           <p className="text-center text-gray-600 mb-12 text-lg">
-            Cobertura retrátil e fixa em policarbonato para todos os tipos de projeto
+            Cobertura retrátil e fixa em policarbonato para todos os projetos em SP e Grande SP
           </p>
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             <Link href="/produtos/cobertura-retratil/policarbonato-compacto-2mm" className="group">
@@ -298,21 +395,119 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Tabela de Preços Resumida */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <h2 className="text-3xl font-bold text-center mb-3 text-gray-800">
+            Preço de Cobertura em São Paulo
+          </h2>
+          <p className="text-center text-gray-500 mb-8 text-sm">Valores por m² — visita técnica gratuita para orçamento preciso</p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse min-w-[480px]">
+              <thead>
+                <tr className="bg-[#D4AF37] text-black text-sm">
+                  <th className="py-3 px-4 font-semibold rounded-tl-lg">Tipo de Cobertura</th>
+                  <th className="py-3 px-4 font-semibold">Preço por m²</th>
+                  <th className="py-3 px-4 font-semibold rounded-tr-lg">Melhor Para</th>
+                </tr>
+              </thead>
+              <tbody className="text-gray-700 text-sm">
+                <tr className="border-b border-gray-100 hover:bg-gray-50">
+                  <td className="py-3 px-4 font-medium">Fixa em Policarbonato Alveolar</td>
+                  <td className="py-3 px-4 font-semibold text-gray-800">{formatPricePerM2(COBERSYSTEM_PRICING.fixaAlveolar)}</td>
+                  <td className="py-3 px-4">Garagem, varanda, área de serviço</td>
+                </tr>
+                <tr className="border-b border-gray-100 hover:bg-gray-50">
+                  <td className="py-3 px-4 font-medium">Fixa em Policarbonato Compacto</td>
+                  <td className="py-3 px-4 font-semibold text-gray-800">{formatPricePerM2(COBERSYSTEM_PRICING.fixaCompacto)}</td>
+                  <td className="py-3 px-4">Entrada, corredor, alta transparência</td>
+                </tr>
+                <tr className="border-b border-gray-100 hover:bg-gray-50">
+                  <td className="py-3 px-4 font-medium">Retrátil Abre e Fecha</td>
+                  <td className="py-3 px-4 font-semibold text-gray-800">{formatPricePerM2(COBERSYSTEM_PRICING.abreEFecha)}</td>
+                  <td className="py-3 px-4">Área gourmet, varanda, piscina</td>
+                </tr>
+                <tr className="hover:bg-gray-50">
+                  <td className="py-3 px-4 font-medium">Retrátil Automatizada (Alexa)</td>
+                  <td className="py-3 px-4 font-semibold text-gray-800">{formatPricePerM2(COBERSYSTEM_PRICING.retratilAutomatizada)}</td>
+                  <td className="py-3 px-4">Automação completa, sensor de chuva</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-xs text-gray-400 mt-3 text-center">* Valores estimados. Preço final varia por área, complexidade e condições locais.</p>
+        </div>
+      </section>
+
+      {/* FAQ Visível */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4 max-w-3xl">
+          <h2 className="text-3xl font-bold text-center mb-3 text-gray-800">
+            Perguntas Frequentes — Cobertura Retrátil em São Paulo
+          </h2>
+          <p className="text-center text-gray-500 mb-10">Tire suas dúvidas sobre instalação, preços e automação</p>
+          <div className="space-y-4">
+            {[
+              {
+                q: 'Quanto custa uma cobertura retrátil em São Paulo?',
+                a: getRetratilFaqPriceAnswer(),
+              },
+              {
+                q: 'A Cobersystem faz visita técnica gratuita em SP?',
+                a: 'Sim. A visita técnica é 100% gratuita e sem compromisso para toda São Paulo e Grande SP. Nossa equipe vai até o seu endereço, mede a área, avalia a estrutura e entrega o orçamento no mesmo dia.',
+              },
+              {
+                q: 'Qual o prazo de instalação em SP?',
+                a: 'Para áreas de até 30 m², a instalação leva 1 a 2 dias úteis. Projetos maiores ou com automação (Alexa, sensor de chuva) levam de 2 a 4 dias. Sem obras, sem quebra de paredes, sem entulho.',
+              },
+              {
+                q: 'A cobertura retrátil funciona com Alexa e sensor de chuva?',
+                a: 'Sim. Instalamos automação completa: controle por voz (Alexa), aplicativo no celular, controle remoto e sensor de chuva automático — que fecha a cobertura sozinho ao detectar chuva.',
+              },
+              {
+                q: 'Quanto custa cobertura fixa em policarbonato em SP?',
+                a: getPolicarbonatoFaqPriceAnswer(),
+              },
+            ].map(({ q, a }) => (
+              <details key={q} className="bg-white rounded-lg shadow-sm border border-gray-100 group">
+                <summary className="p-5 font-semibold text-gray-800 cursor-pointer list-none flex justify-between items-center hover:text-blue-700 transition">
+                  {q}
+                  <span className="text-blue-600 group-open:rotate-180 transition-transform ml-3 shrink-0">▼</span>
+                </summary>
+                <div className="px-5 pb-5 text-gray-600 leading-relaxed text-sm border-t border-gray-100 pt-3">
+                  {a}
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-br from-gray-900 to-black text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-6">
-            Pronto para transformar seu espaço?
+            Pronto para transformar seu espaço em São Paulo?
           </h2>
           <p className="text-xl mb-8 text-gray-300">
             Solicite um orçamento gratuito e sem compromisso
           </p>
-          <Link 
-            href="/contato" 
-            className="inline-block bg-[#D4AF37] text-black px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#C9A030] transition shadow-lg"
-          >
-            Solicitar Orçamento Agora
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link 
+              href="/contato" 
+              className="inline-block bg-[#D4AF37] text-black px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#C9A030] transition shadow-lg"
+            >
+              Solicitar Orçamento Agora
+            </Link>
+            <a
+              href="https://wa.me/5511943615079?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20de%20cobertura."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-green-700 transition shadow-lg"
+            >
+              WhatsApp Agora
+            </a>
+          </div>
         </div>
       </section>
       </main>
