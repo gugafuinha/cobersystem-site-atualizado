@@ -1,3 +1,9 @@
+import {
+  getRetratilFaqPriceAnswer,
+  getPolicarbonatoFaqPriceAnswer,
+  getPergoladoFaqPriceAnswer,
+} from '@/lib/pricing';
+
 export const faqSchemas = {
   coberturaRetratil: {
     "@context": "https://schema.org",
@@ -8,7 +14,7 @@ export const faqSchemas = {
         "name": "Quanto custa uma cobertura retrátil em policarbonato?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "O investimento para cobertura retrátil varia entre R$ 800 a R$ 1.500 por m², dependendo do tipo de policarbonato (compacto ou alveolar), automação (manual, motorizada ou via Alexa) e acabamento. Para um espaço de 20m², o valor médio fica entre R$ 16.000 a R$ 30.000, incluindo instalação e garantia de 2 anos."
+          "text": getRetratilFaqPriceAnswer(),
         }
       },
       {
@@ -63,7 +69,7 @@ export const faqSchemas = {
         "name": "Quanto custa cobertura em policarbonato fixa por m²?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Cobertura fixa em policarbonato custa entre R$ 450 a R$ 900 por m², variando conforme: tipo (alveolar 6mm a 10mm ou compacto 2mm a 6mm), cor (cristal, fumê, bronze, leitoso), estrutura (alumínio, aço ou madeira) e tamanho da área. Para garagem de 20m², o investimento fica entre R$ 9.000 a R$ 18.000 instalado. Inclui: estrutura completa, policarbonato com proteção UV, vedação, calhas e garantia de 2 anos."
+          "text": getPolicarbonatoFaqPriceAnswer(),
         }
       },
       {
@@ -149,7 +155,7 @@ export const faqSchemas = {
         "name": "Quanto custa cobertura para pergolado?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Cobertura em policarbonato para pergolado existente custa entre R$ 600 a R$ 1.200 por m². Para um pergolado de 15m², o investimento fica entre R$ 9.000 a R$ 18.000 incluindo instalação e garantia de 2 anos. Se precisar construir o pergolado completo (estrutura + cobertura), valores entre R$ 15.000 a R$ 30.000 para 15-20m². Oferecemos opção retrátil que permite abrir e fechar conforme o clima."
+          "text": getPergoladoFaqPriceAnswer(),
         }
       },
       {

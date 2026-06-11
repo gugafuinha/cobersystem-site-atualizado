@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ProductVejaTambem from '@/components/ProductVejaTambem';
+import RegionalSeoBlock from '@/components/RegionalSeoBlock';
 import {
   getCidadePergolado,
   getSlugsCidadesPergolado,
@@ -95,6 +96,14 @@ export default async function CoberturaPergoladadoEmCidadePage({
     notFound();
   }
 
+  const pageUrl = `${BASE}/produtos/cobertura-pergolado/em/${cidade.slug}`;
+  const regionalBreadcrumbs = [
+    { name: 'Início', item: `${BASE}/` },
+    { name: 'Produtos', item: `${BASE}/produtos` },
+    { name: 'Pergolado Bioclimático', item: `${BASE}/servicos/cobertura-pergolado` },
+    { name: cidade.nome, item: pageUrl },
+  ];
+
   return (
     <main className="min-h-screen py-12">
       <div className="container mx-auto max-w-6xl px-4">
@@ -169,6 +178,13 @@ export default async function CoberturaPergoladadoEmCidadePage({
             </ul>
           </section>
         )}
+
+        <RegionalSeoBlock
+          nomeCidade={cidade.nome}
+          nomeProduto="Pergolado Bioclimático"
+          pageUrl={pageUrl}
+          breadcrumbs={regionalBreadcrumbs}
+        />
 
         <section className="mb-12">
           <h2 className="mb-6 text-2xl font-bold text-gray-800 md:text-3xl">

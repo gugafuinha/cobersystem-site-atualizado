@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ProductVejaTambem from '@/components/ProductVejaTambem';
+import RegionalSeoBlock from '@/components/RegionalSeoBlock';
 import {
   getCidadePolicarbonato,
   getSlugsCidadesPolicarbonato,
@@ -73,6 +74,17 @@ export default async function CoberturaPolicarbonatoEmCidadePage({
   if (!cidade) {
     notFound();
   }
+
+  const pageUrl = `${BASE}/produtos/cobertura-policarbonato/em/${cidade.slug}`;
+  const regionalBreadcrumbs = [
+    { name: 'Início', item: `${BASE}/` },
+    { name: 'Produtos', item: `${BASE}/produtos` },
+    {
+      name: 'Cobertura Fixa em Policarbonato',
+      item: `${BASE}/produtos/cobertura-policarbonato`,
+    },
+    { name: cidade.nome, item: pageUrl },
+  ];
 
   return (
     <main className="min-h-screen py-12">
@@ -148,6 +160,13 @@ export default async function CoberturaPolicarbonatoEmCidadePage({
             </ul>
           </section>
         )}
+
+        <RegionalSeoBlock
+          nomeCidade={cidade.nome}
+          nomeProduto="Cobertura em Policarbonato"
+          pageUrl={pageUrl}
+          breadcrumbs={regionalBreadcrumbs}
+        />
 
         <section className="mb-12">
           <h2 className="mb-6 text-2xl font-bold text-gray-800 md:text-3xl">

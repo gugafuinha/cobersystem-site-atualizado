@@ -6,6 +6,9 @@ import ProductVejaTambem from '@/components/ProductVejaTambem';
 import type { ProductVejaTambemCurrent } from '@/components/ProductVejaTambem';
 import type { BairroSaoPauloInfo } from '@/lib/sao-paulo-bairros';
 import type { SeoBairroLinha } from '@/lib/sao-paulo-bairros-conteudo';
+import RegionalSeoBlock from '@/components/RegionalSeoBlock';
+
+const BASE = 'https://www.coberturapolicarbonato.com.br';
 
 export type SaoPauloBairroTheme = 'blue' | 'orange';
 
@@ -66,6 +69,14 @@ export default function SaoPauloBairroProdutoLayout({
   const t = themeClasses[theme];
   const base = `/produtos/${produtoSegment}`;
   const pathBairro = `${base}/em/sao-paulo/${bairro.slug}`;
+  const pageUrl = `${BASE}${pathBairro}`;
+  const regionalBreadcrumbs = [
+    { name: 'Início', item: `${BASE}/` },
+    { name: 'Produtos', item: `${BASE}/produtos` },
+    { name: hubLabel, item: `${BASE}${base}` },
+    { name: 'São Paulo', item: `${BASE}${base}/em/sao-paulo` },
+    { name: bairro.nome, item: pageUrl },
+  ];
 
   return (
     <main className="min-h-screen py-12">
@@ -117,6 +128,14 @@ export default function SaoPauloBairroProdutoLayout({
             </div>
           </div>
         </section>
+
+        <RegionalSeoBlock
+          nomeCidade={bairro.nome}
+          nomeProduto={hubLabel}
+          pageUrl={pageUrl}
+          breadcrumbs={regionalBreadcrumbs}
+          themeColor={theme}
+        />
 
         <section className="mb-12">
           <h2 className="mb-6 text-2xl font-bold text-gray-800 md:text-3xl">

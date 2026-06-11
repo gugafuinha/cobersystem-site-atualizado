@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ProductVejaTambem from '@/components/ProductVejaTambem';
+import RegionalSeoBlock from '@/components/RegionalSeoBlock';
 import {
   getCidadePiscina,
   getSlugsCidadesPiscina,
@@ -95,6 +96,14 @@ export default async function CoberturaPiscinaEmCidadePage({
     notFound();
   }
 
+  const pageUrl = `${BASE}/produtos/cobertura-piscina/em/${cidade.slug}`;
+  const regionalBreadcrumbs = [
+    { name: 'Início', item: `${BASE}/` },
+    { name: 'Produtos', item: `${BASE}/produtos` },
+    { name: 'Cobertura para Piscina', item: `${BASE}/servicos/cobertura-piscina` },
+    { name: cidade.nome, item: pageUrl },
+  ];
+
   return (
     <main className="min-h-screen py-12">
       <div className="container mx-auto max-w-6xl px-4">
@@ -169,6 +178,13 @@ export default async function CoberturaPiscinaEmCidadePage({
             </ul>
           </section>
         )}
+
+        <RegionalSeoBlock
+          nomeCidade={cidade.nome}
+          nomeProduto="Cobertura para Piscina"
+          pageUrl={pageUrl}
+          breadcrumbs={regionalBreadcrumbs}
+        />
 
         <section className="mb-12">
           <h2 className="mb-6 text-2xl font-bold text-gray-800 md:text-3xl">

@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ProductVejaTambem from '@/components/ProductVejaTambem';
+import RegionalSeoBlock from '@/components/RegionalSeoBlock';
 import {
   getCidadeTermoacustica,
   getSlugsCidadesTermoacustica,
@@ -95,6 +96,17 @@ export default async function CoberturaTermoacusticaEmCidadePage({
     notFound();
   }
 
+  const pageUrl = `${BASE}/produtos/cobertura-termoacustica/em/${cidade.slug}`;
+  const regionalBreadcrumbs = [
+    { name: 'Início', item: `${BASE}/` },
+    { name: 'Produtos', item: `${BASE}/produtos` },
+    {
+      name: 'Cobertura Termoacústica',
+      item: `${BASE}/produtos/cobertura-termoacustica`,
+    },
+    { name: cidade.nome, item: pageUrl },
+  ];
+
   return (
     <main className="min-h-screen py-12">
       <div className="container mx-auto max-w-6xl px-4">
@@ -169,6 +181,14 @@ export default async function CoberturaTermoacusticaEmCidadePage({
             </ul>
           </section>
         )}
+
+        <RegionalSeoBlock
+          nomeCidade={cidade.nome}
+          nomeProduto="Cobertura Termoacústica"
+          pageUrl={pageUrl}
+          breadcrumbs={regionalBreadcrumbs}
+          themeColor="orange"
+        />
 
         <section className="mb-12">
           <h2 className="mb-6 text-2xl font-bold text-gray-800 md:text-3xl">

@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ProductVejaTambem from '@/components/ProductVejaTambem';
+import RegionalSeoBlock from '@/components/RegionalSeoBlock';
 import {
   getCidadeGaragem,
   getSlugsCidadesGaragem,
@@ -95,6 +96,14 @@ export default async function CoberturaGaragemEmCidadePage({
     notFound();
   }
 
+  const pageUrl = `${BASE}/produtos/cobertura-garagem/em/${cidade.slug}`;
+  const regionalBreadcrumbs = [
+    { name: 'Início', item: `${BASE}/` },
+    { name: 'Produtos', item: `${BASE}/produtos` },
+    { name: 'Cobertura para Garagem', item: `${BASE}/servicos/cobertura-garagem` },
+    { name: cidade.nome, item: pageUrl },
+  ];
+
   return (
     <main className="min-h-screen py-12">
       <div className="container mx-auto max-w-6xl px-4">
@@ -169,6 +178,13 @@ export default async function CoberturaGaragemEmCidadePage({
             </ul>
           </section>
         )}
+
+        <RegionalSeoBlock
+          nomeCidade={cidade.nome}
+          nomeProduto="Cobertura para Garagem"
+          pageUrl={pageUrl}
+          breadcrumbs={regionalBreadcrumbs}
+        />
 
         <section className="mb-12">
           <h2 className="mb-6 text-2xl font-bold text-gray-800 md:text-3xl">
