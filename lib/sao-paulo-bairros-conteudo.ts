@@ -20,6 +20,56 @@ type MapaConteudo = Record<
 >;
 
 export const CONTEUDO_SP_BAIRROS: MapaConteudo = {
+  jardins: {
+    policarbonato: {
+      metaTitle: 'Cobertura em Policarbonato Jardins, SP | Cobersystem',
+      metaDescription:
+        'Cobertura fixa em policarbonato nos Jardins: residências e casas de alto padrão. Compacto e alveolar. Visita técnica e orçamento SP.',
+      keywords:
+        'cobertura policarbonato Jardins, policarbonato Jardins SP, cobertura fixa Jardins, cobertura residencial Jardins São Paulo',
+      paragrafos: [
+        'Nos Jardins, bairro símbolo do alto padrão residencial paulistano, coberturas em policarbonato são especificadas para varandas, jardins e entradas sociais com foco em leveza visual e durabilidade.',
+        'O policarbonato compacto UV translúcido preserva a luminosidade característica do bairro, enquanto protege os ambientes externos de sol intenso e chuva sem comprometer o projeto paisagístico.',
+        'A Cobersystem realiza visita técnica nos Jardins com apresentação de amostras e projeto personalizado, alinhando acabamentos ao padrão arquitetônico das residências da região.',
+      ],
+    },
+    retratil: {
+      metaTitle: 'Cobertura Retrátil Jardins, São Paulo | Cobersystem',
+      metaDescription:
+        'Cobertura retrátil nos Jardins, SP: sistema abre e fecha para varandas e áreas gourmet de alto padrão. Automação e projeto sob medida.',
+      keywords:
+        'cobertura retrátil Jardins, cobertura abre fecha Jardins SP, telha retrátil Jardins, área gourmet Jardins São Paulo',
+      paragrafos: [
+        'Nos Jardins, residências de alto padrão utilizam cobertura retrátil para transformar varandas e áreas externas em ambientes versáteis, abertos nos dias de sol e protegidos na chuva.',
+        'O sistema em telha intercalada ou policarbonato compacto entrega acabamento premium compatível com o padrão arquitetônico das casas da região, com motorização silenciosa e integração Alexa.',
+        'A Cobersystem projeta e instala coberturas retráteis nos Jardins com atenção a cada detalhe, desde o dimensionamento estrutural até os acabamentos em alumínio anodizado de alta qualidade.',
+      ],
+    },
+    abreEFecha: {
+      metaTitle: 'Cobertura Abre e Fecha Jardins, SP | Cobersystem',
+      metaDescription:
+        'Cobertura abre e fecha nos Jardins: automação Alexa, sensor de chuva para residências de alto padrão. Visita técnica grátis em São Paulo.',
+      keywords:
+        'cobertura abre e fecha Jardins, automação cobertura Jardins SP, sensor chuva Jardins, cobertura motorizada Jardins São Paulo',
+      paragrafos: [
+        'A cobertura abre e fecha é a solução de escolha nos Jardins para quem deseja máximo conforto em áreas externas — com abertura graduada, motor silencioso e integração com Alexa ou Google Home.',
+        'O sensor de chuva fecha automaticamente a cobertura ao detectar precipitação, ideal para residências que valorizam automação e conforto sem intervenção manual.',
+        'Realizamos visita técnica gratuita nos Jardins com projeto personalizado e testes de automação completos antes da entrega, garantindo operação silenciosa e confiável.',
+      ],
+    },
+    termoacustica: {
+      metaTitle: 'Cobertura Termoacústica Jardins, SP | Cobersystem',
+      metaDescription:
+        'Painel sanduíche termoacústico nos Jardins: conforto térmico e acústico para residências de alto padrão. EPS, PU ou lã de rocha. Orçamento SP.',
+      keywords:
+        'cobertura termoacústica Jardins, painel sanduíche Jardins SP, isolamento telhado Jardins, cobertura alto padrão Jardins São Paulo',
+      paragrafos: [
+        'Reformas e ampliações em casas nos Jardins podem incluir painel sanduíche para garantir conforto térmico no último pavimento e reduzir o impacto sonoro de chuvas intensas.',
+        'O núcleo em poliuretano oferece o melhor desempenho por espessura, adequado a projetos premium com restrição de altura disponível e exigência de acabamento impecável.',
+        'Executamos montagem técnica nos Jardins com calhas e arremates em alumínio que preservam o padrão arquitetônico e atendem às exigências do arquiteto responsável pelo projeto.',
+      ],
+    },
+  },
   brooklin: {
     policarbonato: {
       metaTitle: 'Cobertura em Policarbonato Brooklin, SP | Cobersystem',

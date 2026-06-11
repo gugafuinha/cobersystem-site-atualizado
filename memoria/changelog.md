@@ -2,6 +2,23 @@
 
 ---
 
+## 2026-06-10 — Infraestrutura SSG: cobertura-pergolado + cobertura-garagem
+
+**Criados:**
+- `lib/cobertura-pergolado-cidades.ts` — 4 cidades (barueri, sao-paulo, campinas, santo-andre) + 3 bairros SP (jardins, morumbi, pinheiros) com SEO foco pergolado bioclimático alto padrão
+- `lib/cobertura-garagem-cidades.ts` — 4 cidades (guarulhos, sao-paulo, santo-andre, osasco) + 3 bairros SP (tatuape, brooklin, vila-mariana) com SEO foco garagem 2 carros policarbonato
+- `app/produtos/cobertura-pergolado/em/[cidade]/page.tsx` — 4 páginas SSG + bairros hub
+- `app/produtos/cobertura-pergolado/em/sao-paulo/[bairro]/page.tsx` — 3 páginas SSG bairros SP
+- `app/produtos/cobertura-garagem/em/[cidade]/page.tsx` — 4 páginas SSG + bairros hub
+- `app/produtos/cobertura-garagem/em/sao-paulo/[bairro]/page.tsx` — 3 páginas SSG bairros SP
+
+**Modificados:**
+- `lib/sao-paulo-bairros.ts` — adicionado bairro `jardins`
+- `lib/sao-paulo-bairros-conteudo.ts` — adicionado conteúdo para `jardins` (4 linhas de produto)
+- `app/sitemap.ts` — 14 novas URLs (4+4 cidades + 3+3 bairros SP)
+
+---
+
 ## 2026-06-10 — Semana 2: /produtos/cobertura-piscina/em/[cidade]
 
 **Criados:** lib/cobertura-piscina-cidades.ts, app/produtos/cobertura-piscina/em/[cidade]/page.tsx, app/produtos/cobertura-piscina/em/sao-paulo/[bairro]/page.tsx

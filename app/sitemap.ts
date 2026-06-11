@@ -7,6 +7,14 @@ import {
   getSlugsCidadesPiscina,
   getSlugsBairrosPiscina,
 } from '@/lib/cobertura-piscina-cidades';
+import {
+  getSlugsCidadesPergolado,
+  getSlugsBairrosPergolado,
+} from '@/lib/cobertura-pergolado-cidades';
+import {
+  getSlugsCidadesGaragem,
+  getSlugsBairrosGaragem,
+} from '@/lib/cobertura-garagem-cidades';
 import { getSlugsBairrosSaoPaulo } from '@/lib/sao-paulo-bairros';
 import { getImageUrls } from '@/lib/seo/image-sitemap';
 
@@ -105,6 +113,38 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     }));
 
+  const coberturaPergoladoLocal: MetadataRoute.Sitemap =
+    getSlugsCidadesPergolado().map((cidade) => ({
+      url: `${baseUrl}/produtos/cobertura-pergolado/em/${cidade}`,
+      lastModified: now,
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    }));
+
+  const coberturaPergoladoSpBairros: MetadataRoute.Sitemap =
+    getSlugsBairrosPergolado().map((bairro) => ({
+      url: `${baseUrl}/produtos/cobertura-pergolado/em/sao-paulo/${bairro}`,
+      lastModified: now,
+      changeFrequency: 'weekly' as const,
+      priority: 0.85,
+    }));
+
+  const coberturaGaragemLocal: MetadataRoute.Sitemap =
+    getSlugsCidadesGaragem().map((cidade) => ({
+      url: `${baseUrl}/produtos/cobertura-garagem/em/${cidade}`,
+      lastModified: now,
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    }));
+
+  const coberturaGaragemSpBairros: MetadataRoute.Sitemap =
+    getSlugsBairrosGaragem().map((bairro) => ({
+      url: `${baseUrl}/produtos/cobertura-garagem/em/sao-paulo/${bairro}`,
+      lastModified: now,
+      changeFrequency: 'weekly' as const,
+      priority: 0.85,
+    }));
+
   const spBairrosProdutoPaths = [
     'cobertura-policarbonato',
     'cobertura-retratil',
@@ -188,6 +228,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...coberturaTermoacusticaLocal,
     ...coberturaPiscinaLocal,
     ...coberturaPiscinaSpBairros,
+    ...coberturaPergoladoLocal,
+    ...coberturaPergoladoSpBairros,
+    ...coberturaGaragemLocal,
+    ...coberturaGaragemSpBairros,
     ...saoPauloBairrosLocal,
     ...mainServicePages,
     ...blogArticles,
