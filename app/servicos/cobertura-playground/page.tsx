@@ -44,14 +44,27 @@ export const metadata: Metadata = {
   },
 };
 
-const productSchema = {
+const serviceSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Product',
+  '@type': 'Service',
+  serviceType: 'Instalação de Cobertura para Playground',
   name: 'Cobertura para Playground',
   description:
     'Cobertura para playground em policarbonato com sistema abre e fecha ou retrátil automatizada. Proteção UV, sensor de chuva. Ideal para escolas e condomínios.',
   image: ['https://www.coberturapolicarbonato.com.br/images/projetos/Cobertura%20Playground.png'],
-  brand: { '@type': 'Brand', name: 'Cobersystem' },
+  provider: {
+    '@type': 'LocalBusiness',
+    name: 'Cobersystem',
+    telephone: '+5511943615079',
+    url: 'https://www.coberturapolicarbonato.com.br',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'São Paulo',
+      addressRegion: 'SP',
+      addressCountry: 'BR',
+    },
+  },
+  areaServed: { '@type': 'City', name: 'São Paulo' },
   offers: buildServiceOffer(
     'https://www.coberturapolicarbonato.com.br/servicos/cobertura-playground',
     getServiceSchemaMinPrice('cobertura-playground'),
@@ -88,7 +101,7 @@ const faqs = [
 export default function CoberturaPlayground() {
   return (
     <>
-      <StructuredData data={productSchema} />
+      <StructuredData data={serviceSchema} />
       <main className="min-h-screen bg-gray-50">
         <div className="container mx-auto px-4 py-8">
           <Breadcrumbs

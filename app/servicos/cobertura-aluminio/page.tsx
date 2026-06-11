@@ -45,9 +45,10 @@ export const metadata: Metadata = {
   },
 };
 
-const productSchema = {
+const serviceSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Product',
+  '@type': 'Service',
+  serviceType: 'Instalação de Cobertura de Alumínio',
   name: 'Cobertura de Alumínio',
   description:
     'Cobertura em alumínio com telhas trapezoidais ou intercaladas, pintura eletrostática personalizada e estrutura dimensionada.',
@@ -55,7 +56,19 @@ const productSchema = {
     'https://www.coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/aluminio/IMG_6324.jpg',
     'https://www.coberturapolicarbonato.com.br/images/projetos/Cobertura%20Alum%C3%ADnio%20Espa%C3%A7o%20Kids.png',
   ],
-  brand: { '@type': 'Brand', name: 'Cobersystem' },
+  provider: {
+    '@type': 'LocalBusiness',
+    name: 'Cobersystem',
+    telephone: '+5511943615079',
+    url: 'https://www.coberturapolicarbonato.com.br',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'São Paulo',
+      addressRegion: 'SP',
+      addressCountry: 'BR',
+    },
+  },
+  areaServed: { '@type': 'City', name: 'São Paulo' },
   offers: buildServiceOffer(
     'https://www.coberturapolicarbonato.com.br/servicos/cobertura-aluminio',
     getServiceSchemaMinPrice('cobertura-aluminio'),
@@ -97,7 +110,7 @@ const faqs = [
 export default function CoberturaAluminio() {
   return (
     <>
-      <StructuredData data={productSchema} />
+      <StructuredData data={serviceSchema} />
       <main className="min-h-screen bg-gray-50">
         <div className="container mx-auto px-4 py-8">
           <Breadcrumbs

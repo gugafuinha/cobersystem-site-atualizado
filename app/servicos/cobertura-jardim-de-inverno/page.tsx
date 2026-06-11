@@ -53,14 +53,27 @@ export const metadata: Metadata = {
   },
 };
 
-const productSchema = {
+const serviceSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Product',
+  '@type': 'Service',
+  serviceType: 'Instalação de Cobertura para Jardim de Inverno',
   name: 'Cobertura para Jardim de Inverno',
   image: [HERO_IMAGE_OG],
   description:
     'Cobertura em policarbonato compacto transparente para jardim de inverno. Preserva luz natural para plantas, com proteção contra chuva, vento e variações de temperatura.',
-  brand: { '@type': 'Brand', name: 'Cobersystem' },
+  provider: {
+    '@type': 'LocalBusiness',
+    name: 'Cobersystem',
+    telephone: '+5511943615079',
+    url: 'https://www.coberturapolicarbonato.com.br',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'São Paulo',
+      addressRegion: 'SP',
+      addressCountry: 'BR',
+    },
+  },
+  areaServed: { '@type': 'City', name: 'São Paulo' },
   offers: buildServiceOffer(
     'https://www.coberturapolicarbonato.com.br/servicos/cobertura-jardim-de-inverno',
     getServiceSchemaMinPrice('cobertura-jardim-de-inverno'),
@@ -102,7 +115,7 @@ const faqs = [
 export default function CoberturaJardimDeInverno() {
   return (
     <>
-      <StructuredData data={productSchema} />
+      <StructuredData data={serviceSchema} />
       <main className="min-h-screen bg-gray-50">
         <div className="container mx-auto px-4 py-8">
           <Breadcrumbs

@@ -41,13 +41,26 @@ export const metadata: Metadata = {
   },
 };
 
-const productSchema = {
+const serviceSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Product',
+  '@type': 'Service',
+  serviceType: 'Instalação de Cobertura Fixa em Policarbonato Compacto',
   name: 'Cobertura Fixa Policarbonato Compacto',
   description: 'Cobertura fixa em policarbonato compacto 2mm com transparência total ou cores personalizadas.',
   image: ['https://www.coberturapolicarbonato.com.br/images/produtos/cobertura-policarbonato/compacto/IMG_1762.jpg'],
-  brand: { '@type': 'Brand', name: 'Cobersystem' },
+  provider: {
+    '@type': 'LocalBusiness',
+    name: 'Cobersystem',
+    telephone: '+5511943615079',
+    url: 'https://www.coberturapolicarbonato.com.br',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'São Paulo',
+      addressRegion: 'SP',
+      addressCountry: 'BR',
+    },
+  },
+  areaServed: { '@type': 'City', name: 'São Paulo' },
   offers: buildServiceOffer(
     'https://www.coberturapolicarbonato.com.br/servicos/cobertura-fixa-policarbonato-compacto',
     getServiceSchemaMinPrice('cobertura-fixa-policarbonato-compacto'),
@@ -80,7 +93,7 @@ const faqs = [
 export default function CoberturaFixaCompacto() {
   return (
     <>
-      <StructuredData data={productSchema} />
+      <StructuredData data={serviceSchema} />
       <main className="min-h-screen bg-gray-50">
         <div className="container mx-auto px-4 py-8">
           <Breadcrumbs items={[

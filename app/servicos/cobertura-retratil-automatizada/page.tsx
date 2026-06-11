@@ -45,14 +45,27 @@ export const metadata: Metadata = {
   },
 };
 
-const productSchema = {
+const serviceSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Product',
+  '@type': 'Service',
+  serviceType: 'Instalação de Cobertura Retrátil Automatizada',
   name: 'Cobertura Retrátil Automatizada',
   description:
     'Cobertura retrátil com automação inteligente via Alexa, controle remoto e sensor de chuva automático.',
   image: ['https://www.coberturapolicarbonato.com.br/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg'],
-  brand: { '@type': 'Brand', name: 'Cobersystem' },
+  provider: {
+    '@type': 'LocalBusiness',
+    name: 'Cobersystem',
+    telephone: '+5511943615079',
+    url: 'https://www.coberturapolicarbonato.com.br',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'São Paulo',
+      addressRegion: 'SP',
+      addressCountry: 'BR',
+    },
+  },
+  areaServed: { '@type': 'City', name: 'São Paulo' },
   offers: buildServiceOffer(
     'https://www.coberturapolicarbonato.com.br/servicos/cobertura-retratil-automatizada',
     getServiceSchemaMinPrice('cobertura-retratil-automatizada'),
@@ -94,7 +107,7 @@ const faqs = [
 export default function CoberturaRetratilAutomatizada() {
   return (
     <>
-      <StructuredData data={productSchema} />
+      <StructuredData data={serviceSchema} />
       <main className="min-h-screen bg-gray-50">
         <div className="container mx-auto px-4 py-8">
           <Breadcrumbs

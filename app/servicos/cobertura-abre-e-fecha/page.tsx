@@ -53,9 +53,10 @@ export const metadata: Metadata = {
   },
 };
 
-const productSchema = {
+const serviceSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Product',
+  '@type': 'Service',
+  serviceType: 'Instalação de Cobertura Abre e Fecha',
   name: 'Cobertura Abre e Fecha',
   description:
     'Cobertura retrátil em policarbonato com sistema abre e fecha. Abertura de 0 a 90 graus. Automação opcional via Alexa e sensor de chuva.',
@@ -63,7 +64,19 @@ const productSchema = {
     HERO_IMAGE_OG,
     'https://www.coberturapolicarbonato.com.br/images/blog/cobertura-abre-fecha.jpg',
   ],
-  brand: { '@type': 'Brand', name: 'Cobersystem' },
+  provider: {
+    '@type': 'LocalBusiness',
+    name: 'Cobersystem',
+    telephone: '+5511943615079',
+    url: 'https://www.coberturapolicarbonato.com.br',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'São Paulo',
+      addressRegion: 'SP',
+      addressCountry: 'BR',
+    },
+  },
+  areaServed: { '@type': 'City', name: 'São Paulo' },
   offers: buildServiceOffer(
     'https://www.coberturapolicarbonato.com.br/servicos/cobertura-abre-e-fecha',
     getServiceSchemaMinPrice('cobertura-abre-e-fecha'),
@@ -104,7 +117,7 @@ const faqs = [
 export default function CoberturaAbreEFecha() {
   return (
     <>
-      <StructuredData data={productSchema} />
+      <StructuredData data={serviceSchema} />
       <main className="min-h-screen bg-gray-50">
         <div className="container mx-auto px-4 py-8">
           <Breadcrumbs

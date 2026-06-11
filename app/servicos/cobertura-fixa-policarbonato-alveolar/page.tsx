@@ -46,13 +46,26 @@ export const metadata: Metadata = {
   },
 };
 
-const productSchema = {
+const serviceSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Product',
+  '@type': 'Service',
+  serviceType: 'Instalação de Cobertura Fixa em Policarbonato Alveolar',
   name: 'Cobertura Fixa Policarbonato Alveolar',
   description: 'Cobertura fixa em policarbonato alveolar com excelente isolamento térmico e acústico.',
   image: ['https://www.coberturapolicarbonato.com.br/images/projetos/Cobertura%20Fixa%20Policarbonato%20Alveolar.png'],
-  brand: { '@type': 'Brand', name: 'Cobersystem' },
+  provider: {
+    '@type': 'LocalBusiness',
+    name: 'Cobersystem',
+    telephone: '+5511943615079',
+    url: 'https://www.coberturapolicarbonato.com.br',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'São Paulo',
+      addressRegion: 'SP',
+      addressCountry: 'BR',
+    },
+  },
+  areaServed: { '@type': 'City', name: 'São Paulo' },
   offers: buildServiceOffer(
     'https://www.coberturapolicarbonato.com.br/servicos/cobertura-fixa-policarbonato-alveolar',
     getServiceSchemaMinPrice('cobertura-fixa-policarbonato-alveolar'),
@@ -94,7 +107,7 @@ const faqs = [
 export default function CoberturaFixaAlveolar() {
   return (
     <>
-      <StructuredData data={productSchema} />
+      <StructuredData data={serviceSchema} />
       <main className="min-h-screen bg-gray-50">
         <div className="container mx-auto px-4 py-8">
           <Breadcrumbs
