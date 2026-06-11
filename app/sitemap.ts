@@ -58,6 +58,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'sao-bernardo',
     'sorocaba',
     'abc',
+    'alphaville',
+    'jardins',
+    'tatuape',
   ].map((slug) => ({
     url: `${baseUrl}/localizacao/${slug}`,
     lastModified: now,
@@ -188,11 +191,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'cobertura-pergolado',
     'projetos-personalizados',
     'cobertura-varanda-apartamento',
+    'toldo-retratil',
+    'cobertura-vidro',
   ].map((slug) => ({
     url: `${baseUrl}/servicos/${slug}`,
     lastModified: now,
     changeFrequency: 'weekly' as const,
-    priority: 0.9,
+    priority: 0.8,
   }));
 
   const blogImageMap: Record<string, string> = {

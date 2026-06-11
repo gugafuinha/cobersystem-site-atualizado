@@ -835,3 +835,25 @@ Adicionada seção "Produtos em [cidade]" com 4 cards linkando para `/produtos/[
 
 ### Próxima ação planejada (Semana 2)
 Após confirmar indexação: expandir `/produtos/cobertura-piscina/em/[cidade]` com foco em Barueri/Alphaville, Morumbi, Moema, Campinas.
+
+## P5 — Expansão de conteúdo nas 5 páginas prioritárias (Jun 11, 2026)
+
+### Commit: 0befb5d
+
+**Objetivo:** Rankear na primeira página do Google para keywords principais.
+
+**Arquivos alterados (7):**
+- `app/produtos/cobertura-policarbonato/page.tsx` — tabela de preços por espessura/tipo, comparativo alveolar×compacto, FAQ visível 8 perguntas
+- `app/servicos/cobertura-fixa-policarbonato-compacto/page.tsx` — prova social, seção "Onde usar" (6 ambientes), processo instalação em 4 etapas
+- `app/servicos/cobertura-pergolado/page.tsx` — OG image corrigida, comparativo bioclimático×retrátil×fixo, FAQ reescrito para bioclimático SP
+- `app/servicos/cobertura-piscina/page.tsx` — FAQ 4→5 perguntas, prova social + 3 cases reais (Morumbi, Alphaville, Jardins)
+- `app/page.tsx` — geo SP em H2, social proof numérico, tabela de preços, FAQ 5 perguntas + FAQPage JSON-LD, LocalBusiness JSON-LD, WhatsApp no CTA
+- `lib/schemas/faq-schemas.ts` — coberturaPolicarbonato: 5→8 perguntas
+- `lib/schemas/product-schemas.ts` — coberturaPolicarbonato offers: preço 450→pricing.ts (600+800), 2 Offers separadas
+
+**Keywords alvo:**
+1. "cobertura policarbonato preço" → /produtos/cobertura-policarbonato
+2. "cobertura fixa policarbonato compacto SP" → /servicos/cobertura-fixa-policarbonato-compacto
+3. "pergolado bioclimático SP" → /servicos/cobertura-pergolado
+4. "cobertura para piscina SP" → /servicos/cobertura-piscina
+5. "cobertura retrátil São Paulo" → / (home)

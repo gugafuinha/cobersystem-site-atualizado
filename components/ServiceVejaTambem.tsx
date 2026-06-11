@@ -90,6 +90,16 @@ const LINKS = [
     href: '/servicos/projetos-personalizados',
     label: 'Projetos Personalizados',
   },
+  {
+    id: 'toldo-retratil' as const,
+    href: '/servicos/toldo-retratil',
+    label: 'Toldo Retrátil',
+  },
+  {
+    id: 'cobertura-vidro' as const,
+    href: '/servicos/cobertura-vidro',
+    label: 'Cobertura de Vidro',
+  },
 ];
 
 export type ServiceVejaTambemCurrent = (typeof LINKS)[number]['id'];

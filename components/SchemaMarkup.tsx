@@ -33,12 +33,18 @@ interface LocalBusinessSchema {
   '@id': string;
   url: string;
   telephone: string;
+  email?: string;
   priceRange: string;
   address: {
     '@type': string;
     addressLocality: string;
     addressRegion: string;
     addressCountry: string;
+  };
+  geo?: {
+    '@type': string;
+    latitude: number;
+    longitude: number;
   };
   openingHoursSpecification: {
     '@type': string;
@@ -189,12 +195,18 @@ export const localBusinessSchema: LocalBusinessSchema = {
   '@id': 'https://www.coberturapolicarbonato.com.br',
   url: 'https://www.coberturapolicarbonato.com.br',
   telephone: '+55-11-94361-5079',
+  email: 'vendas@cobersystem.com.br',
   priceRange: '$$',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'São Paulo',
     addressRegion: 'SP',
     addressCountry: 'BR',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: -23.5505,
+    longitude: -46.6333,
   },
   openingHoursSpecification: [
     {
