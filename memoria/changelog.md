@@ -2,6 +2,26 @@
 
 ---
 
+## 2026-06-12 — Fase 0 + Fase 1: Agência autônoma — MCP funcional + webhooks n8n
+
+### Fase 0 — MCP cobersystem-analytics reativado
+- `mcp.json`: sincronizado `GOOGLE_REFRESH_TOKEN` válido (token do `.env`, que estava funcional) em substituição ao token expirado
+- Rebuild do MCP (`npm run build` via tsx/tsc) — OK
+- Validado: GSC ✅, GA4 ✅, Ads ✅ — 14 tools funcionando com dados reais
+- **Campanha ativa detectada**: "Cobersystem - Leads SP" PAUSADA — alerta para reativar
+
+### Fase 1 — Workflow DATA-API criado no n8n
+- **Workflow criado**: "Cobersystem DATA-API (MCP Bridge)" — ID `JHQJ8sFTF1bHlooU`
+- **Workflow salvo**: `workflows/data-api-n8n.json`
+- 3 webhooks GET ativos em `https://automacao-n8n.fmjbtn.easypanel.host/webhook/`:
+  - `/cober/gsc?type=queries|pages|opportunities&days=N&limit=N` — GSC via Google account 2
+  - `/cober/ga4?type=overview|acquisition|toppages|realtime&days=N` — GA4 via Google account
+  - `/cober/ads?type=campaign|keywords|searchterms&days=N&limit=N` — Ads REST API
+- n8n como único detentor de OAuth Google — elimina o `invalid_grant` permanentemente
+- Testado e validado: todas as rotas retornando dados reais
+
+---
+
 ## 2026-06-11 — Correções de risco de penalidade manual Google (P0)
 
 **`lib/schemas/product-schemas.ts`** — removido `aggregateRating` falso de todas as 9 constantes:
@@ -857,3 +877,23 @@ Após confirmar indexação: expandir `/produtos/cobertura-piscina/em/[cidade]` 
 3. "pergolado bioclimático SP" → /servicos/cobertura-pergolado
 4. "cobertura para piscina SP" → /servicos/cobertura-piscina
 5. "cobertura retrátil São Paulo" → / (home)
+
+## P6 — Gaps de keyword e estruturas finais (Jun 11, 2026)
+
+### Commit: 8e86661
+
+**9 arquivos alterados, 1.422 inserções**
+
+**Novos arquivos criados:**
+- `app/servicos/toldo-retratil/page.tsx` — keyword "toldo retrátil SP" (8-15k/mês)
+- `app/servicos/cobertura-vidro/page.tsx` — keyword "cobertura de vidro" (3-6k/mês)
+- `app/localizacao/alphaville/page.tsx` — hub bairro premium Alphaville/Barueri
+- `app/localizacao/jardins/page.tsx` — hub bairro premium Jardins SP
+- `app/localizacao/tatuape/page.tsx` — hub bairro premium Tatuapé SP
+
+**Arquivos alterados:**
+- `components/ServiceVejaTambem.tsx` — +2 links (toldo-retratil, cobertura-vidro)
+- `components/SchemaMarkup.tsx` — localBusinessSchema: +geo lat/lng SP, +email
+- `app/sitemap.ts` — +5 URLs novas (priority 0.80)
+
+**Schema GlobalLocalBusiness:** geo (-23.5505, -46.6333) + email adicionados. Organization/LocalBusiness/WebSite já existiam — sem duplicação.

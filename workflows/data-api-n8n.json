@@ -1,0 +1,861 @@
+[
+  {
+    "id": "JHQJ8sFTF1bHlooU",
+    "name": "Cobersystem DATA-API (MCP Bridge)",
+    "description": null,
+    "active": true,
+    "nodes": [
+      {
+        "id": "wh-gsc-01",
+        "name": "Webhook GSC",
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2,
+        "position": [
+          -600,
+          0
+        ],
+        "parameters": {
+          "httpMethod": "GET",
+          "path": "cober/gsc",
+          "responseMode": "responseNode",
+          "options": {}
+        },
+        "webhookId": "0708c63b-a913-43b2-a935-00d6bdc41057"
+      },
+      {
+        "id": "code-gsc-in-01",
+        "name": "Parse GSC Params",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          -380,
+          0
+        ],
+        "parameters": {
+          "jsCode": "const q = $input.first().json.query || {};\nconst type  = q.type  || 'queries';\nconst days  = parseInt(q.days  || '28');\nconst limit = parseInt(q.limit || '50');\nconst rowLimit = (type === 'opportunities') ? 200 : limit;\n\nconst end   = new Date();\nconst start = new Date();\nstart.setDate(end.getDate() - days);\n\nconst requestBody = {\n  startDate:  start.toISOString().slice(0, 10),\n  endDate:    end.toISOString().slice(0, 10),\n  dimensions: [type === 'pages' ? 'page' : 'query'],\n  rowLimit,\n  orderBy: [{ fieldName: 'impressions', sortOrder: 'DESCENDING' }]\n};\n\nreturn [{ json: { requestBody, type, limit } }];"
+        }
+      },
+      {
+        "id": "http-gsc-01",
+        "name": "GSC API",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.3,
+        "position": [
+          -160,
+          0
+        ],
+        "parameters": {
+          "method": "POST",
+          "url": "https://searchconsole.googleapis.com/webmasters/v3/sites/https%3A%2F%2Fwww.coberturapolicarbonato.com.br%2F/searchAnalytics/query",
+          "authentication": "predefinedCredentialType",
+          "nodeCredentialType": "googleOAuth2Api",
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={{ JSON.stringify($json.requestBody) }}",
+          "options": {}
+        },
+        "credentials": {
+          "googleOAuth2Api": {
+            "id": "FpcXxMa4amcdVlLJ",
+            "name": "Google account 2"
+          }
+        }
+      },
+      {
+        "id": "code-gsc-out-01",
+        "name": "Normalize GSC",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          60,
+          0
+        ],
+        "parameters": {
+          "jsCode": "const prev  = $('Parse GSC Params').first().json;\nconst type  = prev.type;\nconst limit = parseInt(prev.limit || '50');\nconst SITE  = 'https://www.coberturapolicarbonato.com.br';\nconst rows  = $input.first().json.rows || [];\n\nlet result = rows.map(r => ({\n  [type === 'pages' ? 'page' : 'query']: (r.keys?.[0] || '').replace(SITE, ''),\n  impressions: r.impressions || 0,\n  clicks:      r.clicks || 0,\n  ctr:         ((r.ctr || 0) * 100).toFixed(2) + '%',\n  position:    (r.position || 0).toFixed(1)\n}));\n\nif (type === 'opportunities') {\n  result = result\n    .filter(r => parseFloat(r.position) >= 8 && parseFloat(r.position) <= 20 && r.impressions >= 5)\n    .sort((a, b) => b.impressions - a.impressions)\n    .slice(0, 20);\n} else {\n  result = result.sort((a, b) => b.impressions - a.impressions).slice(0, limit);\n}\n\n// Retorna items individuais (n8n exige json = objeto, não array)\nif (result.length === 0) return [{ json: { _empty: true } }];\nreturn result.map(item => ({ json: item }));"
+        }
+      },
+      {
+        "id": "resp-gsc-01",
+        "name": "Respond GSC",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "typeVersion": 1,
+        "position": [
+          280,
+          0
+        ],
+        "parameters": {
+          "respondWith": "json",
+          "responseBody": "={{ JSON.stringify($input.all().map(i => i.json).filter(i => !i._empty)) }}"
+        }
+      },
+      {
+        "id": "wh-ga4-01",
+        "name": "Webhook GA4",
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2,
+        "position": [
+          -600,
+          300
+        ],
+        "parameters": {
+          "httpMethod": "GET",
+          "path": "cober/ga4",
+          "responseMode": "responseNode",
+          "options": {}
+        },
+        "webhookId": "1cb61c2e-f80f-4404-aebd-1ad14c461f68"
+      },
+      {
+        "id": "code-ga4-in-01",
+        "name": "Parse GA4 Params",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          -380,
+          300
+        ],
+        "parameters": {
+          "jsCode": "const q = $input.first().json.query || {};\nconst type  = q.type  || 'overview';\nconst days  = parseInt(q.days  || '28');\nconst limit = parseInt(q.limit || '20');\n\nlet requestBody;\nif (type === 'overview') {\n  requestBody = {\n    dateRanges: [{ startDate: days + 'daysAgo', endDate: 'yesterday' }],\n    metrics: [\n      { name: 'sessions' }, { name: 'activeUsers' }, { name: 'conversions' },\n      { name: 'bounceRate' }, { name: 'averageSessionDuration' }\n    ]\n  };\n} else if (type === 'acquisition') {\n  requestBody = {\n    dateRanges: [{ startDate: days + 'daysAgo', endDate: 'yesterday' }],\n    dimensions: [{ name: 'sessionDefaultChannelGroup' }],\n    metrics: [{ name: 'sessions' }, { name: 'conversions' }],\n    orderBys: [{ metric: { metricName: 'sessions' }, desc: true }]\n  };\n} else if (type === 'toppages') {\n  requestBody = {\n    dateRanges: [{ startDate: days + 'daysAgo', endDate: 'yesterday' }],\n    dimensions: [{ name: 'pagePath' }],\n    metrics: [\n      { name: 'sessions' }, { name: 'conversions' },\n      { name: 'bounceRate' }, { name: 'averageSessionDuration' }\n    ],\n    orderBys: [{ metric: { metricName: 'sessions' }, desc: true }],\n    limit\n  };\n} else if (type === 'realtime') {\n  requestBody = {\n    metrics: [{ name: 'activeUsers' }],\n    dimensions: [{ name: 'city' }],\n    limit: 10\n  };\n}\n\nreturn [{ json: { requestBody, type, limit, isRealtime: type === 'realtime' } }];"
+        }
+      },
+      {
+        "id": "http-ga4-01",
+        "name": "GA4 API",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.3,
+        "position": [
+          -160,
+          300
+        ],
+        "parameters": {
+          "method": "POST",
+          "url": "={{ $json.isRealtime ? 'https://analyticsdata.googleapis.com/v1beta/properties/531715968:runRealtimeReport' : 'https://analyticsdata.googleapis.com/v1beta/properties/531715968:runReport' }}",
+          "authentication": "predefinedCredentialType",
+          "nodeCredentialType": "googleOAuth2Api",
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={{ JSON.stringify($json.requestBody) }}",
+          "options": {}
+        },
+        "credentials": {
+          "googleOAuth2Api": {
+            "id": "GBfh8imn2dBiRnSw",
+            "name": "Google account"
+          }
+        }
+      },
+      {
+        "id": "code-ga4-out-01",
+        "name": "Normalize GA4",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          60,
+          300
+        ],
+        "parameters": {
+          "jsCode": "const { type } = $('Parse GA4 Params').first().json;\nconst data = $input.first().json;\n\nconst mv = (row, i) => row?.metricValues?.[i]?.value ?? '0';\nconst dv = (row, i) => row?.dimensionValues?.[i]?.value ?? '';\n\nif (type === 'overview') {\n  const row = data.rows?.[0];\n  return [{ json: {\n    sessions:              parseInt(mv(row, 0)),\n    activeUsers:           parseInt(mv(row, 1)),\n    conversions:           parseInt(mv(row, 2)),\n    bounceRate:            (parseFloat(mv(row, 3)) * 100).toFixed(1) + '%',\n    avgSessionDurationSec: Math.round(parseFloat(mv(row, 4)))\n  }}];\n}\n\nif (type === 'realtime') {\n  return [{ json: {\n    total:  parseInt(data.totals?.[0]?.metricValues?.[0]?.value || '0'),\n    byCity: (data.rows || []).map(row => ({\n      city:  dv(row, 0),\n      users: parseInt(mv(row, 0))\n    }))\n  }}];\n}\n\nif (type === 'acquisition') {\n  const rows = (data.rows || []).map(row => ({\n    channel:     dv(row, 0),\n    sessions:    parseInt(mv(row, 0)),\n    conversions: parseInt(mv(row, 1))\n  }));\n  if (rows.length === 0) return [{ json: { _empty: true } }];\n  return rows.map(r => ({ json: r }));\n}\n\nif (type === 'toppages') {\n  const rows = (data.rows || []).map(row => ({\n    page:        dv(row, 0),\n    sessions:    parseInt(mv(row, 0)),\n    conversions: parseInt(mv(row, 1)),\n    bounceRate:  (parseFloat(mv(row, 2)) * 100).toFixed(1) + '%',\n    avgDuration: Math.round(parseFloat(mv(row, 3))) + 's'\n  }));\n  if (rows.length === 0) return [{ json: { _empty: true } }];\n  return rows.map(r => ({ json: r }));\n}\n\nreturn [{ json: data }];"
+        }
+      },
+      {
+        "id": "resp-ga4-01",
+        "name": "Respond GA4",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "typeVersion": 1,
+        "position": [
+          280,
+          300
+        ],
+        "parameters": {
+          "respondWith": "json",
+          "responseBody": "={{ (function(){\n  const t = $('Parse GA4 Params').first().json.type;\n  if (t === 'overview' || t === 'realtime') return JSON.stringify($input.first().json);\n  return JSON.stringify($input.all().map(i => i.json).filter(i => !i._empty));\n})() }}"
+        }
+      },
+      {
+        "id": "wh-ads-01",
+        "name": "Webhook Ads",
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2,
+        "position": [
+          -600,
+          600
+        ],
+        "parameters": {
+          "httpMethod": "GET",
+          "path": "cober/ads",
+          "responseMode": "responseNode",
+          "options": {}
+        },
+        "webhookId": "303fe75f-5a84-47f1-a187-91e5ccdee414"
+      },
+      {
+        "id": "code-ads-in-01",
+        "name": "Parse Ads Params",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          -380,
+          600
+        ],
+        "parameters": {
+          "jsCode": "const q = $input.first().json.query || {};\nconst type  = q.type  || 'campaign';\nconst days  = parseInt(q.days  || '30');\nconst limit = parseInt(q.limit || '30');\n\nlet gaql;\nif (type === 'campaign') {\n  gaql = `SELECT campaign.name, campaign.status, metrics.impressions, metrics.clicks, metrics.cost_micros, metrics.conversions, metrics.ctr, metrics.average_cpc FROM campaign WHERE segments.date DURING LAST_${days}_DAYS ORDER BY metrics.cost_micros DESC`;\n} else if (type === 'keywords') {\n  gaql = `SELECT ad_group_criterion.keyword.text, ad_group_criterion.keyword.match_type, metrics.impressions, metrics.clicks, metrics.cost_micros, metrics.conversions, metrics.average_cpc FROM keyword_view WHERE segments.date DURING LAST_${days}_DAYS AND ad_group_criterion.status != 'REMOVED' ORDER BY metrics.cost_micros DESC LIMIT ${limit}`;\n} else if (type === 'searchterms') {\n  gaql = `SELECT search_term_view.search_term, metrics.impressions, metrics.clicks, metrics.cost_micros, metrics.conversions FROM search_term_view WHERE segments.date DURING LAST_${days}_DAYS ORDER BY metrics.impressions DESC LIMIT ${limit}`;\n}\n\nreturn [{ json: { gaql, type, limit } }];"
+        }
+      },
+      {
+        "id": "http-ads-01",
+        "name": "Ads API",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.3,
+        "position": [
+          -160,
+          600
+        ],
+        "parameters": {
+          "method": "POST",
+          "url": "https://googleads.googleapis.com/v20/customers/4936596693/googleAds:search",
+          "authentication": "predefinedCredentialType",
+          "nodeCredentialType": "googleOAuth2Api",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "developer-token",
+                "value": "Mj6tFzpKBiqQW9EdECjb4w"
+              },
+              {
+                "name": "login-customer-id",
+                "value": "3848890894"
+              }
+            ]
+          },
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={{ JSON.stringify({ query: $json.gaql }) }}",
+          "options": {}
+        },
+        "credentials": {
+          "googleOAuth2Api": {
+            "id": "FpcXxMa4amcdVlLJ",
+            "name": "Google account 2"
+          }
+        }
+      },
+      {
+        "id": "code-ads-out-01",
+        "name": "Normalize Ads",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          60,
+          600
+        ],
+        "parameters": {
+          "jsCode": "const { type } = $('Parse Ads Params').first().json;\nconst results = $input.first().json.results || [];\n\nlet rows = [];\nif (type === 'campaign') {\n  rows = results.map(r => ({\n    campaign:    r.campaign?.name || '',\n    status:      r.campaign?.status || '',\n    impressions: r.metrics?.impressions || 0,\n    clicks:      r.metrics?.clicks || 0,\n    costBRL:     ((r.metrics?.costMicros || 0) / 1e6).toFixed(2),\n    conversions: (r.metrics?.conversions || 0).toFixed(1),\n    ctr:         ((r.metrics?.ctr || 0) * 100).toFixed(2) + '%',\n    avgCPC:      'R$' + ((r.metrics?.averageCpc || 0) / 1e6).toFixed(2)\n  }));\n} else if (type === 'keywords') {\n  rows = results.map(r => ({\n    keyword:      r.adGroupCriterion?.keyword?.text || '',\n    matchType:    r.adGroupCriterion?.keyword?.matchType || '',\n    impressions:  r.metrics?.impressions || 0,\n    clicks:       r.metrics?.clicks || 0,\n    costBRL:      ((r.metrics?.costMicros || 0) / 1e6).toFixed(2),\n    conversions:  (r.metrics?.conversions || 0).toFixed(1),\n    avgCPC:       'R$' + ((r.metrics?.averageCpc || 0) / 1e6).toFixed(2),\n    qualityScore: r.metrics?.qualityScore || 'N/A'\n  }));\n} else if (type === 'searchterms') {\n  rows = results.map(r => ({\n    term:        r.searchTermView?.searchTerm || '',\n    impressions: r.metrics?.impressions || 0,\n    clicks:      r.metrics?.clicks || 0,\n    costBRL:     ((r.metrics?.costMicros || 0) / 1e6).toFixed(2),\n    conversions: (r.metrics?.conversions || 0).toFixed(1)\n  }));\n}\n\nif (rows.length === 0) return [{ json: { _empty: true } }];\nreturn rows.map(r => ({ json: r }));"
+        }
+      },
+      {
+        "id": "resp-ads-01",
+        "name": "Respond Ads",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "typeVersion": 1,
+        "position": [
+          280,
+          600
+        ],
+        "parameters": {
+          "respondWith": "json",
+          "responseBody": "={{ JSON.stringify($input.all().map(i => i.json).filter(i => !i._empty)) }}"
+        }
+      }
+    ],
+    "connections": {
+      "Webhook GSC": {
+        "main": [
+          [
+            {
+              "node": "Parse GSC Params",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Parse GSC Params": {
+        "main": [
+          [
+            {
+              "node": "GSC API",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "GSC API": {
+        "main": [
+          [
+            {
+              "node": "Normalize GSC",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Normalize GSC": {
+        "main": [
+          [
+            {
+              "node": "Respond GSC",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Webhook GA4": {
+        "main": [
+          [
+            {
+              "node": "Parse GA4 Params",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Parse GA4 Params": {
+        "main": [
+          [
+            {
+              "node": "GA4 API",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "GA4 API": {
+        "main": [
+          [
+            {
+              "node": "Normalize GA4",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Normalize GA4": {
+        "main": [
+          [
+            {
+              "node": "Respond GA4",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Webhook Ads": {
+        "main": [
+          [
+            {
+              "node": "Parse Ads Params",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Parse Ads Params": {
+        "main": [
+          [
+            {
+              "node": "Ads API",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Ads API": {
+        "main": [
+          [
+            {
+              "node": "Normalize Ads",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Normalize Ads": {
+        "main": [
+          [
+            {
+              "node": "Respond Ads",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "settings": {
+      "executionOrder": "v1"
+    },
+    "staticData": null,
+    "meta": null,
+    "pinData": null,
+    "activeVersionId": "92f84d7c-88f3-4eee-97be-9564869ff248",
+    "versionCounter": 2,
+    "triggerCount": 3,
+    "shared": [
+      {
+        "updatedAt": "2026-06-12T02:08:13.889Z",
+        "createdAt": "2026-06-12T02:08:13.889Z",
+        "role": "workflow:owner",
+        "workflowId": "JHQJ8sFTF1bHlooU",
+        "projectId": "n7BsFxFE1sTuWEaM",
+        "project": {
+          "updatedAt": "2026-05-08T01:56:09.458Z",
+          "createdAt": "2026-04-09T19:47:28.897Z",
+          "id": "n7BsFxFE1sTuWEaM",
+          "name": "Cobersystem Financeiro <cobersystemfinanceiro@gmail.com>",
+          "type": "personal",
+          "icon": null,
+          "description": null,
+          "creatorId": "2353395b-f22d-44f2-901a-2a0428114958"
+        }
+      }
+    ],
+    "tags": [],
+    "activeVersion": {
+      "updatedAt": "2026-06-12T02:11:34.861Z",
+      "createdAt": "2026-06-12T02:11:34.861Z",
+      "versionId": "92f84d7c-88f3-4eee-97be-9564869ff248",
+      "workflowId": "JHQJ8sFTF1bHlooU",
+      "nodes": [
+        {
+          "id": "wh-gsc-01",
+          "name": "Webhook GSC",
+          "type": "n8n-nodes-base.webhook",
+          "typeVersion": 2,
+          "position": [
+            -600,
+            0
+          ],
+          "parameters": {
+            "httpMethod": "GET",
+            "path": "cober/gsc",
+            "responseMode": "responseNode",
+            "options": {}
+          },
+          "webhookId": "0708c63b-a913-43b2-a935-00d6bdc41057"
+        },
+        {
+          "id": "code-gsc-in-01",
+          "name": "Parse GSC Params",
+          "type": "n8n-nodes-base.code",
+          "typeVersion": 2,
+          "position": [
+            -380,
+            0
+          ],
+          "parameters": {
+            "jsCode": "const q = $input.first().json.query || {};\nconst type  = q.type  || 'queries';\nconst days  = parseInt(q.days  || '28');\nconst limit = parseInt(q.limit || '50');\nconst rowLimit = (type === 'opportunities') ? 200 : limit;\n\nconst end   = new Date();\nconst start = new Date();\nstart.setDate(end.getDate() - days);\n\nconst requestBody = {\n  startDate:  start.toISOString().slice(0, 10),\n  endDate:    end.toISOString().slice(0, 10),\n  dimensions: [type === 'pages' ? 'page' : 'query'],\n  rowLimit,\n  orderBy: [{ fieldName: 'impressions', sortOrder: 'DESCENDING' }]\n};\n\nreturn [{ json: { requestBody, type, limit } }];"
+          }
+        },
+        {
+          "id": "http-gsc-01",
+          "name": "GSC API",
+          "type": "n8n-nodes-base.httpRequest",
+          "typeVersion": 4.3,
+          "position": [
+            -160,
+            0
+          ],
+          "parameters": {
+            "method": "POST",
+            "url": "https://searchconsole.googleapis.com/webmasters/v3/sites/https%3A%2F%2Fwww.coberturapolicarbonato.com.br%2F/searchAnalytics/query",
+            "authentication": "predefinedCredentialType",
+            "nodeCredentialType": "googleOAuth2Api",
+            "sendBody": true,
+            "specifyBody": "json",
+            "jsonBody": "={{ JSON.stringify($json.requestBody) }}",
+            "options": {}
+          },
+          "credentials": {
+            "googleOAuth2Api": {
+              "id": "FpcXxMa4amcdVlLJ",
+              "name": "Google account 2"
+            }
+          }
+        },
+        {
+          "id": "code-gsc-out-01",
+          "name": "Normalize GSC",
+          "type": "n8n-nodes-base.code",
+          "typeVersion": 2,
+          "position": [
+            60,
+            0
+          ],
+          "parameters": {
+            "jsCode": "const prev  = $('Parse GSC Params').first().json;\nconst type  = prev.type;\nconst limit = parseInt(prev.limit || '50');\nconst SITE  = 'https://www.coberturapolicarbonato.com.br';\nconst rows  = $input.first().json.rows || [];\n\nlet result = rows.map(r => ({\n  [type === 'pages' ? 'page' : 'query']: (r.keys?.[0] || '').replace(SITE, ''),\n  impressions: r.impressions || 0,\n  clicks:      r.clicks || 0,\n  ctr:         ((r.ctr || 0) * 100).toFixed(2) + '%',\n  position:    (r.position || 0).toFixed(1)\n}));\n\nif (type === 'opportunities') {\n  result = result\n    .filter(r => parseFloat(r.position) >= 8 && parseFloat(r.position) <= 20 && r.impressions >= 5)\n    .sort((a, b) => b.impressions - a.impressions)\n    .slice(0, 20);\n} else {\n  result = result.sort((a, b) => b.impressions - a.impressions).slice(0, limit);\n}\n\n// Retorna items individuais (n8n exige json = objeto, não array)\nif (result.length === 0) return [{ json: { _empty: true } }];\nreturn result.map(item => ({ json: item }));"
+          }
+        },
+        {
+          "id": "resp-gsc-01",
+          "name": "Respond GSC",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "typeVersion": 1,
+          "position": [
+            280,
+            0
+          ],
+          "parameters": {
+            "respondWith": "json",
+            "responseBody": "={{ JSON.stringify($input.all().map(i => i.json).filter(i => !i._empty)) }}"
+          }
+        },
+        {
+          "id": "wh-ga4-01",
+          "name": "Webhook GA4",
+          "type": "n8n-nodes-base.webhook",
+          "typeVersion": 2,
+          "position": [
+            -600,
+            300
+          ],
+          "parameters": {
+            "httpMethod": "GET",
+            "path": "cober/ga4",
+            "responseMode": "responseNode",
+            "options": {}
+          },
+          "webhookId": "1cb61c2e-f80f-4404-aebd-1ad14c461f68"
+        },
+        {
+          "id": "code-ga4-in-01",
+          "name": "Parse GA4 Params",
+          "type": "n8n-nodes-base.code",
+          "typeVersion": 2,
+          "position": [
+            -380,
+            300
+          ],
+          "parameters": {
+            "jsCode": "const q = $input.first().json.query || {};\nconst type  = q.type  || 'overview';\nconst days  = parseInt(q.days  || '28');\nconst limit = parseInt(q.limit || '20');\n\nlet requestBody;\nif (type === 'overview') {\n  requestBody = {\n    dateRanges: [{ startDate: days + 'daysAgo', endDate: 'yesterday' }],\n    metrics: [\n      { name: 'sessions' }, { name: 'activeUsers' }, { name: 'conversions' },\n      { name: 'bounceRate' }, { name: 'averageSessionDuration' }\n    ]\n  };\n} else if (type === 'acquisition') {\n  requestBody = {\n    dateRanges: [{ startDate: days + 'daysAgo', endDate: 'yesterday' }],\n    dimensions: [{ name: 'sessionDefaultChannelGroup' }],\n    metrics: [{ name: 'sessions' }, { name: 'conversions' }],\n    orderBys: [{ metric: { metricName: 'sessions' }, desc: true }]\n  };\n} else if (type === 'toppages') {\n  requestBody = {\n    dateRanges: [{ startDate: days + 'daysAgo', endDate: 'yesterday' }],\n    dimensions: [{ name: 'pagePath' }],\n    metrics: [\n      { name: 'sessions' }, { name: 'conversions' },\n      { name: 'bounceRate' }, { name: 'averageSessionDuration' }\n    ],\n    orderBys: [{ metric: { metricName: 'sessions' }, desc: true }],\n    limit\n  };\n} else if (type === 'realtime') {\n  requestBody = {\n    metrics: [{ name: 'activeUsers' }],\n    dimensions: [{ name: 'city' }],\n    limit: 10\n  };\n}\n\nreturn [{ json: { requestBody, type, limit, isRealtime: type === 'realtime' } }];"
+          }
+        },
+        {
+          "id": "http-ga4-01",
+          "name": "GA4 API",
+          "type": "n8n-nodes-base.httpRequest",
+          "typeVersion": 4.3,
+          "position": [
+            -160,
+            300
+          ],
+          "parameters": {
+            "method": "POST",
+            "url": "={{ $json.isRealtime ? 'https://analyticsdata.googleapis.com/v1beta/properties/531715968:runRealtimeReport' : 'https://analyticsdata.googleapis.com/v1beta/properties/531715968:runReport' }}",
+            "authentication": "predefinedCredentialType",
+            "nodeCredentialType": "googleOAuth2Api",
+            "sendBody": true,
+            "specifyBody": "json",
+            "jsonBody": "={{ JSON.stringify($json.requestBody) }}",
+            "options": {}
+          },
+          "credentials": {
+            "googleOAuth2Api": {
+              "id": "GBfh8imn2dBiRnSw",
+              "name": "Google account"
+            }
+          }
+        },
+        {
+          "id": "code-ga4-out-01",
+          "name": "Normalize GA4",
+          "type": "n8n-nodes-base.code",
+          "typeVersion": 2,
+          "position": [
+            60,
+            300
+          ],
+          "parameters": {
+            "jsCode": "const { type } = $('Parse GA4 Params').first().json;\nconst data = $input.first().json;\n\nconst mv = (row, i) => row?.metricValues?.[i]?.value ?? '0';\nconst dv = (row, i) => row?.dimensionValues?.[i]?.value ?? '';\n\nif (type === 'overview') {\n  const row = data.rows?.[0];\n  return [{ json: {\n    sessions:              parseInt(mv(row, 0)),\n    activeUsers:           parseInt(mv(row, 1)),\n    conversions:           parseInt(mv(row, 2)),\n    bounceRate:            (parseFloat(mv(row, 3)) * 100).toFixed(1) + '%',\n    avgSessionDurationSec: Math.round(parseFloat(mv(row, 4)))\n  }}];\n}\n\nif (type === 'realtime') {\n  return [{ json: {\n    total:  parseInt(data.totals?.[0]?.metricValues?.[0]?.value || '0'),\n    byCity: (data.rows || []).map(row => ({\n      city:  dv(row, 0),\n      users: parseInt(mv(row, 0))\n    }))\n  }}];\n}\n\nif (type === 'acquisition') {\n  const rows = (data.rows || []).map(row => ({\n    channel:     dv(row, 0),\n    sessions:    parseInt(mv(row, 0)),\n    conversions: parseInt(mv(row, 1))\n  }));\n  if (rows.length === 0) return [{ json: { _empty: true } }];\n  return rows.map(r => ({ json: r }));\n}\n\nif (type === 'toppages') {\n  const rows = (data.rows || []).map(row => ({\n    page:        dv(row, 0),\n    sessions:    parseInt(mv(row, 0)),\n    conversions: parseInt(mv(row, 1)),\n    bounceRate:  (parseFloat(mv(row, 2)) * 100).toFixed(1) + '%',\n    avgDuration: Math.round(parseFloat(mv(row, 3))) + 's'\n  }));\n  if (rows.length === 0) return [{ json: { _empty: true } }];\n  return rows.map(r => ({ json: r }));\n}\n\nreturn [{ json: data }];"
+          }
+        },
+        {
+          "id": "resp-ga4-01",
+          "name": "Respond GA4",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "typeVersion": 1,
+          "position": [
+            280,
+            300
+          ],
+          "parameters": {
+            "respondWith": "json",
+            "responseBody": "={{ (function(){\n  const t = $('Parse GA4 Params').first().json.type;\n  if (t === 'overview' || t === 'realtime') return JSON.stringify($input.first().json);\n  return JSON.stringify($input.all().map(i => i.json).filter(i => !i._empty));\n})() }}"
+          }
+        },
+        {
+          "id": "wh-ads-01",
+          "name": "Webhook Ads",
+          "type": "n8n-nodes-base.webhook",
+          "typeVersion": 2,
+          "position": [
+            -600,
+            600
+          ],
+          "parameters": {
+            "httpMethod": "GET",
+            "path": "cober/ads",
+            "responseMode": "responseNode",
+            "options": {}
+          },
+          "webhookId": "303fe75f-5a84-47f1-a187-91e5ccdee414"
+        },
+        {
+          "id": "code-ads-in-01",
+          "name": "Parse Ads Params",
+          "type": "n8n-nodes-base.code",
+          "typeVersion": 2,
+          "position": [
+            -380,
+            600
+          ],
+          "parameters": {
+            "jsCode": "const q = $input.first().json.query || {};\nconst type  = q.type  || 'campaign';\nconst days  = parseInt(q.days  || '30');\nconst limit = parseInt(q.limit || '30');\n\nlet gaql;\nif (type === 'campaign') {\n  gaql = `SELECT campaign.name, campaign.status, metrics.impressions, metrics.clicks, metrics.cost_micros, metrics.conversions, metrics.ctr, metrics.average_cpc FROM campaign WHERE segments.date DURING LAST_${days}_DAYS ORDER BY metrics.cost_micros DESC`;\n} else if (type === 'keywords') {\n  gaql = `SELECT ad_group_criterion.keyword.text, ad_group_criterion.keyword.match_type, metrics.impressions, metrics.clicks, metrics.cost_micros, metrics.conversions, metrics.average_cpc FROM keyword_view WHERE segments.date DURING LAST_${days}_DAYS AND ad_group_criterion.status != 'REMOVED' ORDER BY metrics.cost_micros DESC LIMIT ${limit}`;\n} else if (type === 'searchterms') {\n  gaql = `SELECT search_term_view.search_term, metrics.impressions, metrics.clicks, metrics.cost_micros, metrics.conversions FROM search_term_view WHERE segments.date DURING LAST_${days}_DAYS ORDER BY metrics.impressions DESC LIMIT ${limit}`;\n}\n\nreturn [{ json: { gaql, type, limit } }];"
+          }
+        },
+        {
+          "id": "http-ads-01",
+          "name": "Ads API",
+          "type": "n8n-nodes-base.httpRequest",
+          "typeVersion": 4.3,
+          "position": [
+            -160,
+            600
+          ],
+          "parameters": {
+            "method": "POST",
+            "url": "https://googleads.googleapis.com/v20/customers/4936596693/googleAds:search",
+            "authentication": "predefinedCredentialType",
+            "nodeCredentialType": "googleOAuth2Api",
+            "sendHeaders": true,
+            "headerParameters": {
+              "parameters": [
+                {
+                  "name": "developer-token",
+                  "value": "Mj6tFzpKBiqQW9EdECjb4w"
+                },
+                {
+                  "name": "login-customer-id",
+                  "value": "3848890894"
+                }
+              ]
+            },
+            "sendBody": true,
+            "specifyBody": "json",
+            "jsonBody": "={{ JSON.stringify({ query: $json.gaql }) }}",
+            "options": {}
+          },
+          "credentials": {
+            "googleOAuth2Api": {
+              "id": "FpcXxMa4amcdVlLJ",
+              "name": "Google account 2"
+            }
+          }
+        },
+        {
+          "id": "code-ads-out-01",
+          "name": "Normalize Ads",
+          "type": "n8n-nodes-base.code",
+          "typeVersion": 2,
+          "position": [
+            60,
+            600
+          ],
+          "parameters": {
+            "jsCode": "const { type } = $('Parse Ads Params').first().json;\nconst results = $input.first().json.results || [];\n\nlet rows = [];\nif (type === 'campaign') {\n  rows = results.map(r => ({\n    campaign:    r.campaign?.name || '',\n    status:      r.campaign?.status || '',\n    impressions: r.metrics?.impressions || 0,\n    clicks:      r.metrics?.clicks || 0,\n    costBRL:     ((r.metrics?.costMicros || 0) / 1e6).toFixed(2),\n    conversions: (r.metrics?.conversions || 0).toFixed(1),\n    ctr:         ((r.metrics?.ctr || 0) * 100).toFixed(2) + '%',\n    avgCPC:      'R$' + ((r.metrics?.averageCpc || 0) / 1e6).toFixed(2)\n  }));\n} else if (type === 'keywords') {\n  rows = results.map(r => ({\n    keyword:      r.adGroupCriterion?.keyword?.text || '',\n    matchType:    r.adGroupCriterion?.keyword?.matchType || '',\n    impressions:  r.metrics?.impressions || 0,\n    clicks:       r.metrics?.clicks || 0,\n    costBRL:      ((r.metrics?.costMicros || 0) / 1e6).toFixed(2),\n    conversions:  (r.metrics?.conversions || 0).toFixed(1),\n    avgCPC:       'R$' + ((r.metrics?.averageCpc || 0) / 1e6).toFixed(2),\n    qualityScore: r.metrics?.qualityScore || 'N/A'\n  }));\n} else if (type === 'searchterms') {\n  rows = results.map(r => ({\n    term:        r.searchTermView?.searchTerm || '',\n    impressions: r.metrics?.impressions || 0,\n    clicks:      r.metrics?.clicks || 0,\n    costBRL:     ((r.metrics?.costMicros || 0) / 1e6).toFixed(2),\n    conversions: (r.metrics?.conversions || 0).toFixed(1)\n  }));\n}\n\nif (rows.length === 0) return [{ json: { _empty: true } }];\nreturn rows.map(r => ({ json: r }));"
+          }
+        },
+        {
+          "id": "resp-ads-01",
+          "name": "Respond Ads",
+          "type": "n8n-nodes-base.respondToWebhook",
+          "typeVersion": 1,
+          "position": [
+            280,
+            600
+          ],
+          "parameters": {
+            "respondWith": "json",
+            "responseBody": "={{ JSON.stringify($input.all().map(i => i.json).filter(i => !i._empty)) }}"
+          }
+        }
+      ],
+      "connections": {
+        "Webhook GSC": {
+          "main": [
+            [
+              {
+                "node": "Parse GSC Params",
+                "type": "main",
+                "index": 0
+              }
+            ]
+          ]
+        },
+        "Parse GSC Params": {
+          "main": [
+            [
+              {
+                "node": "GSC API",
+                "type": "main",
+                "index": 0
+              }
+            ]
+          ]
+        },
+        "GSC API": {
+          "main": [
+            [
+              {
+                "node": "Normalize GSC",
+                "type": "main",
+                "index": 0
+              }
+            ]
+          ]
+        },
+        "Normalize GSC": {
+          "main": [
+            [
+              {
+                "node": "Respond GSC",
+                "type": "main",
+                "index": 0
+              }
+            ]
+          ]
+        },
+        "Webhook GA4": {
+          "main": [
+            [
+              {
+                "node": "Parse GA4 Params",
+                "type": "main",
+                "index": 0
+              }
+            ]
+          ]
+        },
+        "Parse GA4 Params": {
+          "main": [
+            [
+              {
+                "node": "GA4 API",
+                "type": "main",
+                "index": 0
+              }
+            ]
+          ]
+        },
+        "GA4 API": {
+          "main": [
+            [
+              {
+                "node": "Normalize GA4",
+                "type": "main",
+                "index": 0
+              }
+            ]
+          ]
+        },
+        "Normalize GA4": {
+          "main": [
+            [
+              {
+                "node": "Respond GA4",
+                "type": "main",
+                "index": 0
+              }
+            ]
+          ]
+        },
+        "Webhook Ads": {
+          "main": [
+            [
+              {
+                "node": "Parse Ads Params",
+                "type": "main",
+                "index": 0
+              }
+            ]
+          ]
+        },
+        "Parse Ads Params": {
+          "main": [
+            [
+              {
+                "node": "Ads API",
+                "type": "main",
+                "index": 0
+              }
+            ]
+          ]
+        },
+        "Ads API": {
+          "main": [
+            [
+              {
+                "node": "Normalize Ads",
+                "type": "main",
+                "index": 0
+              }
+            ]
+          ]
+        },
+        "Normalize Ads": {
+          "main": [
+            [
+              {
+                "node": "Respond Ads",
+                "type": "main",
+                "index": 0
+              }
+            ]
+          ]
+        }
+      },
+      "authors": "Cobersystem Financeiro",
+      "name": null,
+      "description": null,
+      "autosaved": false,
+      "workflowPublishHistory": [
+        {
+          "createdAt": "2026-06-12T02:11:34.933Z",
+          "id": 565,
+          "workflowId": "JHQJ8sFTF1bHlooU",
+          "versionId": "92f84d7c-88f3-4eee-97be-9564869ff248",
+          "event": "activated",
+          "userId": "2353395b-f22d-44f2-901a-2a0428114958"
+        },
+        {
+          "createdAt": "2026-06-12T02:11:34.910Z",
+          "id": 564,
+          "workflowId": "JHQJ8sFTF1bHlooU",
+          "versionId": "92f84d7c-88f3-4eee-97be-9564869ff248",
+          "event": "deactivated",
+          "userId": "2353395b-f22d-44f2-901a-2a0428114958"
+        }
+      ]
+    }
+  }
+]
