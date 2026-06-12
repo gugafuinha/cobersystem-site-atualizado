@@ -2,6 +2,22 @@
 
 ---
 
+## 2026-06-12 — Fase 2: MCP reescrito — ponte n8n elimina OAuth local
+
+### Fase 2 — MCP cobersystem-analytics: bridge n8n
+**Arquivos alterados em `/root/cobersystem-mcp/src/`:**
+- **`n8n.ts`** (novo): cliente HTTP único para todos os webhooks n8n. Lê `N8N_WEBHOOK_BASE` do env. Timeout 30s. Sem OAuth.
+- **`gsc.ts`** reescrito: 3 funções → wrappers de 1 linha sobre `n8nGet('gsc', {...})`
+- **`ga4.ts`** reescrito: 4 funções → wrappers sobre `n8nGet('ga4', {...})`
+- **`ads.ts`** reescrito: 3 funções → wrappers sobre `n8nGet('ads', {...})`
+- **`auth.ts`** / **`gmb.ts`**: mantidos intactos (GMB ainda usa OAuth)
+- **`mcp.json`**: adicionado `N8N_WEBHOOK_BASE=https://automacao-n8n.fmjbtn.easypanel.host/webhook/cober`
+- Rebuild TypeScript → `dist/` atualizado (gsc.js: 336B, ga4.js: 385B, ads.js: 347B, n8n.js: 802B)
+- Smoke test: MCP inicia sem erro com novo env
+- **`invalid_grant` eliminado permanentemente** para GSC/GA4/Ads — OAuth nunca mais é chamado por esses módulos
+
+---
+
 ## 2026-06-12 — Fase 0 + Fase 1: Agência autônoma — MCP funcional + webhooks n8n
 
 ### Fase 0 — MCP cobersystem-analytics reativado
