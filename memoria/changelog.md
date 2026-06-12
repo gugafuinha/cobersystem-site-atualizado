@@ -2,6 +2,18 @@
 
 ---
 
+## 2026-06-12 — Autenticação webhooks n8n (x-cober-key)
+
+- Workflow `JHQJ8sFTF1bHlooU` atualizado: 3 nós `IF` adicionados (um por webhook) validando header `x-cober-key`
+- Responde HTTP 401 "Unauthorized" para requests sem chave ou com chave incorreta
+- `n8n.ts`: envia `x-cober-key` em todos os requests quando `N8N_WEBHOOK_KEY` está no env
+- `mcp.json`: adicionado `N8N_WEBHOOK_KEY`
+- `.env` MCP: adicionado `N8N_WEBHOOK_KEY`
+- Rebuild e smoke test OK · 401 sem key ✅ · 401 key errada ✅ · 200 key correta ✅
+- `workflows/data-api-n8n.json` atualizado (21 nós)
+
+---
+
 ## 2026-06-12 — Fase 2: MCP reescrito — ponte n8n elimina OAuth local
 
 ### Fase 2 — MCP cobersystem-analytics: bridge n8n
