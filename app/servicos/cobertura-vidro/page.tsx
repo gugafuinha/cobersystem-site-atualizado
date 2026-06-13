@@ -61,53 +61,6 @@ const serviceSchema = {
   offers: buildServiceOffer(PAGE_URL, String(COBERSYSTEM_PRICING.fixaCompacto.min)),
 };
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'Qual o preço de cobertura de vidro por m² em SP?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: `Cobertura de vidro temperado fixo começa em torno de R$ ${formatBRL(COBERSYSTEM_PRICING.fixaCompacto.min)}/m², podendo chegar a R$ 2.500–4.000/m² para sistemas retráteis com vidro laminado e automação. O preço exato depende da espessura do vidro, dimensão da estrutura e tipo de sistema (fixo, basculante ou retrátil). Para projetos residenciais onde o objetivo é luminosidade com menor custo, o policarbonato compacto (${formatPricePerM2(COBERSYSTEM_PRICING.fixaCompacto)}) oferece resultado visual similar ao vidro com custo mais acessível.`,
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Qual a diferença entre cobertura de vidro e policarbonato?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Vidro: estética premium, maior peso, maior custo, não aceita flexão (fratura), vida útil longa se temperado/laminado. Policarbonato compacto: transparência de até 90% (similar ao vidro), peso 6× menor, 250× mais resistente a impactos que vidro, aceita curvatura, custa menos. Para a maioria das residências, o policarbonato compacto entrega resultado visual próximo ao vidro com mais segurança e menor custo.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'O vidro temperado é seguro para cobertura?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Sim. O vidro temperado é 4× mais resistente que o vidro comum e, quando quebra, fragmenta em pedaços pequenos e arredondados (sem lascas cortantes). Para coberturas, recomenda-se vidro laminado (duas lâminas com película) que, mesmo quando quebrado, mantém os fragmentos unidos — essencial para segurança em coberturas sobre pessoas.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'É possível fazer cobertura de vidro retrátil?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Sim, existem sistemas de cobertura de vidro retrátil com painéis deslizantes sobre trilhos de alumínio. A Cobersystem instala coberturas retráteis com policarbonato e também pode avaliar projetos com vidro. Para a maioria dos projetos residenciais, a cobertura retrátil em policarbonato compacto cristal é a escolha mais prática e acessível — com transparência próxima ao vidro.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Cobertura de vidro aguenta granizo?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Vidro temperado e laminado suportam granizo pequeno, mas podem quebrar com granizo intenso. O policarbonato compacto suporta granizo forte sem quebrar e é 250× mais resistente a impactos que o vidro. Para coberturas em regiões com risco de granizo (comum em SP no verão), o policarbonato é a escolha mais segura.',
-      },
-    },
-  ],
-};
-
 const faqs = [
   {
     question: 'Qual o preço de cobertura de vidro por m² em SP?',
@@ -139,7 +92,6 @@ export default function CoberturaVidro() {
   return (
     <>
       <StructuredData data={serviceSchema} />
-      <StructuredData data={faqSchema} />
       <main className="min-h-screen bg-gray-50">
         <div className="container mx-auto px-4 py-8">
           <Breadcrumbs
