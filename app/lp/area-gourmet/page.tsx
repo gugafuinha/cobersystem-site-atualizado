@@ -188,8 +188,8 @@ export default function LpAreaGourmet() {
           <div className="max-w-4xl mx-auto px-4">
             <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-100">
               <Image
-                src="/images/blog/cobertura-retratil-area-gourmet.jpg"
-                alt="Cobertura retrátil para área gourmet instalada — Cobersystem São Paulo"
+                src="/images/blog/churrasqueira.jpg"
+                alt="Cobertura para área gourmet - Cobersystem"
                 width={1200}
                 height={800}
                 className="w-full object-cover"
