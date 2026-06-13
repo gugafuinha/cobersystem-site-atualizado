@@ -2,6 +2,24 @@
 
 ---
 
+## 2026-06-13 — Ads API direta no workflow Relatório Semanal (B29BC2BkRPG8988G)
+
+- **Problema**: `Get row(s) in sheet` buscava dados de Ads de planilha Google (A1:B2), dependência externa e dados desatualizados.
+- **Substituído por 3 HTTP Request nodes** chamando `POST https://googleads.googleapis.com/v20/customers/4936596693/googleAds:search`:
+  - `Ads - Campanhas` → GAQL performance últimos 30 dias
+  - `Ads - Keywords` → Top 30 keywords por custo
+  - `Ads - Search Terms` → Top 50 search terms por impressões
+- **Fluxo**: `Schedule Trigger` → `Ads - Campanhas` → `Ads - Keywords` → `Ads - Search Terms` → `Formatar Ads`
+- **Formatar Ads atualizado**: parseia response real da Ads API + inclui `ads_top_keywords` e `ads_top_searchterms` no relatório
+- **Credencial**: Google account 2 (FpcXxMa4amcdVlLJ) com headers `developer-token` + `login-customer-id`
+- **Testes confirmados**:
+  - `campaign`: 11 campanhas, "Cobersystem - Leads SP" → 8967 impr., R$594.04, CTR 4.39%
+  - `keywords`: 30 keywords, top → "cobertura abre e fecha" R$183.53
+  - `searchterms`: 30 termos, top → "telhado retratil" 201 impr.
+- `workflows/relatorio-semanal-com-openclaw.json` atualizado
+
+---
+
 ## 2026-06-13 — Fix: FAQPage duplicada em /servicos/cobertura-vidro
 
 - **Problema**: `page.tsx` injetava dois blocos `FAQPage` JSON-LD — constante `faqSchema` inline + `<FAQSchema faqs={faqs} />`.
