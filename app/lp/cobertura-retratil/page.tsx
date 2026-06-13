@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { trackGoogleAdsConversion } from '@/components/GoogleAds';
 import { trackCTAClick, trackPhoneClick } from '@/components/GoogleAnalytics';
@@ -175,6 +176,27 @@ export default function LpCoberturaRetratil() {
                   <div className="text-xs md:text-sm font-medium mt-0.5 opacity-80">{label}</div>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Foto do produto */}
+        <section className="bg-white py-10">
+          <div className="max-w-4xl mx-auto px-4">
+            <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+              <Image
+                src="/images/produtos/cobertura-retratil/compacto/IMG_4754.jpg"
+                alt="Cobertura retrátil em policarbonato instalada — Cobersystem São Paulo"
+                width={1200}
+                height={800}
+                className="w-full object-cover"
+                priority
+              />
+              <div className="bg-gray-50 px-4 py-3 text-center border-t border-gray-100">
+                <p className="text-sm text-gray-500 italic">
+                  Cobertura retrátil em policarbonato compacto — projeto real Cobersystem SP
+                </p>
+              </div>
             </div>
           </div>
         </section>
