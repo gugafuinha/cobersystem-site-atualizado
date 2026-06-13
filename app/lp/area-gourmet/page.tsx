@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { trackGoogleAdsConversion } from '@/components/GoogleAds';
 import { trackCTAClick, trackPhoneClick } from '@/components/GoogleAnalytics';
+import WhatsAppLink from '@/components/WhatsAppLink';
 
 const PHONE = '(11) 94361-5079';
 const PHONE_HREF = 'tel:+5511943615079';
@@ -20,10 +21,6 @@ function trackWaFinal() {
   trackCTAClick('LP Área Gourmet — WhatsApp Final');
 }
 
-function trackOrcamento() {
-  trackGoogleAdsConversion('lGDsCLD1opAYEM2d24Mp', 0);
-  trackCTAClick('LP Área Gourmet — Orçamento Online');
-}
 
 const serviceSchema = {
   '@context': 'https://schema.org',
@@ -344,13 +341,14 @@ export default function LpAreaGourmet() {
                 </svg>
                 💬 Falar no WhatsApp
               </a>
-              <Link
-                href="/orcamento"
-                onClick={trackOrcamento}
+              <WhatsAppLink
+                href="https://wa.me/5511943615079?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20de%20cobertura%20para%20%C3%A1rea%20gourmet"
+                location="lp-area-gourmet-cta-final"
+                serviceSlug="cobertura-area-gourmet"
                 className="inline-flex items-center justify-center bg-white text-blue-800 hover:bg-blue-50 font-extrabold px-8 py-5 rounded-xl text-lg transition"
               >
                 Solicitar Orçamento Online
-              </Link>
+              </WhatsAppLink>
             </div>
             <p className="text-blue-300 text-sm mt-6">
               Resposta em até 24h • Atendemos toda a Grande São Paulo

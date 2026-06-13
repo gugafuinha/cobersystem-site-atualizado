@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Script from 'next/script';
 import Image from 'next/image';
+import WhatsAppLink from '@/components/WhatsAppLink';
 
 export const metadata: Metadata = {
   title: 'Telhado Retrátil Policarbonato Preço 2026 | Tabela por m² | Cobersystem SP',
@@ -134,12 +135,14 @@ export default function TelhadoRetratilPrecoPage() {
               >
                 💬 Orçamento grátis via WhatsApp
               </a>
-              <Link
-                href="/orcamento"
+              <WhatsAppLink
+                href="https://wa.me/5511943615079?text=Ol%C3%A1!%20Quero%20saber%20o%20pre%C3%A7o%20da%20cobertura%20retr%C3%A1til"
+                location="preco-hero"
+                serviceSlug="telhado-retratil-policarbonato-preco"
                 className="bg-white/10 hover:bg-white/20 border border-white/30 text-white font-bold py-4 px-8 rounded-xl text-lg transition-colors"
               >
                 Preencher formulário
-              </Link>
+              </WhatsAppLink>
             </div>
           </div>
         </section>
@@ -230,12 +233,14 @@ export default function TelhadoRetratilPrecoPage() {
                   >
                     💬 Orçamento grátis via WhatsApp
                   </a>
-                  <Link
-                    href="/orcamento"
+                  <WhatsAppLink
+                    href="https://wa.me/5511943615079?text=Ol%C3%A1!%20Quero%20saber%20o%20pre%C3%A7o%20da%20cobertura%20retr%C3%A1til"
+                    location="preco-tabela"
+                    serviceSlug="telhado-retratil-policarbonato-preco"
                     className="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-3 px-6 rounded-xl text-base transition-colors text-center"
                   >
                     Preencher formulário
-                  </Link>
+                  </WhatsAppLink>
                 </div>
               </div>
 
@@ -303,12 +308,14 @@ export default function TelhadoRetratilPrecoPage() {
               >
                 💬 Falar com especialista
               </a>
-              <Link
-                href="/orcamento"
+              <WhatsAppLink
+                href="https://wa.me/5511943615079?text=Ol%C3%A1!%20Quero%20saber%20o%20pre%C3%A7o%20da%20cobertura%20retr%C3%A1til"
+                location="preco-cta-central"
+                serviceSlug="telhado-retratil-policarbonato-preco"
                 className="bg-white text-blue-700 font-bold py-4 px-8 rounded-xl text-lg hover:bg-blue-50 transition-colors"
               >
                 Formulário de orçamento
-              </Link>
+              </WhatsAppLink>
             </div>
           </div>
         </section>
