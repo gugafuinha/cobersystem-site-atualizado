@@ -46,6 +46,8 @@ export const trackCTAClick = (ctaName: string) => {
 
 export const trackFormSubmit = () => {
   trackEvent('submit', 'Form', 'Formulário de Contato');
+  trackGoogleAdsConversion(CONVERSION_LABELS.FORM_SUBMIT);
+  trackMetaEvent('Lead', { method: 'Form' });
 };
 
 export const trackScroll90 = () => {
