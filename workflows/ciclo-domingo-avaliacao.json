@@ -1,0 +1,1713 @@
+[
+  {
+    "updatedAt": "2026-06-13T17:56:58.444Z",
+    "createdAt": "2026-06-13T17:16:02.932Z",
+    "id": "1mtMgK2OCnM6KqiS",
+    "name": "Ciclo Domingo - Avaliação Semanal + GitHub",
+    "description": null,
+    "active": true,
+    "isArchived": false,
+    "nodes": [
+      {
+        "id": "sun-schedule-01",
+        "name": "Schedule Domingo 20h",
+        "type": "n8n-nodes-base.scheduleTrigger",
+        "typeVersion": 1.2,
+        "position": [
+          -820,
+          300
+        ],
+        "parameters": {
+          "rule": {
+            "interval": [
+              {
+                "field": "weeks",
+                "triggerAtDay": [
+                  0
+                ],
+                "triggerAtHour": 20
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "sun-redis-getbase-01",
+        "name": "Ler Baseline (Redis)",
+        "type": "n8n-nodes-base.redis",
+        "typeVersion": 1,
+        "position": [
+          280,
+          300
+        ],
+        "parameters": {
+          "operation": "get",
+          "propertyName": "baseline",
+          "key": "cober:baseline:atual",
+          "options": {}
+        },
+        "credentials": {
+          "redis": {
+            "id": "x3QSUG0JlL6SEKR5",
+            "name": "Redis account"
+          }
+        }
+      },
+      {
+        "id": "sun-compare-01",
+        "name": "Comparar",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          500,
+          300
+        ],
+        "parameters": {
+          "jsCode": "const cur = $('Combinar Dados').first().json;\nlet baseline = {};\ntry { baseline = JSON.parse($('Ler Baseline (Redis)').first().json.baseline || '{}'); } catch(e) {}\nconst hasBase = baseline && baseline.gsc;\n\nconst num = v => { const n = parseFloat(String(v).replace(/[^0-9.\\-]/g,'')); return isNaN(n)?0:n; };\nconst arrow = (now, before) => {\n  const d = now - before;\n  if (!hasBase) return '(sem baseline)';\n  const s = d > 0 ? '↑' : (d < 0 ? '↓' : '→');\n  return s + ' ' + (d>0?'+':'') + (Math.round(d*100)/100);\n};\n\nconst curBase = {\n  week_start: $now.toFormat('yyyy-MM-dd'),\n  ts: $now.toISO(),\n  gsc: { clicks: cur.gsc_totalClicks ?? 0, impressions: cur.gsc_totalImpressions ?? 0, ctr: cur.gsc_ctr ?? '0%', avgPosition: cur.gsc_avgPosition ?? '0' },\n  ga4: { sessions: cur.ga4_totalSessions ?? 0, users: cur.ga4_totalUsers ?? 0, conv_form: cur.ga4_conv_form ?? 0, conv_whatsapp: cur.ga4_conv_whatsapp ?? 0, conv_total: cur.ga4_conv_total ?? 0, bounceRate: cur.ga4_bounceRate ?? '0%' },\n  ads: { impressions: cur.ads_impressions ?? 0, clicks: cur.ads_clicks ?? 0, ctr: cur.ads_ctr ?? '0', custo: cur.ads_custo ?? '0.00', cpc: cur.ads_cpc ?? '0', conversoes: cur.ads_conversoes ?? '0.0' }\n};\n\nconst b = hasBase ? baseline : curBase;\nconst periodo = (b.week_start || '?') + ' → ' + curBase.week_start;\n\nconst texto = [\n  'COMPARATIVO SEMANAL Cobersystem (' + periodo + ')',\n  hasBase ? '' : '[ATENÇÃO: não havia baseline de segunda; primeira leitura.]',\n  '',\n  'GSC cliques: ' + curBase.gsc.clicks + ' (baseline ' + b.gsc.clicks + ') ' + arrow(num(curBase.gsc.clicks), num(b.gsc.clicks)),\n  'GSC impressões: ' + curBase.gsc.impressions + ' (baseline ' + b.gsc.impressions + ') ' + arrow(num(curBase.gsc.impressions), num(b.gsc.impressions)),\n  'GSC posição média: ' + curBase.gsc.avgPosition + ' (baseline ' + b.gsc.avgPosition + ') ' + arrow(num(curBase.gsc.avgPosition), num(b.gsc.avgPosition)) + ' (menor é melhor)',\n  'GA4 sessões: ' + curBase.ga4.sessions + ' (baseline ' + b.ga4.sessions + ') ' + arrow(num(curBase.ga4.sessions), num(b.ga4.sessions)),\n  'GA4 conversões total: ' + curBase.ga4.conv_total + ' (baseline ' + b.ga4.conv_total + ') ' + arrow(num(curBase.ga4.conv_total), num(b.ga4.conv_total)),\n  'GA4 conv form/wpp: ' + curBase.ga4.conv_form + '/' + curBase.ga4.conv_whatsapp + ' (baseline ' + b.ga4.conv_form + '/' + b.ga4.conv_whatsapp + ')',\n  'Ads custo 30d: R$' + curBase.ads.custo + ' (baseline R$' + b.ads.custo + ') ' + arrow(num(curBase.ads.custo), num(b.ads.custo)),\n  'Ads CTR: ' + curBase.ads.ctr + '% (baseline ' + b.ads.ctr + '%) ' + arrow(num(curBase.ads.ctr), num(b.ads.ctr)),\n  'Ads CPC: R$' + curBase.ads.cpc + ' (baseline R$' + b.ads.cpc + ') ' + arrow(num(curBase.ads.cpc), num(b.ads.cpc)) + ' (menor é melhor)',\n  'Ads conversões: ' + curBase.ads.conversoes + ' (baseline ' + b.ads.conversoes + ')'\n].filter(Boolean).join('\\n');\n\nreturn [{ json: { dados_comparativo: texto, newBaselineJson: JSON.stringify(curBase), periodo } }];"
+        }
+      },
+      {
+        "id": "sun-openclaw-01",
+        "name": "OpenClaw Avaliação",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.3,
+        "position": [
+          720,
+          300
+        ],
+        "parameters": {
+          "method": "POST",
+          "url": "http://openclaw_openclaw-gateway:18789/v1/chat/completions",
+          "authentication": "none",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "Authorization",
+                "value": "Bearer ca7858a0c719a6b7b86f44e49b98c85db9dda06d51eb5aee"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={\n  \"model\": \"openclaw\",\n  \"messages\": [\n    { \"role\": \"system\", \"content\": \"Você é o ACI (Agente Central de Inteligência) da Cobersystem, empresa de coberturas retráteis em policarbonato em SP.\\\\nVocê recebe a COMPARAÇÃO entre o baseline de segunda-feira e os números atuais (domingo, fim de semana).\\\\nAvalie o desempenho da semana em português, formato WhatsApp, máximo 1500 caracteres. Estrutura OBRIGATÓRIA:\\\\n\\\\n📅 *Fechamento da Semana*\\\\n✅ *O QUE FUNCIONOU* — métricas que melhoraram, com número e variação\\\\n⚠️ *O QUE NÃO FUNCIONOU* — métricas que pioraram ou estagnaram\\\\n➡️ *PRÓXIMO PASSO* — 1 ação prioritária para a próxima semana\\\\n\\\\nRegras: use os deltas (↑↓) reais informados, *negrito* só em números e títulos, sem introdução, seja cirúrgico e honesto.\" },\n    { \"role\": \"user\", \"content\": {{ JSON.stringify($json.dados_comparativo) }} }\n  ],\n  \"temperature\": 0.3,\n  \"max_tokens\": 700\n}",
+          "options": {
+            "timeout": 120000
+          }
+        }
+      },
+      {
+        "id": "sun-extract-01",
+        "name": "Extrair Avaliação",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          940,
+          300
+        ],
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "a1",
+                "name": "analise",
+                "value": "={{ $json.choices?.[0]?.message?.content ?? ('⚠️ OpenClaw indisponível.\\n\\n' + $('Comparar').item.json.dados_comparativo) }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        }
+      },
+      {
+        "id": "sun-wpp-01",
+        "name": "Enviar WhatsApp",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.3,
+        "position": [
+          1160,
+          180
+        ],
+        "parameters": {
+          "method": "POST",
+          "url": "https://automacao-evolution-api.fmjbtn.easypanel.host/message/sendText/cobersystem%20",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "apikey",
+                "value": "3C5F8308906D-44BF-9338-9721BC3CC120"
+              }
+            ]
+          },
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={\n  \"number\": \"5511982295079\",\n  \"text\": {{ JSON.stringify($json.analise) }}\n}",
+          "options": {}
+        }
+      },
+      {
+        "id": "sun-redis-getpat-01",
+        "name": "Ler PAT (Redis)",
+        "type": "n8n-nodes-base.redis",
+        "typeVersion": 1,
+        "position": [
+          1160,
+          420
+        ],
+        "parameters": {
+          "operation": "get",
+          "propertyName": "pat",
+          "key": "cober:github:pat",
+          "options": {}
+        },
+        "credentials": {
+          "redis": {
+            "id": "x3QSUG0JlL6SEKR5",
+            "name": "Redis account"
+          }
+        }
+      },
+      {
+        "id": "sun-redis-getissue-01",
+        "name": "Ler Issue Number (Redis)",
+        "type": "n8n-nodes-base.redis",
+        "typeVersion": 1,
+        "position": [
+          1380,
+          420
+        ],
+        "parameters": {
+          "operation": "get",
+          "propertyName": "issuenum",
+          "key": "cober:issue:atual",
+          "options": {}
+        },
+        "credentials": {
+          "redis": {
+            "id": "x3QSUG0JlL6SEKR5",
+            "name": "Redis account"
+          }
+        }
+      },
+      {
+        "id": "sun-gh-comment-01",
+        "name": "Comentar Issue",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.3,
+        "position": [
+          1600,
+          420
+        ],
+        "parameters": {
+          "method": "POST",
+          "url": "=https://api.github.com/repos/gugafuinha/cobersystem-site-atualizado/issues/{{ $json.issuenum }}/comments",
+          "authentication": "none",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "Authorization",
+                "value": "={{ \"Bearer \" + $('Ler PAT (Redis)').item.json.pat }}"
+              },
+              {
+                "name": "Accept",
+                "value": "application/vnd.github+json"
+              },
+              {
+                "name": "User-Agent",
+                "value": "cobersystem-n8n"
+              }
+            ]
+          },
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={\n  \"body\": {{ JSON.stringify('## 📈 Resultado da semana (domingo ' + $now.toFormat('dd/MM') + ')\\n\\n' + $('Extrair Avaliação').item.json.analise + '\\n\\n<details><summary>Comparativo bruto</summary>\\n\\n```\\n' + $('Comparar').item.json.dados_comparativo + '\\n```\\n</details>') }}\n}",
+          "options": {
+            "ignoreResponseCode": true
+          }
+        },
+        "onError": "continueRegularOutput"
+      },
+      {
+        "id": "sun-redis-savebase-01",
+        "name": "Salvar Baseline (Redis)",
+        "type": "n8n-nodes-base.redis",
+        "typeVersion": 1,
+        "position": [
+          1820,
+          420
+        ],
+        "parameters": {
+          "operation": "set",
+          "key": "cober:baseline:atual",
+          "value": "={{ $('Comparar').item.json.newBaselineJson }}",
+          "keyType": "string",
+          "expire": false
+        },
+        "credentials": {
+          "redis": {
+            "id": "x3QSUG0JlL6SEKR5",
+            "name": "Redis account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://searchconsole.googleapis.com/webmasters/v3/sites/https%3A%2F%2Fwww.coberturapolicarbonato.com.br%2F/searchAnalytics/query",
+          "authentication": "predefinedCredentialType",
+          "nodeCredentialType": "googleOAuth2Api",
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={\n  \"startDate\": \"{{ $now.minus({ days: 7 }).toFormat('yyyy-MM-dd') }}\",\n  \"endDate\": \"{{ $now.minus({ days: 1 }).toFormat('yyyy-MM-dd') }}\",\n  \"dimensions\": [\"query\"],\n  \"rowLimit\": 10,\n  \"orderBy\": [{\"fieldName\": \"clicks\", \"sortOrder\": \"DESCENDING\"}]\n}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.3,
+        "position": [
+          -380,
+          -160
+        ],
+        "id": "9d6c494f-f5fc-43d0-ac43-91ca9d8d9748",
+        "name": "GSC - Buscar Dados",
+        "credentials": {
+          "googleOAuth2Api": {
+            "id": "FpcXxMa4amcdVlLJ",
+            "name": "Google account 2"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://searchconsole.googleapis.com/webmasters/v3/sites/https%3A%2F%2Fwww.coberturapolicarbonato.com.br%2F/searchAnalytics/query",
+          "authentication": "predefinedCredentialType",
+          "nodeCredentialType": "googleOAuth2Api",
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={\n  \"startDate\": \"{{ $now.minus({ days: 14 }).toFormat('yyyy-MM-dd') }}\",\n  \"endDate\": \"{{ $now.minus({ days: 8 }).toFormat('yyyy-MM-dd') }}\",\n  \"dimensions\": [\"query\"],\n  \"rowLimit\": 10,\n  \"orderBy\": [{\"fieldName\": \"clicks\", \"sortOrder\": \"DESCENDING\"}]\n}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.3,
+        "position": [
+          -380,
+          -320
+        ],
+        "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567801",
+        "name": "GSC - Semana Anterior",
+        "credentials": {
+          "googleOAuth2Api": {
+            "id": "FpcXxMa4amcdVlLJ",
+            "name": "Google account 2"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "mode": "append",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.merge",
+        "typeVersion": 3.2,
+        "position": [
+          -160,
+          -240
+        ],
+        "id": "b2c3d4e5-f6a7-8901-bcde-f12345678902",
+        "name": "Merge GSC"
+      },
+      {
+        "parameters": {
+          "jsCode": "// items[0] = semana atual, items[1] = semana anterior\nconst items = $input.all();\nconst currentRows = (items[0] && items[0].json && items[0].json.rows) ? items[0].json.rows : [];\nconst prevRows = (items[1] && items[1].json && items[1].json.rows) ? items[1].json.rows : [];\n\nvar clicks = 0, impressions = 0;\ncurrentRows.forEach(function(r) { clicks += r.clicks; impressions += r.impressions; });\n\nvar clicksPrev = 0, impressionsPrev = 0;\nprevRows.forEach(function(r) { clicksPrev += r.clicks; impressionsPrev += r.impressions; });\n\nfunction delta(curr, prev) {\n  if (prev === 0) return curr > 0 ? '+100% ↑' : '—';\n  var pct = Math.round((curr - prev) / prev * 100);\n  return pct >= 0 ? '+' + pct + '% ↑' : pct + '% ↓';\n}\n\nvar ctr = impressions > 0 ? ((clicks / impressions) * 100).toFixed(1) : '0';\nvar avgPos = currentRows.length > 0\n  ? (currentRows.reduce(function(s, r) { return s + r.position; }, 0) / currentRows.length).toFixed(1)\n  : '0';\n\nvar top10 = currentRows.slice().sort(function(a, b) { return b.clicks - a.clicks; }).slice(0, 10)\n  .map(function(r, i) {\n    var q = r.keys[0].substring(0, 38);\n    var ctrQ = (r.ctr * 100).toFixed(0);\n    return (i+1) + '. \"' + q + '\" — ' + r.clicks + 'clq | pos.' + r.position.toFixed(1) + ' | CTR ' + ctrQ + '%';\n  });\n\nreturn [{\n  json: {\n    gsc_totalClicks: clicks,\n    gsc_totalImpressions: impressions,\n    gsc_ctr: ctr + '%',\n    gsc_avgPosition: avgPos,\n    gsc_delta_clicks: delta(clicks, clicksPrev),\n    gsc_delta_impressions: delta(impressions, impressionsPrev),\n    gsc_top10Queries: top10.join('\\n'),\n    gsc_periodo: $now.minus({ days: 7 }).toFormat('dd/MM') + ' a ' + $now.minus({ days: 1 }).toFormat('dd/MM/yyyy')\n  }\n}];"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          60,
+          -240
+        ],
+        "id": "d1de3a77-bbba-46df-bfb8-76b928ac33e3",
+        "name": "Formatar GSC"
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://analyticsdata.googleapis.com/v1beta/properties/531715968:runReport",
+          "authentication": "predefinedCredentialType",
+          "nodeCredentialType": "googleOAuth2Api",
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={{ JSON.stringify({\n  \"dateRanges\": [\n    {\"startDate\": $now.minus({ days: 7 }).toFormat('yyyy-MM-dd'), \"endDate\": $now.minus({ days: 1 }).toFormat('yyyy-MM-dd'), \"name\": \"semana_atual\"},\n    {\"startDate\": $now.minus({ days: 14 }).toFormat('yyyy-MM-dd'), \"endDate\": $now.minus({ days: 8 }).toFormat('yyyy-MM-dd'), \"name\": \"semana_anterior\"}\n  ],\n  \"dimensions\": [{\"name\": \"sessionDefaultChannelGroup\"}],\n  \"metrics\": [\n    {\"name\": \"sessions\"},{\"name\": \"totalUsers\"},{\"name\": \"bounceRate\"},{\"name\": \"averageSessionDuration\"},{\"name\": \"conversions\"}\n  ],\n  \"orderBys\": [{\"metric\": {\"metricName\": \"sessions\"}, \"desc\": true}]\n}) }}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.3,
+        "position": [
+          -380,
+          0
+        ],
+        "id": "1a62b043-d709-49c2-ac89-2acb9df01386",
+        "name": "GA4 - Buscar Dados",
+        "credentials": {
+          "googleOAuth2Api": {
+            "id": "GBfh8imn2dBiRnSw",
+            "name": "Google account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://analyticsdata.googleapis.com/v1beta/properties/531715968:runReport",
+          "authentication": "predefinedCredentialType",
+          "nodeCredentialType": "googleOAuth2Api",
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={{ JSON.stringify({\n  \"dateRanges\": [{\"startDate\": $now.minus({ days: 7 }).toFormat('yyyy-MM-dd'), \"endDate\": $now.minus({ days: 1 }).toFormat('yyyy-MM-dd')}],\n  \"dimensions\": [{\"name\": \"eventName\"}],\n  \"metrics\": [{\"name\": \"eventCount\"}, {\"name\": \"conversions\"}],\n  \"orderBys\": [{\"metric\": {\"metricName\": \"eventCount\"}, \"desc\": true}],\n  \"limit\": 15\n}) }}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.3,
+        "position": [
+          -380,
+          160
+        ],
+        "id": "c3d4e5f6-a7b8-9012-cdef-123456789003",
+        "name": "GA4 - Eventos Conversão",
+        "credentials": {
+          "googleOAuth2Api": {
+            "id": "GBfh8imn2dBiRnSw",
+            "name": "Google account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "mode": "append",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.merge",
+        "typeVersion": 3.2,
+        "position": [
+          -160,
+          80
+        ],
+        "id": "d4e5f6a7-b8c9-0123-defa-234567890004",
+        "name": "Merge GA4"
+      },
+      {
+        "parameters": {
+          "jsCode": "// items[0] = GA4 sessoes (2 dateRanges), items[1] = GA4 eventos\nconst items = $input.all();\nconst ga4Data = (items[0] && items[0].json) ? items[0].json : {};\nconst eventData = (items[1] && items[1].json) ? items[1].json : {};\n\nconst rows = ga4Data.rows || [];\n\n// Com 2 dateRanges, GA4 adiciona dateRange como dimensao extra\nconst currentRows = rows.filter(function(r) {\n  var last = r.dimensionValues[r.dimensionValues.length - 1];\n  return last && (last.value === 'semana_atual' || last.value === 'date_range_0');\n});\nconst prevRows = rows.filter(function(r) {\n  var last = r.dimensionValues[r.dimensionValues.length - 1];\n  return last && (last.value === 'semana_anterior' || last.value === 'date_range_1');\n});\n\n// Fallback: se nao houver separacao, usar todos\nconst activeRows = currentRows.length > 0 ? currentRows : rows;\n\nvar sessions = 0, users = 0, bounceSum = 0, durSum = 0, convTotal = 0;\nvar channelMap = {};\n\nactiveRows.forEach(function(r) {\n  var channel = r.dimensionValues[0].value;\n  var s = parseInt(r.metricValues[0].value || '0');\n  var u = parseInt(r.metricValues[1].value || '0');\n  var b = parseFloat(r.metricValues[2].value || '0');\n  var d = parseFloat(r.metricValues[3].value || '0');\n  var c = parseFloat((r.metricValues[4] && r.metricValues[4].value) || '0');\n  sessions += s; users += u; bounceSum += b; durSum += d; convTotal += c;\n  channelMap[channel] = s + ' sess.';\n});\n\nvar sessionsPrev = 0;\nprevRows.forEach(function(r) { sessionsPrev += parseInt(r.metricValues[0].value || '0'); });\n\nfunction delta(curr, prev) {\n  if (prev === 0) return curr > 0 ? '+100% ↑' : '—';\n  var pct = Math.round((curr - prev) / prev * 100);\n  return pct >= 0 ? '+' + pct + '% ↑' : pct + '% ↓';\n}\n\nvar avgBounce = activeRows.length > 0 ? (bounceSum / activeRows.length * 100).toFixed(1) + '%' : '0%';\nvar avgDur = activeRows.length > 0 ? Math.round(durSum / activeRows.length) : 0;\nvar durFmt = Math.floor(avgDur/60) + 'm' + (avgDur%60) + 's';\nvar channelLines = Object.entries(channelMap).map(function(e) { return '• ' + e[0] + ': ' + e[1]; }).join('\\n');\n\n// Conversoes por evento\nconst eventRows = eventData.rows || [];\nvar convWhatsApp = 0, convForm = 0;\neventRows.forEach(function(r) {\n  var ev = (r.dimensionValues[0] && r.dimensionValues[0].value || '').toLowerCase();\n  var cnt = parseInt((r.metricValues[0] && r.metricValues[0].value) || '0');\n  if (ev === 'click') convWhatsApp = cnt;\n  else if (ev === 'submit') convForm = cnt;\n});\n\nreturn [{\n  json: {\n    ga4_totalSessions: sessions,\n    ga4_totalUsers: users,\n    ga4_bounceRate: avgBounce,\n    ga4_avgDuration: durFmt,\n    ga4_delta_sessions: delta(sessions, sessionsPrev),\n    ga4_sessions_ant: sessionsPrev,\n    ga4_porCanal: channelLines,\n    ga4_conv_whatsapp: convWhatsApp,\n    ga4_conv_form: convForm,\n    ga4_conv_total: Math.round(convTotal)\n  }\n}];"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          60,
+          80
+        ],
+        "id": "bfe164ef-f290-4759-bb34-01fd52e240cd",
+        "name": "Formatar GA4"
+      },
+      {
+        "parameters": {
+          "jsCode": "const campData = $('Ads - Campanhas').first().json;\nconst kwData   = $('Ads - Keywords').first().json;\nconst stData   = $input.first().json;\n\nconst campResults = campData.results || [];\nconst kwResults   = kwData.results   || [];\nconst stResults   = stData.results   || [];\n\nlet totalImpressions = 0, totalClicks = 0, totalCostMicros = 0, totalConversions = 0;\ncampResults.forEach(r => {\n  totalImpressions  += parseInt(r.metrics?.impressions  || 0);\n  totalClicks       += parseInt(r.metrics?.clicks       || 0);\n  totalCostMicros   += parseInt(r.metrics?.costMicros   || 0);\n  totalConversions  += parseFloat(r.metrics?.conversions || 0);\n});\n\nconst ctr    = totalImpressions > 0 ? (totalClicks / totalImpressions * 100).toFixed(2) : '0.00';\nconst costBRL = (totalCostMicros / 1e6).toFixed(2);\nconst avgCPC  = totalClicks > 0 ? 'R$' + (totalCostMicros / 1e6 / totalClicks).toFixed(2) : 'R$0.00';\n\nconst now = new Date();\nconst start = new Date(); start.setDate(now.getDate() - 30);\nconst fmt = d => d.toISOString().slice(0, 10);\n\nconst topKw = kwResults.slice(0, 5).map(r =>\n  (r.adGroupCriterion?.keyword?.text || '?') + ' (R$' + ((parseInt(r.metrics?.costMicros || 0)) / 1e6).toFixed(2) + ')'\n).join(', ');\n\nconst topSt = stResults.slice(0, 5).map(r =>\n  (r.searchTermView?.searchTerm || '?') + ' (' + (r.metrics?.impressions || 0) + ' impr.)'\n).join(', ');\n\nreturn [{\n  json: {\n    ads_impressions:     totalImpressions,\n    ads_clicks:          totalClicks,\n    ads_ctr:             ctr,\n    ads_custo:           costBRL,\n    ads_cpc:             avgCPC,\n    ads_conversoes:      totalConversions.toFixed(1),\n    ads_periodo:         fmt(start) + ' a ' + fmt(now),\n    ads_top_keywords:    topKw,\n    ads_top_searchterms: topSt,\n  }\n}];"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          60,
+          340
+        ],
+        "id": "d70d54b0-38f6-4131-b9f8-e36da2f6fad9",
+        "name": "Formatar Ads"
+      },
+      {
+        "parameters": {
+          "mode": "combine",
+          "combineBy": "combineByPosition",
+          "numberInputs": 3,
+          "options": {}
+        },
+        "type": "n8n-nodes-base.merge",
+        "typeVersion": 3.2,
+        "position": [
+          280,
+          80
+        ],
+        "id": "7522f136-7e35-422d-b5ed-5d86c7509e77",
+        "name": "Combinar Dados"
+      },
+      {
+        "id": "ads-camp-01",
+        "name": "Ads - Campanhas",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.3,
+        "position": [
+          -380,
+          600
+        ],
+        "parameters": {
+          "method": "POST",
+          "url": "https://googleads.googleapis.com/v20/customers/4936596693/googleAds:search",
+          "authentication": "predefinedCredentialType",
+          "nodeCredentialType": "googleOAuth2Api",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "developer-token",
+                "value": "Mj6tFzpKBiqQW9EdECjb4w"
+              },
+              {
+                "name": "login-customer-id",
+                "value": "3848890894"
+              }
+            ]
+          },
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={{ JSON.stringify({ query: \"SELECT campaign.name, campaign.status, metrics.impressions, metrics.clicks, metrics.cost_micros, metrics.conversions, metrics.ctr, metrics.average_cpc FROM campaign WHERE segments.date DURING LAST_30_DAYS ORDER BY metrics.cost_micros DESC\" }) }}",
+          "options": {}
+        },
+        "credentials": {
+          "googleOAuth2Api": {
+            "id": "FpcXxMa4amcdVlLJ",
+            "name": "Google account 2"
+          }
+        }
+      },
+      {
+        "id": "ads-kw-01",
+        "name": "Ads - Keywords",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.3,
+        "position": [
+          -160,
+          600
+        ],
+        "parameters": {
+          "method": "POST",
+          "url": "https://googleads.googleapis.com/v20/customers/4936596693/googleAds:search",
+          "authentication": "predefinedCredentialType",
+          "nodeCredentialType": "googleOAuth2Api",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "developer-token",
+                "value": "Mj6tFzpKBiqQW9EdECjb4w"
+              },
+              {
+                "name": "login-customer-id",
+                "value": "3848890894"
+              }
+            ]
+          },
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={{ JSON.stringify({ query: \"SELECT ad_group_criterion.keyword.text, ad_group_criterion.keyword.match_type, metrics.impressions, metrics.clicks, metrics.cost_micros, metrics.conversions, metrics.average_cpc FROM keyword_view WHERE segments.date DURING LAST_30_DAYS AND ad_group_criterion.status != 'REMOVED' ORDER BY metrics.cost_micros DESC LIMIT 30\" }) }}",
+          "options": {}
+        },
+        "credentials": {
+          "googleOAuth2Api": {
+            "id": "FpcXxMa4amcdVlLJ",
+            "name": "Google account 2"
+          }
+        }
+      },
+      {
+        "id": "ads-st-01",
+        "name": "Ads - Search Terms",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.3,
+        "position": [
+          60,
+          600
+        ],
+        "parameters": {
+          "method": "POST",
+          "url": "https://googleads.googleapis.com/v20/customers/4936596693/googleAds:search",
+          "authentication": "predefinedCredentialType",
+          "nodeCredentialType": "googleOAuth2Api",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "developer-token",
+                "value": "Mj6tFzpKBiqQW9EdECjb4w"
+              },
+              {
+                "name": "login-customer-id",
+                "value": "3848890894"
+              }
+            ]
+          },
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={{ JSON.stringify({ query: \"SELECT search_term_view.search_term, metrics.impressions, metrics.clicks, metrics.cost_micros, metrics.conversions FROM search_term_view WHERE segments.date DURING LAST_30_DAYS ORDER BY metrics.impressions DESC LIMIT 50\" }) }}",
+          "options": {}
+        },
+        "credentials": {
+          "googleOAuth2Api": {
+            "id": "FpcXxMa4amcdVlLJ",
+            "name": "Google account 2"
+          }
+        }
+      }
+    ],
+    "connections": {
+      "GSC - Buscar Dados": {
+        "main": [
+          [
+            {
+              "node": "Merge GSC",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "GSC - Semana Anterior": {
+        "main": [
+          [
+            {
+              "node": "Merge GSC",
+              "type": "main",
+              "index": 1
+            }
+          ]
+        ]
+      },
+      "Merge GSC": {
+        "main": [
+          [
+            {
+              "node": "Formatar GSC",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Formatar GSC": {
+        "main": [
+          [
+            {
+              "node": "Combinar Dados",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "GA4 - Buscar Dados": {
+        "main": [
+          [
+            {
+              "node": "Merge GA4",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "GA4 - Eventos Conversão": {
+        "main": [
+          [
+            {
+              "node": "Merge GA4",
+              "type": "main",
+              "index": 1
+            }
+          ]
+        ]
+      },
+      "Merge GA4": {
+        "main": [
+          [
+            {
+              "node": "Formatar GA4",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Formatar GA4": {
+        "main": [
+          [
+            {
+              "node": "Combinar Dados",
+              "type": "main",
+              "index": 1
+            }
+          ]
+        ]
+      },
+      "Formatar Ads": {
+        "main": [
+          [
+            {
+              "node": "Combinar Dados",
+              "type": "main",
+              "index": 2
+            }
+          ]
+        ]
+      },
+      "Combinar Dados": {
+        "main": [
+          [
+            {
+              "node": "Ler Baseline (Redis)",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Ads - Campanhas": {
+        "main": [
+          [
+            {
+              "node": "Ads - Keywords",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Ads - Keywords": {
+        "main": [
+          [
+            {
+              "node": "Ads - Search Terms",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Ads - Search Terms": {
+        "main": [
+          [
+            {
+              "node": "Formatar Ads",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Schedule Domingo 20h": {
+        "main": [
+          [
+            {
+              "node": "GSC - Buscar Dados",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "GSC - Semana Anterior",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "GA4 - Buscar Dados",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "GA4 - Eventos Conversão",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Ads - Campanhas",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Ler Baseline (Redis)": {
+        "main": [
+          [
+            {
+              "node": "Comparar",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Comparar": {
+        "main": [
+          [
+            {
+              "node": "OpenClaw Avaliação",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "OpenClaw Avaliação": {
+        "main": [
+          [
+            {
+              "node": "Extrair Avaliação",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Extrair Avaliação": {
+        "main": [
+          [
+            {
+              "node": "Enviar WhatsApp",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Ler PAT (Redis)",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Ler PAT (Redis)": {
+        "main": [
+          [
+            {
+              "node": "Ler Issue Number (Redis)",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Ler Issue Number (Redis)": {
+        "main": [
+          [
+            {
+              "node": "Comentar Issue",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Comentar Issue": {
+        "main": [
+          [
+            {
+              "node": "Salvar Baseline (Redis)",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "settings": {
+      "executionOrder": "v1"
+    },
+    "staticData": {
+      "node:Schedule Domingo 20h": {
+        "recurrenceRules": []
+      }
+    },
+    "meta": null,
+    "pinData": null,
+    "versionId": "18b4dea9-b086-433a-8592-9d568a506c58",
+    "activeVersionId": "18b4dea9-b086-433a-8592-9d568a506c58",
+    "versionCounter": 4,
+    "triggerCount": 1,
+    "shared": [
+      {
+        "updatedAt": "2026-06-13T17:16:02.945Z",
+        "createdAt": "2026-06-13T17:16:02.945Z",
+        "role": "workflow:owner",
+        "workflowId": "1mtMgK2OCnM6KqiS",
+        "projectId": "n7BsFxFE1sTuWEaM",
+        "project": {
+          "updatedAt": "2026-05-08T01:56:09.458Z",
+          "createdAt": "2026-04-09T19:47:28.897Z",
+          "id": "n7BsFxFE1sTuWEaM",
+          "name": "Cobersystem Financeiro <cobersystemfinanceiro@gmail.com>",
+          "type": "personal",
+          "icon": null,
+          "description": null,
+          "creatorId": "2353395b-f22d-44f2-901a-2a0428114958"
+        }
+      }
+    ],
+    "tags": [],
+    "activeVersion": {
+      "updatedAt": "2026-06-13T17:56:58.446Z",
+      "createdAt": "2026-06-13T17:56:58.446Z",
+      "versionId": "18b4dea9-b086-433a-8592-9d568a506c58",
+      "workflowId": "1mtMgK2OCnM6KqiS",
+      "nodes": [
+        {
+          "id": "sun-schedule-01",
+          "name": "Schedule Domingo 20h",
+          "type": "n8n-nodes-base.scheduleTrigger",
+          "typeVersion": 1.2,
+          "position": [
+            -820,
+            300
+          ],
+          "parameters": {
+            "rule": {
+              "interval": [
+                {
+                  "field": "weeks",
+                  "triggerAtDay": [
+                    0
+                  ],
+                  "triggerAtHour": 20
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "sun-redis-getbase-01",
+          "name": "Ler Baseline (Redis)",
+          "type": "n8n-nodes-base.redis",
+          "typeVersion": 1,
+          "position": [
+            280,
+            300
+          ],
+          "parameters": {
+            "operation": "get",
+            "propertyName": "baseline",
+            "key": "cober:baseline:atual",
+            "options": {}
+          },
+          "credentials": {
+            "redis": {
+              "id": "x3QSUG0JlL6SEKR5",
+              "name": "Redis account"
+            }
+          }
+        },
+        {
+          "id": "sun-compare-01",
+          "name": "Comparar",
+          "type": "n8n-nodes-base.code",
+          "typeVersion": 2,
+          "position": [
+            500,
+            300
+          ],
+          "parameters": {
+            "jsCode": "const cur = $('Combinar Dados').first().json;\nlet baseline = {};\ntry { baseline = JSON.parse($('Ler Baseline (Redis)').first().json.baseline || '{}'); } catch(e) {}\nconst hasBase = baseline && baseline.gsc;\n\nconst num = v => { const n = parseFloat(String(v).replace(/[^0-9.\\-]/g,'')); return isNaN(n)?0:n; };\nconst arrow = (now, before) => {\n  const d = now - before;\n  if (!hasBase) return '(sem baseline)';\n  const s = d > 0 ? '↑' : (d < 0 ? '↓' : '→');\n  return s + ' ' + (d>0?'+':'') + (Math.round(d*100)/100);\n};\n\nconst curBase = {\n  week_start: $now.toFormat('yyyy-MM-dd'),\n  ts: $now.toISO(),\n  gsc: { clicks: cur.gsc_totalClicks ?? 0, impressions: cur.gsc_totalImpressions ?? 0, ctr: cur.gsc_ctr ?? '0%', avgPosition: cur.gsc_avgPosition ?? '0' },\n  ga4: { sessions: cur.ga4_totalSessions ?? 0, users: cur.ga4_totalUsers ?? 0, conv_form: cur.ga4_conv_form ?? 0, conv_whatsapp: cur.ga4_conv_whatsapp ?? 0, conv_total: cur.ga4_conv_total ?? 0, bounceRate: cur.ga4_bounceRate ?? '0%' },\n  ads: { impressions: cur.ads_impressions ?? 0, clicks: cur.ads_clicks ?? 0, ctr: cur.ads_ctr ?? '0', custo: cur.ads_custo ?? '0.00', cpc: cur.ads_cpc ?? '0', conversoes: cur.ads_conversoes ?? '0.0' }\n};\n\nconst b = hasBase ? baseline : curBase;\nconst periodo = (b.week_start || '?') + ' → ' + curBase.week_start;\n\nconst texto = [\n  'COMPARATIVO SEMANAL Cobersystem (' + periodo + ')',\n  hasBase ? '' : '[ATENÇÃO: não havia baseline de segunda; primeira leitura.]',\n  '',\n  'GSC cliques: ' + curBase.gsc.clicks + ' (baseline ' + b.gsc.clicks + ') ' + arrow(num(curBase.gsc.clicks), num(b.gsc.clicks)),\n  'GSC impressões: ' + curBase.gsc.impressions + ' (baseline ' + b.gsc.impressions + ') ' + arrow(num(curBase.gsc.impressions), num(b.gsc.impressions)),\n  'GSC posição média: ' + curBase.gsc.avgPosition + ' (baseline ' + b.gsc.avgPosition + ') ' + arrow(num(curBase.gsc.avgPosition), num(b.gsc.avgPosition)) + ' (menor é melhor)',\n  'GA4 sessões: ' + curBase.ga4.sessions + ' (baseline ' + b.ga4.sessions + ') ' + arrow(num(curBase.ga4.sessions), num(b.ga4.sessions)),\n  'GA4 conversões total: ' + curBase.ga4.conv_total + ' (baseline ' + b.ga4.conv_total + ') ' + arrow(num(curBase.ga4.conv_total), num(b.ga4.conv_total)),\n  'GA4 conv form/wpp: ' + curBase.ga4.conv_form + '/' + curBase.ga4.conv_whatsapp + ' (baseline ' + b.ga4.conv_form + '/' + b.ga4.conv_whatsapp + ')',\n  'Ads custo 30d: R$' + curBase.ads.custo + ' (baseline R$' + b.ads.custo + ') ' + arrow(num(curBase.ads.custo), num(b.ads.custo)),\n  'Ads CTR: ' + curBase.ads.ctr + '% (baseline ' + b.ads.ctr + '%) ' + arrow(num(curBase.ads.ctr), num(b.ads.ctr)),\n  'Ads CPC: R$' + curBase.ads.cpc + ' (baseline R$' + b.ads.cpc + ') ' + arrow(num(curBase.ads.cpc), num(b.ads.cpc)) + ' (menor é melhor)',\n  'Ads conversões: ' + curBase.ads.conversoes + ' (baseline ' + b.ads.conversoes + ')'\n].filter(Boolean).join('\\n');\n\nreturn [{ json: { dados_comparativo: texto, newBaselineJson: JSON.stringify(curBase), periodo } }];"
+          }
+        },
+        {
+          "id": "sun-openclaw-01",
+          "name": "OpenClaw Avaliação",
+          "type": "n8n-nodes-base.httpRequest",
+          "typeVersion": 4.3,
+          "position": [
+            720,
+            300
+          ],
+          "parameters": {
+            "method": "POST",
+            "url": "http://openclaw_openclaw-gateway:18789/v1/chat/completions",
+            "authentication": "none",
+            "sendHeaders": true,
+            "headerParameters": {
+              "parameters": [
+                {
+                  "name": "Authorization",
+                  "value": "Bearer ca7858a0c719a6b7b86f44e49b98c85db9dda06d51eb5aee"
+                },
+                {
+                  "name": "Content-Type",
+                  "value": "application/json"
+                }
+              ]
+            },
+            "sendBody": true,
+            "specifyBody": "json",
+            "jsonBody": "={\n  \"model\": \"openclaw\",\n  \"messages\": [\n    { \"role\": \"system\", \"content\": \"Você é o ACI (Agente Central de Inteligência) da Cobersystem, empresa de coberturas retráteis em policarbonato em SP.\\\\nVocê recebe a COMPARAÇÃO entre o baseline de segunda-feira e os números atuais (domingo, fim de semana).\\\\nAvalie o desempenho da semana em português, formato WhatsApp, máximo 1500 caracteres. Estrutura OBRIGATÓRIA:\\\\n\\\\n📅 *Fechamento da Semana*\\\\n✅ *O QUE FUNCIONOU* — métricas que melhoraram, com número e variação\\\\n⚠️ *O QUE NÃO FUNCIONOU* — métricas que pioraram ou estagnaram\\\\n➡️ *PRÓXIMO PASSO* — 1 ação prioritária para a próxima semana\\\\n\\\\nRegras: use os deltas (↑↓) reais informados, *negrito* só em números e títulos, sem introdução, seja cirúrgico e honesto.\" },\n    { \"role\": \"user\", \"content\": {{ JSON.stringify($json.dados_comparativo) }} }\n  ],\n  \"temperature\": 0.3,\n  \"max_tokens\": 700\n}",
+            "options": {
+              "timeout": 120000
+            }
+          }
+        },
+        {
+          "id": "sun-extract-01",
+          "name": "Extrair Avaliação",
+          "type": "n8n-nodes-base.set",
+          "typeVersion": 3.4,
+          "position": [
+            940,
+            300
+          ],
+          "parameters": {
+            "assignments": {
+              "assignments": [
+                {
+                  "id": "a1",
+                  "name": "analise",
+                  "value": "={{ $json.choices?.[0]?.message?.content ?? ('⚠️ OpenClaw indisponível.\\n\\n' + $('Comparar').item.json.dados_comparativo) }}",
+                  "type": "string"
+                }
+              ]
+            },
+            "options": {}
+          }
+        },
+        {
+          "id": "sun-wpp-01",
+          "name": "Enviar WhatsApp",
+          "type": "n8n-nodes-base.httpRequest",
+          "typeVersion": 4.3,
+          "position": [
+            1160,
+            180
+          ],
+          "parameters": {
+            "method": "POST",
+            "url": "https://automacao-evolution-api.fmjbtn.easypanel.host/message/sendText/cobersystem%20",
+            "sendHeaders": true,
+            "headerParameters": {
+              "parameters": [
+                {
+                  "name": "apikey",
+                  "value": "3C5F8308906D-44BF-9338-9721BC3CC120"
+                }
+              ]
+            },
+            "sendBody": true,
+            "specifyBody": "json",
+            "jsonBody": "={\n  \"number\": \"5511982295079\",\n  \"text\": {{ JSON.stringify($json.analise) }}\n}",
+            "options": {}
+          }
+        },
+        {
+          "id": "sun-redis-getpat-01",
+          "name": "Ler PAT (Redis)",
+          "type": "n8n-nodes-base.redis",
+          "typeVersion": 1,
+          "position": [
+            1160,
+            420
+          ],
+          "parameters": {
+            "operation": "get",
+            "propertyName": "pat",
+            "key": "cober:github:pat",
+            "options": {}
+          },
+          "credentials": {
+            "redis": {
+              "id": "x3QSUG0JlL6SEKR5",
+              "name": "Redis account"
+            }
+          }
+        },
+        {
+          "id": "sun-redis-getissue-01",
+          "name": "Ler Issue Number (Redis)",
+          "type": "n8n-nodes-base.redis",
+          "typeVersion": 1,
+          "position": [
+            1380,
+            420
+          ],
+          "parameters": {
+            "operation": "get",
+            "propertyName": "issuenum",
+            "key": "cober:issue:atual",
+            "options": {}
+          },
+          "credentials": {
+            "redis": {
+              "id": "x3QSUG0JlL6SEKR5",
+              "name": "Redis account"
+            }
+          }
+        },
+        {
+          "id": "sun-gh-comment-01",
+          "name": "Comentar Issue",
+          "type": "n8n-nodes-base.httpRequest",
+          "typeVersion": 4.3,
+          "position": [
+            1600,
+            420
+          ],
+          "parameters": {
+            "method": "POST",
+            "url": "=https://api.github.com/repos/gugafuinha/cobersystem-site-atualizado/issues/{{ $json.issuenum }}/comments",
+            "authentication": "none",
+            "sendHeaders": true,
+            "headerParameters": {
+              "parameters": [
+                {
+                  "name": "Authorization",
+                  "value": "={{ \"Bearer \" + $('Ler PAT (Redis)').item.json.pat }}"
+                },
+                {
+                  "name": "Accept",
+                  "value": "application/vnd.github+json"
+                },
+                {
+                  "name": "User-Agent",
+                  "value": "cobersystem-n8n"
+                }
+              ]
+            },
+            "sendBody": true,
+            "specifyBody": "json",
+            "jsonBody": "={\n  \"body\": {{ JSON.stringify('## 📈 Resultado da semana (domingo ' + $now.toFormat('dd/MM') + ')\\n\\n' + $('Extrair Avaliação').item.json.analise + '\\n\\n<details><summary>Comparativo bruto</summary>\\n\\n```\\n' + $('Comparar').item.json.dados_comparativo + '\\n```\\n</details>') }}\n}",
+            "options": {
+              "ignoreResponseCode": true
+            }
+          },
+          "onError": "continueRegularOutput"
+        },
+        {
+          "id": "sun-redis-savebase-01",
+          "name": "Salvar Baseline (Redis)",
+          "type": "n8n-nodes-base.redis",
+          "typeVersion": 1,
+          "position": [
+            1820,
+            420
+          ],
+          "parameters": {
+            "operation": "set",
+            "key": "cober:baseline:atual",
+            "value": "={{ $('Comparar').item.json.newBaselineJson }}",
+            "keyType": "string",
+            "expire": false
+          },
+          "credentials": {
+            "redis": {
+              "id": "x3QSUG0JlL6SEKR5",
+              "name": "Redis account"
+            }
+          }
+        },
+        {
+          "parameters": {
+            "method": "POST",
+            "url": "https://searchconsole.googleapis.com/webmasters/v3/sites/https%3A%2F%2Fwww.coberturapolicarbonato.com.br%2F/searchAnalytics/query",
+            "authentication": "predefinedCredentialType",
+            "nodeCredentialType": "googleOAuth2Api",
+            "sendBody": true,
+            "specifyBody": "json",
+            "jsonBody": "={\n  \"startDate\": \"{{ $now.minus({ days: 7 }).toFormat('yyyy-MM-dd') }}\",\n  \"endDate\": \"{{ $now.minus({ days: 1 }).toFormat('yyyy-MM-dd') }}\",\n  \"dimensions\": [\"query\"],\n  \"rowLimit\": 10,\n  \"orderBy\": [{\"fieldName\": \"clicks\", \"sortOrder\": \"DESCENDING\"}]\n}",
+            "options": {}
+          },
+          "type": "n8n-nodes-base.httpRequest",
+          "typeVersion": 4.3,
+          "position": [
+            -380,
+            -160
+          ],
+          "id": "9d6c494f-f5fc-43d0-ac43-91ca9d8d9748",
+          "name": "GSC - Buscar Dados",
+          "credentials": {
+            "googleOAuth2Api": {
+              "id": "FpcXxMa4amcdVlLJ",
+              "name": "Google account 2"
+            }
+          }
+        },
+        {
+          "parameters": {
+            "method": "POST",
+            "url": "https://searchconsole.googleapis.com/webmasters/v3/sites/https%3A%2F%2Fwww.coberturapolicarbonato.com.br%2F/searchAnalytics/query",
+            "authentication": "predefinedCredentialType",
+            "nodeCredentialType": "googleOAuth2Api",
+            "sendBody": true,
+            "specifyBody": "json",
+            "jsonBody": "={\n  \"startDate\": \"{{ $now.minus({ days: 14 }).toFormat('yyyy-MM-dd') }}\",\n  \"endDate\": \"{{ $now.minus({ days: 8 }).toFormat('yyyy-MM-dd') }}\",\n  \"dimensions\": [\"query\"],\n  \"rowLimit\": 10,\n  \"orderBy\": [{\"fieldName\": \"clicks\", \"sortOrder\": \"DESCENDING\"}]\n}",
+            "options": {}
+          },
+          "type": "n8n-nodes-base.httpRequest",
+          "typeVersion": 4.3,
+          "position": [
+            -380,
+            -320
+          ],
+          "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567801",
+          "name": "GSC - Semana Anterior",
+          "credentials": {
+            "googleOAuth2Api": {
+              "id": "FpcXxMa4amcdVlLJ",
+              "name": "Google account 2"
+            }
+          }
+        },
+        {
+          "parameters": {
+            "mode": "append",
+            "options": {}
+          },
+          "type": "n8n-nodes-base.merge",
+          "typeVersion": 3.2,
+          "position": [
+            -160,
+            -240
+          ],
+          "id": "b2c3d4e5-f6a7-8901-bcde-f12345678902",
+          "name": "Merge GSC"
+        },
+        {
+          "parameters": {
+            "jsCode": "// items[0] = semana atual, items[1] = semana anterior\nconst items = $input.all();\nconst currentRows = (items[0] && items[0].json && items[0].json.rows) ? items[0].json.rows : [];\nconst prevRows = (items[1] && items[1].json && items[1].json.rows) ? items[1].json.rows : [];\n\nvar clicks = 0, impressions = 0;\ncurrentRows.forEach(function(r) { clicks += r.clicks; impressions += r.impressions; });\n\nvar clicksPrev = 0, impressionsPrev = 0;\nprevRows.forEach(function(r) { clicksPrev += r.clicks; impressionsPrev += r.impressions; });\n\nfunction delta(curr, prev) {\n  if (prev === 0) return curr > 0 ? '+100% ↑' : '—';\n  var pct = Math.round((curr - prev) / prev * 100);\n  return pct >= 0 ? '+' + pct + '% ↑' : pct + '% ↓';\n}\n\nvar ctr = impressions > 0 ? ((clicks / impressions) * 100).toFixed(1) : '0';\nvar avgPos = currentRows.length > 0\n  ? (currentRows.reduce(function(s, r) { return s + r.position; }, 0) / currentRows.length).toFixed(1)\n  : '0';\n\nvar top10 = currentRows.slice().sort(function(a, b) { return b.clicks - a.clicks; }).slice(0, 10)\n  .map(function(r, i) {\n    var q = r.keys[0].substring(0, 38);\n    var ctrQ = (r.ctr * 100).toFixed(0);\n    return (i+1) + '. \"' + q + '\" — ' + r.clicks + 'clq | pos.' + r.position.toFixed(1) + ' | CTR ' + ctrQ + '%';\n  });\n\nreturn [{\n  json: {\n    gsc_totalClicks: clicks,\n    gsc_totalImpressions: impressions,\n    gsc_ctr: ctr + '%',\n    gsc_avgPosition: avgPos,\n    gsc_delta_clicks: delta(clicks, clicksPrev),\n    gsc_delta_impressions: delta(impressions, impressionsPrev),\n    gsc_top10Queries: top10.join('\\n'),\n    gsc_periodo: $now.minus({ days: 7 }).toFormat('dd/MM') + ' a ' + $now.minus({ days: 1 }).toFormat('dd/MM/yyyy')\n  }\n}];"
+          },
+          "type": "n8n-nodes-base.code",
+          "typeVersion": 2,
+          "position": [
+            60,
+            -240
+          ],
+          "id": "d1de3a77-bbba-46df-bfb8-76b928ac33e3",
+          "name": "Formatar GSC"
+        },
+        {
+          "parameters": {
+            "method": "POST",
+            "url": "https://analyticsdata.googleapis.com/v1beta/properties/531715968:runReport",
+            "authentication": "predefinedCredentialType",
+            "nodeCredentialType": "googleOAuth2Api",
+            "sendBody": true,
+            "specifyBody": "json",
+            "jsonBody": "={{ JSON.stringify({\n  \"dateRanges\": [\n    {\"startDate\": $now.minus({ days: 7 }).toFormat('yyyy-MM-dd'), \"endDate\": $now.minus({ days: 1 }).toFormat('yyyy-MM-dd'), \"name\": \"semana_atual\"},\n    {\"startDate\": $now.minus({ days: 14 }).toFormat('yyyy-MM-dd'), \"endDate\": $now.minus({ days: 8 }).toFormat('yyyy-MM-dd'), \"name\": \"semana_anterior\"}\n  ],\n  \"dimensions\": [{\"name\": \"sessionDefaultChannelGroup\"}],\n  \"metrics\": [\n    {\"name\": \"sessions\"},{\"name\": \"totalUsers\"},{\"name\": \"bounceRate\"},{\"name\": \"averageSessionDuration\"},{\"name\": \"conversions\"}\n  ],\n  \"orderBys\": [{\"metric\": {\"metricName\": \"sessions\"}, \"desc\": true}]\n}) }}",
+            "options": {}
+          },
+          "type": "n8n-nodes-base.httpRequest",
+          "typeVersion": 4.3,
+          "position": [
+            -380,
+            0
+          ],
+          "id": "1a62b043-d709-49c2-ac89-2acb9df01386",
+          "name": "GA4 - Buscar Dados",
+          "credentials": {
+            "googleOAuth2Api": {
+              "id": "GBfh8imn2dBiRnSw",
+              "name": "Google account"
+            }
+          }
+        },
+        {
+          "parameters": {
+            "method": "POST",
+            "url": "https://analyticsdata.googleapis.com/v1beta/properties/531715968:runReport",
+            "authentication": "predefinedCredentialType",
+            "nodeCredentialType": "googleOAuth2Api",
+            "sendBody": true,
+            "specifyBody": "json",
+            "jsonBody": "={{ JSON.stringify({\n  \"dateRanges\": [{\"startDate\": $now.minus({ days: 7 }).toFormat('yyyy-MM-dd'), \"endDate\": $now.minus({ days: 1 }).toFormat('yyyy-MM-dd')}],\n  \"dimensions\": [{\"name\": \"eventName\"}],\n  \"metrics\": [{\"name\": \"eventCount\"}, {\"name\": \"conversions\"}],\n  \"orderBys\": [{\"metric\": {\"metricName\": \"eventCount\"}, \"desc\": true}],\n  \"limit\": 15\n}) }}",
+            "options": {}
+          },
+          "type": "n8n-nodes-base.httpRequest",
+          "typeVersion": 4.3,
+          "position": [
+            -380,
+            160
+          ],
+          "id": "c3d4e5f6-a7b8-9012-cdef-123456789003",
+          "name": "GA4 - Eventos Conversão",
+          "credentials": {
+            "googleOAuth2Api": {
+              "id": "GBfh8imn2dBiRnSw",
+              "name": "Google account"
+            }
+          }
+        },
+        {
+          "parameters": {
+            "mode": "append",
+            "options": {}
+          },
+          "type": "n8n-nodes-base.merge",
+          "typeVersion": 3.2,
+          "position": [
+            -160,
+            80
+          ],
+          "id": "d4e5f6a7-b8c9-0123-defa-234567890004",
+          "name": "Merge GA4"
+        },
+        {
+          "parameters": {
+            "jsCode": "// items[0] = GA4 sessoes (2 dateRanges), items[1] = GA4 eventos\nconst items = $input.all();\nconst ga4Data = (items[0] && items[0].json) ? items[0].json : {};\nconst eventData = (items[1] && items[1].json) ? items[1].json : {};\n\nconst rows = ga4Data.rows || [];\n\n// Com 2 dateRanges, GA4 adiciona dateRange como dimensao extra\nconst currentRows = rows.filter(function(r) {\n  var last = r.dimensionValues[r.dimensionValues.length - 1];\n  return last && (last.value === 'semana_atual' || last.value === 'date_range_0');\n});\nconst prevRows = rows.filter(function(r) {\n  var last = r.dimensionValues[r.dimensionValues.length - 1];\n  return last && (last.value === 'semana_anterior' || last.value === 'date_range_1');\n});\n\n// Fallback: se nao houver separacao, usar todos\nconst activeRows = currentRows.length > 0 ? currentRows : rows;\n\nvar sessions = 0, users = 0, bounceSum = 0, durSum = 0, convTotal = 0;\nvar channelMap = {};\n\nactiveRows.forEach(function(r) {\n  var channel = r.dimensionValues[0].value;\n  var s = parseInt(r.metricValues[0].value || '0');\n  var u = parseInt(r.metricValues[1].value || '0');\n  var b = parseFloat(r.metricValues[2].value || '0');\n  var d = parseFloat(r.metricValues[3].value || '0');\n  var c = parseFloat((r.metricValues[4] && r.metricValues[4].value) || '0');\n  sessions += s; users += u; bounceSum += b; durSum += d; convTotal += c;\n  channelMap[channel] = s + ' sess.';\n});\n\nvar sessionsPrev = 0;\nprevRows.forEach(function(r) { sessionsPrev += parseInt(r.metricValues[0].value || '0'); });\n\nfunction delta(curr, prev) {\n  if (prev === 0) return curr > 0 ? '+100% ↑' : '—';\n  var pct = Math.round((curr - prev) / prev * 100);\n  return pct >= 0 ? '+' + pct + '% ↑' : pct + '% ↓';\n}\n\nvar avgBounce = activeRows.length > 0 ? (bounceSum / activeRows.length * 100).toFixed(1) + '%' : '0%';\nvar avgDur = activeRows.length > 0 ? Math.round(durSum / activeRows.length) : 0;\nvar durFmt = Math.floor(avgDur/60) + 'm' + (avgDur%60) + 's';\nvar channelLines = Object.entries(channelMap).map(function(e) { return '• ' + e[0] + ': ' + e[1]; }).join('\\n');\n\n// Conversoes por evento\nconst eventRows = eventData.rows || [];\nvar convWhatsApp = 0, convForm = 0;\neventRows.forEach(function(r) {\n  var ev = (r.dimensionValues[0] && r.dimensionValues[0].value || '').toLowerCase();\n  var cnt = parseInt((r.metricValues[0] && r.metricValues[0].value) || '0');\n  if (ev === 'click') convWhatsApp = cnt;\n  else if (ev === 'submit') convForm = cnt;\n});\n\nreturn [{\n  json: {\n    ga4_totalSessions: sessions,\n    ga4_totalUsers: users,\n    ga4_bounceRate: avgBounce,\n    ga4_avgDuration: durFmt,\n    ga4_delta_sessions: delta(sessions, sessionsPrev),\n    ga4_sessions_ant: sessionsPrev,\n    ga4_porCanal: channelLines,\n    ga4_conv_whatsapp: convWhatsApp,\n    ga4_conv_form: convForm,\n    ga4_conv_total: Math.round(convTotal)\n  }\n}];"
+          },
+          "type": "n8n-nodes-base.code",
+          "typeVersion": 2,
+          "position": [
+            60,
+            80
+          ],
+          "id": "bfe164ef-f290-4759-bb34-01fd52e240cd",
+          "name": "Formatar GA4"
+        },
+        {
+          "parameters": {
+            "jsCode": "const campData = $('Ads - Campanhas').first().json;\nconst kwData   = $('Ads - Keywords').first().json;\nconst stData   = $input.first().json;\n\nconst campResults = campData.results || [];\nconst kwResults   = kwData.results   || [];\nconst stResults   = stData.results   || [];\n\nlet totalImpressions = 0, totalClicks = 0, totalCostMicros = 0, totalConversions = 0;\ncampResults.forEach(r => {\n  totalImpressions  += parseInt(r.metrics?.impressions  || 0);\n  totalClicks       += parseInt(r.metrics?.clicks       || 0);\n  totalCostMicros   += parseInt(r.metrics?.costMicros   || 0);\n  totalConversions  += parseFloat(r.metrics?.conversions || 0);\n});\n\nconst ctr    = totalImpressions > 0 ? (totalClicks / totalImpressions * 100).toFixed(2) : '0.00';\nconst costBRL = (totalCostMicros / 1e6).toFixed(2);\nconst avgCPC  = totalClicks > 0 ? 'R$' + (totalCostMicros / 1e6 / totalClicks).toFixed(2) : 'R$0.00';\n\nconst now = new Date();\nconst start = new Date(); start.setDate(now.getDate() - 30);\nconst fmt = d => d.toISOString().slice(0, 10);\n\nconst topKw = kwResults.slice(0, 5).map(r =>\n  (r.adGroupCriterion?.keyword?.text || '?') + ' (R$' + ((parseInt(r.metrics?.costMicros || 0)) / 1e6).toFixed(2) + ')'\n).join(', ');\n\nconst topSt = stResults.slice(0, 5).map(r =>\n  (r.searchTermView?.searchTerm || '?') + ' (' + (r.metrics?.impressions || 0) + ' impr.)'\n).join(', ');\n\nreturn [{\n  json: {\n    ads_impressions:     totalImpressions,\n    ads_clicks:          totalClicks,\n    ads_ctr:             ctr,\n    ads_custo:           costBRL,\n    ads_cpc:             avgCPC,\n    ads_conversoes:      totalConversions.toFixed(1),\n    ads_periodo:         fmt(start) + ' a ' + fmt(now),\n    ads_top_keywords:    topKw,\n    ads_top_searchterms: topSt,\n  }\n}];"
+          },
+          "type": "n8n-nodes-base.code",
+          "typeVersion": 2,
+          "position": [
+            60,
+            340
+          ],
+          "id": "d70d54b0-38f6-4131-b9f8-e36da2f6fad9",
+          "name": "Formatar Ads"
+        },
+        {
+          "parameters": {
+            "mode": "combine",
+            "combineBy": "combineByPosition",
+            "numberInputs": 3,
+            "options": {}
+          },
+          "type": "n8n-nodes-base.merge",
+          "typeVersion": 3.2,
+          "position": [
+            280,
+            80
+          ],
+          "id": "7522f136-7e35-422d-b5ed-5d86c7509e77",
+          "name": "Combinar Dados"
+        },
+        {
+          "id": "ads-camp-01",
+          "name": "Ads - Campanhas",
+          "type": "n8n-nodes-base.httpRequest",
+          "typeVersion": 4.3,
+          "position": [
+            -380,
+            600
+          ],
+          "parameters": {
+            "method": "POST",
+            "url": "https://googleads.googleapis.com/v20/customers/4936596693/googleAds:search",
+            "authentication": "predefinedCredentialType",
+            "nodeCredentialType": "googleOAuth2Api",
+            "sendHeaders": true,
+            "headerParameters": {
+              "parameters": [
+                {
+                  "name": "developer-token",
+                  "value": "Mj6tFzpKBiqQW9EdECjb4w"
+                },
+                {
+                  "name": "login-customer-id",
+                  "value": "3848890894"
+                }
+              ]
+            },
+            "sendBody": true,
+            "specifyBody": "json",
+            "jsonBody": "={{ JSON.stringify({ query: \"SELECT campaign.name, campaign.status, metrics.impressions, metrics.clicks, metrics.cost_micros, metrics.conversions, metrics.ctr, metrics.average_cpc FROM campaign WHERE segments.date DURING LAST_30_DAYS ORDER BY metrics.cost_micros DESC\" }) }}",
+            "options": {}
+          },
+          "credentials": {
+            "googleOAuth2Api": {
+              "id": "FpcXxMa4amcdVlLJ",
+              "name": "Google account 2"
+            }
+          }
+        },
+        {
+          "id": "ads-kw-01",
+          "name": "Ads - Keywords",
+          "type": "n8n-nodes-base.httpRequest",
+          "typeVersion": 4.3,
+          "position": [
+            -160,
+            600
+          ],
+          "parameters": {
+            "method": "POST",
+            "url": "https://googleads.googleapis.com/v20/customers/4936596693/googleAds:search",
+            "authentication": "predefinedCredentialType",
+            "nodeCredentialType": "googleOAuth2Api",
+            "sendHeaders": true,
+            "headerParameters": {
+              "parameters": [
+                {
+                  "name": "developer-token",
+                  "value": "Mj6tFzpKBiqQW9EdECjb4w"
+                },
+                {
+                  "name": "login-customer-id",
+                  "value": "3848890894"
+                }
+              ]
+            },
+            "sendBody": true,
+            "specifyBody": "json",
+            "jsonBody": "={{ JSON.stringify({ query: \"SELECT ad_group_criterion.keyword.text, ad_group_criterion.keyword.match_type, metrics.impressions, metrics.clicks, metrics.cost_micros, metrics.conversions, metrics.average_cpc FROM keyword_view WHERE segments.date DURING LAST_30_DAYS AND ad_group_criterion.status != 'REMOVED' ORDER BY metrics.cost_micros DESC LIMIT 30\" }) }}",
+            "options": {}
+          },
+          "credentials": {
+            "googleOAuth2Api": {
+              "id": "FpcXxMa4amcdVlLJ",
+              "name": "Google account 2"
+            }
+          }
+        },
+        {
+          "id": "ads-st-01",
+          "name": "Ads - Search Terms",
+          "type": "n8n-nodes-base.httpRequest",
+          "typeVersion": 4.3,
+          "position": [
+            60,
+            600
+          ],
+          "parameters": {
+            "method": "POST",
+            "url": "https://googleads.googleapis.com/v20/customers/4936596693/googleAds:search",
+            "authentication": "predefinedCredentialType",
+            "nodeCredentialType": "googleOAuth2Api",
+            "sendHeaders": true,
+            "headerParameters": {
+              "parameters": [
+                {
+                  "name": "developer-token",
+                  "value": "Mj6tFzpKBiqQW9EdECjb4w"
+                },
+                {
+                  "name": "login-customer-id",
+                  "value": "3848890894"
+                }
+              ]
+            },
+            "sendBody": true,
+            "specifyBody": "json",
+            "jsonBody": "={{ JSON.stringify({ query: \"SELECT search_term_view.search_term, metrics.impressions, metrics.clicks, metrics.cost_micros, metrics.conversions FROM search_term_view WHERE segments.date DURING LAST_30_DAYS ORDER BY metrics.impressions DESC LIMIT 50\" }) }}",
+            "options": {}
+          },
+          "credentials": {
+            "googleOAuth2Api": {
+              "id": "FpcXxMa4amcdVlLJ",
+              "name": "Google account 2"
+            }
+          }
+        }
+      ],
+      "connections": {
+        "GSC - Buscar Dados": {
+          "main": [
+            [
+              {
+                "node": "Merge GSC",
+                "type": "main",
+                "index": 0
+              }
+            ]
+          ]
+        },
+        "GSC - Semana Anterior": {
+          "main": [
+            [
+              {
+                "node": "Merge GSC",
+                "type": "main",
+                "index": 1
+              }
+            ]
+          ]
+        },
+        "Merge GSC": {
+          "main": [
+            [
+              {
+                "node": "Formatar GSC",
+                "type": "main",
+                "index": 0
+              }
+            ]
+          ]
+        },
+        "Formatar GSC": {
+          "main": [
+            [
+              {
+                "node": "Combinar Dados",
+                "type": "main",
+                "index": 0
+              }
+            ]
+          ]
+        },
+        "GA4 - Buscar Dados": {
+          "main": [
+            [
+              {
+                "node": "Merge GA4",
+                "type": "main",
+                "index": 0
+              }
+            ]
+          ]
+        },
+        "GA4 - Eventos Conversão": {
+          "main": [
+            [
+              {
+                "node": "Merge GA4",
+                "type": "main",
+                "index": 1
+              }
+            ]
+          ]
+        },
+        "Merge GA4": {
+          "main": [
+            [
+              {
+                "node": "Formatar GA4",
+                "type": "main",
+                "index": 0
+              }
+            ]
+          ]
+        },
+        "Formatar GA4": {
+          "main": [
+            [
+              {
+                "node": "Combinar Dados",
+                "type": "main",
+                "index": 1
+              }
+            ]
+          ]
+        },
+        "Formatar Ads": {
+          "main": [
+            [
+              {
+                "node": "Combinar Dados",
+                "type": "main",
+                "index": 2
+              }
+            ]
+          ]
+        },
+        "Combinar Dados": {
+          "main": [
+            [
+              {
+                "node": "Ler Baseline (Redis)",
+                "type": "main",
+                "index": 0
+              }
+            ]
+          ]
+        },
+        "Ads - Campanhas": {
+          "main": [
+            [
+              {
+                "node": "Ads - Keywords",
+                "type": "main",
+                "index": 0
+              }
+            ]
+          ]
+        },
+        "Ads - Keywords": {
+          "main": [
+            [
+              {
+                "node": "Ads - Search Terms",
+                "type": "main",
+                "index": 0
+              }
+            ]
+          ]
+        },
+        "Ads - Search Terms": {
+          "main": [
+            [
+              {
+                "node": "Formatar Ads",
+                "type": "main",
+                "index": 0
+              }
+            ]
+          ]
+        },
+        "Schedule Domingo 20h": {
+          "main": [
+            [
+              {
+                "node": "GSC - Buscar Dados",
+                "type": "main",
+                "index": 0
+              },
+              {
+                "node": "GSC - Semana Anterior",
+                "type": "main",
+                "index": 0
+              },
+              {
+                "node": "GA4 - Buscar Dados",
+                "type": "main",
+                "index": 0
+              },
+              {
+                "node": "GA4 - Eventos Conversão",
+                "type": "main",
+                "index": 0
+              },
+              {
+                "node": "Ads - Campanhas",
+                "type": "main",
+                "index": 0
+              }
+            ]
+          ]
+        },
+        "Ler Baseline (Redis)": {
+          "main": [
+            [
+              {
+                "node": "Comparar",
+                "type": "main",
+                "index": 0
+              }
+            ]
+          ]
+        },
+        "Comparar": {
+          "main": [
+            [
+              {
+                "node": "OpenClaw Avaliação",
+                "type": "main",
+                "index": 0
+              }
+            ]
+          ]
+        },
+        "OpenClaw Avaliação": {
+          "main": [
+            [
+              {
+                "node": "Extrair Avaliação",
+                "type": "main",
+                "index": 0
+              }
+            ]
+          ]
+        },
+        "Extrair Avaliação": {
+          "main": [
+            [
+              {
+                "node": "Enviar WhatsApp",
+                "type": "main",
+                "index": 0
+              },
+              {
+                "node": "Ler PAT (Redis)",
+                "type": "main",
+                "index": 0
+              }
+            ]
+          ]
+        },
+        "Ler PAT (Redis)": {
+          "main": [
+            [
+              {
+                "node": "Ler Issue Number (Redis)",
+                "type": "main",
+                "index": 0
+              }
+            ]
+          ]
+        },
+        "Ler Issue Number (Redis)": {
+          "main": [
+            [
+              {
+                "node": "Comentar Issue",
+                "type": "main",
+                "index": 0
+              }
+            ]
+          ]
+        },
+        "Comentar Issue": {
+          "main": [
+            [
+              {
+                "node": "Salvar Baseline (Redis)",
+                "type": "main",
+                "index": 0
+              }
+            ]
+          ]
+        }
+      },
+      "authors": "Cobersystem Financeiro",
+      "name": null,
+      "description": null,
+      "autosaved": false,
+      "workflowPublishHistory": [
+        {
+          "createdAt": "2026-06-13T17:56:58.528Z",
+          "id": 590,
+          "workflowId": "1mtMgK2OCnM6KqiS",
+          "versionId": "18b4dea9-b086-433a-8592-9d568a506c58",
+          "event": "activated",
+          "userId": "2353395b-f22d-44f2-901a-2a0428114958"
+        },
+        {
+          "createdAt": "2026-06-13T17:56:58.635Z",
+          "id": 592,
+          "workflowId": "1mtMgK2OCnM6KqiS",
+          "versionId": "18b4dea9-b086-433a-8592-9d568a506c58",
+          "event": "activated",
+          "userId": "2353395b-f22d-44f2-901a-2a0428114958"
+        },
+        {
+          "createdAt": "2026-06-13T17:56:58.496Z",
+          "id": 589,
+          "workflowId": "1mtMgK2OCnM6KqiS",
+          "versionId": "18b4dea9-b086-433a-8592-9d568a506c58",
+          "event": "deactivated",
+          "userId": "2353395b-f22d-44f2-901a-2a0428114958"
+        },
+        {
+          "createdAt": "2026-06-13T17:56:58.609Z",
+          "id": 591,
+          "workflowId": "1mtMgK2OCnM6KqiS",
+          "versionId": "18b4dea9-b086-433a-8592-9d568a506c58",
+          "event": "deactivated",
+          "userId": "2353395b-f22d-44f2-901a-2a0428114958"
+        }
+      ]
+    }
+  }
+]

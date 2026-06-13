@@ -350,7 +350,7 @@
           },
           "sendBody": true,
           "specifyBody": "json",
-          "jsonBody": "{\"query\":\"SELECT campaign.name, campaign.status, metrics.impressions, metrics.clicks, metrics.cost_micros, metrics.conversions, metrics.ctr, metrics.average_cpc FROM campaign WHERE segments.date DURING LAST_30_DAYS ORDER BY metrics.cost_micros DESC\"}",
+          "jsonBody": "={{ JSON.stringify({ query: \"SELECT campaign.name, campaign.status, metrics.impressions, metrics.clicks, metrics.cost_micros, metrics.conversions, metrics.ctr, metrics.average_cpc FROM campaign WHERE segments.date DURING LAST_30_DAYS ORDER BY metrics.cost_micros DESC\" }) }}",
           "options": {}
         },
         "credentials": {
@@ -389,7 +389,7 @@
           },
           "sendBody": true,
           "specifyBody": "json",
-          "jsonBody": "{\"query\":\"SELECT ad_group_criterion.keyword.text, ad_group_criterion.keyword.match_type, metrics.impressions, metrics.clicks, metrics.cost_micros, metrics.conversions, metrics.average_cpc FROM keyword_view WHERE segments.date DURING LAST_30_DAYS AND ad_group_criterion.status != 'REMOVED' ORDER BY metrics.cost_micros DESC LIMIT 30\"}",
+          "jsonBody": "={{ JSON.stringify({ query: \"SELECT ad_group_criterion.keyword.text, ad_group_criterion.keyword.match_type, metrics.impressions, metrics.clicks, metrics.cost_micros, metrics.conversions, metrics.average_cpc FROM keyword_view WHERE segments.date DURING LAST_30_DAYS AND ad_group_criterion.status != 'REMOVED' ORDER BY metrics.cost_micros DESC LIMIT 30\" }) }}",
           "options": {}
         },
         "credentials": {
@@ -428,13 +428,164 @@
           },
           "sendBody": true,
           "specifyBody": "json",
-          "jsonBody": "{\"query\":\"SELECT search_term_view.search_term, metrics.impressions, metrics.clicks, metrics.cost_micros, metrics.conversions FROM search_term_view WHERE segments.date DURING LAST_30_DAYS ORDER BY metrics.impressions DESC LIMIT 50\"}",
+          "jsonBody": "={{ JSON.stringify({ query: \"SELECT search_term_view.search_term, metrics.impressions, metrics.clicks, metrics.cost_micros, metrics.conversions FROM search_term_view WHERE segments.date DURING LAST_30_DAYS ORDER BY metrics.impressions DESC LIMIT 50\" }) }}",
           "options": {}
         },
         "credentials": {
           "googleOAuth2Api": {
             "id": "FpcXxMa4amcdVlLJ",
             "name": "Google account 2"
+          }
+        }
+      },
+      {
+        "id": "oc-checklist-01",
+        "name": "OpenClaw Checklist",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.3,
+        "position": [
+          820,
+          460
+        ],
+        "parameters": {
+          "method": "POST",
+          "url": "http://openclaw_openclaw-gateway:18789/v1/chat/completions",
+          "authentication": "none",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "Authorization",
+                "value": "Bearer ca7858a0c719a6b7b86f44e49b98c85db9dda06d51eb5aee"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={\n  \"model\": \"openclaw\",\n  \"messages\": [\n    { \"role\": \"system\", \"content\": \"Você é o ACI (Agente Central de Inteligência) da Cobersystem, empresa de coberturas retráteis em policarbonato em SP.\\\\nA partir dos dados de marketing (GSC + GA4 + Google Ads), gere um CHECKLIST de ações para a equipe técnica (agente Cursor) implementar no site Next.js durante a semana.\\\\nSaída: APENAS Markdown, sem introdução nem conclusão. Formato EXATO:\\\\n\\\\n#### 🔴 Prioridade ALTA\\\\n- [ ] ação concreta e específica\\\\n#### 🟡 Prioridade MÉDIA\\\\n- [ ] ação\\\\n#### 🟢 Estratégico\\\\n- [ ] ação\\\\n\\\\nRegras: 2 a 4 itens por grupo. Cada item deve ser acionável e verificável (citar página/arquivo quando fizer sentido, ex: app/servicos/...). Foco em SEO orgânico, conversão, performance e otimização de Ads. Não use emojis dentro dos itens. Não escreva nada fora dos 3 grupos.\" },\n    { \"role\": \"user\", \"content\": {{ JSON.stringify($('Formatar Dados').item.json.dados_brutos) }} }\n  ],\n  \"temperature\": 0.2,\n  \"max_tokens\": 700\n}",
+          "options": {
+            "timeout": 120000
+          }
+        }
+      },
+      {
+        "id": "montar-issue-01",
+        "name": "Montar Issue",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          1040,
+          460
+        ],
+        "parameters": {
+          "jsCode": "const d = $('Combinar Dados').first().json;\nlet checklist = '';\ntry { checklist = $('OpenClaw Checklist').first().json.choices?.[0]?.message?.content || ''; } catch(e) {}\nif (!checklist.trim()) checklist = '#### 🔴 Prioridade ALTA\\n- [ ] (OpenClaw indisponível — revisar manualmente)';\n\nconst weekStart = $now.toFormat('yyyy-MM-dd');\nconst weekLabel = $now.toFormat('dd/MM');\n\nconst baseline = {\n  week_start: weekStart,\n  ts: $now.toISO(),\n  gsc: {\n    clicks:      d.gsc_totalClicks ?? 0,\n    impressions: d.gsc_totalImpressions ?? 0,\n    ctr:         d.gsc_ctr ?? '0%',\n    avgPosition: d.gsc_avgPosition ?? '0'\n  },\n  ga4: {\n    sessions:      d.ga4_totalSessions ?? 0,\n    users:         d.ga4_totalUsers ?? 0,\n    conv_form:     d.ga4_conv_form ?? 0,\n    conv_whatsapp: d.ga4_conv_whatsapp ?? 0,\n    conv_total:    d.ga4_conv_total ?? 0,\n    bounceRate:    d.ga4_bounceRate ?? '0%'\n  },\n  ads: {\n    impressions: d.ads_impressions ?? 0,\n    clicks:      d.ads_clicks ?? 0,\n    ctr:         d.ads_ctr ?? '0',\n    custo:       d.ads_custo ?? '0.00',\n    cpc:         d.ads_cpc ?? '0',\n    conversoes:  d.ads_conversoes ?? '0.0'\n  }\n};\n\nconst body = [\n  '## 🎯 Plano da Semana ' + weekLabel + ' — Cobersystem',\n  '',\n  '> Gerado automaticamente pelo ACI (OpenClaw) via n8n a partir de Search Console + GA4 + Google Ads.',\n  '',\n  '### 📊 Baseline (segunda, início da semana)',\n  '| Métrica | Valor |',\n  '|---|---|',\n  '| GSC cliques | ' + baseline.gsc.clicks + ' |',\n  '| GSC impressões | ' + baseline.gsc.impressions + ' |',\n  '| GSC posição média | ' + baseline.gsc.avgPosition + ' |',\n  '| GA4 sessões | ' + baseline.ga4.sessions + ' |',\n  '| GA4 conversões (form / wpp) | ' + baseline.ga4.conv_form + ' / ' + baseline.ga4.conv_whatsapp + ' |',\n  '| Ads custo (30d) | R$ ' + baseline.ads.custo + ' |',\n  '| Ads CTR / CPC | ' + baseline.ads.ctr + '% / R$ ' + baseline.ads.cpc + ' |',\n  '',\n  '### ✅ Ações priorizadas (Cursor: implemente e marque)',\n  checklist.trim(),\n  '',\n  '### 📈 Avaliação',\n  'O resultado vs este baseline será comentado automaticamente neste issue **domingo 20h**.',\n  '',\n  '---',\n  '<!-- cober-meta week_start=' + weekStart + ' -->'\n].join('\\n');\n\nreturn [{ json: {\n  issueTitle: 'Plano semana ' + weekLabel,\n  issueBody: body,\n  baselineJson: JSON.stringify(baseline),\n  week_start: weekStart\n} }];"
+        }
+      },
+      {
+        "id": "redis-save-baseline-01",
+        "name": "Salvar Baseline (Redis)",
+        "type": "n8n-nodes-base.redis",
+        "typeVersion": 1,
+        "position": [
+          1260,
+          460
+        ],
+        "parameters": {
+          "operation": "set",
+          "key": "cober:baseline:atual",
+          "value": "={{ $json.baselineJson }}",
+          "keyType": "string",
+          "expire": false
+        },
+        "credentials": {
+          "redis": {
+            "id": "x3QSUG0JlL6SEKR5",
+            "name": "Redis account"
+          }
+        }
+      },
+      {
+        "id": "redis-get-pat-01",
+        "name": "Ler PAT (Redis)",
+        "type": "n8n-nodes-base.redis",
+        "typeVersion": 1,
+        "position": [
+          1480,
+          460
+        ],
+        "parameters": {
+          "operation": "get",
+          "propertyName": "pat",
+          "key": "cober:github:pat",
+          "options": {}
+        },
+        "credentials": {
+          "redis": {
+            "id": "x3QSUG0JlL6SEKR5",
+            "name": "Redis account"
+          }
+        }
+      },
+      {
+        "id": "gh-create-issue-01",
+        "name": "Criar GitHub Issue",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.3,
+        "position": [
+          1700,
+          460
+        ],
+        "parameters": {
+          "method": "POST",
+          "url": "https://api.github.com/repos/gugafuinha/cobersystem-site-atualizado/issues",
+          "authentication": "none",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "Authorization",
+                "value": "={{ \"Bearer \" + $json.pat }}"
+              },
+              {
+                "name": "Accept",
+                "value": "application/vnd.github+json"
+              },
+              {
+                "name": "User-Agent",
+                "value": "cobersystem-n8n"
+              }
+            ]
+          },
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={\n  \"title\": {{ JSON.stringify($('Montar Issue').item.json.issueTitle) }},\n  \"body\": {{ JSON.stringify($('Montar Issue').item.json.issueBody) }},\n  \"labels\": [\"plano-semanal\"]\n}",
+          "options": {}
+        }
+      },
+      {
+        "id": "redis-save-issue-01",
+        "name": "Salvar Issue Number (Redis)",
+        "type": "n8n-nodes-base.redis",
+        "typeVersion": 1,
+        "position": [
+          1920,
+          460
+        ],
+        "parameters": {
+          "operation": "set",
+          "key": "cober:issue:atual",
+          "value": "={{ $json.number }}",
+          "keyType": "string",
+          "expire": false
+        },
+        "credentials": {
+          "redis": {
+            "id": "x3QSUG0JlL6SEKR5",
+            "name": "Redis account"
           }
         }
       }
@@ -610,6 +761,11 @@
               "node": "Enviar WhatsApp",
               "type": "main",
               "index": 0
+            },
+            {
+              "node": "OpenClaw Checklist",
+              "type": "main",
+              "index": 0
             }
           ]
         ]
@@ -641,6 +797,61 @@
           [
             {
               "node": "Formatar Ads",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "OpenClaw Checklist": {
+        "main": [
+          [
+            {
+              "node": "Montar Issue",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Montar Issue": {
+        "main": [
+          [
+            {
+              "node": "Salvar Baseline (Redis)",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Salvar Baseline (Redis)": {
+        "main": [
+          [
+            {
+              "node": "Ler PAT (Redis)",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Ler PAT (Redis)": {
+        "main": [
+          [
+            {
+              "node": "Criar GitHub Issue",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Criar GitHub Issue": {
+        "main": [
+          [
+            {
+              "node": "Salvar Issue Number (Redis)",
               "type": "main",
               "index": 0
             }

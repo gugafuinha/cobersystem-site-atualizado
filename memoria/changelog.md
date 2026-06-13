@@ -2,6 +2,37 @@
 
 ---
 
+## 2026-06-13 — Fase 3: Ciclo Semanal Autônomo (baseline Redis + GitHub Issues)
+
+### Visão geral
+Transforma o relatório semanal em ciclo autônomo de 7 dias com baseline, avaliação comparativa e Issues no GitHub.
+
+### SEGUNDA 08h — workflow B29BC2BkRPG8988G (24 nós, +6 novos)
+Após `Extrair Análise` → `Enviar WhatsApp` (existente), nova ramificação paralela:
+- `OpenClaw Checklist`: 2ª chamada ao OpenClaw gera checklist markdown `- [ ]` em 3 prioridades (🔴 Alta / 🟡 Média / 🟢 Estratégico) para o Cursor implementar durante a semana.
+- `Montar Issue` (code): monta tabela de baseline (GSC/GA4/Ads) + checklist.
+- `Salvar Baseline (Redis)`: SET `cober:baseline:atual` com métricas da segunda.
+- `Ler PAT (Redis)`: GET `cober:github:pat` (PAT guardado fora do git por segurança).
+- `Criar GitHub Issue`: POST `/repos/gugafuinha/cobersystem-site-atualizado/issues` com label `plano-semanal`.
+- `Salvar Issue Number (Redis)`: SET `cober:issue:atual` com o número da issue criada.
+
+### DOMINGO 20h — workflow novo 1mtMgK2OCnM6KqiS (23 nós)
+- Novo arquivo: `workflows/ciclo-domingo-avaliacao.json`
+- Coleta idêntica à segunda (GSC + GA4 + Ads, clonou 13 nós).
+- `Ler Baseline (Redis)` → `Comparar` (code: calcula Δ vs baseline, trata baseline vazio).
+- `OpenClaw Avaliação`: analisa o que funcionou/não funcionou/próximo passo.
+- `Extrair Avaliação` → `Enviar WhatsApp` (resumo comparativo) + `Ler PAT (Redis)` → `Ler Issue Number (Redis)` → `Comentar Issue` (posta avaliação na issue da semana) → `Salvar Baseline (Redis)` (atualiza para próxima segunda).
+
+### Fix crítico: bug jsonBody Ads (ambos workflows)
+Nós `Ads - *` com `jsonBody` como string estática causavam HTTP 400 no Google Ads API especificamente no `search_term_view`. Correção: `jsonBody` como expressão `={{ JSON.stringify({ query: "..." }) }}` — idêntico ao DATA-API que funcionava. **Aplicado em todos os 6 nós Ads** (3 na segunda + 3 no domingo).
+
+### Infra
+- PAT GitHub guardado em Redis (`cober:github:pat`), nunca nos JSONs commitados.
+- Issue de teste #2 criada e fechada durante validação.
+- Validação ponta a ponta: coleta real + comparação + OpenClaw + comentário real postado (issuecomment-4699246468).
+
+---
+
 ## 2026-06-13 — Ads API direta no workflow Relatório Semanal (B29BC2BkRPG8988G)
 
 - **Problema**: `Get row(s) in sheet` buscava dados de Ads de planilha Google (A1:B2), dependência externa e dados desatualizados.
