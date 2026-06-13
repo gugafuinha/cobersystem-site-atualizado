@@ -2,6 +2,14 @@
 
 ---
 
+## 2026-06-13 — Fix: FAQPage duplicada em /servicos/cobertura-vidro
+
+- **Problema**: `page.tsx` injetava dois blocos `FAQPage` JSON-LD — constante `faqSchema` inline + `<FAQSchema faqs={faqs} />`.
+- **Correção**: Removido `faqSchema` (48 linhas) e `<StructuredData data={faqSchema} />`. Mantido apenas `<FAQSchema />` que renderiza visualmente e injeta o schema.
+- **Commit**: `4d04457` — push e deploy Vercel automático.
+
+---
+
 ## 2026-06-12 — Autenticação webhooks n8n (x-cober-key)
 
 - Workflow `JHQJ8sFTF1bHlooU` atualizado: 3 nós `IF` adicionados (um por webhook) validando header `x-cober-key`
