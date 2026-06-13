@@ -2,6 +2,15 @@
 
 ---
 
+## 2026-06-13 — Fix: LP /lp/area-gourmet — correção de imagem do produto
+
+- **Arquivo**: `app/lp/area-gourmet/page.tsx`
+- **Correção**: substituída imagem `/images/blog/cobertura-retratil-area-gourmet.jpg` por `/images/blog/churrasqueira.jpg` (mesma usada em `/servicos/cobertura-area-gourmet`)
+- **Alt text**: atualizado para "Cobertura para área gourmet - Cobersystem"
+- **Commit**: `1048ac0`
+
+---
+
 ## 2026-06-13 — Fase 3: Ciclo Semanal Autônomo (baseline Redis + GitHub Issues)
 
 ### Visão geral
