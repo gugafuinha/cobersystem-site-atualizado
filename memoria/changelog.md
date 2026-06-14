@@ -2,6 +2,16 @@
 
 ---
 
+## 2026-06-14 — Fix SEO: remoção de campos Merchant do buildServiceOffer
+
+- **Arquivo**: `lib/schemas/product-schemas.ts`
+- **Problema**: `buildServiceOffer` injetava `hasMerchantReturnPolicy` e `shippingDetails` no `Offer` de todas as páginas de serviço. Esses campos são exclusivos de `Product`/Merchant Listings e causavam os erros "Snippets do produto" e "Listagens do comerciante" no Google Search Console.
+- **Correção**: removidos `hasMerchantReturnPolicy` e `shippingDetails` do `buildServiceOffer`. Os campos permanecem nas páginas de produto (correto).
+- **Escopo**: 19 páginas afetadas em `/servicos/*`
+- **Commit**: `15e27b0`
+
+---
+
 ## 2026-06-13 — Fix: LP /lp/area-gourmet — correção de imagem do produto
 
 - **Arquivo**: `app/lp/area-gourmet/page.tsx`
