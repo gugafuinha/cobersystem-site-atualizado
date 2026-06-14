@@ -39,7 +39,8 @@ export const shippingDetails = {
   },
 };
 
-/** Offer padrão para páginas de serviço — price, shippingDetails e hasMerchantReturnPolicy */
+/** Offer para páginas de serviço — sem hasMerchantReturnPolicy nem shippingDetails,
+ *  pois esses campos são exclusivos de Product/Merchant Listings e causam erros no GSC. */
 export function buildServiceOffer(url: string, price: string) {
   return {
     '@type': 'Offer',
@@ -48,8 +49,6 @@ export function buildServiceOffer(url: string, price: string) {
     priceValidUntil: '2026-12-31',
     availability: 'https://schema.org/InStock',
     url,
-    hasMerchantReturnPolicy: merchantReturnPolicy,
-    shippingDetails,
   };
 }
 
