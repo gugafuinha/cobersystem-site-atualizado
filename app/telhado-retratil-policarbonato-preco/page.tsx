@@ -130,14 +130,14 @@ export default function TelhadoRetratilPrecoPage() {
             {/* Cards de preço — visíveis acima da dobra */}
             <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6">
               <div className="bg-white/10 border border-white/20 rounded-xl px-5 py-4 text-left">
-                <p className="text-xs text-blue-300 uppercase tracking-wide mb-1">Alveolar · Termoacústico</p>
+                <p className="text-xs text-blue-300 uppercase tracking-wide mb-1">Alveolar · Alumínio</p>
                 <p className="text-2xl font-bold text-white">
                   R$ 800 – R$ 1.400
                   <span className="text-sm font-normal text-blue-200">/m²</span>
                 </p>
               </div>
               <div className="bg-white/10 border border-white/20 rounded-xl px-5 py-4 text-left">
-                <p className="text-xs text-blue-300 uppercase tracking-wide mb-1">Compacto · Transparente/Fumê</p>
+                <p className="text-xs text-blue-300 uppercase tracking-wide mb-1">Compacto · Transparente e Coloridas</p>
                 <p className="text-2xl font-bold text-white">
                   R$ 1.200 – R$ 1.700
                   <span className="text-sm font-normal text-blue-200">/m²</span>
