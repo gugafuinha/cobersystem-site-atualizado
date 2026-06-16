@@ -114,18 +114,41 @@ export default function TelhadoRetratilPrecoPage() {
       <main className="min-h-screen">
 
         {/* Hero */}
-        <section className="bg-gradient-to-br from-slate-900 to-blue-900 text-white py-14 px-4">
+        <section className="bg-gradient-to-br from-slate-900 to-blue-900 text-white py-10 px-4">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-block bg-blue-600/30 border border-blue-400/40 text-blue-200 text-sm px-3 py-1 rounded-full mb-4">
               Tabela de preços atualizada — 2026
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-5 leading-tight">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
               Telhado Retrátil Policarbonato:<br className="hidden md:block" />
               Quanto Custa por m²?
             </h1>
-            <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-              Preços reais com instalação em São Paulo. Policarbonato compacto, alveolar e automação via Alexa — veja a tabela completa e peça seu orçamento grátis.
+            <p className="text-lg text-blue-100 mb-6 max-w-2xl mx-auto">
+              Preços reais com instalação em São Paulo — estrutura de alumínio e mão de obra inclusa.
             </p>
+
+            {/* Cards de preço — visíveis acima da dobra */}
+            <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6">
+              <div className="bg-white/10 border border-white/20 rounded-xl px-5 py-4 text-left">
+                <p className="text-xs text-blue-300 uppercase tracking-wide mb-1">Alveolar · Termoacústico</p>
+                <p className="text-2xl font-bold text-white">
+                  R$ 800 – R$ 1.400
+                  <span className="text-sm font-normal text-blue-200">/m²</span>
+                </p>
+              </div>
+              <div className="bg-white/10 border border-white/20 rounded-xl px-5 py-4 text-left">
+                <p className="text-xs text-blue-300 uppercase tracking-wide mb-1">Compacto · Transparente/Fumê</p>
+                <p className="text-2xl font-bold text-white">
+                  R$ 1.200 – R$ 1.700
+                  <span className="text-sm font-normal text-blue-200">/m²</span>
+                </p>
+              </div>
+              <div className="bg-green-500/20 border border-green-400/30 rounded-xl px-5 py-4 text-left">
+                <p className="text-xs text-green-300 uppercase tracking-wide mb-1">Visita técnica</p>
+                <p className="text-2xl font-bold text-green-300">Gratuita</p>
+              </div>
+            </div>
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="https://wa.me/5511943615079?text=Olá! Vi a tabela de preços e quero um orçamento do telhado retrátil."
@@ -141,7 +164,7 @@ export default function TelhadoRetratilPrecoPage() {
                 serviceSlug="telhado-retratil-policarbonato-preco"
                 className="bg-white/10 hover:bg-white/20 border border-white/30 text-white font-bold py-4 px-8 rounded-xl text-lg transition-colors"
               >
-                Preencher formulário
+                Ver tabela completa ↓
               </WhatsAppLink>
             </div>
           </div>
@@ -152,25 +175,8 @@ export default function TelhadoRetratilPrecoPage() {
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-8 items-start">
 
-              {/* Coluna esquerda — Foto */}
-              <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-200">
-                <Image
-                  src="/images/produtos/cobertura-retratil/compacto/IMG_8096.jpg"
-                  alt="Cobertura Abre e Fecha com Policarbonato Compacto"
-                  width={1200}
-                  height={800}
-                  className="w-full object-cover"
-                  priority
-                />
-                <div className="bg-gray-50 px-4 py-3 text-center border-t border-gray-200">
-                  <p className="text-sm text-gray-500 italic">
-                    Cobertura Abre e Fecha com Policarbonato Compacto
-                  </p>
-                </div>
-              </div>
-
-              {/* Coluna direita — Tabela */}
-              <div>
+              {/* Coluna direita — Tabela (first on mobile via order) */}
+              <div className="order-1 md:order-2">
                 <h2 className="text-2xl font-bold mb-1">Tabela de Preços por m²</h2>
                 <p className="text-gray-500 text-sm mb-5">
                   Com estrutura em alumínio e instalação inclusa • Grande SP • 2026
@@ -241,6 +247,22 @@ export default function TelhadoRetratilPrecoPage() {
                   >
                     Preencher formulário
                   </WhatsAppLink>
+                </div>
+              </div>
+
+              {/* Coluna esquerda — Foto (second on mobile, first on desktop) */}
+              <div className="order-2 md:order-1 rounded-2xl overflow-hidden shadow-lg border border-gray-200">
+                <Image
+                  src="/images/produtos/cobertura-retratil/compacto/IMG_8096.jpg"
+                  alt="Cobertura Abre e Fecha com Policarbonato Compacto"
+                  width={1200}
+                  height={800}
+                  className="w-full object-cover"
+                />
+                <div className="bg-gray-50 px-4 py-3 text-center border-t border-gray-200">
+                  <p className="text-sm text-gray-500 italic">
+                    Cobertura Abre e Fecha com Policarbonato Compacto
+                  </p>
                 </div>
               </div>
 
