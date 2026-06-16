@@ -11,7 +11,6 @@ const WHATSAPP_NUMBER = '5511943615079';
 
 const initialForm = {
   nome: '',
-  email: '',
   telefone: '',
   tipoCobertura: '',
   area: '',
@@ -25,25 +24,15 @@ function digitsOnly(s: string): string {
   return s.replace(/\D/g, '');
 }
 
-function isValidEmail(email: string): boolean {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
-}
-
 function validate(form: typeof initialForm): FormErrors {
   const errors: FormErrors = {};
   const nome = form.nome.trim();
   if (nome.length < 3) {
     errors.nome = 'Informe seu nome completo (mínimo 3 caracteres).';
   }
-  if (!form.email.trim()) {
-    errors.email = 'Informe um e-mail.';
-  } else if (!isValidEmail(form.email)) {
-    errors.email = 'Digite um e-mail válido.';
-  }
   const telDigits = digitsOnly(form.telefone);
   if (telDigits.length < 10 || telDigits.length > 13) {
-    errors.telefone =
-      'Informe um WhatsApp válido com DDD (10 a 13 dígitos).';
+    errors.telefone = 'Informe um WhatsApp válido com DDD (10 a 13 dígitos).';
   }
   if (!form.tipoCobertura) {
     errors.tipoCobertura = 'Selecione o tipo de cobertura.';
@@ -84,7 +73,6 @@ export default function OrcamentoPage() {
     setErrors(nextErrors);
     setTouched({
       nome: true,
-      email: true,
       telefone: true,
       tipoCobertura: true,
       area: true,
@@ -105,7 +93,6 @@ export default function OrcamentoPage() {
 *Solicitação de Orçamento*
 
 *Nome:* ${formData.nome.trim()}
-*Email:* ${formData.email.trim()}
 *Telefone:* ${formData.telefone.trim()}
 *Tipo de Cobertura:* ${formData.tipoCobertura}
 *Área Aproximada:* ${formData.area}
@@ -161,13 +148,54 @@ ${formData.mensagem.trim() || '(sem mensagem adicional)'}
             <p className="text-base md:text-2xl text-blue-100">
               Resposta em até 24 horas • Projeto personalizado • Sem compromisso
             </p>
+            <p className="mt-3 text-sm md:text-base text-blue-200 font-medium tracking-wide">
+              +500 projetos entregues em São Paulo
+            </p>
           </div>
         </section>
 
-        {/* Formulário primeiro no mobile — cards de benefícios ficam abaixo */}
-        <section className="max-w-3xl mx-auto px-4 pt-8 pb-6">
+        {/* Cards de benefícios — ANTES do formulário */}
+        <section className="max-w-7xl mx-auto px-4 py-8 md:py-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            <div className="bg-white p-4 md:p-6 rounded-lg shadow text-center">
+              <div className="text-3xl md:text-4xl mb-2 md:mb-3">⚡</div>
+              <div className="font-bold mb-1 md:mb-2 text-sm md:text-base">Resposta Rápida</div>
+              <div className="text-xs md:text-sm text-gray-600">Orçamento em até 24h</div>
+            </div>
+            <div className="bg-white p-4 md:p-6 rounded-lg shadow text-center">
+              <div className="text-3xl md:text-4xl mb-2 md:mb-3">📐</div>
+              <div className="font-bold mb-1 md:mb-2 text-sm md:text-base">Projeto Grátis</div>
+              <div className="text-xs md:text-sm text-gray-600">Visita técnica incluída</div>
+            </div>
+            <div className="bg-white p-4 md:p-6 rounded-lg shadow text-center">
+              <div className="text-3xl md:text-4xl mb-2 md:mb-3">✅</div>
+              <div className="font-bold mb-1 md:mb-2 text-sm md:text-base">Sem Compromisso</div>
+              <div className="text-xs md:text-sm text-gray-600">Orçamento sem obrigação</div>
+            </div>
+            <div className="bg-white p-4 md:p-6 rounded-lg shadow text-center">
+              <div className="text-3xl md:text-4xl mb-2 md:mb-3">🎯</div>
+              <div className="font-bold mb-1 md:mb-2 text-sm md:text-base">Transparência</div>
+              <div className="text-xs md:text-sm text-gray-600">Tudo discriminado</div>
+            </div>
+          </div>
+        </section>
+
+        {/* Formulário */}
+        <section className="max-w-3xl mx-auto px-4 pb-6">
           <div className="bg-white rounded-lg shadow-lg p-8">
-            <h2 className="text-2xl font-bold mb-6 text-center">Preencha os Dados</h2>
+            <h2 className="text-2xl font-bold mb-3 text-center">Preencha os Dados</h2>
+
+            {/* CTA WhatsApp direto — visível apenas no desktop */}
+            <div className="hidden md:flex items-center justify-center mb-6">
+              <a
+                href="https://wa.me/5511943615079?text=Olá! Quero solicitar um orçamento."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-green-700 font-semibold hover:text-green-800 underline underline-offset-2 text-sm"
+              >
+                💬 Prefere falar direto? Chame no WhatsApp
+              </a>
+            </div>
 
             <form onSubmit={handleSubmit} className="space-y-6" noValidate>
               <div>
@@ -197,67 +225,37 @@ ${formData.mensagem.trim() || '(sem mensagem adicional)'}
                 )}
               </div>
 
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="email" className="block text-sm font-semibold mb-2">
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    autoComplete="email"
-                    value={formData.email}
-                    onChange={(e) => {
-                      setFormData({ ...formData, email: e.target.value });
-                      clearFieldError('email');
-                    }}
-                    onBlur={() => setTouched((t) => ({ ...t, email: true }))}
-                    className={fieldClass('email')}
-                    placeholder="seu@email.com"
-                    aria-invalid={!!(errors.email && touched.email)}
-                    aria-describedby={
-                      errors.email && touched.email ? 'email-erro' : undefined
-                    }
-                  />
-                  {errors.email && touched.email && (
-                    <p id="email-erro" className="mt-1 text-sm text-red-600" role="alert">
-                      {errors.email}
-                    </p>
-                  )}
-                </div>
-                <div>
-                  <label htmlFor="telefone" className="block text-sm font-semibold mb-2">
-                    WhatsApp *
-                  </label>
-                  <input
-                    type="tel"
-                    id="telefone"
-                    name="telefone"
-                    autoComplete="tel"
-                    value={formData.telefone}
-                    onChange={(e) => {
-                      setFormData({ ...formData, telefone: e.target.value });
-                      clearFieldError('telefone');
-                    }}
-                    onBlur={() => setTouched((t) => ({ ...t, telefone: true }))}
-                    className={fieldClass('telefone')}
-                    placeholder="(11) 99999-9999"
-                    aria-invalid={!!(errors.telefone && touched.telefone)}
-                    aria-describedby={
-                      errors.telefone && touched.telefone ? 'telefone-erro' : undefined
-                    }
-                  />
-                  {errors.telefone && touched.telefone && (
-                    <p
-                      id="telefone-erro"
-                      className="mt-1 text-sm text-red-600"
-                      role="alert"
-                    >
-                      {errors.telefone}
-                    </p>
-                  )}
-                </div>
+              <div>
+                <label htmlFor="telefone" className="block text-sm font-semibold mb-2">
+                  WhatsApp *
+                </label>
+                <input
+                  type="tel"
+                  id="telefone"
+                  name="telefone"
+                  autoComplete="tel"
+                  value={formData.telefone}
+                  onChange={(e) => {
+                    setFormData({ ...formData, telefone: e.target.value });
+                    clearFieldError('telefone');
+                  }}
+                  onBlur={() => setTouched((t) => ({ ...t, telefone: true }))}
+                  className={fieldClass('telefone')}
+                  placeholder="(11) 99999-9999"
+                  aria-invalid={!!(errors.telefone && touched.telefone)}
+                  aria-describedby={
+                    errors.telefone && touched.telefone ? 'telefone-erro' : undefined
+                  }
+                />
+                {errors.telefone && touched.telefone && (
+                  <p
+                    id="telefone-erro"
+                    className="mt-1 text-sm text-red-600"
+                    role="alert"
+                  >
+                    {errors.telefone}
+                  </p>
+                )}
               </div>
 
               <div>
@@ -428,32 +426,6 @@ ${formData.mensagem.trim() || '(sem mensagem adicional)'}
                 Nosso time responderá em até 24 horas úteis.
               </p>
             </form>
-          </div>
-        </section>
-
-        {/* Cards de benefícios — abaixo do form no mobile */}
-        <section className="max-w-7xl mx-auto px-4 py-8 md:py-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            <div className="bg-white p-4 md:p-6 rounded-lg shadow text-center">
-              <div className="text-3xl md:text-4xl mb-2 md:mb-3">⚡</div>
-              <div className="font-bold mb-1 md:mb-2 text-sm md:text-base">Resposta Rápida</div>
-              <div className="text-xs md:text-sm text-gray-600">Orçamento em até 24h</div>
-            </div>
-            <div className="bg-white p-4 md:p-6 rounded-lg shadow text-center">
-              <div className="text-3xl md:text-4xl mb-2 md:mb-3">📐</div>
-              <div className="font-bold mb-1 md:mb-2 text-sm md:text-base">Projeto Grátis</div>
-              <div className="text-xs md:text-sm text-gray-600">Visita técnica incluída</div>
-            </div>
-            <div className="bg-white p-4 md:p-6 rounded-lg shadow text-center">
-              <div className="text-3xl md:text-4xl mb-2 md:mb-3">✅</div>
-              <div className="font-bold mb-1 md:mb-2 text-sm md:text-base">Sem Compromisso</div>
-              <div className="text-xs md:text-sm text-gray-600">Orçamento sem obrigação</div>
-            </div>
-            <div className="bg-white p-4 md:p-6 rounded-lg shadow text-center">
-              <div className="text-3xl md:text-4xl mb-2 md:mb-3">🎯</div>
-              <div className="font-bold mb-1 md:mb-2 text-sm md:text-base">Transparência</div>
-              <div className="text-xs md:text-sm text-gray-600">Tudo discriminado</div>
-            </div>
           </div>
         </section>
 

@@ -1002,3 +1002,22 @@ Após confirmar indexação: expandir `/produtos/cobertura-piscina/em/[cidade]` 
 
 **Schema GlobalLocalBusiness:** geo (-23.5505, -46.6333) + email adicionados. Organization/LocalBusiness/WebSite já existiam — sem duplicação.
 2026-06-16 — fix conversão: preços above the fold em /telhado-retratil-policarbonato-preco
+
+## 2026-06-16 — Otimização CRO: /orcamento
+
+**Objetivo:** Reduzir bounce rate (67%) e aumentar conversão na principal página de leads do site.
+
+**Alterações em `app/orcamento/page.tsx`:**
+- Removido campo Email do formulário (fluxo é 100% WhatsApp — campo era atrito desnecessário)
+- Removida validação de email (isValidEmail, bloco de validate)
+- Removido email da mensagem enviada via WhatsApp
+- Cards de benefícios (⚡📐✅🎯) movidos para ANTES do formulário (entre hero e form)
+- Adicionado botão "💬 Prefere falar direto? Chame no WhatsApp" visível no desktop (hidden md:flex)
+- Adicionado social proof no hero: "+500 projetos entregues em São Paulo"
+
+**Mantido intacto:**
+- Sticky WhatsApp CTA mobile
+- Todos os campos restantes do formulário (5 obrigatórios + 1 opcional)
+- Tracking Google Ads, GA4 e Meta Pixel
+- Fluxo de envio via WhatsApp + redirect /obrigado
+- FAQ, schema, acessibilidade, URL
