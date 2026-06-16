@@ -1001,3 +1001,4 @@ Após confirmar indexação: expandir `/produtos/cobertura-piscina/em/[cidade]` 
 - `app/sitemap.ts` — +5 URLs novas (priority 0.80)
 
 **Schema GlobalLocalBusiness:** geo (-23.5505, -46.6333) + email adicionados. Organization/LocalBusiness/WebSite já existiam — sem duplicação.
+2026-06-16 — fix conversão: preços above the fold em /telhado-retratil-policarbonato-preco
