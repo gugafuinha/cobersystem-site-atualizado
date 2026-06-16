@@ -195,9 +195,9 @@ export default function TelhadoRetratilPrecoPage() {
                       <tr className="border-b border-gray-100 hover:bg-blue-50/30">
                         <td className="px-4 py-4 font-semibold">
                           Alumínio / Alveolar<br />
-                          <span className="text-gray-500 font-normal text-xs">Termoacústico</span>
+                          <span className="text-gray-500 font-normal text-xs">Resistente</span>
                         </td>
-                        <td className="px-3 py-4 text-center text-gray-600 text-xs">4–10 mm</td>
+                        <td className="px-3 py-4 text-center text-gray-600 text-xs">4 mm</td>
                         <td className="px-3 py-4 text-center">
                           <span className="font-bold text-slate-800">R$ 800 – R$ 1.400</span>
                         </td>
@@ -205,9 +205,9 @@ export default function TelhadoRetratilPrecoPage() {
                       <tr className="border-b border-gray-100 bg-blue-50/20 hover:bg-blue-50/40">
                         <td className="px-4 py-4 font-semibold">
                           Compacto<br />
-                          <span className="text-gray-500 font-normal text-xs">Transparente ou fumê</span>
+                          <span className="text-gray-500 font-normal text-xs">Transparente</span>
                         </td>
-                        <td className="px-3 py-4 text-center text-gray-600 text-xs">2–4 mm</td>
+                        <td className="px-3 py-4 text-center text-gray-600 text-xs">2 mm</td>
                         <td className="px-3 py-4 text-center">
                           <span className="font-bold text-slate-800">R$ 1.200 – R$ 1.700</span>
                         </td>
