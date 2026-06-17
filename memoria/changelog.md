@@ -1043,3 +1043,26 @@ Após confirmar indexação: expandir `/produtos/cobertura-piscina/em/[cidade]` 
 - Download local: yt-dlp "https://www.youtube.com/watch?v=Aizf2j-Dqds" -o raw.mp4
 - Compressão: ffmpeg -i raw.mp4 -vn -vf "scale=1280:720" -c:v libx264 -crf 28 -preset slow -an hero-cobersystem.mp4
 - Fazer upload para o servidor e commitar
+
+## 2026-06-17 — CRO: CTAs e preços nas páginas de produto e blog
+
+**Objetivo:** Reduzir bounce rate e aumentar conversões em 3 páginas prioritárias.
+
+**`app/blog/[slug]/page.tsx`** (afeta slug `cobertura-policarbonato-preco-tipos`):
+- Extraído `waHeroUrl` para fora do map de seções para reuso
+- CTA hero adicionado entre descrição e imagem: "💬 Falar no WhatsApp" + "Solicitar Orçamento" → /orcamento
+  (condicional ao slug — não afeta outros posts)
+- Seção 4 ("Preços Completos de Instalação") duplicada antes da Seção 1 via `idx === 0`
+  (condicional ao slug — tabela de preços visível antes do scroll)
+
+**`app/produtos/cobertura-policarbonato/page.tsx`**:
+- Hero: faixa de preço "A partir de {fixaAlveolar}/m² · Visita técnica gratuita"
+- Hero: botões "💬 Falar no WhatsApp" + "Solicitar Orçamento" → /orcamento
+- CTA final: /contato → /orcamento + adicionado botão WhatsApp ao lado
+
+**`app/produtos/cobertura-retratil/[slug]/page.tsx`** (afeta todos os slugs da rota):
+- Hero blue box: preço condicional para policarbonato-compacto-2mm ("A partir de R$ 1.200/m²")
+- Hero: "Visita técnica e orçamento gratuitos" adicionado
+- Hero: fix /contato → /orcamento no botão "Solicitar Orçamento"
+- Hero: botão "💬 WhatsApp" adicionado ao lado do botão de orçamento
+- CTA final: /contato → /orcamento + botão WhatsApp adicionado ao lado

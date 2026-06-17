@@ -231,6 +231,10 @@ export default async function BlogPostPage(
         }
       : null;
 
+  // URL de WhatsApp reutilizável antes do map de seções
+  const waHeroMsg = POST_WHATSAPP_MESSAGE[artigo.slug] ?? 'Olá! Li um artigo no blog e gostaria de um orçamento.';
+  const waHeroUrl = `https://wa.me/5511943615079?text=${encodeURIComponent(waHeroMsg)}`;
+
   // Função para renderizar conteúdo com formatação
   const renderConteudo = (texto: string) => {
     return texto.split('\\n\\n').map((paragrafo, idx) => {
@@ -314,6 +318,26 @@ export default async function BlogPostPage(
               {artigo.descricao}
             </p>
 
+            {/* CTA hero — exibido apenas para artigos de intenção de preço/compra */}
+            {artigo.slug === 'cobertura-policarbonato-preco-tipos' && (
+              <div className="flex flex-col sm:flex-row gap-3 mb-6">
+                <a
+                  href={waHeroUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-lg transition text-sm"
+                >
+                  💬 Falar no WhatsApp
+                </a>
+                <Link
+                  href="/orcamento"
+                  className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition text-sm"
+                >
+                  Solicitar Orçamento
+                </Link>
+              </div>
+            )}
+
             {/* Imagem destacada */}
             <div className="relative h-96 mb-8 rounded-lg overflow-hidden">
               <Image
@@ -377,7 +401,19 @@ export default async function BlogPostPage(
                       </div>
                     </section>
 
-                    {idx === 2 && (
+                      {/* Duplica seção de preços logo após a Seção 0 para artigo de intenção de preço */}
+                    {artigo.slug === 'cobertura-policarbonato-preco-tipos' && idx === 0 && artigo.conteudo.secoes[4] && (
+                      <section className="mt-10 mb-4">
+                        <h2 className="text-3xl font-bold text-gray-900 mb-4 border-b-2 border-blue-600 pb-2">
+                          {artigo.conteudo.secoes[4].titulo}
+                        </h2>
+                        <div className="pl-4">
+                          {renderConteudo(artigo.conteudo.secoes[4].conteudo)}
+                        </div>
+                      </section>
+                    )}
+
+                  {idx === 2 && (
                       <div className="my-10 rounded-xl overflow-hidden shadow-lg bg-gradient-to-r from-gray-800 to-gray-900 text-white p-6 md:p-8">
                         <p className="text-lg font-semibold mb-1">
                           Quer saber o preço para o seu projeto?

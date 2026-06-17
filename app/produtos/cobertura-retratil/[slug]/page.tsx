@@ -410,15 +410,28 @@ export default async function ProdutoDetalhe({ params }: { params: Promise<{ slu
                 {produto.descricao}
               </p>
               <div className="bg-blue-50 rounded-lg p-6 mb-6">
-                <p className="text-2xl font-bold text-blue-600 mb-2">
-                  {produto.preco}
+                <p className="text-xl font-bold text-blue-700 mb-1">
+                  {slug === 'policarbonato-compacto-2mm'
+                    ? 'A partir de R$ 1.200/m²'
+                    : produto.preco}
                 </p>
-                <Link
-                  href="/contato"
-                  className="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
-                >
-                  Solicitar Orçamento
-                </Link>
+                <p className="text-xs text-gray-500 mb-4">Visita técnica e orçamento gratuitos</p>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Link
+                    href="/orcamento"
+                    className="inline-flex items-center justify-center bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
+                  >
+                    Solicitar Orçamento
+                  </Link>
+                  <a
+                    href="https://wa.me/5511943615079?text=Olá! Tenho interesse em cobertura retrátil e quero um orçamento."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-lg transition"
+                  >
+                    💬 WhatsApp
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -523,12 +536,22 @@ export default async function ProdutoDetalhe({ params }: { params: Promise<{ slu
           <p className="text-xl mb-8 text-blue-100">
             Entre em contato e solicite um orçamento personalizado
           </p>
-          <Link 
-            href="/contato" 
-            className="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 transition shadow-lg"
-          >
-            Solicitar Orçamento
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/orcamento"
+              className="inline-flex items-center justify-center bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 transition shadow-lg"
+            >
+              Solicitar Orçamento
+            </Link>
+            <a
+              href="https://wa.me/5511943615079?text=Olá! Tenho interesse em cobertura retrátil e quero um orçamento."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-400 text-white px-8 py-4 rounded-lg font-semibold text-lg transition shadow-lg"
+            >
+              💬 WhatsApp
+            </a>
+          </div>
         </section>
       </div>
     </main>

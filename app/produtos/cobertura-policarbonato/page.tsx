@@ -99,6 +99,25 @@ export default function CoberturaFixa() {
             Proteção permanente com alta qualidade. Cobertura fixa em policarbonato 
             compacto e alveolar para áreas que precisam de proteção constante.
           </p>
+          <p className="mt-4 text-lg font-semibold text-blue-700">
+            A partir de {formatPricePerM2(COBERSYSTEM_PRICING.fixaAlveolar)}/m² · Visita técnica gratuita
+          </p>
+          <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
+            <a
+              href="https://wa.me/5511943615079?text=Olá! Tenho interesse em cobertura de policarbonato e quero um orçamento."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-lg transition"
+            >
+              💬 Falar no WhatsApp
+            </a>
+            <Link
+              href="/orcamento"
+              className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition"
+            >
+              Solicitar Orçamento
+            </Link>
+          </div>
         </section>
 
         {/* Produtos */}
@@ -386,12 +405,22 @@ export default function CoberturaFixa() {
           <p className="text-xl mb-8 text-blue-100">
             Entre em contato e solicite um orçamento personalizado
           </p>
-          <Link 
-            href="/contato" 
-            className="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 transition shadow-lg"
-          >
-            Solicitar Orçamento
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/orcamento"
+              className="inline-flex items-center justify-center bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 transition shadow-lg"
+            >
+              Solicitar Orçamento
+            </Link>
+            <a
+              href="https://wa.me/5511943615079?text=Olá! Tenho interesse em cobertura de policarbonato e quero um orçamento."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-400 text-white px-8 py-4 rounded-lg font-semibold text-lg transition shadow-lg"
+            >
+              💬 WhatsApp
+            </a>
+          </div>
         </section>
       </div>
     </main>
