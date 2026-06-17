@@ -1021,3 +1021,25 @@ Após confirmar indexação: expandir `/produtos/cobertura-piscina/em/[cidade]` 
 - Tracking Google Ads, GA4 e Meta Pixel
 - Fluxo de envio via WhatsApp + redirect /obrigado
 - FAQ, schema, acessibilidade, URL
+
+## 2026-06-17 — Otimização CRO: Home (/)
+
+**Objetivo:** Reduzir bounce rate (46%) e aumentar conversões (2,6%) na home.
+
+**Alterações em `app/page.tsx`:**
+- Fix: botão "Solicitar Orçamento Agora" no CTA final apontava para /contato — corrigido para /orcamento
+- Adicionado CTA inline WhatsApp logo após seção "Prova Social Numérica" (pico de confiança do scroll)
+  Texto: "Quer fazer parte desses +500 projetos? 💬 Falar no WhatsApp"
+
+**Alterações em `components/VideoHero.tsx`:**
+- Substituído iframe YouTube por <video> HTML5 nativo (autoPlay muted loop playsInline)
+  Motivo: iframe YouTube bloqueado por iOS Safari, bloqueadores de privacidade e conexão lenta
+  Poster: /images/blog/cobertura-abre-fecha.jpg (imagem existente — nunca mostra fundo cinza)
+  Fonte: /videos/hero-cobersystem.mp4 (arquivo a ser adicionado manualmente — ver instruções abaixo)
+- Mini-card "Grande SP Atendimento" → "+500 Projetos Entregues" (social proof no primeiro viewport)
+
+**Arquivo de vídeo (pendente):**
+- Criar: public/videos/hero-cobersystem.mp4
+- Download local: yt-dlp "https://www.youtube.com/watch?v=Aizf2j-Dqds" -o raw.mp4
+- Compressão: ffmpeg -i raw.mp4 -vn -vf "scale=1280:720" -c:v libx264 -crf 28 -preset slow -an hero-cobersystem.mp4
+- Fazer upload para o servidor e commitar

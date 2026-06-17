@@ -3,17 +3,19 @@
 export default function VideoHero() {
   return (
     <section className="relative min-h-[700px] md:h-[700px] overflow-hidden bg-gray-900">
-      {/* Vídeo de fundo */}
+      {/* Vídeo de fundo — HTML5 nativo: autoplay funciona em iOS/Android/todos os browsers */}
       <div className="absolute inset-0 w-full h-full">
-        {/* YouTube Embed otimizado */}
-        <iframe
-          className="absolute top-1/2 left-1/2 w-[177.77777778vh] h-[56.25vw] min-h-full min-w-full -translate-x-1/2 -translate-y-1/2"
-          src="https://www.youtube.com/embed/Aizf2j-Dqds?autoplay=1&mute=1&loop=1&playlist=Aizf2j-Dqds&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
-          title="Cobertura Retrátil Cobersystem"
-          allow="autoplay; encrypted-media"
-          frameBorder={0}
-          loading="lazy"
-        />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/images/blog/cobertura-abre-fecha.jpg"
+          className="absolute inset-0 w-full h-full object-cover"
+          aria-hidden="true"
+        >
+          <source src="/videos/hero-cobersystem.mp4" type="video/mp4" />
+        </video>
 
         {/* Overlay escuro para legibilidade */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
@@ -54,8 +56,8 @@ export default function VideoHero() {
                 <div className="text-sm text-gray-300">Garantia</div>
               </div>
               <div className="bg-white/10 backdrop-blur-md rounded-lg p-4 border border-white/20 col-span-2 md:col-span-1">
-                <div className="text-2xl font-bold text-white">Grande SP</div>
-                <div className="text-sm text-gray-300">Atendimento</div>
+                <div className="text-2xl font-bold text-white">+500</div>
+                <div className="text-sm text-gray-300">Projetos Entregues</div>
               </div>
             </div>
 

@@ -240,6 +240,21 @@ export default function Home() {
         </div>
       </section>
 
+      {/* CTA inline — imediatamente após prova social, no pico de confiança */}
+      <div className="bg-gray-800 py-6 border-t border-gray-700">
+        <div className="container mx-auto px-4 flex flex-col sm:flex-row items-center justify-center gap-4 text-center sm:text-left">
+          <p className="text-white font-medium">Quer fazer parte desses +500 projetos?</p>
+          <a
+            href="https://wa.me/5511943615079?text=Olá! Quero um orçamento de cobertura."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold px-6 py-3 rounded-lg transition whitespace-nowrap"
+          >
+            💬 Falar no WhatsApp
+          </a>
+        </div>
+      </div>
+
       {/* Products Section com Imagens */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -494,7 +509,7 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link 
-              href="/contato" 
+              href="/orcamento" 
               className="inline-block bg-[#D4AF37] text-black px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#C9A030] transition shadow-lg"
             >
               Solicitar Orçamento Agora
