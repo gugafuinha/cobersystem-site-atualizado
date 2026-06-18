@@ -70,11 +70,11 @@ export default function CoberturaRetratil() {
         {/* Hero */}
         <section className="mb-16 text-center">
           <h1 className="text-5xl font-bold text-gray-800 mb-6">
-            Cobertura Retrátil em Policarbonato
+            Cobertura Retrátil de Policarbonato
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Sistema abre e fecha com automação inteligente. Controle total do clima 
-            com abertura de 0 a 90 graus. Sem perder ventilação, com proteção completa.
+            A <strong>cobertura retrátil de policarbonato</strong> abre e fecha com automação inteligente.
+            Controle total do clima com abertura de 0 a 90 graus. Sem perder ventilação, com proteção completa.
           </p>
         </section>
 

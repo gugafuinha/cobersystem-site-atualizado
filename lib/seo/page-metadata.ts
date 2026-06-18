@@ -14,7 +14,7 @@ interface PageMetadata {
 export const pageMetadata: Record<string, PageMetadata> = {
   // PRODUTOS
   'cobertura-retratil': {
-    title: 'Cobertura Retrátil em Policarbonato | Automação Alexa | SP',
+    title: 'Cobertura Retrátil de Policarbonato: Preço/m² e Modelos | SP',
     description: 'Cobertura retrátil que abre e fecha com Alexa e sensor de chuva automático. De R$ 800 a R$ 1.500/m². Instalação em 48h. Garantia 2 anos. Orçamento grátis ☎ (11) 94361-5079',
     keywords: ['cobertura retrátil', 'cobertura automática', 'cobertura alexa', 'cobertura sensor chuva', 'cobertura abre fecha'],
     openGraph: {
