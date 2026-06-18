@@ -96,6 +96,56 @@ const POST_INTERNAL_LINKS: Record<string, Array<{ label: string; href: string }>
     { label: 'Cobertura Retrátil com Sensor de Chuva', href: '/servicos/cobertura-retratil' },
     { label: 'Cobertura Abre e Fecha — Como funciona', href: '/servicos/cobertura-abre-e-fecha' },
   ],
+  'cobertura-acustica-reduzir-barulho-chuva': [
+    { label: 'Cobertura Termoacústica — menos calor e ruído', href: '/produtos/cobertura-termoacustica' },
+    { label: 'Catálogo de Modelos — Cobertura de Policarbonato', href: '/produtos/cobertura-policarbonato' },
+    { label: 'Cobertura para Área Gourmet', href: '/servicos/cobertura-area-gourmet' },
+  ],
+  'cobertura-aluminio-preco-vantagens': [
+    { label: 'Cobertura de Alumínio — Ver serviço', href: '/servicos/cobertura-aluminio' },
+    { label: 'Catálogo de Modelos — Cobertura de Policarbonato', href: '/produtos/cobertura-policarbonato' },
+    { label: 'Cobertura para Área Gourmet', href: '/servicos/cobertura-area-gourmet' },
+  ],
+  'acrilico-ou-policarbonato-qual-melhor': [
+    { label: 'Catálogo de Modelos — Cobertura de Policarbonato', href: '/produtos/cobertura-policarbonato' },
+    { label: 'Cobertura Fixa — Policarbonato Compacto', href: '/servicos/cobertura-fixa-policarbonato-compacto' },
+    { label: 'Cobertura Fixa — Policarbonato Alveolar', href: '/servicos/cobertura-fixa-policarbonato-alveolar' },
+  ],
+  'cobertura-corredor-lateral-casa': [
+    { label: 'Cobertura para Corredor Lateral — Ver serviço', href: '/servicos/cobertura-corredor-lateral' },
+    { label: 'Catálogo de Modelos — Cobertura de Policarbonato', href: '/produtos/cobertura-policarbonato' },
+    { label: 'Instalação de Cobertura Retrátil em SP', href: '/servicos/cobertura-retratil' },
+  ],
+  'sensor-chuva-cobertura-retratil-como-funciona': [
+    { label: 'Cobertura Retrátil Automatizada — Alexa e Sensor', href: '/servicos/cobertura-retratil-automatizada' },
+    { label: 'Catálogo de Modelos — Cobertura Retrátil', href: '/produtos/cobertura-retratil' },
+    { label: 'Instalação de Cobertura Retrátil em SP', href: '/servicos/cobertura-retratil' },
+  ],
+  'chapa-policarbonato-tipos-medidas-precos': [
+    { label: 'Catálogo de Modelos — Cobertura de Policarbonato', href: '/produtos/cobertura-policarbonato' },
+    { label: 'Cobertura Fixa — Policarbonato Alveolar', href: '/servicos/cobertura-fixa-policarbonato-alveolar' },
+    { label: 'Cobertura Fixa — Policarbonato Compacto', href: '/servicos/cobertura-fixa-policarbonato-compacto' },
+  ],
+  'cobertura-garagem-tipos-modelos-precos': [
+    { label: 'Cobertura para Garagem — Ver serviço', href: '/servicos/cobertura-garagem' },
+    { label: 'Catálogo de Modelos — Cobertura de Policarbonato', href: '/produtos/cobertura-policarbonato' },
+    { label: 'Cobertura de Alumínio', href: '/servicos/cobertura-aluminio' },
+  ],
+  'jardim-de-inverno-o-que-e-precos': [
+    { label: 'Cobertura para Jardim de Inverno — Ver serviço', href: '/servicos/cobertura-jardim-de-inverno' },
+    { label: 'Catálogo de Modelos — Cobertura de Policarbonato', href: '/produtos/cobertura-policarbonato' },
+    { label: 'Cobertura de Vidro', href: '/servicos/cobertura-vidro' },
+  ],
+  'cobertura-vidro-ou-policarbonato-comparativo': [
+    { label: 'Cobertura de Vidro — Ver serviço', href: '/servicos/cobertura-vidro' },
+    { label: 'Catálogo de Modelos — Cobertura de Policarbonato', href: '/produtos/cobertura-policarbonato' },
+    { label: 'Cobertura para Área Gourmet', href: '/servicos/cobertura-area-gourmet' },
+  ],
+  'cobertura-automatizada-tipos-precos': [
+    { label: 'Cobertura Retrátil Automatizada — Alexa e Sensor', href: '/servicos/cobertura-retratil-automatizada' },
+    { label: 'Catálogo de Modelos — Cobertura Retrátil', href: '/produtos/cobertura-retratil' },
+    { label: 'Cobertura Abre e Fecha — Como funciona', href: '/servicos/cobertura-abre-e-fecha' },
+  ],
 };
 
 const POST_WHATSAPP_MESSAGE: Record<string, string> = {
@@ -111,6 +161,16 @@ const POST_WHATSAPP_MESSAGE: Record<string, string> = {
   'toldo-retratil-vs-cobertura-retratil-qual-escolher': 'Olá! Li a comparação toldo vs cobertura retrátil e quero um orçamento.',
   'cobertura-para-piscina-tipos-precos-guia':  'Olá! Li o artigo sobre cobertura para piscina e quero um orçamento.',
   'cobertura-area-gourmet-tipos-precos-guia':  'Olá! Li o artigo sobre cobertura para área gourmet e quero um orçamento.',
+  'cobertura-acustica-reduzir-barulho-chuva':  'Olá! Li o artigo sobre cobertura acústica e quero um orçamento.',
+  'cobertura-aluminio-preco-vantagens':        'Olá! Li o artigo sobre cobertura de alumínio e quero um orçamento.',
+  'acrilico-ou-policarbonato-qual-melhor':     'Olá! Li o artigo comparando acrílico e policarbonato e quero um orçamento.',
+  'cobertura-corredor-lateral-casa':           'Olá! Li o artigo sobre cobertura para corredor lateral e quero um orçamento.',
+  'sensor-chuva-cobertura-retratil-como-funciona': 'Olá! Li o artigo sobre sensor de chuva e quero um orçamento.',
+  'chapa-policarbonato-tipos-medidas-precos':  'Olá! Li o artigo sobre chapa de policarbonato e quero um orçamento.',
+  'cobertura-garagem-tipos-modelos-precos':    'Olá! Li o artigo sobre cobertura para garagem e quero um orçamento.',
+  'jardim-de-inverno-o-que-e-precos':          'Olá! Li o artigo sobre jardim de inverno e quero um orçamento.',
+  'cobertura-vidro-ou-policarbonato-comparativo': 'Olá! Li a comparação vidro x policarbonato e quero um orçamento.',
+  'cobertura-automatizada-tipos-precos':       'Olá! Li o artigo sobre cobertura automatizada e quero um orçamento.',
 };
 
 export async function generateMetadata(

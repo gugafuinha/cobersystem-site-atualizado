@@ -2,6 +2,15 @@
 
 ---
 
+## 2026-06-17 — Tarefa 7 SEO: 10 novos posts de blog (conteúdo + indexação)
+
+- **Escopo:** criação de 10 artigos completos cobrindo keywords sem página correspondente identificadas na auditoria GSC/GA4
+- **`content/blog-posts.json`:** 12 → 22 posts. Cada post com 6-7 seções, seção obrigatória de preço por m² (faixas Alveolar R$800–1.400 / Compacto R$1.200–1.700), seção FAQ (4-5 Q&A → gera FAQPage automático), menção a São Paulo/Grande SP e CTA final para orçamento
+- **Posts:** cobertura-acustica, cobertura-aluminio-preco, acrilico-ou-policarbonato, cobertura-corredor-lateral, sensor-chuva-cobertura-retratil, chapa-policarbonato, cobertura-garagem, jardim-de-inverno, cobertura-vidro-ou-policarbonato, cobertura-automatizada
+- **`app/blog/[slug]/page.tsx`:** registrados os 10 slugs em `POST_INTERNAL_LINKS` (links internos para serviços/produtos relacionados) e `POST_WHATSAPP_MESSAGE` (mensagem WhatsApp personalizada por post)
+- **`app/sitemap.ts`:** 10 slugs adicionados ao `blogImageMap` para indexação no sitemap (essencial para SEO)
+- **Validação:** `next build` sem erro; 10 páginas geradas como SSG; JSON válido (22 posts)
+
 ## 2026-06-18 — Tarefa 5 SEO: otimização /produtos/cobertura-retratil para página 1
 
 - **Contexto:** 690 imp / 31 cliques / pos 13,1 — maior volume do site

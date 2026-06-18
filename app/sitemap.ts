@@ -213,6 +213,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'fechamento-de-varanda-tipos-precos':                     `${baseUrl}/images/blog/cobertura-abre-fecha.jpg`,
     'pergolado-bioclimatico-o-que-e-vale-a-pena-precos':      `${baseUrl}/images/blog/pergolado-vs-cobertura.jpg`,
     'toldo-retratil-vs-cobertura-retratil-qual-escolher':     `${baseUrl}/images/blog/cobertura-retratil-area-gourmet.jpg`,
+    'cobertura-acustica-reduzir-barulho-chuva':               `${baseUrl}/images/blog/cobertura-policarbonato-guia.png`,
+    'cobertura-aluminio-preco-vantagens':                     `${baseUrl}/images/blog/cobertura-retratil-area-gourmet.jpg`,
+    'acrilico-ou-policarbonato-qual-melhor':                  `${baseUrl}/images/blog/cobertura-policarbonato-tipos.jpg`,
+    'cobertura-corredor-lateral-casa':                        `${baseUrl}/images/blog/cobertura-abre-fecha.jpg`,
+    'sensor-chuva-cobertura-retratil-como-funciona':          `${baseUrl}/images/blog/automacao-alexa.jpg`,
+    'chapa-policarbonato-tipos-medidas-precos':               `${baseUrl}/images/blog/cobertura-policarbonato-guia.png`,
+    'cobertura-garagem-tipos-modelos-precos':                 `${baseUrl}/images/blog/cobertura-policarbonato-retratil.png`,
+    'jardim-de-inverno-o-que-e-precos':                       `${baseUrl}/images/blog/cobertura-policarbonato-retratil.png`,
+    'cobertura-vidro-ou-policarbonato-comparativo':           `${baseUrl}/images/blog/cobertura-policarbonato-tipos.jpg`,
+    'cobertura-automatizada-tipos-precos':                    `${baseUrl}/images/blog/automacao-alexa.jpg`,
   };
 
   const blogArticles = Object.entries(blogImageMap).map(([slug, img]) => ({
