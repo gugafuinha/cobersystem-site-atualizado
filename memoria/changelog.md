@@ -2,6 +2,15 @@
 
 ---
 
+## 2026-06-18 — Blog: suporte a links contextuais markdown no renderizador
+
+- **`app/blog/[slug]/page.tsx`:** adicionada função helper `applyInlineMarkdown` que converte `[texto](url)` → `<a>` e `**bold**` → `<strong>` em sequência (links processados antes do bold para evitar conflito)
+- Links internos (`/servicos/`, `/produtos/`, `/blog/`) abrem na mesma aba; links externos (`http/https`) abrem em nova aba com `rel="noopener noreferrer"`
+- Estilo: `class="text-blue-600 hover:underline font-medium"` consistente com restante do site
+- Substituídos os 2 pontos de `dangerouslySetInnerHTML` em `renderConteudo` (itens de lista e parágrafos normais) para usar `applyInlineMarkdown`
+- `parseFaqSection` (para FAQPage schema) e demais `dangerouslySetInnerHTML` (JSON-LD) não alterados
+- **Commit:** `feat(blog): add markdown link support to blog post renderer`
+
 ## 2026-06-18 — SEO: blocos "Artigos Relacionados" nas 8 páginas de maior tráfego
 
 - **Objetivo:** criar fluxo de autoridade página→post (complemento dos links post→página já existentes)

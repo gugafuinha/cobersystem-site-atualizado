@@ -295,6 +295,20 @@ export default async function BlogPostPage(
   const waHeroMsg = POST_WHATSAPP_MESSAGE[artigo.slug] ?? 'Olá! Li um artigo no blog e gostaria de um orçamento.';
   const waHeroUrl = `https://wa.me/5511943615079?text=${encodeURIComponent(waHeroMsg)}`;
 
+  // Converte inline markdown (**negrito** e [texto](url)) em HTML seguro.
+  // Usado exclusivamente em dangerouslySetInnerHTML — conteúdo vem de JSON estático controlado.
+  const applyInlineMarkdown = (text: string): string =>
+    text
+      .replace(
+        /\[([^\]]+)\]\(([^)]+)\)/g,
+        (_, linkText, url) => {
+          const isExternal = url.startsWith('http://') || url.startsWith('https://');
+          const extra = isExternal ? ' target="_blank" rel="noopener noreferrer"' : '';
+          return `<a href="${url}"${extra} class="text-blue-600 hover:underline font-medium">${linkText}</a>`;
+        },
+      )
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
   // Função para renderizar conteúdo com formatação
   const renderConteudo = (texto: string) => {
     return texto.split('\\n\\n').map((paragrafo, idx) => {
@@ -312,7 +326,7 @@ export default async function BlogPostPage(
             {items.map((item, i) => (
               <li key={i} className="flex items-start">
                 <span className="mr-2">{item.includes('✅') || item.includes('❌') ? '' : '•'}</span>
-                <span dangerouslySetInnerHTML={{ __html: item.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }} />
+                <span dangerouslySetInnerHTML={{ __html: applyInlineMarkdown(item) }} />
               </li>
             ))}
           </ul>
@@ -324,7 +338,7 @@ export default async function BlogPostPage(
         <p 
           key={idx} 
           className="mb-4 text-gray-700 leading-relaxed"
-          dangerouslySetInnerHTML={{ __html: paragrafo.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }}
+          dangerouslySetInnerHTML={{ __html: applyInlineMarkdown(paragrafo) }}
         />
       );
     });
