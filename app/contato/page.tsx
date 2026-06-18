@@ -20,7 +20,7 @@ export default function Contato() {
             </svg>
           </div>
 
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">Orcamento Enviado!</h1>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Orçamento Enviado!</h2>
           <p className="text-lg text-gray-600 mb-8">Entraremos em contato em breve.</p>
 
           <button

@@ -350,34 +350,6 @@ export default async function BlogPostPage(
               />
             </div>
 
-            {artigo.slug === 'cobertura-de-policarbonato-precos-tipos-guia' && (
-              <div className="grid grid-cols-2 gap-4 mb-8">
-                <figure className="text-center">
-                  <div className="relative h-64 rounded-lg overflow-hidden">
-                    <Image
-                      src="/images/blog/cobertura-policarbonato-guia.png"
-                      alt="Cobertura de policarbonato aberta"
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 448px"
-                    />
-                  </div>
-                  <figcaption className="text-sm text-gray-500 mt-2 italic">Cobertura Aberta</figcaption>
-                </figure>
-                <figure className="text-center">
-                  <div className="relative h-64 rounded-lg overflow-hidden">
-                    <Image
-                      src="/images/blog/cobertura-policarbonato-retratil.png"
-                      alt="Cobertura de policarbonato fechada"
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 448px"
-                    />
-                  </div>
-                  <figcaption className="text-sm text-gray-500 mt-2 italic">Cobertura Fechada</figcaption>
-                </figure>
-              </div>
-            )}
 
             {/* Conteúdo */}
             <div className="prose prose-lg max-w-none">

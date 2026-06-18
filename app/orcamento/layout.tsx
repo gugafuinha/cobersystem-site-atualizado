@@ -35,6 +35,30 @@ export const metadata: Metadata = {
   },
 };
 
+const orcamentoServiceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Orçamento de Cobertura Retrátil e em Policarbonato',
+  serviceType: 'Cobertura retrátil, abre e fecha e fixa em policarbonato',
+  provider: {
+    '@type': 'LocalBusiness',
+    name: 'Cobersystem',
+    telephone: '+5511943615079',
+    areaServed: 'Grande São Paulo',
+    url: 'https://www.coberturapolicarbonato.com.br',
+  },
+  areaServed: { '@type': 'City', name: 'São Paulo' },
+  url: 'https://www.coberturapolicarbonato.com.br/orcamento',
+};
+
 export default function OrcamentoLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(orcamentoServiceSchema) }}
+      />
+      {children}
+    </>
+  );
 }
