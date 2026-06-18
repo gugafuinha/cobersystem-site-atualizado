@@ -2,6 +2,14 @@
 
 ---
 
+## 2026-06-18 — Tarefa 5 SEO: otimização /produtos/cobertura-retratil para página 1
+
+- **Contexto:** 690 imp / 31 cliques / pos 13,1 — maior volume do site
+- **5.1** `app/produtos/cobertura-retratil/page.tsx`: H1 "em" → "de" (exact-match com query pos 11,1)
+- **5.2** `lib/seo/page-metadata.ts`: title atualizado com gatilho "Preço/m²" e "de Policarbonato"
+- **5.3** parágrafo intro: `<strong>cobertura retrátil de policarbonato</strong>` injetado na primeira frase
+- **Commit:** `a3b3488`
+
 ## 2026-06-18 — Tarefas 2/3/4/6 SEO: posts CTR, H1, schema, código morto
 
 - **T2** `content/blog-posts.json`: title/description de `teto-retratil-automatico` e `fechamento-de-varanda` reescritos com gatilho "preço por m²" para recuperar ~300 impressões/mês com CTR 0%
