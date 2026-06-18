@@ -2,6 +2,16 @@
 
 ---
 
+## 2026-06-18 — Tarefa 1 SEO: migração CTA /contato → /orcamento
+
+- **Escopo:** 54 arquivos (18 serviços, 15 localização, 7 produtos programáticos, 10 produtos standalone/institucionais, 4 demais)
+- **Mudança:** toda ocorrência de `href="/contato"` substituída por `href="/orcamento"` nos CTAs "Solicitar Orçamento"
+- **Resultado:** `rg 'href="/contato"' app/` retorna zero resultados fora de `/contato/page.tsx`
+- **Impacto esperado:** tráfego de serviço, localização e produto agora converge para `/orcamento` (447 sessões / 7 conv. GA4)
+- **Commit:** `a131d11`
+
+---
+
 ## 2026-06-18 — Bridge OAuth eterna para Google Ads implementada (abordagem correta)
 
 - **Workflow**: `JHQJ8sFTF1bHlooU` (Cobersystem DATA-API - MCP Bridge)
