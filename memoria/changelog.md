@@ -2,6 +2,14 @@
 
 ---
 
+## 2026-06-18 — Tarefas 2/3/4/6 SEO: posts CTR, H1, schema, código morto
+
+- **T2** `content/blog-posts.json`: title/description de `teto-retratil-automatico` e `fechamento-de-varanda` reescritos com gatilho "preço por m²" para recuperar ~300 impressões/mês com CTR 0%
+- **T3** `app/contato/page.tsx`: `<h1>Orcamento Enviado!</h1>` → `<h2>Orçamento Enviado!</h2>` (elimina H1 duplicado + corrige typo)
+- **T4** `app/orcamento/layout.tsx`: adicionado `Service` schema (LocalBusiness provider, areaServed SP)
+- **T6** `app/blog/[slug]/page.tsx`: removido bloco condicional morto com slug inexistente `cobertura-de-policarbonato-precos-tipos-guia`
+- **Commit:** `db81657`
+
 ## 2026-06-18 — Tarefa 1 SEO: migração CTA /contato → /orcamento
 
 - **Escopo:** 54 arquivos (18 serviços, 15 localização, 7 produtos programáticos, 10 produtos standalone/institucionais, 4 demais)
