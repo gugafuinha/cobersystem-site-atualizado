@@ -2,6 +2,15 @@
 
 ---
 
+## 2026-06-18 — SEO: blocos "Artigos Relacionados" nas 8 páginas de maior tráfego
+
+- **Objetivo:** criar fluxo de autoridade página→post (complemento dos links post→página já existentes)
+- **8 páginas alteradas:** `produtos/cobertura-retratil`, `produtos/cobertura-policarbonato`, `servicos/cobertura-garagem`, `servicos/cobertura-aluminio`, `servicos/cobertura-retratil-automatizada`, `servicos/cobertura-piscina`, `servicos/cobertura-corredor-lateral`, `servicos/cobertura-jardim-de-inverno`
+- **Inserção:** bloco "Artigos Relacionados" com cards Tailwind inline, posicionado antes do CTA final de cada página. Nenhum componente global criado.
+- **Links:** 13 links distribuídos apontando para os 10 posts novos (cobertura acústica, alumínio, acrílico×poli, corredor lateral, sensor chuva, chapa poli, garagem, jardim inverno, vidro×poli, automatizada)
+- **Validação:** build sem erro, zero lints
+- **Commit:** `feat(seo): add "Leia também" blog post blocks to high-traffic pages`
+
 ## 2026-06-17 — Tarefa 7 SEO: 10 novos posts de blog (conteúdo + indexação)
 
 - **Escopo:** criação de 10 artigos completos cobrindo keywords sem página correspondente identificadas na auditoria GSC/GA4

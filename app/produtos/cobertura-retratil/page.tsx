@@ -151,6 +151,37 @@ export default function CoberturaRetratil() {
 
         <ProductVejaTambem current="retratil" />
 
+        {/* Artigos Relacionados */}
+        <section className="mb-12 max-w-4xl mx-auto px-4">
+          <h2 className="text-2xl font-bold text-gray-800 mb-6">Artigos Relacionados</h2>
+          <div className="grid sm:grid-cols-3 gap-4">
+            <a
+              href="/blog/sensor-chuva-cobertura-retratil-como-funciona"
+              className="group block rounded-lg border border-gray-200 bg-white p-5 shadow-sm hover:shadow-md hover:border-blue-300 transition"
+            >
+              <span className="text-xs font-semibold uppercase tracking-wide text-blue-600 mb-2 block">Blog</span>
+              <span className="font-semibold text-gray-900 group-hover:text-blue-700 transition leading-snug block">Sensor de Chuva para Cobertura Retrátil: Como Funciona e Vale a Pena</span>
+              <span className="mt-3 text-sm text-blue-600 font-medium block">Ler artigo →</span>
+            </a>
+            <a
+              href="/blog/cobertura-automatizada-tipos-precos"
+              className="group block rounded-lg border border-gray-200 bg-white p-5 shadow-sm hover:shadow-md hover:border-blue-300 transition"
+            >
+              <span className="text-xs font-semibold uppercase tracking-wide text-blue-600 mb-2 block">Blog</span>
+              <span className="font-semibold text-gray-900 group-hover:text-blue-700 transition leading-snug block">Cobertura Automatizada: Tipos de Automação e Preços [2026]</span>
+              <span className="mt-3 text-sm text-blue-600 font-medium block">Ler artigo →</span>
+            </a>
+            <a
+              href="/blog/acrilico-ou-policarbonato-qual-melhor"
+              className="group block rounded-lg border border-gray-200 bg-white p-5 shadow-sm hover:shadow-md hover:border-blue-300 transition"
+            >
+              <span className="text-xs font-semibold uppercase tracking-wide text-blue-600 mb-2 block">Blog</span>
+              <span className="font-semibold text-gray-900 group-hover:text-blue-700 transition leading-snug block">Acrílico ou Policarbonato: Qual o Melhor para Cobertura? [2026]</span>
+              <span className="mt-3 text-sm text-blue-600 font-medium block">Ler artigo →</span>
+            </a>
+          </div>
+        </section>
+
         {/* CTA */}
         <section className="bg-blue-600 text-white rounded-lg p-12 text-center">
           <h2 className="text-4xl font-bold mb-4">

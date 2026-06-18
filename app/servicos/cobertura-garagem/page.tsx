@@ -184,6 +184,29 @@ export default function CoberturaGaragem() {
 
           <ServiceVejaTambem current="garagem" />
 
+          {/* Artigos Relacionados */}
+          <section className="mb-8 max-w-4xl mx-auto px-4">
+            <h2 className="text-2xl font-bold text-gray-800 mb-6">Artigos Relacionados</h2>
+            <div className="grid sm:grid-cols-2 gap-4">
+              <a
+                href="/blog/cobertura-garagem-tipos-modelos-precos"
+                className="group block rounded-lg border border-gray-200 bg-white p-5 shadow-sm hover:shadow-md hover:border-blue-300 transition"
+              >
+                <span className="text-xs font-semibold uppercase tracking-wide text-blue-600 mb-2 block">Blog</span>
+                <span className="font-semibold text-gray-900 group-hover:text-blue-700 transition leading-snug block">Cobertura para Garagem: Tipos, Modelos e Preços [2026]</span>
+                <span className="mt-3 text-sm text-blue-600 font-medium block">Ler artigo →</span>
+              </a>
+              <a
+                href="/blog/acrilico-ou-policarbonato-qual-melhor"
+                className="group block rounded-lg border border-gray-200 bg-white p-5 shadow-sm hover:shadow-md hover:border-blue-300 transition"
+              >
+                <span className="text-xs font-semibold uppercase tracking-wide text-blue-600 mb-2 block">Blog</span>
+                <span className="font-semibold text-gray-900 group-hover:text-blue-700 transition leading-snug block">Acrílico ou Policarbonato: Qual o Melhor para Cobertura? [2026]</span>
+                <span className="mt-3 text-sm text-blue-600 font-medium block">Ler artigo →</span>
+              </a>
+            </div>
+          </section>
+
           <section className="bg-[#D4AF37] text-black rounded-lg p-12 text-center mt-12">
             <h2 className="text-4xl font-bold mb-4">Solicite Seu Orçamento</h2>
             <p className="text-xl mb-8 text-gray-900">Proteção completa para sua garagem</p>
