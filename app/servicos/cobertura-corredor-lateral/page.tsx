@@ -165,7 +165,7 @@ export default function CoberturaCorredorLateral() {
             <p className="text-xl mb-8 text-gray-900">Cobertura para corredor lateral — visita técnica gratuita</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/contato"
+                href="/orcamento"
                 className="inline-block bg-black text-[#D4AF37] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-900 transition"
               >
                 Solicitar Orçamento

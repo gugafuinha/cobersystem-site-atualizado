@@ -224,7 +224,7 @@ export default async function ProdutoTermoacusticaDetalhe({
                     {produto.preco}
                   </p>
                   <Link
-                    href="/contato"
+                    href="/orcamento"
                     className="inline-block rounded-lg bg-orange-600 px-8 py-3 font-semibold text-white transition hover:bg-orange-700"
                   >
                     Solicitar Orçamento
@@ -316,7 +316,7 @@ export default async function ProdutoTermoacusticaDetalhe({
               Entre em contato e solicite um orçamento personalizado
             </p>
             <Link
-              href="/contato"
+              href="/orcamento"
               className="inline-block rounded-lg bg-white px-8 py-4 text-lg font-semibold text-orange-600 shadow-lg transition hover:bg-orange-50"
             >
               Solicitar Orçamento

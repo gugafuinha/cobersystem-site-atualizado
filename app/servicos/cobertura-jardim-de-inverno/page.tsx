@@ -185,7 +185,7 @@ export default function CoberturaJardimDeInverno() {
                 </ul>
                 <div className="flex gap-3">
                   <Link
-                    href="/contato"
+                    href="/orcamento"
                     className="inline-block bg-[#D4AF37] text-black px-6 py-3 rounded-lg font-semibold hover:bg-[#C9A030] transition"
                   >
                     Solicitar Orçamento
@@ -211,7 +211,7 @@ export default function CoberturaJardimDeInverno() {
             <p className="text-xl mb-8 text-gray-900">Visita técnica grátis + projeto em até 48h</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/contato"
+                href="/orcamento"
                 className="inline-block bg-black text-[#D4AF37] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-900 transition"
               >
                 Solicitar Orçamento

@@ -2,6 +2,28 @@
 
 ---
 
+## 2026-06-18 — Bridge OAuth eterna para Google Ads implementada (abordagem correta)
+
+- **Workflow**: `JHQJ8sFTF1bHlooU` (Cobersystem DATA-API - MCP Bridge)
+- **Node adicionado**: `Token Ads` — POST `https://oauth2.googleapis.com/token`, refresh_token idêntico ao Token GA4/GSC
+- **Ads API**: credencial OAuth2 removida (`authentication: none`), Authorization: Bearer dinâmico via `$('Token Ads').item.json.access_token`
+- **Conexão**: `Parse Ads Params → Token Ads → Ads API`
+- **Procedimento correto descoberto**: atualizar TANTO `workflow_history` (nova entrada com novo versionId) QUANTO `workflow_entity.activeVersionId`
+- **Resultado**: `ads_campaigns` (11 campanhas) e `ads_keywords` (top 5) funcionais via MCP com token renovado automaticamente
+- **Status final bridges**: GA4 ✅ | GSC ✅ | Google Ads ✅
+
+## 2026-06-18 — Restauração n8n: caminho Ads revertido ao estado original
+
+- **Workflow**: `JHQJ8sFTF1bHlooU` (Cobersystem DATA-API - MCP Bridge)
+- **Ação**: Removidos nodes `Token Ads` e `Prepare Ads` adicionados na tentativa de bridge OAuth eterna para Ads
+- **Ads API**: credencial original restaurada (`FpcXxMa4amcdVlLJ` - Google account 2), URL atualizada de v20 → v21
+- **Conexões**: fluxo restaurado para `Parse Ads Params → Ads API → Normalize Ads`
+- **Root cause descoberto**: n8n usa `workflow_history` (pelo `activeVersionId`) para execuções, não apenas `workflow_entity.nodes` — ambas as tabelas precisam ser atualizadas em sincronia
+- **Resultado**: `ads_campaigns` funcional via MCP (11 campanhas retornadas, dados corretos)
+- **Bridge OAuth Ads**: adiada para próxima sessão com abordagem diferente
+
+---
+
 ## 2026-06-14 — Fix SEO: remoção de campos Merchant do buildServiceOffer
 
 - **Arquivo**: `lib/schemas/product-schemas.ts`
@@ -1066,3 +1088,32 @@ Após confirmar indexação: expandir `/produtos/cobertura-piscina/em/[cidade]` 
 - Hero: fix /contato → /orcamento no botão "Solicitar Orçamento"
 - Hero: botão "💬 WhatsApp" adicionado ao lado do botão de orçamento
 - CTA final: /contato → /orcamento + botão WhatsApp adicionado ao lado
+
+## 2026-06-17 — Bridge OAuth Eterna GA4 no n8n
+
+### Problema resolvido
+Credencial Google OAuth2 do GA4 expirava a cada 7 dias (consent screen em modo "Testing"), quebrando os endpoints `/cober/ga4` e o Relatório Semanal.
+
+### Solução implementada
+Inserido node "Token GA4" nos 2 workflows principais, que troca o `GOOGLE_REFRESH_TOKEN` do `.env` por um access token fresco a cada execução — sem depender do gerenciamento de credenciais do n8n.
+
+### Workflows modificados
+
+#### DATA-API (JHQJ8sFTF1bHlooU)
+- Inserido node **Token GA4** (HTTP Request POST para `oauth2.googleapis.com/token`) entre `Parse GA4 Params` e `GA4 API`
+- `GA4 API`: removida credential `googleOAuth2Api`, adicionado header `Authorization: Bearer {{ Token GA4.access_token }}`
+- Conexões: `Parse GA4 Params → Token GA4 → GA4 API`
+
+#### Relatório Semanal (B29BC2BkRPG8988G)
+- Inserido node **Token GA4** após `Schedule Trigger`, antes dos 2 nodes GA4
+- `GA4 - Buscar Dados` e `GA4 - Eventos Conversão`: removida credential `googleOAuth2Api`, adicionado header Bearer
+- Conexões: `Schedule Trigger → Token GA4 → GA4 - Buscar Dados / GA4 - Eventos Conversão`
+
+### Resultado dos testes
+- `ga4_overview` → HTTP 200 ✅ (sessions:282, bounceRate:55.7%)
+- `ga4_top_pages` → HTTP 200 ✅ (10+ páginas com dados)
+- `ga4_realtime` → HTTP 200 ✅
+
+### Pendente (ação manual)
+- Mudar consent screen do projeto `cobersystem-openclaw-492603` de "Testing" para "Production" no Google Cloud Console
+- Reconectar "Google account 2" no n8n após mudança para Production

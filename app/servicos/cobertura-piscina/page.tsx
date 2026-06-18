@@ -201,7 +201,7 @@ export default function CoberturaPiscina() {
             <h2 className="text-4xl font-bold mb-4">Solicite Seu Orçamento</h2>
             <p className="text-xl mb-8 text-gray-900">Cobertura perfeita para sua piscina</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contato" className="inline-block bg-black text-[#D4AF37] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-900 transition">
+              <Link href="/orcamento" className="inline-block bg-black text-[#D4AF37] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-900 transition">
                 Solicitar Orçamento
               </Link>
               <a

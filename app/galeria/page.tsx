@@ -109,7 +109,7 @@ export default function GaleriaPage() {
             Entre em contato e solicite seu orçamento grátis
           </p>
           <Link
-            href="/contato"
+            href="/orcamento"
             className="inline-block bg-black text-[#D4AF37] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-900 transition"
           >
             Solicitar Orçamento

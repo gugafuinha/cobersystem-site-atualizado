@@ -160,7 +160,7 @@ export default function CoberturaRetratil() {
             Entre em contato e solicite um orçamento personalizado
           </p>
           <Link 
-            href="/contato" 
+            href="/orcamento" 
             className="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 transition shadow-lg"
           >
             Solicitar Orçamento

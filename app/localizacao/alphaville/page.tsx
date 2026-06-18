@@ -178,7 +178,7 @@ export default function AlphavillePage() {
           <h2 className="mb-4 text-4xl font-bold">Solicite seu orçamento em Alphaville</h2>
           <p className="mb-8 text-xl text-gray-900">Visita técnica gratuita e orçamento em até 24 h</p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
-            <Link href="/contato" className="rounded-lg bg-black px-8 py-4 text-lg font-semibold text-[#D4AF37] transition hover:bg-gray-900">
+            <Link href="/orcamento" className="rounded-lg bg-black px-8 py-4 text-lg font-semibold text-[#D4AF37] transition hover:bg-gray-900">
               Solicitar Orçamento
             </Link>
             <Link href="https://wa.me/5511943615079?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20para%20Alphaville." target="_blank" rel="noopener noreferrer"

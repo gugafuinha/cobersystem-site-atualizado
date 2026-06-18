@@ -183,7 +183,7 @@ export default function CoberturaAbreEFechaHubPage() {
             Entre em contato e solicite um orçamento personalizado
           </p>
           <Link
-            href="/contato"
+            href="/orcamento"
             className="inline-block rounded-lg bg-white px-8 py-4 text-lg font-semibold text-blue-600 shadow-lg transition hover:bg-blue-50"
           >
             Solicitar Orçamento

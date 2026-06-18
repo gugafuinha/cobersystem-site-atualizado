@@ -97,7 +97,7 @@ export default function Blog() {
             Entre em contato conosco e tire todas suas dúvidas sobre cobertura retrátil
           </p>
           <Link 
-            href="/contato" 
+            href="/orcamento" 
             className="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 transition shadow-lg"
           >
             Falar com Especialista

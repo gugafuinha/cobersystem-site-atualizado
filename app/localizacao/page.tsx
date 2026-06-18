@@ -139,7 +139,7 @@ export default function LocalizacaoPage() {
           <h2 className="mb-4 text-4xl font-bold">Solicite seu orçamento</h2>
           <p className="mb-8 text-xl text-gray-900">Visita técnica e orçamento gratuitos em toda a Grande SP</p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
-            <Link href="/contato" className="rounded-lg bg-black px-8 py-4 text-lg font-semibold text-[#D4AF37] transition hover:bg-gray-900">
+            <Link href="/orcamento" className="rounded-lg bg-black px-8 py-4 text-lg font-semibold text-[#D4AF37] transition hover:bg-gray-900">
               Solicitar Orçamento
             </Link>
             <Link href="https://wa.me/5511943615079" target="_blank" rel="noopener noreferrer"

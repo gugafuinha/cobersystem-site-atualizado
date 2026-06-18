@@ -366,7 +366,7 @@ export default function SaoPauloPage() {
           <p className="mt-4 text-sm text-gray-600">
             Ainda tem dúvidas?{' '}
             <Link
-              href="/contato"
+              href="/orcamento"
               className="font-semibold underline text-blue-600"
             >
               Fale com nosso especialista
@@ -385,7 +385,7 @@ export default function SaoPauloPage() {
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <Link
-              href="/contato"
+              href="/orcamento"
               className="rounded-lg bg-black px-8 py-4 text-lg font-semibold text-[#D4AF37] transition hover:bg-gray-900"
             >
               Solicitar Orçamento

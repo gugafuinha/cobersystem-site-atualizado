@@ -157,7 +157,7 @@ export default async function CoberturaAbreEFechaEmCidadePage({
                 ))}
               </div>
               <Link
-                href="/contato"
+                href="/orcamento"
                 className="mt-6 inline-block rounded-lg bg-blue-600 px-8 py-3 font-semibold text-white transition hover:bg-blue-700"
               >
                 Solicitar orçamento
@@ -234,7 +234,7 @@ export default async function CoberturaAbreEFechaEmCidadePage({
             abre e fecha.
           </p>
           <Link
-            href="/contato"
+            href="/orcamento"
             className="inline-block rounded-lg bg-white px-8 py-4 text-lg font-semibold text-blue-600 shadow-lg transition hover:bg-blue-50"
           >
             Solicitar Orçamento

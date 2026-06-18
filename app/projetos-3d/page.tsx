@@ -325,7 +325,7 @@ export default function Projetos3D() {
             Solicite um orçamento e receba o projeto 3D do seu espaço totalmente grátis!
           </p>
           <Link 
-            href="/contato" 
+            href="/orcamento" 
             className="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 transition shadow-lg"
           >
             Solicitar Projeto 3D Grátis

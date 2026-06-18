@@ -377,7 +377,7 @@ export default function TelhadoRetratilPrecoPage() {
                 Cobertura abre e fecha automatizada
               </Link>
               <span className="text-gray-700 hidden sm:block">•</span>
-              <Link href="/contato" className="text-blue-400 hover:text-blue-300 text-sm underline">
+              <Link href="/orcamento" className="text-blue-400 hover:text-blue-300 text-sm underline">
                 Fale conosco
               </Link>
             </div>
