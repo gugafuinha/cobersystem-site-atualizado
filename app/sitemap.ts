@@ -214,7 +214,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'pergolado-bioclimatico-o-que-e-vale-a-pena-precos':      `${baseUrl}/images/blog/pergolado-vs-cobertura.jpg`,
     'toldo-retratil-vs-cobertura-retratil-qual-escolher':     `${baseUrl}/images/blog/cobertura-retratil-area-gourmet.jpg`,
     'cobertura-acustica-reduzir-barulho-chuva':               `${baseUrl}/images/blog/cobertura-policarbonato-guia.png`,
-    'cobertura-aluminio-preco-vantagens':                     `${baseUrl}/images/blog/cobertura-retratil-area-gourmet.jpg`,
+    'cobertura-aluminio-preco-vantagens':                     `${baseUrl}/images/blog/cobertura-aluminio-preco-vantagens.jpg.png`,
     'acrilico-ou-policarbonato-qual-melhor':                  `${baseUrl}/images/blog/cobertura-policarbonato-tipos.jpg`,
     'cobertura-corredor-lateral-casa':                        `${baseUrl}/images/blog/cobertura-abre-fecha.jpg`,
     'sensor-chuva-cobertura-retratil-como-funciona':          `${baseUrl}/images/blog/automacao-alexa.jpg`,
