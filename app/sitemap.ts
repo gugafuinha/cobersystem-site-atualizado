@@ -220,7 +220,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'sensor-chuva-cobertura-retratil-como-funciona':          `${baseUrl}/images/blog/automacao-alexa.jpg`,
     'chapa-policarbonato-tipos-medidas-precos':               `${baseUrl}/images/blog/cobertura-policarbonato-guia.png`,
     'cobertura-garagem-tipos-modelos-precos':                 `${baseUrl}/images/blog/cobertura-policarbonato-retratil.png`,
-    'jardim-de-inverno-o-que-e-precos':                       `${baseUrl}/images/blog/cobertura-policarbonato-retratil.png`,
+    'jardim-de-inverno-o-que-e-precos':                       `${baseUrl}/images/projetos/jardim-de-inverno-01.png`,
     'cobertura-vidro-ou-policarbonato-comparativo':           `${baseUrl}/images/blog/cobertura-policarbonato-tipos.jpg`,
     'cobertura-automatizada-tipos-precos':                    `${baseUrl}/images/blog/automacao-alexa.jpg`,
   };
