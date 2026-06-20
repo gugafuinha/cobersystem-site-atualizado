@@ -214,15 +214,8 @@ export const productSchemas = {
     description:
       'Instalação de cobertura em policarbonato para área gourmet. Proteção completa contra chuva e sol. Projeto personalizado com automação opcional.',
     provider: { '@type': 'LocalBusiness', name: 'Cobersystem' },
-    offers: {
-      '@type': 'Offer',
-      priceCurrency: 'BRL',
-      price: '16000',
-      priceValidUntil: '2026-12-31',
-      availability: 'https://schema.org/InStock',
-      hasMerchantReturnPolicy: merchantReturnPolicy,
-      shippingDetails,
-    },
+    areaServed: { '@type': 'City', name: 'São Paulo' },
+    url: `${BASE_URL}/servicos/cobertura-area-gourmet`,
   },
 
   coberturaPiscina: {
@@ -238,15 +231,8 @@ export const productSchemas = {
     description:
       'Cobertura retrátil ou fixa para piscina em policarbonato. Proteção UV 99%, mantém água limpa. Sistema de abertura automatizado opcional.',
     provider: { '@type': 'LocalBusiness', name: 'Cobersystem' },
-    offers: {
-      '@type': 'Offer',
-      priceCurrency: 'BRL',
-      price: '25000',
-      priceValidUntil: '2026-12-31',
-      availability: 'https://schema.org/InStock',
-      hasMerchantReturnPolicy: merchantReturnPolicy,
-      shippingDetails,
-    },
+    areaServed: { '@type': 'City', name: 'São Paulo' },
+    url: `${BASE_URL}/servicos/cobertura-piscina`,
   },
 
   coberturaPergolado: {
@@ -262,15 +248,8 @@ export const productSchemas = {
     description:
       'Cobertura em policarbonato para pergolado. Sistema retrátil opcional com automação via Alexa. Proteção contra chuva sem perder luminosidade.',
     provider: { '@type': 'LocalBusiness', name: 'Cobersystem' },
-    offers: {
-      '@type': 'Offer',
-      priceCurrency: 'BRL',
-      price: '12000',
-      priceValidUntil: '2026-12-31',
-      availability: 'https://schema.org/InStock',
-      hasMerchantReturnPolicy: merchantReturnPolicy,
-      shippingDetails,
-    },
+    areaServed: { '@type': 'City', name: 'São Paulo' },
+    url: `${BASE_URL}/servicos/cobertura-pergolado`,
   },
 
   automacaoInteligente: {
