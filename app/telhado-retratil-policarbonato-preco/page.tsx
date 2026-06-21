@@ -151,7 +151,7 @@ export default function TelhadoRetratilPrecoPage() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="https://wa.me/5511943615079?text=Olá! Vi a tabela de preços e quero um orçamento do telhado retrátil."
+                href="https://wa.me/5511982295079?text=Ol%C3%A1%21+Vim+pelo+Google+e+quero+um+or%C3%A7amento+de+cobertura"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-400 text-white font-bold py-4 px-8 rounded-xl text-lg transition-colors flex items-center justify-center gap-2"
@@ -159,7 +159,7 @@ export default function TelhadoRetratilPrecoPage() {
                 💬 Orçamento grátis via WhatsApp
               </a>
               <WhatsAppLink
-                href="https://wa.me/5511943615079?text=Ol%C3%A1!%20Quero%20saber%20o%20pre%C3%A7o%20da%20cobertura%20retr%C3%A1til"
+                href="https://wa.me/5511982295079?text=Ol%C3%A1%21+Vim+pelo+Google+e+quero+um+or%C3%A7amento+de+cobertura"
                 location="preco-hero"
                 serviceSlug="telhado-retratil-policarbonato-preco"
                 className="bg-white/10 hover:bg-white/20 border border-white/30 text-white font-bold py-4 px-8 rounded-xl text-lg transition-colors"
@@ -232,7 +232,7 @@ export default function TelhadoRetratilPrecoPage() {
 
                 <div className="flex flex-col gap-3">
                   <a
-                    href="https://wa.me/5511943615079?text=Olá! Vi a tabela de preços e quero um orçamento do telhado retrátil."
+                    href="https://wa.me/5511982295079?text=Ol%C3%A1%21+Vim+pelo+Google+e+quero+um+or%C3%A7amento+de+cobertura"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full bg-green-500 hover:bg-green-400 text-white font-bold py-3 px-6 rounded-xl text-base transition-colors flex items-center justify-center gap-2"
@@ -240,7 +240,7 @@ export default function TelhadoRetratilPrecoPage() {
                     💬 Orçamento grátis via WhatsApp
                   </a>
                   <WhatsAppLink
-                    href="https://wa.me/5511943615079?text=Ol%C3%A1!%20Quero%20saber%20o%20pre%C3%A7o%20da%20cobertura%20retr%C3%A1til"
+                    href="https://wa.me/5511982295079?text=Ol%C3%A1%21+Vim+pelo+Google+e+quero+um+or%C3%A7amento+de+cobertura"
                     location="preco-tabela"
                     serviceSlug="telhado-retratil-policarbonato-preco"
                     className="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-3 px-6 rounded-xl text-base transition-colors text-center"
@@ -323,7 +323,7 @@ export default function TelhadoRetratilPrecoPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="https://wa.me/5511943615079?text=Oi! Quero saber o preço do telhado retrátil em policarbonato para minha área."
+                href="https://wa.me/5511982295079?text=Ol%C3%A1%21+Vim+pelo+Google+e+quero+um+or%C3%A7amento+de+cobertura"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-400 text-white font-bold py-4 px-8 rounded-xl text-lg transition-colors flex items-center justify-center gap-2"
@@ -331,7 +331,7 @@ export default function TelhadoRetratilPrecoPage() {
                 💬 Falar com especialista
               </a>
               <WhatsAppLink
-                href="https://wa.me/5511943615079?text=Ol%C3%A1!%20Quero%20saber%20o%20pre%C3%A7o%20da%20cobertura%20retr%C3%A1til"
+                href="https://wa.me/5511982295079?text=Ol%C3%A1%21+Vim+pelo+Google+e+quero+um+or%C3%A7amento+de+cobertura"
                 location="preco-cta-central"
                 serviceSlug="telhado-retratil-policarbonato-preco"
                 className="bg-white text-blue-700 font-bold py-4 px-8 rounded-xl text-lg hover:bg-blue-50 transition-colors"

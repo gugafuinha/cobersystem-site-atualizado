@@ -8,8 +8,8 @@ import WhatsAppLink from '@/components/WhatsAppLink';
 
 const PHONE = '(11) 94361-5079';
 const PHONE_HREF = 'tel:+5511943615079';
-const WA_HERO    = 'https://wa.me/5511943615079?text=Ol%C3%A1!%20Vi%20o%20an%C3%BAncio%20da%20Cobersystem%20e%20quero%20um%20or%C3%A7amento%20de%20cobertura%20retr%C3%A1til.';
-const WA_FINAL   = 'https://wa.me/5511943615079?text=Ol%C3%A1!%20Quero%20agendar%20a%20visita%20t%C3%A9cnica%20gratuita%20para%20cobertura%20retr%C3%A1til.';
+const WA_HERO    = 'https://wa.me/5511982295079?text=Ol%C3%A1%21+Vim+pelo+Google+e+quero+um+or%C3%A7amento+de+cobertura';
+const WA_FINAL   = 'https://wa.me/5511982295079?text=Ol%C3%A1%21+Vim+pelo+Google+e+quero+um+or%C3%A7amento+de+cobertura';
 const GBP_URL    = 'https://share.google/Mqi0TYJoGCN7QGDo6';
 
 function trackWaHero() {
@@ -361,7 +361,7 @@ export default function LpCoberturaRetratil() {
                 💬 Falar no WhatsApp
               </a>
               <WhatsAppLink
-                href="https://wa.me/5511943615079?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20de%20cobertura%20retr%C3%A1til"
+                href="https://wa.me/5511982295079?text=Ol%C3%A1%21+Vim+pelo+Google+e+quero+um+or%C3%A7amento+de+cobertura"
                 location="lp-retratil-cta-final"
                 serviceSlug="cobertura-retratil"
                 className="inline-flex items-center justify-center bg-white text-blue-800 hover:bg-blue-50 font-extrabold px-8 py-5 rounded-xl text-lg transition"
