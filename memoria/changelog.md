@@ -2,6 +2,39 @@
 
 ---
 
+## 2026-06-21 — feat(geo): Lote 1 — 5 páginas piloto cobertura retrátil Tier 1 (interior SP)
+
+### O que foi feito
+
+**Cidades criadas (Tier 1 — maior prioridade):**
+- `/produtos/cobertura-retratil/em/jundiai` — Serra do Japi, 60km, aplicação: piscina
+- `/produtos/cobertura-retratil/em/indaiatuba` — Parque Ecológico, 95km, aplicação: área gourmet
+- `/produtos/cobertura-retratil/em/americana` — Lago do Corumbataí, 120km, aplicação: área gourmet
+- `/produtos/cobertura-retratil/em/sumare` — Parque Estadual, 110km, aplicação: garagem
+- `/produtos/cobertura-retratil/em/valinhos` — Swiss Park, 90km, aplicação: piscina
+
+**Arquivos criados:**
+- `lib/cobertura-retratil-interior.ts`: tipagem `CidadeInteriorRetratil` + dados das 5 cidades (intro[3], faq_geo[3+], metaDescription, keywords, vizinhas, bairros, referência local)
+- `app/produtos/cobertura-retratil/em/InteriorCidadePageContent.tsx`: componente de template rico (~800+ palavras, 7 seções: hero, aplicações, processo, materiais, preço, FAQ, links internos + CTA)
+
+**Arquivos modificados:**
+- `app/produtos/cobertura-retratil/em/[cidade]/page.tsx`: `generateStaticParams` agora combina Grande SP + interior; `generateMetadata` detecta interior primeiro; default export renderiza `InteriorCidadePageContent` para cidades do interior
+- `app/sitemap.ts`: 5 novas URLs Lote 1 com `priority: 0.88` e image sitemap
+
+**Schemas (3 por página):**
+- `Service` com `areaServed: City` + `provider: Cobersystem`
+- `FAQPage` com 3 perguntas geo-locais + 4 genéricas (7 total)
+- `BreadcrumbList` com 5 níveis (Início > Produtos > Cobertura Retrátil > Interior SP > Cidade)
+
+**Qualidade:**
+- `tsc --noEmit`: zero erros
+- Linter: zero erros em todos os arquivos
+- Conteúdo: 3 parágrafos únicos de intro por cidade + 3 FAQs geo-locais únicas
+- Meta: title variante A (60 chars) + description única (155 chars)
+- WhatsApp link pre-filled com nome da cidade em cada página
+
+---
+
 ## 2026-06-21 — feat(geo): Lote 0 — Fundação SEO Geolocal Interior SP (42 cidades)
 
 ### O que foi feito

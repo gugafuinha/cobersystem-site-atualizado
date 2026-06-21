@@ -9,6 +9,11 @@ import {
   getCidadeRetratil,
   getSlugsCidadesRetratil,
 } from '@/lib/cobertura-retratil-cidades';
+import {
+  getCidadeInteriorRetratil,
+  getSlugsCidadesInteriorRetratil,
+} from '@/lib/cobertura-retratil-interior';
+import InteriorCidadePageContent from '../InteriorCidadePageContent';
 import { SAO_PAULO_BAIRROS } from '@/lib/sao-paulo-bairros';
 
 const BASE = 'https://www.coberturapolicarbonato.com.br';
@@ -42,7 +47,9 @@ const MODELOS_LINHA = [
 ] as const;
 
 export async function generateStaticParams() {
-  return getSlugsCidadesRetratil().map((cidade) => ({ cidade }));
+  const grandeSp = getSlugsCidadesRetratil().map((cidade) => ({ cidade }));
+  const interior = getSlugsCidadesInteriorRetratil().map((cidade) => ({ cidade }));
+  return [...grandeSp, ...interior];
 }
 
 export async function generateMetadata({
@@ -51,8 +58,29 @@ export async function generateMetadata({
   params: Promise<{ cidade: string }>;
 }): Promise<Metadata> {
   const { cidade: cidadeParam } = await params;
-  const cidade = getCidadeRetratil(cidadeParam);
 
+  // Verificar primeiro cidade do interior (maior prioridade: dados mais ricos)
+  const cidadeInterior = getCidadeInteriorRetratil(cidadeParam);
+  if (cidadeInterior) {
+    const url = `${BASE}/produtos/cobertura-retratil/em/${cidadeInterior.slug}`;
+    const title = `Cobertura Retrátil em ${cidadeInterior.nome} | Automática sob Medida – Cobersystem`;
+    return {
+      title,
+      description: cidadeInterior.metaDescription,
+      keywords: cidadeInterior.keywords,
+      alternates: { canonical: url },
+      openGraph: {
+        title,
+        description: cidadeInterior.metaDescription,
+        url,
+        images: [{ url: OG_IMAGE, width: 1200, height: 900, alt: `Cobertura retrátil em ${cidadeInterior.nome}` }],
+      },
+      twitter: { card: 'summary_large_image', title, description: cidadeInterior.metaDescription, images: [OG_IMAGE] },
+    };
+  }
+
+  // Fallback para cidades da Grande SP
+  const cidade = getCidadeRetratil(cidadeParam);
   if (!cidade) {
     return { title: 'Página não encontrada' };
   }
@@ -96,6 +124,14 @@ export default async function CoberturaRetratilEmCidadePage({
   params: Promise<{ cidade: string }>;
 }) {
   const { cidade: cidadeParam } = await params;
+
+  // Cidades do interior — renderiza template rico
+  const cidadeInterior = getCidadeInteriorRetratil(cidadeParam);
+  if (cidadeInterior) {
+    return <InteriorCidadePageContent cidade={cidadeInterior} />;
+  }
+
+  // Cidades da Grande SP — renderiza template existente
   const cidade = getCidadeRetratil(cidadeParam);
 
   if (!cidade) {

@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next';
+import { getSlugsCidadesInteriorRetratil } from '@/lib/cobertura-retratil-interior';
 import { getSlugsCidadesAbreEFecha } from '@/lib/cobertura-abre-e-fecha-cidades';
 import { getSlugsCidadesPolicarbonato } from '@/lib/cobertura-policarbonato-cidades';
 import { getSlugsCidadesRetratil } from '@/lib/cobertura-retratil-cidades';
@@ -175,6 +176,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
+  // Lote 1 — 5 cidades Tier 1 do interior de SP
+  const coberturaRetratilInteriorLote1: MetadataRoute.Sitemap =
+    getSlugsCidadesInteriorRetratil().map((slug) => ({
+      url: `${baseUrl}/produtos/cobertura-retratil/em/${slug}`,
+      lastModified: now,
+      changeFrequency: 'weekly' as const,
+      priority: 0.88,
+      images: [`${baseUrl}/images/produtos/cobertura-retratil/aluminio/IMG_0305.jpg`],
+    }));
+
   const mainProductPages: MetadataRoute.Sitemap = [
     { url: `${baseUrl}/produtos/cobertura-policarbonato`, lastModified: now, changeFrequency: 'weekly', priority: 0.95, images: IMG.policarbonato },
     { url: `${baseUrl}/produtos/cobertura-retratil`,      lastModified: now, changeFrequency: 'weekly', priority: 0.95, images: IMG.retratil },
@@ -248,6 +259,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...localizacaoPages,
     ...mainProductPages,
     ...hubInteriorRetratil,
+    ...coberturaRetratilInteriorLote1,
     ...coberturaPolicarbonatoLocal,
     ...coberturaRetratilLocal,
     ...coberturaAbreEFechaLocal,
