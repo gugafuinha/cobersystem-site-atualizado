@@ -2,6 +2,40 @@
 
 ---
 
+## 2026-06-21 — MCP v1.2.0: 4 tools Google Business Profile (GMB) via n8n OAuth bridge
+
+### O que foi feito
+- **`/root/cobersystem-mcp/src/gmb.ts`**: reescrito para usar `n8nGet('gmb', {...})` — remove dependência direta da Google API, passa pelo OAuth bridge eterno do n8n
+- **`/root/cobersystem-mcp/src/n8n.ts`**: type union de `domain` extendido para incluir `'gmb'`
+- **`/root/cobersystem-mcp/src/index.ts`**: 4 tools registrados (`gmb_profile`, `gmb_insights`, `gmb_reviews`, `gmb_posts`), versão bumped para `1.2.0`
+- **n8n DATA-API workflow** (`JHQJ8sFTF1bHlooU`): 8 novos nós GMB inseridos via `docker exec` + `sqlite3` dentro do container n8n (sem copiar arquivo, evitando corrupção de permissões)
+  - `Webhook GMB` → `Auth GMB` → `Parse GMB Params` → `Token GMB` → `GMB API` → `Normalize GMB` → `Respond GMB`
+  - `workflow_history` atualizado com `versionId: 906b7e4e`, `activeVersionId` corrigido
+- **Traefik** (`/data/config/main.yaml`): URL `http://invalid IP:5678/` corrigida para `http://automacao_n8n:5678/` (hostname Docker Swarm estável)
+
+### APIs GMB utilizadas
+- `gmb_profile` → `mybusinessaccountmanagement.googleapis.com/v1` (locations + readMask)
+- `gmb_insights` → `businessprofileperformance.googleapis.com/v1` (7 métricas diárias)
+- `gmb_reviews` → `mybusiness.googleapis.com/v4` (reviews com rating)
+- `gmb_posts` → `mybusiness.googleapis.com/v4` (localPosts LIVE)
+
+### Dados identificados (hardcoded no Parse GMB Params)
+- `account`: `accounts/102813488393364089206`
+- `location`: `locations/15219783204171832651`
+
+### Resultados dos testes (via MCP)
+- `gmb_profile`: Cobersystem Soluções em Coberturas de Policarbonato | OPEN | (11) 94361-5079
+- `gmb_insights` (30d): 123 impressões totais | 7 website clicks | 41 direction requests
+- `gmb_reviews`: Rating 4.0 ★ | 22 avaliações totais
+- `gmb_posts`: 2 posts LIVE
+
+### Correções de infraestrutura aplicadas
+- Corrigido crash loop do n8n causado por `SQLITE_READONLY` (permissões root vs node UID 1000)
+- Corrigido `activeVersionId` apontando para versão inexistente no `workflow_history`
+- Traefik roteamento restaurado para todos os webhooks (GSC, GA4, Ads, GMB)
+
+---
+
 ## 2026-06-18 — Blog: suporte a links contextuais markdown no renderizador
 
 - **`app/blog/[slug]/page.tsx`:** adicionada função helper `applyInlineMarkdown` que converte `[texto](url)` → `<a>` e `**bold**` → `<strong>` em sequência (links processados antes do bold para evitar conflito)
