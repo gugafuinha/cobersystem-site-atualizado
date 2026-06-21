@@ -2,6 +2,53 @@
 
 ---
 
+## 2026-06-21 — feat(geo): Lote 0 — Fundação SEO Geolocal Interior SP (42 cidades)
+
+### O que foi feito
+
+**PASSO 1 — Dataset das 42 cidades**
+- Criado `/content/cidades-interior.json` com dados reais de 42 cidades do interior paulista
+- Campos por cidade: `nome`, `slug`, `regiao`, `distancia_sp_km`, `tempo_deslocamento`, `cidades_vizinhas`, `bairros_nobres`, `referencia_local`, `tier`, `populacao`, `meta_desc_variante`
+- Distribuição por tier: Tier 1 (11 cidades prioritárias), Tier 2 (14 cidades), Tier 3 (11 cidades), Tier 4 (6 cidades)
+- JSON válido, sem duplicados, todos os campos presentes
+
+**PASSO 2 — Hub de localização**
+- Criado `app/produtos/cobertura-retratil/em/page.tsx` — hub listando as 42 cidades divididas por tier
+- Título: "Cobertura Retrátil no Interior de SP | Cobersystem"
+- Grid responsivo de cards por tier com cores distintas
+- Schema `LocalBusiness` com `areaServed` Estado de São Paulo + 42 cidades como `City`
+- Schema `BreadcrumbList` de 4 níveis
+- CTAs para `/orcamento` e WhatsApp
+- URL: `/produtos/cobertura-retratil/em`
+
+**PASSO 3 — Página-mãe atualizada**
+- `app/produtos/cobertura-retratil/page.tsx`: nova seção "Atendemos também o interior de SP" antes do CTA final
+- Texto: "Além da Grande SP, a Cobersystem instala cobertura retrátil em 42 cidades do interior paulista"
+- Link direto para o hub `/produtos/cobertura-retratil/em`
+
+**PASSO 4 — Template base validado**
+- Criado `/content/template-cidade-retratil.md` — template completo para geração das 83 páginas restantes
+- Inclui: H1 exato, 4 variações de meta title e description, 8 seções (aplicações por uso, processo, materiais, preço, FAQ, links internos, CTA)
+- 3 schemas JSON-LD: `Service`, `FAQPage`, `BreadcrumbList`
+- Regras de diferenciação para evitar thin/duplicate content
+- Checklist de qualidade pré-publicação
+
+**PASSO 5 — Sitemap atualizado**
+- `app/sitemap.ts`: adicionado `/produtos/cobertura-retratil/em` com `priority: 0.9`
+
+### Validações realizadas
+- JSON válido via `node -e "require('./content/cidades-interior.json')"`
+- TypeScript type-check: `npx tsc --noEmit` — zero erros
+- Linter: zero erros nos 3 arquivos modificados
+- Build erro apenas por permissão de sandbox (`.next/` root-only) — não relacionado ao código
+
+### Próximos passos (Lote 1+)
+- Criar páginas individuais `/produtos/cobertura-retratil/em/[slug]` para as 42 cidades (começando pelo Tier 1)
+- Criar páginas de `cobertura-abre-e-fecha` para as mesmas 42 cidades
+- Implementar `generateStaticParams` para incluir os novos slugs do interior
+
+---
+
 ## 2026-06-21 — MCP v1.2.0: 4 tools Google Business Profile (GMB) via n8n OAuth bridge
 
 ### O que foi feito

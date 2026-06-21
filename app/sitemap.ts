@@ -165,6 +165,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       })),
   );
 
+  // Hub de localização — interior de SP (cobertura retrátil)
+  const hubInteriorRetratil: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/produtos/cobertura-retratil/em`,
+      lastModified: now,
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+  ];
+
   const mainProductPages: MetadataRoute.Sitemap = [
     { url: `${baseUrl}/produtos/cobertura-policarbonato`, lastModified: now, changeFrequency: 'weekly', priority: 0.95, images: IMG.policarbonato },
     { url: `${baseUrl}/produtos/cobertura-retratil`,      lastModified: now, changeFrequency: 'weekly', priority: 0.95, images: IMG.retratil },
@@ -237,6 +247,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...requiredPages,
     ...localizacaoPages,
     ...mainProductPages,
+    ...hubInteriorRetratil,
     ...coberturaPolicarbonatoLocal,
     ...coberturaRetratilLocal,
     ...coberturaAbreEFechaLocal,
