@@ -2,13 +2,13 @@
 
 import Script from 'next/script';
 
-const GOOGLE_ADS_ID = 'AW-1095370047';
+const GOOGLE_ADS_ID = 'AW-11013639885';
 const GA4_MEASUREMENT_ID = 'G-EL6RVFYFSJ';
 
 // Labels de conversão gerados pelo Google Ads para cada ação
 export const CONVERSION_LABELS = {
-  WHATSAPP_CLICK: 'AW-1095370047/6476649806',
-  FORM_SUBMIT: 'AW-1095370047/6476575408',
+  WHATSAPP_CLICK: 'AW-11013639885/PY4iCM6qp5AYEM2d24Mp',
+  FORM_SUBMIT: 'AW-11013639885/lGDsCLDlopAYEM2d24Mp',
 };
 
 export default function GoogleAds() {

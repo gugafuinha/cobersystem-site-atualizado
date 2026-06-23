@@ -1,13 +1,15 @@
 'use client';
 
-import { useState, type FormEvent } from 'react';
+import { useState, type FormEvent, type MouseEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import { trackGoogleAdsConversion, CONVERSION_LABELS } from '@/components/GoogleAds';
-import { trackFormSubmit } from '@/components/GoogleAnalytics';
+import { trackWhatsAppLead } from '@/components/GoogleAnalytics';
 import { trackMetaLead } from '@/components/MetaPixel';
 
 const WHATSAPP_NUMBER = '5511943615079';
+const WA_DIRECT_URL =
+  'https://wa.me/5511943615079?text=Olá! Quero solicitar um orçamento.';
 
 const initialForm = {
   nome: '',
@@ -67,6 +69,17 @@ export default function OrcamentoPage() {
     });
   };
 
+  const handleDirectWhatsAppClick = (e: MouseEvent<HTMLAnchorElement>) => {
+    trackWhatsAppLead({ location: 'orcamento-direct' });
+
+    if (!navigator.sendBeacon) {
+      e.preventDefault();
+      setTimeout(() => {
+        window.open(WA_DIRECT_URL, '_blank', 'noopener,noreferrer');
+      }, 300);
+    }
+  };
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const nextErrors = validate(formData);
@@ -103,16 +116,21 @@ ${formData.mensagem.trim() || '(sem mensagem adicional)'}
     `.trim();
 
     const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensagem)}`;
-    window.open(whatsappLink, '_blank', 'noopener,noreferrer');
 
     trackGoogleAdsConversion(CONVERSION_LABELS.FORM_SUBMIT);
-    trackFormSubmit();
     trackMetaLead();
 
-    window.setTimeout(() => {
+    const proceed = () => {
+      window.open(whatsappLink, '_blank', 'noopener,noreferrer');
       setEnviando(false);
       router.push('/obrigado');
-    }, 400);
+    };
+
+    if (!navigator.sendBeacon) {
+      setTimeout(proceed, 300);
+    } else {
+      proceed();
+    }
   };
 
   const fieldClass = (field: keyof typeof initialForm) =>
@@ -129,9 +147,10 @@ ${formData.mensagem.trim() || '(sem mensagem adicional)'}
       {/* Sticky CTA — visível apenas no mobile */}
       <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-green-600 border-t border-green-700 shadow-lg">
         <a
-          href="https://wa.me/5511943615079?text=Olá! Quero solicitar um orçamento."
+          href={WA_DIRECT_URL}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={handleDirectWhatsAppClick}
           className="flex items-center justify-center gap-2 py-4 text-white font-bold text-base"
         >
           💬 Falar direto no WhatsApp
@@ -188,9 +207,10 @@ ${formData.mensagem.trim() || '(sem mensagem adicional)'}
             {/* CTA WhatsApp direto — visível apenas no desktop */}
             <div className="hidden md:flex items-center justify-center mb-6">
               <a
-                href="https://wa.me/5511943615079?text=Olá! Quero solicitar um orçamento."
+                href={WA_DIRECT_URL}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={handleDirectWhatsAppClick}
                 className="inline-flex items-center gap-2 text-green-700 font-semibold hover:text-green-800 underline underline-offset-2 text-sm"
               >
                 💬 Prefere falar direto? Chame no WhatsApp

@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import imageCompression from 'browser-image-compression';
-import { trackFormSubmit, trackCTAClick } from '@/components/GoogleAnalytics';
+import { trackCTAClick } from '@/components/GoogleAnalytics';
 import { trackMetaLead } from '@/components/MetaPixel';
 import { trackGoogleAdsConversion, CONVERSION_LABELS } from '@/components/GoogleAds';
 
@@ -274,7 +274,6 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
         });
         setCompressionProgressText('');
 
-        trackFormSubmit();
         trackMetaLead();
         trackGoogleAdsConversion(CONVERSION_LABELS.FORM_SUBMIT);
         onSuccess?.();

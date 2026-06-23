@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { trackGoogleAdsConversion } from '@/components/GoogleAds';
+import { trackGoogleAdsConversion, CONVERSION_LABELS } from '@/components/GoogleAds';
 import { trackCTAClick, trackPhoneClick } from '@/components/GoogleAnalytics';
 import WhatsAppLink from '@/components/WhatsAppLink';
 
@@ -13,12 +13,12 @@ const WA_FINAL   = 'https://wa.me/5511982295079?text=Ol%C3%A1%21+Vim+pelo+Google
 const GBP_URL    = 'https://share.google/Mqi0TYJoGCN7QGDo6';
 
 function trackWaHero() {
-  trackGoogleAdsConversion('lGDsCLD1opAYEM2d24Mp', 0);
+  trackGoogleAdsConversion(CONVERSION_LABELS.WHATSAPP_CLICK);
   trackCTAClick('LP Retrátil — WhatsApp Hero');
 }
 
 function trackWaFinal() {
-  trackGoogleAdsConversion('lGDsCLD1opAYEM2d24Mp', 0);
+  trackGoogleAdsConversion(CONVERSION_LABELS.WHATSAPP_CLICK);
   trackCTAClick('LP Retrátil — WhatsApp Final');
 }
 

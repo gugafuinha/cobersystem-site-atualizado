@@ -2,6 +2,18 @@
 
 ---
 
+## 2026-06-23 — fix(tracking): Google Ads conversion ID e labels corretos (AW-11013639885)
+
+### O que foi feito
+- `GoogleAds.tsx`: `gtag('config')` e `CONVERSION_LABELS` alinhados à conta real (`AW-11013639885`)
+  - FORM_SUBMIT → `lGDsCLDlopAYEM2d24Mp` (Lead Formulário Orçamento)
+  - WHATSAPP_CLICK → `PY4iCM6qp5AYEM2d24Mp` (Clique Botão Whatsapp)
+- LPs pagas (`/lp/cobertura-retratil`, `/lp/area-gourmet`): label com typo substituído por `CONVERSION_LABELS.WHATSAPP_CLICK`
+- `/orcamento`: removida duplicata `trackFormSubmit`, tracking nos links WhatsApp diretos, delay/beacon no submit
+- `/contato` (`ContactForm.tsx`): removida duplicata `trackFormSubmit`
+
+---
+
 ## 2026-06-21 — feat(geo): Lote 1 — 5 páginas piloto cobertura retrátil Tier 1 (interior SP)
 
 ### O que foi feito
