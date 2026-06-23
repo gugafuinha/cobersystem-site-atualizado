@@ -1296,3 +1296,34 @@ Inserido node "Token GA4" nos 2 workflows principais, que troca o `GOOGLE_REFRES
 ### Pendente (ação manual)
 - Mudar consent screen do projeto `cobersystem-openclaw-492603` de "Testing" para "Production" no Google Cloud Console
 - Reconectar "Google account 2" no n8n após mudança para Production
+
+## 2026-06-23 — Ações Estratégicas Opus 4.8 (Sessão 2)
+
+### ITEM 1 — Validação de sinais pós-fix
+- Conversão "Clique Botão Whatsapp" (6476649806): **0 sinais nos últimos 30 dias** — esperado, pois tracking estava quebrado até hoje
+- Conversão "Lead Formulário Orçamento" (6476575408): **0 sinais nos últimos 30 dias** — mesma causa
+- Ambas as conversões estão ENABLED e prontas para receber sinais
+- **O primeiro sinal deve aparecer no painel do Ads em até 3-4h após o primeiro clique real**
+
+### ITEM 2 — Prioridade das conversões (confirmação)
+- Confirmado via API: "Clique Botão Whatsapp" → `primaryForGoal=True` (PRIMARY ✅)
+- Confirmado via API: "Lead Formulário Orçamento" → `primaryForGoal=False` (SECONDARY ✅)
+- Executado na sessão anterior, verificado agora
+
+### ITEM 3 — Investigação Display (18 conversões GA4) + correção
+**Causa raiz identificada e corrigida:**
+- As 18 conversões "Display" no GA4 vinham de `source=google, medium=cpc, campaign=Cobersystem - Leads SP`
+- A campanha de Search tinha `target_content_network=True` (Display Network habilitada por engano)
+- Não existem campanhas Display ou PMax ATIVAS na conta (todas PAUSED)
+- **Correção aplicada via API:** `target_content_network` alterado para `False` na campanha `Cobersystem - Leads SP`
+- A partir de agora a campanha é Search puro — sem vazamento para Display
+
+### ITEM 4 — SEO title/meta (executado na sessão anterior)
+- `lib/seo/page-metadata.ts`: title e meta da página cobertura-policarbonato reescritos
+- `content/blog-posts.json`: título e descrição do post fechamento-de-varanda atualizados
+- Deploy: commit 13fc253 (manual via VPS)
+
+### ITEM 7 — Autoridade /produtos/cobertura-retratil (executado na sessão anterior)
+- `app/blog/[slug]/page.tsx`: link interno adicionado em cobertura-abre-fecha-vantagens
+- `app/produtos/cobertura-retratil/page.tsx`: parágrafo semântico adicionado após H1
+- Deploy: commit 13fc253 (manual via VPS)
