@@ -34,6 +34,7 @@ const POST_INTERNAL_LINKS: Record<string, Array<{ label: string; href: string }>
     { label: 'Cobertura Retrátil em São Paulo — preços e modelos', href: '/produtos/cobertura-retratil/em/sao-paulo' },
   ],
   'cobertura-abre-fecha-vantagens': [
+    { label: 'Catálogo de Modelos — Cobertura Retrátil', href: '/produtos/cobertura-retratil' },
     { label: 'Catálogo de Modelos — Cobertura Abre e Fecha', href: '/produtos/cobertura-abre-e-fecha' },
     { label: 'Instalação de Cobertura Abre e Fecha', href: '/servicos/cobertura-abre-e-fecha' },
     { label: 'Cobertura para Piscina', href: '/servicos/cobertura-piscina' },

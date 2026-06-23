@@ -76,6 +76,11 @@ export default function CoberturaRetratil() {
             A <strong>cobertura retrátil de policarbonato</strong> abre e fecha com automação inteligente.
             Controle total do clima com abertura de 0 a 90 graus. Sem perder ventilação, com proteção completa.
           </p>
+          <p className="text-base text-gray-500 max-w-2xl mx-auto mt-4">
+            Também chamada de <strong>telhado retrátil</strong>, <strong>cobertura abre e fecha</strong> ou{' '}
+            <strong>cobertura motorizada</strong>, esse sistema combina estrutura de alumínio com telhas de policarbonato
+            móveis — disponível com automação via Alexa, sensor de chuva e controle remoto.
+          </p>
         </section>
 
         {/* Produtos — grelha 2×2 (1 coluna no mobile) */}

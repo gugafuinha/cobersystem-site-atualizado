@@ -25,12 +25,12 @@ export const pageMetadata: Record<string, PageMetadata> = {
   },
 
   'cobertura-policarbonato': {
-    title: 'Cobertura em Policarbonato Fixa | R$ 450 a R$ 900/m² | SP',
-    description: 'Cobertura fixa em policarbonato alveolar e compacto. Proteção UV 99%, instalação em 2 dias. Ideal para garagem, área gourmet e piscina. Garantia 2 anos. Orçamento grátis!',
-    keywords: ['cobertura policarbonato', 'cobertura fixa', 'policarbonato alveolar', 'policarbonato compacto', 'cobertura garagem'],
+    title: 'Coberturas em Policarbonato SP | Preço/m² e Modelos | Cobersystem',
+    description: 'Coberturas em policarbonato alveolar e compacto para garagem, área gourmet e piscina em SP. A partir de R$ 450/m². Proteção UV 99%, instalação em 2 dias. Orçamento grátis!',
+    keywords: ['coberturas em policarbonato', 'cobertura policarbonato', 'cobertura fixa', 'policarbonato alveolar', 'policarbonato compacto', 'cobertura garagem'],
     openGraph: {
-      title: 'Cobertura em Policarbonato Fixa | Cobersystem SP',
-      description: 'Proteção completa com garantia de 2 anos. De R$ 450 a R$ 900/m².',
+      title: 'Coberturas em Policarbonato SP | Cobersystem',
+      description: 'Alveolar ou compacto, sob medida. A partir de R$ 450/m² com garantia de 2 anos.',
       images: ['https://www.coberturapolicarbonato.com.br/images/projetos/fixa-01.jpg']
     }
   },
