@@ -229,7 +229,7 @@ export default function Home() {
               { n: '+500', l: 'Projetos executados em SP' },
               { n: '2 anos', l: 'de garantia em todos os projetos' },
               { n: '+10 anos', l: 'de experiência no mercado' },
-              { n: '0€', l: 'visita técnica e orçamento' },
+              { n: 'Automação', l: 'Inteligente' },
             ].map(({ n, l }) => (
               <div key={l}>
                 <p className="text-4xl font-bold text-[#D4AF37]">{n}</p>
