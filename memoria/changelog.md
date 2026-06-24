@@ -2,6 +2,34 @@
 
 ---
 
+## 2026-06-23 — feat(geo): Lote 2 páginas geo + links internos Lote 1
+
+### O que foi feito
+
+**TAREFA 1 — Links internos para as 5 páginas do Lote 1:**
+- `app/localizacao/campinas/page.tsx`: adicionado bloco "Atendemos também na região" com links para `/produtos/cobertura-retratil/em/americana`, `/em/sumare` e `/em/indaiatuba`
+- `app/localizacao/sao-paulo/page.tsx`: adicionado bloco "Atendemos também no interior próximo" com links para `/produtos/cobertura-retratil/em/jundiai` e `/em/valinhos`
+- Hub `/produtos/cobertura-retratil/em/page.tsx` já linka todas as cidades via JSON (confirmado)
+
+**TAREFA 2 — Lote 2: 10 novas páginas geo (Tier 1-2 interior SP):**
+- Adicionadas 10 cidades ao `lib/cobertura-retratil-interior.ts`:
+  1. Vinhedo (80 km de SP, RM Jundiaí) — piscina
+  2. Itatiba (80 km de SP, RM Campinas) — área gourmet
+  3. Paulínia (115 km de SP, RM Campinas) — área gourmet
+  4. Jandira (30 km de SP, RM São Paulo) — garagem
+  5. São José dos Campos (98 km de SP, Vale do Paraíba) — piscina
+  6. Atibaia (70 km de SP, Região Bragantina) — área gourmet
+  7. Mogi das Cruzes (60 km de SP, Alto Tietê) — área gourmet
+  8. Itu (100 km de SP, Região Sorocaba) — área gourmet
+  9. Salto (100 km de SP, Região Sorocaba) — garagem
+  10. Limeira (153 km de SP, RM Campinas) — piscina
+- Cada cidade: intro 3 parágrafos únicos, 3 FAQs geo-locais, cidades vizinhas com slugs, referencia_local, bairros_nobres, metaDescription única, keywords específicas
+- Sitemap atualizado automaticamente via `getSlugsCidadesInteriorRetratil()` (de 5 para 15 cidades)
+- Build `next build` passou sem erros (exit 0)
+- Commit: `f9119e9` — push para `origin/main` realizado
+
+---
+
 ## 2026-06-23 — fix(tracking): Google Ads conversion ID e labels corretos (AW-11013639885)
 
 ### O que foi feito
