@@ -140,6 +140,30 @@ export default function CampinasPage() {
           </div>
         </section>
 
+        <section className="mb-12 rounded-lg bg-white p-8 shadow-sm">
+          <h2 className="mb-4 text-2xl font-bold text-gray-800 md:text-3xl">Atendemos também na região</h2>
+          <p className="mb-6 text-gray-600 text-sm">
+            Além de Campinas, a Cobersystem atende cidades próximas da Região Metropolitana de Campinas com a mesma equipe técnica.
+          </p>
+          <div className="grid gap-3 sm:grid-cols-3">
+            {[
+              { slug: 'americana', nome: 'Americana', desc: 'Cobertura retrátil em Americana SP' },
+              { slug: 'sumare', nome: 'Sumaré', desc: 'Cobertura retrátil em Sumaré SP' },
+              { slug: 'indaiatuba', nome: 'Indaiatuba', desc: 'Cobertura retrátil em Indaiatuba SP' },
+            ].map(({ slug, nome, desc }) => (
+              <Link
+                key={slug}
+                href={`/produtos/cobertura-retratil/em/${slug}`}
+                className="flex flex-col gap-1 rounded-lg border border-gray-200 p-4 transition hover:border-blue-300 hover:shadow-md"
+              >
+                <span className="font-semibold text-gray-800 text-sm">{nome}</span>
+                <span className="text-xs text-gray-500">{desc}</span>
+                <span className="mt-1 text-xs font-semibold text-blue-600">Ver projeto e orçamento →</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+
         <section className="rounded-lg bg-[#D4AF37] p-12 text-center text-black">
           <h2 className="mb-4 text-4xl font-bold">Solicite seu orçamento em Campinas</h2>
           <p className="mb-8 text-xl text-gray-900">Visita técnica gratuita e orçamento em até 24 h</p>

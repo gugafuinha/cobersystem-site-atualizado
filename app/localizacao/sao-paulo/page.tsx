@@ -374,6 +374,30 @@ export default function SaoPauloPage() {
           </p>
         </section>
 
+        {/* Interior próximo a SP */}
+        <section className="mb-12 rounded-lg bg-white p-8 shadow-sm">
+          <h2 className="mb-4 text-2xl font-bold text-gray-800 md:text-3xl">Atendemos também no interior próximo</h2>
+          <p className="mb-6 text-gray-600 text-sm">
+            Além da capital, a Cobersystem instala cobertura retrátil em cidades do interior paulista próximas a São Paulo.
+          </p>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {[
+              { slug: 'jundiai', nome: 'Jundiaí', desc: 'Cobertura retrátil em Jundiaí — 60 km de SP pela Anhanguera' },
+              { slug: 'valinhos', nome: 'Valinhos', desc: 'Cobertura retrátil em Valinhos — 90 km de SP pela Dom Pedro I' },
+            ].map(({ slug, nome, desc }) => (
+              <Link
+                key={slug}
+                href={`/produtos/cobertura-retratil/em/${slug}`}
+                className="flex flex-col gap-1 rounded-lg border border-gray-200 p-4 transition hover:border-blue-300 hover:shadow-md"
+              >
+                <span className="font-semibold text-gray-800 text-sm">{nome}</span>
+                <span className="text-xs text-gray-500">{desc}</span>
+                <span className="mt-1 text-xs font-semibold text-blue-600">Ver projeto e orçamento →</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+
         {/* CTA (preservado) */}
         <section className="rounded-lg bg-[#D4AF37] p-12 text-center text-black">
           <h2 className="mb-4 text-4xl font-bold">

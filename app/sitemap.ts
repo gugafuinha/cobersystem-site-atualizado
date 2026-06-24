@@ -176,7 +176,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  // Lote 1 — 5 cidades Tier 1 do interior de SP
+  // Lote 1 + Lote 2 — 15 cidades Tier 1-2 do interior de SP
   const coberturaRetratilInteriorLote1: MetadataRoute.Sitemap =
     getSlugsCidadesInteriorRetratil().map((slug) => ({
       url: `${baseUrl}/produtos/cobertura-retratil/em/${slug}`,
