@@ -192,6 +192,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/produtos/cobertura-abre-e-fecha`,  lastModified: now, changeFrequency: 'weekly', priority: 0.95, images: [...IMG.retratil, ...IMG.policarbonato] },
     { url: `${baseUrl}/produtos/cobertura-termoacustica`, lastModified: now, changeFrequency: 'weekly', priority: 0.9,  images: IMG.termoacustica },
     { url: `${baseUrl}/produtos/veneziana-policarbonato`, lastModified: now, changeFrequency: 'weekly', priority: 0.9,  images: IMG.veneziana },
+    { url: `${baseUrl}/produtos/cobertura-retratil/policarbonato-compacto-2mm`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${baseUrl}/produtos/cobertura-retratil/automacao-inteligente`,      lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
   ];
 
   const mainServicePages = [

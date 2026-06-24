@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import cidadesData from '@/content/cidades-interior.json';
+import { getSlugsCidadesInteriorRetratil } from '@/lib/cobertura-retratil-interior';
 
 const BASE = 'https://www.coberturapolicarbonato.com.br';
 const PATH = '/produtos/cobertura-retratil/em';
@@ -339,17 +340,38 @@ export default function InteriorHubPage() {
   );
 }
 
+const SLUGS_COM_PAGINA = new Set(getSlugsCidadesInteriorRetratil());
+
 function CidadeCard({ cidade }: { cidade: (typeof cidadesData.cidades)[number] }) {
   const colorClass = TIER_COLORS[cidade.tier as keyof typeof TIER_COLORS] ?? 'bg-white border-gray-200';
-  return (
-    <Link
-      href={`/produtos/cobertura-retratil/em/${cidade.slug}`}
-      className={`block rounded-xl border p-4 shadow-sm transition ${colorClass} group`}
-    >
-      <div className="font-semibold text-gray-800 group-hover:text-blue-700 transition text-sm leading-tight mb-1">
+  const temPagina = SLUGS_COM_PAGINA.has(cidade.slug);
+
+  const conteudo = (
+    <>
+      <div className={`font-semibold text-sm leading-tight mb-1 ${temPagina ? 'text-gray-800 group-hover:text-blue-700 transition' : 'text-gray-500'}`}>
         {cidade.nome}
       </div>
       <div className="text-xs text-gray-400 truncate">{cidade.regiao.replace('Região Metropolitana de ', 'RM ')}</div>
-    </Link>
+      {!temPagina && (
+        <div className="text-xs text-gray-300 mt-1">Em breve</div>
+      )}
+    </>
+  );
+
+  if (temPagina) {
+    return (
+      <Link
+        href={`/produtos/cobertura-retratil/em/${cidade.slug}`}
+        className={`block rounded-xl border p-4 shadow-sm transition ${colorClass} group`}
+      >
+        {conteudo}
+      </Link>
+    );
+  }
+
+  return (
+    <div className={`block rounded-xl border p-4 shadow-sm cursor-default ${colorClass} opacity-60`}>
+      {conteudo}
+    </div>
   );
 }

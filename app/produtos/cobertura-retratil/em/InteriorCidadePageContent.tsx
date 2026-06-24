@@ -441,11 +441,11 @@ export default function InteriorCidadePageContent({ cidade }: { cidade: CidadeIn
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-sm">
               {/* Produto irmão */}
               <Link
-                href={`/produtos/cobertura-abre-e-fecha/em/${cidade.slug}`}
+                href="/produtos/cobertura-abre-e-fecha"
                 className="flex items-center gap-3 bg-white rounded-lg border border-gray-200 p-4 hover:border-blue-300 hover:shadow-sm transition"
               >
                 <span className="text-blue-600 shrink-0">↔</span>
-                <span>Cobertura Abre e Fecha em {cidade.nome}</span>
+                <span>Cobertura Abre e Fecha — Ver todos os modelos</span>
               </Link>
 
               {/* Hub interior */}
