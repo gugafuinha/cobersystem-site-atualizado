@@ -2,6 +2,24 @@
 
 ---
 
+## 2026-06-25 — feat(n8n): workflow alerta review negativa GMB
+
+### O que foi feito
+- Criado workflow n8n **"GMB - Alerta Review Negativa"** (ID: `wikzUUqYstbwizU0`)
+- Estrutura: `[Schedule Trigger 0 */4 * * *] → [Code Node all-in-one]`
+- Lógica no Code node:
+  1. Refresh do OAuth token GMB via `googleapis.com/token`
+  2. GET das 10 reviews mais recentes (`orderBy=updateTime desc`)
+  3. Filtragem de reviews com `starRating` ONE/TWO/THREE (≤ 3★)
+  4. Comparação com `lastProcessedTime` salvo no **Static Data** (`$getWorkflowStaticData('global')`) para evitar alertas duplicados
+  5. Envio de WhatsApp formatado via Evolution API para `5511982295079` (Gustavo)
+- `lastProcessedTime` pré-setado para `2026-06-24T18:53:17Z` (review mais recente atual) — primeira execução não dispara falso alerta
+- Workflow ativo; próximo disparo automático: **09h00 BRT** (12h00 UTC)
+- Dry-run validado: detectou 1 negativa existente (Johnny BazoOkatone ★1), formatação de mensagem verificada
+- Não interfere com workflows da Ana (Redis keys `ana:hist`/`ana:dados`)
+
+---
+
 ## 2026-06-23 — feat(geo): Lote 2 páginas geo + links internos Lote 1
 
 ### O que foi feito
