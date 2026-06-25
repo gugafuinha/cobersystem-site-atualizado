@@ -29,22 +29,21 @@ interface LocalBusinessSchema {
   '@context': string;
   '@type': string;
   name: string;
-  image: string;
+  alternateName?: string;
+  description?: string;
+  image?: string;
   '@id': string;
   url: string;
   telephone: string;
   email?: string;
   priceRange: string;
-  address: {
+  currenciesAccepted?: string;
+  paymentAccepted?: string;
+  /** Omitir para Service Area Business sem endereço físico */
+  address?: {
     '@type': string;
-    addressLocality: string;
-    addressRegion: string;
-    addressCountry: string;
-  };
-  geo?: {
-    '@type': string;
-    latitude: number;
-    longitude: number;
+    addressRegion?: string;
+    addressCountry?: string;
   };
   openingHoursSpecification: {
     '@type': string;
@@ -56,7 +55,18 @@ interface LocalBusinessSchema {
     '@type': string;
     name: string;
   }[];
-  hasMap?: string;
+  hasOfferCatalog?: {
+    '@type': string;
+    name: string;
+    itemListElement: {
+      '@type': string;
+      itemOffered: {
+        '@type': string;
+        name: string;
+        url: string;
+      };
+    }[];
+  };
   sameAs?: string[];
 }
 
@@ -190,24 +200,16 @@ export const organizationSchema: OrganizationSchema = {
 export const localBusinessSchema: LocalBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
-  name: 'Cobersystem – Soluções em Coberturas',
-  image: 'https://www.coberturapolicarbonato.com.br/logo-horizontal-new.svg',
-  '@id': 'https://www.coberturapolicarbonato.com.br',
+  '@id': 'https://www.coberturapolicarbonato.com.br/#localbusiness',
+  name: 'Cobersystem',
+  alternateName: 'Cobersystem Soluções em Coberturas de Policarbonato',
+  description: 'Especialista em coberturas retráteis e abre e fecha em policarbonato e alumínio em São Paulo e interior paulista. Coberturas motorizadas, telhados retráteis e pergolados bioclimáticos sob medida.',
   url: 'https://www.coberturapolicarbonato.com.br',
-  telephone: '+55-11-94361-5079',
+  telephone: '+5511943615079',
   email: 'vendas@cobersystem.com.br',
   priceRange: '$$',
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'São Paulo',
-    addressRegion: 'SP',
-    addressCountry: 'BR',
-  },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: -23.5505,
-    longitude: -46.6333,
-  },
+  currenciesAccepted: 'BRL',
+  paymentAccepted: 'Pix, Cartão de Crédito, Transferência Bancária',
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
@@ -219,27 +221,78 @@ export const localBusinessSchema: LocalBusinessSchema = {
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: ['Saturday'],
       opens: '08:00',
-      closes: '17:00',
+      closes: '12:00',
     },
   ],
   areaServed: [
     { '@type': 'City', name: 'São Paulo' },
     { '@type': 'City', name: 'Guarulhos' },
+    { '@type': 'City', name: 'Campinas' },
     { '@type': 'City', name: 'Santo André' },
     { '@type': 'City', name: 'São Bernardo do Campo' },
-    { '@type': 'City', name: 'Campinas' },
-    { '@type': 'City', name: 'Sorocaba' },
     { '@type': 'City', name: 'Osasco' },
-    { '@type': 'City', name: 'Barueri' },
-    { '@type': 'City', name: 'São Caetano do Sul' },
-    { '@type': 'City', name: 'Diadema' },
-    { '@type': 'City', name: 'Taboão da Serra' },
+    { '@type': 'City', name: 'Sorocaba' },
+    { '@type': 'City', name: 'Jundiaí' },
+    { '@type': 'City', name: 'Americana' },
+    { '@type': 'City', name: 'São José dos Campos' },
+    { '@type': 'City', name: 'Ribeirão Preto' },
+    { '@type': 'City', name: 'Bauru' },
+    { '@type': 'City', name: 'São Carlos' },
+    { '@type': 'City', name: 'Indaiatuba' },
+    { '@type': 'City', name: 'Valinhos' },
+    { '@type': 'City', name: 'Vinhedo' },
+    { '@type': 'City', name: 'Sumaré' },
+    { '@type': 'City', name: 'Atibaia' },
+    { '@type': 'City', name: 'Bragança Paulista' },
+    { '@type': 'City', name: 'Mogi das Cruzes' },
+    { '@type': 'City', name: 'Jandira' },
+    { '@type': 'City', name: 'Itatiba' },
+    { '@type': 'City', name: 'Paulínia' },
+    { '@type': 'City', name: 'Salto' },
+    { '@type': 'City', name: 'Itu' },
+    { '@type': 'City', name: 'Limeira' },
   ],
-  hasMap: 'https://share.google/Mqi0TYJoGCN7QGDo6',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Coberturas em Policarbonato',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Cobertura Retrátil de Policarbonato',
+          url: 'https://www.coberturapolicarbonato.com.br/produtos/cobertura-retratil',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Cobertura Abre e Fecha',
+          url: 'https://www.coberturapolicarbonato.com.br/produtos/cobertura-abre-e-fecha',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Cobertura Fixa em Policarbonato',
+          url: 'https://www.coberturapolicarbonato.com.br/produtos/cobertura-policarbonato',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Pergolado Bioclimático',
+          url: 'https://www.coberturapolicarbonato.com.br/servicos/pergolado-bioclimatico',
+        },
+      },
+    ],
+  },
   sameAs: [
+    'https://www.facebook.com/profile.php?id=100083596136158',
     'https://www.instagram.com/cobersystem',
-    'https://www.youtube.com/@cobersystem',
-    'https://share.google/Mqi0TYJoGCN7QGDo6',
   ],
 };
 
