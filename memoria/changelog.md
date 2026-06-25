@@ -2,6 +2,26 @@
 
 ---
 
+## 2026-06-25 — feat(n8n): bloco GMB Insights nos relatórios semanais
+
+### O que foi feito
+- Adicionados **3 novos nodes GMB** em ambos os workflows:
+  - `Token GMB` (HTTP Request — OAuth2 refresh, mesmo padrão de Token GSC/GA4)
+  - `GMB - Buscar Insights` (Code node — Business Profile Performance API, parâmetros corretos: `dailyMetrics` plural, `daily_range.start_date.*` snake_case, 14 dias para comparativo)
+  - `Formatar GMB` (Code node — lê `multiDailyMetricTimeSeries[0].dailyMetricTimeSeries[].timeSeries.datedValues`, calcula totais semana atual vs anterior, retorna `gmb_impressions`, `gmb_website_clicks`, `gmb_call_clicks`, `gmb_directions` e variações percentuais)
+- **Relatório Semanal (`B29BC2BkRPG8988G`):**
+  - `Combinar Dados` atualizado: `numberInputs` 3 → 4
+  - `Formatar Dados` atualizado: bloco `4️⃣ *GMB — GOOGLE MAPS*` adicionado ao final da mensagem WhatsApp
+  - Todos os 3 triggers (Schedule, Manual CLI, Webhook) conectados ao `Token GMB`
+- **Ciclo Domingo (`1mtMgK2OCnM6KqiS`):**
+  - `Combinar Dados` atualizado: `numberInputs` 3 → 4
+  - `Comparar` atualizado: `curBase.gmb` adicionado ao objeto de baseline, linhas GMB incluídas no texto de comparativo
+  - `Schedule Domingo 20h` conectado ao `Token GMB`
+- API GMB Performance validada diretamente: retorna 7 métricas, 14 dias, estrutura `datedValues` confirmada
+- Ambos os workflows ativos e GSC+GA4+Ads intactos
+
+---
+
 ## 2026-06-25 — feat(n8n): workflow alerta review negativa GMB
 
 ### O que foi feito
