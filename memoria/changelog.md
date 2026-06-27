@@ -1393,3 +1393,43 @@ Inserido node "Token GA4" nos 2 workflows principais, que troca o `GOOGLE_REFRES
 - `app/blog/[slug]/page.tsx`: link interno adicionado em cobertura-abre-fecha-vantagens
 - `app/produtos/cobertura-retratil/page.tsx`: parágrafo semântico adicionado após H1
 - Deploy: commit 13fc253 (manual via VPS)
+
+---
+
+## 2026-06-27 — Diagnóstico e correção dos workflows n8n GMB Posts + Alerta Reviews
+
+### CAUSA RAIZ IDENTIFICADA
+
+**Dois bugs simultâneos:**
+
+**Bug 1 — `$helpers is not defined` (crítico):**
+- Esta versão do n8n usa task runner isolado para Code nodes
+- `$helpers.httpRequest()` não está disponível no ambiente do task runner
+- Afetou os dois workflows: `H15y7ESgezYxAS8s` e `wikzUUqYstbwizU0`
+- Evidência no log: `"errorMessage":"$helpers is not defined [line 27]"` (Posts) e `[line 7]` (Alerta)
+- O workflow de Posts **executou na sexta 26/06 às 12h BRT** mas **falhou no Code node**
+
+**Bug 2 — Cron com timezone errado (GMB Posts):**
+- `GENERIC_TIMEZONE=America/Sao_Paulo` faz o n8n interpretar cron em horário BRT
+- `0 12 * * 1,3,5` = meio-dia BRT (não 9h BRT como pretendido)
+- Deveria ser `0 9 * * 1,3,5` para disparar às 9h BRT
+
+### CORREÇÕES APLICADAS
+
+**Workflow GMB Posts Automáticos (`H15y7ESgezYxAS8s`):**
+- Code node: `$helpers.httpRequest()` → `fetch()` (compatível com task runner)
+- Cron: `0 12 * * 1,3,5` → `0 9 * * 1,3,5` (9h BRT correto)
+
+**Workflow GMB - Alerta Review Negativa (`wikzUUqYstbwizU0`):**
+- Code node: `$helpers.httpRequest()` → `fetch()` (compatível com task runner)
+- Cron 0 */4 * * * mantido (correto)
+
+### VALIDAÇÃO
+- OAuth token: OK (access_token obtido com sucesso)
+- GMB API posts: OK (3 posts retornados)
+- GMB API reviews: OK (3 reviews retornadas)
+- Ambos workflows: active=True, sem $helpers, com fetch()
+
+### PRÓXIMOS DISPAROS
+- GMB Posts: Segunda 29/06 às 9h BRT | Quarta 01/07 | Sexta 03/07
+- Alerta Reviews: a cada 4h (próximo 20h BRT hoje)
