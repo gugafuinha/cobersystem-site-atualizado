@@ -31,7 +31,7 @@ const schemaLocalBusiness = {
   description:
     'Especialista em cobertura retrátil abre e fecha com atendimento em todo o estado de São Paulo, incluindo Grande SP e interior paulista.',
   url: BASE,
-  telephone: '+55-11-98229-5079',
+  telephone: '+55-11-94361-5079',
   image: `${BASE}/images/logo-cobersystem.png`,
   priceRange: 'R$8.000 – R$80.000',
   areaServed: {
@@ -163,7 +163,7 @@ export default function InteriorHubPage() {
                   Solicitar Orçamento
                 </Link>
                 <a
-                  href="https://wa.me/5511982295079?text=Ol%C3%A1%21+Quero+saber+mais+sobre+cobertura+retr%C3%A1til+para+minha+cidade+no+interior+de+SP"
+                  href="https://wa.me/5511943615079?text=Ol%C3%A1%21+Quero+saber+mais+sobre+cobertura+retr%C3%A1til+para+minha+cidade+no+interior+de+SP"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block bg-green-500 text-white px-8 py-4 rounded-lg font-semibold text-base hover:bg-green-600 transition shadow-md text-center"
@@ -325,7 +325,7 @@ export default function InteriorHubPage() {
                 Solicitar Orçamento Online
               </Link>
               <a
-                href="https://wa.me/5511982295079?text=Ol%C3%A1%21+Vim+pelo+site+e+quero+saber+se+voc%C3%AAs+atendem+minha+cidade+no+interior+de+SP"
+                href="https://wa.me/5511943615079?text=Ol%C3%A1%21+Vim+pelo+site+e+quero+saber+se+voc%C3%AAs+atendem+minha+cidade+no+interior+de+SP"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-400 text-white px-8 py-4 rounded-lg font-semibold hover:bg-green-500 transition shadow-lg"

@@ -232,7 +232,7 @@ Fale com nossa equipe e receba uma estimativa personalizada para o seu projeto e
 Sem visita obrigatória na primeira conversa — comece pelo WhatsApp com fotos e medidas aproximadas.
 
 Botão 1: **Solicitar Orçamento Online** → `/orcamento`
-Botão 2: **Chamar no WhatsApp** → `https://wa.me/5511982295079?text=Olá!+Vim+pelo+site+e+quero+orçamento+de+cobertura+retrátil+em+{cidade}`
+Botão 2: **Chamar no WhatsApp** → `https://wa.me/5511943615079?text=Olá!+Vim+pelo+site+e+quero+orçamento+de+cobertura+retrátil+em+{cidade}`
 
 ---
 
@@ -250,7 +250,7 @@ Botão 2: **Chamar no WhatsApp** → `https://wa.me/5511982295079?text=Olá!+Vim
     "@type": "LocalBusiness",
     "name": "Cobersystem",
     "url": "https://www.coberturapolicarbonato.com.br",
-    "telephone": "+55-11-98229-5079",
+    "telephone": "+55-11-94361-5079",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "São Paulo",

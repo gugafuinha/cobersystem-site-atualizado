@@ -8,8 +8,8 @@ import WhatsAppLink from '@/components/WhatsAppLink';
 
 const PHONE = '(11) 94361-5079';
 const PHONE_HREF = 'tel:+5511943615079';
-const WA_HERO  = 'https://wa.me/5511982295079?text=Ol%C3%A1%21+Vim+pelo+Google+e+quero+um+or%C3%A7amento+de+cobertura';
-const WA_FINAL = 'https://wa.me/5511982295079?text=Ol%C3%A1%21+Vim+pelo+Google+e+quero+um+or%C3%A7amento+de+cobertura';
+const WA_HERO  = 'https://wa.me/5511943615079?text=Ol%C3%A1%21+Vim+pelo+Google+e+quero+um+or%C3%A7amento+de+cobertura';
+const WA_FINAL = 'https://wa.me/5511943615079?text=Ol%C3%A1%21+Vim+pelo+Google+e+quero+um+or%C3%A7amento+de+cobertura';
 const GBP_URL  = 'https://share.google/Mqi0TYJoGCN7QGDo6';
 
 function trackWaHero() {
@@ -364,7 +364,7 @@ export default function LpAreaGourmet() {
                 💬 Falar no WhatsApp
               </a>
               <WhatsAppLink
-                href="https://wa.me/5511982295079?text=Ol%C3%A1%21+Vim+pelo+Google+e+quero+um+or%C3%A7amento+de+cobertura"
+                href="https://wa.me/5511943615079?text=Ol%C3%A1%21+Vim+pelo+Google+e+quero+um+or%C3%A7amento+de+cobertura"
                 location="lp-area-gourmet-cta-final"
                 serviceSlug="cobertura-area-gourmet"
                 className="inline-flex items-center justify-center bg-white text-blue-800 hover:bg-blue-50 font-extrabold px-8 py-5 rounded-xl text-lg transition"

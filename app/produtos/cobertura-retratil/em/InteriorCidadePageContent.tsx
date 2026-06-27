@@ -15,7 +15,7 @@ function buildServiceSchema(c: CidadeInteriorRetratil) {
       '@type': 'LocalBusiness',
       name: 'Cobersystem',
       url: BASE,
-      telephone: '+55-11-98229-5079',
+      telephone: '+55-11-94361-5079',
       '@id': `${BASE}/#local-business`,
       address: {
         '@type': 'PostalAddress',
@@ -175,7 +175,7 @@ const FAQS_GENERICAS = (cidade: string, distancia: number, tempo: string) => [
 
 export default function InteriorCidadePageContent({ cidade }: { cidade: CidadeInteriorRetratil }) {
   const pageUrl = `${BASE}/produtos/cobertura-retratil/em/${cidade.slug}`;
-  const waLink = `https://wa.me/5511982295079?text=Ol%C3%A1%21+Quero+um+or%C3%A7amento+de+cobertura+retr%C3%A1til+em+${encodeURIComponent(cidade.nome)}`;
+  const waLink = `https://wa.me/5511943615079?text=Ol%C3%A1%21+Quero+um+or%C3%A7amento+de+cobertura+retr%C3%A1til+em+${encodeURIComponent(cidade.nome)}`;
   const allFaqs = [...cidade.faq_geo, ...FAQS_GENERICAS(cidade.nome, cidade.distancia_sp_km, cidade.tempo_deslocamento)];
 
   return (
