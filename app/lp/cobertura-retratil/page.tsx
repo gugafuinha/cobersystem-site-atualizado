@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { trackGoogleAdsConversion, CONVERSION_LABELS } from '@/components/GoogleAds';
-import { trackCTAClick, trackPhoneClick } from '@/components/GoogleAnalytics';
+import { trackCTAClick, trackPhoneClick, trackWhatsAppLead } from '@/components/GoogleAnalytics';
 import WhatsAppLink from '@/components/WhatsAppLink';
 
 const PHONE = '(11) 94361-5079';
@@ -15,11 +15,13 @@ const GBP_URL    = 'https://share.google/Mqi0TYJoGCN7QGDo6';
 function trackWaHero() {
   trackGoogleAdsConversion(CONVERSION_LABELS.WHATSAPP_CLICK);
   trackCTAClick('LP Retrátil — WhatsApp Hero');
+  trackWhatsAppLead({ location: 'lp-retratil-hero' });
 }
 
 function trackWaFinal() {
   trackGoogleAdsConversion(CONVERSION_LABELS.WHATSAPP_CLICK);
   trackCTAClick('LP Retrátil — WhatsApp Final');
+  trackWhatsAppLead({ location: 'lp-retratil-final' });
 }
 
 

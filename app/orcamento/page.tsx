@@ -4,7 +4,7 @@ import { useState, type FormEvent, type MouseEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import { trackGoogleAdsConversion, CONVERSION_LABELS } from '@/components/GoogleAds';
-import { trackWhatsAppLead } from '@/components/GoogleAnalytics';
+import { trackWhatsAppLead, trackFormSubmit } from '@/components/GoogleAnalytics';
 import { trackMetaLead } from '@/components/MetaPixel';
 
 const WHATSAPP_NUMBER = '5511943615079';
@@ -118,6 +118,7 @@ ${formData.mensagem.trim() || '(sem mensagem adicional)'}
     const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensagem)}`;
 
     trackGoogleAdsConversion(CONVERSION_LABELS.FORM_SUBMIT);
+    trackFormSubmit();
     trackMetaLead();
 
     const proceed = () => {
