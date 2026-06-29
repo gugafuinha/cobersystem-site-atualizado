@@ -1482,3 +1482,18 @@ Inserido node "Token GA4" nos 2 workflows principais, que troca o `GOOGLE_REFRES
 - FAQ com 6 perguntas (gera FAQPage schema automaticamente)
 - 11 links internos (todos 7 obrigatórios incluídos)
 - Build: 199 páginas (198+1) sem erros
+
+## [2026-06-28] Post #2 blog + correção imagem post #1
+
+### Blog: Correção post #1 (cobertura-retratil-preco-m2-sao-paulo)
+- `imagem`: corrigido de `/images/blog/cobertura-retratil-guia-completo.jpg` → `/images/blog/cobertura-retratil-preco-m2-sao-paulo.jpg`
+- `data`: corrigido de `2026-06-28` → `2026-06-25`
+- Imagens copiadas de `.jpg.png` para `.jpg` para ambos os posts
+
+### Blog: Novo post #2 (cobertura-para-jardim-de-inverno-tipos-materiais-precos)
+- Slug: `cobertura-para-jardim-de-inverno-tipos-materiais-precos`
+- Título: "Cobertura para Jardim de Inverno: Tipos, Materiais e Preços [2026]"
+- Data: 2026-06-28 | Categoria: Tipos e Preços
+- 1912 palavras | 6 perguntas FAQ (FAQPage schema automático)
+- Todos os 7 links internos obrigatórios presentes
+- Imagem: `/images/blog/cobertura-para-jardim-de-inverno.jpg`
