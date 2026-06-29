@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import blogPosts from '@/content/blog-posts.json';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import { blogImageObjectPositionClass } from '@/lib/blog-image';
 
 type BlogPost = {
   slug: string;
@@ -13,6 +14,7 @@ type BlogPost = {
   data: string;
   categoria: string;
   imagem: string;
+  imagePosition?: string;
   palavrasChave: string[];
   conteudo: {
     introducao: string;
@@ -419,7 +421,7 @@ export default async function BlogPostPage(
                 src={artigo.imagem}
                 alt={artigo.titulo}
                 fill
-                className="object-cover"
+                className={`object-cover ${blogImageObjectPositionClass(artigo.imagePosition)}`}
                 sizes="(max-width: 768px) 100vw, 896px"
                 priority
               />

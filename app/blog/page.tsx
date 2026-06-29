@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import blogPostsJson from '@/content/blog-posts.json';
+import { blogImageObjectPositionClass } from '@/lib/blog-image';
 
 export const metadata: Metadata = {
   title: "Blog | Cobertura Retrátil em Policarbonato | Dicas e Informações",
@@ -19,6 +20,7 @@ type ArtigoListagem = {
   data: string;
   categoria: string;
   imagem: string;
+  imagePosition?: string;
 };
 
 const artigos = Object.values(
@@ -55,7 +57,7 @@ export default function Blog() {
                     src={artigo.imagem}
                     alt={artigo.titulo}
                     fill
-                    className="object-cover"
+                    className={`object-cover ${blogImageObjectPositionClass(artigo.imagePosition)}`}
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     loading="lazy"
                   />

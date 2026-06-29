@@ -1,11 +1,13 @@
 import Link from 'next/link';
 import OptimizedImage from './OptimizedImage';
 import { trackCTAClick } from './GoogleAnalytics';
+import { blogImageObjectPositionClass } from '@/lib/blog-image';
 
 interface Artigo {
   slug: string;
   titulo: string;
   imagem: string;
+  imagePosition?: string;
   categoria: string;
   data: string;
 }
@@ -42,7 +44,7 @@ export default function RelatedArticles({ currentSlug, artigos, maxItems = 3 }: 
                 alt={artigo.titulo}
                 width={400}
                 height={300}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                className={`w-full h-full object-cover ${blogImageObjectPositionClass(artigo.imagePosition)} group-hover:scale-110 transition-transform duration-300`}
               />
             </div>
             <div className="p-4">
