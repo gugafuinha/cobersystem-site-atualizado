@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import blogPosts from '@/content/blog-posts.json';
 import Breadcrumbs from '@/components/Breadcrumbs';
-import { blogImageObjectPositionClass } from '@/lib/blog-image';
+import { blogImageFitClass } from '@/lib/blog-image';
 
 type BlogPost = {
   slug: string;
@@ -15,6 +15,7 @@ type BlogPost = {
   categoria: string;
   imagem: string;
   imagePosition?: string;
+  imageContain?: boolean;
   palavrasChave: string[];
   conteudo: {
     introducao: string;
@@ -416,12 +417,16 @@ export default async function BlogPostPage(
             )}
 
             {/* Imagem destacada */}
-            <div className="relative h-96 mb-8 rounded-lg overflow-hidden">
+            <div
+              className={`relative mb-8 rounded-lg overflow-hidden ${
+                artigo.imageContain ? 'h-[32rem] bg-[#f8f8f8]' : 'h-96'
+              }`}
+            >
               <Image
                 src={artigo.imagem}
                 alt={artigo.titulo}
                 fill
-                className={`object-cover ${blogImageObjectPositionClass(artigo.imagePosition)}`}
+                className={blogImageFitClass(artigo.imageContain, artigo.imagePosition)}
                 sizes="(max-width: 768px) 100vw, 896px"
                 priority
               />

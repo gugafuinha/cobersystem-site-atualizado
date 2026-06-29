@@ -8,3 +8,11 @@ export function blogImageObjectPositionClass(imagePosition?: string): string {
       return 'object-center';
   }
 }
+
+export function blogImageFitClass(imageContain?: boolean, imagePosition?: string): string {
+  if (imageContain) {
+    return 'object-contain object-center';
+  }
+
+  return `object-cover ${blogImageObjectPositionClass(imagePosition)}`;
+}

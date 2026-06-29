@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import blogPostsJson from '@/content/blog-posts.json';
-import { blogImageObjectPositionClass } from '@/lib/blog-image';
+import { blogImageFitClass } from '@/lib/blog-image';
 
 export const metadata: Metadata = {
   title: "Blog | Cobertura Retrátil em Policarbonato | Dicas e Informações",
@@ -21,6 +21,7 @@ type ArtigoListagem = {
   categoria: string;
   imagem: string;
   imagePosition?: string;
+  imageContain?: boolean;
 };
 
 const artigos = Object.values(
@@ -51,13 +52,13 @@ export default function Blog() {
                 href={`/blog/${artigo.slug}`}
                 className="group"
               >
-                <article className="relative rounded-lg overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 h-80">
+                <article className={`relative rounded-lg overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 h-80 ${artigo.imageContain ? 'bg-[#f8f8f8]' : ''}`}>
                   {/* Imagem de fundo via Next.js Image (AVIF/WebP automático) */}
                   <Image
                     src={artigo.imagem}
                     alt={artigo.titulo}
                     fill
-                    className={`object-cover ${blogImageObjectPositionClass(artigo.imagePosition)}`}
+                    className={blogImageFitClass(artigo.imageContain, artigo.imagePosition)}
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     loading="lazy"
                   />

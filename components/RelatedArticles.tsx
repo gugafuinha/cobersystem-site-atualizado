@@ -1,13 +1,14 @@
 import Link from 'next/link';
 import OptimizedImage from './OptimizedImage';
 import { trackCTAClick } from './GoogleAnalytics';
-import { blogImageObjectPositionClass } from '@/lib/blog-image';
+import { blogImageFitClass } from '@/lib/blog-image';
 
 interface Artigo {
   slug: string;
   titulo: string;
   imagem: string;
   imagePosition?: string;
+  imageContain?: boolean;
   categoria: string;
   data: string;
 }
@@ -38,13 +39,13 @@ export default function RelatedArticles({ currentSlug, artigos, maxItems = 3 }: 
             onClick={() => trackCTAClick(`Artigo Relacionado: ${artigo.titulo}`)}
             className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition group"
           >
-            <div className="relative h-48 overflow-hidden">
+            <div className={`relative h-48 overflow-hidden ${artigo.imageContain ? 'bg-[#f8f8f8]' : ''}`}>
               <OptimizedImage
                 src={artigo.imagem}
                 alt={artigo.titulo}
                 width={400}
                 height={300}
-                className={`w-full h-full object-cover ${blogImageObjectPositionClass(artigo.imagePosition)} group-hover:scale-110 transition-transform duration-300`}
+                className={`w-full h-full ${blogImageFitClass(artigo.imageContain, artigo.imagePosition)} ${artigo.imageContain ? '' : 'group-hover:scale-110 transition-transform duration-300'}`}
               />
             </div>
             <div className="p-4">
