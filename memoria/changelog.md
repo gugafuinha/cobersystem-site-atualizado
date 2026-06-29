@@ -1463,3 +1463,22 @@ Inserido node "Token GA4" nos 2 workflows principais, que troca o `GOOGLE_REFRES
 - `app/orcamento/page.tsx`: `handleSubmit` agora chama `trackFormSubmit()` para registrar `submit` no GA4
 
 **Build:** ✓ sem erros | 198 páginas geradas
+
+---
+
+## 2026-06-28 — Novo post blog: Preço por m² cobertura retrátil
+
+**Arquivo:** `content/blog-posts.json`
+**Slug:** `cobertura-retratil-preco-m2-sao-paulo`
+**Rota:** `/blog/cobertura-retratil-preco-m2-sao-paulo`
+**Commit:** `3d2e63a`
+
+**Motivação (dados GSC):** Query "cobertura retrátil preço m2" com 48 impressões/mês, posição 8.4, CTR 2.08% — intenção transacional sem post dedicado de preço.
+
+**Conteúdo:**
+- Título: "Cobertura Retrátil: Preço por m² em SP [Tabela 2026]"
+- 1.796 palavras | 7 seções | categoria: Preços
+- Tabela de preços: R$800-R$1.700/m² por tipo de material
+- FAQ com 6 perguntas (gera FAQPage schema automaticamente)
+- 11 links internos (todos 7 obrigatórios incluídos)
+- Build: 199 páginas (198+1) sem erros
