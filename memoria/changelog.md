@@ -1433,3 +1433,33 @@ Inserido node "Token GA4" nos 2 workflows principais, que troca o `GOOGLE_REFRES
 ### PRÓXIMOS DISPAROS
 - GMB Posts: Segunda 29/06 às 9h BRT | Quarta 01/07 | Sexta 03/07
 - Alerta Reviews: a cada 4h (próximo 20h BRT hoje)
+
+---
+
+## 2026-06-28 — Correção GMB Insights + gap de tracking GA4 nas LPs
+
+### CORREÇÃO 1 — GMB Insights zerado nos relatórios semanais
+
+**Problema:** Bloco GMB do relatório exibia todos os valores como 0.
+**Causa raiz:** Code node "GMB - Buscar Insights" usava `$helpers.httpRequest()` (indisponível no task runner). O `try/catch` capturava silenciosamente o erro retornando `{ multiDailyMetricTimeSeries: [] }`, causando zeros no Formatar GMB.
+**Evidência:** Node completava em ~120ms (erro local) vs 1.75s para chamada real à API.
+
+**Correção aplicada:**
+- `B29BC2BkRPG8988G` (Relatório Semanal): `$helpers.httpRequest()` → `fetch()`
+- `1mtMgK2OCnM6KqiS` (Ciclo Domingo): idem
+
+**Validação:** API retorna dados reais:
+- Impressões semana atual: 12 (-64% vs anterior)
+- Ligações: 2 | Rotas: 0 | Cliques site: 0
+
+### CORREÇÃO 2 — Gap de observabilidade GA4 nas LPs pagas
+
+**Problema:** LPs `/lp/cobertura-retratil` e `/lp/area-gourmet` disparavam apenas Google Ads conversion + CTA click, sem registrar `whatsapp_click` no GA4.
+**Impacto:** Cliques de tráfego pago não apareciam na métrica `whatsapp_click` do GA4.
+
+**Correções aplicadas (commit 453c1ec):**
+- `app/lp/cobertura-retratil/page.tsx`: `trackWaHero/Final` agora chamam `trackWhatsAppLead({ location: 'lp-retratil-hero/final' })`
+- `app/lp/area-gourmet/page.tsx`: idem com `location: 'lp-gourmet-hero/final'`
+- `app/orcamento/page.tsx`: `handleSubmit` agora chama `trackFormSubmit()` para registrar `submit` no GA4
+
+**Build:** ✓ sem erros | 198 páginas geradas
