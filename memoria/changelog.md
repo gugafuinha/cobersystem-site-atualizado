@@ -2,6 +2,35 @@
 
 ---
 
+## 2026-07-11 — fix(infra): rota Traefik da Evolution API restaurada (Ana muda)
+
+### Problema
+- Ana recebia e processava mensagens normalmente (Webhook → Claude → resposta gerada), mas **falhava sempre no último passo** — envio via node "Evolution API" retornava HTTP 502 "Bad gateway / Service is not reachable".
+- Confirmado via análise das execuções reais no n8n (execuções 4494, 4495, 4496 — mensagens do grupo "Chat Ana" do dia 10/07 23:52-23:56): fluxo completo rodava até o fim (`Webhook → If → Code0 → Wait → Code1 → If1 → Code1b → If2 → Claude API → Code2 → Evolution API`), Claude gerava a resposta correta, mas o envio falhava com 502.
+- Afetava **todo envio da Ana**, não só o grupo: mensagens para clientes (`5511986206244@s.whatsapp.net`) também falhavam.
+
+### Causa raiz
+- Durante a crise de crash loop do n8n (06-08/07), corrigimos VIPs quebradas do Docker Swarm no Traefik (`/etc/easypanel/traefik/config/main.yaml`) trocando `http://service:porta` por `http://tasks.service:porta` para `easypanel` e `automacao_n8n`.
+- A rota da **Evolution API** (`automacao_evolution-api-0`) ficou de fora dessa correção e continuou apontando para a VIP morta (`10.11.16.28` — "Host is unreachable"), causando 502 em toda chamada da URL pública `automacao-evolution-api.fmjbtn.easypanel.host`.
+
+### Correção aplicada
+- Backup do config: `/root/n8n_recovery/traefik_backups/main.yaml.bak.20260711_031646`
+- 1 linha alterada em `/etc/easypanel/traefik/config/main.yaml`: `"url": "http://automacao_evolution-api:8080/"` → `"url": "http://tasks.automacao_evolution-api:8080/"`
+- Traefik recarregou automaticamente (config dinâmico com watch, sem restart/downtime)
+
+### Validação
+- URL pública: `502` → `200` (raiz) / envio real de teste no grupo "Chat Ana" → `HTTP 201`, mensagem entregue no WhatsApp
+- Logs do Traefik confirmam requests reais chegando via `tasks.automacao_evolution-api:8080` sem erro
+- Serviço Evolution API: `1/1` Running (nunca esteve fora do ar — só a rota pública estava quebrada)
+
+### Melhorias identificadas (não aplicadas, aguardando aprovação)
+- Nodes de saída da Ana (`Evolution API`, `Evolution GetBase64`, `Notifica Mari`, `Notifica Gustavo`, `HTTP Enviar`) usam URL pública em vez do endereço interno do Swarm — expõe a comunicação interna a esse tipo de falha de roteamento externo
+- Nenhum `retryOnFail` configurado nesses nodes — uma falha momentânea derruba a mensagem inteira sem nova tentativa
+- Sem alerta automático quando o envio falha (158 execuções em erro acumuladas sem notificação)
+- Segredos (API key OpenAI, apikey Evolution) hardcoded nos nodes em vez de credentials do n8n
+
+---
+
 ## 2026-06-25 — feat(n8n): bloco GMB Insights nos relatórios semanais
 
 ### O que foi feito
