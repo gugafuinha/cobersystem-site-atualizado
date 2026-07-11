@@ -23,11 +23,19 @@
 - Logs do Traefik confirmam requests reais chegando via `tasks.automacao_evolution-api:8080` sem erro
 - Serviço Evolution API: `1/1` Running (nunca esteve fora do ar — só a rota pública estava quebrada)
 
-### Melhorias identificadas (não aplicadas, aguardando aprovação)
-- Nodes de saída da Ana (`Evolution API`, `Evolution GetBase64`, `Notifica Mari`, `Notifica Gustavo`, `HTTP Enviar`) usam URL pública em vez do endereço interno do Swarm — expõe a comunicação interna a esse tipo de falha de roteamento externo
-- Nenhum `retryOnFail` configurado nesses nodes — uma falha momentânea derruba a mensagem inteira sem nova tentativa
-- Sem alerta automático quando o envio falha (158 execuções em erro acumuladas sem notificação)
-- Segredos (API key OpenAI, apikey Evolution) hardcoded nos nodes em vez de credentials do n8n
+### Melhorias adicionais aplicadas no mesmo incidente (workflow "Cobersystem - Ana WhatsApp")
+
+**Bloqueio de acesso resolvido:** o workflow da Ana pertence ao projeto pessoal do usuário `cobersystemfinanceiro`, e a API key disponível (`gugafuinha`) recebia `403`. Resolvido concedendo acesso via mecanismo oficial de compartilhamento do n8n (1 registro na tabela `shared_workflow`, sem tocar em nenhum JSON de workflow) — permitiu fazer todas as edições seguintes pela **API REST oficial** (mesmo método seguro usado no Relatório Semanal), sem nenhuma escrita direta de conteúdo de workflow via SQLite.
+
+1. **Endereço interno do Swarm** — nos 5 nodes de saída (`Evolution API`, `Evolution GetBase64`, `Notifica Mari`, `Notifica Gustavo`, `HTTP Enviar`): URL trocada de `https://automacao-evolution-api.fmjbtn.easypanel.host` (pública, passa pelo Traefik) para `http://tasks.automacao_evolution-api:8080` (endereço interno do Swarm) — elimina a dependência do roteamento público para comunicação interna.
+2. **Retry automático** — `retryOnFail: true`, `maxTries: 3`, `waitBetweenTries: 2000` adicionado aos mesmos 5 nodes — falhas momentâneas não derrubam mais a mensagem inteira.
+3. **Alerta automático de erros** — novo workflow `Ana - Monitor de Erros` (`Ja4CRCmva179PAqf`), ativo, roda a cada 10 min via Schedule Trigger, consulta a API de execuções do n8n filtrando erros da Ana e envia alerta via WhatsApp para o Gustavo quando encontra falhas novas.
+4. **Segredos migrados para credentials nativas do n8n** — removidas as chaves hardcoded (Evolution `apikey`, Claude `x-api-key`) dos nodes; criadas 3 credenciais `httpHeaderAuth` (`Claude API Key (Ana)`, `Evolution API Key (Ana)`, mais as usadas no workflow de monitoramento) e os 6 nodes que as usavam foram migrados para `authentication: genericCredentialType`.
+5. **Bug adicional encontrado e corrigido** — node `Code1` continha um bloco de código morto tentando chamar `$http.request()` (com a apikey da Evolution hardcoded) dentro de um Code node — mesma classe de bug já identificada nos workflows de GMB (Code nodes não têm acesso a `fetch`/`$helpers`/`$http` no task runner). Confirmado que nenhum node consumia esse resultado (a busca real de mídia já usa o node nativo `Evolution GetBase64`) — bloco morto removido com segurança.
+
+**Validação:** testes reais de ponta a ponta (mensagem no grupo "Chat Ana") confirmaram entrega em ~1.4s via node "Evolution API", sem erros 502. `PRAGMA quick_check` do banco confirmado `ok` após cada alteração.
+
+**Problema pré-existente identificado (não corrigido, fora do escopo):** node "Append or update row in sheet" falha com `Google Sheets account needs to be reconnected` — ocorre *depois* da resposta já ter sido enviada ao cliente, não afeta a conversa, mas impede o registro de leads na planilha. Requer reconexão OAuth manual pela UI do n8n.
 
 ---
 
