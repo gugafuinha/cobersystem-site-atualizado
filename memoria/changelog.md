@@ -2,6 +2,33 @@
 
 ---
 
+## 2026-07-13 — fix(ads): adicionar 6 negative keywords na campanha Cobersystem - Leads SP
+
+### Contexto
+- Análise de search terms (14d) identificou termos irrelevantes com gasto real
+- "telhado de correr" havia sido removido anteriormente e voltou a aparecer
+
+### Verificação pré-adição (GAQL de leitura)
+- Lidas **65 negativas** existentes — nenhuma duplicata com as 6 a adicionar
+- Lidas **62 positivas** — nenhum conflito encontrado
+- Todas as 6 marcadas como `✅ OK para adicionar`
+
+### Keywords adicionadas via `campaignCriteria:mutate`
+| Keyword | Match type | Resource name (critério) |
+|---------|-----------|--------------------------|
+| "telhado de correr" | PHRASE | 23879601113~337154238362 |
+| "sanduiche" | BROAD | 23879601113~268190017 |
+| "telha sanduiche" | PHRASE | 23879601113~296428701822 |
+| "telha sanduíche" | PHRASE | 23879601113~299823472733 |
+| "deck retratil" | PHRASE | 23879601113~323075918056 |
+| "deck retrátil" | PHRASE | 23879601113~387937819131 |
+
+### Estado final
+- Total de negative keywords na campanha: **71** (era 65)
+- Workflow temporário criado, executado e **deletado** (HTTP 404 confirmado)
+
+---
+
 ## 2026-07-13 — feat(ads): migração de lance TARGET_SPEND → MAXIMIZE_CONVERSIONS
 
 ### Contexto
