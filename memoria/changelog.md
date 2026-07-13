@@ -2,6 +2,25 @@
 
 ---
 
+## 2026-07-13 — test/fix(n8n): execução real Auto-Resposta Reviews Positivas + correção de notificação em lote
+
+### Execução real (workflow `mtCyWCcNUgBIvx5D`)
+- Objetivo: responder todas as avaliações 4★/5★ do GMB Cobersystem ainda sem resposta e notificar o Gustavo (5511982295079)
+- Como a API pública do n8n não executa workflow agendado diretamente e o Evolution API só é acessível pela rede interna do n8n, o disparo real foi feito via workflow temporário (webhook) reutilizando os nós idênticos do principal (Refresh Token GMB → Buscar Reviews → Claude Haiku (mesmo prompt/credencial "Claude API Key (Ana)") → GMB Publicar Resposta → WhatsApp), com filtro = todas 4★/5★ sem `reviewReply`
+- **7 avaliações 5★ respondidas e publicadas no Google** (confirmado por releitura das reviews — todas `reviewReply` presente): Murilo Fernandes Carvalho, Gabrielly Celina, Wilson Domingues, Lucila Mendonça, Adrieli Santana, Dayane Fernandes, Lucas São Leandro
+- Avaliação negativa 1★ (Johnny) **não tocada** (já tinha resposta e é negativa)
+
+### Bug encontrado e corrigido
+- O nó `Montar Notif Positiva` era Code em modo "run once for all items" e retornava **1 único item** → em lote de 7, só 1 notificação WhatsApp era gerada (só do 1º review). Em operação normal (1 review novo por execução de 4h) o efeito não aparecia
+- Correção aplicada no principal: nó reescrito para iterar `$input.all()` e mapear 1 notificação por review (`items.map`), suportando lote. Cursor `staticData.global.lastPositiveTime` avançado para a review mais recente (2026-07-13T17:11:04Z) para não reprocessar. Workflow permanece ativo
+- As 6 notificações faltantes (Gabrielly, Wilson, Lucila, Adrieli, Dayane, Lucas) foram enviadas manualmente ao Gustavo via notificador temporário → total 7 notificações (1 por resposta), todas aceitas pelo Evolution (status PENDING)
+
+### Limpeza
+- Workflows temporários (runner + notificador) removidos; nenhum TEMP restante
+- Ana (`2cpXVNWqOdmrEpFn`) não tocada
+
+---
+
 ## 2026-07-13 — fix(seo): encurtar meta title das 9 cidades do Lote 3
 
 ### O que foi feito
