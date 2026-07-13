@@ -2,6 +2,32 @@
 
 ---
 
+## 2026-07-13 — feat(n8n): Automação 3 — notificação WhatsApp de post GMB publicado
+
+### Contexto
+- Workflow `H15y7ESgezYxAS8s` (GMB Posts Automaticos - 3x semana) publica posts Seg/Qua/Sex 9h BRT
+- Objetivo: avisar o Gustavo no WhatsApp toda vez que um post é publicado (controle/visibilidade)
+
+### Alterações (somente n8n, via API pública — Ana e SQLite intocados)
+- Adicionados 2 nodes após `GMB - Publicar Post`:
+  - `Montar Notif Post` (Code): monta mensagem a partir da resposta do publish (`state`, `searchUrl`) + conteúdo do post (`summary`, `postUrl`)
+  - `Enviar Notif WhatsApp` (HTTP): reusa o mesmo padrão Evolution API do alerta de reviews
+- Conexões: `GMB - Publicar Post → Montar Notif Post → Enviar Notif WhatsApp`
+- Notificação vai para `5511982295079` via `tasks.automacao_evolution-api:8080` (instância `cobersystem`)
+- Workflow permanece **ativo**
+
+### Validação (dry-run, sem publicar post real no GMB)
+- Lógica de montagem simulada localmente → mensagem correta
+- Workflow de teste descartável (Webhook → Montar Notif → Enviar) criado, ativado, acionado e removido
+- Evolution API retornou `status: PENDING` — WhatsApp de teste entregue com prefixo `[TESTE dry-run]`
+- GMB não foi tocado; nenhum post real publicado
+
+### Próximos passos
+- Aguardando aprovação para Automação 2 (auto-resposta de reviews positivas 4/5★ + notificação)
+- Automação 1 (gestão pós-deploy GSC) pendente de validação de escopo OAuth `webmasters`
+
+---
+
 ## 2026-07-13 — feat(seo): title e meta description reescritos em 11 páginas (CTR)
 
 ### Contexto
