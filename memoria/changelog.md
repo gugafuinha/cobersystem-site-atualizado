@@ -2,6 +2,37 @@
 
 ---
 
+## 2026-07-13 — feat(seo/n8n): Automação 1 — gestão pós-deploy GSC (GitHub Action + n8n)
+
+### Validação OAuth (pré-requisito)
+- Token GSC do MCP tem escopo **`webmasters.readonly`** apenas
+- ✅ URL Inspection, listar sites/sitemaps funcionam | ❌ **reenviar sitemap (PUT)** → 403 `ACCESS_TOKEN_SCOPE_INSUFFICIENT`
+- Decisão (aprovada): implementar **sem reenvio de sitemap** (Google já rebaixa o sitemap diariamente); foco em monitoramento + relatório + fila de indexação manual — 100% legítimo, sem nova credencial
+
+### Parte 1 — GitHub Action (`gugafuinha/cobersystem-site-atualizado`)
+- `.github/workflows/notify-deploy.yml`: dispara em push na `main`, calcula `git diff`, mapeia arquivos→URLs e envia webhook ao n8n (header `x-cober-key`)
+- `.github/scripts/map-changed-urls.mjs`: mapeia `app/**/page.*` → URL concreta; rotas dinâmicas (`[slug]`, `[cidade]`) → template pai; `components/`/`lib/` → `globalChange`; `content/*` → dataFiles; ignora `docs/`, `memoria/`, `.github/`, `public/`
+- Secrets do repo: `N8N_DEPLOY_WEBHOOK_URL`, `N8N_DEPLOY_WEBHOOK_KEY`
+
+### Parte 2 — Workflow n8n `ZFygKr7w15O9YxTP` "GSC - Gestao Pos-Deploy Indexacao" (ativo)
+- **Fluxo A (webhook `POST /webhook/deploy-gsc`)**: Auth (x-cober-key) → Priorizar/Enfileirar → Relatório WhatsApp imediato
+  - Prioridades: **P0** `/lp/*`,`/telhado-retratil-*` · **P1** `/produtos/*`,`/servicos/*` · **P2** `/blog/*` · **P3** `/produtos/*/em/*`
+  - Fila persistida em **Static Data** (dedupe por URL, cap 200)
+- **Fluxo B (schedule diário 9h BRT = cron `0 12 * * *` UTC)**: Refresh Token GSC → Carregar Fila (até 20) → URL Inspection API → Atualizar status → Update WhatsApp (Indexadas/Pendentes + lista p/ indexação manual)
+- Notificações WhatsApp para `5511982295079` (Evolution API)
+
+### Validação (dry-run — workflow temporário, sem ativar o principal)
+- Mapeador testado localmente (estáticas→URL, dinâmicas→template, global, data)
+- Flow A: relatório com paths curtos + prioritárias P0/P1 corretas
+- Flow B: URL Inspection real (home/área-gourmet `PASS`; `/lp/area-gourmet` "unknown to Google")
+- Auth: chave inválida/ausente → **bloqueado, sem envio** (500, nenhuma mensagem)
+- Corrigido: `new URL()` indisponível no sandbox do Code node → substituído por regex
+
+### Limitação conhecida
+- Reenvio de sitemap via API requer novo token com escopo `webmasters` (escrita) — consentimento OAuth do usuário. Não implementado por decisão. Fila de indexação manual cobre a lacuna (limite ~10/dia no GSC UI)
+
+---
+
 ## 2026-07-13 — feat(n8n): Automação 2 — auto-resposta de reviews positivas (GMB + Claude Haiku)
 
 ### Contexto
