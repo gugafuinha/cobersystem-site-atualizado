@@ -246,7 +246,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'jardim-de-inverno-o-que-e-precos':                       `${baseUrl}/images/projetos/jardim-de-inverno-01.png`,
     'cobertura-vidro-ou-policarbonato-comparativo':           `${baseUrl}/images/blog/cobertura-policarbonato-tipos.jpg`,
     'cobertura-automatizada-tipos-precos':                    `${baseUrl}/images/blog/automacao-alexa.jpg`,
-    'cobertura-fixa-vs-retratil-qual-escolher-2026':         `${baseUrl}/images/blog/cobertura-policarbonato-tipos.jpg`,
+    'cobertura-fixa-vs-retratil-qual-escolher-2026':         `${baseUrl}/images/blog/cobertura-fixa-ou-cobertura-retratil.png`,
   };
 
   const blogArticles = Object.entries(blogImageMap).map(([slug, img]) => ({
