@@ -2,6 +2,33 @@
 
 ---
 
+## 2026-07-13 — feat(n8n): Automação 2 — auto-resposta de reviews positivas (GMB + Claude Haiku)
+
+### Contexto
+- Objetivo: responder automaticamente novas avaliações 4/5★ no Google (GMB) com texto gerado por IA e notificar o Gustavo
+- Avaliações negativas (1–3★) continuam **só alertando** no workflow existente `wikzUUqYstbwizU0` (não são respondidas)
+
+### Implementação (novo workflow isolado — Ana `2cpXVNWqOdmrEpFn` intocada)
+- Novo workflow **`mtCyWCcNUgBIvx5D` — "GMB - Auto-Resposta Reviews Positivas"** (ativo)
+- Fluxo: `Schedule (a cada 4h, offset :20) → Refresh Token GMB → Buscar Reviews (10 mais recentes) → Filtrar Positivas Novas → Claude Haiku → Publicar Resposta (GMB) → Montar Notif → Enviar WhatsApp`
+- **Claude**: `claude-haiku-4-5` via HTTP Request, reusando credencial `httpHeaderAuth` "Claude API Key (Ana)" (`zxptBgOmF8qmuKTr`) — mesmo padrão da Ana, sem tocá-la
+- **GMB reply**: `PUT .../reviews/{reviewId}/reply` com `{comment}` (mesmo token OAuth business.manage já usado na leitura)
+- Notificação WhatsApp para `5511982295079` (padrão Evolution API)
+
+### Salvaguardas
+- **Guard de 1ª execução**: inicializa cursor `lastPositiveTime` com a review mais recente e NÃO responde nenhuma histórica (evita responder em massa avaliações antigas)
+- **Skip de já respondidas**: ignora reviews com `reviewReply` presente (nunca responde 2x)
+- Cursor por `updateTime` avança a cada execução; só responde reviews estritamente mais novas
+- Workflow separado do alerta de negativas → zero risco à automação crítica de reviews negativas
+
+### Validação (dry-run — sem publicar resposta real no GMB)
+- Teste real do Claude Haiku via workflow temporário com 3 reviews mock (5★ c/ comentário, 5★ genérica, 4★ sem comentário)
+- Respostas personalizadas, calorosas, em PT-BR, 220–312 chars, assinando "Equipe Cobersystem" — modelo `claude-haiku-4-5-20251001` OK, credencial OK
+- Workflow temporário removido; GMB não foi tocado no teste
+- A primeira resposta real ocorrerá na próxima avaliação positiva **nova** (histórico protegido pelo guard)
+
+---
+
 ## 2026-07-13 — feat(n8n): Automação 3 — notificação WhatsApp de post GMB publicado
 
 ### Contexto
