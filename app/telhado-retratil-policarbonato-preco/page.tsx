@@ -5,9 +5,9 @@ import Image from 'next/image';
 import WhatsAppLink from '@/components/WhatsAppLink';
 
 export const metadata: Metadata = {
-  title: 'Telhado Retrátil Policarbonato Preço 2026 | Tabela por m² | Cobersystem SP',
+  title: 'Telhado Retrátil: Preço por m² em 2026 (Tabela) | SP',
   description:
-    'Telhado retrátil em policarbonato: veja preços reais por m² para 2026. Compacto a partir de R$ 800/m², automação via Alexa. Orçamento grátis em SP. Cobersystem.',
+    'Telhado retrátil de policarbonato a partir de R$800/m² instalado. Tabela de preços por tipo, manual ou automático. Orçamento grátis em 24h.',
   keywords:
     'telhado retrátil policarbonato preço, telhado retrátil preço m2, cobertura retrátil policarbonato preço, telhado que abre e fecha preço, cobertura abre fecha quanto custa',
   alternates: {

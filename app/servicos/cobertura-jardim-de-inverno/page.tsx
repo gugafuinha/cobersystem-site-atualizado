@@ -26,8 +26,8 @@ const WHATSAPP_URL =
 const PRICE_FROM = `A partir de ${formatBRL(COBERSYSTEM_PRICING.fixaCompacto.min)}/m²`;
 
 export const metadata: Metadata = {
-  title: 'Cobertura para Jardim de Inverno | Policarbonato Transparente | Cobersystem SP',
-  description: `Cobertura para jardim de inverno em policarbonato compacto transparente. Luz natural para plantas, controle térmico e proteção contra chuva. ${PRICE_FROM}. Orçamento grátis em SP.`,
+  title: 'Cobertura Jardim de Inverno em SP: Preço e Modelos 2026',
+  description: 'Cobertura retrátil ou fixa para jardim de inverno com luz natural e proteção da chuva. Instalação própria em SP. Visita técnica grátis.',
   keywords:
     'cobertura jardim de inverno, cobertura para jardim de inverno, jardim de inverno policarbonato, cobertura transparente jardim, telhado jardim de inverno, cobertura vidro jardim inverno SP',
   alternates: {

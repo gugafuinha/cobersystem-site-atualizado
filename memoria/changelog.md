@@ -2,6 +2,41 @@
 
 ---
 
+## 2026-07-13 — feat(seo): title e meta description reescritos em 11 páginas (CTR)
+
+### Contexto
+- Diagnóstico via GSC (MCP cobersystem-analytics, 28 dias): posição 5–12, CTR < 5%, impressões > 10
+- CTR médio do grupo ~1,4% vs. 4–8% esperado para essas posições — problema de title/description, não de ranking
+
+### Páginas alteradas (apenas `title` e `description`; H1, conteúdo, rotas e schemas intocados)
+
+**Blog (`content/blog-posts.json`):**
+- `acrilico-ou-policarbonato-qual-melhor`
+- `teto-retratil-automatico-como-funciona-precos`
+- `cobertura-corredor-lateral-casa`
+- `fechamento-de-varanda-tipos-precos`
+- `cobertura-vidro-ou-policarbonato-comparativo`
+- `cobertura-acustica-reduzir-barulho-chuva`
+
+**Produto/Serviço:**
+- `/produtos/cobertura-retratil` e `/servicos/cobertura-area-gourmet` → `lib/seo/page-metadata.ts`
+- `/servicos/cobertura-corredor-lateral`, `/telhado-retratil-policarbonato-preco`, `/servicos/cobertura-jardim-de-inverno` → metadata direta no `page.tsx`
+
+### Padrão aplicado
+- Title ≤ 60 chars (vários estavam entre 68–76, cortados no SERP)
+- Preço/ano/pergunta explícita no title quando a query alvo é transacional ou literal
+- Description ≤ 155 chars com CTA claro
+
+### Validação
+- Build (`npm run build`) sem erro — todas as rotas geradas normalmente
+- `git diff` conferido por arquivo: nenhuma alteração fora de `title`/`description`
+- Impacto estimado: +380 a +500 cliques orgânicos/28d no grupo de páginas
+
+### Pendente
+- Solicitar reindexação das 11 URLs no Google Search Console após deploy
+
+---
+
 ## 2026-07-13 — feat(mcp): tools de ESCRITA no Google Ads (Fase 0 + Fase 1)
 
 ### Objetivo

@@ -16,8 +16,8 @@ const WHATSAPP_URL =
   'https://wa.me/5511943615079?text=Ol%C3%A1!%20Preciso%20de%20or%C3%A7amento%20para%20cobertura%20de%20corredor%20lateral.';
 
 export const metadata: Metadata = {
-  title: "Cobertura para Corredor Lateral | Policarbonato | Cobersystem",
-  description: "Cobertura para corredor lateral em policarbonato. Proteção para passagem lateral da casa. Fixa ou retrátil. Preço e orçamento.",
+  title: "Cobertura para Corredor Lateral: Preço e Instalação em SP",
+  description: "Cobertura de policarbonato para corredor lateral e espaços estreitos. Sob medida, com garantia de 2 anos. Veja preços e peça orçamento grátis.",
   keywords: "cobertura corredor lateral, cobertura lateral casa, cobertura passagem lateral, cobertura corredor preço",
   alternates: {
     canonical: 'https://www.coberturapolicarbonato.com.br/servicos/cobertura-corredor-lateral',

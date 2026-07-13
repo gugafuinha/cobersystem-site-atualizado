@@ -14,8 +14,8 @@ interface PageMetadata {
 export const pageMetadata: Record<string, PageMetadata> = {
   // PRODUTOS
   'cobertura-retratil': {
-    title: 'Cobertura Retrátil de Policarbonato: Preço/m² e Modelos | SP',
-    description: 'Cobertura retrátil que abre e fecha com Alexa e sensor de chuva automático. De R$ 800 a R$ 1.500/m². Instalação em 48h. Garantia 2 anos. Orçamento grátis ☎ (11) 94361-5079',
+    title: 'Cobertura Retrátil em SP: A partir de R$800/m² | Cobersystem',
+    description: 'Cobertura retrátil de policarbonato com instalação em 48h, sensor de chuva e Alexa. Visita técnica gratuita em SP e interior. Orçamento pelo WhatsApp.',
     keywords: ['cobertura retrátil', 'cobertura automática', 'cobertura alexa', 'cobertura sensor chuva', 'cobertura abre fecha'],
     openGraph: {
       title: 'Cobertura Retrátil com Automação via Alexa | Cobersystem',
@@ -59,8 +59,8 @@ export const pageMetadata: Record<string, PageMetadata> = {
 
   // SERVIÇOS
   'cobertura-area-gourmet': {
-    title: 'Cobertura para Área Gourmet | Projeto Completo | SP',
-    description: 'Cobertura completa para área gourmet em policarbonato ou termoacústica. De R$ 12.000 a R$ 25.000 (15-30m²). Projeto grátis, instalação em 3 dias. ☎ (11) 94361-5079',
+    title: 'Cobertura Área Gourmet: A partir de R$800/m² em SP',
+    description: 'Cobertura para área gourmet em policarbonato com sensor de chuva e Alexa. Retrátil ou fixa, instalação em 48h. Orçamento grátis pelo WhatsApp.',
     keywords: ['cobertura area gourmet', 'cobertura churrasqueira', 'teto area gourmet', 'cobertura externa'],
     openGraph: {
       title: 'Cobertura para Área Gourmet Completa | Cobersystem',
