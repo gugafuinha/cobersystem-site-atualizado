@@ -2,6 +2,32 @@
 
 ---
 
+## 2026-07-13 — feat(ads): migração de lance TARGET_SPEND → MAXIMIZE_CONVERSIONS
+
+### Contexto
+- Campanha **Cobersystem - Leads SP** (id `23879601113`), conta `4936596693` (MCC `3848890894`)
+- Última semana: CPA R$16,91 · CTR 12,08% · gargalo = orçamento (recém-elevado p/ R$70/dia)
+- Objetivo: com CPA saudável e verba limitada, priorizar cliques com maior probabilidade de conversão
+
+### Validação (via GAQL de leitura — Google Ads API v21)
+- ✅ Conversão primária = **"Clique Botão Whatsapp"** (id `6476649806`, `primaryForGoal: true`)
+- ✅ 55 conversões/30d (≥ gatilho de 15)
+- ✅ Orçamento = R$70/dia (`amountMicros: 70000000`)
+- ✅ Estratégia anterior confirmada: **TARGET_SPEND**
+
+### Mutação aplicada (`campaigns:mutate`)
+- `updateMask: maximizeConversions.targetCpaMicros` + `maximizeConversions.targetCpaMicros = 0` (sem tCPA)
+- 1ª tentativa: erro de expressão n8n (objeto `{}` dentro de `={{ }}`) → corpo trocado p/ JSON literal
+- 2ª tentativa: `FIELD_HAS_SUBFIELDS` (máscara no campo pai com subcampos) → máscara ajustada p/ subcampo
+- 3ª tentativa: **sucesso** → `biddingStrategyType: MAXIMIZE_CONVERSIONS`, sem `targetCpaMicros`, orçamento intacto
+- Execução via workflow n8n temporário (proxy da credencial `Google account 2`), criado/ativado/usado e **deletado** ao final
+- Nenhum workflow de produção tocado (GMB Posts, Alerta Reviews, Ciclo Domingo, Ana — todos active=True)
+
+### Próximo passo
+- Deixar aprender livremente por 2–3 semanas; depois avaliar aplicar **tCPA ~R$35**
+
+---
+
 ## 2026-07-13 — fix(n8n): OpenClaw VIP quebrada + disparo manual relatório semanal
 
 ### Diagnóstico — Ciclo Domingo (1mtMgK2OCnM6KqiS)
