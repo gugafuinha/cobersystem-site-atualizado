@@ -2,6 +2,27 @@
 
 ---
 
+## 2026-07-13 — fix(n8n): OpenClaw VIP quebrada + disparo manual relatório semanal
+
+### Diagnóstico — Ciclo Domingo (1mtMgK2OCnM6KqiS)
+- Disparou sim no domingo **12/07 às 20h BRT** (execução `4915`, mode=trigger)
+- Status: **error** — falhou no node `OpenClaw Avaliação` com `EHOSTUNREACH`
+- Causa: VIP Swarm `openclaw_openclaw-gateway` → `10.11.0.10` inacessível do n8n (mesmo padrão de VIP fantasma pós-crash). `tasks.openclaw_openclaw-gateway` responde normalmente.
+- Dados GSC/GA4/GMB/Ads foram coletados com sucesso; o fluxo parou antes do `Enviar WhatsApp`.
+
+### Correção
+- URLs OpenClaw trocadas de `http://openclaw_openclaw-gateway:18789` → `http://tasks.openclaw_openclaw-gateway:18789` em:
+  - Ciclo Domingo: node `OpenClaw Avaliação` (+ retry 3x)
+  - Relatório Semanal: nodes `Análise OpenClaw ACI` e `OpenClaw Checklist` (+ retry 3x)
+- Workflows compartilhados com projeto do Gustavo para edição via API
+
+### Disparo manual
+- Webhook `POST /webhook/relatorio-semanal-manual` → execução `4971` **success** (~59s)
+- WhatsApp entregue em `5511982295079` (msg id `3EB05E12E43081880C32C1`)
+- OpenClaw ACI e Checklist OK (26s / 19s)
+
+---
+
 ## 2026-07-11 — fix(infra): rota Traefik da Evolution API restaurada (Ana muda)
 
 ### Problema
