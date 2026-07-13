@@ -1,0 +1,66 @@
+name: Notify Deploy (GSC Indexacao)
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+concurrency:
+  group: notify-deploy-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (2 commits p/ diff)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Detectar arquivos alterados
+        run: |
+          BEFORE="${{ github.event.before }}"
+          AFTER="${{ github.sha }}"
+          if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            if git rev-parse HEAD~1 >/dev/null 2>&1; then
+              BEFORE=$(git rev-parse HEAD~1)
+            else
+              BEFORE=$(git hash-object -t tree /dev/null)
+            fi
+          fi
+          echo "Comparando $BEFORE..$AFTER"
+          git diff --name-only "$BEFORE" "$AFTER" > changed.txt 2>/dev/null \
+            || git diff --name-only HEAD~1 HEAD > changed.txt
+          echo "--- arquivos alterados ---"
+          cat changed.txt
+      - name: Mapear arquivos -> URLs
+        env:
+          GITHUB_SHA: ${{ github.sha }}
+          COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
+        run: |
+          node .github/scripts/map-changed-urls.mjs < changed.txt > payload.json
+          echo "--- payload ---"
+          cat payload.json
+          echo ""
+          node -e "const d=require('./payload.json');console.log('URLs:',d.count,'| global:',d.globalChange,'| templates:',d.dynamicTemplates.length,'| data:',d.dataFiles.length)"
+      - name: Enviar webhook n8n
+        env:
+          WEBHOOK_URL: ${{ secrets.N8N_DEPLOY_WEBHOOK_URL }}
+          WEBHOOK_KEY: ${{ secrets.N8N_DEPLOY_WEBHOOK_KEY }}
+        run: |
+          if [ -z "$WEBHOOK_URL" ]; then
+            echo "Secret N8N_DEPLOY_WEBHOOK_URL ausente. Abortando sem erro."
+            exit 0
+          fi
+          RELEVANT=$(node -e "const d=require('./payload.json');process.stdout.write(String(d.count>0||d.globalChange||d.dataFiles.length>0||d.dynamicTemplates.length>0))")
+          if [ "$RELEVANT" != "true" ]; then
+            echo "Nenhuma mudanca relevante para indexacao. Pulando webhook."
+            exit 0
+          fi
+          curl -sS -X POST "$WEBHOOK_URL" \
+            -H "Content-Type: application/json" \
+            -H "x-cober-key: $WEBHOOK_KEY" \
+            --data @payload.json \
+            --max-time 30 -w "\nHTTP %{http_code}\n"
