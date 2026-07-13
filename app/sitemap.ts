@@ -247,6 +247,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'cobertura-vidro-ou-policarbonato-comparativo':           `${baseUrl}/images/blog/cobertura-policarbonato-tipos.jpg`,
     'cobertura-automatizada-tipos-precos':                    `${baseUrl}/images/blog/automacao-alexa.jpg`,
     'cobertura-fixa-vs-retratil-qual-escolher-2026':         `${baseUrl}/images/blog/cobertura-fixa-ou-cobertura-retratil.png`,
+    'cobertura-abre-e-fecha-preco-m2-2026':                  `${baseUrl}/images/blog/cobertura-abre-e-fecha-preco-m2.jpg`,
   };
 
   const blogArticles = Object.entries(blogImageMap).map(([slug, img]) => ({

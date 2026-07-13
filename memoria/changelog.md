@@ -1859,3 +1859,37 @@ Inserido node "Token GA4" nos 2 workflows principais, que troca o `GOOGLE_REFRES
 **Imagem:** ⚠️ placeholder — não havia imagem dedicada de "cobertura fixa / comparativo" em `public/images/blog/`. Usado `/images/blog/cobertura-policarbonato-tipos.jpg` (on-topic, fixa = policarbonato). Recomendado criar/subir imagem dedicada de comparativo e trocar depois.
 
 **Build:** ✓ sem erros | rota pré-renderizada (HTML 112KB) e presente no prerender-manifest
+
+---
+
+## 2026-07-13 — Fix imagem post #4 (cobertura-fixa-vs-retratil)
+
+**Arquivos:** `content/blog-posts.json`, `app/sitemap.ts`, `public/images/blog/cobertura-fixa-ou-cobertura-retratil.png`
+**Commit:** `4fb6d5d`
+
+Substituído o placeholder `/images/blog/cobertura-policarbonato-tipos.jpg` (imagem compartilhada com outro post) pela imagem dedicada `/images/blog/cobertura-fixa-ou-cobertura-retratil.png` — extensão real é `.png`, não `.jpg`. Atualizado `imagem` no JSON e `blogImageMap` no sitemap. Arquivo PNG estava untracked e foi versionado no commit. Build ✓ sem erros.
+
+---
+
+## 2026-07-13 — Post #5 blog: Cobertura Abre e Fecha — Preço por m² (Preços)
+
+**Arquivos:** `content/blog-posts.json`, `app/blog/[slug]/page.tsx`, `app/sitemap.ts`
+**Slug:** `cobertura-abre-e-fecha-preco-m2-2026`
+**Rota:** `/blog/cobertura-abre-e-fecha-preco-m2-2026`
+
+**Objetivo:** Post transacional (cliente pronto para comprar) respondendo diretamente "quanto custa cobertura abre e fecha". Keyword principal: `cobertura abre e fecha preço`; secundária: `cobertura abre e fecha preço m2`.
+
+**Conteúdo:**
+- Título/H1: "Cobertura Abre e Fecha: Preço por m² em SP [2026]" (49 chars) — ajustado para incluir "em SP" conforme H1 pedido pelo usuário (o meta title informado era ligeiramente diferente; como o schema usa um único campo `titulo` para `<title>` e `<h1>`, priorizei a versão do H1, que também cabe no limite de 60 chars de SEO)
+- Meta description: 144 chars
+- ~1.451 palavras | 7 seções | categoria: Preços
+- Tabela de preços por tipo/automação: alveolar manual R$800/m², alveolar motorizada R$1.000/m², compacto manual R$1.000/m², compacto motorizada R$1.200/m², sensor de chuva +R$200-400
+- FAQ com 6 perguntas → FAQPage schema automático
+- Schemas: BlogPosting (Article) + FAQPage + BreadcrumbList (confirmados no HTML gerado)
+- 8 links internos obrigatórios presentes (produtos, orçamento, telhado retrátil preço e 3 posts do blog)
+- Keywords naturais: "cobertura abre e fecha SP", "cobertura abre e fecha preço m2", "telhado abre e fecha"
+- Imagem: `/images/blog/cobertura-abre-e-fecha-preco-m2.jpg` (já existia em `public/images/blog/`, sem necessidade de placeholder)
+
+**Wiring:** entradas adicionadas em `POST_INTERNAL_LINKS` e `POST_WHATSAPP_MESSAGE` (blog page) + entrada no `blogImageMap` do sitemap para indexação.
+
+**Build:** ✓ sem erros | rota pré-renderizada (HTML ~104KB) confirmada com H1, title, schemas e imagem corretos
