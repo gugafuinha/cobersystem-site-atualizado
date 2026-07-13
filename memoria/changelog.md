@@ -2,6 +2,38 @@
 
 ---
 
+## 2026-07-13 — feat(mcp): tools de ESCRITA no Google Ads (Fase 0 + Fase 1)
+
+### Objetivo
+- Eliminar a gambiarra de workflows n8n temporários para mutações no Google Ads
+- Permitir que o Cursor execute mutações direto pelo MCP `cobersystem-analytics`, com trava de segurança
+
+### Fase 0 — Infraestrutura de escrita
+- **Bridge n8n `JHQJ8sFTF1bHlooU`**: nova rota `POST /cober/ads-write` (32 → 47 nós), **sem tocar nas rotas de leitura** (GSC/GA4/Ads/GMB seguem OK)
+  - Fluxo: `Webhook → Auth (x-cober-key) → Parse → Confirm Check → Token → Read Before → Build → Has Ops → Mutate → Read After → Normalize → Respond`
+  - `confirm !== true` → rejeita; `dry_run === true` → `validateOnly:true` na API; leitura antes/depois para retorno estruturado
+  - Edição via **REST API do n8n** (nunca SQLite — lição da crise de corrupção); reusa OAuth existente (escopo adwords)
+- **MCP `/root/cobersystem-mcp`**: `n8nPost()` em `src/n8n.ts` (POST, body `{tool,params,confirm,dry_run}`, endpoint `/cober/ads-write`)
+
+### Fase 1 — Tools P1 (registradas em `src/index.ts`, lógica em `src/ads-write.ts`)
+- `ads_add_negative_keywords` — adiciona negativas (dedup via leitura prévia)
+- `ads_remove_negative_keywords` — remove negativas (busca IDs pelo texto)
+- `ads_update_budget` — atualiza orçamento diário (R$ → amountMicros)
+- Todas exigem `confirm=true` (guard também no MCP) e aceitam `dry_run`
+
+### Testes (todos ✅)
+- `confirm=false` → rejeitado | sem `x-cober-key` → Unauthorized
+- `dry_run=true` (validateOnly) → não altera nada (before == after)
+- Real: negativa `teste-mcp-write` adicionada (71→72) e removida (72→71)
+- Budget: dry_run R$75 e real R$70 (no-op) sem alterar; budget inválido → `success:false`
+- Smoke test end-to-end pelo `dist/ads-write.js` compilado: 3/3 passaram
+- Estado final da conta: **71 negativas · R$70/dia** · Ana (`2cpXVNWqOdmrEpFn`) **intocada**
+
+### Pendente
+- Reload do MCP no Cursor para as 3 tools novas aparecerem (processo atual usa build antigo)
+
+---
+
 ## 2026-07-13 — fix(ads): adicionar 6 negative keywords na campanha Cobersystem - Leads SP
 
 ### Contexto
