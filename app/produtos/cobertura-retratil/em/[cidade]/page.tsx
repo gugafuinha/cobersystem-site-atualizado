@@ -63,7 +63,9 @@ export async function generateMetadata({
   const cidadeInterior = getCidadeInteriorRetratil(cidadeParam);
   if (cidadeInterior) {
     const url = `${BASE}/produtos/cobertura-retratil/em/${cidadeInterior.slug}`;
-    const title = `Cobertura Retrátil em ${cidadeInterior.nome} | Automática sob Medida – Cobersystem`;
+    const title =
+      cidadeInterior.metaTitle ??
+      `Cobertura Retrátil em ${cidadeInterior.nome} | Automática sob Medida – Cobersystem`;
     return {
       title,
       description: cidadeInterior.metaDescription,

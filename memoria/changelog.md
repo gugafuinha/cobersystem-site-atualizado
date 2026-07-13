@@ -2,6 +2,44 @@
 
 ---
 
+## 2026-07-13 — feat(geo): Lote 3 páginas geo — 9 cidades Tier 1-2 interior SP (atibaia já existia)
+
+### O que foi feito
+
+**Verificação prévia:** das 10 cidades pedidas, `atibaia` já existia (criada no Lote 2). Confirmado via `git log` e leitura de `lib/cobertura-retratil-interior.ts` antes de escrever qualquer conteúdo.
+
+**9 novas cidades adicionadas a `lib/cobertura-retratil-interior.ts`:**
+1. Bragança Paulista (85 km de SP, Região Bragantina) — piscina
+2. São Roque (65 km de SP, RM Sorocaba, Rota dos Vinhos) — área gourmet
+3. Jacareí (90 km de SP, Vale do Paraíba) — garagem
+4. Taubaté (130 km de SP, Vale do Paraíba) — varanda
+5. Santa Bárbara d'Oeste (130 km de SP, RM Campinas) — garagem
+6. Araras (160 km de SP, Região de Piracicaba) — piscina
+7. Porto Feliz (120 km de SP, Região de Sorocaba) — área gourmet
+8. Boituva (115 km de SP, Região de Sorocaba) — área gourmet
+9. Tatuí (145 km de SP, Região de Sorocaba) — varanda
+
+- Cada cidade: 3 parágrafos únicos de intro (~175-210 palavras), 3 FAQs geo-locais únicas, cidades vizinhas com slugs (linkadas quando já existe página), referência local, bairros nobres, `metaDescription` no padrão solicitado ("para {aplicação}, {aplicação2} e {aplicação3}. Instalação por equipe própria, sob medida. Orçamento grátis.") e `keywords` específicas
+- **`metaTitle` novo campo opcional** na interface `CidadeInteriorRetratil` + `generateMetadata` em `[cidade]/page.tsx`: usado para aplicar a variante "Cobertura Retrátil em {Cidade} | Instalação Profissional – Cobersystem" apenas nas 9 novas cidades, sem alterar o title já indexado das 15 cidades dos Lotes 1/2 (fallback mantém `Automática sob Medida`)
+- **Links recíprocos atualizados** em 6 cidades já existentes (`atibaia`, `americana`, `sao-jose-dos-campos`, `itu`, `salto`, `limeira`): adicionados slugs de vizinhas que agora passaram a existir (ex.: `atibaia` → `braganca-paulista`; `sao-jose-dos-campos` → `jacarei` + `taubate`)
+- Sitemap (`app/sitemap.ts`) e hub (`/produtos/cobertura-retratil/em`) **não precisaram de edição manual** — ambos consomem `getSlugsCidadesInteriorRetratil()`/JSON dinamicamente; cidades passam automaticamente de "Em breve" para link ativo
+
+### Validação
+- `next build`: exit 0, sem erros — 24 cidades interior + 8 Grande SP = 32 páginas `[cidade]` geradas
+- 0 parágrafos de intro duplicados entre as 24 cidades (72 parágrafos únicos)
+- Contagem de palavras únicas (intro+FAQ geo) por cidade nova: 314–373 palavras; página renderizada completa: 1450+ palavras (bem acima do mínimo de 800)
+- `metaDescription`: 126–142 chars (dentro do limite de 155)
+- Sitemap.xml gerado contém as 9 novas URLs (`grep` confirmado no build de produção)
+- Linter: zero erros
+
+### ⚠️ Ponto de atenção (SEO) — reportar ao usuário
+- O `metaTitle` literal pedido ("Cobertura Retrátil em {Cidade} | Instalação Profissional – Cobersystem") resulta em **67–83 caracteres**, acima do limite recomendado de ~60 chars para não truncar no Google SERP (mesmo problema corrigido nas 11 páginas de CTR mais cedo nesta sessão). Implementado exatamente como solicitado; sugerido ao usuário avaliar encurtar (ex.: remover "– Cobersystem" ou usar "Instalação Profissional" → "Instalação Sob Medida").
+
+### Commit
+`feat(geo): add retractable cover pages Lote 3 - 10 Tier 1-2 cities interior SP`
+
+---
+
 ## 2026-07-13 — feat(seo/n8n): Automação 1 — gestão pós-deploy GSC (GitHub Action + n8n)
 
 ### Validação OAuth (pré-requisito)

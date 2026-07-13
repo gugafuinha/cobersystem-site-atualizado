@@ -28,6 +28,8 @@ export interface CidadeInteriorRetratil {
   faq_geo: FaqItem[];
   metaDescription: string;
   keywords: string;
+  /** Override opcional do meta title completo (padrão Lote 1/2 é usado se ausente) */
+  metaTitle?: string;
 }
 
 export const CIDADES_INTERIOR_RETRATIL: CidadeInteriorRetratil[] = [
@@ -122,7 +124,7 @@ export const CIDADES_INTERIOR_RETRATIL: CidadeInteriorRetratil[] = [
     tempo_deslocamento: '1 hora e 20 minutos',
     referencia_local: 'Lago do Corumbataí',
     cidades_vizinhas: ['Santa Bárbara d\'Oeste', 'Nova Odessa', 'Sumaré', 'Hortolândia'],
-    cidades_vizinhas_slugs: ['sumare'],
+    cidades_vizinhas_slugs: ['sumare', 'santa-barbara-d-oeste'],
     bairros_nobres: ['Jardim São Paulo', 'Chácara Cneo', 'Parque Gramado'],
     populacao: 241000,
     aplicacao_principal: 'area-gourmet',
@@ -402,7 +404,7 @@ export const CIDADES_INTERIOR_RETRATIL: CidadeInteriorRetratil[] = [
     tempo_deslocamento: '1 hora',
     referencia_local: 'Parque da Cidade',
     cidades_vizinhas: ['Jacareí', 'Taubaté', 'Caçapava', 'Pindamonhangaba'],
-    cidades_vizinhas_slugs: [],
+    cidades_vizinhas_slugs: ['jacarei', 'taubate'],
     bairros_nobres: ['Jardim Aquarius', 'Urbanova', 'Vila Adyana'],
     populacao: 730000,
     aplicacao_principal: 'piscina',
@@ -442,7 +444,7 @@ export const CIDADES_INTERIOR_RETRATIL: CidadeInteriorRetratil[] = [
     tempo_deslocamento: '1 hora',
     referencia_local: 'Parque Municipal das Andorinhas',
     cidades_vizinhas: ['Bragança Paulista', 'Piracaia', 'Nazaré Paulista', 'Mairiporã'],
-    cidades_vizinhas_slugs: [],
+    cidades_vizinhas_slugs: ['braganca-paulista'],
     bairros_nobres: ['Jardim Maristela', 'Condomínio Atibaia Park', 'Caetetuba'],
     populacao: 145000,
     aplicacao_principal: 'area-gourmet',
@@ -522,7 +524,7 @@ export const CIDADES_INTERIOR_RETRATIL: CidadeInteriorRetratil[] = [
     tempo_deslocamento: '1 hora e 10 minutos',
     referencia_local: 'Museu Republicano Convenção de Itu',
     cidades_vizinhas: ['Salto', 'Porto Feliz', 'Sorocaba', 'Indaiatuba'],
-    cidades_vizinhas_slugs: ['salto', 'indaiatuba'],
+    cidades_vizinhas_slugs: ['salto', 'indaiatuba', 'porto-feliz'],
     bairros_nobres: ['Jardim São Paulo', 'Jardim Alvorada', 'Bairro do Engenho'],
     populacao: 185000,
     aplicacao_principal: 'area-gourmet',
@@ -562,7 +564,7 @@ export const CIDADES_INTERIOR_RETRATIL: CidadeInteriorRetratil[] = [
     tempo_deslocamento: '1 hora e 10 minutos',
     referencia_local: 'Cachoeira de Salto do Rio Tietê',
     cidades_vizinhas: ['Itu', 'Indaiatuba', 'Elias Fausto', 'Porto Feliz'],
-    cidades_vizinhas_slugs: ['itu', 'indaiatuba'],
+    cidades_vizinhas_slugs: ['itu', 'indaiatuba', 'porto-feliz'],
     bairros_nobres: ['Jardim Esmeralda', 'Jardim Panorama', 'Altos de Salto'],
     populacao: 112000,
     aplicacao_principal: 'garagem',
@@ -602,7 +604,7 @@ export const CIDADES_INTERIOR_RETRATIL: CidadeInteriorRetratil[] = [
     tempo_deslocamento: '1 hora e 40 minutos',
     referencia_local: 'Museu de Arte Sacra de Limeira',
     cidades_vizinhas: ['Araras', 'Rio Claro', 'Piracicaba', 'Santa Gertrudes'],
-    cidades_vizinhas_slugs: ['americana'],
+    cidades_vizinhas_slugs: ['americana', 'araras'],
     bairros_nobres: ['Jardim Éden', 'Jardim Residencial Santa Clara', 'Parque Santa Júlia'],
     populacao: 307000,
     aplicacao_principal: 'piscina',
@@ -629,6 +631,379 @@ export const CIDADES_INTERIOR_RETRATIL: CidadeInteriorRetratil[] = [
       'Cobertura retrátil em Limeira SP: piscina, área gourmet e varanda sob medida. RM Campinas, 153 km de SP. Policarbonato e alumínio. Orçamento grátis.',
     keywords:
       'cobertura retrátil Limeira SP, cobertura abre e fecha Limeira, cobertura piscina Limeira, cobertura policarbonato Limeira Campinas, telhado retrátil Limeira SP',
+  },
+
+  // ─────────────────────────────────────────────────────────────────────
+  // LOTE 3 — 10 cidades Tier 1-2 do interior de SP (atibaia já existia)
+  // ─────────────────────────────────────────────────────────────────────
+
+  // ─────────────────────────────────────────────────────────────────────
+  // 16. BRAGANÇA PAULISTA — Tier 2, 85 km de SP, Região Bragantina
+  // ─────────────────────────────────────────────────────────────────────
+  {
+    slug: 'braganca-paulista',
+    nome: 'Bragança Paulista',
+    regiao: 'Região Bragantina',
+    distancia_sp_km: 85,
+    tempo_deslocamento: '1 hora e 15 minutos',
+    referencia_local: 'Santuário de Nossa Senhora Aparecida do Anhanguera',
+    cidades_vizinhas: ['Atibaia', 'Piracaia', 'Morungaba', 'Tuiuti'],
+    cidades_vizinhas_slugs: ['atibaia'],
+    bairros_nobres: ['Jardim Paulista', 'Jardim América', 'Alto do Cardoso'],
+    populacao: 165000,
+    aplicacao_principal: 'piscina',
+    intro: [
+      'Bragança Paulista é a principal cidade da Região Bragantina — polo de peregrinação no Santuário de Nossa Senhora Aparecida do Anhanguera e destino de quem busca chácaras e casas de campo para fugir da rotina da capital. Esse perfil de segunda residência, com terrenos amplos e piscinas de uso frequente aos fins de semana, é exatamente onde a cobertura retrátil abre e fecha mais se destaca: protege a água e a área de lazer durante a semana, sem exigir a presença do proprietário.',
+      'A Cobersystem chega a Bragança Paulista pela Rodovia Fernão Dias (BR-381), percorrendo 85 km de São Paulo em cerca de 1 hora e 15 minutos. Realizamos visita técnica nos bairros do Jardim Paulista, Jardim América e Alto do Cardoso, além de propriedades rurais na região, com projeto 3D entregue em até 5 dias úteis após a medição in loco.',
+      'Bragança Paulista funciona como hub natural para o atendimento de toda a Região Bragantina: a partir daqui, nossa equipe segue para Atibaia, Piracaia, Morungaba e Tuiuti no mesmo roteiro de visitas. O clima de altitude da região — noites frias e tardes de chuva repentina no verão — reforça a utilidade do sensor de chuva automático, que fecha a cobertura em 30 segundos mesmo sem ninguém na propriedade.',
+    ],
+    faq_geo: [
+      {
+        q: 'A Cobersystem atende Bragança Paulista para instalação de cobertura retrátil?',
+        a: 'Sim. Bragança Paulista está a 85 km de SP pela Fernão Dias (1h15) e nossa equipe visita a cidade regularmente, no mesmo roteiro que inclui Atibaia. Atendemos o Jardim Paulista, Jardim América, Alto do Cardoso e chácaras da região.',
+      },
+      {
+        q: 'Cobertura retrátil para piscina funciona bem em casas de fim de semana em Bragança Paulista?',
+        a: 'Sim, e é justamente a aplicação mais procurada na cidade. Com o sensor de chuva, a cobertura fecha automaticamente durante a semana quando não há ninguém na propriedade, mantendo a piscina limpa e protegida até o próximo fim de semana — sem precipitação, folhas ou detritos acumulados.',
+      },
+      {
+        q: 'Atendem Atibaia e outras cidades da Região Bragantina a partir de Bragança Paulista?',
+        a: 'Sim. Atibaia, Piracaia, Morungaba e Tuiuti fazem parte da mesma rota de atendimento que Bragança Paulista. Frequentemente agendamos visitas técnicas nas duas cidades — Bragança e Atibaia — na mesma semana, o que agiliza o orçamento e a instalação.',
+      },
+    ],
+    metaDescription:
+      'Cobertura retrátil em Bragança Paulista para piscina, área gourmet e garagem. Instalação por equipe própria, sob medida. Orçamento grátis.',
+    keywords:
+      'cobertura retrátil Bragança Paulista, cobertura abre e fecha Bragança Paulista, cobertura piscina Bragança Paulista, cobertura policarbonato Região Bragantina, telhado retrátil Bragança Paulista Atibaia',
+    metaTitle: 'Cobertura Retrátil em Bragança Paulista | Instalação Profissional – Cobersystem',
+  },
+
+  // ─────────────────────────────────────────────────────────────────────
+  // 17. SÃO ROQUE — Tier 2, 65 km de SP, Rota dos Vinhos
+  // ─────────────────────────────────────────────────────────────────────
+  {
+    slug: 'sao-roque',
+    nome: 'São Roque',
+    regiao: 'Região Metropolitana de Sorocaba',
+    distancia_sp_km: 65,
+    tempo_deslocamento: '55 minutos',
+    referencia_local: 'Rota dos Vinhos do Estado de SP',
+    cidades_vizinhas: ['Mairinque', 'Araçariguama', 'Itu', 'Sorocaba'],
+    cidades_vizinhas_slugs: ['itu'],
+    bairros_nobres: ['Centro', 'Jardim Nova São Roque', 'Condomínio Portal das Laranjeiras'],
+    populacao: 90000,
+    aplicacao_principal: 'area-gourmet',
+    intro: [
+      'São Roque é a capital paulista do vinho — parte da Rota dos Vinhos do Estado de SP, com vinícolas, restaurantes e chácaras que recebem visitantes o ano todo. Esse turismo constante criou demanda por áreas gourmet cobertas de grande porte: espaços para degustação, eventos e recepção de grupos que precisam funcionar tanto em dias de sol quanto durante as chuvas típicas da Serra de São Roque.',
+      'A Cobersystem chega a São Roque pela Rodovia Raposo Tavares (SP-270), percorrendo 65 km de São Paulo em apenas 55 minutos — um dos acessos mais rápidos do nosso portfólio no interior. Atendemos o Centro, o Jardim Nova São Roque e o Condomínio Portal das Laranjeiras, além de propriedades rurais junto às vinícolas, com projeto técnico que considera o layout de eventos e a circulação de visitantes.',
+      'Vizinha de Mairinque, Araçariguama, Itu e Sorocaba, São Roque integra uma rota de atendimento consolidada da Cobersystem na Região Metropolitana de Sorocaba. O sensor de chuva é um diferencial valorizado pelos proprietários de vinícolas e pousadas da região: fecha automaticamente a cobertura da área gourmet mesmo durante um evento em andamento, sem interromper a recepção dos convidados.',
+    ],
+    faq_geo: [
+      {
+        q: 'A Cobersystem instala cobertura retrátil em São Roque?',
+        a: 'Sim. São Roque está a 65 km de SP pela Raposo Tavares (55 minutos), um dos acessos mais rápidos do nosso portfólio no interior. Atendemos o Centro, Jardim Nova São Roque, Condomínio Portal das Laranjeiras e propriedades rurais da região.',
+      },
+      {
+        q: 'A cobertura retrátil para área gourmet serve para vinícolas e espaços de eventos em São Roque?',
+        a: 'Sim. É a aplicação mais comum na cidade. Projetamos coberturas de maior vão para acomodar mesas de degustação, buffet e circulação de visitantes, com estrutura reforçada e sensor de chuva que protege o evento sem necessidade de intervenção manual.',
+      },
+      {
+        q: 'Atendem Itu e outras cidades da Rota dos Vinhos próximas a São Roque?',
+        a: 'Sim. Itu faz parte da mesma rota de atendimento que São Roque, e nossa equipe também visita Mairinque, Araçariguama e Sorocaba com frequência. O agendamento costuma ser mais rápido quando há mais de um projeto na região da Serra de São Roque.',
+      },
+    ],
+    metaDescription:
+      'Cobertura retrátil em São Roque para área gourmet, piscina e varanda. Instalação por equipe própria, sob medida. Orçamento grátis.',
+    keywords:
+      'cobertura retrátil São Roque, cobertura abre e fecha São Roque, cobertura área gourmet São Roque, cobertura vinícola São Roque, telhado retrátil São Roque Rota dos Vinhos',
+    metaTitle: 'Cobertura Retrátil em São Roque | Instalação Profissional – Cobersystem',
+  },
+
+  // ─────────────────────────────────────────────────────────────────────
+  // 18. JACAREÍ — Tier 2, 90 km de SP, Vale do Paraíba Paulista
+  // ─────────────────────────────────────────────────────────────────────
+  {
+    slug: 'jacarei',
+    nome: 'Jacareí',
+    regiao: 'Vale do Paraíba Paulista',
+    distancia_sp_km: 90,
+    tempo_deslocamento: '1 hora',
+    referencia_local: 'Rio Paraíba do Sul',
+    cidades_vizinhas: ['São José dos Campos', 'Santa Branca', 'Paraibuna', 'Igaratá'],
+    cidades_vizinhas_slugs: ['sao-jose-dos-campos'],
+    bairros_nobres: ['Jardim California', 'Altos de Jacareí', 'Monte Castelo'],
+    populacao: 240000,
+    aplicacao_principal: 'garagem',
+    intro: [
+      'Jacareí, às margens do Rio Paraíba do Sul, é um dos polos industriais e logísticos do Vale do Paraíba — perfil que se reflete em bairros residenciais consolidados como Jardim California, Altos de Jacareí e Monte Castelo, onde casas com duas ou mais vagas de garagem buscam proteção veicular sem abrir mão da ventilação. A cobertura retrátil para garagem é a aplicação mais solicitada pelos moradores da cidade.',
+      'A Cobersystem atende Jacareí pela Rodovia Presidente Dutra (BR-116), percorrendo 90 km de São Paulo em cerca de 1 hora. Por integrar o mesmo corredor de São José dos Campos, um dos nossos destinos mais frequentes no Vale do Paraíba, o agendamento de visita técnica em Jacareí costuma ser resolvido em poucos dias úteis.',
+      'Cidades vizinhas como São José dos Campos, Santa Branca, Paraibuna e Igaratá também recebem nossa equipe com regularidade. Em condomínios fechados de Jacareí, a cobertura retrátil para garagem é frequentemente combinada com portão retrátil frontal, formando um sistema completo de proteção veicular compatível com as normas da administração condominial.',
+    ],
+    faq_geo: [
+      {
+        q: 'A Cobersystem atende Jacareí para instalação de cobertura retrátil?',
+        a: 'Sim. Jacareí está a 90 km de SP pela Dutra (1 hora), no mesmo corredor de São José dos Campos. Atendemos o Jardim California, Altos de Jacareí, Monte Castelo e condomínios fechados de toda a cidade.',
+      },
+      {
+        q: 'Cobertura retrátil para garagem em Jacareí pode ser combinada com portão automático?',
+        a: 'Sim. É a configuração mais instalada na cidade: cobertura retrátil sobre a garagem combinada com fechamento frontal por portão retrátil, formando proteção completa contra chuva e poeira sem bloquear a ventilação do veículo.',
+      },
+      {
+        q: 'Atendem São José dos Campos e outras cidades vizinhas de Jacareí no mesmo agendamento?',
+        a: 'Sim. São José dos Campos, Santa Branca, Paraibuna e Igaratá fazem parte da mesma rota do Vale do Paraíba. Frequentemente agrupamos visitas técnicas em Jacareí e São José dos Campos na mesma semana, reduzindo o prazo total de entrega.',
+      },
+    ],
+    metaDescription:
+      'Cobertura retrátil em Jacareí para garagem, área gourmet e piscina. Instalação por equipe própria, sob medida. Orçamento grátis.',
+    keywords:
+      'cobertura retrátil Jacareí, cobertura abre e fecha Jacareí, cobertura garagem Jacareí, cobertura policarbonato Vale do Paraíba, telhado retrátil Jacareí São José dos Campos',
+    metaTitle: 'Cobertura Retrátil em Jacareí | Instalação Profissional – Cobersystem',
+  },
+
+  // ─────────────────────────────────────────────────────────────────────
+  // 19. TAUBATÉ — Tier 2, 130 km de SP, Vale do Paraíba Paulista
+  // ─────────────────────────────────────────────────────────────────────
+  {
+    slug: 'taubate',
+    nome: 'Taubaté',
+    regiao: 'Vale do Paraíba Paulista',
+    distancia_sp_km: 130,
+    tempo_deslocamento: '1 hora e 30 minutos',
+    referencia_local: 'Centro Histórico de Taubaté',
+    cidades_vizinhas: ['Pindamonhangaba', 'Tremembé', 'Caçapava', 'Guaratinguetá'],
+    cidades_vizinhas_slugs: ['jacarei', 'sao-jose-dos-campos'],
+    bairros_nobres: ['Jardim das Nações', 'Parque Bela Vista', 'Nova Taubaté'],
+    populacao: 320000,
+    aplicacao_principal: 'varanda',
+    intro: [
+      'Taubaté, terra natal de Monteiro Lobato e um dos centros culturais mais tradicionais do Vale do Paraíba, tem no seu Centro Histórico e nos bairros como Jardim das Nações, Parque Bela Vista e Nova Taubaté um estilo arquitetônico de sobrados com varandas amplas — espaços de convivência que os moradores querem preservar sem abrir mão de proteção contra chuva.',
+      'A Cobersystem chega a Taubaté pela Rodovia Presidente Dutra (BR-116), percorrendo 130 km de São Paulo em 1 hora e 30 minutos. Por integrar o mesmo corredor de Jacareí e São José dos Campos, cidades que atendemos com frequência no Vale do Paraíba, conseguimos agendar visitas técnicas em Taubaté com prazo reduzido em relação a cidades isoladas de distância similar.',
+      'Para as varandas de sobrado em Taubaté, o material mais recomendado é o alumínio intercalado — que preserva parte da opacidade e combina com fachadas de estilo mais tradicional — ou o policarbonato, para quem prioriza luz natural. Vizinhas como Pindamonhangaba, Tremembé, Caçapava e Guaratinguetá também fazem parte da nossa rota regular no Vale do Paraíba.',
+    ],
+    faq_geo: [
+      {
+        q: 'A Cobersystem atende Taubaté para instalação de cobertura retrátil?',
+        a: 'Sim. Taubaté está a 130 km de SP pela Dutra (1h30), no mesmo corredor de Jacareí e São José dos Campos. Atendemos o Centro Histórico, Jardim das Nações, Parque Bela Vista, Nova Taubaté e toda a cidade.',
+      },
+      {
+        q: 'Qual material de cobertura retrátil combina melhor com as varandas tradicionais de Taubaté?',
+        a: 'Para sobrados de estilo mais tradicional no Centro Histórico e bairros próximos, o alumínio intercalado costuma harmonizar melhor com a fachada. Para quem prioriza luz natural na varanda, o policarbonato alveolar é a opção mais indicada. A visita técnica ajuda a definir a melhor escolha.',
+      },
+      {
+        q: 'Atendem Jacareí e São José dos Campos no mesmo roteiro de visita a Taubaté?',
+        a: 'Sim. Jacareí e São José dos Campos ficam no mesmo corredor da Dutra que Taubaté, e frequentemente agendamos as três cidades na mesma semana — o que agiliza o orçamento e reduz o prazo de instalação para quem mora na região.',
+      },
+    ],
+    metaDescription:
+      'Cobertura retrátil em Taubaté para varanda, área gourmet e piscina. Instalação por equipe própria, sob medida. Orçamento grátis.',
+    keywords:
+      'cobertura retrátil Taubaté, cobertura abre e fecha Taubaté, cobertura varanda Taubaté, cobertura policarbonato Vale do Paraíba, telhado retrátil Taubaté Jacareí',
+    metaTitle: 'Cobertura Retrátil em Taubaté | Instalação Profissional – Cobersystem',
+  },
+
+  // ─────────────────────────────────────────────────────────────────────
+  // 20. SANTA BÁRBARA D'OESTE — Tier 1, 130 km de SP, RM Campinas
+  // ─────────────────────────────────────────────────────────────────────
+  {
+    slug: 'santa-barbara-d-oeste',
+    nome: "Santa Bárbara d'Oeste",
+    regiao: 'Região Metropolitana de Campinas',
+    distancia_sp_km: 130,
+    tempo_deslocamento: '1 hora e 25 minutos',
+    referencia_local: 'Museu da Imigração Americana',
+    cidades_vizinhas: ['Americana', 'Nova Odessa', 'Sumaré', 'Hortolândia'],
+    cidades_vizinhas_slugs: ['americana', 'sumare'],
+    bairros_nobres: ['Jardim Europa', 'Jardim São Fernando', 'Vila Mollon IV'],
+    populacao: 195000,
+    aplicacao_principal: 'garagem',
+    intro: [
+      "Santa Bárbara d'Oeste carrega a herança dos imigrantes norte-americanos que se instalaram na região após a Guerra de Secessão, preservada até hoje no Museu da Imigração Americana. O perfil residencial da cidade, com casas térreas e sobrados nos bairros Jardim Europa, Jardim São Fernando e Vila Mollon IV, tem forte demanda por cobertura retrátil para garagens — a aplicação mais procurada pelos moradores locais.",
+      "A Cobersystem chega a Santa Bárbara d'Oeste pela Rodovia Anhanguera (SP-330) e Bandeirantes, percorrendo 130 km de São Paulo em 1 hora e 25 minutos. Por fazer parte da mesma rota de atendimento que Americana e Sumaré — cidades que já atendemos regularmente na Região Metropolitana de Campinas — o agendamento de visita técnica costuma ser resolvido com agilidade.",
+      "Vizinha direta de Americana, Nova Odessa, Sumaré e Hortolândia, Santa Bárbara d'Oeste integra um dos trechos mais atendidos do nosso portfólio no interior. Para as garagens da cidade, a estrutura em alumínio anodizado com fechamento frontal opcional é a configuração mais instalada, sempre com motorização elétrica silenciosa e possibilidade de sensor de chuva.",
+    ],
+    faq_geo: [
+      {
+        q: "A Cobersystem atende Santa Bárbara d'Oeste para instalação de cobertura retrátil?",
+        a: "Sim. Santa Bárbara d'Oeste está a 130 km de SP pela Anhanguera (1h25), na mesma rota de Americana e Sumaré. Atendemos o Jardim Europa, Jardim São Fernando, Vila Mollon IV e toda a cidade.",
+      },
+      {
+        q: "Qual a configuração de cobertura retrátil mais instalada em garagens em Santa Bárbara d'Oeste?",
+        a: 'A estrutura em alumínio anodizado com motorização elétrica é a mais comum, muitas vezes combinada com fechamento frontal para proteção completa do veículo. O sistema não bloqueia a ventilação e dispensa manutenção de pintura ao longo dos anos.',
+      },
+      {
+        q: "Atendem Americana e Sumaré no mesmo agendamento de Santa Bárbara d'Oeste?",
+        a: "Sim. Americana, Nova Odessa, Sumaré e Hortolândia fazem parte da mesma rota de atendimento que Santa Bárbara d'Oeste na Região Metropolitana de Campinas, o que agiliza o orçamento e a instalação para quem mora nessas cidades.",
+      },
+    ],
+    metaDescription:
+      "Cobertura retrátil em Santa Bárbara d'Oeste para garagem, área gourmet e piscina. Instalação por equipe própria, sob medida. Orçamento grátis.",
+    keywords:
+      "cobertura retrátil Santa Bárbara d'Oeste, cobertura abre e fecha Santa Bárbara d'Oeste, cobertura garagem Santa Bárbara d'Oeste, cobertura policarbonato RM Campinas, telhado retrátil Santa Bárbara d'Oeste Americana",
+    metaTitle: "Cobertura Retrátil em Santa Bárbara d'Oeste | Instalação Profissional – Cobersystem",
+  },
+
+  // ─────────────────────────────────────────────────────────────────────
+  // 21. ARARAS — Tier 3, 160 km de SP, Região de Piracicaba
+  // ─────────────────────────────────────────────────────────────────────
+  {
+    slug: 'araras',
+    nome: 'Araras',
+    regiao: 'Região de Piracicaba',
+    distancia_sp_km: 160,
+    tempo_deslocamento: '1 hora e 45 minutos',
+    referencia_local: 'Parque Municipal das Araras',
+    cidades_vizinhas: ['Leme', 'Limeira', 'Pirassununga', 'Rio Claro'],
+    cidades_vizinhas_slugs: ['limeira'],
+    bairros_nobres: ['Jardim Sônia', 'Jardim Brasil', 'Vila Bela Vista'],
+    populacao: 120000,
+    aplicacao_principal: 'piscina',
+    intro: [
+      'Araras, cidade de forte tradição agrícola na Região de Piracicaba, tem no clima quente do interior paulista um motivo direto para o crescimento das piscinas residenciais — presentes em boa parte das casas dos bairros Jardim Sônia, Jardim Brasil e Vila Bela Vista. A cobertura retrátil para piscina é a aplicação mais procurada pelos moradores de Araras, que buscam reduzir o trabalho de limpeza sem perder a luminosidade do espaço.',
+      'A Cobersystem atende Araras pela Rodovia Anhanguera (SP-330), percorrendo 160 km de São Paulo em 1 hora e 45 minutos. Por integrar a mesma rota de Limeira, cidade vizinha que já atendemos regularmente na Região de Piracicaba, o agendamento de visita técnica em Araras costuma ocorrer em conjunto com projetos da região.',
+      'Vizinha de Leme, Limeira, Pirassununga e Rio Claro, Araras se beneficia do clima quente do interior — que favorece o uso intenso da piscina praticamente o ano todo — mas também das chuvas de verão que exigem proteção. O policarbonato alveolar UV, com sensor de chuva automático, é o material mais indicado para as instalações da cidade.',
+    ],
+    faq_geo: [
+      {
+        q: 'A Cobersystem atende Araras para instalação de cobertura retrátil?',
+        a: 'Sim. Araras está a 160 km de SP pela Anhanguera (1h45), na mesma rota de atendimento de Limeira. Atendemos o Jardim Sônia, Jardim Brasil, Vila Bela Vista e toda a cidade.',
+      },
+      {
+        q: 'Cobertura retrátil para piscina compensa em uma cidade quente como Araras?',
+        a: 'Sim, e é a aplicação mais procurada na cidade. O policarbonato alveolar UV protege a piscina de folhas e detritos sem bloquear a luz solar, reduzindo o trabalho de limpeza e o consumo de produtos químicos, mesmo com o uso intenso típico do clima de Araras.',
+      },
+      {
+        q: 'Atendem Limeira e outras cidades vizinhas de Araras no mesmo período?',
+        a: 'Sim. Limeira, Leme, Pirassununga e Rio Claro fazem parte da mesma região de atendimento que Araras. Frequentemente agendamos visitas técnicas em Araras e Limeira na mesma semana, o que reduz o prazo de orçamento e instalação.',
+      },
+    ],
+    metaDescription:
+      'Cobertura retrátil em Araras para piscina, área gourmet e garagem. Instalação por equipe própria, sob medida. Orçamento grátis.',
+    keywords:
+      'cobertura retrátil Araras SP, cobertura abre e fecha Araras, cobertura piscina Araras, cobertura policarbonato Região de Piracicaba, telhado retrátil Araras Limeira',
+    metaTitle: 'Cobertura Retrátil em Araras | Instalação Profissional – Cobersystem',
+  },
+
+  // ─────────────────────────────────────────────────────────────────────
+  // 22. PORTO FELIZ — Tier 3, 120 km de SP, Região de Sorocaba
+  // ─────────────────────────────────────────────────────────────────────
+  {
+    slug: 'porto-feliz',
+    nome: 'Porto Feliz',
+    regiao: 'Região de Sorocaba',
+    distancia_sp_km: 120,
+    tempo_deslocamento: '1 hora e 20 minutos',
+    referencia_local: 'Rio Tietê e Rota dos Bandeirantes',
+    cidades_vizinhas: ['Boituva', 'Tietê', 'Salto', 'Itu'],
+    cidades_vizinhas_slugs: ['boituva', 'salto', 'itu'],
+    bairros_nobres: ['Jardim São José', 'Vila Antunes', 'Parque Residencial Beira Rio'],
+    populacao: 57000,
+    aplicacao_principal: 'area-gourmet',
+    intro: [
+      'Porto Feliz, ponto de partida histórico da Rota dos Bandeirantes às margens do Rio Tietê, tem um perfil residencial que valoriza o convívio ao ar livre — chácaras e casas no Parque Residencial Beira Rio, Jardim São José e Vila Antunes com áreas gourmet voltadas para o rio e para receber família e amigos nos fins de semana. A cobertura retrátil é a solução para aproveitar esses espaços mesmo nos dias de chuva.',
+      'A Cobersystem chega a Porto Feliz pela Rodovia Castello Branco (SP-280), percorrendo 120 km de São Paulo em 1 hora e 20 minutos. A cidade integra a mesma rota de atendimento de Boituva, Salto e Itu, o que permite à nossa equipe realizar visitas técnicas consecutivas na região e reduzir o prazo médio de agendamento.',
+      'Nas propriedades às margens do Rio Tietê, a área gourmet coberta é frequentemente combinada com deck e churrasqueira voltados para a vista do rio. O sensor de chuva é um diferencial valorizado pelos moradores de Porto Feliz: protege o mobiliário e a churrasqueira automaticamente, mesmo durante as tardes de temporal comuns na Região de Sorocaba entre outubro e março.',
+    ],
+    faq_geo: [
+      {
+        q: 'A Cobersystem instala cobertura retrátil em Porto Feliz?',
+        a: 'Sim. Porto Feliz está a 120 km de SP pela Castello Branco (1h20), na mesma rota de Boituva, Salto e Itu. Atendemos o Parque Residencial Beira Rio, Jardim São José, Vila Antunes e toda a cidade, incluindo chácaras às margens do Rio Tietê.',
+      },
+      {
+        q: 'A cobertura retrátil para área gourmet funciona bem em propriedades às margens do rio em Porto Feliz?',
+        a: 'Sim. É a aplicação mais comum na cidade. Projetamos a cobertura considerando a vista para o Rio Tietê, com estrutura em alumínio anodizado resistente à umidade e sensor de chuva que protege deck, churrasqueira e mobiliário automaticamente.',
+      },
+      {
+        q: 'Atendem Boituva, Salto e Itu no mesmo roteiro de visita a Porto Feliz?',
+        a: 'Sim. Boituva, Salto e Itu fazem parte da mesma rota de atendimento que Porto Feliz na Região de Sorocaba. Frequentemente agrupamos visitas técnicas nessas cidades na mesma semana, o que agiliza o orçamento e a instalação.',
+      },
+    ],
+    metaDescription:
+      'Cobertura retrátil em Porto Feliz para área gourmet, piscina e varanda. Instalação por equipe própria, sob medida. Orçamento grátis.',
+    keywords:
+      'cobertura retrátil Porto Feliz, cobertura abre e fecha Porto Feliz, cobertura área gourmet Porto Feliz, cobertura policarbonato Rio Tietê, telhado retrátil Porto Feliz Itu',
+    metaTitle: 'Cobertura Retrátil em Porto Feliz | Instalação Profissional – Cobersystem',
+  },
+
+  // ─────────────────────────────────────────────────────────────────────
+  // 23. BOITUVA — Tier 2, 115 km de SP, Região de Sorocaba
+  // ─────────────────────────────────────────────────────────────────────
+  {
+    slug: 'boituva',
+    nome: 'Boituva',
+    regiao: 'Região de Sorocaba',
+    distancia_sp_km: 115,
+    tempo_deslocamento: '1 hora e 20 minutos',
+    referencia_local: 'Capital Nacional do Paraquedismo',
+    cidades_vizinhas: ['Tatuí', 'Porto Feliz', 'Cerquilho', 'Tietê'],
+    cidades_vizinhas_slugs: ['tatui', 'porto-feliz'],
+    bairros_nobres: ['Jardim Alvorada', 'Parque das Orquídeas', 'Jardim São Jorge'],
+    populacao: 65000,
+    aplicacao_principal: 'area-gourmet',
+    intro: [
+      'Boituva é conhecida como a Capital Nacional do Paraquedismo, atraindo praticantes e turistas o ano todo para as zonas de salto da cidade. Esse fluxo constante de visitantes impulsionou pousadas, chácaras e residências nos bairros Jardim Alvorada, Parque das Orquídeas e Jardim São Jorge a investirem em áreas gourmet cobertas — espaços para receber grupos após os saltos, seja para uma confraternização ao ar livre, seja durante a chuva.',
+      'A Cobersystem chega a Boituva pela Rodovia Castello Branco (SP-280), percorrendo 115 km de São Paulo em 1 hora e 20 minutos. Por integrar a mesma rota de Tatuí e Porto Feliz, cidades vizinhas que também atendemos, o agendamento de visita técnica em Boituva costuma ser resolvido de forma ágil, muitas vezes na mesma semana das visitas à região.',
+      'Para pousadas e propriedades que recebem grupos regularmente, o projeto de cobertura retrátil considera vãos maiores e estrutura reforçada, sempre com motorização elétrica e sensor de chuva — recurso especialmente valorizado por quem administra hospedagem e não pode depender de alguém disponível para fechar manualmente a cobertura a qualquer hora do dia.',
+    ],
+    faq_geo: [
+      {
+        q: 'A Cobersystem atende Boituva para instalação de cobertura retrátil?',
+        a: 'Sim. Boituva está a 115 km de SP pela Castello Branco (1h20), na mesma rota de Tatuí e Porto Feliz. Atendemos o Jardim Alvorada, Parque das Orquídeas, Jardim São Jorge e pousadas de toda a cidade.',
+      },
+      {
+        q: 'Cobertura retrátil para área gourmet é indicada para pousadas em Boituva?',
+        a: 'Sim. É a aplicação mais frequente na cidade, dado o fluxo constante de visitantes do paraquedismo. Projetamos coberturas com vão maior e estrutura reforçada, com sensor de chuva que garante proteção automática mesmo quando não há ninguém disponível para fechar manualmente.',
+      },
+      {
+        q: 'Atendem Tatuí e Porto Feliz no mesmo agendamento de Boituva?',
+        a: 'Sim. Tatuí, Porto Feliz, Cerquilho e Tietê fazem parte da mesma rota de atendimento que Boituva na Região de Sorocaba, o que reduz o prazo de orçamento e instalação para quem está nessas cidades vizinhas.',
+      },
+    ],
+    metaDescription:
+      'Cobertura retrátil em Boituva para área gourmet, piscina e varanda. Instalação por equipe própria, sob medida. Orçamento grátis.',
+    keywords:
+      'cobertura retrátil Boituva, cobertura abre e fecha Boituva, cobertura área gourmet Boituva, cobertura policarbonato Boituva Sorocaba, telhado retrátil Boituva Tatuí',
+    metaTitle: 'Cobertura Retrátil em Boituva | Instalação Profissional – Cobersystem',
+  },
+
+  // ─────────────────────────────────────────────────────────────────────
+  // 24. TATUÍ — Tier 2, 145 km de SP, Região de Sorocaba
+  // ─────────────────────────────────────────────────────────────────────
+  {
+    slug: 'tatui',
+    nome: 'Tatuí',
+    regiao: 'Região de Sorocaba',
+    distancia_sp_km: 145,
+    tempo_deslocamento: '1 hora e 40 minutos',
+    referencia_local: 'Conservatório Dramático e Musical de Tatuí',
+    cidades_vizinhas: ['Boituva', 'Porto Feliz', 'Cerquilho', 'Iperó'],
+    cidades_vizinhas_slugs: ['boituva', 'porto-feliz'],
+    bairros_nobres: ['Jardim Boa Vista', 'Parque São Bento', 'Jardim Paulistano'],
+    populacao: 120000,
+    aplicacao_principal: 'varanda',
+    intro: [
+      'Tatuí é reconhecida como polo cultural e musical do interior paulista, sede do tradicional Conservatório Dramático e Musical de Tatuí. Essa identidade cultural se reflete em bairros com casas de arquitetura mais tradicional, como o Jardim Boa Vista, Parque São Bento e Jardim Paulistano, onde varandas amplas são um espaço valorizado de convivência — e é essa a aplicação mais procurada pelos moradores da cidade.',
+      'A Cobersystem chega a Tatuí pela Rodovia Castello Branco (SP-280), percorrendo 145 km de São Paulo em 1 hora e 40 minutos. Por integrar a mesma rota de Boituva e Porto Feliz, cidades vizinhas que atendemos com regularidade na Região de Sorocaba, conseguimos agendar visitas técnicas em Tatuí em prazo reduzido.',
+      'Para as varandas de Tatuí, oferecemos tanto o policarbonato — que preserva a luminosidade natural — quanto o alumínio intercalado, mais discreto e compatível com fachadas de estilo mais tradicional. O sensor de chuva automático é recomendado especialmente para quem viaja com frequência: fecha a cobertura em 30 segundos assim que detecta precipitação, protegendo móveis e plantas da varanda.',
+    ],
+    faq_geo: [
+      {
+        q: 'A Cobersystem atende Tatuí para instalação de cobertura retrátil?',
+        a: 'Sim. Tatuí está a 145 km de SP pela Castello Branco (1h40), na mesma rota de Boituva e Porto Feliz. Atendemos o Jardim Boa Vista, Parque São Bento, Jardim Paulistano e toda a cidade.',
+      },
+      {
+        q: 'Qual material de cobertura retrátil é mais indicado para varandas em Tatuí?',
+        a: 'Depende do estilo da fachada: para casas de arquitetura mais tradicional, o alumínio intercalado costuma harmonizar melhor; para quem prioriza luz natural, o policarbonato alveolar é a opção mais indicada. A visita técnica ajuda a definir a melhor escolha para o seu projeto.',
+      },
+      {
+        q: 'Atendem Boituva e Porto Feliz no mesmo roteiro de visita a Tatuí?',
+        a: 'Sim. Boituva, Porto Feliz, Cerquilho e Iperó fazem parte da mesma rota de atendimento que Tatuí na Região de Sorocaba, o que reduz o prazo de orçamento e instalação para quem mora nessas cidades vizinhas.',
+      },
+    ],
+    metaDescription:
+      'Cobertura retrátil em Tatuí para varanda, área gourmet e piscina. Instalação por equipe própria, sob medida. Orçamento grátis.',
+    keywords:
+      'cobertura retrátil Tatuí, cobertura abre e fecha Tatuí, cobertura varanda Tatuí, cobertura policarbonato Tatuí Sorocaba, telhado retrátil Tatuí Boituva',
+    metaTitle: 'Cobertura Retrátil em Tatuí | Instalação Profissional – Cobersystem',
   },
 ];
 
