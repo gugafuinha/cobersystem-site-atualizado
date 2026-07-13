@@ -1832,3 +1832,30 @@ Inserido node "Token GA4" nos 2 workflows principais, que troca o `GOOGLE_REFRES
 - 1912 palavras | 6 perguntas FAQ (FAQPage schema automático)
 - Todos os 7 links internos obrigatórios presentes
 - Imagem: `/images/blog/cobertura-para-jardim-de-inverno.jpg`
+
+---
+
+## 2026-07-13 — Post #4 blog: Cobertura Fixa vs Retrátil (Comparativos)
+
+**Arquivos:** `content/blog-posts.json`, `app/blog/[slug]/page.tsx`, `app/sitemap.ts`
+**Slug:** `cobertura-fixa-vs-retratil-qual-escolher-2026`
+**Rota:** `/blog/cobertura-fixa-vs-retratil-qual-escolher-2026`
+
+**Objetivo:** Post comparativo (intenção informacional/transacional) para o cliente que compara opções antes de comprar. Keyword principal: `cobertura fixa`; secundária: `cobertura fixa vs retrátil`.
+
+**Conteúdo:**
+- Título: "Cobertura Fixa ou Retrátil: Qual Escolher? [2026]" (49 chars)
+- Meta description: 133 chars
+- ~1.621 palavras | 8 seções | categoria: Comparativos
+- Comparativo lado a lado nos 7 critérios (preço/m², instalação, manutenção, aplicações, automação, garantia, valorização) no padrão `✅/⚖️/❌` que renderiza como lista limpa
+- Tabela de preços: fixa alveolar R$600/m², fixa compacto R$900/m², retrátil alveolar R$800/m², retrátil compacto R$1.200/m²
+- FAQ com 6 perguntas → gera FAQPage schema automaticamente
+- Schemas: BlogPosting (Article) + FAQPage + BreadcrumbList (todos confirmados no HTML gerado)
+- 8 links internos obrigatórios presentes (produtos, orçamento, telhado retrátil preço e 3 posts do blog)
+- Keywords naturais: "cobertura fixa SP", "cobertura fixa preço", "cobertura fixa policarbonato"
+
+**Wiring:** entradas adicionadas em `POST_INTERNAL_LINKS` e `POST_WHATSAPP_MESSAGE` (blog page) + entrada no `blogImageMap` do sitemap para indexação.
+
+**Imagem:** ⚠️ placeholder — não havia imagem dedicada de "cobertura fixa / comparativo" em `public/images/blog/`. Usado `/images/blog/cobertura-policarbonato-tipos.jpg` (on-topic, fixa = policarbonato). Recomendado criar/subir imagem dedicada de comparativo e trocar depois.
+
+**Build:** ✓ sem erros | rota pré-renderizada (HTML 112KB) e presente no prerender-manifest

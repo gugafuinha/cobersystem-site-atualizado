@@ -150,6 +150,12 @@ const POST_INTERNAL_LINKS: Record<string, Array<{ label: string; href: string }>
     { label: 'Catálogo de Modelos — Cobertura Retrátil', href: '/produtos/cobertura-retratil' },
     { label: 'Cobertura Abre e Fecha — Como funciona', href: '/servicos/cobertura-abre-e-fecha' },
   ],
+  'cobertura-fixa-vs-retratil-qual-escolher-2026': [
+    { label: 'Catálogo de Modelos — Cobertura de Policarbonato', href: '/produtos/cobertura-policarbonato' },
+    { label: 'Catálogo de Modelos — Cobertura Retrátil', href: '/produtos/cobertura-retratil' },
+    { label: 'Cobertura Abre e Fecha', href: '/produtos/cobertura-abre-e-fecha' },
+    { label: 'Telhado Retrátil de Policarbonato — Preços', href: '/telhado-retratil-policarbonato-preco' },
+  ],
 };
 
 const POST_WHATSAPP_MESSAGE: Record<string, string> = {
@@ -175,6 +181,7 @@ const POST_WHATSAPP_MESSAGE: Record<string, string> = {
   'jardim-de-inverno-o-que-e-precos':          'Olá! Li o artigo sobre jardim de inverno e quero um orçamento.',
   'cobertura-vidro-ou-policarbonato-comparativo': 'Olá! Li a comparação vidro x policarbonato e quero um orçamento.',
   'cobertura-automatizada-tipos-precos':       'Olá! Li o artigo sobre cobertura automatizada e quero um orçamento.',
+  'cobertura-fixa-vs-retratil-qual-escolher-2026': 'Olá! Li o comparativo cobertura fixa x retrátil e quero um orçamento.',
 };
 
 export async function generateMetadata(
