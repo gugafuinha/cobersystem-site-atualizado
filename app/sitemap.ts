@@ -47,6 +47,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/galeria`,      lastModified: now, changeFrequency: 'monthly', priority: 0.75, images: [...IMG.projetos, ...IMG.retratil.slice(0, 20)] },
   ];
 
+  const lpPages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/lp/cobertura-corredor-lateral`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+      images: [`${baseUrl}/images/blog/cobertura-retratil-corredor-lateral.png`],
+    },
+  ];
+
   const localizacaoPages: MetadataRoute.Sitemap = [
     'sao-paulo',
     'zona-leste',
@@ -248,6 +258,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'cobertura-automatizada-tipos-precos':                    `${baseUrl}/images/blog/automacao-alexa.jpg`,
     'cobertura-fixa-vs-retratil-qual-escolher-2026':         `${baseUrl}/images/blog/cobertura-fixa-ou-cobertura-retratil.png`,
     'cobertura-abre-e-fecha-preco-m2-2026':                  `${baseUrl}/images/blog/cobertura-abre-e-fecha-preco-m2.jpg`,
+    'cobertura-para-varanda-retratil-fixa-fechamento':       `${baseUrl}/images/blog/cobertura-retratil-sacada.png`,
   };
 
   const blogArticles = Object.entries(blogImageMap).map(([slug, img]) => ({
@@ -260,6 +271,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     ...requiredPages,
+    ...lpPages,
     ...localizacaoPages,
     ...mainProductPages,
     ...hubInteriorRetratil,

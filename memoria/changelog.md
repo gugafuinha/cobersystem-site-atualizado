@@ -1893,3 +1893,49 @@ Substituído o placeholder `/images/blog/cobertura-policarbonato-tipos.jpg` (ima
 **Wiring:** entradas adicionadas em `POST_INTERNAL_LINKS` e `POST_WHATSAPP_MESSAGE` (blog page) + entrada no `blogImageMap` do sitemap para indexação.
 
 **Build:** ✓ sem erros | rota pré-renderizada (HTML ~104KB) confirmada com H1, title, schemas e imagem corretos
+
+---
+
+## 2026-07-13 — LP: Cobertura para Corredor Lateral (conversão WhatsApp)
+
+**Arquivos:** `app/lp/cobertura-corredor-lateral/page.tsx`, `app/lp/cobertura-corredor-lateral/layout.tsx`, `app/sitemap.ts`
+
+**Motivação (dados GSC):** query "cobertura corredor lateral" pos 7,7, CTR 50% — alta intenção de compra, cliente já sabe o que quer.
+
+**Estrutura:** Hero (H1 + subtítulo + CTA WhatsApp + social proof "+500 projetos"), trust bar, foto hero, 3 cards de benefícios, 3 cards de tipos/preços (fixa R$600/m², retrátil R$800/m², calha embutida sob orçamento), 4 aplicações, 4 materiais, bloco de links internos, CTA final com WhatsApp + orçamento online.
+
+**Schemas:** Service + BreadcrumbList (confirmados no HTML gerado). Sem FAQPage — não solicitado para esta LP.
+
+**Diferença de padrão importante:** as LPs existentes (`/lp/cobertura-retratil`, `/lp/area-gourmet`) são `robots: { index: false, follow: false }` e **não** estão no sitemap — são páginas exclusivas para tráfego pago (Google Ads). Esta nova LP tem motivação de **captura orgânica** (posição 7,7 no GSC), então foi criada **indexável** (sem `robots: noindex`) e **incluída no sitemap** conforme solicitado — desvio intencional do padrão anterior, sinalizado aqui para rastreabilidade.
+
+**Imagem:** `/images/blog/cobertura-retratil-corredor-lateral.png` (extensão real é `.png`, não `.jpg` como no pedido original).
+
+**Build:** ✓ sem erros | rota `/lp/cobertura-corredor-lateral` pré-renderizada (HTML ~39KB)
+
+---
+
+## 2026-07-13 — Post #6 blog: Cobertura para Varanda (agendado 2026-07-14)
+
+**Arquivos:** `content/blog-posts.json`, `app/blog/[slug]/page.tsx`, `app/sitemap.ts`
+**Slug:** `cobertura-para-varanda-retratil-fixa-fechamento`
+**Rota:** `/blog/cobertura-para-varanda-retratil-fixa-fechamento`
+
+**Objetivo:** Post comparativo (cliente comparando opções) entre retrátil, fixa, fechamento de varanda e pergolado bioclimático. Keyword principal: `cobertura para varanda`; secundária: `cobertura varanda retrátil`. Campo `data` definido como `2026-07-14`.
+
+**⚠️ Aviso importante sobre agendamento:** este site é 100% estático (Next.js SSG, sem `revalidate`/ISR configurado nas rotas de blog). O campo `data` do JSON é apenas exibido na página e usado para ordenação — **não existe mecanismo de gating por data** que oculte o post até a data de publicação. Isso significa que, assim que este commit for enviado a `main` e o deploy no Vercel concluir (hoje, 2026-07-13), o post **fica acessível imediatamente**, não "amanhã" automaticamente. Se for necessário publicação realmente agendada no futuro, isso exigiria implementar filtro de data (ocultar da listagem/sitemap/`generateStaticParams` posts com `data` futura) + ISR/revalidate nas rotas de blog — uma mudança de arquitetura que não foi feita aqui por não ter sido explicitamente aprovada.
+
+**Conteúdo:**
+- Título/H1: "Cobertura para Varanda: Retrátil, Fixa ou Fechamento?" (53 chars)
+- Meta description: 150 chars
+- ~1.404 palavras | 8 seções | categoria: Comparativos
+- Tabela comparativa dos 4 tipos (retrátil, fixa, fechamento, pergolado bioclimático) nos 6 critérios pedidos
+- Preços 2026: retrátil R$800/m², fixa R$600/m², fechamento e pergolado sob orçamento
+- FAQ com 6 perguntas → FAQPage schema automático
+- Schemas: BlogPosting (Article) + FAQPage + BreadcrumbList (confirmados no HTML gerado)
+- 8 links internos obrigatórios presentes
+- Keywords naturais: "cobertura varanda SP", "cobertura para varanda preço", "telhado varanda"
+- Imagem: `/images/blog/cobertura-retratil-sacada.png` (extensão real é `.png`, não `.jpg` como no pedido)
+
+**Wiring:** entradas em `POST_INTERNAL_LINKS`, `POST_WHATSAPP_MESSAGE` e `blogImageMap` do sitemap.
+
+**Build:** ✓ sem erros | rota pré-renderizada (HTML ~105KB) confirmada com H1, schemas e imagem corretos
