@@ -2,6 +2,22 @@
 
 ---
 
+## 2026-07-13 — fix(seo): encurtar meta title das 9 cidades do Lote 3
+
+### O que foi feito
+- `metaTitle` das 9 cidades do Lote 3 trocado de `"Cobertura Retrátil em {Cidade} | Instalação Profissional – Cobersystem"` (67–83 chars, estourava o limite de SERP) para `"Cobertura Retrátil em {Cidade} | Cobersystem SP"` (44–56 chars)
+- Exceção: `santa-barbara-d-oeste` (nome de cidade mais longo) ficaria com exatamente 60 chars com o sufixo "SP" — removido o sufixo apenas para essa cidade, resultando em `"Cobertura Retrátil em Santa Bárbara d'Oeste | Cobersystem"` (57 chars)
+
+### Validação
+- Todas as 9 confirmadas abaixo de 60 caracteres (44–57 chars)
+- `next build`: exit 0, sem erros
+- Linter: zero erros
+
+### Commit
+`fix(seo): shorten meta titles Lote 3 cities`
+
+---
+
 ## 2026-07-13 — feat(geo): Lote 3 páginas geo — 9 cidades Tier 1-2 interior SP (atibaia já existia)
 
 ### O que foi feito

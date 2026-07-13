@@ -675,7 +675,7 @@ export const CIDADES_INTERIOR_RETRATIL: CidadeInteriorRetratil[] = [
       'Cobertura retrátil em Bragança Paulista para piscina, área gourmet e garagem. Instalação por equipe própria, sob medida. Orçamento grátis.',
     keywords:
       'cobertura retrátil Bragança Paulista, cobertura abre e fecha Bragança Paulista, cobertura piscina Bragança Paulista, cobertura policarbonato Região Bragantina, telhado retrátil Bragança Paulista Atibaia',
-    metaTitle: 'Cobertura Retrátil em Bragança Paulista | Instalação Profissional – Cobersystem',
+    metaTitle: 'Cobertura Retrátil em Bragança Paulista | Cobersystem SP',
   },
 
   // ─────────────────────────────────────────────────────────────────────
@@ -716,7 +716,7 @@ export const CIDADES_INTERIOR_RETRATIL: CidadeInteriorRetratil[] = [
       'Cobertura retrátil em São Roque para área gourmet, piscina e varanda. Instalação por equipe própria, sob medida. Orçamento grátis.',
     keywords:
       'cobertura retrátil São Roque, cobertura abre e fecha São Roque, cobertura área gourmet São Roque, cobertura vinícola São Roque, telhado retrátil São Roque Rota dos Vinhos',
-    metaTitle: 'Cobertura Retrátil em São Roque | Instalação Profissional – Cobersystem',
+    metaTitle: 'Cobertura Retrátil em São Roque | Cobersystem SP',
   },
 
   // ─────────────────────────────────────────────────────────────────────
@@ -757,7 +757,7 @@ export const CIDADES_INTERIOR_RETRATIL: CidadeInteriorRetratil[] = [
       'Cobertura retrátil em Jacareí para garagem, área gourmet e piscina. Instalação por equipe própria, sob medida. Orçamento grátis.',
     keywords:
       'cobertura retrátil Jacareí, cobertura abre e fecha Jacareí, cobertura garagem Jacareí, cobertura policarbonato Vale do Paraíba, telhado retrátil Jacareí São José dos Campos',
-    metaTitle: 'Cobertura Retrátil em Jacareí | Instalação Profissional – Cobersystem',
+    metaTitle: 'Cobertura Retrátil em Jacareí | Cobersystem SP',
   },
 
   // ─────────────────────────────────────────────────────────────────────
@@ -798,7 +798,7 @@ export const CIDADES_INTERIOR_RETRATIL: CidadeInteriorRetratil[] = [
       'Cobertura retrátil em Taubaté para varanda, área gourmet e piscina. Instalação por equipe própria, sob medida. Orçamento grátis.',
     keywords:
       'cobertura retrátil Taubaté, cobertura abre e fecha Taubaté, cobertura varanda Taubaté, cobertura policarbonato Vale do Paraíba, telhado retrátil Taubaté Jacareí',
-    metaTitle: 'Cobertura Retrátil em Taubaté | Instalação Profissional – Cobersystem',
+    metaTitle: 'Cobertura Retrátil em Taubaté | Cobersystem SP',
   },
 
   // ─────────────────────────────────────────────────────────────────────
@@ -839,7 +839,7 @@ export const CIDADES_INTERIOR_RETRATIL: CidadeInteriorRetratil[] = [
       "Cobertura retrátil em Santa Bárbara d'Oeste para garagem, área gourmet e piscina. Instalação por equipe própria, sob medida. Orçamento grátis.",
     keywords:
       "cobertura retrátil Santa Bárbara d'Oeste, cobertura abre e fecha Santa Bárbara d'Oeste, cobertura garagem Santa Bárbara d'Oeste, cobertura policarbonato RM Campinas, telhado retrátil Santa Bárbara d'Oeste Americana",
-    metaTitle: "Cobertura Retrátil em Santa Bárbara d'Oeste | Instalação Profissional – Cobersystem",
+    metaTitle: "Cobertura Retrátil em Santa Bárbara d'Oeste | Cobersystem",
   },
 
   // ─────────────────────────────────────────────────────────────────────
@@ -880,7 +880,7 @@ export const CIDADES_INTERIOR_RETRATIL: CidadeInteriorRetratil[] = [
       'Cobertura retrátil em Araras para piscina, área gourmet e garagem. Instalação por equipe própria, sob medida. Orçamento grátis.',
     keywords:
       'cobertura retrátil Araras SP, cobertura abre e fecha Araras, cobertura piscina Araras, cobertura policarbonato Região de Piracicaba, telhado retrátil Araras Limeira',
-    metaTitle: 'Cobertura Retrátil em Araras | Instalação Profissional – Cobersystem',
+    metaTitle: 'Cobertura Retrátil em Araras | Cobersystem SP',
   },
 
   // ─────────────────────────────────────────────────────────────────────
@@ -921,7 +921,7 @@ export const CIDADES_INTERIOR_RETRATIL: CidadeInteriorRetratil[] = [
       'Cobertura retrátil em Porto Feliz para área gourmet, piscina e varanda. Instalação por equipe própria, sob medida. Orçamento grátis.',
     keywords:
       'cobertura retrátil Porto Feliz, cobertura abre e fecha Porto Feliz, cobertura área gourmet Porto Feliz, cobertura policarbonato Rio Tietê, telhado retrátil Porto Feliz Itu',
-    metaTitle: 'Cobertura Retrátil em Porto Feliz | Instalação Profissional – Cobersystem',
+    metaTitle: 'Cobertura Retrátil em Porto Feliz | Cobersystem SP',
   },
 
   // ─────────────────────────────────────────────────────────────────────
@@ -962,7 +962,7 @@ export const CIDADES_INTERIOR_RETRATIL: CidadeInteriorRetratil[] = [
       'Cobertura retrátil em Boituva para área gourmet, piscina e varanda. Instalação por equipe própria, sob medida. Orçamento grátis.',
     keywords:
       'cobertura retrátil Boituva, cobertura abre e fecha Boituva, cobertura área gourmet Boituva, cobertura policarbonato Boituva Sorocaba, telhado retrátil Boituva Tatuí',
-    metaTitle: 'Cobertura Retrátil em Boituva | Instalação Profissional – Cobersystem',
+    metaTitle: 'Cobertura Retrátil em Boituva | Cobersystem SP',
   },
 
   // ─────────────────────────────────────────────────────────────────────
@@ -1003,7 +1003,7 @@ export const CIDADES_INTERIOR_RETRATIL: CidadeInteriorRetratil[] = [
       'Cobertura retrátil em Tatuí para varanda, área gourmet e piscina. Instalação por equipe própria, sob medida. Orçamento grátis.',
     keywords:
       'cobertura retrátil Tatuí, cobertura abre e fecha Tatuí, cobertura varanda Tatuí, cobertura policarbonato Tatuí Sorocaba, telhado retrátil Tatuí Boituva',
-    metaTitle: 'Cobertura Retrátil em Tatuí | Instalação Profissional – Cobersystem',
+    metaTitle: 'Cobertura Retrátil em Tatuí | Cobersystem SP',
   },
 ];
 
