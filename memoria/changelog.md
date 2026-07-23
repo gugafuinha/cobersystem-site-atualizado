@@ -1939,3 +1939,32 @@ Substituído o placeholder `/images/blog/cobertura-policarbonato-tipos.jpg` (ima
 **Wiring:** entradas em `POST_INTERNAL_LINKS`, `POST_WHATSAPP_MESSAGE` e `blogImageMap` do sitemap.
 
 **Build:** ✓ sem erros | rota pré-renderizada (HTML ~105KB) confirmada com H1, schemas e imagem corretos
+
+---
+
+## 2026-07-23 — GMB: solução definitiva do "zerado" (correção de causa raiz + monitor)
+
+**Escopo:** infraestrutura (MCP `/root/cobersystem-mcp` + n8n). Não altera o site.
+
+**Investigação (dados reais via API Google + n8n):**
+- Ambos os refresh tokens Google (o do `.env`/MCP e o dos workflows GMB) estão **VÁLIDOS e eternos**, com escopo `business.manage`. O app OAuth está em produção (tokens não expiram em 7 dias). ⇒ a premissa "token GMB expirado" estava **incorreta**.
+- Perfil GMB: `openInfo.status = OPEN`, `metadata.hasVoiceOfMerchant = true` ⇒ **verificado, ativo, elegível** (não suspenso).
+- Performance real (parser correto): **194 impressões/30d** (Search 163, Maps 31), 7 ligações, 18 cliques no site — ou seja, **NÃO está zerado**.
+- Workflows GMB no n8n (`H15y7ESgezYxAS8s` posts, `mtCyWCcNUgBIvx5D` reviews) **ativos e executando com sucesso** (posts 22/07, 20/07, 17/07…; reviews de 4/4h, quase todos `success`).
+
+**Causa raiz do "GMB 0" nos relatórios (2 bugs de medição, não de negócio):**
+1. O MCP era iniciado via `~/.cursor/mcp.json` apenas com `N8N_WEBHOOK_*` (sem `GOOGLE_*`) e o `dotenv` não achava o `.env` ⇒ `gmb.ts` (caminho OAuth direto, deprecado) rodava sem refresh token ⇒ erro "No refresh token or refresh handler callback is set".
+2. Mesmo autenticado, o parser de performance do `gmb.ts` lia a estrutura JSON errada (`s.dailyMetric`/`s.timeSeries` em vez do aninhamento real `s.dailyMetricTimeSeries[].timeSeries`) ⇒ sempre reportaria 0.
+
+**Correção 1 — MCP consolidado na bridge (OAuth eterna + renovação automática):**
+- `src/gmb.ts` reescrito para usar `n8nGet('gmb', …)` (mesmo padrão de gsc/ga4/ads). A bridge (`JHQJ8sFTF1bHlooU`, rota `cober/gmb`, já existente) tem o nó "Token GMB" que faz `grant_type=refresh_token` a cada chamada (renovação automática) e o "Normalize GMB" com o parser de insights **correto**.
+- Removida a dependência de `GOOGLE_REFRESH_TOKEN` em runtime. O caminho `auth.ts` deixou de ser usado pelo GMB.
+- `npm run build` OK. Smoke-test do `dist` com o env do `mcp.json`: accounts/locations (OPEN), performance (150 impr./28d), reviews (4.5★, 53) — tudo retornando dados reais.
+- ⚠️ **Ação manual pendente:** recarregar o MCP no Cursor (toggle em Settings → MCP, ou reiniciar) para o processo subir o `dist` novo. Só então as tools `gmb_*` do MCP voltam a responder.
+
+**Correção 2 — Automação anti-suspensão (novo workflow n8n):**
+- Criado e **ativado**: `GMB - Monitor Anti-Suspensao (diario 9h)` (id `aqkvnFil6kCZOyis`).
+- Roda todo dia 09:00 BRT (cron `0 12 * * *`): consulta a bridge (`insights 7d` + `profile`) e dispara alerta WhatsApp para `5511982295079` se **qualquer**: (a) API/OAuth falhar, (b) `status != OPEN`, (c) impressões = 0 por 2 verificações seguidas. Estado persistido em `staticData` (`zeroStreak`).
+- Lógica validada em dry-run (4 cenários) e canal WhatsApp confirmado de ponta a ponta (mensagem "Monitor GMB ATIVADO" entregue). Workflow temporário de teste removido.
+
+**Não tocado:** Ana (`2cpXVNWqOdmrEpFn`), bridge (só leitura), SQLite. Nenhuma alteração no site/rotas/SEO.
