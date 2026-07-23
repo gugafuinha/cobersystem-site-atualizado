@@ -1968,3 +1968,23 @@ Substituído o placeholder `/images/blog/cobertura-policarbonato-tipos.jpg` (ima
 - Lógica validada em dry-run (4 cenários) e canal WhatsApp confirmado de ponta a ponta (mensagem "Monitor GMB ATIVADO" entregue). Workflow temporário de teste removido.
 
 **Não tocado:** Ana (`2cpXVNWqOdmrEpFn`), bridge (só leitura), SQLite. Nenhuma alteração no site/rotas/SEO.
+
+---
+
+## 23/07/2026 — Ana (WhatsApp) — Auditoria técnica Frente 1 + correção da regex de retomada (autorizada pela Mari)
+
+**Contexto:** avaliação técnica somente-leitura do workflow `2cpXVNWqOdmrEpFn` (chatbot Ana, projeto de aprendizado da Mari), a pedido dela, para validar a Frente 1 (comandos do Chefe) e a próxima frente (CRM/planilha) antes de aplicação. Metodologia dela (uma frente por vez, diagnóstico em código real, backup antes de aplicar, decisão conjunta) respeitada em todas as etapas.
+
+**Auditoria (somente leitura, via API do n8n):**
+- Confirmadas 4 das 5 correções descritas da Frente 1 (`Code1b`): pausa com "cliente" no meio, retomada confirmando no grupo, "Confirmado" sem repetir número (via `mem['chefeAguardandoConfirmacao']`), aceite do cliente virando sinal explícito ao Claude.
+- **Achado:** a correção 5 (regex de retomada, "do" omitido) cobria `"retomar 5511..."`/`"retomar cliente 5511..."` mas **não** o exemplo literal citado, `"retomar atendimento 5511..."` (sem "do") — confirmado por teste de regex isolado (sandbox local, sem tocar workflow).
+- **Achado (Code2, cidade/CRM):** causa raiz do bug de captura de cidade confirmada — regex da Prioridade 4 usa alternativa `em\s+` combinada com flag `/i` (anula a âncora de maiúscula), capturando palavras comuns do domínio ("policarbonato", "alumínio", "compacto") como se fossem cidade; persiste em `mem['cidade_']`. Reportado como sugestão para decisão da Mari (não aplicado).
+- **Achado (item 3, hipótese fetch()):** confirmado — `Code1b` usa `fetch()` dentro do Code node para ViaCEP/Google Maps (linhas com `try{}catch(e1){}`/`catch(e2){}` vazios, engolindo erro silenciosamente), mesma classe de problema já visto nos workflows GMB (fetch/$helpers não funcionam no sandbox do task runner do n8n). O próprio `Code1` já documentava essa limitação para mídia.
+
+**Correção aplicada (autorizada pela Mari, após validação):**
+- Backup do `Code1b` antes de qualquer mudança: `/root/code1b_backup_pre_fix_gustavo_20260723-1742.js` (sha256 `ec8ad301...`).
+- Regex de retomada corrigida para tornar "do" opcional nos dois ramos: `retoma(?:r)?\s+atendimento(?:\s+do)?` / `liberar?\s+atendimento(?:\s+do)?`.
+- Validado antes de aplicar (regex isolada, todas as variações + testes de falso-positivo) e depois de aplicar, direto no SQLite (fonte de verdade, sem cache): `Corrigido: true`.
+- Aplicado via API oficial do n8n (`PUT /workflows/2cpXVNWqOdmrEpFn`, mesmo mecanismo da UI) — **não** via escrita direta em SQLite. Diff confirmado: **apenas** o node `Code1b` mudou; os outros 23 nodes, `settings` e demais workflows permaneceram intactos.
+
+**Não tocado:** demais nodes do Ana, `Code2` (cidade — reportado, não aplicado), fetch()/CEP (reportado, não aplicado), outros workflows, SQLite (só leitura para backup/verificação).
