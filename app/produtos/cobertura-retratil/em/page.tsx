@@ -300,7 +300,11 @@ export default function InteriorHubPage() {
                 <p className="text-sm">
                   O investimento médio para uma cobertura retrátil residencial é de R$12.600. O prazo
                   médio de produção e instalação é de 25 a 40 dias após aprovação do projeto.
-                  Financiamento disponível.
+                  Financiamento disponível. Consulte a{' '}
+                  <Link href="/telhado-retratil-policarbonato-preco" className="text-blue-600 hover:underline font-medium">
+                    tabela completa de preços por m²
+                  </Link>{' '}
+                  para simular o investimento do seu projeto.
                 </p>
               </div>
             </div>

@@ -127,6 +127,13 @@ export default function TelhadoRetratilPrecoPage() {
               Preços reais com instalação em São Paulo — estrutura de alumínio e mão de obra inclusa.
             </p>
 
+            <p className="text-sm text-blue-200/90 mb-6 max-w-2xl mx-auto">
+              Se você pesquisou telhado retrátil policarbonato preço, chegou ao lugar certo: aqui está o
+              valor real da cobertura retrátil por m², direto de quem instala em São Paulo. Quer saber
+              quanto custa um telhado retrátil para o seu espaço? A tabela de preços da cobertura retrátil
+              logo abaixo mostra os valores por tipo de material e nível de automação.
+            </p>
+
             {/* Cards de preço — visíveis acima da dobra */}
             <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6">
               <div className="bg-white/10 border border-white/20 rounded-xl px-5 py-4 text-left">

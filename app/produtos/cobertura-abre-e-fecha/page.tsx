@@ -175,6 +175,29 @@ export default function CoberturaAbreEFechaHubPage() {
 
         <ProductVejaTambem current="retratil" />
 
+        {/* Tabela de preços completa */}
+        <section className="mb-12 max-w-4xl mx-auto px-4">
+          <div className="rounded-2xl border border-gray-200 bg-gray-50 p-7 flex flex-col md:flex-row md:items-center gap-6">
+            <div className="flex-1">
+              <h2 className="text-xl font-bold text-gray-900 mb-2">
+                Quanto custa uma cobertura abre e fecha?
+              </h2>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                Veja a tabela de preços por m² do telhado retrátil em policarbonato, com valores
+                para cada tipo de automação — atualizada para 2026.
+              </p>
+            </div>
+            <div className="shrink-0">
+              <Link
+                href="/telhado-retratil-policarbonato-preco"
+                className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-blue-700 transition shadow-md whitespace-nowrap"
+              >
+                Ver tabela de preços →
+              </Link>
+            </div>
+          </div>
+        </section>
+
         <section className="rounded-lg bg-blue-600 p-12 text-center text-white">
           <h2 className="mb-4 text-4xl font-bold">
             Quer saber mais sobre cobertura abre e fecha?

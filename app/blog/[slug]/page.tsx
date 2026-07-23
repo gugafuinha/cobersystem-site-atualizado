@@ -48,6 +48,13 @@ const POST_INTERNAL_LINKS: Record<string, Array<{ label: string; href: string }>
     { label: 'Cobertura Fixa — Policarbonato Alveolar', href: '/servicos/cobertura-fixa-policarbonato-alveolar' },
     { label: 'Cobertura Fixa — Policarbonato Compacto', href: '/servicos/cobertura-fixa-policarbonato-compacto' },
     { label: 'Cobertura de Policarbonato em São Paulo — preços e modelos', href: '/produtos/cobertura-policarbonato/em/sao-paulo' },
+    { label: 'Telhado Retrátil de Policarbonato — Preços', href: '/telhado-retratil-policarbonato-preco' },
+  ],
+  'cobertura-retratil-preco-m2-sao-paulo': [
+    { label: 'Catálogo de Modelos — Cobertura Retrátil', href: '/produtos/cobertura-retratil' },
+    { label: 'Catálogo de Modelos — Cobertura Abre e Fecha', href: '/produtos/cobertura-abre-e-fecha' },
+    { label: 'Instalação de Cobertura Retrátil em SP', href: '/servicos/cobertura-retratil' },
+    { label: 'Telhado Retrátil de Policarbonato — Preços', href: '/telhado-retratil-policarbonato-preco' },
   ],
   'cobertura-retratil-churrasqueira': [
     { label: 'Cobertura para Área Gourmet', href: '/servicos/cobertura-area-gourmet' },

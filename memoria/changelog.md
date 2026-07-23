@@ -1988,3 +1988,22 @@ Substituído o placeholder `/images/blog/cobertura-policarbonato-tipos.jpg` (ima
 - Aplicado via API oficial do n8n (`PUT /workflows/2cpXVNWqOdmrEpFn`, mesmo mecanismo da UI) — **não** via escrita direta em SQLite. Diff confirmado: **apenas** o node `Code1b` mudou; os outros 23 nodes, `settings` e demais workflows permaneceram intactos.
 
 **Não tocado:** demais nodes do Ana, `Code2` (cidade — reportado, não aplicado), fetch()/CEP (reportado, não aplicado), outros workflows, SQLite (só leitura para backup/verificação).
+
+---
+
+## 23/07/2026 — SEO Boost `/telhado-retratil-policarbonato-preco` (4.190 impr./28d, pos. 10,7 → alvo top 5)
+
+**Contexto:** mesmo padrão de authority-boost já usado com sucesso no Lote 1 (`/produtos/cobertura-retratil`), aplicado agora à página de maior alavanca identificada pela auditoria (maior volume de impressões fora do top 5, conversão de 8,9% já sem estar no top 5).
+
+**Tarefa 1 — Links internos:**
+- Blog: adicionado link para `/telhado-retratil-policarbonato-preco` no `POST_INTERNAL_LINKS` (`app/blog/[slug]/page.tsx`) dos posts `cobertura-retratil-preco-m2-sao-paulo` (não tinha bloco de links) e `cobertura-policarbonato-preco-tipos` (tinha bloco, faltava esse link).
+- `cobertura-abre-e-fecha-preco-m2-2026` e `cobertura-fixa-vs-retratil-qual-escolher-2026` **já tinham o link** — confirmado antes de editar, nada duplicado.
+- `/produtos/cobertura-retratil`: nova seção "Veja a tabela de preços completa" com link para a página-alvo.
+- `/produtos/cobertura-abre-e-fecha`: nova seção "Quanto custa uma cobertura abre e fecha?" com link para a página-alvo.
+- `/produtos/cobertura-retratil/em` (hub interior SP): link contextual inserido no bloco "Ticket médio e prazo de retorno" (âncora natural, já falava de investimento).
+
+**Tarefa 2 — Reforço semântico:** parágrafo de 3-4 linhas adicionado logo após o subtítulo do H1 em `/telhado-retratil-policarbonato-preco`, mencionando naturalmente "telhado retrátil policarbonato preço", "cobertura retrátil por m²", "quanto custa um telhado retrátil" e "tabela de preços da cobertura retrátil" — sem duplicar frases já existentes na página.
+
+**Tarefa 3 — Meta title/description:** conferido; o title já estava exatamente `"Telhado Retrátil: Preço por m² em 2026 (Tabela) | SP"` desde sessão anterior. Nenhuma alteração necessária.
+
+**Regras respeitadas:** H1, estrutura e schemas (Product/FAQ) não tocados; nenhum conteúdo duplicado; `npm run build` sem erros (confirmado via grep dedicado, exit limpo).
