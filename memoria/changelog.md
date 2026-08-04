@@ -2157,3 +2157,107 @@ Valor anterior salvo em `/root/backups/relatorios-gsc-20260804-0609/redis-baseli
 **Backups em `/root/backups/relatorios-gsc-20260804-0609/`:** estado dos dois workflows antes da mudança de topologia (`versionId` `b1f2eb21…` e `e072e88c…`) e o valor anterior da baseline, com `SHA256SUMS`.
 
 **Pendência de confirmação:** o código dos nós foi validado fora do n8n contra as APIs reais, mas a execução completa dentro do n8n — com o `Merge` de 3 entradas e o nó novo no fluxo — só acontece no ciclo de **domingo 09/08 20:00**. Não foi disparado manualmente de propósito: o gatilho manual envia WhatsApp, cria issue no GitHub e sobrescreve a baseline. Vale conferir essa execução.
+
+---
+
+## 04/08/2026 — audit(ads): avaliação pré-viagem + feat(monitor): `Ads - Monitor Diario` e CPA nos relatórios
+
+### Auditoria: a campanha está estável, a recomendação foi não mexer em nada
+
+Leitura direta da API v21 (nenhuma escrita). Três janelas consecutivas de 7 dias fecharam em **36, 36 e 35 conversões**, com CPA de R$14,20, R$13,63 e R$13,67 — a campanha está calibrada, não em deriva.
+
+| Métrica | 28/07–03/08 | 21/07–27/07 | Δ |
+|---|---|---|---|
+| Conversões | 35,0 | 36,0 | −2,8% |
+| CPA | R$13,67 | R$13,63 | +0,3% |
+| Custo | R$478,43 | R$490,74 | −2,5% |
+| CPC | R$1,74 | R$1,39 | +24,8% |
+| CTR | 11,00% | 11,82% | −0,8pp |
+| Taxa de conversão | 12,73% | 10,23% | +24,4% |
+
+Dois sinais que pareciam ruins e não eram:
+- **CPC +24,8%** não é degradação: na semana de 15–21/07 o CPC foi R$1,73, igual ao atual. A semana intermediária (R$1,39) foi a anômala. O CPC oscilou entre R$1,39 e R$1,74 nas últimas três semanas.
+- **Impressões −16%** é encolhimento de mercado, não perda de terreno. Impressões ÷ participação estima o mercado elegível em 11.960 → 10.874 buscas (−9%), com a participação caindo só de 24,9% para 23,0%.
+
+Aumento de orçamento aplicado às 02:38 de hoje; às 04:05 havia 39 impressões e R$4,22. Cedo demais para qualquer leitura — primeira útil no domingo 09/08. Confirmado por `change_event` que **essa foi a única alteração na conta em 14 dias**, o que torna a comparação acima limpa.
+
+### Por que nada foi alterado na campanha
+
+- **Desperdício não existe em escala relevante**: dos 242 termos de busca em 30 dias, os sem conversão somam R$446, mas o maior individual é R$15,46. Candidatos reais a negativa ("alveolar", "telhas policarbonato preço") somam R$19 em 30 dias — R$0,63/dia. Não justifica tocar em campanha sob Smart Bidding.
+- **tCPA não faz sentido agora**, apesar da recomendação `FORECASTING_SET_TARGET_CPA` gerada pelo Google em 03/08: com CPA já em R$13,67 sem target, definir tCPA em ~R$14 criaria teto onde há liberdade. Se algum dia entrar, deve ser **acima** do CPA atual (R$20–25) para comprar volume, dado o ticket de R$12.610. E reinicia aprendizado — inviável empilhado ao aumento de orçamento de hoje.
+- **Orçamento não sobe de novo**: ainda há 19,1% de participação perdida por orçamento (concentrada em fins de semana: 56,9% no sábado 25/07 contra 2,6% na segunda 03/08), mas mexer duas vezes na mesma semana impede atribuição.
+- **Riscos operacionais verificados e limpos**: `billing_setup` APPROVED, conta ENABLED, `primary_status` ELIGIBLE sem motivos, todos os anúncios APPROVED, uma única ação de conversão primária (`Clique Botão Whatsapp`, ONE_PER_CLICK — logo as 35 conversões são 35 cliques distintos, sem inflação). Teto mensal do Google (diário × 30,4 = R$2.554) elimina risco financeiro na ausência.
+
+### Dois falsos alarmes descartados com dado
+
+- **Desktop com CPA R$30,98 contra R$12,58 do mobile**: são 4 conversões em R$124 (14 dias). R$31 por lead num ticket de R$12.610 continua lucrativo. Excluir desktop destruiria valor.
+- **Segmentação em `PRESENCE_OR_INTEREST`** (raio de 80 km) costuma indicar desperdício, mas aqui o tráfego por interesse gerou 36,3 conversões a CPA R$14,74 contra R$15,00 do tráfego por presença física. São 27% do investimento convertendo igual ao resto — mudar para `PRESENCE` cortaria mais de um quarto dos leads sem ganho de eficiência.
+
+### Causa raiz do grupo "Geolocalização SP" com 0 impressões
+
+Não é falha técnica. As 6 keywords estão ENABLED e APPROVED, mas com `system_serving_status = RARELY_SERVED`: são bairros ("cobertura retrátil Moema", "cobertura policarbonato Alphaville", "…Morumbi") com volume de busca abaixo do limiar do Google. O mesmo vale para "Marca — Cobersystem" — ninguém busca a marca ainda. Custa zero manter. Correção real é trocar bairro por região ampla (zona sul, ABC, São Bernardo) — tarefa pós-viagem.
+
+### Maior alavanca de crescimento identificada (não executada)
+
+A perda de participação por **ranking** subiu de 47,7% para 57,9%, com participação total em 23,0%. A causa é índice de qualidade: keywords centrais com QS 2–3 (`telhado abre e fecha` QS 2, `telhado policarbonato` QS 3, `telhado retrátil` exata QS 3). QS baixo encarece o clique. É projeto de relevância de anúncio e página de destino, não ajuste pontual.
+
+### Duas lacunas de medição corrigidas
+
+**1. O CPA era calculado e nunca exibido.** O campo `ads_cpa` existia em `Formatar Ads` desde a correção B4 de hoje, mas o template do WhatsApp mostrava só CPC. Justamente a métrica que o Gustavo deve monitorar era a que não chegava.
+
+**2. O relatório de segunda não tinha comparativo semanal de Ads.** GSC tinha nó de semana anterior; Ads não.
+
+Solução sem adicionar nós nem alterar topologia: `Ads - Campanhas` passou de `DURING LAST_7_DAYS` para `BETWEEN D-14 AND D-1` com `segments.date`, e `Formatar Ads` fatia a resposta em duas janelas de 7 dias **sem sobreposição** (atual D-7..D-1, anterior D-14..D-8). Uma chamada, duas janelas, granularidade diária de bônus. Campos novos: `ads_ant_*` (7 campos) e `ads_delta_*` (5 campos), com todos os campos antigos preservados para não quebrar `Formatar Dados`, `Montar Issue` e `Comparar`.
+
+Validado contra a auditoria manual rodando o `jsCode` publicado contra a API real: **13 de 13 valores idênticos** (35,0 / R$478,43 / R$13,67 / R$1,74 / 2501 / 275 / 11,00% na janela atual; 36,0 / R$490,74 / R$13,63 / R$1,39 / 2978 / 352 na anterior).
+
+Outras correções de arrasto na mesma passada:
+- **`ads_error_flag` nunca disparava**: `Formatar Ads` calculava `adsError` mas não o retornava, então o ternário do template lia `undefined` e o alerta de "Ads API falhou" era silenciosamente impossível. Campo agora é retornado já formatado.
+- **`R$ R$1,74`**: `ads_cpc` e `ads_cpa` carregavam o prefixo `R$` e os três consumidores prependiam `R$` de novo. Campos passaram a ser numéricos puros; o prefixo fica só nos templates. (O texto do WhatsApp saía correto porque o OpenClaw limpava a duplicação ao reescrever — o defeito estava mascarado.)
+- **`Montar Issue`**: rótulo `Ads custo (30d)` ainda mentia após a correção B4; virou `(7d)`, e a tabela ganhou linhas de conversões e CPA. O baseline do Redis passa a carregar `ads.cpa`.
+- **`Comparar` (domingo)**: bloco de Ads passou a usar a comparação 7d vs 7d própria do workflow em vez da baseline do Redis — que é um retrato de segunda e tem 1 dia de sobreposição — e ganhou linha de CPA.
+
+### `Ads - Monitor Diario` (`gUvpuYPPkaoRVvdO`) — fecha a janela de 5 dias cega
+
+Antes existia monitor diário só para GMB. Sem supervisão, uma campanha que parasse numa terça só apareceria no relatório de domingo 21h. Monitor novo roda **09:00 BRT** com 5 gatilhos:
+
+| Gatilho | Critério | Racional |
+|---|---|---|
+| A | 0 conversões em 2 dias seguidos | base de ~5/dia; probabilidade natural é praticamente nula |
+| B | custo R$0 em um dia | campanha parada, orçamento zerado ou cobrança |
+| C | CPA de 7 dias > R$30 em 3 janelas consecutivas | dobro do CPA atual; folgado de propósito |
+| D | `status != ENABLED` ou `primary_status` fora de ELIGIBLE/LEARNING/PENDING | com os motivos do Google |
+| E | anúncio ativo não aprovado | reprovação derruba o grupo inteiro |
+
+Mais guarda de falha de API (OAuth/rede), que também é alerta.
+
+Detalhe que exigiu cuidado: **dias sem atividade não voltam da API**. A ausência da linha é exatamente o sinal do gatilho B, então a série é reconstruída com as 10 datas esperadas e lacunas preenchidas com zero — sem isso o gatilho mais importante nunca dispararia. Contador de dias consecutivos via `staticData` marca "2º dia seguido" para o mesmo problema, e zera quando resolve.
+
+Envia todo dia uma linha curta (que serve de heartbeat e responde "o que olhar no celular"), com o bloco de alerta prependido quando há problema:
+
+```
+📊 *Ads diário — Cobersystem*
+Ontem (03/08): 2 conv | R$74,71 | CPA R$37,36
+7 dias: 35 conv | R$478,43 | CPA R$13,67 | CPC R$1,74
+Orçamento: R$84,00/dia | campanha: ELIGIBLE
+✅ Sem alertas.
+```
+
+### Descoberta de fuso: o monitor GMB nunca rodou às 9h
+
+Os horários reais de execução de `aqkvnFil6kCZOyis` são **15:00 UTC = 12:00 BRT**, não 9h como documentado. O n8n **aplica** `settings.timezone` ao cron: `0 12 * * *` com `America/Sao_Paulo` dispara ao meio-dia BRT. E workflows **sem** timezone caem no default `America/New_York` — por isso o relatório configurado em "8h" chega às 09:01 BRT e o ciclo de "20h" às 21:01. O monitor novo foi criado com `timezone: America/Sao_Paulo` explícito e cron `0 9 * * *` para rodar de fato às 09:00 BRT.
+
+### Validação
+
+- 7 cenários testados fora do n8n contra amostra real da API: sem alerta com dados reais, e os 5 gatilhos + falha de API disparando corretamente, incluindo o caso de linha ausente. Contador de dias consecutivos verificado em 3 execuções encadeadas mais a resolução.
+- Execução real ponta a ponta (`11037`, webhook `/webhook/cober/ads-monitor-teste`): 8 nós `success`, Evolution API retornou a chave da mensagem, WhatsApp entregue.
+- Integridade pós-alteração: `B29BC2BkRPG8988G` com 33 nós/31 conexões e `1mtMgK2OCnM6KqiS` com 27/25 — contagens inalteradas, `active=true` nos dois.
+- `binaryMode: "separate"` reapareceu em `settings` do `B29` e foi filtrado de novo no `PUT` (chave inerte no n8n 2.32.7, rejeitada pelo schema da API pública).
+
+### Backups
+
+`/root/backups_ads_20260804-0729/` com os três workflows antes da alteração (`B29BC2BkRPG8988G`, `1mtMgK2OCnM6KqiS`, `aqkvnFil6kCZOyis`).
+
+### Nada foi alterado na campanha
+
+Orçamento, estratégia de lance, keywords, negativas, grupos e segmentação seguem intactos. Ordem sugerida para o pós-viagem: (1) subir QS das keywords centrais, que é o que barateia o clique; (2) avaliar tCPA em R$20–25 para comprar volume; (3) trocar keywords de bairro do grupo "Geolocalização SP" por regiões com volume real.
