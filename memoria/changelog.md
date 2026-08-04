@@ -2121,3 +2121,39 @@ Mesmo pedindo 1.000 linhas, a dimensão `query` entrega só 23% dos cliques, por
 **Riscos anotados, não corrigidos:**
 1. **Refresh tokens do Google em texto puro** dentro dos nós `Token GMB`/`Token GSC`/`Token Ads`, junto com `client_secret` e `developer-token`. Qualquer export de workflow — inclusive backup versionado — carrega credencial de produção. Deveriam virar credencial do n8n ou variável de ambiente.
 2. **`ads_campaign_metrics` do MCP quebra com `days` arbitrário.** A bridge monta `LAST_${days}_DAYS`, e o GAQL só aceita 7, 14 e 30. `days=1` retorna erro de JSON vazio. Vale validar a entrada ou mapear para intervalo explícito de datas.
+
+---
+
+## 04/08/2026 — fix(reports): B2/B3 aplicados — totais reais do GSC e posição ponderada (aprovado)
+
+**Aprovada a opção de converter as chamadas existentes em agregadas.** Topologia nova em `B29BC2BkRPG8988G` (33 nós) e `1mtMgK2OCnM6KqiS` (27 nós):
+- `GSC - Buscar Dados` e `GSC - Semana Anterior` passaram a consultar **sem dimensão** — única fonte fiel dos totais do site.
+- Nó novo **`GSC - Top Queries`** (dimensão `query`, `rowLimit: 25`) apenas para a lista, clonado do nó existente em cada workflow para herdar a autenticação correta, que difere entre eles: o `B29` usa header manual com `$('Token GSC')` e `authentication: none`, o `1mtMgK` usa `predefinedCredentialType` com a credencial `Google account 2` (`FpcXxMa4amcdVlLJ`).
+- `Merge GSC` de 2 para **3 entradas** (`numberInputs: 3`, modo `append` preservado), com a mesma origem que alimenta a primeira chamada passando a alimentar o nó novo.
+- `Formatar GSC` reescrito: totais do agregado, posição vinda pronta do Google, e campos novos `gsc_avgPosition_prev`, `gsc_delta_position` (com leitura de seta invertida, já que em posição menor é melhor), `gsc_clicks_ant`, `gsc_impressions_ant` e `gsc_queries_amostradas`. Todos os oito campos consumidos por `Formatar Dados`, `Montar Issue` e `Comparar` foram preservados.
+
+**A subnotificação era muito maior que os ~55% estimados.** Janela 28/07–03/08, código publicado rodando contra a API real:
+
+| | Cliques | Impressões | Posição |
+|---|---|---|---|
+| ANTES (subtotal do top-10) | 20 | 590 | 7,3 (média simples) |
+| DEPOIS (site inteiro) | **158** | **9.688** | **7,0** (ponderada pelo Google) |
+
+Cliques vinham **87% subnotificados** e impressões **94%**. A semana real foi de −2% em cliques e +4% em impressões, com posição de 6,7 para 7,0 — piora de 0,3, e não os "3,2 posições" que dispararam alarme falso nas auditorias anteriores. Integridade verificada nos dois workflows: zero conexões órfãs, zero ids ou nomes duplicados, as três entradas do Merge corretamente ligadas, `active` preservado.
+
+**Efeito colateral previsto e corrigido: a baseline do Redis estava envenenada.** Os agendamentos não são diários — o relatório roda **segundas 08:00** e o ciclo **domingos 20:00**. Como o próximo a rodar é o de domingo 09/08, ele leria a baseline gravada na segunda 03/08, calculada com todas as fórmulas defeituosas: `gsc.clicks` 16, `impressions` 605, `avgPosition` 8,9, `conv_whatsapp` 74, `bounceRate` 67,9% e o Ads com totais de 30 dias. **Todas as linhas** do comparativo viriam com sinal falso — cliques aparentando +890%, conversões do Ads aparentando −73%. A chave `cober:baseline:atual` foi reafirmada com as fórmulas corrigidas para a **mesma janela que ela representa** (27/07–02/08), preservando `week_start` e `ts` originais e marcando `baseline_restated`:
+
+| | Baseline antiga | Reafirmada |
+|---|---|---|
+| GSC cliques / impressões / posição | 16 / 605 / 8,9 | 184 / 11.341 / 6,9 |
+| GA4 conv_whatsapp / total / rejeição | 74 / 61 / 67,9% | 59 / 62 / 44,5% |
+| Ads custo / conversões | R$1.956 (30d) / 131 | R$464,52 (7d) / 35 |
+| GMB impressões | (seção ausente) | 24 |
+
+Valor anterior salvo em `/root/backups/relatorios-gsc-20260804-0609/redis-baseline-ANTES.json`. Pequena deriva de 610 → 595 sessões na mesma janela é dado do GA4 assentando, não efeito das correções.
+
+**Rótulo obsoleto corrigido:** o texto do comparativo dizia `Ads custo 30d` fixo no código do nó `Comparar`, o que passou a mentir com a janela de 7 dias. Trocado para `Ads custo 7d`.
+
+**Backups em `/root/backups/relatorios-gsc-20260804-0609/`:** estado dos dois workflows antes da mudança de topologia (`versionId` `b1f2eb21…` e `e072e88c…`) e o valor anterior da baseline, com `SHA256SUMS`.
+
+**Pendência de confirmação:** o código dos nós foi validado fora do n8n contra as APIs reais, mas a execução completa dentro do n8n — com o `Merge` de 3 entradas e o nó novo no fluxo — só acontece no ciclo de **domingo 09/08 20:00**. Não foi disparado manualmente de propósito: o gatilho manual envia WhatsApp, cria issue no GitHub e sobrescreve a baseline. Vale conferir essa execução.
