@@ -2070,3 +2070,54 @@ Substituído o placeholder `/images/blog/cobertura-policarbonato-tipos.jpg` (ima
 **Backups em `/root/backups/monitor-ana-20260804-0456/`:** `workflow-Ja4CRCmva179PAqf.json` (estado completo, `versionId=aeea7695…`) e `credential-YPL5PHEn37pZIQ7Q-encrypted.json` (blob cifrado, **não** decifrado), com `SHA256SUMS`.
 
 **Ressalva de transparência:** um `PATCH` com corpo vazio, usado para descobrir se o endpoint existia, carimbou o `updatedAt` da credencial (11/07 → 04/08 04:57). O blob cifrado permaneceu **idêntico byte a byte** ao backup, verificado por hash — nenhum segredo ou configuração foi alterado, apenas o metadado de data.
+
+---
+
+## 04/08/2026 — feat(ads): orçamento R$70 → R$84/dia + fix(reports): corrige medição de GMB, Ads e GA4
+
+### Ação A — orçamento do Google Ads
+
+A queda de 15% em conversões apontada na leitura anterior **não se confirmou**. Comparando 28/07–03/08 contra 21/07–27/07 (por subtração de `LAST_7_DAYS` e `LAST_14_DAYS`, ambos excluindo o dia corrente):
+
+| | Semana atual | Semana anterior | Δ |
+|---|---|---|---|
+| Conversões | 35 | 36 | −2,8% |
+| Custo | R$ 478,43 | R$ 490,74 | −2,5% |
+| CPA | R$ 13,67 | R$ 13,63 | +0,3% |
+| Cliques | 275 | 352 | −21,9% |
+| CPC | R$ 1,74 | R$ 1,39 | +24,9% |
+| Taxa de conversão | 12,73% | 10,23% | +24,4% |
+
+O CPC subiu 25%, mas a taxa de conversão subiu quase o mesmo, então o CPA ficou parado — o algoritmo está comprando menos cliques e melhores. Com CPA de R$13,67 contra ticket médio de R$12.610 e gasto em 97,6% do teto, o aumento se justifica. Aplicado **R$70 → R$84/dia (+20%)** via `ads_update_budget` (campanha 23879601113, budget `15494410960`), com dry-run antes e leitura independente depois. `MAXIMIZE_CONVERSIONS` mantido livre, **sem tCPA**, conforme combinado. Incremento de +20% escolhido no limite conservador justamente porque o CPC já está subindo.
+
+### Ação B — bugs de medição dos relatórios (`B29BC2BkRPG8988G` e `1mtMgK2OCnM6KqiS`)
+
+**B1 — as 7 métricas do GMB colapsavam. Corrigido.** Causa exata encontrada no código do n8n: `updadeQueryParameterConfig` troca de comportamento conforme a versão do nó — em `< 4.3` faz `qs[name] = value`, sobrescrevendo duplicatas; em `>= 4.3` acumula em array. O nó `GMB - Buscar Insights` é **typeVersion 4.2**, então dos 7 `dailyMetrics` sobrava só o último da lista, `BUSINESS_DIRECTION_REQUESTS` — a única métrica genuinamente zerada. Daí os três relatórios de "GMB zerado". Corrigido montando a URL como string crua com os 7 parâmetros repetidos (`sendQuery=false`, collection removida), padrão que a bridge já usava e que é imune à versão do nó. Confirmado contra a API real: 7 séries retornadas, 14 dias de dados. **O GMB nunca estava zerado** — são 22 impressões em 7 dias (21 em busca, 1 em maps) contra 32 na semana anterior, 1 clique no site, 1 ligação, 0 rotas. Volume baixíssimo, que é problema de negócio, mas não era suspensão nem falha de token.
+
+**B4 — janela do Ads alinhada. Corrigido.** `Ads - Campanhas` usava `LAST_30_DAYS` enquanto GSC e GA4 usavam 7 dias, e o resultado era rotulado como semanal: 132 conversões e R$1.970 apareciam onde deveriam estar 35 e R$478. Trocado para `LAST_7_DAYS` e o rótulo `ads_periodo` passou a refletir D-7 a D-1, coerente com a semântica do enum do GAQL (que exclui hoje). Adicionados `ads_cpa` e `ads_periodo_listas` — as listas de keywords e search terms seguem em 30 dias de propósito, por precisarem de amostra maior, mas agora vêm rotuladas para ninguém compará-las como semanais.
+
+**B5 — a inconsistência tinha outra causa que a suposta. Corrigido.** Não era erro de aritmética: `ga4_conv_whatsapp` lia o `eventCount` do evento **`click`**, que é clique genérico em qualquer link e tem `conversions=0`. O key event de lead é **`whatsapp_click`**. Com a fonte certa tudo reconcilia: `whatsapp_click` 57 + `submit` 3 = 60, exatamente a métrica nativa `conversions` que o `conv_total` antigo exibia. Ou seja, o relatório vinha **inflando leads de WhatsApp** (76 em vez de 57). Corrigido o mapeamento do evento, `conv_total` passou a ser a soma das partes, a métrica nativa ganhou campo próprio (`ga4_conv_keyevents`) e foi embutida uma auto-conferência (`ga4_conv_confere`) que grita "DIVERGENTE" se as duas contas deixarem de fechar — justamente a classe de defeito que passou dez dias invisível.
+
+**Defeito extra encontrado, mesma família. Corrigido.** `ga4_bounceRate` e `ga4_avgDuration` eram média aritmética simples entre canais, ignorando o peso de cada um. Com canais residuais em 100% de rejeição (Unassigned com 28 sessões, Organic Social com 1), a média simples dava **65,3%** contra **53,5%** reais ponderados por sessão. As rejeições de 69,5%, 60,6% e 68% dos relatórios anteriores estavam todas infladas, e a prioridade de CRO foi definida sobre número errado. Ambas passaram a ser ponderadas por sessões.
+
+**Validação:** o código **efetivamente publicado** nos nós foi extraído e executado contra as APIs reais, com mocks de `$input`/`$`. Resultado do `Formatar Ads`: 35 conversões, R$478,43, CPA R$13,67 — idêntico à leitura manual da Ação A. `Formatar GA4`: 613 sessões (−9%), rejeição 53,5%, 57+3=60 com auto-conferência `ok`. `Formatar GMB`: 22 impressões, sem flag de erro.
+
+**B2 e B3 — NÃO aplicados, premissa refutada, aguardando decisão.** O `rowLimit: 10` não é o gargalo principal. Medido contra o agregado real do site na janela 28/07–03/08:
+
+| Fonte | Cliques | Impressões | Posição |
+|---|---|---|---|
+| Agregado do site (sem dimensão) | 158 | 9.688 | **6,98** |
+| `rowLimit=10` (atual) | 20 (12,7%) | 590 (6,1%) | 7,3 simples |
+| `rowLimit=1000` (584 linhas) | 37 (23,4%) | 3.509 (36,2%) | 8,7 ponderada |
+
+Mesmo pedindo 1.000 linhas, a dimensão `query` entrega só 23% dos cliques, porque o GSC omite consultas abaixo do limiar de privacidade. Subir o `rowLimit` trocaria um número errado por outro menos errado — e criaria um falso salto de "impressões triplicaram" no próximo relatório. O total correto exige uma chamada **sem dimensão**, que de bônus já devolve a posição ponderada calculada pelo próprio Google (6,98), resolvendo o B3 com precisão que nenhuma fórmula sobre linhas parciais alcança. Isso torna B2 e B3 inseparáveis e exige **nó novo + religar o Merge de 2 para 3 entradas** — mudança de topologia em workflow de produção, que por regra não é feita sem explicar antes. Proposta registrada, aguardando aprovação.
+
+**Mecanismo de escrita validado antes do uso:** a API pública não documenta atualização de workflow. `PUT /workflows/{id}` existe e funciona; `PATCH` responde 405. Testado num workflow descartável, criado e apagado, inclusive o caso crítico — **PUT preserva `active=true`**. Nenhuma escrita direta em SQLite.
+
+**Ressalva de transparência:** o schema da API rejeita `settings` com propriedades fora da lista (`additionalProperties: false`), e o `B29BC2BkRPG8988G` tinha `binaryMode: "separate"`. A propriedade **não existe em nenhum lugar do código do n8n 2.32.7** (é resíduo de versão antiga, presente em 6 dos 14 workflows) e foi descartada na gravação, sem efeito funcional. Registrado por ser alteração que não pude reverter pela API.
+
+**Backups em `/root/backups/relatorios-20260804-0538/`:** estado completo dos dois workflows antes das alterações (`versionId` `638b3530…` e `2b68909a…`), com `SHA256SUMS`.
+
+**Riscos anotados, não corrigidos:**
+1. **Refresh tokens do Google em texto puro** dentro dos nós `Token GMB`/`Token GSC`/`Token Ads`, junto com `client_secret` e `developer-token`. Qualquer export de workflow — inclusive backup versionado — carrega credencial de produção. Deveriam virar credencial do n8n ou variável de ambiente.
+2. **`ads_campaign_metrics` do MCP quebra com `days` arbitrário.** A bridge monta `LAST_${days}_DAYS`, e o GAQL só aceita 7, 14 e 30. `days=1` retorna erro de JSON vazio. Vale validar a entrada ou mapear para intervalo explícito de datas.
