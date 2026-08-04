@@ -2039,3 +2039,34 @@ Substituído o placeholder `/images/blog/cobertura-policarbonato-tipos.jpg` (ima
 3. **Credencial `Google Sheets account` (id `ZeIjtOriWhGc6XnG`) expirada** — usada no nó `Append or update row in sheet` do workflow da Ana (`2cpXVNWqOdmrEpFn`, não tocado). 150 ocorrências de "needs to be reconnected" em 72h; 54 de 60 execuções com erro amostradas são essa credencial. Impacto: cliente segue recebendo resposta (`Evolution API` retorna sucesso), mas a linha do CRM não é gravada desde 01/08. Exige reconexão manual via tela de consentimento do Google (Gustavo ou Mari).
 4. **Base do n8n com 449 MB** e WAL de 10 MB — inchaço de histórico de execuções, avaliar política de retenção. Presentes ainda os arquivos `database.sqlite.corrupt.20260706212939` da crise de julho.
 5. **Achado secundário na Ana:** 6 de 60 falhas amostradas são HTTP 400 "Bad request" nos nós `Notifica Gustavo` (4) e `Evolution API` (2) — problema distinto da credencial, possivelmente ligado ao salto para o n8n 2.x. Apenas sinalizado para a Mari, nada alterado.
+
+---
+
+## 04/08/2026 — fix(n8n): destrava o `Ana - Monitor de Erros` (Fase 1) — primeiro sucesso da história do workflow
+
+**Situação:** o monitor `Ja4CRCmva179PAqf` acumulava 2.028 execuções, **todas em erro**. A auditoria do histórico completo mostrou algo pior que o suposto: não houve regressão, o workflow **nunca teve um único sucesso agendado**. A primeira execução, em 21/07 às 03:00, já falhou no mesmo nó. Ele nasceu quebrado.
+
+**Causa raiz:** a credencial `n8n API Key (Monitor Ana)` (`YPL5PHEn37pZIQ7Q`) foi criada em **11/07 03:34** e nunca mais atualizada. A rotação de chaves de **13/07** invalidou a chave dois dias depois, e o workflow só foi ativado em **21/07** — já com a chave morta. O nó `Buscar Execuções com Erro` respondia `Authorization failed` em 100% dos ciclos. Consequência: a rede de segurança da Ana estava desligada havia 14 dias, sem ninguém saber.
+
+**Auditoria do caminho inteiro antes de mexer** (a lição da crise de infra: não confiar que só o defeito óbvio está quebrado):
+- **Contrato da API confirmado no n8n 2.32.7** — reproduzida a requisição exata do nó com chave válida: HTTP 200, raiz `{data, nextCursor}`, `data` é array, itens com `id`/`status`/`startedAt` parseável. A lógica de `Filtrar Erros Novos` está correta e **não precisou de ajuste**. O salto para o 2.x não quebrou o contrato.
+- **Perna do WhatsApp nunca havia executado** — como o workflow sempre morria no nó 2, o `Enviar Alerta WhatsApp` era 100% não comprovado. Risco real de trocar a chave e continuar sem alerta. Validado por comparação de hash (sem expor segredo): a credencial `Evolution API Key (Monitor Ana)` (`7sF5BiSiISf6u5Fr`) guarda **a mesma chave** usada inline pelo monitor GMB que comprovadamente entrega, com header `apikey` correto.
+- **URL do Evolution com `%20` no fim é legítima** — o nome da instância tem espaço à direita; monitor GMB usa idêntica.
+
+**Correção aplicada:** Gustavo criou a chave `monitor-ana-erros` com escopos mínimos (`execution:read`, `execution:list`). A chave foi **validada antes de ser gravada** (HTTP 200 na requisição exata do monitor, provando que os dois escopos bastam) e aplicada via `PATCH /api/v1/credentials/:id` — endpoint funcional embora ausente do `openapi.yml`. **Sem edição de SQLite** e sem alteração alguma no workflow. Gravação conferida por hash do valor decifrado.
+
+**Resultado:** execução `#11013` às 05:10:46 UTC — **primeiro sucesso do workflow**, caminho completo de 6 nós, incluindo o `Enviar Alerta WhatsApp`, que rodou pela primeira vez e retornou `id` de mensagem do Evolution para `5511986206244`. Ciclo seguinte `#11014` às 05:20:46 rodou em silêncio (0 erros novos), confirmando estado estável sem tempestade de alertas.
+
+**Sobre os 20 erros do primeiro alerta:** são de 03/08 entre 16:30 e 20:01 BRT, todos **anteriores** à reconexão da Sheets — 12 de 15 amostrados são `The credential "Google Sheets account" needs to be reconnected`. Dois artefatos conhecidos do desenho, não defeitos novos: o `staticData.lastCheck` estava congelado em 11/07 14:10 (gravado por um teste manual da Mari enquanto a chave ainda valia), então tudo virou "novo"; e `limit=20` teto o lote. O `lastCheck` avançou para 04/08 02:10 BRT e o backlog foi zerado.
+
+**Pendências e ressalvas para a Mari** (nada alterado, só sinalizado — qualquer mudança no workflow depende da aprovação dela):
+1. **Texto do alerta diz "nos últimos 10 minutos"** mas lista o que for mais novo que `lastCheck`, que pode ser bem mais antigo — no primeiro alerta, itens de 9h antes. Redação a ajustar.
+2. **`limit=20` sem paginação** — em pico de erros o alerta subnotifica silenciosamente. Não há `nextCursor` sendo seguido.
+3. **Destinatário divergente:** o monitor da Ana alerta `5511986206244` (aparece nos workflows de teste da Ana, provavelmente Mari), enquanto o monitor GMB alerta `5511982295079` (Gustavo). Confirmar se é intencional.
+4. **Sem `errorWorkflow` configurado** — se o próprio monitor falhar, ninguém é avisado. É exatamente o que aconteceu por 14 dias: quem vigia a Ana não tinha quem o vigiasse.
+5. **Erros "Bad request" na Ana seguem sem explicação** — 3 de 15 amostrados, nós `Notifica Gustavo ` (com espaço no nome) e `Evolution API`. Distintos da credencial Sheets.
+6. **Reconexão da Sheets ainda não confirmada sob carga** — último erro dela em 03/08 20:01 BRT e sem execução nenhuma desde então (madrugada, sem tráfego). Ausência de erro aqui não é prova de correção; validar no movimento do dia.
+
+**Backups em `/root/backups/monitor-ana-20260804-0456/`:** `workflow-Ja4CRCmva179PAqf.json` (estado completo, `versionId=aeea7695…`) e `credential-YPL5PHEn37pZIQ7Q-encrypted.json` (blob cifrado, **não** decifrado), com `SHA256SUMS`.
+
+**Ressalva de transparência:** um `PATCH` com corpo vazio, usado para descobrir se o endpoint existia, carimbou o `updatedAt` da credencial (11/07 → 04/08 04:57). O blob cifrado permaneceu **idêntico byte a byte** ao backup, verificado por hash — nenhum segredo ou configuração foi alterado, apenas o metadado de data.
