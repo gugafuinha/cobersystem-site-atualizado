@@ -2007,3 +2007,35 @@ Substituído o placeholder `/images/blog/cobertura-policarbonato-tipos.jpg` (ima
 **Tarefa 3 — Meta title/description:** conferido; o title já estava exatamente `"Telhado Retrátil: Preço por m² em 2026 (Tabela) | SP"` desde sessão anterior. Nenhuma alteração necessária.
 
 **Regras respeitadas:** H1, estrutura e schemas (Product/FAQ) não tocados; nenhum conteúdo duplicado; `npm run build` sem erros (confirmado via grep dedicado, exit limpo).
+
+---
+
+## 04/08/2026 — fix(infra): 502 em todos os serviços Swarm em modo `vip` + pin do n8n em 2.32.7
+
+**Incidente:** desde 02/08 ~22:55 UTC, acesso externo com HTTP 502 em `automacao-n8n`, `leads-cobersystem-n8n` e `openclaw.cobersystem.com.br`. MCP `cobersystem-analytics` inutilizável de fora; monitor GMB (`aqkvnFil6kCZOyis`) alertou corretamente às 12:00 BRT de 03/08 ("Falha ao obter dados do GMB (bridge/OAuth)") porque chama a URL pública.
+
+**Causa raiz:** a tabela IPVS estava **vazia em todos os 19 network namespaces** do host (incluindo `ingress_sbox` e os sandboxes `lb_*`), embora o módulo `ip_vs` esteja carregado. Consequência: todo serviço com `endpoint-mode=vip` ficou inalcançável pelo Traefik, enquanto os em `dnsrr` seguiram funcionando — correlação de 100% entre modo do endpoint e status do domínio. Docker Engine **29.2.1** com firewall backend `iptables+firewalld`; o `dockerd` está no ar desde 10/07 sem restart, então nunca reprogramou as regras que foram perdidas.
+
+**Hipóteses descartadas com evidência:**
+- Config do Traefik: correta (`automacao_n8n-0` → `http://automacao_n8n:5678/`). O `http://easypanel:3000` nos logs de acesso é o backend do middleware `bad-gateway-error-page`, não o destino do roteamento.
+- Bind do n8n: escuta em `:::5678` (todas as interfaces), `healthz` 200 interno.
+- Endpoint obsoleto do n8n: o VIP `10.11.18.225` não mudou porque VIP não muda; faltava o mapeamento IPVS.
+- Restart do Traefik (`--force`): aplicado, container novo `mxxu5xvy…`, IPVS continuou vazio — quem programa as regras é o `dockerd`.
+
+**Correção aplicada (contorno, autorizada):** troca de `endpoint-mode` para `dnsrr` nos três serviços afetados, mesmo modo já usado pelos serviços que não falharam. Reversível com `--endpoint-mode vip`. Sem impacto em balanceamento (1 réplica cada).
+- `docker service update --endpoint-mode dnsrr --detach automacao_n8n`
+- `docker service update --endpoint-mode dnsrr --detach openclaw_openclaw-gateway`
+- `docker service update --endpoint-mode dnsrr --detach leads-cobersystem_n8n-leadscobersystem` — ficou `Pending` com `no suitable node (host-mode port already in use on 1 node)` porque a task antiga segurava a porta host 5679; resolvido com `--update-order stop-first`.
+
+**Pin de versão do n8n:** serviço estava em `n8nio/n8n:latest` e o update automático de 02/08 22:59 subiu para 2.32.7 (salto de major). Pinado em **`n8nio/n8n:2.32.7`** — digest `sha256:882b126a8ddd0646e7d17ec47630e7704615e4647f3363471859fddc3f8946e2`, idêntico ao que já rodava, portanto zero mudança de versão real. **Pendência:** o EasyPanel guarda o spec dele como `:latest` em LMDB; o pin definitivo precisa ser feito pela UI do EasyPanel, senão um deploy futuro reverte. LMDB não editado (mesma classe de risco da edição direta do SQLite).
+
+**Resultado:** `automacao-n8n`, `leads-cobersystem-n8n` e `openclaw.cobersystem.com.br` em HTTP 200; API do n8n em 200; bridge e MCP respondendo (GMB 7d: 19 impressões, perfil `OPEN`). Nenhuma regressão nos domínios que já funcionavam.
+
+**Backups em `/root/backups/infra-20260803-2325/`:** config do Traefik, specs do `automacao_n8n` e do `easypanel-traefik`, inspect do container, `estado-antes.txt` e snapshot da base do n8n (448 MB, via `VACUUM INTO`, `integrity_check: ok`, sha256 `f952781dba5b…`). SQLite não editado em nenhum momento.
+
+**Pendências registradas:**
+1. **Correção de raiz agendada:** restart do `dockerd` para reprogramar o IPVS e devolver o modo `vip`, em janela combinada. Avaliar pin da versão do Docker Engine — o upgrade automático para o 29 é o suspeito de fundo.
+2. **`painel.coberturapolicarbonato.com.br` em 502 — pré-existente, não relacionado.** Dois routers competem pelo host: `https-easypanel-domain` → service `easypanel` (funciona) e `https-custom-cmnru2q5g000301qpf3nz1k5j` → `http://localhost:3001`, que não tem nada escutando. O router custom vence por ter regra mais longa (`PathPrefix('/')`). Correção é remover a entrada órfã pela UI do EasyPanel — `main.yaml` é regenerado, editar o arquivo não persiste.
+3. **Credencial `Google Sheets account` (id `ZeIjtOriWhGc6XnG`) expirada** — usada no nó `Append or update row in sheet` do workflow da Ana (`2cpXVNWqOdmrEpFn`, não tocado). 150 ocorrências de "needs to be reconnected" em 72h; 54 de 60 execuções com erro amostradas são essa credencial. Impacto: cliente segue recebendo resposta (`Evolution API` retorna sucesso), mas a linha do CRM não é gravada desde 01/08. Exige reconexão manual via tela de consentimento do Google (Gustavo ou Mari).
+4. **Base do n8n com 449 MB** e WAL de 10 MB — inchaço de histórico de execuções, avaliar política de retenção. Presentes ainda os arquivos `database.sqlite.corrupt.20260706212939` da crise de julho.
+5. **Achado secundário na Ana:** 6 de 60 falhas amostradas são HTTP 400 "Bad request" nos nós `Notifica Gustavo` (4) e `Evolution API` (2) — problema distinto da credencial, possivelmente ligado ao salto para o n8n 2.x. Apenas sinalizado para a Mari, nada alterado.
