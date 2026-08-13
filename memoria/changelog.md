@@ -2,6 +2,20 @@
 
 ---
 
+## 2026-08-13 — ops(n8n): Ana WhatsApp desativada a pedido para diagnóstico de erros
+
+**Ação:** workflow `Cobersystem - Ana WhatsApp` (`2cpXVNWqOdmrEpFn`) desativado via API oficial do n8n (`POST /api/v1/workflows/2cpXVNWqOdmrEpFn/deactivate`, HTTP 200, `active: false`). Backup do JSON completo (23 nodes, `updatedAt 2026-08-06T17:20:15Z`) salvo em `/root/backups/ana_backup_antes_desativar_20260813-*.json` antes da alteração.
+
+**Validação:** `POST /webhook/cobersystem-whatsapp` responde `404 — webhook não registrado`. Nenhuma mensagem nova entra no fluxo. Nada mais foi tocado (demais 15 workflows, credenciais e SQLite intactos).
+
+**Erros encontrados nas últimas 20 execuções com falha (todas de 13/08):**
+- **19x — `Append or update row in sheet`:** `The credential "Google Sheets account" needs to be reconnected` (credencial `ZeIjtOriWhGc6XnG`, expirada desde 01/08). Ocorre *depois* do envio da resposta ao cliente — não quebra a conversa, mas o lead não é gravado no CRM. Exige reconexão OAuth manual pela UI do n8n.
+- **1x — `Evolution API` (exec 13303, 13:40):** HTTP 400 `Bad request`. Causa real visível no payload: `{"number":"120363289523599492@g.us","text":""}` — **texto vazio** enviado ao `POST /message/sendText`. Destino é o grupo interno "Chat Ana". Ou seja, em algum caminho o `Code2` monta a mensagem sem conteúdo e a Evolution rejeita. Este é o único erro que realmente derruba o envio.
+
+**Para reativar:** `POST /api/v1/workflows/2cpXVNWqOdmrEpFn/activate` ou o toggle na UI do n8n.
+
+---
+
 ## 2026-07-13 — test/fix(n8n): execução real Auto-Resposta Reviews Positivas + correção de notificação em lote
 
 ### Execução real (workflow `mtCyWCcNUgBIvx5D`)
