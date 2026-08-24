@@ -2,6 +2,49 @@
 
 ---
 
+## 2026-08-24 — fix(n8n): migração Google Ads v21→v22, correção de dado falso nos monitores e reparo do nó `Comparar`
+
+**Contexto:** diagnóstico de 23/08 apontou 4 workflows presos na API v21 do Google Ads (descontinuada), monitores reportando métricas zeradas como se fossem dado real, e 9 dias sem nenhum alerta chegar no WhatsApp do Gustavo. Ana (`2cpXVNWqOdmrEpFn`) **não foi tocada** em nenhuma etapa — `updatedAt` permanece `2026-08-23T21:01:19Z`.
+
+**Backups:** JSON completo de cada workflow salvo em `/root/backups/n8n_20260823_v22/` antes de cada alteração (`.json` original, `.antes-webhook`, `.antes-fix-comparar`, `.antes-fix-url`).
+
+### 1. Google Ads v21 → v22 (causa raiz)
+- Confirmado por teste direto: **v21 retorna HTTP 404**; v22, v23 e v24 respondem 200. Escolhida a v22 por ser o menor salto.
+- 15 referências trocadas via API oficial (`PUT /workflows/{id}`) em `Ciclo Domingo` (3), `Relatório Semanal` (3), `DATA-API Bridge` (6) e `Ads - Monitor Diário` (3).
+- Diff validado node a node: **conexões idênticas e nenhum node alterado além da URL**. Zero referências v21 restantes no n8n.
+
+### 2. `neverError` — falha de API agora vira alerta real
+- O `neverError: true` foi **mantido de propósito** nos nós de consulta do `Ads - Monitor Diário`: sem ele o workflow morre no nó HTTP e o alerta nunca chega. O defeito não era a flag, era a ausência de visibilidade do status.
+- Adicionado `fullResponse: true` nos 3 nós de Ads, expondo o `statusCode`, e o Code `Avaliar Saude Ads` foi reescrito para ler o envelope `{statusCode, body}`, distinguir falha de transporte (HTTP ≥ 400, HTML, corpo sem `results`) de zero legítimo, e **suprimir o bloco de métricas quando não há dado confiável**.
+- Antes: `Falha ao consultar a API (OAuth ou rede). serie=ok` + `0 conv | R$0,00`. Depois: `serie diaria: HTTP 404 | status da campanha: HTTP 404` + `⚠️ Métricas indisponíveis`.
+- Validado nos dois caminhos: sucesso (dados reais) e falha forçada (v21 temporária, revertida em seguida).
+
+### 3. Bug oculto: nó `Comparar` do Ciclo Domingo estava corrompido
+- Com a v21 consertada o fluxo avançou e expôs um `SyntaxError` que estava mascarado havia semanas.
+- **Causa:** um `String.replace` usando `$'` (que em JS insere "todo o resto da string") explodiu o bloco de Ads em 5 cópias aninhadas — 110 linhas onde deviam existir 55, com 4 strings truncadas em `'Ads CPA: R`.
+- Reconstruído a partir dos fragmentos, com checagem de sanidade em 9 posições antes de gravar e validação de sintaxe antes e depois do PUT. As linhas de CPA, custo, CPC e CTR voltaram a sair no comparativo.
+- **Varredura preventiva:** os 49 Code nodes do n8n foram validados em contexto async (como o n8n executa). Zero inválidos. Nenhum outro workflow sofreu o mesmo dano.
+
+### 4. Envio de WhatsApp dos monitores
+- Não havia defeito de configuração: a Evolution API estava fora do ar e voltou com o restart do container. Teste real retornou `HTTP 201` e a instância `cobersystem ` está `open`.
+
+### 5. `GMB - Monitor Anti-Suspensão` chamava o bridge pela URL pública
+- Os nós `GMB Insights 7d` e `GMB Perfil` apontavam para `https://automacao-n8n.fmjbtn.easypanel.host/webhook/cober/gmb`, que estava em **502**, e recebiam HTML de erro — gerando alerta falso de "falha de OAuth" às 12:00 de 24/08.
+- Trocados para `http://localhost:5678` (o bridge vive no mesmo n8n) + timeout de 30s. Mesmo padrão da correção aplicada na Ana em julho. Após a troca: dados reais e nenhum alerta falso.
+
+### 6. Webhooks de teste manual
+- Adicionados a `GMB - Monitor Anti-Suspensão` (`/webhook/cober/gmb-monitor-teste`) e `Ciclo Domingo` (`/webhook/cober/ciclo-domingo-teste`), seguindo o padrão que o `Ads - Monitor Diário` já usava. Permitem validar sem esperar o agendamento.
+
+### Validação em produção (agendamentos reais de 24/08)
+Todos com `success`, primeira vez em 9 dias: `Ads - Monitor Diário` (12:00), `GMB - Monitor Anti-Suspensão` (15:00), `Relatório Semanal` (11:00), `GMB Posts`, `GSC Pós-Deploy`, `GMB Auto-Resposta` e `GMB Alerta Negativa`. Alertas confirmados entregues no WhatsApp do Gustavo às 08:01, 09:00 e 12:00.
+
+### Pendências (não executadas — exigem decisão)
+1. **n8n em 502 pela URL pública.** Diagnóstico fechado: o Traefik aponta para `http://automacao_n8n:5678/`, mas o DNS do nome do service resolve para VIPs obsoletas (`10.11.18.225`, `10.11.5.200` — esta inalcançável), enquanto a VIP real é `10.11.18.232`. Por `tasks.automacao_n8n` responde `{"status":"ok"}`. É o mesmo defeito de VIP do Swarm de julho. Correção: trocar para `http://tasks.automacao_n8n:5678/` em `/etc/easypanel/traefik/config/main.yaml`. **Não aplicado por ser alteração de Traefik em produção.** Não afeta os workflows (nenhum depende mais da URL pública), só o acesso à interface pelo navegador.
+2. **Ana — 1 erro em 73 execuções (24/08):** nó `HTTP Request (Whisper)` com HTTP 400 na transcrição de áudio. Fora do escopo autorizado, apenas sinalizado.
+3. **Campanha em `LIMITED` / `BUDGET_CONSTRAINED`:** o orçamento de R$84/dia está limitando a entrega. É alerta legítimo do monitor, não defeito.
+
+---
+
 ## 2026-08-13 — ops(n8n): Ana WhatsApp desativada a pedido para diagnóstico de erros
 
 **Ação:** workflow `Cobersystem - Ana WhatsApp` (`2cpXVNWqOdmrEpFn`) desativado via API oficial do n8n (`POST /api/v1/workflows/2cpXVNWqOdmrEpFn/deactivate`, HTTP 200, `active: false`). Backup do JSON completo (23 nodes, `updatedAt 2026-08-06T17:20:15Z`) salvo em `/root/backups/ana_backup_antes_desativar_20260813-*.json` antes da alteração.
