@@ -2,6 +2,36 @@
 
 ---
 
+## 2026-08-24 — fix(traefik): 502 do n8n resolvido de forma permanente, imune à regeneração do EasyPanel
+
+**Contexto:** o painel do n8n estava em 502 pelo domínio público (`automacao-n8n.fmjbtn.easypanel.host`) pela terceira vez — já havia quebrado em julho e no início de agosto. Ana (`2cpXVNWqOdmrEpFn`) não foi tocada.
+
+**Backups:** `/root/backups/traefik/main.yaml.20260824-171555` (md5 conferido contra o original) e cópia integral da pasta em `/root/backups/traefik/config-20260824-182312/`.
+
+### Causa raiz — não era o que estava documentado
+
+O registro anterior atribuía a regressão a um auto-update do Docker/EasyPanel. **Isso está errado.** O `dnf history` mostra que o `docker-ce` foi instalado em 05/02/2026 e **nunca sofreu upgrade**; não existe `dnf-automatic`, watchtower ou cron de atualização, e o `dockerd` está de pé desde 10/07 sem reiniciar.
+
+A causa real é o **endpoint mode**. O `automacao_n8n` é o único serviço do painel em `endpoint_mode=vip`; `automacao_evolution-api` e `easypanel` estão em `dnsrr` — e nenhum dos dois jamais quebrou. A cada redeploy o Swarm emite uma VIP nova para o n8n, mas as antigas permanecem no DNS interno: hoje `automacao_n8n` resolvia para `10.11.18.225` e `10.11.5.200`, **ambas sem dono**, enquanto a VIP viva é `10.11.18.232`. O Traefik resolvia o nome, caía numa VIP morta e devolvia 502. Comprovado de dentro do container do Traefik: `automacao_n8n:5678` inalcançável, `tasks.automacao_n8n:5678` responde `{"status":"ok"}`.
+
+### Por que editar o `main.yaml` não resolve
+
+A correção óbvia (trocar a URL para `tasks.automacao_n8n`) foi aplicada e **funcionou por exatos 5 minutos**: o EasyPanel reescreveu o `/etc/easypanel/traefik/config/main.yaml` às 17:41 e o 502 voltou. É a mesma reversão silenciosa que derrubou a correção de julho. A definição vem do LMDB do painel (`/etc/easypanel/data/data.mdb`), regenerada periodicamente.
+
+Também se descobriu que **sobrescrever um serviço a partir de outro arquivo não funciona**: quando dois arquivos declaram o mesmo nome, o `main.yaml` vence. Efeito colateral relevante — o `openclaw-websocket.yaml`, presente desde 04/06, **nunca esteve ativo**: o `serversTransport` que desativa o idle timeout do WebSocket não está aplicado no Traefik. Fica registrado para tratar à parte.
+
+### Solução aplicada
+
+Criado `/etc/easypanel/traefik/config/zz-n8n-tasks.yaml` com **nomes próprios** em vez de sobrescrita: o serviço `n8n-tasks-fix` aponta para `http://tasks.automacao_n8n:5678/`, e dois routers (`zz-http-` e `zz-https-`) replicam a regra de host original com `priority: 1000` contra os `62` dos originais, preservando middlewares, redirect e `certResolver`. Como `tasks.` resolve direto para os IPs das tasks vivas, sem VIP, a correção é imune ao acúmulo — e por estar fora do `main.yaml`, imune também à regeneração do painel.
+
+**Validação:** 200 em 5/5 no teste imediato e 10/10 num monitor de 5 minutos, com o `main.yaml` ainda apontando para a URL quebrada — que é a prova da imunidade. Certificado wildcard válido até 09/10, redirect HTTP→HTTPS em 301, `/rest/settings` em 200 (o painel carrega de fato) e `/webhook/cobersystem-whatsapp` em 200. Evolution API e EasyPanel seguem em 200.
+
+### Risco latente encontrado no caminho: o n8n não está pinado
+
+O serviço roda `n8nio/n8n:latest` **sem digest fixado** (o `PreviousSpec` mostra que já esteve em `2.32.7`), com o n8n 2.33.5 em produção sobre um SQLite de 463 MB. A tag `latest` do registry **já avançou** em relação à imagem em uso, então qualquer redeploy pela UI subiria uma versão nova e rodaria migrations irreversíveis. Há precedente de corrupção nesse banco (`database.sqlite.corrupt.20260706212939`). A imagem em produção foi preservada como `n8nio/n8n:2.33.5-rodando` e a tag `latest` local reapontada para ela, sem tocar no container (segue com 2 semanas de uptime). O pin definitivo no serviço exige recriar a task e ficou pendente de decisão.
+
+---
+
 ## 2026-08-24 — fix(n8n): migração Google Ads v21→v22, correção de dado falso nos monitores e reparo do nó `Comparar`
 
 **Contexto:** diagnóstico de 23/08 apontou 4 workflows presos na API v21 do Google Ads (descontinuada), monitores reportando métricas zeradas como se fossem dado real, e 9 dias sem nenhum alerta chegar no WhatsApp do Gustavo. Ana (`2cpXVNWqOdmrEpFn`) **não foi tocada** em nenhuma etapa — `updatedAt` permanece `2026-08-23T21:01:19Z`.
